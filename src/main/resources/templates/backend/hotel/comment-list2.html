@@ -36,6 +36,10 @@
                   <div class="card-title">評論列表</div>
                   <div class="table-responsive">
                     <table class="table table-bordered" id="Research">
+                      <form action="ShowNewForm" name="new" method="GET">
+                        <input type="hidden" value="new" name="showNewForm"> <input
+                              type="submit" class="btn btn-success" value="new Hotel">
+                      </form>
                       <thead>
                       <tr>
                         <th>ID</th>
@@ -90,7 +94,7 @@
             </div>
           </div>
         </div>
-        <footer th:replace="partials/fragment :: footer">
+        <footer th:replace="partials/fragment :: footer"></footer>
         <!-- partial -->
       </div>
     </div>

@@ -41,7 +41,7 @@ public class HotelController {
 		this.context = context;
 	}
 
-	@GetMapping("/hotel")
+	@GetMapping("/hotel123")
 		public  String inDex(Model m) {
 		Model kkk = m.addAttribute("Hotel", hotelService.findAll());
 		System.out.println( "get Data from MySQl "+kkk);
