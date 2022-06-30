@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoTrip 後臺系統</title>
+  <!-- 本頁面使用css樣式 Plugin css for this page -->
+  <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
+  <!-- 通用css樣式 plugins:css -->
+  <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css" >
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css" >
+  <link rel="shortcut icon" href="images/favicon.png" />
+</head>
+
+<body>
+  <div class="container-scroller">
+  
+    <nav th:replace="partials/fragment :: navbar"></nav>
+    
+    <div class="container-fluid page-body-wrapper">
+    
+	  <div th:replace="partials/fragment :: setting"></div>
+      <nav th:replace="partials/fragment :: sidebar"></nav>
+      
+      <!-- 主要內容 partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title">評論列表</div>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="Research">
+                      <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>飯店名稱</th>
+                        <th>價格</th>
+                        <th>業主名稱</th>
+                        <th>電話</th>
+                        <th>狀態</th>
+                        <th>房型</th>
+                        <th>照片</th>
+                        <th>刪除</th>
+                        <th>編輯</th>
+
+
+                      </tr>
+                      </thead>
+
+                      <tbody>
+                      <tr th:each="hotel : ${Hotel}">
+                        <th:url var="updateLink" value="/showEditForm">
+                          <th:param name="UpdateId" value="${hotel.id}" />
+                        </th:url>
+                        <td th:text="${hotel.id}" />
+                        <td th:text="${hotel.hotel_name}" />
+                        <td th:text="${hotel.price}" />
+                        <td th:text="${hotel.phone}" />
+                        <td th:text="${hotel.boss_name}"/>
+                        <td th:text="${hotel.status}" />
+                        <td th:text="${hotel.roomtype}" />
+                        <td><img width='60' height='72'
+                                 src="<c:url value='/crm/picture/${hotel.id}' />" /></td>
+                        <td>
+                          <form action="Hotel.Delete" method="GET" name="delete">
+                            <input type="hidden" name="DeleteId"
+                                   value="<th:text='${hotel.id}' />"> <input
+                                  type="submit" class="btn btn-sm btn-danger" value="刪除">
+                          </form>
+                        </td>
+
+                        <td>
+                          <a class="btn btn-sm btn-danger" href="${updateLink}">更改 </a>
+                        </td>
+
+                      </tr>
+
+                      </tbody>
+
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer th:replace="partials/fragment :: footer">
+        <!-- partial -->
+      </div>
+    </div>
+  </div>
+
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+  <script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+  <script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+  <script th:src="@{/js/template.js}" src="js/template.js"></script>
+  <script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+  
+  <script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+  <script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+	<script>
+		(function ($) {
+		$(document).ready( function () {
+		    $('#comment-table').DataTable();
+		} );
+	})(jQuery);
+	</script>
+</body>
+
+</html>
