@@ -40,13 +40,18 @@
                         <div class="card-body">
 
                           <caption>
-                            <h2>Hotel New
+                            <h2>修改飯店資料
 
                             </h2>
                           </caption>
 
 
-                          <form  method="post"  th:action="@{/hotel/addHotel}" th:object="${hotel}"   enctype="multipart/form-data">
+                          <form  method="post"  th:action="@{/hotel/editHotel}" th:object="${hotel}"   enctype="multipart/form-data">
+
+                            <fieldset class="form-group">
+                              <label>ID</label>
+                              <input type="text" th:field="*{id}" id="name" class="form-control" readonly  />
+                            </fieldset>
 
                               <fieldset class="form-group">
                                 <label>飯店名稱</label>

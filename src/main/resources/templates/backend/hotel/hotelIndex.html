@@ -39,10 +39,9 @@
                   <div class="card-title">Hotel List</div>
                   <div class="table-responsive">
                     <table class="table table-bordered" id="Research">
-                      <form action="ShowNewForm" name="new" method="GET">
-                        <input type="hidden" value="new" name="showNewForm"> <input
-                              type="submit" class="btn btn-success" value="new Hotel">
-                      </form>
+
+<!--                      新增區-->
+                      <a href="showForm" class="btn btn-success">ADD<i></i></a><!-- i標籤是icon -->
                       <thead>
                       <tr>
                         <th>ID</th>
@@ -81,7 +80,8 @@
                         </td>
 
                         <td>
-                          <a class="btn btn-sm btn-danger" href="${updateLink}">更改 </a>
+                            <a th:href="@{'/hotel/editForm/' + ${hotel.id} }"
+                               class="btn btn-sm btn-danger"><i class="bi bi-pencil-fill"></i>修改</a>
                         </td>
 
                       </tr>

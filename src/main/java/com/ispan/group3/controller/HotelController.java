@@ -52,14 +52,14 @@ public class HotelController {
 	
 	
 	
-	@GetMapping("/hotelAdd")
-		public String showNewForm(Model m ,SessionStatus status){
+	@GetMapping("/showForm")
+		public String showNewForm(Model m ){
 		m.addAttribute("hotel", new Hotel());
 		System.out.println("This is success transfer to new form");
 		return "backend/hotel/hotelNewAdd";
 	}
 	
-	@PostMapping(value = "/ShowNewForm")
+	@PostMapping(value = "/addHotel")
 	public String insert(
 		@ModelAttribute("hotel")Hotel hotels,BindingResult result) {
 		System.out.println("準備新增接收資料了");
@@ -96,7 +96,7 @@ public class HotelController {
 			return "user-form";
 		}
 		System.out.println("222此方法儲存");
-		return "redirect:/hotel";
+		return "redirect:/hotel/hotel123";
 	}
 @GetMapping("/picture")
 public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
@@ -159,13 +159,11 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 		
 		
 		
-		@RequestMapping(path = "/showEditForm",method = RequestMethod.GET)
-		public String showEditForm(@RequestParam("UpdateId")Integer update, Model m ){
-			Hotel editId = hotelService.findById(update);
-			m.addAttribute("hotel", editId);
-			
+		@RequestMapping(path = "/editForm/{id}",method = RequestMethod.GET)
+		public String showEditForm(@PathVariable("id")Integer update, Model m ){
+		m.addAttribute("hotel", hotelService.findById(update) );
 		System.out.println("This is success transfer to Edit form");
-		return "user-form-edit";
+			return "backend/hotel/hotelEditForm";
 		}
 		
 		
@@ -173,11 +171,11 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 		
 		
 		
-		@RequestMapping(path = "/showEditForm",method = RequestMethod.POST)
+		@RequestMapping(path = "/editHotel",method = RequestMethod.POST)
 		public String update(
 				@ModelAttribute("hotel")Hotel hotels,
 				BindingResult result,Model model) {
-			System.out.println("準備新增接收資料了");
+			System.out.println("準備更新資料了");
 			Timestamp adminTime = new Timestamp(System.currentTimeMillis());
 			hotels.setAdmissionTime(adminTime);
 
@@ -204,7 +202,7 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 				}
 			}
 			hotelService.save(hotels);
-			return "redirect:/hotel";
+			return "redirect:/hotel/hotel123";
 		}
 		
 		
