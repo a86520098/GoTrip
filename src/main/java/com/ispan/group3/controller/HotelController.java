@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ispan.group3.repository.Hotel;
 
 @Controller
+@RequestMapping("/hotel")
 public class HotelController {
 	
 	HotelService hotelService;
@@ -46,16 +47,16 @@ public class HotelController {
 		Model kkk = m.addAttribute("Hotel", hotelService.findAll());
 		System.out.println( "get Data from MySQl "+kkk);
 		System.out.println("Help you find out all,Thank God!^^");
-			return "backend/hotel/comment-list2";
+			return "backend/hotel/hotelIndex";
 		}
 	
 	
 	
-	@GetMapping("/ShowNewForm")
-		public String showNewForm(@RequestParam("showNewForm")String showNewForm,Model m ,SessionStatus status){
+	@GetMapping("/hotelAdd")
+		public String showNewForm(Model m ,SessionStatus status){
 		m.addAttribute("hotel", new Hotel());
 		System.out.println("This is success transfer to new form");
-		return "BackHotel/hotelNewForm";
+		return "backend/hotel/hotelNewAdd";
 	}
 	
 	@PostMapping(value = "/ShowNewForm")
@@ -97,63 +98,63 @@ public class HotelController {
 		System.out.println("222此方法儲存");
 		return "redirect:/hotel";
 	}
-	
-	
-	
+@GetMapping("/picture")
+public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
+	byte[] body = null;
+	ResponseEntity<byte[]> re = null;
+	MediaType mediaType = null;
+	HttpHeaders headers = new HttpHeaders();
+	headers.setCacheControl(CacheControl.noCache().getHeaderValue());
 
-		
-		//取照片
-		@GetMapping("/crm/picture/{id}")
-		public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id) {
-			byte[] body = null;
-			ResponseEntity<byte[]> re = null;
-			MediaType mediaType = null;
-			HttpHeaders headers = new HttpHeaders();
-			headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+	Hotel hotelPhoto = hotelService.findById(id);
+	if (hotelPhoto == null) {
+		return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+	}
 
-			Hotel hotel = hotelService.findById(id);
-			if (hotel == null) {
-				return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
-			}
-			
-			String filename = hotel.getFileName();
-			if (filename != null) {
-				if (filename.toLowerCase().endsWith("jfif")) {
-					mediaType = MediaType.valueOf(context.getMimeType("dummy.jpeg"));
-				} else {
-					mediaType = MediaType.valueOf(context.getMimeType(filename));
-					headers.setContentType(mediaType);
-				}
-			}
-			Blob blob = hotel.getImage();
-			
-			try {
-				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				InputStream is = blob.getBinaryStream();
-				byte[] b = new byte[81920];
-				int len = 0;
-				while ((len = is.read(b)) != -1) {
-					baos.write(b, 0, len);
-				}
-				headers.setContentType(mediaType);
-				headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-				re = new ResponseEntity<byte[]>(baos.toByteArray(), headers, HttpStatus.OK);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return re;
+
+	String filename = hotelPhoto.getFileName();
+	if (filename != null) {
+		if (filename.toLowerCase().endsWith("jfif")) {
+			mediaType = MediaType.valueOf(context.getMimeType("dummy.jpeg"));
+		} else {
+			mediaType = MediaType.valueOf(context.getMimeType(filename));
+			headers.setContentType(mediaType);
 		}
+	}
+	Blob blob = hotelPhoto.getImage();
+
+	try {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		InputStream is = blob.getBinaryStream();
+		byte[] b = new byte[81920];
+		int len = 0;
+		while ((len = is.read(b)) != -1) {
+			baos.write(b, 0, len);
+		}
+		headers.setContentType(mediaType);
+		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+		re = new ResponseEntity<byte[]>(baos.toByteArray(), headers, HttpStatus.OK);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return re;
+}
+
+
+
+
 		
 		
 			
 		
-		@RequestMapping(path = "/Hotel.Delete",method = RequestMethod.GET)
-		public String delete(@RequestParam("DeleteId")Integer deleteId, Model m , SessionStatus status ){
-			hotelService.delete(deleteId);
-			for (int i = 0; i < 5; i++) {
-				System.out.println("Delte you want it "   + deleteId);
+		@GetMapping(value="/delete/{id}")
+		public String deleteHotel(@PathVariable Integer id){
+		hotelService.delete(id);
+			for (int i = 0; i <5; i++) {
+				System.out.println("已經幫你把"+id+"刪除了");
 			}
-			return "redirect:/hotel";
+
+			return "redirect:/hotel/hotel123";
 		}
 		
 		
