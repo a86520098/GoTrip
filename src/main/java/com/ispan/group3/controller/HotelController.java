@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ispan.group3.repository.Hotel;
 
 @Controller
+@RequestMapping("/hotel")
 public class HotelController {
 	
 	HotelService hotelService;
@@ -46,19 +47,19 @@ public class HotelController {
 		Model kkk = m.addAttribute("Hotel", hotelService.findAll());
 		System.out.println( "get Data from MySQl "+kkk);
 		System.out.println("Help you find out all,Thank God!^^");
-			return "backend/hotel/comment-list2";
+			return "backend/hotel/hotelIndex";
 		}
 	
 	
 	
-	@GetMapping("/ShowNewForm")
-		public String showNewForm(@RequestParam("showNewForm")String showNewForm,Model m ,SessionStatus status){
+	@GetMapping("/showForm")
+		public String showNewForm(Model m ){
 		m.addAttribute("hotel", new Hotel());
 		System.out.println("This is success transfer to new form");
-		return "BackHotel/hotelNewForm";
+		return "backend/hotel/hotelNewAdd";
 	}
 	
-	@PostMapping(value = "/ShowNewForm")
+	@PostMapping(value = "/addHotel")
 	public String insert(
 		@ModelAttribute("hotel")Hotel hotels,BindingResult result) {
 		System.out.println("準備新增接收資料了");
@@ -95,76 +96,74 @@ public class HotelController {
 			return "user-form";
 		}
 		System.out.println("222此方法儲存");
-		return "redirect:/hotel";
+		return "redirect:/hotel/hotel123";
 	}
-	
-	
-	
+@GetMapping("/picture")
+public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
+	byte[] body = null;
+	ResponseEntity<byte[]> re = null;
+	MediaType mediaType = null;
+	HttpHeaders headers = new HttpHeaders();
+	headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+
+	Hotel hotelPhoto = hotelService.findById(id);
+	if (hotelPhoto == null) {
+		return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
+	}
+
+
+	String filename = hotelPhoto.getFileName();
+	if (filename != null) {
+		if (filename.toLowerCase().endsWith("jfif")) {
+			mediaType = MediaType.valueOf(context.getMimeType("dummy.jpeg"));
+		} else {
+			mediaType = MediaType.valueOf(context.getMimeType(filename));
+			headers.setContentType(mediaType);
+		}
+	}
+	Blob blob = hotelPhoto.getImage();
+
+	try {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		InputStream is = blob.getBinaryStream();
+		byte[] b = new byte[81920];
+		int len = 0;
+		while ((len = is.read(b)) != -1) {
+			baos.write(b, 0, len);
+		}
+		headers.setContentType(mediaType);
+		headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+		re = new ResponseEntity<byte[]>(baos.toByteArray(), headers, HttpStatus.OK);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return re;
+}
+
+
+
 
 		
-		//取照片
-		@GetMapping("/crm/picture/{id}")
-		public ResponseEntity<byte[]> getPicture(@PathVariable("id") Integer id) {
-			byte[] body = null;
-			ResponseEntity<byte[]> re = null;
-			MediaType mediaType = null;
-			HttpHeaders headers = new HttpHeaders();
-			headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+		
+			
+		
+		@GetMapping(value="/delete/{id}")
+		public String deleteHotel(@PathVariable Integer id){
+		hotelService.delete(id);
+			for (int i = 0; i <5; i++) {
+				System.out.println("已經幫你把"+id+"刪除了");
+			}
 
-			Hotel hotel = hotelService.findById(id);
-			if (hotel == null) {
-				return new ResponseEntity<byte[]>(HttpStatus.NOT_FOUND);
-			}
-			
-			String filename = hotel.getFileName();
-			if (filename != null) {
-				if (filename.toLowerCase().endsWith("jfif")) {
-					mediaType = MediaType.valueOf(context.getMimeType("dummy.jpeg"));
-				} else {
-					mediaType = MediaType.valueOf(context.getMimeType(filename));
-					headers.setContentType(mediaType);
-				}
-			}
-			Blob blob = hotel.getImage();
-			
-			try {
-				ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				InputStream is = blob.getBinaryStream();
-				byte[] b = new byte[81920];
-				int len = 0;
-				while ((len = is.read(b)) != -1) {
-					baos.write(b, 0, len);
-				}
-				headers.setContentType(mediaType);
-				headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-				re = new ResponseEntity<byte[]>(baos.toByteArray(), headers, HttpStatus.OK);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return re;
+			return "redirect:/hotel/hotel123";
 		}
 		
 		
-			
 		
-		@RequestMapping(path = "/Hotel.Delete",method = RequestMethod.GET)
-		public String delete(@RequestParam("DeleteId")Integer deleteId, Model m , SessionStatus status ){
-			hotelService.delete(deleteId);
-			for (int i = 0; i < 5; i++) {
-				System.out.println("Delte you want it "   + deleteId);
-			}
-			return "redirect:/hotel";
-		}
-		
-		
-		
-		@RequestMapping(path = "/showEditForm",method = RequestMethod.GET)
-		public String showEditForm(@RequestParam("UpdateId")Integer update, Model m ){
-			Hotel editId = hotelService.findById(update);
-			m.addAttribute("hotel", editId);
-			
+		@RequestMapping(path = "/editForm/{id}",method = RequestMethod.GET)
+		public String showEditForm(@PathVariable("id")Integer update, Model m ){
+		m.addAttribute("hotel", hotelService.findById(update) );
 		System.out.println("This is success transfer to Edit form");
-		return "user-form-edit";
+			return "backend/hotel/hotelEditForm";
 		}
 		
 		
@@ -172,11 +171,11 @@ public class HotelController {
 		
 		
 		
-		@RequestMapping(path = "/showEditForm",method = RequestMethod.POST)
+		@RequestMapping(path = "/editHotel",method = RequestMethod.POST)
 		public String update(
 				@ModelAttribute("hotel")Hotel hotels,
 				BindingResult result,Model model) {
-			System.out.println("準備新增接收資料了");
+			System.out.println("準備更新資料了");
 			Timestamp adminTime = new Timestamp(System.currentTimeMillis());
 			hotels.setAdmissionTime(adminTime);
 
@@ -203,7 +202,7 @@ public class HotelController {
 				}
 			}
 			hotelService.save(hotels);
-			return "redirect:/hotel";
+			return "redirect:/hotel/hotel123";
 		}
 		
 		
