@@ -2,37 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GoTrip後台管理</title>
-<!-- 通用css樣式 plugins:css -->
-<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}"
-	href="css/vertical-layout-light/style.css">
-<link rel="stylesheet"
-	th:href="@{/vendors/ti-icons/css/themify-icons.css}"
-	href="vendors/ti-icons/css/themify-icons.css">
-<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}"
-	href="vendors/feather/feather.css">
-<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
-<!-- 本頁面使用css樣式 Plugin css for this page -->
-<link rel="stylesheet"
-	th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}"
-	href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-<link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}"
-	href="vendors/datatables.net-bs4/select.dataTables.min.css">
-<!-- TABLE -->
-<link rel="stylesheet"
-	th:href="@{/css/tickeTableStyle/bootstrap.min.css}">
-<link rel="stylesheet"
-	th:href="@{/css/ticketTableStyle/bootstrap.min.table.css}">
-<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jstable.css}">
-<style type="text/css">
-.img-com {
-	object-fit: cover;
-	width: 70px;
-	height: 70px;
-}
-</style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GoTrip後台管理</title>
+	<!-- 通用css樣式 plugins:css -->
+	<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css">
+	<link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}"
+		href="vendors/ti-icons/css/themify-icons.css">
+	<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css">
+	<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+	<!-- 本頁面使用css樣式 Plugin css for this page -->
+	<link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}"
+		href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+	<link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}"
+		href="vendors/datatables.net-bs4/select.dataTables.min.css">
+	<!-- TABLE -->
+	<link rel="stylesheet" th:href="@{/css/tickeTableStyle/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.table.css}">
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jstable.css}">
+	<!-- JSON CSV CSS -->
+	<!-- <link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.css}"> -->
+
+
+	<style type="text/css">
+		.img-com {
+			object-fit: cover;
+			width: 70px;
+			height: 70px;
+		}
+	</style>
 </head>
 
 <body>
@@ -49,77 +47,85 @@
 						<div class="col-md-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
-									<div class="card-title">
+									<div class="page-header">
 										<h2>
 											景點列表
-											<h2>
-									</div>
-									<div class="table-responsive">
+										</h2>
 										<div class="alert alert-success alert-dismissable fade in"
 											th:unless="${#strings.isEmpty(message)}">
-											<a href="#" class="close" data-dismiss="alert">&times;</a> <strong>恭喜，</strong>
+											<a href="#" class="close" data-dismiss="alert">&times;</a>
+											<strong>恭喜，</strong>
 											<span th:text="${message}">信息提交成功</span>
 										</div>
-										<!--新增 還未加入input.html -->
+										<!--新增 -->
 										<p class="text-right">
-											<a href="./ticketInput.html"
-												th:href="@{/ticketList/ticketInput}" class="btn btn-primary">新增</a>
+											<a href="./ticketInput.html" th:href="@{/ticketList/ticketInput}"
+												class="btn btn-primary">新增</a>
 										</p>
-										<table id="basic" class="table table-bordered table-striped">
-											<thead>
-												<tr>
-													<th>#</th>
-													<th>景點套票名稱</th>
-													<th>景點套票簡介</th>
-													<th>店家營業日期</th>
-													<th>店家起始營業時間</th>
-													<th>店家結束營業時間</th>
-													<th>電話</th>
-													<th>國家</th>
-													<th>城市</th>
-													<th>地區</th>
-													<th>地址</th>
-													<th>價格</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr th:each="ticket,iterStat:${page.content}">
-													<td th:text="${iterStat.count}">1</td>
-													<td><a href="#" th:text="${ticket.ticketName}"
+									</div>
+								
+								<div class="table-responsive">
+									<!-- <div id="basic"> -->
+									<table id="basic" class="table table-bordered table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>景點套票名稱</th>
+												<th>景點套票簡介</th>
+												<th>店家營業日期</th>
+												<th>店家起始營業時間</th>
+												<th>店家結束營業時間</th>
+												<th>電話</th>
+												<th>國家</th>
+												<th>城市</th>
+												<th>地區</th>
+												<th>地址</th>
+												<th>價格</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="ticket,iterStat:${page.content}">
+												<td th:text="${iterStat.count}">1</td>
+												<td><a href="#" th:text="${ticket.ticketName}"
 														th:href="@{'/ticketList/' + ${ticket.ticketNo}}">景點套票名稱</a>
-													</td>
-													<td th:text="${ticket.ticketIntro}">景點套票敘述</td>
-													<td th:text="${ticket.ticketOpenWeek}">店家營業日期</td>
-													<td th:text="${ticket.ticketOpenTime}">店家起始營業時間</td>
-													<td th:text="${ticket.ticketEndTime}">店家結束營業時間</td>
-													<td th:text="${ticket.phone}">電話</td>
-													<td th:text="${ticket.country}">國家</td>
-													<td th:text="${ticket.city}">城市</td>
-													<td th:text="${ticket.location}">地區</td>
-													<td th:text="${ticket.address}">地址</td>
-													<td th:text="${ticket.price}">價格</td>
-													<td><a href="#"
+												</td>
+												<td th:text="${ticket.ticketIntro}">景點套票敘述</td>
+												<td th:text="${ticket.ticketOpenWeek}">店家營業日期</td>
+												<td th:text="${ticket.ticketOpenTime}">店家起始營業時間</td>
+												<td th:text="${ticket.ticketEndTime}">店家結束營業時間</td>
+												<td th:text="${ticket.phone}">電話</td>
+												<td th:text="${ticket.country}">國家</td>
+												<td th:text="${ticket.city}">城市</td>
+												<td th:text="${ticket.location}">地區</td>
+												<td th:text="${ticket.address}">地址</td>
+												<td th:text="${ticket.price}">價格</td>
+												<td><a href="#"
 														th:href="@{/ticketList/{ticketNo}/ticketInput(ticketNo=${ticket.ticketNo})}">更新</a>&nbsp;
-														<a href="#"
+													<a href="#"
 														th:href="@{/ticketList/{ticketNo}/delete(ticketNo=${ticket.ticketNo})}">删除</a>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-										<a href="javascript:history.go(-1)" class="btn btn-default">返回</a>
-										<!-- 上一頁、下一頁 BookController.java內同步設定-->
-										<!-- 首頁不會出現上一頁按鈕 th:unless="${page.first}" 末頁不會出現下一頁按鈕 th:unless="${page.last}" -->
-										<nav>
+												</td>
+											</tr>
+										</tbody>
+
+									</table>
+
+									<p class="text-right"><button class="btn btn-primary"
+											onclick="x.DownloadCSV('csv');">导出(CSV)</button><button
+											class="btn btn-primary" onclick="x.DownloadJSON('json');">导出(JSON)</button>
+									</p>
+									<!-- 上一頁、下一頁 BookController.java內同步設定-->
+									<!-- 首頁不會出現上一頁按鈕 th:unless="${page.first}" 末頁不會出現下一頁按鈕 th:unless="${page.last}" -->
+									<!-- <nav>
 											<ul class="pager">
 												<li class="previous"><a href="#"
-													th:href="@{'/ticketList?page='+ ${page.number-1}}"
-													th:unless="${page.first}">上一頁</a></li>
+														th:href="@{'/ticketList?page='+ ${page.number-1}}"
+														th:unless="${page.first}">上一頁</a></li>
 												<li class="next"><a href="#"
-													th:href="@{/ticketList(page=${page.number} + 1)}"
-													th:unless="${page.last}">下一頁</a></li>
+														th:href="@{/ticketList(page=${page.number} + 1)}"
+														th:unless="${page.last}">下一頁</a></li>
 											</ul>
 										</nav>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -129,43 +135,48 @@
 				<!-- partial -->
 			</div>
 		</div>
+	</div>
+	<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+	<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+	<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+	<script th:src="@{/js/template.js}" src="js/template.js"></script>
+	<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
 
-		<script th:src="@{/vendors/js/vendor.bundle.base.js}"
-			src="vendors/js/vendor.bundle.base.js"></script>
-		<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
-		<script th:src="@{/js/hoverable-collapse.js}"
-			src="js/hoverable-collapse.js"></script>
-		<script th:src="@{/js/template.js}" src="js/template.js"></script>
-		<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+	<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
+		src="vendors/datatables.net/jquery.dataTables.js"></script>
+	<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
+		src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+	<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+	<script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+	<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}"
+		src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+	<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 
-		<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
-			src="vendors/datatables.net/jquery.dataTables.js"></script>
-		<script
-			th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
-			src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-		<script th:src="@{/js/dataTables.select.min.js}"
-			src="js/dataTables.select.min.js"></script>
-		<script th:src="@{/js/dashboard-comment.js}"
-			src="js/dashboard-comment.js"></script>
-		<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}"
-			src="vendors/sweetalert/sweetalert2.all.min.js"></script>
-		<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
-		<script th:src="@{/js/bootstrap.min.js}"
-			src="../static/js/ticketTableJS/bootstrap.min.js"></script>
-		<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
-		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-		<script th:src="@{/vendors/js/vendor.bundle.base.js}"
-			src="../static/vendors/js/vendor.bundle.base.js"></script>
-		<!-- <script src="../static/js/jstable.min.js"></script> -->
-		<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
-		<script>
-			new JSTable("#basic");
-		</script>
+	<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
+	<!-- TABLE樣式 -->
+	<script th:src="@{/js/ticketTableJS/bootstrap.min.js}"></script>
+	<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="../static/vendors/js/vendor.bundle.base.js"></script>
+	<!-- <script src="../static/js/jstable.min.js"></script> -->
+	<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
+
+	<!-- CSV JSON -->
+	<!-- <script th:src="@{/js/ticketTableJS/buttonToCsvJson.js}"></script> -->
+	<script th:src="@{/js/ticketTableJS/index.js}"></script>
+	<script th:src="@{/js/ticketTableJS/bootstrap.bundle.min.js}"></script>
+	<!-- <script th:src="@{/js/ticketTableJS/index.js}"></script>
+			<script th:src="@{/js/ticketTableJS/bootstrap.bundle.min.js}"></script> -->
+
+	<!-- TABLE JS -->
+	<script>new JSTable("#basic");
+	</script>
+	<!-- CSV JSON Script -->
+	<script>let x = new RdataTB('myTable');</script>
+
 </body>
 
 </html>

@@ -30,7 +30,7 @@ public class ticketController {
 	private ticketService ticketService;
 
 	/**
-     * 獲取書單列表
+     * 獲取列表
      * @param model
      * @return
      */
@@ -38,7 +38,7 @@ public class ticketController {
 	// 這就是引入Thymeleaf模版(pom.xml要註冊)
 	//  @PageableDefault : 針對分頁傳參數; sort ={"id"}排序
 	@GetMapping("/ticketList")
-	public String list(@PageableDefault(size = 5, sort ={"ticketNo"}, direction = Sort.Direction.DESC) Pageable pageable,Model model) {
+	public String list(@PageableDefault(size = 10,sort ={"ticketNo"}, direction = Sort.Direction.DESC) Pageable pageable,Model model) {
 		Page<ticketBean> page1 = ticketService.findAllByPage(pageable);
 		StringBuilder sbOpen_week = new StringBuilder();
 		Map<String, String> weekNameMap = new HashMap<String, String>();
