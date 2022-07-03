@@ -91,10 +91,10 @@ public class ticketController {
 	 * 跳轉input提交夜面
 	 * @return
 	 */
-	@GetMapping("/ticketList/input")
+	@GetMapping("/ticketList/ticketInput")
 	public String inputPage(Model model) {
 		model.addAttribute("ticket", new ticketBean());
-		return "input";
+		return "ticketInput";
 	}
 	
 	/**
@@ -106,11 +106,11 @@ public class ticketController {
 //	books.html -> model.addAttribute("ticket",ticketBean); -> "ticket" 對應thymeleaf中的<tr th:each="ticket,iterStat:${page.content}">
 //	input.html -> <form action="/books" th:action="@{/books}" th:object="${ticket}" method="post">	
 //	book.html -> <body th:object="${ticket}">
-	@GetMapping("/ticketList/{ticketNo}/input")
+	@GetMapping("/ticketList/{ticketNo}/ticketInput")
 	public String inputEditPage(@PathVariable long ticketNo, Model model) {
 		ticketBean ticketBean = ticketService.getBookById(ticketNo);
 		model.addAttribute("ticket",ticketBean);
-		return "input";
+		return "ticketInput";
 	}
 	
 	/**

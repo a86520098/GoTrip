@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GoTrip後台管理</title>
+	<!-- 通用css樣式 plugins:css -->
+	<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css">
+	<link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}"
+		href="vendors/ti-icons/css/themify-icons.css">
+	<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css">
+	<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+	<!-- 本頁面使用css樣式 Plugin css for this page -->
+	<link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}"
+		href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+	<link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}"
+		href="vendors/datatables.net-bs4/select.dataTables.min.css">
+	<!-- TABLE -->
+	<link rel="stylesheet" th:href="@{/css/tickeTableStyle/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.table.css}">
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jstable.css}">
+	<style type="text/css">
+		.img-com {
+			object-fit: cover;
+			width: 70px;
+			height: 70px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+
+		<nav th:replace="backend/partials/fragment :: navbar"></nav>
+		<div class="container-fluid page-body-wrapper">
+			<div th:replace="backend/partials/fragment :: setting"></div>
+			<nav th:replace="backend/partials/fragment :: sidebar"></nav>
+			<!-- 主要內容 partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+						<div class="col-md-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">景點列表</div>
+									<div class="container" style="max-width: 700px;">
+										<h2 class="page-header" style="margin-top: 50px;">詳情</h2>
+										<div class="well">
+											<div>
+												<h3>景點套票詳情</h3>
+												<p>
+													<strong>景點套票名稱：</strong><span th:text="*{ticketName}">貓貓的奇幻冒險</span>
+													<!-- book對應的是 model.addAttribute("book", book);-->
+												</p>
+												<p>
+													<strong>景點套票簡介：</strong><span th:text="*{ticketIntro}">貓貓</span>
+												</p>
+												<p>
+													<strong>店家營業日期：</strong><span
+														th:text="*{ticketOpenWeek}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>店家起始營業時間：</strong><span
+														th:text="*{ticketOpenTime}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>店家結束營業時間：</strong><span
+														th:text="*{ticketEndTime}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>電話：</strong><span th:text="*{phone}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>國家：</strong><span th:text="*{country}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>城市：</strong><span th:text="*{city}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>地區：</strong><span th:text="*{location}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>地址：</strong><span th:text="*{address}">貓貓的奇幻冒險</span>
+												</p>
+												<p>
+													<strong>價格：</strong><span th:text="*{price}">貓貓的奇幻冒險</span>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 加一個返回按鈕 -->
+							<a href="javascript:history.go(-1)" class="btn btn-default">返回</a>
+						</div>
+						<footer th:replace="backend/partials/fragment :: footer"></footer>
+						<!-- partial -->
+					</div>
+				</div>
+				<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+				<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+				<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+				<script th:src="@{/js/template.js}" src="js/template.js"></script>
+				<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+
+				<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
+					src="vendors/datatables.net/jquery.dataTables.js"></script>
+				<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
+					src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+				<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+				<script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+				<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}"
+					src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+				<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+				<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
+				<script th:src="@{/js/bootstrap.min.js}" src="../static/js/ticketTableJS/bootstrap.min.js"></script>
+				<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+				<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+				<script th:src="@{/vendors/js/vendor.bundle.base.js}"
+					src="../static/vendors/js/vendor.bundle.base.js"></script>
+				<!-- <script src="../static/js/jstable.min.js"></script> -->
+				<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
+				<script>
+					new JSTable("#basic");
+				</script>
+
+</body>
+
+</html>
