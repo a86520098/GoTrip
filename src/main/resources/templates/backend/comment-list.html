@@ -68,49 +68,49 @@
                         </tr>
                       </thead>
                       <tbody id="tbody">
-<!--                       	<tr th:each="comment:${comments}" class="odd gradeX"> -->
-<!--                           <td th:text="${comment.id}"></td> -->
-<!--                           <td th:text="${comment.itemTb}"></td> -->
-<!--                           <td th:text="${comment.itemId}"></td> -->
-<!--                           <td th:text="${comment.userId}"></td> -->
-<!--                           <td th:text="${comment.date}"></td> -->
-<!--                           <td th:text="${comment.rating}"><i class="bi bi-star-fill text-warning"></i></td> -->
-<!--                           <td th:text="${comment.content}"></td> -->
-<!--                            <img th:src="@{${'/img/' + players.id +'_'+ players.name + '.png'}}" width="120"/>  -->
-<!--                           <td> -->
-<!--                           	<img th:if="${comment.image1 != null}" th:src="@{'/'+${comment.image1}}" class="img-com rounded"/> -->
-<!--                           	<img th:if="${comment.image2 != null}" th:src="@{'/'+${comment.image2}}" class="img-com rounded"/> -->
-<!--                           	<img th:if="${comment.image3 != null}" th:src="@{'/'+${comment.image3}}" class="img-com rounded"/>  -->
-<!--                           </td> -->
-<!--                           <td> -->
-<!--                           <button type="submit" id="delete${comment.id}" style="width: 30px; height: 30px " class="edit btn btn-outline-warning btn-sm rounded-circle"> -->
-<!-- 														<i class="bi bi-pencil-square"></i> -->
-<!-- 													</button> -->
-<!-- 													<button type="button" style="width: 30px; height: 30px " class="delete btn btn-outline-info btn-sm rounded-circle "> -->
-<!-- 														<i class="bi bi-trash3"></i> -->
-<!-- 													</button> -->
-<!-- 														顯示 -->
-<!-- 													</td> -->
-<!-- 													<td> -->
-<!-- 														<form th:action="@{/comments/}+${comment.id}" method="post" class="inline-block"> -->
-<!-- 															<button type="submit" class="btn btn-outline-warning btn-rounded btn-icon"> -->
-<!-- 																<i class="ti-pencil"></i> -->
-<!-- 															</button> -->
-<!-- 														<form th:id="'deleteComment' + ${comment.id}" th:action="@{/comments/}+${comment.id}" th:method="delete" class="inline-block"> -->
-<!-- 															<button type="submit" th:id="'btn-delete' + ${comment.id}" th:attr="onclick=|deleteComment(${comment.id})|" class="btn btn-outline-info btn-rounded btn-icon"> -->
-<!-- 																<i class="ti-trash"></i> -->
-<!-- 															</button> -->
-<!-- 														</form> -->
-<!-- 												</form> -->
-<!-- 													<button type="button" onclick="deleteComment(${comment.id})" class="delete btn btn-outline-info btn-sm rounded-circle "> -->
-<!-- 														<i class="bi bi-trash3"></i> -->
-<!-- 													</button> -->
-<!-- 												<form action="<c:url value='/comments/delete'/>" method="POST" id="deleteForm${comment.id}" class="inline-block"> -->
-<!-- 													<input type="hidden" name="id" value="${comment.id}"> -->
-<!-- 												</form> -->
-<!-- 												<button type="submit" id="delete${comment.id}" class="edit btn btn-outline-warning btn-sm btn-icon"> -->
-<!-- 													</td> -->
-<!--                         </tr>                                                                                                -->
+                      	<tr th:each="comment:${comments}" class="odd gradeX">
+                          <td th:text="${comment.id}"></td>
+                          <td th:text="${comment.itemTb}"></td>
+                          <td th:text="${comment.itemId}"></td>
+                          <td th:text="${comment.userId}"></td>
+                          <td th:text="${comment.date}"></td>
+                          <td th:text="${comment.rating}"><i class="bi bi-star-fill text-warning"></i></td>
+                          <td th:text="${comment.content}"></td>
+                           <img th:src="@{${'/img/' + players.id +'_'+ players.name + '.png'}}" width="120"/> 
+                          <td>
+                          	<img th:if="${comment.image1 != null}" th:src="@{'/'+${comment.image1}}" class="img-com rounded"/>
+                          	<img th:if="${comment.image2 != null}" th:src="@{'/'+${comment.image2}}" class="img-com rounded"/>
+                          	<img th:if="${comment.image3 != null}" th:src="@{'/'+${comment.image3}}" class="img-com rounded"/> 
+                          </td>
+                          <td>
+                          <button type="submit" id="delete${comment.id}" style="width: 30px; height: 30px " class="edit btn btn-outline-warning btn-sm rounded-circle">
+														<i class="bi bi-pencil-square"></i>
+													</button>
+													<button type="button" style="width: 30px; height: 30px " class="delete btn btn-outline-info btn-sm rounded-circle ">
+														<i class="bi bi-trash3"></i>
+													</button>
+														顯示
+													</td>
+													<td>
+														<form th:action="@{/comments/}+${comment.id}" method="post" class="inline-block">
+															<button type="submit" class="btn btn-outline-warning btn-rounded btn-icon">
+																<i class="ti-pencil"></i>
+															</button>
+														<form th:id="'deleteComment' + ${comment.id}" th:action="@{/comments/}+${comment.id}" th:method="delete" class="inline-block">
+															<button type="submit" th:id="'btn-delete' + ${comment.id}" th:attr="onclick=|deleteComment(${comment.id})|" class="btn btn-outline-info btn-rounded btn-icon">
+																<i class="ti-trash"></i>
+															</button>
+														</form>
+												</form>
+													<button type="button" onclick="deleteComment(${comment.id})" class="delete btn btn-outline-info btn-sm rounded-circle ">
+														<i class="bi bi-trash3"></i>
+													</button>
+												<form action="<c:url value='/comments/delete'/>" method="POST" id="deleteForm${comment.id}" class="inline-block">
+													<input type="hidden" name="id" value="${comment.id}">
+												</form>
+												<button type="submit" id="delete${comment.id}" class="edit btn btn-outline-warning btn-sm btn-icon">
+													</td>
+                        </tr>                                                                                               
                       </tbody>
                     </table>
                   </div>
@@ -138,41 +138,41 @@
   <script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
 <!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
   <script>
-	  $(document).ready(function() {
+// 	  $(document).ready(function() {
    
-		    $('#comment-table').DataTable({
-	            "ajax": {
-	                "url": "api/comments",
-	                "dataSrc": ""
-	            },
-	            "columns": [
-	                { "data": "id" },
-	                { "data": "itemTb" },
-	                { "data": "itemId" },
-	                { "data": "userId" },
-	                { "data": "date" },
-	                { "data": "rating" },
-	                { "data": "content"},
-	                { "data": getImg },
-// 	                { "data": "image2", render: getImg },
-// 	                { "data": "image3", render: getImg },
-	            ],
-	      });
+// 		    $('#comment-table').DataTable({
+// 	            "ajax": {
+// 	                "url": "api/comments",
+// 	                "dataSrc": ""
+// 	            },
+// 	            "columns": [
+// 	                { "data": "id" },
+// 	                { "data": "itemTb" },
+// 	                { "data": "itemId" },
+// 	                { "data": "userId" },
+// 	                { "data": "date" },
+// 	                { "data": "rating" },
+// 	                { "data": "content"},
+// 	                { "data": getImg },
+// // 	                { "data": "image2", render: getImg },
+// // 	                { "data": "image3", render: getImg },
+// 	            ],
+// 	      });
 		    
-		    function getImg(data, type, row, meta) {
-		    		let str = "";	
-		        if (data.image1) {
-		        	str += '<img src="' + data.image1 + '" class="img-com rounded"/>'    
-		        } 
-		        if (data.image2) {
-		        	str += '<img src="' + data.image2 + '" class="img-com rounded"/>'    
-		        } 
-		        if (data.image3) {
-		        	str += '<img src="' + data.image3 + '" class="img-com rounded"/>'    
-		        } 
-		        return str;
+// 		    function getImg(data, type, row, meta) {
+// 		    		let str = "";	
+// 		        if (data.image1) {
+// 		        	str += '<img src="' + data.image1 + '" class="img-com rounded"/>'    
+// 		        } 
+// 		        if (data.image2) {
+// 		        	str += '<img src="' + data.image2 + '" class="img-com rounded"/>'    
+// 		        } 
+// 		        if (data.image3) {
+// 		        	str += '<img src="' + data.image3 + '" class="img-com rounded"/>'    
+// 		        } 
+// 		        return str;
 
-		    }
+// 		    }
 // 		    function getImg(data, type, row, meta) {
 // 		        if (data) {
 // 		        	  return '<img src="' + data + '" class="img-com rounded"/>';	    
