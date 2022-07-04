@@ -69,7 +69,7 @@
                         <td th:text="${hotel.boss_name}"/>
                         <td th:text="${hotel.status}" />
                         <td th:text="${hotel.roomtype}" />
-                        <td><img width='60' height='72' th:src="@{/hotel/picture(id=${hotel.id})}"></td>
+                          <td> <a th:href="@{enterPic(id=${hotel.id})}">  <img width='60' height='72' th:src="@{/hotel/picture(id=${hotel.id})}"> </a> </td>
 <!--                        <td><img width='60' height='72' th:src="@{/Goods/picture(id=${good.id})}"></td>-->
                         <td>
                           <button class="btn btn-sm btn-danger"
