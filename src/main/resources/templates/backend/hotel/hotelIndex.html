@@ -20,25 +20,24 @@
 
 <body>
   <div class="container-scroller">
-  
-    <nav th:replace="partials/fragment :: navbar"></nav>
-    
-    <div class="container-fluid page-body-wrapper">
-    
-	  <div th:replace="partials/fragment :: setting"></div>
-      <nav th:replace="partials/fragment :: sidebar"></nav>
-      
-      <!-- 主要內容 partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
 
-          <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title">Hotel List</div>
-                  <div class="table-responsive">
-                    <table class="table table-bordered" id="Research">
+      <nav th:replace="backend/partials/fragment :: navbar"></nav>
+
+      <div class="container-fluid page-body-wrapper">
+          <div th:replace="backend/partials/fragment :: setting"></div>
+          <nav th:replace="backend/partials/fragment :: sidebar"></nav>
+
+          <!-- 主要內容 partial -->
+          <div class="main-panel">
+              <div class="content-wrapper">
+
+                  <div class="row">
+                      <div class="col-md-12 grid-margin stretch-card">
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="card-title">評論列表</div>
+                                  <div class="table-responsive">
+                                      <table id="comment-table" class="display expandable-table w-100">
 
 <!--                      新增區-->
                       <a href="showForm" class="btn btn-success">ADD<i></i></a><!-- i標籤是icon -->
@@ -89,16 +88,16 @@
                       </tbody>
 
                     </table>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
               </div>
-            </div>
+              <footer th:replace="backend/partials/fragment :: footer"></footer>
+              <!-- partial -->
           </div>
-        </div>
-        <footer th:replace="partials/fragment :: footer"></footer>
-        <!-- partial -->
       </div>
-    </div>
   </div>
 
   <script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
@@ -106,11 +105,12 @@
   <script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
   <script th:src="@{/js/template.js}" src="js/template.js"></script>
   <script th:src="@{/js/settings.js}" src="js/settings.js"></script>
-  
+
   <script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
   <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
   <script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+  <script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
 	<script>
 		(function ($) {
 		$(document).ready( function () {
