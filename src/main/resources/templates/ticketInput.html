@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>GoTrip後台管理</title>
+	<!-- 通用css樣式 plugins:css -->
+	<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css">
+	<link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}"
+		href="vendors/ti-icons/css/themify-icons.css">
+	<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css">
+	<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+	<!-- 本頁面使用css樣式 Plugin css for this page -->
+	<link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}"
+		href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+	<link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}"
+		href="vendors/datatables.net-bs4/select.dataTables.min.css">
+	<!-- TABLE -->
+	<link rel="stylesheet" th:href="@{/css/tickeTableStyle/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.table.css}">
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jstable.css}">
+	<style type="text/css">
+		.img-com {
+			object-fit: cover;
+			width: 70px;
+			height: 70px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+
+		<nav th:replace="backend/partials/fragment :: navbar"></nav>
+		<div class="container-fluid page-body-wrapper">
+			<div th:replace="backend/partials/fragment :: setting"></div>
+			<nav th:replace="backend/partials/fragment :: sidebar"></nav>
+			<!-- 主要內容 partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+						<div class="col-md-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="card-title">新增景點資料</div>
+									<div class="well">
+										<form action="/ticketList" th:action="@{/ticketList}" th:object="${ticket}"
+											method="post">
+											<!-- 提交edit後的值，若未加入，BookController的save會幫你產生一筆新的 -->
+											<input type="hidden" th:value="*{ticketNo}" name="ticketNo">
+											<div class="form-group">
+												<!-- th:field=""也可以用th:value="" -->
+												<label for="nameId">景點套票名稱</label> <input type="text" name="ticketName"
+													id="nameId" class="form-control" th:field="*{ticketName}">
+											</div>
+											<div class="form-group">
+												<label for="descriptionId">景點套票簡介</label> <textarea type="text"
+													name="ticketIntro" id="descriptionId" style="white-space: normal"
+													class="form-control" th:field="*{ticketIntro}"></textarea>
+											</div>
+											<div class="form-group">
+												<label for="openWeekId">店家營業日期</label>
+												<input type="text" name="ticketOpenWeek" id="openWeekId"
+													class="form-control" th:field="*{ticketOpenWeek}">
+											</div>
+											<div class="form-group">
+												<label for="openTimeId">店家起始營業時間</label>
+												<input type="text" name="ticketOpenTime" id="openTimeId"
+													class="form-control" th:field="*{ticketOpenTime}">
+											</div>
+											<div class="form-group">
+												<label for="endTimeId">店家結束營業時間</label>
+												<input type="text" name="ticketEndTime" id="endTimeId"
+													class="form-control" th:field="*{ticketEndTime}">
+											</div>
+											<div class="form-group">
+												<label for="phoneId">電話</label>
+												<input type="text" name="phone" id="phoneId" class="form-control"
+													th:field="*{phone}">
+											</div>
+											<div class="form-group">
+												<label for="countryId">國家</label> <input type="text" name="country"
+													id="countryId" class="form-control" th:field="*{country}">
+											</div>
+											<div class="form-group">
+												<label for="cityId">城市</label> <input type="text" name="city"
+													id="cityId" class="form-control" th:field="*{city}">
+											</div>
+											<div class="form-group">
+												<label for="locationId">地區</label> <input type="text" name="location"
+													id="locationId" class="form-control" th:field="*{location}">
+											</div>
+											<div class="form-group">
+												<label for="addressId">地址</label> <input type="text" name="address"
+													id="addressId" class="form-control" th:field="*{address}">
+											</div>
+											<div class="form-group">
+												<label for="priceId">價格</label> <input type="text" name="price"
+													id="priceId" class="form-control" th:field="*{price}">
+											</div>
+										<p class="text-center">
+											<button type="button" class="btn btn-primary" onclick="history.go(-1)">返回</button>
+						                   <button type="submit" class="btn btn-primary">提交</button>
+						               </p>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer th:replace="backend/partials/fragment :: footer"></footer>
+				<!-- partial -->
+			</div>
+
+		<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+		<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+		<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+		<script th:src="@{/js/template.js}" src="js/template.js"></script>
+		<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+
+		<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
+			src="vendors/datatables.net/jquery.dataTables.js"></script>
+		<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
+			src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+		<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+		<script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+		<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}"
+			src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+		<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
+		<script th:src="@{/js/bootstrap.min.js}" src="../static/js/ticketTableJS/bootstrap.min.js"></script>
+		<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="../static/vendors/js/vendor.bundle.base.js"></script>
+		<!-- <script src="../static/js/jstable.min.js"></script> -->
+		<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
+		<script>
+			new JSTable("#basic");
+		</script>
+
+</body>
+
+</html>
