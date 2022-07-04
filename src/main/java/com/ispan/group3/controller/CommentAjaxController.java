@@ -1,6 +1,8 @@
 package com.ispan.group3.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +19,7 @@ import com.ispan.group3.repository.Comment;
 import com.ispan.group3.service.CommentService;
 
 @RestController
-@RequestMapping(path = "api/comments")
+@RequestMapping(path = "/api")
 public class CommentAjaxController {
 
 	private final CommentService cService;
@@ -27,12 +29,12 @@ public class CommentAjaxController {
 		this.cService = cService;
 	}
 
-	@GetMapping
+	@GetMapping("/comments")
 	public List<Comment> getComments() {
 		return cService.getComments();
 	}
 	
-	@GetMapping(path = "{id}")
+	@GetMapping("/comments/{id}")
 	public Comment getComment(@PathVariable Integer id) {
 		return cService.getComment(id);
 	}
@@ -42,17 +44,32 @@ public class CommentAjaxController {
 		cService.insertComment(comment);
 	}
 	
-	@PutMapping(path = "{id}")
+	@PutMapping("/comments/{id}")
 	public void updateComment(@PathVariable Integer id,
 							  @RequestParam(required = false) Integer rating,
 							  @RequestParam(required = false) String content) {
 		cService.updateComment(id, rating, content);
 	}
 	
-	@DeleteMapping(path = "{id}")
+	@DeleteMapping("/comments/{id}")
 	public void deleteComment(@PathVariable Integer id) {
 		cService.deleteComment(id);
 	}
+	
+	// 針對某商品平均分數、評論數量
+	@GetMapping("/comments/rating")
+	public Map<String, String> getAvgRating(@RequestParam String itemTb, @RequestParam Integer itemId) {
+	    Map<String, String> map = new HashMap<String, String>();
+	    float avgRating = cService.getAvgRating(itemTb, itemId);
+	    float count = cService.countByItem(itemTb, itemId);
+	    map.put("itemTb", itemTb);
+	    map.put("itemId", String.valueOf(itemId));
+	    map.put("avgRating", String.valueOf(avgRating));
+	    map.put("count", String.valueOf(count));
+	    return map;
+	}
+	
+
 
 
 }

@@ -17,4 +17,8 @@ public interface CommentService {
 
 	void deleteComment(Integer id);
 
+	float getAvgRating(String itemTb, Integer itemId);
+
+	int countByItem(String itemTb, Integer itemId);
+
 }

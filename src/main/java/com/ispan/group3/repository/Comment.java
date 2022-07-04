@@ -1,6 +1,8 @@
 package com.ispan.group3.repository;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -13,8 +15,6 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-//	@ManyToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "item_tb", nullable = false)
 	@Column(name = "item_tb")
 	private String itemTb;
 	@Column(name = "item_id")
@@ -25,10 +25,9 @@ public class Comment {
 	private Timestamp date;
 	private Integer rating;
 	private String content;
-	private String image1;
-	private String image2;
-	private String image3;
-//	@Transient
+	private String status;
+	@OneToMany(mappedBy="comment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<CommentImage> images;
 	
 	
 	public Comment() {
@@ -36,7 +35,7 @@ public class Comment {
 	}
 	
 	public Comment(Integer id, String itemTb, Integer itemId, String userId, Timestamp date, Integer rating,
-			String content, String image1, String image2, String image3) {
+			String content, String status, Set<CommentImage> images) {
 		this.id = id;
 		this.itemTb = itemTb;
 		this.itemId = itemId;
@@ -44,24 +43,20 @@ public class Comment {
 		this.date = date;
 		this.rating = rating;
 		this.content = content;
-		this.image1 = image1;
-		this.image2 = image2;
-		this.image3 = image3;
+		this.status = status;
+		this.images = images;
 	}
 
-
-
 	public Comment(String itemTb, Integer itemId, String userId, Timestamp date, Integer rating, String content,
-			String image1, String image2, String image3) {
+			 String status, Set<CommentImage> images) {
 		this.itemTb = itemTb;
 		this.itemId = itemId;
 		this.userId = userId;
 		this.date = date;
 		this.rating = rating;
 		this.content = content;
-		this.image1 = image1;
-		this.image2 = image2;
-		this.image3 = image3;
+		this.status = status;
+		this.images = images;
 	}
 
 	public Integer getId() {
@@ -120,28 +115,24 @@ public class Comment {
 		this.content = content;
 	}
 
-	public String getImage1() {
-		return image1;
+	public Set<String> getImages() {
+		Set<String> imagePaths = new LinkedHashSet<>();
+		for (CommentImage image : images) {
+			imagePaths.add(image.getImagePath());
+		}
+		return imagePaths;
 	}
 
-	public void setImage1(String image1) {
-		this.image1 = image1;
+	public void setImages(Set<CommentImage> images) {
+		this.images = images;
 	}
 
-	public String getImage2() {
-		return image2;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setImage2(String image2) {
-		this.image2 = image2;
-	}
-
-	public String getImage3() {
-		return image3;
-	}
-
-	public void setImage3(String image3) {
-		this.image3 = image3;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
@@ -153,9 +144,8 @@ public class Comment {
 				", date=" + date + 
 				", rating=" + rating + 
 				", content=" + content + 
-				", image1=" + image1 + 
-				", image2=" + image2 + 
-				", image3=" + image3 + "]";
+				", status=" + status + 
+				"]";
 	}
 
 	

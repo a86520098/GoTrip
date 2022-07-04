@@ -48,9 +48,11 @@
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">新增商品評論</h4>
-									<form id="insertForm" name="form" th:action="@{/comments/insert}" method="POST"	th:object="${comment}" 
+									<form id="insertForm" name="form" th:action="@{/comments}" method="post"	th:object="${comment}" 
 										class="form-horizontal needs-validation" enctype="multipart/form-data">
 										<div class="mt-4">
+											<input th:field="*{id}" id="id" type="hidden" class="form-control"	placeholder="" />
+											
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label" for="itemTb">項目類別</label>
 												<div class="col-sm-9">

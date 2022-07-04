@@ -35,8 +35,8 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public void insertComment(Comment comment) {
 		comment.setDate(new Timestamp(System.currentTimeMillis()));
+		comment.setStatus("valid");
 		cRepository.save(comment);
-		
 	}
 
 	@Override
@@ -46,7 +46,6 @@ public class CommentServiceImpl implements CommentService{
 		if (rating != null && !Objects.equals(comment.getRating(), rating)) {
 			comment.setRating(rating);
 		}
-		
 		if (content != null && !Objects.equals(comment.getContent(), content)) {
 			comment.setContent(content);
 		}
@@ -60,6 +59,16 @@ public class CommentServiceImpl implements CommentService{
 			throw new IllegalStateException("Comment with id " + id + " does not exist");
 		}
 		cRepository.deleteById(id);
+	}
+
+	@Override
+	public float getAvgRating(String itemTb, Integer itemId) {
+		return cRepository.getAvgRating(itemTb, itemId);
+	}
+
+	@Override
+	public int countByItem(String itemTb, Integer itemId) {
+		return cRepository.countByItem(itemTb, itemId);
 	}
 	
 	
