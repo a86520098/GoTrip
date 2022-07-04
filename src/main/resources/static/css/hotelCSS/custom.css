@@ -33,28 +33,28 @@ p, span, li, a{
     position: relative;
 }
 #slide1{
-    background-image: url('../images/hotels/vacation.jpg');
+    background-image: url('static/images/hotels/vacation.jpg');
     background-size: cover;
     background-position: center;
 }
 #slide2{
-    background-image: url('../images/hotels/house.jpeg');
+    background-image: url('/static/images/hotels/house.jpeg');
     background-size: cover;
     background-position: center;
 }
 #slide3{
-    background-image: url('../images/hotels/hotel-taipei-marriott.jpg');
+    background-image: url('/static/images/hotels/hotel-taipei-marriott.jpg');
     background-size: cover;
     background-position: center;
 }
 #slide4{
-    background-image: url('../images/hotels/woodHouse.jpg');
+    background-image: url('/static/images/hotels/woodHouse.jpg');
     background-size: cover;
     background-position: center;
 }
 
 #slide5{
-    background-image: url('../images/hotels/sleeping3.jpg');
+    background-image: url('/static/images/hotels/sleeping3.jpg');
     background-size: cover;
     background-position: center;
 }

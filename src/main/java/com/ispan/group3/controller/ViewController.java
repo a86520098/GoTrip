@@ -21,4 +21,9 @@ public class ViewController {
 		return "frontend/ticket-detail";
 	}
 
+	@GetMapping("/toHotelIndex")
+	public String toHotelIndex() {
+		return "frontend/HotelIndex";
+	}
+
 }
