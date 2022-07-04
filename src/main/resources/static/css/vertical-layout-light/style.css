@@ -12340,8 +12340,8 @@ fieldset:disabled .wizard>.actions a,
 .btn-primary:hover,
 .wizard>.actions a:hover {
   color: #fff;
-  background-color: #3f3e91;
-  border-color: #3b3a88;
+  background-color: #d15f08;
+  border-color: #d15f08;
 }
 
 .btn-primary:focus,
@@ -12349,8 +12349,8 @@ fieldset:disabled .wizard>.actions a,
 .btn-primary.focus,
 .wizard>.actions a.focus {
   color: #fff;
-  background-color: #3f3e91;
-  border-color: #3b3a88;
+  background-color: #d15f08;
+  border-color: #d15f08;
   box-shadow: 0 0 0 0.2rem rgba(102, 100, 184, 0.5);
 }
 
@@ -12370,8 +12370,8 @@ fieldset:disabled .wizard>.actions a,
 .show>.btn-primary.dropdown-toggle,
 .wizard>.actions .show>a.dropdown-toggle {
   color: #fff;
-  background-color: #3b3a88;
-  border-color: #37367f;
+  background-color: rgb(209, 95, 8);
+  border-color: #d15f08;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -12380,7 +12380,7 @@ fieldset:disabled .wizard>.actions a,
 .wizard>.actions a:not(:disabled):not(.disabled).active:focus,
 .show>.btn-primary.dropdown-toggle:focus,
 .wizard>.actions .show>a.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(102, 100, 184, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(209, 95, 8, 0.5);
 }
 
 .btn-secondary,
@@ -25991,7 +25991,7 @@ code {
 .tt-hint {
   border: 1px solid #CED4DA;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 1rem;
   border-radius: 4px;
 }
 
@@ -26007,7 +26007,7 @@ select.tt-hint {
   padding: .4375rem .75rem;
   border: 0;
   outline: 1px solid #CED4DA;
-  color: #c9c8c8;
+  /* color: #c9c8c8; */
 }
 
 select.form-control:focus,
@@ -26259,7 +26259,7 @@ select.border-dark.tt-hint:focus {
 }
 
 .form-group label {
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.4rem;
   vertical-align: top;
   margin-bottom: .5rem;

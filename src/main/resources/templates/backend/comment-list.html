@@ -4,27 +4,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GoTrip 後臺系統</title>
-  <!-- 本頁面使用css樣式 Plugin css for this page -->
-  <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
+  <title>GoTrip後台管理</title>
   <!-- 通用css樣式 plugins:css -->
   <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css" >
   <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css" >
-  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+  <!-- 本頁面使用css樣式 Plugin css for this page -->
+  <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
+  <style type="text/css">
+	.img-com {
+		object-fit: cover;
+		width: 70px;
+		height: 70px;
+	}
+  </style>
 </head>
 
 <body>
   <div class="container-scroller">
   
-    <nav th:replace="partials/fragment :: navbar"></nav>
+    <nav th:replace="backend/partials/fragment :: navbar"></nav>
     
     <div class="container-fluid page-body-wrapper">
-    
-	  <div th:replace="partials/fragment :: setting"></div>
-      <nav th:replace="partials/fragment :: sidebar"></nav>
-      
+	  <div th:replace="backend/partials/fragment :: setting"></div>
+    <nav th:replace="backend/partials/fragment :: sidebar"></nav>
       <!-- 主要內容 partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -37,39 +42,75 @@
                   <div class="table-responsive">
                     <table id="comment-table" class="display expandable-table w-100">
                       <colgroup>
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 7%;">
                         <col span="1" style="width: 10%;">
                         <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 30%;">
-                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 6%;">
+                        <col span="1" style="width: 24%;">
+                        <col span="1" style="width: 24%;">
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 5%;">
                       </colgroup>
                       <thead>
                         <tr>
-                          <th>評論ID</th>
+                          <th>ID</th>
                           <th>評論項目</th>
                           <th>項目ID</th>
                           <th>使用者ID</th>
                           <th>評論日期</th>
                           <th>評分</th>
                           <th>評論內容</th>
+                          <th>照片</th>
                           <th>狀態</th>
-                          <!-- <th>照片</th> -->
-                          <th></th>
+                          <th>修改</th>
                         </tr>
                       </thead>
-                      <tbody>
-                      	<tr th:each="comment:${comments}" class="odd gradeX">
-                          <td th:text="${comment.id}"></td>
-                          <td th:text="${comment.itemTb}"></td>
-                          <td th:text="${comment.itemId}"></td>
-                          <td th:text="${comment.userId}"></td>
-                          <td th:text="${comment.date}"></td>
-                          <td th:text="${comment.rating}"></td>
-                          <td th:text="${comment.content}"></td>
-                        </tr>                                                                                               
+                      <tbody id="tbody">
+<!--                       	<tr th:each="comment:${comments}" class="odd gradeX"> -->
+<!--                           <td th:text="${comment.id}"></td> -->
+<!--                           <td th:text="${comment.itemTb}"></td> -->
+<!--                           <td th:text="${comment.itemId}"></td> -->
+<!--                           <td th:text="${comment.userId}"></td> -->
+<!--                           <td th:text="${comment.date}"></td> -->
+<!--                           <td th:text="${comment.rating}"><i class="bi bi-star-fill text-warning"></i></td> -->
+<!--                           <td th:text="${comment.content}"></td> -->
+<!--                            <img th:src="@{${'/img/' + players.id +'_'+ players.name + '.png'}}" width="120"/>  -->
+<!--                           <td> -->
+<!--                           	<img th:if="${comment.image1 != null}" th:src="@{'/'+${comment.image1}}" class="img-com rounded"/> -->
+<!--                           	<img th:if="${comment.image2 != null}" th:src="@{'/'+${comment.image2}}" class="img-com rounded"/> -->
+<!--                           	<img th:if="${comment.image3 != null}" th:src="@{'/'+${comment.image3}}" class="img-com rounded"/>  -->
+<!--                           </td> -->
+<!--                           <td> -->
+<!--                           <button type="submit" id="delete${comment.id}" style="width: 30px; height: 30px " class="edit btn btn-outline-warning btn-sm rounded-circle"> -->
+<!-- 														<i class="bi bi-pencil-square"></i> -->
+<!-- 													</button> -->
+<!-- 													<button type="button" style="width: 30px; height: 30px " class="delete btn btn-outline-info btn-sm rounded-circle "> -->
+<!-- 														<i class="bi bi-trash3"></i> -->
+<!-- 													</button> -->
+<!-- 														顯示 -->
+<!-- 													</td> -->
+<!-- 													<td> -->
+<!-- 														<form th:action="@{/comments/}+${comment.id}" method="post" class="inline-block"> -->
+<!-- 															<button type="submit" class="btn btn-outline-warning btn-rounded btn-icon"> -->
+<!-- 																<i class="ti-pencil"></i> -->
+<!-- 															</button> -->
+<!-- 														<form th:id="'deleteComment' + ${comment.id}" th:action="@{/comments/}+${comment.id}" th:method="delete" class="inline-block"> -->
+<!-- 															<button type="submit" th:id="'btn-delete' + ${comment.id}" th:attr="onclick=|deleteComment(${comment.id})|" class="btn btn-outline-info btn-rounded btn-icon"> -->
+<!-- 																<i class="ti-trash"></i> -->
+<!-- 															</button> -->
+<!-- 														</form> -->
+<!-- 												</form> -->
+<!-- 													<button type="button" onclick="deleteComment(${comment.id})" class="delete btn btn-outline-info btn-sm rounded-circle "> -->
+<!-- 														<i class="bi bi-trash3"></i> -->
+<!-- 													</button> -->
+<!-- 												<form action="<c:url value='/comments/delete'/>" method="POST" id="deleteForm${comment.id}" class="inline-block"> -->
+<!-- 													<input type="hidden" name="id" value="${comment.id}"> -->
+<!-- 												</form> -->
+<!-- 												<button type="submit" id="delete${comment.id}" class="edit btn btn-outline-warning btn-sm btn-icon"> -->
+<!-- 													</td> -->
+<!--                         </tr>                                                                                                -->
                       </tbody>
                     </table>
                   </div>
@@ -78,7 +119,7 @@
             </div>
           </div>
         </div>
-        <footer th:replace="partials/fragment :: footer">
+        <footer th:replace="backend/partials/fragment :: footer"></footer>
         <!-- partial -->
       </div>
     </div>
@@ -94,13 +135,77 @@
   <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
   <script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
-	<script>
-		(function ($) {
-		$(document).ready( function () {
-		    $('#comment-table').DataTable();
-		} );
-	})(jQuery);
-	</script>
+  <script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+  <script>
+	  $(document).ready(function() {
+   
+		    $('#comment-table').DataTable({
+	            "ajax": {
+	                "url": "api/comments",
+	                "dataSrc": ""
+	            },
+	            "columns": [
+	                { "data": "id" },
+	                { "data": "itemTb" },
+	                { "data": "itemId" },
+	                { "data": "userId" },
+	                { "data": "date" },
+	                { "data": "rating" },
+	                { "data": "content"},
+	                { "data": getImg },
+// 	                { "data": "image2", render: getImg },
+// 	                { "data": "image3", render: getImg },
+	            ],
+	      });
+		    
+		    function getImg(data, type, row, meta) {
+		    		let str = "";	
+		        if (data.image1) {
+		        	str += '<img src="' + data.image1 + '" class="img-com rounded"/>'    
+		        } 
+		        if (data.image2) {
+		        	str += '<img src="' + data.image2 + '" class="img-com rounded"/>'    
+		        } 
+		        if (data.image3) {
+		        	str += '<img src="' + data.image3 + '" class="img-com rounded"/>'    
+		        } 
+		        return str;
+
+		    }
+// 		    function getImg(data, type, row, meta) {
+// 		        if (data) {
+// 		        	  return '<img src="' + data + '" class="img-com rounded"/>';	    
+// 		        } else {
+// 		        		return "";
+// 		        }
+// 		    }
+		    
+		    
+		});
+	  
+
+	  
+	  
+// 	  $(".btn-delete").onclick(function(e, id){
+// 			e.preventDefault(); // 取消原始動作
+// 	 			Swal.fire({
+// 	 				icon: 'warning',
+// 	 				title: '確定刪除?',
+// 	 				text: "確認刪除後將不可復原",
+// 	 				showCancelButton: true,
+// 	 				confirmButtonColor: '#FF8D29',
+// 	 				cancelButtonColor: '#FFCD38',
+// 	 				confirmButtonText: '確認',
+// 	 				cancelButtonText: '取消',
+// 	 				reverseButtons: true
+// 	 			}).then((result) => {
+// 	 				if (result.isConfirmed) {
+// 	 					document.getElementById("deleteForm"+id).submit();
+// 	 				}
+// 	 			})
+// 			})
+  </script>
 </body>
 
 </html>

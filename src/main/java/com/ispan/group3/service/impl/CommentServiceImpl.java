@@ -1,5 +1,6 @@
 package com.ispan.group3.service.impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,6 +34,7 @@ public class CommentServiceImpl implements CommentService{
 
 	@Override
 	public void insertComment(Comment comment) {
+		comment.setDate(new Timestamp(System.currentTimeMillis()));
 		cRepository.save(comment);
 		
 	}
