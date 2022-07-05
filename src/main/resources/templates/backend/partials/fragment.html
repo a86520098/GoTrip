@@ -265,7 +265,7 @@
       <nav th:fragment="sidebar" class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="views/dashboard/members.html">
+            <a class="nav-link" th:href="@{/members/list}">
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">會員管理</span>
             </a>
@@ -311,7 +311,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/comments/list}">
+            <a class="nav-link" th:href="@{/comments}">
               <i class="icon-speech-bubble menu-icon"></i>
               <span class="menu-title">評論管理</span>
             </a>
