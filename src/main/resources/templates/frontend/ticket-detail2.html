@@ -10,7 +10,19 @@
 	<!-- Cart 購物車 -->
 	<div th:replace="frontend/partials/fragment :: cart"></div>
 
-	<!-- breadcrumb -->
+
+	<tr th:each="hotel : ${roomDetail}">
+		<td th:text="${hotel.id}" />
+		<td th:text="${hotel.hotel_name}" />
+		<td th:text="${hotel.price}" />
+		<td th:text="${hotel.phone}" />
+		<td th:text="${hotel.boss_name}"/>
+		<td th:text="${hotel.status}" />
+		<td th:text="${hotel.roomtype}" />
+		<td> <a th:href="@{enterPic(id=${hotel.id})}">  <img width='60' height='72' th:src="@{/hotel/picture(id=${hotel.id})}"> </a> </td>
+	</tr>
+
+
 	<div class="container">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-20 p-lr-0-lg">
 			<a href="/index" class="stext-110 cl8 hov-cl1 trans-04">
