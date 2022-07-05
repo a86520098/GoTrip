@@ -13,12 +13,12 @@ public interface CommentService {
 
 	void insertComment(Comment comment);
 
-	void updateComment(Integer id, Integer rating, String content);
+	void updateComment(Comment comment);
 
 	void deleteComment(Integer id);
 
-	float getAvgRating(String itemTb, Integer itemId);
+	Float getAvgRating(String itemTb, Integer itemId);
 
-	int countByItem(String itemTb, Integer itemId);
+	Integer countByItem(String itemTb, Integer itemId);
 
 }

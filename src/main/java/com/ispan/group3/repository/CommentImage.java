@@ -18,7 +18,6 @@ public class CommentImage {
 	private Integer id;
 	@Column(name = "image_path")
 	private String imagePath;
-//	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "comment_id")
 	private Comment comment;

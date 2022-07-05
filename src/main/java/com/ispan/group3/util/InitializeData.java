@@ -9,9 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.sql.DataSource;
@@ -26,6 +28,9 @@ public class InitializeData {
 	private static final String DB_NAME = "GoTrip";
 	private static final String TB_NAME_COM = "comment";
 	private static final String TB_NAME_IMG = "comment_image";
+	private static final String TB_NAME_CAR = "car_model";
+	private static final String TB_NAME_LOC = "car_location";
+//	private static final String TB_NAME_CAR = "car_model";
 	
 	private static final String IMAGE_DIR = "comment";
 
@@ -46,8 +51,41 @@ public class InitializeData {
 													+ "	comment_id int FOREIGN KEY REFERENCES " + TB_NAME_COM +"(id)," 
 												+ ");";
 	
+	private static final String CREATE_TB_CAR = "CREATE TABLE " + TB_NAME_CAR + " ("
+													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
+													+ "	type nvarchar(10) NOT NULL,"
+													+ "	make_ch nvarchar(10) NOT NULL,"
+													+ "	make_en varchar(20) NOT NULL,"
+													+ "	model varchar(20) NOT NULL,"
+													+ " power nvarchar(10),"
+													+ "	transmission varchar(5),"
+													+ "	capacity int,"
+													+ "	seat int,"
+													+ "	door int,"
+													+ "	suitcase int,"
+													+ "	bag int,"
+													+ "	image nvarchar(max),"
+												+ ");";
+	
+	private static final String CREATE_TB_LOC = "CREATE TABLE " + TB_NAME_LOC + " ("
+													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
+													+ "	company_id int,"
+													+ "	name nvarchar(10),"
+													+ "	city nvarchar(10) NOT NULL,"
+													+ "	district nvarchar(10) NOT NULL,"
+													+ "	address nvarchar(30) NOT NULL,"
+													+ " phone varchar(20),"
+													+ "	open_time time,"
+													+ "	close_time time,"
+												+ ");";
+		
 	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
+	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+	
+	
+	
 	
 	
 	@SuppressWarnings("resource")
@@ -82,6 +120,12 @@ public class InitializeData {
 				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_IMG);
 				stmt.executeUpdate(CREATE_TB_IMG);			
 				System.out.println("成功新增Table: " + TB_NAME_IMG);		
+				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_CAR);
+				stmt.executeUpdate(CREATE_TB_CAR);			
+				System.out.println("成功新增Table: " + TB_NAME_CAR);	
+				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_LOC);
+				stmt.executeUpdate(CREATE_TB_LOC);			
+				System.out.println("成功新增Table: " + TB_NAME_LOC);	
 			} catch (SQLException e) {
 				System.err.println("無法新增Table");
 				e.printStackTrace();
@@ -91,6 +135,10 @@ public class InitializeData {
 			insertComments(conn);
 			// Insert images of comments
 			insertCommentImages(conn);
+			// Insert car models
+			insertCarModels(conn);
+			// Insert car-renting locations
+			insertCarLocations(conn);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,9 +216,66 @@ public class InitializeData {
 			e1.printStackTrace();
 		}
 		return savePath;
-
 	}
-
+	
+	
+	public static void insertCarModels(Connection conn) {
+		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/car-model.csv");
+			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+			 BufferedReader br = new BufferedReader(isr)) {
+			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
+			PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL_CAR);
+			for (CSVRecord record : records) {
+				pstmt.setString(1, record.get(0));
+				pstmt.setString(2, record.get(1));
+				pstmt.setString(3, record.get(2));
+				pstmt.setString(4, record.get(3));
+				pstmt.setString(5, record.get(4));
+				pstmt.setString(6, record.get(5));
+				pstmt.setInt(7, Integer.parseInt(record.get(6)));
+				pstmt.setInt(8, Integer.parseInt(record.get(7)));
+				pstmt.setInt(9, Integer.parseInt(record.get(8)));
+				pstmt.setInt(10, Integer.parseInt(record.get(9)));
+				pstmt.setInt(11, Integer.parseInt(record.get(10)));
+				pstmt.setString(12, record.get(11));
+				pstmt.addBatch();
+			}
+				int[] data = pstmt.executeBatch();
+				pstmt.close();
+				System.out.println("成功新增" + data.length + "筆車款資料");
+		} catch (SQLException | IOException e) {
+				e.printStackTrace();
+		} 
+		
+	}
+	
+	public static void insertCarLocations(Connection conn) {
+		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/car-location.csv");
+			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
+			 BufferedReader br = new BufferedReader(isr)) {
+			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
+			PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL_CAR);
+			LocalTime openTime, closeTime;
+			for (CSVRecord record : records) {
+				pstmt.setString(1, record.get(0));
+				pstmt.setString(2, record.get(1));
+				pstmt.setString(3, record.get(2));
+				pstmt.setString(4, record.get(3));
+				pstmt.setString(5, record.get(4));
+				openTime = LocalTime.of(Integer.parseInt(record.get(5)), Integer.parseInt(record.get(6)));
+				closeTime = LocalTime.of(Integer.parseInt(record.get(7)), Integer.parseInt(record.get(8)));
+				pstmt.setTime(6, Time.valueOf(openTime));
+				pstmt.setTime(7, Time.valueOf(closeTime));
+				pstmt.addBatch();
+			}
+				int[] data = pstmt.executeBatch();
+				pstmt.close();
+				System.out.println("成功新增" + data.length + "筆租車地點資料");
+		} catch (SQLException | IOException e) {
+				e.printStackTrace();
+		} 
+		
+	}
 
 
 }

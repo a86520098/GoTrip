@@ -26,9 +26,11 @@
 <!-- endinject -->
 <!-- <link rel="shortcut icon" href="../../images/favicon.png" /> -->
 <style>
-/* img {
-      width: 100%;
-    } */
+img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
 </style>
 </head>
 
@@ -48,7 +50,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h4 class="card-title">新增商品評論</h4>
-									<form id="insertForm" name="form" th:action="@{/comments}" method="post"	th:object="${comment}" 
+									<form id="insertForm" name="form" th:action="@{/backend/comments}" method="post"	th:object="${comment}" 
 										class="form-horizontal needs-validation" enctype="multipart/form-data">
 										<div class="mt-4">
 											<input th:field="*{id}" id="id" type="hidden" class="form-control"	placeholder="" />
@@ -57,7 +59,6 @@
 												<label class="col-sm-3 col-form-label" for="itemTb">項目類別</label>
 												<div class="col-sm-9">
 													<select th:field="*{itemTb}" id="itemTb" name="itemTb" class="form-control ">
-														<option value="" disabled selected>請選擇類別</option>
 														<option value="">請選擇類別</option>
 														<option value="ticket">行程</option>
 														<option value="restaurant">餐廳</option>
@@ -86,23 +87,23 @@
 												<label class="col-sm-3 col-form-label" for="rating">給予評分</label>
 												<div class="col-sm-9">
 													<fieldset class="starability-basic">
-														<input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked /> 
-														<input type="radio" id="first-rate1" name="rating" value="1" /> 
+														<input th:field="*{rating}" type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked /> 
+														<input th:field="*{rating}" type="radio" id="first-rate1" name="rating" value="1" /> 
 														<label for="first-rate1" title="Terrible">1 star</label> 
-														<input type="radio" id="first-rate2" name="rating" value="2" />
+														<input th:field="*{rating}" type="radio" id="first-rate2" name="rating" value="2" />
 														<label for="first-rate2" title="Not good">2 stars</label>
-														<input type="radio" id="first-rate3" name="rating" value="3" /> 
+														<input th:field="*{rating}" type="radio" id="first-rate3" name="rating" value="3" /> 
 														<label for="first-rate3" title="Average">3 stars</label> 
-														<input type="radio" id="first-rate4" name="rating" value="4" /> 
+														<input th:field="*{rating}" type="radio" id="first-rate4" name="rating" value="4" /> 
 														<label for="first-rate4" title="Very good">4 stars</label> 
-														<input type="radio" id="first-rate5" name="rating" value="5" /> 
+														<input th:field="*{rating}" type="radio" id="first-rate5" name="rating" value="5"/> 
 														<label for="first-rate5" title="Amazing">5 stars</label>
 													</fieldset>
 												</div>
 											</div>
 											<div class="form-group row">
 												<div class="col-sm-3">
-													<label class="col-form-label" for="content">評論內容</label>
+													<label class="col-form-label pb-1" for="content">評論內容</label>
 													<div id="content-length" class="text-black-50 small">(0/200)</div>
 												</div>
 												<div class="col-sm-9">
@@ -112,17 +113,27 @@
 											</div>
 											<div class="form-group row mt-5 justify-content-end">
 												<div class="col-sm-3">
-													<label for="images" class="col-form-label">上傳照片</label>
+													<label for="images" class="col-form-label pb-1">上傳照片</label>
 													<div id="images-length" class="text-black-50 small">(0/3)</div>
 												</div>
 												<div class="col-sm-9">
 													<div class="custom-file">
-														<input type="file" class="form-control custom-file-input"	name="images" id="images" multiple
-															onchange="previewMultiple(event)">
+														<input type="file" class="form-control custom-file-input pb-1"	name="imagefiles" id="imagefiles" multiple>
 														<div class="invalid-feedback">最多選取3張圖片</div>
 														<label class="custom-file-label">選擇檔案</label>
 													</div>
 												</div>
+											</div>
+											<div class="row justify-content-end"> 
+	                        <div class="col-sm-9">
+		                        <div class="row">        
+        											<label for="imagesFromDB"></label>
+        											<div th:each="image:*{images}" class="col-sm-4 mb-5">
+																<input type="checkbox" name="imagesFromDB" value="image1" id="">刪除
+																<img th:src="@{${image}}" class="rounded"/>
+        											</div>
+														</div>
+													</div>
 											</div>
 											<div class="row justify-content-end mb-3">
 												<div class="col-sm-9">
