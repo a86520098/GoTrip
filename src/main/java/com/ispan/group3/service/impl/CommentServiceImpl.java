@@ -2,7 +2,6 @@ package com.ispan.group3.service.impl;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,20 +35,14 @@ public class CommentServiceImpl implements CommentService{
 	public void insertComment(Comment comment) {
 		comment.setDate(new Timestamp(System.currentTimeMillis()));
 		comment.setStatus("valid");
+		if (comment.getRating() == null) 
+			comment.setRating(5);
 		cRepository.save(comment);
 	}
 
 	@Override
-	public void updateComment(Integer id, Integer rating, String content) {
-		Comment comment = cRepository.findById(id)
-				.orElseThrow(() -> new IllegalStateException("Comment with id " + id + " does not exist"));
-		if (rating != null && !Objects.equals(comment.getRating(), rating)) {
-			comment.setRating(rating);
-		}
-		if (content != null && !Objects.equals(comment.getContent(), content)) {
-			comment.setContent(content);
-		}
-
+	public void updateComment(Comment comment) {
+		cRepository.save(comment);
 	}
 
 	@Override
@@ -62,12 +55,12 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public float getAvgRating(String itemTb, Integer itemId) {
+	public Float getAvgRating(String itemTb, Integer itemId) {
 		return cRepository.getAvgRating(itemTb, itemId);
 	}
 
 	@Override
-	public int countByItem(String itemTb, Integer itemId) {
+	public Integer countByItem(String itemTb, Integer itemId) {
 		return cRepository.countByItem(itemTb, itemId);
 	}
 	

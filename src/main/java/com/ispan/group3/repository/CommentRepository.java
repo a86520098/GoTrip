@@ -9,11 +9,11 @@ public interface CommentRepository extends JpaRepository<Comment, Integer>{
 
     @Query( value = "SELECT ROUND(AVG(CAST(rating AS FLOAT)), 1) FROM comment WHERE item_tb = ?1 AND item_id = ?2", 
     		nativeQuery=true)
-    float getAvgRating(String itemTb, Integer itemId);
+    Float getAvgRating(String itemTb, Integer itemId);
 
     @Query( value = "SELECT COUNT(*) FROM comment WHERE item_tb = ?1 AND item_id = ?2", 
-    		nativeQuery=true)
-	int countByItem(String itemTb, Integer itemId);
+    		nativeQuery = true)
+	Integer countByItem(String itemTb, Integer itemId);
 
 
 }

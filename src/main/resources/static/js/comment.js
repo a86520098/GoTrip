@@ -1,63 +1,64 @@
-// 立即顯示所選照片
-function previewMultiple(event) {
-    var images = document.getElementById("images");
-    var number = images.files.length;
-    document.getElementById("formFile").innerHTML = ""
-    for (i = 0; i < number; i++) {
-        var urls = URL.createObjectURL(event.target.files[i]);
-        document.getElementById("formFile").innerHTML += 
-            '<div class="col-sm-4"> <img class="w-100 rounded mb-3" src="' + urls + '" /> </div>';
-    }
-}
 
-// 		function saveComment(e) {
-// 		Swal.fire({
-// 			  icon: 'success',
-// 			  title: 'Your work has been saved',
-// 			  showConfirmButton: false,
-// 			  timer: 1500
-// 			})
-// 		}
+
+ 		function saveComment(e) {
+ 		Swal.fire({
+ 			  icon: 'success',
+ 			  title: 'Your work has been saved',
+ 			  showConfirmButton: false,
+ 			  timer: 1500
+ 			})
+ 		}
 
 jQuery(document).ready(function($){
-	
+		// 立即顯示所選照片
+		$('#imagefiles').on('change', function () {
+		    var imagefiles = document.getElementById("imagefiles");
+		    var number = imagefiles.files.length;
+		    document.getElementById("formFile").innerHTML = ""
+		    for (i = 0; i < number; i++) {
+		        var urls = URL.createObjectURL(event.target.files[i]);
+		        document.getElementById("formFile").innerHTML += 
+		            '<div class="col-sm-4"> <img class="rounded mb-3" src="' + urls + '" /> </div>';
+		    }
+		})
 
-	
-	
     $(function() {
         let contentMax = 200;
-        let imagesMax = 3;
+        let imagefilesMax = 3;
 
+    		let contentLength = $("#content").val().length;
+        $("#content-length").text('('+contentLength+'/'+contentMax+')');
+        
         // 確認表單內容
-//        $('#btn-insert').click(function (e) {
-//            let isItemTbValid = $('#itemTb').val() !== null;
-//            let isItemIdVaild = $('#itemId').val() !== '';
-//            let isUserIdVaild = $('#userId').val() !== '';
-//            let isContentVaild = $("#content").val().length <= contentMax;
-//            let isImagesVaild = $("#images")[0].files.length <= imagesMax;
-//            
-//            if (!isItemTbValid || !isItemIdVaild || !isUserIdVaild || !isContentVaild || !isImagesVaild ) {
-//                e.preventDefault();					
-//                isItemTbValid ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));
-//                isItemIdVaild ? hideInvalidText($('#itemId')) : showInvalidText($('#itemId'));
-//                isUserIdVaild ? hideInvalidText($('#userId')) : showInvalidText($('#userId'));
-//                isContentVaild ? hideInvalidText($('#content')) : showInvalidText($('#content'));
-//                isImagesVaild ? hideInvalidText($('#images')) : showInvalidText($('#images'));
-//                $("form").addClass('validated');
-//            } else {
+        $('#btn-insert').click(function (e) {
+            let isItemTbValid = $('#itemTb').val() !== null;
+            let isItemIdVaild = $('#itemId').val() !== '';
+            let isUserIdVaild = $('#userId').val() !== '';
+            let isContentVaild = $("#content").val().length <= contentMax;
+            let isimagefilesVaild = $("#imagefiles")[0].files.length <= imagefilesMax;
+            
+            if (!isItemTbValid || !isItemIdVaild || !isUserIdVaild || !isContentVaild || !isimagefilesVaild ) {
+                e.preventDefault();					
+                isItemTbValid ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));
+                isItemIdVaild ? hideInvalidText($('#itemId')) : showInvalidText($('#itemId'));
+                isUserIdVaild ? hideInvalidText($('#userId')) : showInvalidText($('#userId'));
+                isContentVaild ? hideInvalidText($('#content')) : showInvalidText($('#content'));
+                isimagefilesVaild ? hideInvalidText($('#imagefiles')) : showInvalidText($('#imagefiles'));
+                $("form").addClass('validated');
+            } else {
 //                e.preventDefault();		
-//                 Swal.fire({
-//                   icon: 'success',
-//                   title: '儲存成功',
-//                   showConfirmButton: false,
-//                   timer: 1500
-//                 });
-//                 
-//                 setInterval(function() {
-//                     $('#insertForm').submit()
-//                 }, 1500);
-//            }
-//        });
+                 Swal.fire({
+                   icon: 'success',
+                   title: '儲存成功',
+                   showConfirmButton: false,
+                   timer: 1500
+                 });
+                 
+                 setInterval(function() {
+                     $('#insertForm').submit()
+                 }, 1500);
+            }
+        });
         
         function showInvalidText(selector) {
             selector.removeClass('is-valid').addClass('is-invalid');
@@ -68,6 +69,8 @@ jQuery(document).ready(function($){
             selector.removeClass('is-invalid').addClass('is-valid');
             selector.siblings('.invalid-feedback').css('display', 'none')
         }
+        
+        
         
         $('#itemTb').on('change', function () {
             if ($("form").hasClass('validated')) 
@@ -99,16 +102,16 @@ jQuery(document).ready(function($){
         });
         
         // 顯示上傳照片數量
-        $("#images").on("change", function() {
-            let imagesLength = $("#images")[0].files.length;
-            $('#images-length').text('('+imagesLength+'/'+ imagesMax +')')
-            if (imagesLength > imagesMax) {
-                $('#images-length').removeClass('text-black-50').addClass('text-danger')
+        $("#imagefiles").on("change", function() {
+            let imagefilesLength = $("#imagefiles")[0].files.length;
+            $('#imagefiles-length').text('('+imagefilesLength+'/'+ imagefilesMax +')')
+            if (imagefilesLength > imagefilesMax) {
+                $('#imagefiles-length').removeClass('text-black-50').addClass('text-danger')
             } else {
-                $('#images-length').removeClass('text-danger').addClass('text-black-50')
+                $('#imagefiles-length').removeClass('text-danger').addClass('text-black-50')
             }
             if ($("form").hasClass('validated')) {
-                imagesLength > imagesMax ? showInvalidText($('#images')) : hideInvalidText($('#images'))				    	
+                imagefilesLength > imagefilesMax ? showInvalidText($('#imagefiles')) : hideInvalidText($('#imagefiles'))				    	
             } 
         });
 

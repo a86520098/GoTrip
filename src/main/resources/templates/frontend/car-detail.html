@@ -198,6 +198,8 @@
 				</div>
 			</div>
 
+			<div id="map" style="width:100%; height: 500px;"></div>
+
 			<div class="bor10 m-t-50 p-t-43 p-b-40">
 				<!-- Tab01 -->
 				<div class="tab01">
@@ -719,16 +721,11 @@
 				dataType:"json",
 				data: {
 					"itemTb":"ticket",
-					"itemId":1
+					"itemId":31
 				},
 				success: function(data){
-					if (data.count !== 0) {
-						$('#rating').text(data.avgRating);
-						$('#count').text(data.count)
-						
-					} else {
-						$('#rating-count').text('尚無評論')
-					}
+					$('#rating').text(data.avgRating);
+					$('#count').text(data.count)
 				},
 				error: function(err){
 					$('#rating-count').text('尚無評論')

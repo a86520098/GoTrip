@@ -20,5 +20,10 @@ public class ViewController {
 	public String toTicketDetail() {
 		return "frontend/ticket-detail";
 	}
+	
+	@GetMapping("/cars")
+	public String toCars() {
+		return "frontend/car-detail";
+	}
 
 }
