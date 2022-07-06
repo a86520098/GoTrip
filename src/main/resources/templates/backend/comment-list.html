@@ -44,10 +44,10 @@
                       <colgroup>
                         <col span="1" style="width: 6%;" class="font-weight-bold">
                         <col span="1" style="width: 8%;" class="font-weight-bold">
-                        <col span="1" style="width: 6%;">
+                        <col span="1" style="width: 5%;">
                         <col span="1" style="width: 8%;">
-                        <col span="1" style="width: 8%;">
-                        <col span="1" style="width: 6%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 5%;">
                         <col span="1" style="width: 22%;">
                         <col span="1" style="width: 22%;">
                         <col span="1" style="width: 7%;">
@@ -74,14 +74,14 @@
                           <td th:text="${comment.itemId}" class="font-weight-bold"></td>
                           <td th:text="${comment.userId}"></td>
                           <td th:text="${comment.date}"></td>
-                          <td th:text="${comment.rating}"><i class="bi bi-star-fill text-warning"></i></td>
+                          <td><span class="text-warning">★</span><span th:text="${comment.rating}"></span></td>
                           <td th:text="${comment.content}"></td>
                           <td>
                           	<div th:each="image:${comment.images}" class="d-inline-block">
                           		<img th:src="@{${image}}" class="rounded img-com"/>
                           	</div>
                           </td>
-                          <td th:text="${comment.status}"></td>
+                          <td class="font-weight-medium"><div class="badge badge-warning" th:text="${comment.status}"></div></td>
 													<td>
 														<form th:action="@{/backend/comments/form/}+${comment.id}" method="get" class="inline-block">
 															<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">
@@ -89,7 +89,7 @@
 																修改
 															</button>
 														</form>
-														<form th:id="'deleteComment' + ${comment.id}" th:action="@{/backend/comments/}+${comment.id}" th:method="delete" class="inline-block">
+														<form th:action="@{/backend/comments/}+${comment.id}" th:method="delete" class="inline-block">
 															<button type="button" th:value="${comment.id}" class="px-2 btn btn-delete btn-info btn-rounded btn-sm">
 <!-- 																<i class="ti-trash"></i> -->
 														<!-- th:id="'btn-delete' + ${comment.id}" -->

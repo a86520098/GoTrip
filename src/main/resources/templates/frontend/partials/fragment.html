@@ -20,7 +20,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}" href="css/util.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" href="css/main.css">
 	<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
-	<link rel="icon" type="image/png" href="images/favicon.png" />
+	<link rel="icon" type="image/png" th:href="@{images/favicon.png}" />
 </head>
 
 <body>
@@ -54,7 +54,7 @@
 							data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
-						<a href="#"
+						<a th:href="@{/backend/index}"
 							class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
 							data-notify="0">
 							<i class="zmdi zmdi-account"></i>
@@ -86,7 +86,7 @@
 					data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
-				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+				<a th:href="@{/backend/index}" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
 					data-notify="0">
 					<i class="zmdi zmdi-account"></i>
 				</a>
@@ -773,9 +773,7 @@
 		<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}" src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script th:src="@{/js/main.js}" src="js/main.js"></script>
 		<script th:src="@{/js/frontend.js}" src="js/frontend.js"></script>
-		<script th:src="@{https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js}"></script>
-		<script th:src="@{/js/clusterMap.js}" src="js/clusterMap.js"></script>
-		<script th:src="@{https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js}"></script>
+	
 	</div>
 	
 </body>

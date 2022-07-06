@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,7 +43,7 @@ public class CommentController {
 	}
 	
 	@GetMapping({"/backend/comments/form", "/backend/comments/form/{id}"})
-	public String showNewForm(Model model, @PathVariable(required = false) Integer id) {
+	public String showCommentForm(Model model, @PathVariable(required = false) Integer id) {
 		Comment comment;
 		if (id != null) {
 			comment = cService.getComment(id);
@@ -88,7 +87,7 @@ public class CommentController {
 //				e.printStackTrace();
 //			}
 //		}
-		return "redirect:/backend/comments/";
+		return "redirect:/backend/comments";
 	}
 
 	@PutMapping("/backend/comments/{id}")
@@ -98,7 +97,7 @@ public class CommentController {
 		Set<CommentImage> images = new HashSet<>();
 		for (MultipartFile file : files) {
 			try {
-				String savePath = FileUploadUtil.saveFile("comment", file);
+				String savePath = FileUploadUtil.saveFile("comment",file);
 				CommentImage commentImage = new CommentImage(savePath, comment);
 				images.add(commentImage);
 			} catch (IOException e) {
@@ -108,14 +107,14 @@ public class CommentController {
 		comment.setImages(images);
 		cService.updateComment(comment);
 		
-		return "redirect:/backend/comments/";
+		return "redirect:/backend/comments";
 
 	}
 
-	@DeleteMapping("/comments/{id}")
+	@DeleteMapping("/backend/comments/{id}")
 	public String deleteComment(@PathVariable Integer id) {
 		cService.deleteComment(id);
-		return "redirect:/backend/comments/";
+		return "redirect:/backend/comments";
 	}
 	
 	@ModelAttribute
