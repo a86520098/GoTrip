@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GoTrip 後臺系統</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
   <!-- 本頁面使用css樣式 Plugin css for this page -->
   <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
@@ -18,12 +20,12 @@
 <body>
   <div class="container-scroller">
   
-    <nav th:replace="partials/fragment :: navbar"></nav>
+    <nav th:replace="/backend/partials/fragment :: navbar"></nav>
     
     <div class="container-fluid page-body-wrapper">
     
-	  <div th:replace="partials/fragment :: setting"></div>
-      <nav th:replace="partials/fragment :: sidebar"></nav>
+	  <div th:replace="/backend/partials/fragment :: setting"></div>
+      <nav th:replace="/backend/partials/fragment :: sidebar"></nav>
       
       <!-- 主要內容 partial -->
       <div class="main-panel">
@@ -34,6 +36,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="card-title">註冊飯店</div>
+
                   <div class="table-responsive">
                     <div class="container col-md-5">
                       <div class="card">
@@ -45,13 +48,98 @@
                             </h2>
                           </caption>
 
-
                           <form  method="post"  th:action="@{/hotel/addHotel}" th:object="${hotel}"   enctype="multipart/form-data">
+
+                            <td>住宿類型</td>
+                            <fieldset class="form-group">
+                              <select th:field="*{hotelStyle}" class="form-select" aria-label="Default select example">
+                                <option value="公寓">公寓</option>
+                                <option value="整間小屋">整間小屋</option>
+                                <option value="整棟住宅">整棟住宅</option>
+                                <option value="別墅">別墅</option>
+                                <option value="專業大飯店">專業大飯店</option>
+                              </select>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                              <label>住宿面積大小</label>
+                              <input type="text" th:field="*{hotelArea}" id="hotelArea" class="form-control" onkeypress="return my_key(event)"/>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                              <label>可住人數</label>
+                              <input type="text" th:field="*{peopleCount}" id="peopleCount" class="form-control" onkeypress="return my_key(event)"/>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                              <label>衛浴數量</label>
+                              <input type="text" th:field="*{bathCount}" id="bathCount" class="form-control" onkeypress="return my_key(event)"/>
+                            </fieldset>
+                            <fieldset class="form-group">
+                              <label>臥室數量</label>
+                              <input type="text" th:field="*{bedroomCount}" id="bedroomCount" class="form-control" onkeypress="return my_key(event)"/>
+                            </fieldset>
+                            <fieldset class="form-group">
+                              <label>床的數量</label>
+                              <input type="text" th:field="*{bedCount}" id="bedCount" class="form-control" onkeypress="return my_key(event)"/>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                              <label>國家</label>
+                              <input type="text" th:field="*{notional}" id="notional" class="form-control"/>
+                            </fieldset>
+
+                            <p class="card-description mt-4">
+                              聯絡地址
+                            </p>
+
+
+
+                            <input type="hidden" class="js-demeter-tw-zipcode-selector" data-city="#city" data-dist="#location" placeholder="郵遞區號" size="6" id="yoyo" name="yoyo" readonly/>
+                            <select id="city" name="city" placeholder="請選擇縣市" onchange="addressChange()" class="form-control"></select>
+                            <select id="location" name="location" placeholder="請選擇鄉鎮區" onchange="addressChange()" class="form-control"></select>
+
+                            <input type="text" name="fullAddress" id="fullAddress" class="form-control" />
+<!--                            //縣市鄉鎮自動帶入此地址欄位-->
+
+                            <fieldset class="form-group">
+                              <label>住宿規定</label>
+                              <textarea  th:field="*{hotelRule}" id="hotelRule" class="form-control"> </textarea>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                              <label>房客該如何前往妳的住宿</label>
+                              <textarea  th:field="*{Howgoto}" id="Howgoto" class="form-control"> </textarea>
+                            </fieldset>
+
 
                               <fieldset class="form-group">
                                 <label>飯店名稱</label>
                               <input type="text" th:field="*{hotel_name}" id="name" class="form-control"/>
                               </fieldset>
+                            <fieldset class="form-group">
+                              <label>介紹一下你的地方</label>
+                              <textarea  th:field="*{introduce}" id="introduce" class="form-control"> </textarea>
+                            </fieldset>
+
+                            <fieldset class="form-group">
+                              <label>你提供什麼設施呢?</label><br>
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="浴巾"/>浴巾
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="空調"/>空調
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="陽台或露台"/>陽台或露台
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="書桌"/>書桌
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="免鑰匙進出"/>免鑰匙進出
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="濱海"/>濱海
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="免費停車"/>免費停車
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="免費wifi"/>免費wifi
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="暖風"/>暖風
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="廚房用具(廚具`油`調味料)"/>廚房用具(廚具`油`調味料)
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="專用入口"/>專用入口
+                              <input type="checkbox"  th:field="*{provide}" id="provide" value="電視"/>電視
+
+                            </fieldset>
+
+
                             <fieldset class="form-group">
                               <label>價格</label>
                               <input type="text" th:field="*{price}" id="name" class="form-control" onkeypress="return my_key(event)"/>
@@ -69,7 +157,8 @@
 
                             <fieldset class="form-group">
                               <label >照片</label>
-                              <input th:field="*{productImage}" type='file'/>
+                              <input th:field="*{productImage}" name="fileName" id="filename" type='file' accept="image/png, image/jpeg, image/jpg" multiple="multiple"  />
+                              <input type="button" id="submitBtn" onclick="checkSubmit()" value="上传"/>
                             </fieldset>
 
                             <td>狀態</td>
@@ -86,9 +175,9 @@
                             <td>房型</td>
                             <fieldset class="form-group">
                               <select th:field="*{roomtype}" class="form-select" aria-label="Default select example" >
-                                <option value="營業中">單人房</option>
-                                <option value="未營業">雙人房</option>
-
+                                <option value="單人房">單人房</option>
+                                <option value="雙人房">雙人房</option>
+                                <option value="四人房">四人房</option>
                               </select>
                             </fieldset>
                             <!-- -------------------------------------------------------------以下修改 -->
@@ -105,7 +194,7 @@
             </div>
           </div>
         </div>
-        <footer th:replace="partials/fragment :: footer"></footer>
+        <footer th:replace="backend/partials/fragment :: footer"></footer>
         <!-- partial -->
       </div>
     </div>
@@ -116,11 +205,12 @@
   <script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
   <script th:src="@{/js/template.js}" src="js/template.js"></script>
   <script th:src="@{/js/settings.js}" src="js/settings.js"></script>
-  
+
   <script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
   <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
   <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
   <script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+  <script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
 	<script>
 		(function ($) {
 		$(document).ready( function () {
@@ -144,7 +234,23 @@
           var reg = /\d/;
           return reg.test(keychar);
         }
-	</script>
+
+    </script>
+
+
+  <!-- 立即顯示縣市鄉鎮 -->
+  <script type="text/javascript">
+    function addressChange() {
+      var city = document.getElementById('city').value;
+      var location = document.getElementById('location').value;
+      document.getElementById('fullAddress').value = city + location;
+    }
+
+
+
+
+  </script>
+
 </body>
 
 </html>

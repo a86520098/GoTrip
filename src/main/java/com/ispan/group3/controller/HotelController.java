@@ -204,6 +204,13 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 			hotelService.save(hotels);
 			return "redirect:/hotel/hotel123";
 		}
+
+	@RequestMapping(path = "/enterPic",method = RequestMethod.GET)
+	public String intoPicture(@RequestParam("id")Integer pictureID, Model m ){
+		m.addAttribute("hotel", hotelService.findById(pictureID) );
+		System.out.println("This is success transfer to Edit form");
+		return "backend/hotel/intoPicture";
+	}
 		
 		
 		

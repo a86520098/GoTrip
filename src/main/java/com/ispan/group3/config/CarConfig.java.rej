@@ -1,0 +1,9 @@
+diff a/src/main/java/com/ispan/group3/config/CarConfig.java b/src/main/java/com/ispan/group3/config/CarConfig.java	(rejected hunks)
+@@ -23,7 +23,6 @@
+ //	
+ //	@Autowired
+ //	public CarConfig(CarLocationService locationService, CarModelService modelService, CarOptionService optionService) {
+-//		super();
+ //		this.locationService = locationService;
+ //		this.modelService = modelService;
+ //		this.optionService = optionService;
