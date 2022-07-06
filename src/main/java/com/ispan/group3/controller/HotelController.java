@@ -33,6 +33,8 @@ import com.ispan.group3.repository.Hotel;
 @Controller
 @RequestMapping("/hotel")
 public class HotelController {
+
+//	this is test git hub version
 	
 	HotelService hotelService;
 	ServletContext context;

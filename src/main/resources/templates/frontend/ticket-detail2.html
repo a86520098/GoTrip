@@ -10,7 +10,7 @@
 	<!-- Cart 購物車 -->
 	<div th:replace="frontend/partials/fragment :: cart"></div>
 
-
+	  <th:object="${roomDetail}"></th:object>
 	<tr th:each="hotel : ${roomDetail}">
 		<td th:text="${hotel.id}" />
 		<td th:text="${hotel.hotel_name}" />
