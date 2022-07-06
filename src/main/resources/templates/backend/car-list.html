@@ -72,19 +72,19 @@
                           <td th:text="${car.makeEn}"></td>
                           <td th:text="${car.model}"></td>
                           <td th:text="${car.power}"></td>
-                          <td th:text="${car.drive}"><i class="bi bi-star-fill text-warning"></i></td>
-                          <td th:text="${car.capacity}"></td>
+                          <td th:text="${car.transmission}"></td>
+                          <td th:text="${car.displacement}"></td>
                           <td>
                           	<img th:src="@{${car.image}}" class="rounded img-com"/>
                           </td>
 													<td>
-														<form th:action="@{/cars/form/}+${car.id}" method="get" class="inline-block">
+														<form th:action="@{/backend/cars/form/}+${car.id}" method="get" class="inline-block">
 															<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">
 <!-- 																<i class="ti-pencil"></i> -->
 																修改
 															</button>
 														</form>
-														<form th:id="'deleteComment' + ${car.id}" th:action="@{/cars/}+${car.id}" th:method="delete" class="inline-block">
+														<form th:id="'deleteComment' + ${car.id}" th:action="@{/backend/cars/}+${car.id}" th:method="delete" class="inline-block">
 															<button type="button" th:value="${car.id}" class="px-2 btn btn-delete btn-info btn-rounded btn-sm">
 <!-- 																<i class="ti-trash"></i> -->
 														<!-- th:id="'btn-delete' + ${comment.id}" -->

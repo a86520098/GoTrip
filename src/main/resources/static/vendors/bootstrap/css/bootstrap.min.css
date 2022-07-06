@@ -4022,6 +4022,13 @@ tbody.collapse.show {
     border-radius: 10px
 }
 
+.card-table {
+	
+		border: 0px !important;
+		border-top: 0px solid rgba(0, 0, 0, .125) !important;
+    border-radius: 0px !important; 
+}
+
 .card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
@@ -4109,7 +4116,14 @@ tbody.collapse.show {
 .card-img-top {
     width: 100%;
     border-top-left-radius: calc(10px - 1px);
-    border-top-right-radius: calc(10px - 1px)
+    border-top-right-radius: calc(10px - 1px);
+    vertical-align: middle;
+}
+
+.card-img-left {
+    width: 100%;
+    border-top-left-radius: calc(10px - 1px);
+    border-bottom-left-radius: calc(10px - 1px)
 }
 
 .card-img-bottom {

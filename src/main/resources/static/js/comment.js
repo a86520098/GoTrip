@@ -21,6 +21,17 @@ jQuery(document).ready(function($){
 		            '<div class="col-sm-4"> <img class="rounded mb-3" src="' + urls + '" /> </div>';
 		    }
 		})
+		
+		$('#carImage').on('change', function () {
+		    var imagefiles = document.getElementById("carImage");
+		    var number = imagefiles.files.length;
+		    document.getElementById("formFileCar").innerHTML = ""
+		    for (i = 0; i < number; i++) {
+		        var urls = URL.createObjectURL(event.target.files[i]);
+		        document.getElementById("formFileCar").innerHTML += 
+		            '<div class=""> <img class=" mb-3" src="' + urls + '" /> </div>';
+		    }
+		})
 
     $(function() {
         let contentMax = 200;
@@ -46,7 +57,7 @@ jQuery(document).ready(function($){
                 isimagefilesVaild ? hideInvalidText($('#imagefiles')) : showInvalidText($('#imagefiles'));
                 $("form").addClass('validated');
             } else {
-//                e.preventDefault();		
+                e.preventDefault();		
                  Swal.fire({
                    icon: 'success',
                    title: '儲存成功',

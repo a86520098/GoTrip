@@ -27,7 +27,8 @@ public class CarModel {
 	private String model;
 	private String power;
 	private String transmission;
-	private Integer capacity;
+	private Integer displacement;
+	private Integer price;
 	private Integer seat;
 	private Integer door;
 	private Integer suitcase;
@@ -42,7 +43,7 @@ public class CarModel {
 	}
 	
 	public CarModel(Integer id, String type, String makeCh, String makeEn, String model, String power, String transmission,
-			Integer capacity, Integer seat, Integer door, Integer suitcase, Integer bag, String image,
+			Integer displacement, Integer price, Integer seat, Integer door, Integer suitcase, Integer bag, String image,
 			List<CarOption> carOptions) {
 		this.id = id;
 		this.type = type;
@@ -51,7 +52,8 @@ public class CarModel {
 		this.model = model;
 		this.power = power;
 		this.transmission = transmission;
-		this.capacity = capacity;
+		this.displacement = displacement;
+		this.price = price;
 		this.seat = seat;
 		this.door = door;
 		this.suitcase = suitcase;
@@ -103,11 +105,11 @@ public class CarModel {
 	public void setTransmission(String transmission) {
 		this.transmission = transmission;
 	}
-	public Integer getCapacity() {
-		return capacity;
+	public Integer getDisplacement() {
+		return displacement;
 	}
-	public void setCapacity(Integer capacity) {
-		this.capacity = capacity;
+	public void setDisplacement(Integer displacement) {
+		this.displacement = displacement;
 	}
 	public Integer getSeat() {
 		return seat;
@@ -144,6 +146,14 @@ public class CarModel {
 	}
 	public void setCarOptions(List<CarOption> carOptions) {
 		this.carOptions = carOptions;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 	
 	

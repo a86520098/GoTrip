@@ -2,11 +2,13 @@ package com.ispan.group3.service.impl;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ispan.group3.repository.Comment;
+import com.ispan.group3.repository.CommentCount;
 import com.ispan.group3.repository.CommentRepository;
 import com.ispan.group3.service.CommentService;
 
@@ -54,14 +56,19 @@ public class CommentServiceImpl implements CommentService{
 		cRepository.deleteById(id);
 	}
 
-	@Override
-	public Float getAvgRating(String itemTb, Integer itemId) {
-		return cRepository.getAvgRating(itemTb, itemId);
-	}
+//	@Override
+//	public Float getAvgRating(String itemTb, Integer itemId) {
+//		return cRepository.getAvgRating(itemTb, itemId);
+//	}
+//
+//	@Override
+//	public Integer countByItem(String itemTb, Integer itemId) {
+//		return cRepository.countByItem(itemTb, itemId);
+//	}
 
 	@Override
-	public Integer countByItem(String itemTb, Integer itemId) {
-		return cRepository.countByItem(itemTb, itemId);
+	public List<CommentCount> getRatings() {
+		return cRepository.getRatings();
 	}
 	
 	

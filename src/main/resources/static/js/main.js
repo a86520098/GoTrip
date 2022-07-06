@@ -128,7 +128,7 @@
 
     /*==================================================================
     [ Isotope ]*/
-    var $topeContainer = $('.isotope-grid');
+    var $topeContainer = $('.isotope');
     var $filter = $('.filter-tope-group');
 
     // filter items on button click

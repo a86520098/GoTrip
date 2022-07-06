@@ -23,7 +23,6 @@
 //	
 //	@Autowired
 //	public CarConfig(CarLocationService locationService, CarModelService modelService, CarOptionService optionService) {
-//		super();
 //		this.locationService = locationService;
 //		this.modelService = modelService;
 //		this.optionService = optionService;

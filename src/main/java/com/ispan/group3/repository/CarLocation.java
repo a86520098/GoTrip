@@ -3,6 +3,7 @@ package com.ispan.group3.repository;
 import java.time.LocalTime;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,9 @@ public class CarLocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+	@Column(name = "company_id")
+	private Integer companyId;
+
 	private String country;
 	private String city;
 	private String district;

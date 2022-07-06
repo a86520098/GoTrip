@@ -82,7 +82,7 @@ public class InitializeData {
 	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	
 	
@@ -254,18 +254,19 @@ public class InitializeData {
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 			 BufferedReader br = new BufferedReader(isr)) {
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
-			PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL_CAR);
+			PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL_LOC);
 			LocalTime openTime, closeTime;
 			for (CSVRecord record : records) {
-				pstmt.setString(1, record.get(0));
+				pstmt.setInt(1, Integer.parseInt(record.get(0)));
 				pstmt.setString(2, record.get(1));
 				pstmt.setString(3, record.get(2));
 				pstmt.setString(4, record.get(3));
 				pstmt.setString(5, record.get(4));
-				openTime = LocalTime.of(Integer.parseInt(record.get(5)), Integer.parseInt(record.get(6)));
-				closeTime = LocalTime.of(Integer.parseInt(record.get(7)), Integer.parseInt(record.get(8)));
-				pstmt.setTime(6, Time.valueOf(openTime));
-				pstmt.setTime(7, Time.valueOf(closeTime));
+				pstmt.setString(6, record.get(5));
+				openTime = LocalTime.of(Integer.parseInt(record.get(6)), Integer.parseInt(record.get(7)));
+				closeTime = LocalTime.of(Integer.parseInt(record.get(8)), Integer.parseInt(record.get(9)));
+				pstmt.setTime(7, Time.valueOf(openTime));
+				pstmt.setTime(8, Time.valueOf(closeTime));
 				pstmt.addBatch();
 			}
 				int[] data = pstmt.executeBatch();

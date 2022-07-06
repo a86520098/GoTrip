@@ -60,6 +60,17 @@ public class Comment {
 		this.status = status;
 		this.images = images;
 	}
+	
+	public Comment(String itemTb, Integer itemId, String userId, Timestamp date, Integer rating, String content,
+			 String status) {
+		this.itemTb = itemTb;
+		this.itemId = itemId;
+		this.userId = userId;
+		this.date = date;
+		this.rating = rating;
+		this.content = content;
+		this.status = status;
+	}
 
 	public Integer getId() {
 		return id;
