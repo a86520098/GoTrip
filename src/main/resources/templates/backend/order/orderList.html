@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoTrip 後臺系統</title>
+  <!-- 通用css樣式 plugins:css -->
+  <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css" >
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css" >
+  <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+  <!-- 本頁面使用css樣式 Plugin css for this page -->
+  <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
+</head>
+ <style>
+ .formargin{
+ margin-bottom:15px;
+ }
+ </style>
+<body>
+
+	<!-- 引入各部分頁面 -->
+  	<div class="container-scroller">
+  
+    <nav th:replace="backend/partials/fragment :: navbar"></nav>
+    
+    <div class="container-fluid page-body-wrapper">
+    
+	  <div th:replace="backend/partials/fragment :: setting"></div>
+      <nav th:replace="backend/partials/fragment :: sidebar"></nav>
+      
+         <!-- 主要內容 partial -->
+		<div class="main-panel">
+      	  <div class="content-wrapper">
+			<div class="row">
+        	   <div class="col-md-12 grid-margin stretch-card">
+            	  <div class="card">
+           		     <div class="card-body">
+            		    <div class="card-title">訂單列表</div>
+            		    <div><a th:href="@{/order/newform}"><button class="btn btn-primary formargin">新增訂單</button></a></div>
+               			   <div class="table-responsive">
+               			 	    <table id="order-table" class="display expandable-table w-100">
+<!--                		    <colgroup> -->
+<!--                         <col span="1" style="width: 5%;"> -->
+<!--                         <col span="1" style="width: 8%;"> -->
+<!--                         <col span="1" style="width: 7%;"> -->
+<!--                         <col span="1" style="width: 10%;"> -->
+<!--                         <col span="1" style="width: 10%;"> -->
+<!--                         <col span="1" style="width: 6%;"> -->
+<!--                         <col span="1" style="width: 24%;"> -->
+<!--                         <col span="1" style="width: 24%;"> -->
+<!--                         <col span="1" style="width: 8%;"> -->
+<!--                         <col span="1" style="width: 5%;"> -->
+<!--                       </colgroup> -->
+                    	<thead>
+                        <tr>
+                          <th>訂單編號</th>
+                          <th>會員編號</th>
+                          <th>日期</th>
+                          <th>總價</th>                 
+                          <th>狀態</th>    
+                          <th>詳細</th>
+                          <th>刪除</th>       
+                        </tr>
+                      </thead>
+                      <tbody th:each="orderBean:${orderBeans}">
+                      	  <tr>
+                      		<td th:text="${orderBean.orderNo}"></td>     
+                      		<td th:text="${orderBean.memberId}"></td>     
+                      		<td th:text="${orderBean.orderDate}"></td>     
+                      		<td th:text="${orderBean.totalPrice}"></td>     
+                      		<td th:switch="${orderBean.status}">
+                      			<span th:case="0">未付款</span>     
+                      			<span th:case="1">已付款</span>     
+                      			<span th:case="2">已完成</span>     
+                      			</td>
+                      		<td><a th:href="@{'/order/edit/' + ${orderBean.orderNo}}">
+                      		<button type="button" class="btn btn-success">詳細</button></a></td>	
+                      		<td><button type="button" class="btn btn-danger btn-delete"
+                      		th:onclick="deletelert([[${orderBean.orderNo}]])" th:if="${orderBean.status == 0}">刪除</button></td>
+                        </tr>
+                      
+                      </tbody>
+                    			</table>
+                    		</div>
+                 	  	</div>
+                    </div>
+           	    </div>	
+            </div>
+          </div>  	
+    
+            		  <footer th:replace="backend/partials/fragment :: footer"></footer>
+     	   <!-- partial -->
+     	     </div>   
+   		 </div>
+	  </div>     
+	 
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+  <script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+  <script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+  <script th:src="@{/js/template.js}" src="js/template.js"></script>
+  <script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+  
+  <script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+  <script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+  <script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script> 
+	  	
+	  <script>
+	  $(document).ready(function() {
+   
+		    $('#order-table').DataTable({
+		    
+	  	})
+		});
+	     function deletelert(orderNo) {
+	          Swal.fire({
+	            title: '是否刪除訂單?',
+	            text: "訂單無法復原，若要刪除，請按下請確認",
+	            icon: 'warning',
+	            showCancelButton: true,
+	            cancelButtonText: '取消',
+	            confirmButtonColor: '#cc0808',
+	            cancelButtonColor: '#2e9e48',
+	            confirmButtonText: '刪除'
+	          }).then((result) => {
+	            if (result.isConfirmed) {
+	              $.ajax({
+	                type: "get",
+	                url: "/gotrip/order/delete/" + orderNo,
+
+	                success: function (msg) {
+	                  Swal.fire(
+	                          '已刪除!',
+	                          '訂單已成功刪除!',
+	                          'success'
+	                  ).then((result) => {
+	                    if (result.isConfirmed) {
+	                      location.reload();
+	                    }
+	                  })
+	                },
+	                error: function (msg) {
+	                 
+	                  Swal.fire({
+	                    icon: 'error',
+	                    title: '發生錯誤',
+	                    text: 'HTTP 狀態碼為 ' + msg.status,
+	                    footer: '<a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status"  target="_blank">錯誤資訊</a>'
+	                  })
+	                }
+	              });
+
+	            }
+	          })
+	        }
+	  
+	</script>	
+</body>
+
+
+</html>

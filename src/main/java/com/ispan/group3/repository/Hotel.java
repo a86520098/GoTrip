@@ -37,7 +37,6 @@ public class Hotel {
 	private  Timestamp admissionTime; //街道檔案的那時候時間
 	@Transient
 	private  MultipartFile productImage;
-
 	
 	
 	}	
