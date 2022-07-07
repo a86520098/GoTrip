@@ -44,7 +44,6 @@ public class ViewController {
 		  m.addAttribute("roomDetail",hotelservice.findById(id));
 		return "frontend/ticket-detail2";
 	}
-=======
->>>>>>> comment
+
 
 }
