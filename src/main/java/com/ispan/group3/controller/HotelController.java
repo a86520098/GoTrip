@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.sql.rowset.serial.SerialBlob;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -219,8 +221,28 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 
 
 		
-		
-		
-		
-		
+	@GetMapping("/api/hotels")
+	@ResponseBody
+	public List<Hotel> getHotels() {
+		return hotelService.findAll();
 	}
+	
+	@GetMapping("/api/hotels/{id}")
+	@ResponseBody
+	public Hotel getHotel(@PathVariable Integer id) {
+		return hotelService.findById(id);
+	}
+
+	@GetMapping("/findHotelList")
+	public String findHotelList( Model m) {
+		m.addAttribute("roomList",hotelService.findAll());
+		return "frontend/hotel-roomList";
+	}
+
+
+
+
+		
+		
+		
+}
