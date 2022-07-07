@@ -1,9 +1,7 @@
 package com.ispan.group3.repository;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -135,14 +133,6 @@ public class Comment {
 		}
 		return imagePaths;
 	}
-	
-//	public Map<Integer, String> getImages() {
-//		Map<Integer, String> imagePaths = new HashMap<>();
-//		for (CommentImage image : images) {
-//			imagePaths.put(image.getId(), image.getImagePath());
-//		}
-//		return imagePaths;
-//	}
 
 	public void setImages(Set<CommentImage> images) {
 		this.images = images;
