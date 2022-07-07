@@ -35,7 +35,7 @@ public class ViewController {
 
 	@GetMapping("/toHotelIndex")
 	public String toHotelIndex() {
-		return "frontend/HotelIndex";
+		return "frontend/hotel-Index";
 	}
 
 	@GetMapping("/tohotelDetail")

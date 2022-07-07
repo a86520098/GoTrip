@@ -1,11 +1,8 @@
 package com.ispan.group3.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,15 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.Ticket;
-import com.ispan.group3.repository.TicketImage;
 import com.ispan.group3.service.TicketService;
-import com.ispan.group3.util.FileUploadUtil;
 
 //使用springboot+thymeleaf时访问HTML界面失敗，只返回字符串
 //可能是注解的问题：
@@ -36,7 +28,7 @@ import com.ispan.group3.util.FileUploadUtil;
 public class TicketController {
 
 	@Autowired
-	private TicketService TicketService;
+	private TicketService ticketService;
 
 //	@GetMapping({"/backend/tickets/ticketList", "/backend/tickets/ticketList/{ticketNo}"})
 //	public String showCarForm(Model model, @PathVariable(required = false) Long ticketNo) {
@@ -62,7 +54,7 @@ public class TicketController {
 	@GetMapping("/ticketList")
 	public String list(@PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC) Pageable pageable,
 			Model model) {
-		Page<Ticket> page1 = TicketService.findAllByPage(pageable);
+		Page<Ticket> page1 = ticketService.findAllByPage(pageable);
 		StringBuilder sbOpen_week = new StringBuilder();
 		Map<String, String> weekNameMap = new HashMap<String, String>();
 		weekNameMap.put("1", "星期一");
@@ -103,7 +95,7 @@ public class TicketController {
 	// Model model 前端模版頁面
 	@GetMapping("/ticketList/{ticketNo}")
 	public String getOneData(@PathVariable long ticketNo, Model model) {
-		Ticket Ticket = TicketService.getBookById(ticketNo);
+		Ticket Ticket = ticketService.getBookById(ticketNo);
 		if (Ticket == null) {
 			Ticket = new Ticket();
 		}
@@ -137,7 +129,7 @@ public class TicketController {
 	// book.html -> <body th:object="${ticket}">
 	@GetMapping("/ticketList/{ticketNo}/ticketInput")
 	public String inputEditPage(@PathVariable long ticketNo, Model model) {
-		Ticket Ticket = TicketService.getBookById(ticketNo);
+		Ticket Ticket = ticketService.getBookById(ticketNo);
 		model.addAttribute("ticket", Ticket);
 		return "backend/ticketInput";
 	}
@@ -177,7 +169,7 @@ public class TicketController {
 			// } catch (Exception e) {
 				// 	e.printStackTrace();
 				// }
-				TicketService.save(ticket);
+				ticketService.save(ticket);
 		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
 
 		// List<Book> books = bookService.findAll();
@@ -188,7 +180,7 @@ public class TicketController {
 
 	@GetMapping("/ticketList/{ticketNo}/delete")
 	public String delete(@PathVariable long ticketNo, final RedirectAttributes attributes) {
-		TicketService.deleteById(ticketNo);
+		ticketService.deleteById(ticketNo);
 		attributes.addFlashAttribute("message", "信息刪除成功");
 		return "redirect:/ticketList";
 	}
