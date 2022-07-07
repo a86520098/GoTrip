@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommentImageRepository extends JpaRepository<CommentImage, Integer>{
 
-	@Query( value = "SELECT * FROM comment_image WHERE comment_id = ?1", nativeQuery=true)
+	@Query( value = "SELECT c.imagePath FROM CommentImage c WHERE comment_id = ?1", nativeQuery=true)
 	List<CommentImage> findByComment(Integer commentId);
 
 

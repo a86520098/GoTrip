@@ -17,7 +17,7 @@
 	<link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}"
 		href="vendors/datatables.net-bs4/select.dataTables.min.css">
 	<!-- TABLE -->
-	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/tickeTableStyle/bootstrap.min.css}">
 	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.table.css}">
 	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jstable.css}">
 	<style type="text/css">
@@ -52,79 +52,58 @@
 													<div>
 														<!-- <h3>景點套票詳情</h3> -->
 														<p>
-															<strong>景點套票名稱：</strong>
-															<span th:text="*{ticketName}"></span>
+															<strong>景點套票名稱：</strong><span
+																th:text="*{ticketName}">貓貓的奇幻冒險</span>
 															<!-- book對應的是 model.addAttribute("book", book);-->
 														</p>
 														<p>
-															<strong>景點套票簡介：</strong>
-															<span th:text="*{ticketIntro}"></span>
+															<strong>景點套票簡介：</strong><span
+																th:text="*{ticketIntro}">貓貓</span>
 														</p>
-														<!-- 店家營業日期隱藏中 -->
-													<!-- <p>
+														<p>
 															<strong>店家營業日期：</strong><span
-																th:text="*{ticketOpenWeek}"></span>
-														</p> -->
-														<p>
-															<strong>店家起始營業時間：</strong>
-															<span th:text="*{ticketOpenTime}"></span>
+																th:text="*{ticketOpenWeek}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>店家結束營業時間：</strong>
-															<span th:text="*{ticketEndTime}"></span>
+															<strong>店家起始營業時間：</strong><span
+																th:text="*{ticketOpenTime}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>電話：</strong>
-															<span th:text="*{phone}"></span>
+															<strong>店家結束營業時間：</strong><span
+																th:text="*{ticketEndTime}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>國家：</strong>
-															<span th:text="*{country}"></span>
+															<strong>電話：</strong><span th:text="*{phone}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>城市：</strong>
-															<span th:text="*{city}"></span>
+															<strong>國家：</strong><span
+																th:text="*{country}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>地區：</strong>
-															<span th:text="*{location}"></span>
+															<strong>城市：</strong><span th:text="*{city}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>地址：</strong>
-															<span th:text="*{address}"></span>
+															<strong>地區：</strong><span
+																th:text="*{location}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>價格：</strong>
-															<span th:text="*{price}"></span>
+															<strong>地址：</strong><span
+																th:text="*{address}">貓貓的奇幻冒險</span>
 														</p>
 														<p>
-															<strong>標籤編號：</strong>
-															<span th:text="*{tagNo}"></span>
+															<strong>價格：</strong><span th:text="*{price}">貓貓的奇幻冒險</span>
 														</p>
-														<p>
-															<strong>標籤名稱：</strong>
-															<span th:text="*{tagName}"></span>
-														</p>
-														<p>
-															<strong>上架時間：</strong>
-															<span th:text="*{ticketStartDate}"></span>
-														</p>
-														<p>
-															<strong>下架時間：</strong>
-															<span th:text="*{ticketEndDate}"></span>
-														</p>
-														<!-- 加一個返回按鈕 -->
-														<a href="javascript:history.go(-1)" class="btn btn-success">返回</a>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
 								</div>
+								<!-- 加一個返回按鈕 -->
+								<a href="javascript:history.go(-1)" class="btn btn-default">返回</a>
+							</div>
+							<footer th:replace="backend/partials/fragment :: footer"></footer>
 							<!-- partial -->
 						</div>
-						<!-- Footer -->
-						<footer th:replace="backend/partials/fragment :: footer"></footer>
 					</div>
 					<script th:src="@{/vendors/js/vendor.bundle.base.js}"
 						src="vendors/js/vendor.bundle.base.js"></script>
@@ -146,10 +125,11 @@
 					<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 					<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 					<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
-					<script th:src="@{/js/bootstrap.min.js}" src="../../static/js/ticketTableJS/bootstrap.min.js"></script>
+					<script th:src="@{/js/bootstrap.min.js}" src="../static/js/ticketTableJS/bootstrap.min.js"></script>
 					<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
 					<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-					<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="../../static/vendors/js/vendor.bundle.base.js"></script>
+					<script th:src="@{/vendors/js/vendor.bundle.base.js}"
+						src="../static/vendors/js/vendor.bundle.base.js"></script>
 					<!-- <script src="../static/js/jstable.min.js"></script> -->
 					<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
 					<script>
