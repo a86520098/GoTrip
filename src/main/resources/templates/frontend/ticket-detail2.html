@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -5,22 +6,15 @@
 
 <body class="animsition">
 
-	<!-- Header -->
-  <header th:replace="frontend/partials/fragment :: header"></header>
-	<!-- Cart 購物車 -->
-	<div th:replace="frontend/partials/fragment :: cart"></div>
+<!-- Header -->
+<header th:replace="frontend/partials/fragment :: header"></header>
+<!-- Cart 購物車 -->
+<div th:replace="frontend/partials/fragment :: cart"></div>
 
-	  <th:object="${roomDetail}"></th:object>
-	<tr th:each="hotel : ${roomDetail}">
-		<td th:text="${hotel.id}" />
-		<td th:text="${hotel.hotel_name}" />
-		<td th:text="${hotel.price}" />
-		<td th:text="${hotel.phone}" />
-		<td th:text="${hotel.boss_name}"/>
-		<td th:text="${hotel.status}" />
-		<td th:text="${hotel.roomtype}" />
-		<td> <a th:href="@{enterPic(id=${hotel.id})}">  <img width='60' height='72' th:src="@{/hotel/picture(id=${hotel.id})}"> </a> </td>
-	</tr>
+
+<tr th:each="hotel : ${roomDetail}">
+
+
 
 
 	<div class="container">
@@ -58,56 +52,16 @@
 					<div class="p-l-25 p-r-30 p-lr-0-lg">
 
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-							</ol>
+
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img th:src="@{/images/tickets/Xpark_1.jpg}" class="d-block w-100" alt="...">
+									<td>  <img  th:src="@{/hotel/picture(id=${hotel.id})}" class="d-block w-100">  </td>
 								</div>
-								<div class="carousel-item">
-									<img th:src="@{/images/tickets/Xpark_2.jpg}" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img th:src="@{/images/tickets/Xpark_3.jpg}" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img th:src="@{/images/tickets/Xpark_4.jpg}" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img th:src="@{/images/tickets/Xpark_5.jpg}" class="d-block w-100" alt="...">
-								</div>
-								<div class="carousel-item">
-									<img th:src="@{/images/tickets/Xpark_6.jpg}" class="d-block w-100" alt="...">
-								</div>
+
 							</div>
-							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-								data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-								data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-						<div class="m-t-20 " data-ride="carousel">
-							<button data-slide-to="0" class="active">
-								<img class="p-r-8 m-b-10" style="height: 80px;" th:src="@{/images/tickets/Xpark_1.jpg}" alt="...">
-							</button>
-							<img class="p-r-8 m-b-10" style="height: 80px;" th:src="@{/images/tickets/Xpark_2.jpg}" alt="...">
-							<img class="p-r-8 m-b-10" style="height: 80px;" th:src="@{/images/tickets/Xpark_3.jpg}" alt="...">
-							<img class="p-r-8 m-b-10" style="height: 80px;" th:src="@{/images/tickets/Xpark_4.jpg}" alt="...">
-							<img class="p-r-8 m-b-10" style="height: 80px;" th:src="@{/images/tickets/Xpark_5.jpg}" alt="...">
-							<img class="m-b-10" style="height: 80px;" th:src="@{/images/tickets/Xpark_6.jpg}" alt="...">
 
 						</div>
+
 
 					</div>
 				</div>
@@ -115,7 +69,8 @@
 				<div class="col-md-4 p-b-30">
 					<div class="p-t-5">
 						<h4 class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14">
-							Xpark都會型水生公園門票
+							<td th:text="${hotel.hotel_name}" />
+
 						</h4>
 						<div class="p-b-10">
 							<div class="">
@@ -128,15 +83,17 @@
 							</div>
 							<div class="p-t-20">
 								<i class="fa fa-map-marker" aria-hidden="true"></i>
-								桃園, 青埔
+								<td th:text="${hotel.fullAddress}" />
 							</div>
 						</div>
 						<p class="stext-102 cl3 p-t-23">
-							由日本橫濱八景島首度跨海來台桃園開設分館「Xpark」，Xpark 主打新都會型水族館，驅使最先端的科技，營造出環境的溫度、濕度、氣味、聲音，帶您到地球上每個不可思議的角落，受到啟發、感受療癒、洗滌心靈。
+						<h2>該如何前往</h2>
+						<td th:text="${hotel.Howgoto}" />
 						</p>
 
 						<p class="mtext-106 cl2 p-t-30">
-							TWD $450
+							$:<td th:text="${hotel.price}" />
+
 						</p>
 						<!--  -->
 						<div class=" p-t-33">
@@ -216,7 +173,7 @@
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs" role="tablist">
 						<li class="nav-item p-b-10">
-							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">hotelRule</a>
 						</li>
 
 						<li class="nav-item p-b-10">
@@ -235,14 +192,7 @@
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md">
 								<p class="stext-102 cl6">
-									Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla
-									sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit
-									lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim,
-									cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum
-									in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor
-									sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec
-									laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras
-									in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
+								<td th:text="${hotel.hotelRule}"/>
 								</p>
 							</div>
 						</div>
@@ -368,24 +318,24 @@
 												<div class="col-12 p-b-5">
 													<label class="stext-102 cl3" for="review">Your review</label>
 													<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-														id="review" name="review"></textarea>
+															  id="review" name="review"></textarea>
 												</div>
 
 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="name">Name</label>
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name"
-														type="text" name="name">
+														   type="text" name="name">
 												</div>
 
 												<div class="col-sm-6 p-b-5">
 													<label class="stext-102 cl3" for="email">Email</label>
 													<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email"
-														type="text" name="email">
+														   type="text" name="email">
 												</div>
 											</div>
 
 											<button
-												class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+													class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
 												Submit
 											</button>
 										</form>
@@ -429,7 +379,7 @@
 								<img th:src="@{/images/tickets/tainan_art.jpg}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -437,7 +387,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Esprit Ruffle Shirt
 									</a>
 
@@ -449,9 +399,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -465,7 +415,7 @@
 								<img th:src="@{/images/tickets/theme_park_1.jpg}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -473,7 +423,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Herschel supply
 									</a>
 
@@ -485,9 +435,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -501,7 +451,7 @@
 								<img th:src="@{/images/tickets/art.jpg}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -509,7 +459,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Only Check Trouser
 									</a>
 
@@ -521,9 +471,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -537,7 +487,7 @@
 								<img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -545,7 +495,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Classic Trench Coat
 									</a>
 
@@ -557,9 +507,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -573,7 +523,7 @@
 								<img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -581,7 +531,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Classic Trench Coat
 									</a>
 
@@ -593,9 +543,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -609,7 +559,7 @@
 								<img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -617,7 +567,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Classic Trench Coat
 									</a>
 
@@ -629,9 +579,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -645,7 +595,7 @@
 								<img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -653,7 +603,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Classic Trench Coat
 									</a>
 
@@ -665,9 +615,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -681,7 +631,7 @@
 								<img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
 								<a href="#"
-									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+								   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>
 							</div>
@@ -689,7 +639,7 @@
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="product-detail.html"
-										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										Classic Trench Coat
 									</a>
 
@@ -701,9 +651,9 @@
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 										<img class="icon-heart1 dis-block trans-04" th:src="@{/images/icons/icon-heart-01.png}"
-											alt="ICON">
+											 alt="ICON">
 										<img class="icon-heart2 dis-block trans-04 ab-t-l"
-											th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+											 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
 									</a>
 								</div>
 							</div>
@@ -724,7 +674,6 @@
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
 
-
+</tr>
 </body>
 
-</html>

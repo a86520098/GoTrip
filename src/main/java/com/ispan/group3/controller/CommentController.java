@@ -42,7 +42,14 @@ public class CommentController {
 		return "backend/comment-list";
 	}
 	
-	@GetMapping({"/backend/comments/form", "/backend/comments/form/{id}"})
+	@GetMapping({"/backend/comments/form"})
+	public String showNewCommentForm(Model model) {
+		Comment comment = new Comment();			
+		model.addAttribute("comment", comment);
+		return "backend/comment-new-form";
+	}
+
+	@GetMapping({"/backend/comments/form/{id}"})
 	public String showCommentForm(Model model, @PathVariable(required = false) Integer id) {
 		Comment comment;
 		if (id != null) {
@@ -54,6 +61,8 @@ public class CommentController {
 		return "backend/comment-form";
 	}
 
+	
+	
 	@GetMapping("/backend/comments/{id}")
 	public Comment getComment(@PathVariable Integer id) {
 		return cService.getComment(id);

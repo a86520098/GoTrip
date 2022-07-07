@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>GoTrip後台管理</title>
+<!-- plugins:css -->
+<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css" >
+<link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css" >
+<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+<!-- <link rel="stylesheet" href="../../vendors/feather/feather.css"> -->
+<!-- <link rel="stylesheet" href="../../vendors/ti-icons/css/themify-icons.css"> -->
+<!-- <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css"> -->
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<!-- <link rel="stylesheet" href="../../vendors/select2/select2.min.css"> -->
+<!-- <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css"> -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<!-- <link rel="stylesheet" href="../../css/vertical-layout-light/style.css"> -->
+<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css}" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" >
+<link rel="stylesheet" th:href="@{/css/stars.css}" href="../../css/stars.css">
+<!-- endinject -->
+<!-- <link rel="shortcut icon" href="../../images/favicon.png" /> -->
+<style>
+img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+
+		<nav th:replace="backend/partials/fragment :: navbar"></nav>
+
+		<div class="container-fluid page-body-wrapper">
+			<div th:replace="backend/partials/fragment :: setting"></div>
+			<nav th:replace="backend/partials/fragment :: sidebar"></nav>
+			<!-- 主要內容 partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+          <div class="row">
+           
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">新增租車資訊</h4>
+                  <form id="insertForm" name="form" th:action="@{/backend/cars/}" method="post"	th:object="${carModel}" 
+										class="form-horizontal needs-validation" enctype="multipart/form-data">
+                    <p class="card-description mt-5">
+                      車款資料
+                    </p>
+                    <div class="row mt-4">
+                    	<input th:field="*{id}" id="id" type="hidden" class="form-control"	placeholder="" />
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="makeCh">廠牌（中文）</label>
+                          <div class="col-sm-9">
+                            <input th:field="*{makeCh}" id="makeCh" type="text" class="form-control" />
+                            <div class="invalid-feedback">請輸入車款廠牌</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="type">車款類別</label>
+													<div class="col-sm-9">
+														<select th:field="*{type}" id="type" name="type" class="form-control ">
+															<option value="經濟轎車">經濟轎車</option>
+															<option value="豪華轎車">豪華轎車</option>
+															<option value="休旅車">休旅車/SUV</option>
+														</select>
+														<div class="invalid-feedback">請選擇車款類別</div>
+													</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+											
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="makeEn">廠牌（英文）</label>
+                          <div class="col-sm-9">
+                            <input th:field="*{makeEn}" id="makeEn" type="text" class="form-control" />
+                            <div class="invalid-feedback">請輸入車款廠牌</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="model">車款</label>
+                          <div class="col-sm-9">
+                            <input th:field="*{model}" id="model" type="text" class="form-control" />
+                            <div class="invalid-feedback">請輸入車款</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="power">動力</label>
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input th:field="*{power}" class="form-check-input" type="radio" id="automatic" name="power" value="燃油車" checked/>
+                                燃油車
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input th:field="*{power}" class="form-check-input" type="radio" id="manual" name="power" value="電動車"/>
+                                電動車
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                        	<label class="col-sm-3 col-form-label"  for="transmission">變速器</label>
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input th:field="*{transmission}" class="form-check-input" type="radio" id="automatic" name="transmission" value="AT"/>
+                                自排
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input th:field="*{transmission}" class="form-check-input" type="radio" id="manual" name="transmission" value="MT"/>
+                                手排
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="displacement">引擎排氣量</label>
+													<div class="col-sm-9">
+														<input th:field="*{displacement}" id="displacement" type="number" class="form-control"	min="1" />
+														<div class="invalid-feedback">請輸入引擎排氣量</div>
+													</div>
+												</div>
+                      </div>
+                    </div>
+                    
+                    
+                    <p class="card-description mt-4">
+                      其他資訊
+                    </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="suitcase">大型行李數</label>
+													<div class="col-sm-9">
+														<input th:field="*{suitcase}" id="suitcase" type="number" class="form-control"	min="1" />
+													</div>
+												</div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="bag">小型行李數</label>
+													<div class="col-sm-9">
+														<input th:field="*{bag}" id="bag" type="number" class="form-control"	min="1" />
+													</div>
+												</div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="seat">座位數</label>
+													<div class="col-sm-9">
+														<input th:field="*{seat}" id="seat" type="number" class="form-control"	min="1" />
+													</div>
+												</div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="door">車門數</label>
+													<div class="col-sm-9">
+														<input th:field="*{door}" id="door" type="number" class="form-control"	min="1" />
+													</div>
+												</div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row mt-5 justify-content-end">
+												<div class="col-sm-3">
+													<label for="images" class="col-form-label pb-1">上傳照片</label>
+												</div>
+												<div class="col-sm-9">
+													<div class="custom-file">
+														<input type="file" class="form-control custom-file-input pb-1"	name="carImage" id="carImage">
+														<label class="custom-file-label">選擇檔案</label>
+													</div>
+												</div>
+											</div>
+                      </div>
+                      <div class="col-md-3">
+<!-- 												<img th:src="@{*{image}}" class="rounded"/> -->
+        								<div class="row" id="formFileCar"></div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button id="btn-insert" type="submit" class="btn btn-primary mr-2 justify-content-end mr-4">儲存資料</button>
+                      <a class="btn btn-light justify-content-end" th:href="@{/backend/cars}">回上一頁</a>
+                    </div> 
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+				<footer th:replace="backend/partials/fragment :: footer"></footer>
+				<!-- partial -->
+			</div>
+		</div>
+	</div>
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+
+	<!--   <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script> -->
+	<!--   <script src="../../vendors/select2/select2.min.js"></script> -->
+
+	<script th:src="@{/vendors/js/vendor.bundle.base.js}"	src="vendors/js/vendor.bundle.base.js"></script>
+	<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+	<script th:src="@{/js/hoverable-collapse.js}"	src="js/hoverable-collapse.js"></script>
+	<script th:src="@{/js/template.js}" src="js/template.js"></script>
+	<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+
+	<!--   <script src="../../js/file-upload.js"></script> -->
+	<!--   <script src="../../js/typeahead.js"></script> -->
+	<!--   <script src="../../js/select2.js"></script> -->
+	<script th:src="@{/vendors/sweetalert/sweetalert.min.js}"></script>
+	<script th:src="@{/js/comment.js}"></script>
+<script>
+	$(function() {
+        
+        // 確認表單內容
+//         $('#btn-insert').click(function (e) {
+//             let isTypeValid = $('#type').val() !== null;
+//             let isMakeVaild = $('#make').val() !== '';
+//             let isModeldVaild = $('#model').val() !== '';
+            
+//             if (!isTypeValid || !isMakeVaild || !isModeldVaild) {
+//                 e.preventDefault();					
+//                 isTypeValid ? hideInvalidText($('#type')) : showInvalidText($('#type'));
+//                 isMakeVaild ? hideInvalidText($('#make')) : showInvalidText($('#make'));
+//                 isModeldVaild ? hideInvalidText($('#model')) : showInvalidText($('#model'));
+//                 $("form").addClass('validated');
+//             } else {
+//                e.preventDefault();		
+//                  Swal.fire({
+//                    icon: 'success',
+//                    title: '儲存成功',
+//                    showConfirmButton: false,
+//                    timer: 1500
+//                  });
+                 
+//                  setInterval(function() {
+//                      $('#insertForm').submit()
+//                  }, 1500);
+//             }
+//         });
+        
+        $('#carImage').on('change', function () {
+		    var imagefiles = document.getElementById("carImage");
+		    var number = imagefiles.files.length;
+		    document.getElementById("formFileCar").innerHTML = ""
+		    for (i = 0; i < number; i++) {
+		        var urls = URL.createObjectURL(event.target.files[i]);
+		        document.getElementById("formFileCar").innerHTML += 
+		            '<div class=""> <img class=" mb-3" src="' + urls + '" /> </div>';
+		    }
+		})
+        
+        
+        
+	})
+	</script>
+	<!-- End custom js for this page-->
+</body>
+
+</html>

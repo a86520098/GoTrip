@@ -8,6 +8,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +40,14 @@ public class CarController {
 		return "backend/car-list";
 	}
 	
-	@GetMapping({"/backend/cars/form", "/backend/cars/form/{id}"})
+	@GetMapping({"/backend/cars/form"})
+	public String showNewCarForm(Model model) {
+		CarModel carModel= new CarModel();			
+		model.addAttribute("carModel", carModel);
+		return "backend/car-new-form";
+	}
+	
+	@GetMapping({"/backend/cars/form/{id}"})
 	public String showCarForm(Model model, @PathVariable(required = false) Integer id) {
 		CarModel carModel;
 		if (id != null) {
@@ -63,7 +71,7 @@ public class CarController {
 								@RequestParam(value = "carImage", required = false) MultipartFile file) {
 			try {
 				String savePath = FileUploadUtil.saveFile("comment", file);
-				carModel.setImage(savePath);
+				carModel.setImage("/data/uploadimages/car/toyota-yaris.png");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -73,5 +81,11 @@ public class CarController {
 		return "redirect:/backend/cars";
 	}
 	
+	
+	@DeleteMapping("/backend/cars/{id}")
+	public String deleteComment(@PathVariable Integer id) {
+		modelService.deleteCarModel(id);
+		return "redirect:/backend/cars";
+	}
 	
 }
