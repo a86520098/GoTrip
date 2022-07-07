@@ -33,10 +33,7 @@ public class ViewController {
 		return "backend/index";
 	}
 
-	@GetMapping("/toHotelIndex")
-	public String toHotelIndex() {
-		return "frontend/hotel-Index";
-	}
+
 
 
 
