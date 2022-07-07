@@ -1,20 +1,16 @@
 package com.ispan.group3.repository;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.stereotype.Repository;
 
 //JpaRepository<Book實體對象類型, Long(ID)>
-public interface ticketRepository extends JpaRepository<ticketBean, Long> {
+@Repository
+public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
 //	分頁	查詢方法(注意import部分)
-	Page<ticketBean> findAll(Pageable pageable);
+	Page<Ticket> findAll(Pageable pageable);
 	
 //	@Transactional(readOnly = true)僅可讀取
 //	@Transactional(timeout = 10)執行超過十秒超時
