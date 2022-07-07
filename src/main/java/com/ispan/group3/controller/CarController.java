@@ -1,16 +1,25 @@
 package com.ispan.group3.controller;
 
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.Comment;
+import com.ispan.group3.repository.CommentImage;
 import com.ispan.group3.service.CarModelService;
+import com.ispan.group3.util.FileUploadUtil;
 
 @Controller
 public class CarController {
@@ -49,7 +58,20 @@ public class CarController {
 		return "frontend/car";
 	}
 	
-	
+	@PostMapping("/backend/cars")
+	public String insertComment(@ModelAttribute CarModel carModel, 
+								@RequestParam(value = "carImage", required = false) MultipartFile file) {
+			try {
+				String savePath = FileUploadUtil.saveFile("comment", file);
+				carModel.setImage(savePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		modelService.insertCarModel(carModel);
+		
+
+		return "redirect:/backend/cars";
+	}
 	
 	
 }

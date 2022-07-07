@@ -207,14 +207,14 @@ img {
 												</div>
 												<div class="col-sm-9">
 													<div class="custom-file">
-														<input type="file" class="form-control custom-file-input pb-1"	name="carImages" id="carImages">
+														<input type="file" class="form-control custom-file-input pb-1"	name="carImage" id="carImage">
 														<label class="custom-file-label">選擇檔案</label>
 													</div>
 												</div>
 											</div>
                       </div>
                       <div class="col-md-3">
-												<img th:src="@{*{image}}" class="rounded"/>
+<!-- 												<img th:src="@{*{image}}" class="rounded"/> -->
         								<div class="row" id="formFileCar"></div>
                       </div>
                     </div>
@@ -254,31 +254,45 @@ img {
 	$(function() {
         
         // 確認表單內容
-        $('#btn-insert').click(function (e) {
-            let isTypeValid = $('#type').val() !== null;
-            let isMakeVaild = $('#make').val() !== '';
-            let isModeldVaild = $('#model').val() !== '';
+//         $('#btn-insert').click(function (e) {
+//             let isTypeValid = $('#type').val() !== null;
+//             let isMakeVaild = $('#make').val() !== '';
+//             let isModeldVaild = $('#model').val() !== '';
             
-            if (!isTypeValid || !isMakeVaild || !isModeldVaild) {
-                e.preventDefault();					
-                isTypeValid ? hideInvalidText($('#type')) : showInvalidText($('#type'));
-                isMakeVaild ? hideInvalidText($('#make')) : showInvalidText($('#make'));
-                isModeldVaild ? hideInvalidText($('#model')) : showInvalidText($('#model'));
-                $("form").addClass('validated');
-            } else {
-               e.preventDefault();		
-                 Swal.fire({
-                   icon: 'success',
-                   title: '儲存成功',
-                   showConfirmButton: false,
-                   timer: 1500
-                 });
+//             if (!isTypeValid || !isMakeVaild || !isModeldVaild) {
+//                 e.preventDefault();					
+//                 isTypeValid ? hideInvalidText($('#type')) : showInvalidText($('#type'));
+//                 isMakeVaild ? hideInvalidText($('#make')) : showInvalidText($('#make'));
+//                 isModeldVaild ? hideInvalidText($('#model')) : showInvalidText($('#model'));
+//                 $("form").addClass('validated');
+//             } else {
+//                e.preventDefault();		
+//                  Swal.fire({
+//                    icon: 'success',
+//                    title: '儲存成功',
+//                    showConfirmButton: false,
+//                    timer: 1500
+//                  });
                  
-                 setInterval(function() {
-                     $('#insertForm').submit()
-                 }, 1500);
-            }
-        });
+//                  setInterval(function() {
+//                      $('#insertForm').submit()
+//                  }, 1500);
+//             }
+//         });
+        
+        $('#carImage').on('change', function () {
+		    var imagefiles = document.getElementById("carImage");
+		    var number = imagefiles.files.length;
+		    document.getElementById("formFileCar").innerHTML = ""
+		    for (i = 0; i < number; i++) {
+		        var urls = URL.createObjectURL(event.target.files[i]);
+		        document.getElementById("formFileCar").innerHTML += 
+		            '<div class=""> <img class=" mb-3" src="' + urls + '" /> </div>';
+		    }
+		})
+        
+        
+        
 	})
 	</script>
 	<!-- End custom js for this page-->
