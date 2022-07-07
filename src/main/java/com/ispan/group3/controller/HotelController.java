@@ -211,6 +211,11 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 		System.out.println("This is success transfer to Edit form");
 		return "backend/hotel/intoPicture";
 	}
+	@GetMapping("/tohotelDetail")
+	public String toHotelDetail(@RequestParam("id")Integer id , Model m) {
+		m.addAttribute("roomDetail",hotelService.findById(id));
+		return "frontend/ticket-detail2";
+	}
 		
 		
 		

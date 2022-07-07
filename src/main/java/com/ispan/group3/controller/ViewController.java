@@ -38,11 +38,7 @@ public class ViewController {
 		return "frontend/hotel-Index";
 	}
 
-	@GetMapping("/tohotelDetail")
-	public String toHotelDetail(@RequestParam("id")Integer id , Model m) {
-		  m.addAttribute("roomDetail",hotelservice.findById(id));
-		return "frontend/ticket-detail2";
-	}
+	
 
 
 }
