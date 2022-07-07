@@ -69,7 +69,7 @@ jQuery(document).ready(function ($) {
             // Request header
             beforeSend: function(xhrObj){
                 xhrObj.setRequestHeader("Content-Type","application/octet-stream");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "6f158e623cca4015bc077bf379c7186d");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "");
             },
             type: "POST",
             processData:false,
