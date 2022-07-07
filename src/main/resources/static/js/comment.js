@@ -1,55 +1,56 @@
 
 
- 		function saveComment(e) {
- 		Swal.fire({
- 			  icon: 'success',
- 			  title: 'Your work has been saved',
- 			  showConfirmButton: false,
- 			  timer: 1500
- 			})
- 		}
+function saveComment(e) {
+    Swal.fire({
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+    })
+}
 
-jQuery(document).ready(function($){
-		// 立即顯示所選照片
-		$('#imagefiles').on('change', function () {
-		    var imagefiles = document.getElementById("imagefiles");
-		    var number = imagefiles.files.length;
-		    document.getElementById("formFile").innerHTML = ""
-		    for (i = 0; i < number; i++) {
-		        var urls = URL.createObjectURL(event.target.files[i]);
-		        document.getElementById("formFile").innerHTML += 
-		            '<div class="col-sm-4"> <img class="rounded mb-3" src="' + urls + '" /> </div>';
-		    }
-		})
-		
-		$('#carImage').on('change', function () {
-		    var imagefiles = document.getElementById("carImage");
-		    var number = imagefiles.files.length;
-		    document.getElementById("formFileCar").innerHTML = ""
-		    for (i = 0; i < number; i++) {
-		        var urls = URL.createObjectURL(event.target.files[i]);
-		        document.getElementById("formFileCar").innerHTML += 
-		            '<div class=""> <img class=" mb-3" src="' + urls + '" /> </div>';
-		    }
-		})
+jQuery(document).ready(function ($) {
+    // 立即顯示多張照片 - 評論
+    $('#imagefiles').on('change', function () {
+        var imagefiles = document.getElementById("imagefiles");
+        var number = imagefiles.files.length;
+        document.getElementById("formFile").innerHTML = ""
+        for (i = 0; i < number; i++) {
+            var urls = URL.createObjectURL(event.target.files[i]);
+            document.getElementById("formFile").innerHTML +=
+                '<div class="col-sm-4 mb-3"> <img class="rounded mb-3" src="' + urls + '" /> </div>';
+        }
+    })
 
-    $(function() {
+	// 立即顯示多張照片 - 租車
+    $('#carImage').on('change', function () {
+        var imagefiles = document.getElementById("carImage");
+        var number = imagefiles.files.length;
+        document.getElementById("formFileCar").innerHTML = ""
+        for (i = 0; i < number; i++) {
+            var urls = URL.createObjectURL(event.target.files[i]);
+            document.getElementById("formFileCar").innerHTML +=
+                '<div class=""> <img class=" mb-3" src="' + urls + '" /> </div>';
+        }
+    })
+
+    $(function () {
         let contentMax = 200;
         let imagefilesMax = 3;
 
-    		let contentLength = $("#content").val().length;
-        $("#content-length").text('('+contentLength+'/'+contentMax+')');
-        
+        let contentLength = $("#content").val().length;
+        $("#content-length").text('(' + contentLength + '/' + contentMax + ')');
+
         // 確認表單內容
         $('#btn-insert').click(function (e) {
-            let isItemTbValid = $('#itemTb').val() !== null;
+            let isItemTbValid = $('#itemTb').val() !== 'no';
             let isItemIdVaild = $('#itemId').val() !== '';
             let isUserIdVaild = $('#userId').val() !== '';
             let isContentVaild = $("#content").val().length <= contentMax;
             let isimagefilesVaild = $("#imagefiles")[0].files.length <= imagefilesMax;
-            
-            if (!isItemTbValid || !isItemIdVaild || !isUserIdVaild || !isContentVaild || !isimagefilesVaild ) {
-                e.preventDefault();					
+
+            if (!isItemTbValid || !isItemIdVaild || !isUserIdVaild || !isContentVaild || !isimagefilesVaild) {
+                e.preventDefault();
                 isItemTbValid ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));
                 isItemIdVaild ? hideInvalidText($('#itemId')) : showInvalidText($('#itemId'));
                 isUserIdVaild ? hideInvalidText($('#userId')) : showInvalidText($('#userId'));
@@ -57,208 +58,187 @@ jQuery(document).ready(function($){
                 isimagefilesVaild ? hideInvalidText($('#imagefiles')) : showInvalidText($('#imagefiles'));
                 $("form").addClass('validated');
             } else {
-                e.preventDefault();		
-                 Swal.fire({
-                   icon: 'success',
-                   title: '儲存成功',
-                   showConfirmButton: false,
-                   timer: 1500
-                 });
-                 
-                 setInterval(function() {
-                     $('#insertForm').submit()
-                 }, 1500);
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'success',
+                    title: '儲存成功',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                setInterval(function () {
+                    $('#insertForm').submit()
+                }, 1500);
             }
-        });
-        
-        function showInvalidText(selector) {
-            selector.removeClass('is-valid').addClass('is-invalid');
-            selector.siblings('.invalid-feedback').css('display', 'block')
-        }
-        
-        function hideInvalidText(selector) {
-            selector.removeClass('is-invalid').addClass('is-valid');
-            selector.siblings('.invalid-feedback').css('display', 'none')
-        }
-        
-        
-        
-        $('#itemTb').on('change', function () {
-            if ($("form").hasClass('validated')) 
-                $('#itemTb').val() == null ? showInvalidText($('#itemTb')) : hideInvalidText($('#itemTb'))
         })
-        
-        $('#itemId').keyup(function () {
-            if ($("form").hasClass('validated')) 
-                $('#itemId').val() == '' ? showInvalidText($('#itemId')) : hideInvalidText($('#itemId'))
-        })
+    });
 
-        $('#userId').keyup(function () {
-            if ($("form").hasClass('validated')) 
-                $('#userId').val() == '' ? showInvalidText($('#userId')) : hideInvalidText($('#userId'))
-        })
-        
-        // 顯示評論字數
-        $("#content").keyup(function(){
-            let contentLength = $("#content").val().length;
-            $("#content-length").text('('+contentLength+'/'+contentMax+')');
-            if (contentLength > contentMax) {
-                $('#content-length').removeClass('text-black-50').addClass('text-danger')
-            } else {
-                $('#content-length').removeClass('text-danger').addClass('text-black-50')
-            }
-            if ($("form").hasClass('validated')) {
-                contentLength > contentMax ? showInvalidText($('#content')) : hideInvalidText($('#content'))				    	
-            }
-        });
-        
-        // 顯示上傳照片數量
-        $("#imagefiles").on("change", function() {
-            let imagefilesLength = $("#imagefiles")[0].files.length;
-            $('#imagefiles-length').text('('+imagefilesLength+'/'+ imagefilesMax +')')
-            if (imagefilesLength > imagefilesMax) {
-                $('#imagefiles-length').removeClass('text-black-50').addClass('text-danger')
-            } else {
-                $('#imagefiles-length').removeClass('text-danger').addClass('text-black-50')
-            }
-            if ($("form").hasClass('validated')) {
-                imagefilesLength > imagefilesMax ? showInvalidText($('#imagefiles')) : hideInvalidText($('#imagefiles'))				    	
-            } 
-        });
+    function showInvalidText(selector) {
+        selector.removeClass('is-valid').addClass('is-invalid');
+        selector.siblings('.invalid-feedback').css('display', 'block')
+    }
 
-        
-        // 顯示"行程"資訊
-        $('#btn-ticket').on('click', function() {
-            $.ajax({
-                type: 'GET',
-                url: 'findItem',
-                dataType: 'json',
-                data: {
-                    "select": "tickets"
-                },
-                success: function (data) {
-                    // 清空tbody內容
-                    $("tbody").html('');
-                    // ajax回傳資料放到tbody
-                    $.each(data, function (i) {
-                        let str = "<tr><td style='text-align: center'>行程</td>"+
-                                  "<td style='text-align: center'>"+data[i].prod_no+"</td>"+
-                                    "<td>"+data[i].prod_name+"</td>"+
-                                  "<td class='info' style='text-align:center'><i class='bi bi-info-square'></i></td></tr>";
-                        $("tbody").append(str)
-                    })
-                    // td on click 自動填入
-                    $("td").on('click', function() {
-                        let id = $(this).closest("tr").find('td').eq(1).html();
-                        $("#itemId").val(id);
-                        $("#itemTb").val("ticket")
-                        // form validation 設定更改
-                        if ($("form").hasClass('validated')) {
-                            $('#itemTb').val() !== null ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));
-                            $('#itemId').val() !== '' ? hideInvalidText($('#itemId')) : showInvalidText($('#itemId'));
-                        }
-                    });
-                    // info on click 找該商品資訊
-                    $('.info').on('click', function() {
-                        let row = $(this).closest("tr");        
-                        let item = $(row).find('td').eq(0).html();
-                        let id = $(row).find('td').eq(1).html();
-                        popUpInfo(item, id);
-                    });
-                    
-                },
-                error: function () {
-                    console.log('error')
-                }
-            })
-        })
-        
-        
-        // 顯示"住宿"資訊
-        $('#btn-hotel').on('click', function() {
-            $.ajax({
-                type: 'GET',
-                url: 'findItem',
-                dataType: 'json',
-                data: {
-                    "select": "hotels"
-                },
-                success: function (data) {
-                    $("tbody").html('');
-                    let str = "";
-                    $.each(data, function (i) {
-                        str += "<tr><td style='text-align:center'>住宿</td>"+
-                                  "<td style='text-align:center'>"+data[i].id+"</td>"+
-                                    "<td >"+data[i].hotel_name+"</td>"+
-                                  "<td class='info' style='text-align:center'><i class='bi bi-info-square'></i></td></tr>";
-                    })
-                    $("tbody").html(str);
-                    $("td").on('click', function() {
-                        let id = $(this).closest("tr").find('td').eq(1).html();
-                        $("#itemId").val(id);
-                        $("#itemTb").val("hotel")
-                        // form validation 設定更改
-                        if ($("form").hasClass('validated')) {
-                            $('#itemTb').val() !== null ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));
-                            $('#itemId').val() !== '' ? hideInvalidText($('#itemId')) : showInvalidText($('#itemId'));
-                        }
-                    });
-                    $('.info').on('click', function() {
-                        let row = $(this).closest("tr");        
-                        let item = $(row).find('td').eq(0).html();
-                        let id = $(row).find('td').eq(1).html();
-                        popUpInfo(item, id);
-                    });
-                },
-                
-                error: function () {
-                    console.log('error')
-                }
-            })
-        })
-        
-
-        function popUpInfo(item, id) {
-            $.ajax({
-                type: 'POST',
-                url: 'findItem',
-                dataType: 'json',
-                data: {
-                    "itemTb": item,
-                    "itemId": id
-                },
-                success: function (response) {
-                    let str = JSON.stringify(response)
-                    let parsed = JSON.parse(str);
-                    let itemInfo = "商品資訊"
-                    if (String(parsed.tableName) == "住宿") {
-                        itemInfo = "商品項目：" + parsed.tableName +
-                            "<br>商品編號：" + parsed.itemId +
-                            "<br>商品名稱：" + parsed.itemName +
-                            "<br>商品價格：NT$" + parsed.price +
-                            "<br>賣家：　　" + parsed.owner +
-                            "<br>電話：　　" + parsed.phone;
-                    } else if (String(parsed.tableName) == "行程") {
-                        itemInfo = "商品項目：" + parsed.tableName +
-                            "<br>商品編號：" + parsed.itemId +
-                            "<br>商品名稱：" + parsed.itemName +
-                            "<br>商品價格：NT$" + parsed.price +
-                            "<br>電話：　　" + parsed.phone +
-                            "<br>地址：　　" + parsed.city + parsed.district + parsed.address +
-                            "<br>商品介紹：<br>" + parsed.info;
-                    }
-                    Swal.fire({
-                        html: '<div class="text-dark text-start small">' + itemInfo + '</div>',
-                        confirmButtonColor: '#FF8D29',
-                    })
-                },
-                error: function () {
-                    console.log('error')
-                }
-            })
-        }
+    function hideInvalidText(selector) {
+        selector.removeClass('is-invalid').addClass('is-valid');
+        selector.siblings('.invalid-feedback').css('display', 'none')
+    }
 
 
-        
+
+    $('#itemTb').on('change', function () {
+        if ($("form").hasClass('validated'))
+            $('#itemTb').val() == null ? showInvalidText($('#itemTb')) : hideInvalidText($('#itemTb'))
     })
+
+    $('#itemId').keyup(function () {
+        if ($("form").hasClass('validated'))
+            $('#itemId').val() == '' ? showInvalidText($('#itemId')) : hideInvalidText($('#itemId'))
+    })
+
+    $('#userId').keyup(function () {
+        if ($("form").hasClass('validated'))
+            $('#userId').val() == '' ? showInvalidText($('#userId')) : hideInvalidText($('#userId'))
+    })
+
+    // 顯示評論字數
+    $("#content").keyup(function () {
+        let contentLength = $("#content").val().length;
+        $("#content-length").text('(' + contentLength + '/' + contentMax + ')');
+        if (contentLength > contentMax) {
+            $('#content-length').removeClass('text-black-50').addClass('text-danger')
+        } else {
+            $('#content-length').removeClass('text-danger').addClass('text-black-50')
+        }
+        if ($("form").hasClass('validated')) {
+            contentLength > contentMax ? showInvalidText($('#content')) : hideInvalidText($('#content'))
+        }
+    });
+
+    // 顯示上傳照片數量
+    $("#imagefiles").on("change", function () {
+        let imagefilesLength = $("#imagefiles")[0].files.length;
+        $('#images-length').text('(' + imagefilesLength + '/' + imagefilesMax + ')')
+        if (imagefilesLength > imagefilesMax) {
+            $('#images-length').removeClass('text-black-50').addClass('text-danger')
+        } else {
+            $('#images-length').removeClass('text-danger').addClass('text-black-50')
+        }
+        if ($("form").hasClass('validated')) {
+            imagefilesLength > imagefilesMax ? showInvalidText($('#imagefiles')) : hideInvalidText($('#imagefiles'))
+        }
+    });
+
+
+    // 顯示商品資訊
+    $('.btn-select').on('click', function () {
+        let itemTb = $(this).attr('value');
+        let mapping = "";
+        if (itemTb == 'hotels') {
+            mapping = 'hotel/'
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/gotrip/' + mapping + 'api/' + itemTb,
+            dataType: 'json',
+            success: function (data) {
+                // 清空tbody內容
+                $("tbody").html('');
+                let str = "";
+                // ajax回傳資料放到tbody
+                $.each(data, function (i) {
+                    if (itemTb == 'tickets') {
+                        str = "<tr>" +
+                            "<td style='text-align: center' value='tickets'>景點行程</td>" +
+                            "<td style='text-align: center'>" + data[i].ticketNo + "</td>" +
+                            "<td>" + data[i].ticketName + "</td>" +
+                            "<td class='info' style='text-align:center'><i class='ti-info-alt'></i></td>" +
+                            "</tr>";
+                    } else if (itemTb == 'hotels') {
+                        str = "<tr>" +
+                            "<td style='text-align: center' value='tickets'>飯店住宿</td>" +
+                            "<td style='text-align: center'>" + data[i].id + "</td>" +
+                            "<td>" + data[i].hotel_name + "</td>" +
+                            "<td class='info' style='text-align:center'><i class='ti-info-alt'></i></td>" +
+                            "</tr>";
+                    } else if (itemTb == 'cars') {
+						str = "<tr>" +
+                            "<td style='text-align: center' value='tickets'>租車車款</td>" +
+                            "<td style='text-align: center'>" + data[i].id + "</td>" +
+                            "<td>" + data[i].makeEn + "</td>" +
+                            "<td>" + data[i].model + "</td>" +
+                            "<td class='info' style='text-align:center'><i class='ti-info-alt'></i></td>" +
+                            "</tr>";
+					}
+                    $("tbody").append(str)
+                })
+                // td on click 自動填入
+                $("td").on('click', function () {
+                    let id = $(this).closest("tr").find('td').eq(1).html();
+                    $("#itemId").val(id);
+                    $("#itemTb").val("tickets")
+                    // form validation 設定更改
+                    if ($("form").hasClass('validated')) {
+                        $('#itemTb').val() !== null ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));
+                        $('#itemId').val() !== '' ? hideInvalidText($('#itemId')) : showInvalidText($('#itemId'));
+                    }
+                });
+                // info on click 找該商品資訊
+                $('.info').on('click', function () {
+                    let row = $(this).closest("tr");
+                    let id = $(row).find('td').eq(1).html();
+                    popUpInfo(itemTb, id);
+                });
+
+            },
+            error: function () {
+                console.log('error')
+            }
+        })
+    })
+
+
+
+    function popUpInfo(itemTb, itemId) {
+	    let mapping = "";
+        if (itemTb == 'hotels') {
+            mapping = 'hotel/'
+        }
+        $.ajax({
+            type: 'GET',
+            url: '/gotrip/' + mapping + 'api/' + itemTb + '/' + itemId,
+            dataType: 'json',
+            success: function (data) {
+                let itemInfo;
+                if (itemTb == "tickets") {
+                    itemInfo = "<table><tbody><tr><td>商品類型：</td><td>景點票券</td></tr>" +
+                        "<tr><td>商品編號：</td><td>" + data.ticketNo +"</td></tr>" +
+                        "<tr><td>商品名稱：</td><td>" + data.ticketName +"</td></tr>" +
+                        "<tr><td>商品價格：</td><td>NT$" + data.price +"</td></tr>" +
+                        "<tr><td>電話：　　</td><td>" + data.phone +"</td></tr>" +
+                        "<tr><td>地址：　　</td><td>" + data.city + data.location + data.address+"</td></tr></tbody></table>" ;
+                } else if (itemTb == "tickets") {
+					
+				}
+                //                    else if (String(parsed.tableName) == "行程") {
+                //                        itemInfo = "商品項目：" + parsed.tableName +
+                //                            "<br>商品編號：" + parsed.itemId +
+                //                            "<br>商品名稱：" + parsed.itemName +
+                //                            "<br>商品價格：NT$" + parsed.price +
+                //                            "<br>電話：　　" + parsed.phone +
+                //                            "<br>地址：　　" + parsed.city + parsed.district + parsed.address +
+                //                            "<br>商品介紹：<br>" + parsed.info;
+                //                    }
+                Swal.fire({
+                    html: '<div class="text-dark text-start small">' + itemInfo + '</div>',
+                    confirmButtonColor: '#FF8D29',
+                })
+            },
+            error: function () {
+                console.log('error')
+            }
+        })
+    }
+
+
+
 })

@@ -18,10 +18,6 @@ public interface CommentService {
 	void updateComment(Comment comment);
 
 	void deleteComment(Integer id);
-
-//	Float getAvgRating(String itemTb, Integer itemId);
-//
-//	Integer countByItem(String itemTb, Integer itemId);
 	
 	List<CommentCount> getRatings(); 
 

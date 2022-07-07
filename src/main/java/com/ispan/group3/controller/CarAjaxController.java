@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,12 +26,17 @@ public class CarAjaxController {
 		this.locationService = locationService;
 	}
 	
-	@GetMapping("/car/models")
+	@GetMapping({"/cars","/cars/models"})
 	public List<CarModel> getCarModels() {
 		return modelService.getCarModels();
 	}
 	
-	@GetMapping("/car/locations")
+	@GetMapping("/cars/{id}")
+	public CarModel getCarModel(@PathVariable Integer id) {
+		return modelService.getCarModel(id);
+	}
+	
+	@GetMapping("/cars/locations")
 	public List<CarLocation> getCarLocations() {
 		return locationService.getCarLocations();
 	}

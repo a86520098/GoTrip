@@ -1,6 +1,7 @@
 package com.ispan.group3.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ispan.group3.repository.Ticket;
@@ -66,7 +68,6 @@ public class TicketController {
 		weekNameMap.put("7", "星期日");
 
 		for (Ticket Ticket : page1) { // 每筆record
-			int i = 1;
 			String Open_weekStr = Ticket.getTicketOpenWeek() == null ? "" : Ticket.getTicketOpenWeek();
 			String[] Open_weekArr = Open_weekStr.split(",");
 			for (String TicketOpenWeek : Open_weekArr) {
@@ -184,6 +185,22 @@ public class TicketController {
 		attributes.addFlashAttribute("message", "信息刪除成功");
 		return "redirect:/ticketList";
 	}
+	
+	
+	@GetMapping("/api/tickets")
+	@ResponseBody
+	public List<Ticket> findTickets() {
+		return ticketService.findAll();
+	}
+	
+	@GetMapping("/api/tickets/{id}")
+	@ResponseBody
+	public Ticket jsonFindById(@PathVariable Integer id) {
+		return ticketService.findById(id).get();
+	}
+	
+	
+	
 }
 
 // /**

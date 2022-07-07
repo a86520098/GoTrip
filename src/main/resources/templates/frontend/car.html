@@ -72,7 +72,6 @@
 								</div>
 								<div class="col-sm-8 card-body block2-txt flex-w flex-t p-t-14">
 									<div class="block2-txt-child1 mb-4">
-<!-- 									 flex-col-l  -->
 										<p th:text="${car.type}"></p>
 										<a th:href="@{'/cars/'+${car.id}}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-6">
 											<p th:text="${car.makeCh + ' ' + car.makeEn + ' ' + car.model}" class="pr-3"></p>
@@ -83,7 +82,6 @@
 										<p class="clblack mtext-101 p-t-6 text-right">
 											TWD $<span th:text="${car.price}"></span>
 										</p>
-<!-- 										燃油 / 電動  -->
 										<i class="zmdi zmdi-flash"></i>
 										<span th:text="${car.power}" class="pr-3"></span>
 										變速 
@@ -129,10 +127,6 @@
 				url: "/gotrip/api/comments/ratings",
 				method:"GET",
 				dataType:"json",
-// 				data: {
-// 					"itemTb":"ticket",
-// 					"itemId":31
-// 				},
 				success: function(data){
 					let starNum = 5;
 					let n = data.length
