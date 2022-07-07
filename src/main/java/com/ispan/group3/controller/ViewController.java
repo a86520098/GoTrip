@@ -38,7 +38,7 @@ public class ViewController {
 		return "frontend/hotel-Index";
 	}
 
-	
+
 
 
 }

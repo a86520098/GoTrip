@@ -214,8 +214,10 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 	@GetMapping("/tohotelDetail")
 	public String toHotelDetail(@RequestParam("id")Integer id , Model m) {
 		m.addAttribute("roomDetail",hotelService.findById(id));
-		return "frontend/ticket-detail2";
+		return "frontend/hotel-roomDetail";
 	}
+
+
 		
 		
 		
