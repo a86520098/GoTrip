@@ -15,19 +15,19 @@
 		<div class="container">
 			
 			<div class="flex-w flex-sb-m p-b-52">
-				<h2 class="ltext-103 cl5 font-weight-bold p-b-15">景點票券</h2>
+				<h2 class="ltext-103 cl5 font-weight-bold p-b-15">住宿列表</h2>
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						所有景點票券
+						所有Hotel
 					</button>
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".trans-ticket">
-						戶外活動
+						小木屋
 					</button>
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".car-rental">
-						藝文展覽
+						商業酒店
 					</button>
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".car-charter">
-						親子同樂
+						公寓
 					</button>
 				</div>
 
@@ -73,7 +73,9 @@
 									</a>
 									<span >
 										<i class="fa fa-star cl1" aria-hidden="true"></i>
-										4.8 (200+)
+											<div class="rating-count" th:id="${hotelList.id}">
+<!--											放置星星-->
+											</div>
 										<i class="fa fa-map-marker p-l-20" aria-hidden="true"></i>
 										<td th:text="${hotelList.city}"/>
 									</span>
@@ -123,6 +125,45 @@
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
 </tr>
+
+
+	<script>
+		$(document).ready(function() {
+
+			$.ajax({
+				url: "/gotrip/api/comments/ratings",
+				method:"GET",
+				dataType:"json",
+				success: function(data){
+					let starNum = 5;
+					let n = data.length
+					$(".rating-count").map(function(){
+						let score;
+						let id = $(this).attr('id');
+						let star = "";
+						for (let i = 0; i < n; i++) {
+							if (data[i].itemTb == 'carRental' && data[i].itemId == id) {
+								score = Math.floor(data[i].avgRating)
+								for (let x = 0; x < score; x ++) {
+									star += '<i class="fa fa-star cl1" aria-hidden="true"></i>'
+								}
+								for (let x = 0; x < 5 - score; x ++) {
+									star += '<i class="fa fa-star cl12" aria-hidden="true"></i>'
+								}
+								$(this).html(star + ' '+ data[i].avgRating + ' (' + data[i].count + '則評論)')
+								break
+							}
+						}
+					})
+				},
+				error: function(err){
+					console.log(err);
+					$('.rating-count').text('尚無評論')
+				},
+			});
+		})
+
+	</script>
 </body>
 
 </html>
