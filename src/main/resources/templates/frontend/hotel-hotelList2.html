@@ -72,9 +72,8 @@
 										<td th:text="${hotelList.hotel_name}" />
 									</a>
 									<span >
-										<i class="fa fa-star cl1" aria-hidden="true"></i>
-											<div class="rating-count" th:id="${hotelList.id}">
-<!--											放置星星-->
+											<div class="rating-count" th:id="${hotelList.id}" value="hotel">
+												尚無評論
 											</div>
 										<i class="fa fa-map-marker p-l-20" aria-hidden="true"></i>
 										<td th:text="${hotelList.city}"/>
@@ -88,12 +87,7 @@
 									</span>
 								</div>
 <!--							之後用於加入購物車-->
-								<div class="block2-txt-child2 flex-r p-t-3">
-									<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-										<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-01.png" alt="ICON">
-										<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-									</a>
-								</div>
+								
 							</div>
 						</div>
 
@@ -127,43 +121,7 @@
 </tr>
 
 
-	<script>
-		$(document).ready(function() {
 
-			$.ajax({
-				url: "/gotrip/api/comments/ratings",
-				method:"GET",
-				dataType:"json",
-				success: function(data){
-					let starNum = 5;
-					let n = data.length
-					$(".rating-count").map(function(){
-						let score;
-						let id = $(this).attr('id');
-						let star = "";
-						for (let i = 0; i < n; i++) {
-							if (data[i].itemTb == 'carRental' && data[i].itemId == id) {
-								score = Math.floor(data[i].avgRating)
-								for (let x = 0; x < score; x ++) {
-									star += '<i class="fa fa-star cl1" aria-hidden="true"></i>'
-								}
-								for (let x = 0; x < 5 - score; x ++) {
-									star += '<i class="fa fa-star cl12" aria-hidden="true"></i>'
-								}
-								$(this).html(star + ' '+ data[i].avgRating + ' (' + data[i].count + '則評論)')
-								break
-							}
-						}
-					})
-				},
-				error: function(err){
-					console.log(err);
-					$('.rating-count').text('尚無評論')
-				},
-			});
-		})
-
-	</script>
 </body>
 
 </html>
