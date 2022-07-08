@@ -1,8 +1,11 @@
 package com.ispan.group3.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,11 +18,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ispan.group3.repository.Ticket;
+import com.ispan.group3.repository.TicketImage;
 import com.ispan.group3.service.TicketService;
+import com.ispan.group3.util.FileUploadUtil;
 
 //使用springboot+thymeleaf时访问HTML界面失敗，只返回字符串
 //可能是注解的问题：
@@ -149,27 +156,26 @@ public class TicketController {
 	 * @return
 	 */
 	@PostMapping("/ticketList")
-	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes) {
-		//@RequestParam("images") List<MultipartFile> files
-		// try {
-		// 	System.out.println("ticket:" + ticket);
-		// 	String saveDir = "comment";
-		// 	Set<TicketImage> images = new HashSet<>();
-		// 	for (MultipartFile file : files) {
-		// 		try {
-		// 			String savePath = FileUploadUtil.saveFile(saveDir, file);
-		// 			TicketImage ticketImage = new TicketImage(savePath, ticket);
-		// 			images.add(ticketImage);
-		// 		} catch (IOException e) {
-		// 			e.printStackTrace();
-		// 		}
-		// 	}
-		// 	ticket.setImages(images);
-			// TicketService.save(ticket);
+	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
+			@RequestParam("image") MultipartFile file) {
+		
+		 try {
+		 	Set<TicketImage> images = new HashSet<>();
+//		 	for (MultipartFile file : files) {
+		 		try {
+		 			String savePath = FileUploadUtil.saveFile("ticket", file);
+		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
+		 			images.add(ticketImage);
+		 		} catch (IOException e) {
+		 			e.printStackTrace();
+		 		}
+//		 	}
+		 	ticket.setImages(images);
+//			 ticketService.save(ticket);
 			
-			// } catch (Exception e) {
-				// 	e.printStackTrace();
-				// }
+			 } catch (Exception e) {
+				 	e.printStackTrace();
+				 }
 				ticketService.save(ticket);
 		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
 
