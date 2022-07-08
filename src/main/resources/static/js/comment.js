@@ -1,5 +1,3 @@
-
-
 function saveComment(e) {
     Swal.fire({
         icon: 'success',
@@ -61,8 +59,7 @@ jQuery(document).ready(function ($) {
             "details": "",
             "language": "en",
         };
-        //顯示分析的圖片
-		let result = true;
+
         //送出分析
         $.ajax({
             url: uriBase + "?" + $.param(params),
@@ -296,7 +293,7 @@ jQuery(document).ready(function ($) {
                         "<tr><td>電話：　　</td><td>" + data.phone +"</td></tr>" +
                         "<tr><td>地址：　　</td><td>" + data.city + data.fullAddress +"</td></tr>" +
                         "<tr><td>商品簡述：　　</td><td>飯店設備 - " + data.provide +"</td></tr></tbody></table>" ;
-				}
+				} else if (itemTb == "hotels")
                 //                    else if (String(parsed.tableName) == "行程") {
                 //                        itemInfo = "商品項目：" + parsed.tableName +
                 //                            "<br>商品編號：" + parsed.itemId +

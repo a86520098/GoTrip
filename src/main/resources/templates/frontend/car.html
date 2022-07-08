@@ -76,7 +76,7 @@
 										<a th:href="@{'/cars/'+${car.id}}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-6">
 											<p th:text="${car.makeCh + ' ' + car.makeEn + ' ' + car.model}" class="pr-3"></p>
 										</a>
-										<div class="rating-count" th:id="${car.id}">
+										<div class="rating-count" th:id="${car.id}" value="carRental">
 											尚無評論
 										</div>
 										<p class="clblack mtext-101 p-t-6 text-right">
@@ -120,78 +120,7 @@
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
 	
-	<script>
-	  $(document).ready(function() {
 
-			$.ajax({
-				url: "/gotrip/api/comments/ratings",
-				method:"GET",
-				dataType:"json",
-				success: function(data){
-					let starNum = 5;
-					let n = data.length
-					$(".rating-count").map(function(){ 
-						let score;
-						let id = $(this).attr('id');
-						let star = "";
-						for (let i = 0; i < n; i++) {
-							if (data[i].itemTb == 'carRental' && data[i].itemId == id) {
-								score = Math.floor(data[i].avgRating)								
-								for (let x = 0; x < score; x ++) {
-									star += '<i class="fa fa-star cl1" aria-hidden="true"></i>'
-								}
-								for (let x = 0; x < 5 - score; x ++) {
-									star += '<i class="fa fa-star cl12" aria-hidden="true"></i>'
-								}
-								$(this).html(star + ' '+ data[i].avgRating + ' (' + data[i].count + '則評論)')
-								break
-							}
-						}
-					})
-					
-					
-// 					let array = $(".id").map(function(){ return this.innerText })
-					
-					
-					
-// 					let carNum = array.length;
-// 					let dataNum = data.length;
-// 					for (let i = 0; i < dataNum.length; i++) {
-// 						if (data[i].itemTb == 'carRental') {
-// 							for (let j = 0; j < carNum; j++) {
-// 								if(array[j] == comId) {
-// 									console.log(array[j])
-// 									console.log(data[i].avgRating)
-// 									console.log(data[i].count)
-// 								}
-// 							}
-// 						}
-// 					}
-					
-					
-					
-// 					for (let i = 0; i < data.length; i++) {
-// 					let id = $('.id').text();
-// 					console.log(id);
-// 						if (data[i].itemTb == 'carRental' && data[i].itemId == id) {
-// 							$('.id+.rating').text(data[i].avgRating);
-// 							$('.id+.count').text(data[i].count);
-// 						}
-// 					}
-				},
-				error: function(err){
-					console.log(err);
-					$('.rating-count').text('尚無評論')
-				},
-			});
-	  })
-	  
-
-	  
-	  
-	  
-
-	</script>
 	
 </body>
 
