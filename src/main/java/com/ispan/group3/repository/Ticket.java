@@ -86,11 +86,11 @@ public class Ticket {
 		super();
 	}
 
-//	Image相關
+	//Image相關
 //	public String getTicketImage() {
 //		return ticketImage;
 //	}
-
+//
 //	public void setTicketImage(String ticketImage) {
 //		this.ticketImage = ticketImage;
 //	}
@@ -263,52 +263,52 @@ public class Ticket {
 	}
 
 	//	Image相關
-	// public Set<String> getImages() {
-	// 	Set<String> imagePaths = new LinkedHashSet<>();
-	// 	for (TicketImage image : images) {
-	// 		imagePaths.add(image.getImagePath());
-	// 	}
-	// 	return imagePaths;
-	// }
+	 public Set<String> getImages() {
+	 	Set<String> imagePaths = new LinkedHashSet<>();
+	 	for (TicketImage image : images) {
+	 		imagePaths.add(image.getImagePath());
+	 	}
+	 	return imagePaths;
+	 }
 
-	// public void setImages(Set<TicketImage> images) {
-	// 	this.images = images;
-	// }
+	 public void setImages(Set<TicketImage> images) {
+	 	this.images = images;
+	 }
 
-	// public Ticket(Long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
-	// 		String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
-	// 		String address, int price , Set<TicketImage> images) {
-	// 	super();
-	// 	this.ticketNo = ticketNo;
-	// 	this.ticketName = ticketName;
-	// 	this.ticketIntro = ticketIntro;
-	// 	this.ticketOpenWeek = ticketOpenWeek;
-	// 	this.ticketOpenTime = ticketOpenTime;
-	// 	this.ticketEndTime = ticketEndTime;
-	// 	this.phone = phone;
-	// 	this.country = country;
-	// 	this.city = city;
-	// 	this.location = location;
-	// 	this.address = address;
-	// 	this.price = price;
-	// 	this.images = images;
-	// }
+	 public Ticket(Long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
+	 		String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
+	 		String address, int price , Set<TicketImage> images) {
+	 	super();
+	 	this.ticketNo = ticketNo;
+	 	this.ticketName = ticketName;
+	 	this.ticketIntro = ticketIntro;
+	 	this.ticketOpenWeek = ticketOpenWeek;
+	 	this.ticketOpenTime = ticketOpenTime;
+	 	this.ticketEndTime = ticketEndTime;
+	 	this.phone = phone;
+	 	this.country = country;
+	 	this.city = city;
+	 	this.location = location;
+	 	this.address = address;
+	 	this.price = price;
+	 	this.images = images;
+	 }
 
-	// public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
-	// 		String ticketEndTime, String phone, String country, String city, String location, String address, int price
-	// 		,Set<TicketImage> images) {
-	// 	super();
-	// 	this.ticketName = ticketName;
-	// 	this.ticketIntro = ticketIntro;
-	// 	this.ticketOpenWeek = ticketOpenWeek;
-	// 	this.ticketOpenTime = ticketOpenTime;
-	// 	this.ticketEndTime = ticketEndTime;
-	// 	this.phone = phone;
-	// 	this.country = country;
-	// 	this.city = city;
-	// 	this.location = location;
-	// 	this.address = address;
-	// 	this.price = price;
-	// 	this.images = images;
-	// }
+	 public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
+	 		String ticketEndTime, String phone, String country, String city, String location, String address, int price
+	 		,Set<TicketImage> images) {
+	 	super();
+	 	this.ticketName = ticketName;
+	 	this.ticketIntro = ticketIntro;
+	 	this.ticketOpenWeek = ticketOpenWeek;
+	 	this.ticketOpenTime = ticketOpenTime;
+	 	this.ticketEndTime = ticketEndTime;
+	 	this.phone = phone;
+	 	this.country = country;
+	 	this.city = city;
+	 	this.location = location;
+	 	this.address = address;
+	 	this.price = price;
+	 	this.images = images;
+	 }
 }
