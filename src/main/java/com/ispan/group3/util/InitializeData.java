@@ -31,26 +31,26 @@ public class InitializeData {
 	private static final String TB_NAME_CAR = "car_model";
 	private static final String TB_NAME_LOC = "car_location";
 //	private static final String TB_NAME_CAR = "car_model";
-	
+
 	private static final String IMAGE_DIR = "comment";
 
-	private static final String CREATE_TB_COM = "CREATE TABLE " + TB_NAME_COM + " (" 
+	private static final String CREATE_TB_COM = "CREATE TABLE " + TB_NAME_COM + " ("
 													+ " id int PRIMARY KEY IDENTITY(1,1) NOT NULL,"
-													+ "	item_tb varchar(25) NOT NULL," 
-													+ "	item_id int NOT NULL," 
+													+ "	item_tb varchar(25) NOT NULL,"
+													+ "	item_id int NOT NULL,"
 													+ "	user_id varchar(20) NOT NULL,"
-													+ "	date datetime NOT NULL," 
-													+ "	rating int NOT NULL," 
+													+ "	date datetime NOT NULL,"
+													+ "	rating int NOT NULL,"
 													+ "	content nvarchar(200),"
 													+ "	status nvarchar(20),"
 												+ ");";
 
-	private static final String CREATE_TB_IMG = "CREATE TABLE " + TB_NAME_IMG + " (" 
+	private static final String CREATE_TB_IMG = "CREATE TABLE " + TB_NAME_IMG + " ("
 													+ " id int PRIMARY KEY IDENTITY(1,1) NOT NULL,"
-													+ "	image_path nvarchar(max) NOT NULL," 
-													+ "	comment_id int FOREIGN KEY REFERENCES " + TB_NAME_COM +"(id)," 
+													+ "	image_path nvarchar(max) NOT NULL,"
+													+ "	comment_id int FOREIGN KEY REFERENCES " + TB_NAME_COM +"(id),"
 												+ ");";
-	
+
 	private static final String CREATE_TB_CAR = "CREATE TABLE " + TB_NAME_CAR + " ("
 													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
 													+ "	type nvarchar(10) NOT NULL,"
@@ -66,7 +66,7 @@ public class InitializeData {
 													+ "	bag int,"
 													+ "	image nvarchar(max),"
 												+ ");";
-	
+
 	private static final String CREATE_TB_LOC = "CREATE TABLE " + TB_NAME_LOC + " ("
 													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
 													+ "	company_id int,"
@@ -78,16 +78,16 @@ public class InitializeData {
 													+ "	open_time time,"
 													+ "	close_time time,"
 												+ ");";
-		
+
 	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-	
-	
-	
-	
-	
+
+
+
+
+
 	@SuppressWarnings("resource")
 	public static void main(String args[]) {
 		DataSource ds = DBConnection.dataSource();
@@ -114,23 +114,23 @@ public class InitializeData {
 				stmt = conn.createStatement();
 				// Create comment table
 				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_COM);
-				stmt.executeUpdate(CREATE_TB_COM);			
+				stmt.executeUpdate(CREATE_TB_COM);
 				System.out.println("成功新增Table: " + TB_NAME_COM);
 				// Create comment-image table (with FK)
 				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_IMG);
-				stmt.executeUpdate(CREATE_TB_IMG);			
-				System.out.println("成功新增Table: " + TB_NAME_IMG);		
+				stmt.executeUpdate(CREATE_TB_IMG);
+				System.out.println("成功新增Table: " + TB_NAME_IMG);
 				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_CAR);
-				stmt.executeUpdate(CREATE_TB_CAR);			
-				System.out.println("成功新增Table: " + TB_NAME_CAR);	
+				stmt.executeUpdate(CREATE_TB_CAR);
+				System.out.println("成功新增Table: " + TB_NAME_CAR);
 				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_LOC);
-				stmt.executeUpdate(CREATE_TB_LOC);			
-				System.out.println("成功新增Table: " + TB_NAME_LOC);	
+				stmt.executeUpdate(CREATE_TB_LOC);
+				System.out.println("成功新增Table: " + TB_NAME_LOC);
 			} catch (SQLException e) {
 				System.err.println("無法新增Table");
 				e.printStackTrace();
 			}
-			
+
 			// Insert comments
 			insertComments(conn);
 			// Insert images of comments
@@ -139,10 +139,10 @@ public class InitializeData {
 			insertCarModels(conn);
 			// Insert car-renting locations
 			insertCarLocations(conn);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		} finally {
 			if (conn != null) {
 				try {
@@ -154,7 +154,7 @@ public class InitializeData {
 		}
 
 	}
-	
+
 
 	// Insert data of comments then close connection
 	public static void insertComments(Connection conn) {
@@ -183,10 +183,10 @@ public class InitializeData {
 			e.printStackTrace();
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
-		} 
+		}
 	}
 
-	
+
 	public static void insertCommentImages(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/comment-images.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
@@ -203,10 +203,10 @@ public class InitializeData {
 			System.out.println("成功新增" + data.length + "筆評論圖片");
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
-		} 
+		}
 	}
 
-	
+
 	public static String uploadFile(String fileName) {
 		File inputFile = new File("src/main/resources/static/data/images/" + fileName);
 		String savePath = null;
@@ -217,8 +217,8 @@ public class InitializeData {
 		}
 		return savePath;
 	}
-	
-	
+
+
 	public static void insertCarModels(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/car-model.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
@@ -245,10 +245,10 @@ public class InitializeData {
 				System.out.println("成功新增" + data.length + "筆車款資料");
 		} catch (SQLException | IOException e) {
 				e.printStackTrace();
-		} 
-		
+		}
+
 	}
-	
+
 	public static void insertCarLocations(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/car-location.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
@@ -274,8 +274,8 @@ public class InitializeData {
 				System.out.println("成功新增" + data.length + "筆租車地點資料");
 		} catch (SQLException | IOException e) {
 				e.printStackTrace();
-		} 
-		
+		}
+
 	}
 
 
