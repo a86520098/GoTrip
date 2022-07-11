@@ -1,31 +1,34 @@
 package com.ispan.group3.repository;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import lombok.Data;
+
 @Entity
+@Data
 @Table(name = "car_option")
 public class CarOption {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@EmbeddedId
+	private CarOptionKey id;
 
 	@ManyToOne
+	@MapsId("location_id")
 	@JoinColumn(name = "location_id")
 	private CarLocation carLocation;
 	
 	@ManyToOne
+	@MapsId("mode_id")
 	@JoinColumn(name = "model_id")
 	private CarModel carModel;
 	
-	private Integer priceOrig;
+	private Integer price;
 	private Float discount;
 	@Transient
 	private Integer priceSale;
@@ -35,28 +38,32 @@ public class CarOption {
 		
 	}
 
-	public CarOption(Integer id, CarLocation carLocation, CarModel carModel, Integer priceOrig, Float discount,
+	public CarOption(CarOptionKey id, CarLocation carLocation, CarModel carModel, Integer price, Float discount,
 			Integer priceSale, Integer amount) {
 		this.id = id;
 		this.carLocation = carLocation;
 		this.carModel = carModel;
-		this.priceOrig = priceOrig;
+		this.price = price;
 		this.discount = discount;
 		this.priceSale = priceSale;
 		this.amount = amount;
 	}
-	public CarOption(CarLocation carLocation, CarModel carModel, Integer priceOrig, Integer amount) {
+
+	public CarOption(CarLocation carLocation, CarModel carModel, Integer price, Float discount, Integer priceSale,
+			Integer amount) {
 		this.carLocation = carLocation;
 		this.carModel = carModel;
-		this.priceOrig = priceOrig;
+		this.price = price;
+		this.discount = discount;
+		this.priceSale = priceSale;
 		this.amount = amount;
 	}
 
-	public Integer getId() {
+	public CarOptionKey getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(CarOptionKey id) {
 		this.id = id;
 	}
 
@@ -77,11 +84,11 @@ public class CarOption {
 	}
 
 	public Integer getPriceOrig() {
-		return priceOrig;
+		return price;
 	}
 
-	public void setPriceOrig(Integer priceOrig) {
-		this.priceOrig = priceOrig;
+	public void setPriceOrig(Integer price) {
+		this.price = price;
 	}
 
 	public Float getDiscount() {

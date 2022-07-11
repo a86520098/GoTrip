@@ -30,7 +30,7 @@ public class InitializeData {
 	private static final String TB_NAME_IMG = "comment_image";
 	private static final String TB_NAME_CAR = "car_model";
 	private static final String TB_NAME_LOC = "car_location";
-//	private static final String TB_NAME_CAR = "car_model";
+	private static final String TB_NAME_OPT = "car_option";
 	
 	private static final String IMAGE_DIR = "comment";
 
@@ -39,7 +39,7 @@ public class InitializeData {
 													+ "	item_tb varchar(25) NOT NULL," 
 													+ "	item_id int NOT NULL," 
 													+ "	user_id varchar(20) NOT NULL,"
-													+ "	date datetime NOT NULL," 
+													+ "	date smalldatetime NOT NULL," 
 													+ "	rating int NOT NULL," 
 													+ "	content nvarchar(200),"
 													+ "	status nvarchar(20),"
@@ -71,18 +71,27 @@ public class InitializeData {
 													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
 													+ "	company_id int,"
 													+ "	name nvarchar(10),"
-													+ "	city nvarchar(10) NOT NULL,"
-													+ "	district nvarchar(10) NOT NULL,"
-													+ "	address nvarchar(30) NOT NULL,"
+													+ "	country nvarchar(10),"
+													+ "	city nvarchar(10),"
+													+ "	district nvarchar(10),"
+													+ "	address nvarchar(30),"
 													+ " phone varchar(20),"
 													+ "	open_time time,"
 													+ "	close_time time,"
+												+ ");";
+	
+	private static final String CREATE_TB_OPT = "CREATE TABLE " + TB_NAME_OPT + " ("
+													+ "	location_id int FOREIGN KEY REFERENCES " + TB_NAME_LOC + "(id),"
+													+ "	model_id int FOREIGN KEY REFERENCES " + TB_NAME_CAR + "(id),"
+													+ "	price int,"
+													+ "	discount float,"
+													+ "	amount int,"
 												+ ");";
 		
 	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	
 	
@@ -126,6 +135,9 @@ public class InitializeData {
 				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_LOC);
 				stmt.executeUpdate(CREATE_TB_LOC);			
 				System.out.println("成功新增Table: " + TB_NAME_LOC);	
+				stmt.executeUpdate("DROP DATABASE IF EXISTS " + TB_NAME_OPT);
+				stmt.executeUpdate(CREATE_TB_OPT);			
+				System.out.println("成功新增Table: " + TB_NAME_OPT);	
 			} catch (SQLException e) {
 				System.err.println("無法新增Table");
 				e.printStackTrace();
@@ -263,10 +275,11 @@ public class InitializeData {
 				pstmt.setString(4, record.get(3));
 				pstmt.setString(5, record.get(4));
 				pstmt.setString(6, record.get(5));
-				openTime = LocalTime.of(Integer.parseInt(record.get(6)), Integer.parseInt(record.get(7)));
-				closeTime = LocalTime.of(Integer.parseInt(record.get(8)), Integer.parseInt(record.get(9)));
-				pstmt.setTime(7, Time.valueOf(openTime));
-				pstmt.setTime(8, Time.valueOf(closeTime));
+				pstmt.setString(7, record.get(6));
+				openTime = LocalTime.of(Integer.parseInt(record.get(7)), Integer.parseInt(record.get(8)));
+				closeTime = LocalTime.of(Integer.parseInt(record.get(9)), Integer.parseInt(record.get(10)));
+				pstmt.setTime(8, Time.valueOf(openTime));
+				pstmt.setTime(9, Time.valueOf(closeTime));
 				pstmt.addBatch();
 			}
 				int[] data = pstmt.executeBatch();
