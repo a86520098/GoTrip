@@ -38,7 +38,7 @@
                 <div class="card-body">
                   <div class="card-title" style="float:left">會員資料列表</div>
                   <div style="float:right">
-                  <a href="addMem" class="btn btn-sm btn-warning rounded-pill" style="text-align: right ; right:0">新增會員資料</a>
+                  <a href="addUser" class="btn btn-sm btn-warning rounded-pill" style="text-align: right ; right:0">新增會員資料</a>
                   </div>
                   <div class="table-responsive">
                   
@@ -54,7 +54,7 @@
                         <col span="1" style="width: 10%;">
                         <col span="1" style="width: 8%;">
                         <col span="1" style="width: 10%;">
-                        <col span="1" style="width: 11%;">
+<!--                         <col span="1" style="width: 11%;"> -->
                         <col span="1" style="width: 5%;">
                         <col span="1" style="width: 10%;">
                         <col span="1" style="width: 10%;">
@@ -67,7 +67,7 @@
 						  <th>E-mail</th>
 						  <th>中文姓名</th>
 					  	  <th>英文姓名</th>
-						  <th>密碼</th>
+<!-- 						  <th>密碼</th> -->
 						  <th>性別</th>
 						  <th>生日</th>
 						  <th>電話</th>
@@ -77,20 +77,20 @@
                         </tr>
                       </thead>
                       <tbody>
-                      	<tr th:each="member:${Members}" class="odd gradeX">
-                            <td th:text=${member.user_id}></td>
-							<td th:text=${member.email}></td>
-							<td th:text=${member.ch_name}></td>
-							<td th:text=${member.en_name}></td>
-							<td th:text=${member.password}></td>
-							<td th:text=${member.gender}></td>
-							<td th:text=${member.birthday}></td>
-							<td th:text=${member.phone}></td>
-							<td th:text=${member.address}></td>	
+                      	<tr th:each="user:${Users}" class="odd gradeX">
+                            <td th:text=${user.user_id}></td>
+							<td th:text=${user.email}></td>
+							<td th:text=${user.ch_name}></td>
+							<td th:text=${user.en_name}></td>
+<!-- 							<td th:text=${member.password}></td> -->
+							<td th:text=${user.gender}></td>
+							<td th:text=${user.birthday}></td>
+							<td th:text=${user.phone}></td>
+							<td th:text=${user.address}></td>	
 							
 							<td>
 							<p>
-								<a th:href="@{mem/}+${member.user_id}" class="btn btn-warning btn-sm ">
+								<a th:href="@{user/}+${user.user_id}" class="btn btn-warning btn-sm ">
 									<i class="mdi mdi-table-edit"></i>
 								</a>
 <!-- 								<a th:action="@{members/memDel/}+${member.user_id}" class="btn btn-outline-warning btn-sm rounded-circle" onclick="javascript:return del();"> -->
@@ -98,7 +98,7 @@
 <!-- 								</a> -->
 							</p>
 							<p>
-								<form action="/memDel/${member.user_id}'/>" th:action="@{memDel/}+${member.user_id}" method="POST" class="inline-block">
+								<form action="/userDel/${user.user_id}'/>" th:action="@{userDel/}+${user.user_id}" method="POST" class="inline-block">
 									<button type="submit" onclick="javascript:return del();" class="delete btn btn-info btn-sm ">
 									<i class="mdi mdi-delete-forever"></i>
 									</button>

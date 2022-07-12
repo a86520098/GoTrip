@@ -6,9 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MemberRepository extends JpaRepository<Member, Integer>{
+public interface UserRepository extends JpaRepository<User, Integer>{
 
-	Member getByEmail(String email);
+	User getByEmail(String email);
 
 
 }

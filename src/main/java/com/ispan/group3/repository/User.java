@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="member_data")
-public class Member{
+public class User{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_id;
@@ -27,7 +27,7 @@ public class Member{
 	
 	
 	
-	public Member(int user_id, String email, String ch_name, String en_name, String password, String gender,
+	public User(int user_id, String email, String ch_name, String en_name, String password, String gender,
 			String birthday2, String phone, String city, String location, String address) {
 		super();
 		this.user_id = user_id;
@@ -44,7 +44,7 @@ public class Member{
 //		this.image = image;
 	}
 	
-	public Member(String email, String ch_name, String en_name, String password, String gender, String birthday,
+	public User(String email, String ch_name, String en_name, String password, String gender, String birthday,
 			String phone, String city, String location, String address) {
 		super();
 		this.email = email;
@@ -59,11 +59,11 @@ public class Member{
 		this.address = address;
 	}
 
-	public Member() {
+	public User() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Member(int user_id, String email, String ch_name, String en_name, String password, String gender,
+	public User(int user_id, String email, String ch_name, String en_name, String password, String gender,
 			String birthday, String phone, String city, String location, String address, String image, String status) {
 		super();
 		this.user_id = user_id;

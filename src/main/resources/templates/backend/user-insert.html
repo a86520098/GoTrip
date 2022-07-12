@@ -42,7 +42,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">新增會員資料</h4>
-                  <form class="form-sample" th:action="@{/members/SaveMem}" action="<'/SaveMem'/>" method="post" id="form">
+                  <form class="form-sample" th:action="@{/user/SaveUser}" action="<'/SaveUser'/>" method="post" id="form">
                     <p class="card-description mt-5">
                       個人資料
                     </p>
@@ -174,7 +174,7 @@
 <!--                     <button class="btn btn-light justify-content-end">取消新增</button> -->
                     
 	                 <input type="submit" id="submit" name="submit" value="確定新增" class="btn btn-warning rounded-pill my-5" style="width:150px">
-					 <label><a th:href="@{/members/list}" class="btn btn-light justify-content-end" style="width:160px">取消</a></label>
+					 <label><a th:href="@{/user/list}" class="btn btn-light justify-content-end" style="width:160px">取消</a></label>
 					</div>
                   </form>
                 </div>

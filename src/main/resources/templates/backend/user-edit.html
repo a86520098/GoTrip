@@ -35,8 +35,8 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">修改會員資料</h4>
-                  <form class="form-sample" th:action="@{/members/SaveMem}" action="<'/SaveMem'/>" method="post" id="form">
-                    <input type="hidden" name="user_id" th:value="${MemberData.user_id}">
+                  <form class="form-sample" th:action="@{/user/SaveUser}" action="<'/SaveUser'/>" method="post" id="form">
+                    <input type="hidden" name="user_id" th:value="${User.user_id}">
                     <p class="card-description mt-5">
                       個人資料
                     </p>
@@ -45,7 +45,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="ch_name">中文姓名</label>
                           <div class="col-sm-9">
-                            <input id="ch_name" type="text" class="form-control" name="ch_name" th:value="${MemberData.ch_name}"/>
+                            <input id="ch_name" type="text" class="form-control" name="ch_name" th:value="${User.ch_name}"/>
                           </div>
                         </div>
                       </div>
@@ -53,7 +53,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="en_name">英文姓名</label>
                           <div class="col-sm-9">
-                            <input id="en_name" type="text" class="form-control" name="en_name" th:value="${MemberData.en_name}"/>
+                            <input id="en_name" type="text" class="form-control" name="en_name" th:value="${User.en_name}"/>
                           </div>
                         </div>
                       </div>
@@ -63,7 +63,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="email">Email</label>
                           <div class="col-sm-9">
-                            <input id="email" type="email" class="form-control" placeholder="請輸入正確的Email收確認信使用" name="email" required="required" th:value="${MemberData.email}" readonly/>
+                            <input id="email" type="email" class="form-control" placeholder="請輸入正確的Email收確認信使用" name="email" required="required" th:value="${User.email}" readonly/>
                           </div>
                         </div>
                       </div>
@@ -71,7 +71,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="phone">手機</label>
                           <div class="col-sm-9">
-                            <input id="phone" type="text" class="form-control" placeholder="請輸入手機號碼10位數字" name="phone" maxlength="10" th:value="${MemberData.phone}">
+                            <input id="phone" type="text" class="form-control" placeholder="請輸入手機號碼10位數字" name="phone" maxlength="10" th:value="${User.phone}">
                           </div>
                         </div>
                       </div>
@@ -81,7 +81,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="password">密碼</label>
                           <div class="col-sm-9">
-                            <input id="pwd1" name="password" type="password" class="form-control" placeholder="請輸入8-20位英數混合密碼" required="required" th:value="${MemberData.password}"/>
+                            <input id="pwd1" name="password" type="password" class="form-control" placeholder="請輸入8-20位英數混合密碼" required="required" th:value="${User.password}"/>
                             <span><img th:src="@{/images/demo/hidePwd.png}" class="col-2" id="eyes"  style="position:absolute ; right:20px ; top:18% ; width:12%"></span>
                           </div>
                         </div>
@@ -91,7 +91,7 @@
                           <label class="col-sm-3 col-form-label" for="passwd">確認密碼</label>
                           <div class="col-sm-9">
 <!--                           <div class="row"> -->
-                            <input id="pwd2" name="passwd" type="password" class="form-control" placeholder="請輸入再次輸入密碼" required="required" onkeyup="validate()" th:value="${MemberData.password}">
+                            <input id="pwd2" name="passwd" type="password" class="form-control" placeholder="請輸入再次輸入密碼" required="required" onkeyup="validate()" th:value="${User.password}">
                             <span id="checkMsg" style="position:absolute ; right:17px;"></span>
 <!--                            </div>  -->
                           </div>
@@ -105,7 +105,7 @@
                           <div class="col-sm-4">
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="gender" id="gender" value="男" th:field="${MemberData.gender}">
+                                <input type="radio" class="form-check-input" name="gender" id="gender" value="男" th:field="${User.gender}">
                                 男
                               </label>
                             </div>
@@ -113,7 +113,7 @@
                           <div class="col-sm-5">
                             <div class="form-check">
                               <label class="form-check-label">
-                                <input type="radio" class="form-check-input" name="gender" id="gender" value="女" th:field="${MemberData.gender}">
+                                <input type="radio" class="form-check-input" name="gender" id="gender" value="女" th:field="${User.gender}">
                                 女
                               </label>
                             </div>
@@ -124,7 +124,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label" for="birthday">生日</label>
                           <div class="col-sm-9">
-                            <input id="birthday" type="date" class="form-control" name="birthday" th:value="${MemberData.birthday}"/>
+                            <input id="birthday" type="date" class="form-control" name="birthday" th:value="${User.birthday}"/>
                           </div>
                         </div>
                       </div>
@@ -158,14 +158,14 @@
                         <div class="form-group row">
                           <label class="col-sm-1 col-form-label mr-5">地址</label>
                           <div class="col-sm-10" style="width: 110%;">
-                            <input type="text" name="address" id="address" class="form-control" th:value="${MemberData.address}"/>
+                            <input type="text" name="address" id="address" class="form-control" th:value="${User.address}"/>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="d-sm-inline-block" style="float:left">
 	                	<input type="submit" value="確認修改" class="btn btn-warning rounded-pill my-5" style="width:150px">
-					 	<label><a th:href="@{/members/list}" class="btn btn-light justify-content-end" style="width:160px">取消</a></label>
+					 	<label><a th:href="@{/user/list}" class="btn btn-light justify-content-end" style="width:160px">取消</a></label>
 					</div>
                   </form>
                 </div>
