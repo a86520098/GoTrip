@@ -16,6 +16,8 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Getter
 @Setter
 @Entity
@@ -44,11 +46,13 @@ public class Hotel {
 	private String  boss_name;   //聯絡人名子
 	private String  roomtype;    //單人房  Or  雙人房 or Both
 	private Integer peopleCount;  //可住人數
+	@JsonIgnore
 	private  Blob image;   //之後接受照片的容器
 	private  String fileName; //接檔案名稱
 	@CreationTimestamp
 	private  Timestamp admissionTime; //街道檔案的那時候時間
 	@Transient
+	@JsonIgnore
 	private  MultipartFile productImage;//前端照片
 
 

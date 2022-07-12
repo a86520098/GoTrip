@@ -2,7 +2,6 @@ package com.ispan.group3.service.impl;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,31 +23,31 @@ public class CommentServiceImpl implements CommentService{
 	}
 
 	@Override
-	public List<Comment> getComments() {
+	public List<Comment> findAll() {
 		return cRepository.findAll();
 	}
 	
 	@Override
-	public Comment getComment(Integer id) {
+	public Comment findById(Integer id) {
 		return cRepository.findById(id).get();
 	}
 
 	@Override
-	public void insertComment(Comment comment) {
-		comment.setDate(new Timestamp(System.currentTimeMillis()));
-		comment.setStatus("valid");
-		if (comment.getRating() == null) 
-			comment.setRating(5);
+	public void save(Comment comment) {
+		if (comment.getDate() == null) {
+			comment.setDate(new Timestamp(System.currentTimeMillis()));			
+		}
+		if (comment.getRating() == null) {
+			comment.setRating(5);			
+		}
+		if (comment.getStatus() == null) {
+			comment.setStatus("valid");		
+		}
 		cRepository.save(comment);
 	}
 
 	@Override
-	public void updateComment(Comment comment) {
-		cRepository.save(comment);
-	}
-
-	@Override
-	public void deleteComment(Integer id) {
+	public void deleteById(Integer id) {
 		boolean exists = cRepository.existsById(id);
 		if (!exists) {
 			throw new IllegalStateException("Comment with id " + id + " does not exist");
@@ -56,19 +55,9 @@ public class CommentServiceImpl implements CommentService{
 		cRepository.deleteById(id);
 	}
 
-//	@Override
-//	public Float getAvgRating(String itemTb, Integer itemId) {
-//		return cRepository.getAvgRating(itemTb, itemId);
-//	}
-//
-//	@Override
-//	public Integer countByItem(String itemTb, Integer itemId) {
-//		return cRepository.countByItem(itemTb, itemId);
-//	}
-
 	@Override
-	public List<CommentCount> getRatings() {
-		return cRepository.getRatings();
+	public List<CommentCount> findAllRatings() {
+		return cRepository.findAllRatings();
 	}
 	
 	

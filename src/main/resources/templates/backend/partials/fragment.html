@@ -265,7 +265,17 @@
       <nav th:fragment="sidebar" class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link" th:href="@{/user/list}">
+=======
+            <a class="nav-link" th:href="@{/backend/index}">
+              <i class="icon-bar-graph menu-icon"></i>
+              <span class="menu-title">統計圖表</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/members/list}">
+>>>>>>> 86d1f24f3ac6ce4278741f34f1641b427181bed2
               <i class="icon-head menu-icon"></i>
               <span class="menu-title">會員管理</span>
             </a>
@@ -283,7 +293,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/backend/index}">
+            <a class="nav-link" th:href="@{/backend/restaurant}">
               <i class="icon-flag menu-icon"></i>
               <span class="menu-title">餐廳管理</span>
             </a>
@@ -313,18 +323,8 @@
               <span class="menu-title">評論管理</span>
             </a>
           </li>
-<!--           <li class="nav-item"> -->
-<!--             <a class="nav-link" href="views/dashboard/comments.html"> -->
-<!--               <i class="icon-marquee-plus menu-icon"></i> -->
-<!--               <span class="menu-title">上架請求</span> -->
-<!--             </a> -->
-<!--           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" th:href="@{/backend/charts}">
-              <i class="icon-bar-graph menu-icon"></i>
-              <span class="menu-title">統計圖表</span>
-            </a>
-          </li>
+
+
           <br>
 
         </ul>

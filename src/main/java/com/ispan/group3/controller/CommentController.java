@@ -1,8 +1,6 @@
 package com.ispan.group3.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,24 +34,24 @@ public class CommentController {
 	}
 
 	@GetMapping("/backend/comments")
-	public String getComments(Model model) {
-		List<Comment> comments = cService.getComments();
+	public String findAll(Model model) {
+		List<Comment> comments = cService.findAll();
 		model.addAttribute("comments", comments);
 		return "backend/comment-list";
 	}
 	
 	@GetMapping({"/backend/comments/form"})
-	public String showNewCommentForm(Model model) {
+	public String showNewForm(Model model) {
 		Comment comment = new Comment();			
 		model.addAttribute("comment", comment);
 		return "backend/comment-new-form";
 	}
 
 	@GetMapping({"/backend/comments/form/{id}"})
-	public String showCommentForm(Model model, @PathVariable(required = false) Integer id) {
+	public String showUpdateForm(Model model, @PathVariable(required = false) Integer id) {
 		Comment comment;
 		if (id != null) {
-			comment = cService.getComment(id);
+			comment = cService.findById(id);
 		} else {
 			comment = new Comment();			
 		}
@@ -61,17 +59,10 @@ public class CommentController {
 		return "backend/comment-form";
 	}
 
-	
-	
-	@GetMapping("/backend/comments/{id}")
-	public Comment getComment(@PathVariable Integer id) {
-		return cService.getComment(id);
-	}
-
 	@PostMapping("/backend/comments")
-	public String insertComment(@ModelAttribute Comment comment, 
-								@RequestParam(value = "imagefiles", required = false) List<MultipartFile> files,
-								@RequestParam(value = "deleteImages", required = false) List<Integer> deleteImages) {
+	public String save(@ModelAttribute Comment comment, 
+					   @RequestParam(value = "imagefiles", required = false) List<MultipartFile> files,
+					   @RequestParam(value = "deleteImages", required = false) List<Integer> deleteImages) {
 		Set<CommentImage> images = new HashSet<>();
 		for (MultipartFile file : files) {
 			try {
@@ -83,19 +74,8 @@ public class CommentController {
 			}
 		}
 		comment.setImages(images);
-		cService.insertComment(comment);
-		
-//		cService.insertComment(comment);
-//		String saveDir = "comment";
-//		for (MultipartFile file : files) {
-//			try {
-//				String savePath = FileUploadUtil.saveFile(saveDir, file);
-//				CommentImage commentImage = new CommentImage(savePath, comment);
-//				ciService.insertImage(commentImage);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
+		cService.save(comment);
+
 		return "redirect:/backend/comments";
 	}
 
@@ -114,7 +94,7 @@ public class CommentController {
 			}
 		}
 		comment.setImages(images);
-		cService.updateComment(comment);
+		cService.save(comment);
 		
 		return "redirect:/backend/comments";
 
@@ -122,17 +102,9 @@ public class CommentController {
 
 	@DeleteMapping("/backend/comments/{id}")
 	public String deleteComment(@PathVariable Integer id) {
-		cService.deleteComment(id);
+		cService.deleteById(id);
 		return "redirect:/backend/comments";
 	}
 	
-	@ModelAttribute
-	public void setModel(Model model) {
-		Integer[] scoreArray = {0,1,2,3,4,5};
-		List<Integer> scoreList = new ArrayList<Integer>();
-		Collections.addAll(scoreList, scoreArray);
-		model.addAttribute("ratingScore", scoreList);
-
-	}
 
 }

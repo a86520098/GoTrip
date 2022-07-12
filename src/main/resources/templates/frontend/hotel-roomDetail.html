@@ -55,7 +55,7 @@
 
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<td>  <img  th:src="@{/hotel/picture(id=${hotel.id})}" class="d-block w-100">  </td>
+									<td>  <img  th:src="@{/picture(id=${hotel.id})}" class="d-block w-100">  </td>
 								</div>
 
 							</div>
@@ -73,13 +73,9 @@
 
 						</h4>
 						<div class="p-b-10">
-							<div class="">
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								4.6 (56則評論)
+								<div class="rating-count" th:id="${hotel.id}" value="hotel">
+									尚無評論
+								</div>
 							</div>
 							<div class="p-t-20">
 								<i class="fa fa-map-marker" aria-hidden="true"></i>

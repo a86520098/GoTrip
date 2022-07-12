@@ -114,6 +114,9 @@
 								<i class="fa fa-star cl1" aria-hidden="true"></i>
 								<span id="rating">4.6</span> (<span id="count">56</span>則評論)
 							</div>
+<!-- 							<div class="rating-count" th:id="${ticket.id}" value="ticket"> -->
+<!-- 								尚無評論 -->
+<!-- 							</div> -->
 							<div class="p-t-20">
 								<i class="fa fa-map-marker" aria-hidden="true"></i>
 								桃園, 青埔
@@ -711,37 +714,7 @@
 	<div th:replace="frontend/partials/fragment :: modal1"></div>
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
-<<<<<<< HEAD
-	<script>
-	  $(document).ready(function() {
-			$.ajax({
-				url: "/gotrip/api/comments/rating",
-				method:"GET",
-				dataType:"json",
-				data: {
-					"itemTb":"ticket",
-					"itemId":1
-				},
-				success: function(data){
-					if (data.count !== 0) {
-						$('#rating').text(data.avgRating);
-						$('#count').text(data.count)
-						
-					} else {
-						$('#rating-count').text('尚無評論')
-					}
-				},
-				error: function(err){
-					$('#rating-count').text('尚無評論')
-				},
-			});
-	  })
 
-	</script>
-	
-=======
-
->>>>>>> d65ae7963068f3a5260702cd7f73fe5423ecc2ba
 
 </body>
 

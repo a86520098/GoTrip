@@ -1,7 +1,6 @@
 package com.ispan.group3.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.ispan.group3.repository.Comment;
 import com.ispan.group3.repository.CommentCount;
@@ -9,20 +8,14 @@ import com.ispan.group3.repository.CommentCount;
 
 public interface CommentService {
 
-	List<Comment> getComments();
+	List<Comment> findAll();
 	
-	Comment getComment(Integer id);
+	Comment findById(Integer id);
 
-	void insertComment(Comment comment);
+	void save(Comment comment);
 
-	void updateComment(Comment comment);
-
-	void deleteComment(Integer id);
-
-//	Float getAvgRating(String itemTb, Integer itemId);
-//
-//	Integer countByItem(String itemTb, Integer itemId);
+	void deleteById(Integer id);
 	
-	List<CommentCount> getRatings(); 
+	List<CommentCount> findAllRatings(); 
 
 }

@@ -19,8 +19,8 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/vendors/perfect-scrollbar/perfect-scrollbar.css}" href="vendors/perfect-scrollbar/perfect-scrollbar.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}" href="css/util.css">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" href="css/main.css">
-	<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
-	<link rel="icon" type="image/png" th:href="@{images/favicon.png}" />
+	<link th:href='@{https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css}' rel='stylesheet' />
+	<link rel="icon" type="image/png" th:href="@{/images/favicon.png}" />
 </head>
 
 <body>
@@ -37,6 +37,34 @@
 					<a th:href="@{/index}" class="logo">
 						<img th:src="@{/images/icons/logo-GoTrip.png}" alt="IMG-LOGO">
 					</a>
+
+					<!-- Menu desktop -->
+					<div class="menu-desktop">
+						<ul class="main-menu">
+							<li>
+								<a th:href="@{/index}">項目總覽</a>
+							</li>
+							<li>
+								<a th:href="@{/ticket}">景點票券</a>
+								<ul class="sub-menu">
+									<li><a href="index.html">分類1</a></li>
+									<li><a href="home-02.html">分類2</a></li>
+									<li><a href="home-03.html">分類3</a></li>
+								</ul>
+							</li>
+							<li>
+								<a th:href="@{/restaurant}">餐廳</a>
+							</li>
+<!-- 							<li class="label1" data-label1="hot"> -->
+							<li>
+								<a th:href="@{/toHotelIndex}">住宿</a>
+							</li>
+<!-- 							<li class="active-menu"> -->
+							<li>
+								<a th:href="@{/cars}">租車</a>
+							</li>
+						</ul>
+					</div>	
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
@@ -170,7 +198,7 @@
 				<ul class="header-cart-wrapitem w-full">
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img th:src="@{images/tickets/aquarium.webp}" alt="IMG">
+							<img th:src="@{/images/tickets/aquarium.webp}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -202,7 +230,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img th:src="@{images/tickets/art.jpg}" alt="IMG">
+							<img th:src="@{/images/tickets/art.jpg}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -550,23 +578,23 @@
 			<div class="p-t-40">
 				<div class="flex-c-m flex-w p-b-18">
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+						<img th:src="@{/images/icons/icon-pay-01.png}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+						<img th:src="@{/images/icons/icon-pay-02.png}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+						<img th:src="@{/images/icons/icon-pay-03.png}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+						<img th:src="@{/images/icons/icon-pay-04.png}" alt="ICON-PAY">
 					</a>
 
 					<a href="#" class="m-all-1">
-						<img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+						<img th:src="@{/images/icons/icon-pay-05.png}" alt="ICON-PAY">
 					</a>
 				</div>
 
@@ -597,7 +625,7 @@
 		<div class="container">
 			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
 				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="images/icons/icon-close.png" alt="CLOSE">
+					<img th:src="@{/images/icons/icon-close.png}" alt="CLOSE">
 				</button>
 
 				<div class="row">
@@ -610,10 +638,10 @@
 								<div class="slick3 gallery-lb">
 									<div class="item-slick3" data-thumb="images/product-detail-01.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-01.jpg" alt="IMG-PRODUCT">
+											<img th:src="@{/images/product-detail-01.jpg}" alt="IMG-PRODUCT">
 
 											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-01.jpg">
+												th:href="@{/images/product-detail-01.jpg}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -621,10 +649,10 @@
 
 									<div class="item-slick3" data-thumb="images/product-detail-02.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-02.jpg" alt="IMG-PRODUCT">
+											<img th:src="@{/images/product-detail-02.jpg}" alt="IMG-PRODUCT">
 
 											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-02.jpg">
+												th:href="@{/images/product-detail-02.jpg}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -632,10 +660,10 @@
 
 									<div class="item-slick3" data-thumb="images/product-detail-03.jpg">
 										<div class="wrap-pic-w pos-relative">
-											<img src="images/product-detail-03.jpg" alt="IMG-PRODUCT">
+											<img th:src="@{/images/product-detail-03.jpg}" alt="IMG-PRODUCT">
 
 											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-												href="images/product-detail-03.jpg">
+												th:href="@{/images/product-detail-03.jpg}">
 												<i class="fa fa-expand"></i>
 											</a>
 										</div>
@@ -773,7 +801,7 @@
 		<script th:src="@{/vendors/perfect-scrollbar/perfect-scrollbar.min.js}" src="vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script th:src="@{/js/main.js}" src="js/main.js"></script>
 		<script th:src="@{/js/frontend.js}" src="js/frontend.js"></script>
-	
+		<script th:src="@{/js/rating.js}" src=""></script>
 	</div>
 	
 </body>

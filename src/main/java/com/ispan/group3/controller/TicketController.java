@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,10 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.Ticket;
 import com.ispan.group3.repository.TicketImage;
 import com.ispan.group3.service.TicketService;
@@ -36,7 +37,7 @@ import com.ispan.group3.util.FileUploadUtil;
 public class TicketController {
 
 	@Autowired
-	private TicketService TicketService;
+	private TicketService ticketService;
 
 //	@GetMapping({"/backend/tickets/ticketList", "/backend/tickets/ticketList/{ticketNo}"})
 //	public String showCarForm(Model model, @PathVariable(required = false) Long ticketNo) {
@@ -62,7 +63,7 @@ public class TicketController {
 	@GetMapping("/ticketList")
 	public String list(@PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC) Pageable pageable,
 			Model model) {
-		Page<Ticket> page1 = TicketService.findAllByPage(pageable);
+		Page<Ticket> page1 = ticketService.findAllByPage(pageable);
 		StringBuilder sbOpen_week = new StringBuilder();
 		Map<String, String> weekNameMap = new HashMap<String, String>();
 		weekNameMap.put("1", "星期一");
@@ -74,7 +75,6 @@ public class TicketController {
 		weekNameMap.put("7", "星期日");
 
 		for (Ticket Ticket : page1) { // 每筆record
-			int i = 1;
 			String Open_weekStr = Ticket.getTicketOpenWeek() == null ? "" : Ticket.getTicketOpenWeek();
 			String[] Open_weekArr = Open_weekStr.split(",");
 			for (String TicketOpenWeek : Open_weekArr) {
@@ -103,7 +103,7 @@ public class TicketController {
 	// Model model 前端模版頁面
 	@GetMapping("/ticketList/{ticketNo}")
 	public String getOneData(@PathVariable long ticketNo, Model model) {
-		Ticket Ticket = TicketService.getBookById(ticketNo);
+		Ticket Ticket = ticketService.getBookById(ticketNo);
 		if (Ticket == null) {
 			Ticket = new Ticket();
 		}
@@ -137,7 +137,7 @@ public class TicketController {
 	// book.html -> <body th:object="${ticket}">
 	@GetMapping("/ticketList/{ticketNo}/ticketInput")
 	public String inputEditPage(@PathVariable long ticketNo, Model model) {
-		Ticket Ticket = TicketService.getBookById(ticketNo);
+		Ticket Ticket = ticketService.getBookById(ticketNo);
 		model.addAttribute("ticket", Ticket);
 		return "backend/ticketInput";
 	}
@@ -156,28 +156,27 @@ public class TicketController {
 	 * @return
 	 */
 	@PostMapping("/ticketList")
-	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes) {
-		//@RequestParam("images") List<MultipartFile> files
-		// try {
-		// 	System.out.println("ticket:" + ticket);
-		// 	String saveDir = "comment";
-		// 	Set<TicketImage> images = new HashSet<>();
-		// 	for (MultipartFile file : files) {
-		// 		try {
-		// 			String savePath = FileUploadUtil.saveFile(saveDir, file);
-		// 			TicketImage ticketImage = new TicketImage(savePath, ticket);
-		// 			images.add(ticketImage);
-		// 		} catch (IOException e) {
-		// 			e.printStackTrace();
-		// 		}
-		// 	}
-		// 	ticket.setImages(images);
-			// TicketService.save(ticket);
+	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
+			@RequestParam("image") MultipartFile file) {
+		
+		 try {
+		 	Set<TicketImage> images = new HashSet<>();
+//		 	for (MultipartFile file : files) {
+		 		try {
+		 			String savePath = FileUploadUtil.saveFile("ticket", file);
+		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
+		 			images.add(ticketImage);
+		 		} catch (IOException e) {
+		 			e.printStackTrace();
+		 		}
+//		 	}
+		 	ticket.setImages(images);
+//			 ticketService.save(ticket);
 			
-			// } catch (Exception e) {
-				// 	e.printStackTrace();
-				// }
-				TicketService.save(ticket);
+			 } catch (Exception e) {
+				 	e.printStackTrace();
+				 }
+				ticketService.save(ticket);
 		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
 
 		// List<Book> books = bookService.findAll();
@@ -188,10 +187,26 @@ public class TicketController {
 
 	@GetMapping("/ticketList/{ticketNo}/delete")
 	public String delete(@PathVariable long ticketNo, final RedirectAttributes attributes) {
-		TicketService.deleteById(ticketNo);
+		ticketService.deleteById(ticketNo);
 		attributes.addFlashAttribute("message", "信息刪除成功");
 		return "redirect:/ticketList";
 	}
+	
+	
+	@GetMapping("/api/tickets")
+	@ResponseBody
+	public List<Ticket> findTickets() {
+		return ticketService.findAll();
+	}
+	
+	@GetMapping("/api/tickets/{id}")
+	@ResponseBody
+	public Ticket jsonFindById(@PathVariable Integer id) {
+		return ticketService.findById(id).get();
+	}
+	
+	
+	
 }
 
 // /**

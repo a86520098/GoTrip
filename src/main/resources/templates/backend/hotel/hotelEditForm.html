@@ -35,7 +35,7 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <div class="card-title">註冊飯店</div>
+                <a th:href="backHotel">  <div class="card-title">回列表</div> </a>
 
                 <div class="table-responsive">
                   <div class="container col-md-5">
@@ -48,11 +48,11 @@
                           </h2>
                         </caption>
 
-                        <form  method="post"  th:action="@{/hotel/addHotel}" th:object="${hotel}"   enctype="multipart/form-data">
+                        <form  method="post"  th:action="@{/editHotel}" th:object="${hotel}"   enctype="multipart/form-data">
 
                           <fieldset class="form-group">
                             <label>ID</label>
-                            <input type="text" th:field="*{id}"  class="form-control" readonly  />
+                            <input type="text" th:field="*{id}" id="name" class="form-control" readonly  />
                           </fieldset>
 
 
