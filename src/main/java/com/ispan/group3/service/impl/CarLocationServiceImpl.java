@@ -20,27 +20,27 @@ public class CarLocationServiceImpl implements CarLocationService{
 	}
 
 	@Override
-	public List<CarLocation> getCarLocations() {
+	public List<CarLocation> findAll() {
 		return locationRepository.findAll();
 	}
 
 	@Override
-	public CarLocation getCarLocation(Integer id) {
+	public CarLocation findById(Integer id) {
 		return locationRepository.findById(id).get();
 	}
 
 	@Override
-	public void insertCarLocation(CarLocation carLocation) {
+	public void save(CarLocation carLocation) {
 		locationRepository.save(carLocation);
 	}
 
-	@Override
-	public void updateCarLocation(CarLocation carLocation) {
-		locationRepository.save(carLocation);
-	}
+//	@Override
+//	public void save(CarLocation carLocation) {
+//		locationRepository.save(carLocation);
+//	}
 
 	@Override
-	public void deleteCarLocation(Integer id) {
+	public void deleteById(Integer id) {
 		if (!locationRepository.existsById(id))
 			throw new IllegalStateException("Car model with id " + id + " does not exist");
 		locationRepository.deleteById(id);

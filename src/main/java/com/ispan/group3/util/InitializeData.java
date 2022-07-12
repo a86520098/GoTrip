@@ -71,9 +71,10 @@ public class InitializeData {
 													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
 													+ "	company_id int,"
 													+ "	name nvarchar(10),"
-													+ "	city nvarchar(10) NOT NULL,"
-													+ "	district nvarchar(10) NOT NULL,"
-													+ "	address nvarchar(30) NOT NULL,"
+													+ "	country nvarchar(10),"
+													+ "	city nvarchar(10),"
+													+ "	district nvarchar(10),"
+													+ "	address nvarchar(30),"
 													+ " phone varchar(20),"
 													+ "	open_time time,"
 													+ "	close_time time,"
@@ -263,10 +264,11 @@ public class InitializeData {
 				pstmt.setString(4, record.get(3));
 				pstmt.setString(5, record.get(4));
 				pstmt.setString(6, record.get(5));
-				openTime = LocalTime.of(Integer.parseInt(record.get(6)), Integer.parseInt(record.get(7)));
-				closeTime = LocalTime.of(Integer.parseInt(record.get(8)), Integer.parseInt(record.get(9)));
-				pstmt.setTime(7, Time.valueOf(openTime));
-				pstmt.setTime(8, Time.valueOf(closeTime));
+				pstmt.setString(7, record.get(6));
+				openTime = LocalTime.of(Integer.parseInt(record.get(7)), Integer.parseInt(record.get(8)));
+				closeTime = LocalTime.of(Integer.parseInt(record.get(9)), Integer.parseInt(record.get(10)));
+				pstmt.setTime(8, Time.valueOf(openTime));
+				pstmt.setTime(9, Time.valueOf(closeTime));
 				pstmt.addBatch();
 			}
 				int[] data = pstmt.executeBatch();

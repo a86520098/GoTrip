@@ -21,27 +21,22 @@ public class CarModelServiceImpl implements CarModelService{
 	}
 
 	@Override
-	public List<CarModel> getCarModels() {
+	public List<CarModel> findAll() {
 		return carRepository.findAll();
 	}
 
 	@Override
-	public CarModel getCarModel(Integer id) {
+	public CarModel findById(Integer id) {
 		return carRepository.findById(id).get();
 	}
 
 	@Override
-	public void insertCarModel(CarModel carModel) {
+	public void save(CarModel carModel) {
 		carRepository.save(carModel);
 	}
 
 	@Override
-	public void updateCarModel(CarModel carModel) {
-		carRepository.save(carModel);
-	}
-
-	@Override
-	public void deleteCarModel(Integer id) {
+	public void deleteById(Integer id) {
 		if (!carRepository.existsById(id))
 			throw new IllegalStateException("Car model with id " + id + " does not exist");
 		carRepository.deleteById(id);

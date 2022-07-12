@@ -7,14 +7,12 @@ import com.ispan.group3.repository.CarModel;
 
 public interface CarModelService {
 
-	List<CarModel> getCarModels();
+	List<CarModel> findAll();
 	
-	CarModel getCarModel(Integer id);
+	CarModel findById(Integer id);
 
-	void insertCarModel(CarModel carModel);
+	void save(CarModel carModel);
 
-	void updateCarModel(CarModel carModel);
-
-	void deleteCarModel(Integer id);
+	void deleteById(Integer id);
 
 }

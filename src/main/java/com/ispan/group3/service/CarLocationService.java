@@ -6,13 +6,13 @@ import com.ispan.group3.repository.CarLocation;
 
 public interface CarLocationService {
 
-	List<CarLocation> getCarLocations();
+	List<CarLocation> findAll();
 	
-	CarLocation getCarLocation(Integer id);
+	CarLocation findById(Integer id);
 
-	void insertCarLocation(CarLocation carLocation);
+	void save(CarLocation carLocation);
 
-	void updateCarLocation(CarLocation carLocation);
+//	void updateCarLocation(CarLocation carLocation);
 
-	void deleteCarLocation(Integer id);
+	void deleteById(Integer id);
 }
