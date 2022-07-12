@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="frontend/partials/fragment :: head"></head>
+
+<body class="">
+	<!-- Header -->
+	<header th:replace="frontend/partials/fragment :: header"></header>
+	<!-- Cart 購物車 -->
+	<div th:replace="frontend/partials/fragment :: cart"></div>
+
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92"	th:style="'background-image: url(' + @{/images/bg-02.jpg} + ');'">
+		<h2 class="ltext-103 font-weight-bold clwhite txt-center">租車管理</h2>
+	</section>
+	<!-- Product 內文 -->
+	<div class="bg0">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 p-b-80 bg6">
+					<div class="side-menu">
+						<div class="p-t-55">
+							<h2 class="ltext-103 cl5 font-weight-bold m-b-30">租車管理</h2>
+							<ul>
+								<li class="bor18">
+									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										檢視訂單
+									</a>
+								</li>
+								<li class="bor18">
+									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										地點與車款列表
+									</a>
+								</li>
+
+								<li class="bor18">
+									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增地點
+									</a>
+								</li>
+
+								<li class="bor18">
+									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增車款
+									</a>
+								</li>
+								<li class="bor18">
+									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										DIY & Crafts
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Block2 -->
+				<div class="col-md-9 grid-margin my-5">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">新增租車據點</h4>
+							<form id="insertForm" name="form" th:action="@{/backend/cars/}"	method="post" th:object="${location}"
+								  class="form-horizontal needs-validation" enctype="multipart/form-data">
+								<p class="card-description mt-5">地點資料</p>
+								<div class="row mt-4">
+									<input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder="" />
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label class="col-sm-3 col-form-label" for="companyId">公司編號</label>
+											<div class="col-sm-9">
+												<input th:field="*{companyId}" id="companyId" type="text" class="form-control" />
+												<div class="invalid-feedback">請輸入公司編號</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label class="col-sm-3 col-form-label" for="name">地點名稱</label>
+											<div class="col-sm-9">
+												<input th:field="*{name}" id="name" type="text" class="form-control" />
+												<div class="invalid-feedback">請輸入地點名稱</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label class="col-sm-3 col-form-label" for="city">縣市行政區</label>
+											<div class="col-sm-9">
+												<div  role="tw-city-selector" data-bootstrap-style data-has-zipcode></div>
+											
+											</div>
+<!-- 											<div class="col-sm-9 city-selector-set" data-bootstrap-style> -->
+<!-- 											    <select th:field="*{city}" class="county"></select> -->
+<!-- 											    <select th:field="*{district}" class="district"></select> -->
+											    <!-- 郵遞區號欄位 (建議加入 readonly 屬性，防止修改) -->
+<!-- 											    <input class="zipcode" type="text" size="3" readonly placeholder="郵遞區號"> -->
+<!-- 											</div> -->
+											<div class="invalid-feedback">請選擇車款類別</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label class="col-sm-3 col-form-label" for="address">地址</label>
+											<div class="col-sm-9">
+												<input th:field="*{address}" id="address" type="text" class="form-control" />
+												<div class="invalid-feedback">請輸入地址</div>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group row">
+											<label class="col-sm-3 col-form-label" for="phone">連絡電話</label>
+											<div class="col-sm-9">
+												<input th:field="*{phone}" id="phone" type="text" class="form-control" placeholder="02-1234-5678"/>
+												<div class="invalid-feedback">請輸入正確的電話格式</div>
+											</div>
+										</div>
+									</div>
+								</div>
+<!-- 								<div class="row"> -->
+<!-- 									<div class="col-md-6"> -->
+<!-- 										<div class="form-group row"> -->
+<!-- 											<label class="col-sm-3 col-form-label" for="displacement">引擎排氣量</label> -->
+<!-- 											<div class="col-sm-9"> -->
+<!-- 												<input th:field="*{displacement}" id="displacement" type="number" class="form-control" min="1" /> -->
+<!-- 												<div class="invalid-feedback">請輸入引擎排氣量</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+										
+<!-- 										<p class="card-description mt-4">其他資訊</p> -->
+<!-- 										<div class="row"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-group row"> -->
+<!-- 													<label class="col-sm-3 col-form-label" for="suitcase">大型行李數</label> -->
+<!-- 													<div class="col-sm-9"> -->
+<!-- 														<input th:field="*{suitcase}" id="suitcase" type="number" class="form-control" min="1" /> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-group row"> -->
+<!-- 													<label class="col-sm-3 col-form-label" for="bag">小型行李數</label> -->
+<!-- 													<div class="col-sm-9"> -->
+<!-- 														<input th:field="*{bag}" id="bag" type="number" class="form-control" min="1" /> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 										<div class="row"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-group row"> -->
+<!-- 													<label class="col-sm-3 col-form-label" for="seat">座位數</label> -->
+<!-- 													<div class="col-sm-9"> -->
+<!-- 														<input th:field="*{seat}" id="seat" type="number" class="form-control" min="1" /> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-group row"> -->
+<!-- 													<label class="col-sm-3 col-form-label" for="door">車門數</label> -->
+<!-- 													<div class="col-sm-9"> -->
+<!-- 														<input th:field="*{door}" id="door" type="number" class="form-control" min="1" /> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 										<div class="row"> -->
+<!-- 											<div class="col-md-6"> -->
+<!-- 												<div class="form-group row mt-5 justify-content-end"> -->
+<!-- 													<div class="col-sm-3"> -->
+<!-- 														<label for="images" class="col-form-label pb-1">上傳照片</label> -->
+<!-- 													</div> -->
+<!-- 													<div class="col-sm-9"> -->
+<!-- 														<div class="custom-file"> -->
+<!-- 															<input type="file" class="form-control custom-file-input pb-1" -->
+<!-- 																name="carImage" id="carImage">  -->
+<!-- 															<label class="custom-file-label">選擇檔案</label> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="col-md-3"> -->
+<!-- 												<img th:src="@{*{image}}" class="rounded"/> -->
+<!-- 												<div class="row" id="formFileCar"></div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+										<div class="d-flex justify-content-end">
+											<button id="btn-insert" type="submit" class="btn btn-primary mr-2 justify-content-end mr-4">
+												儲存資料
+											</button>
+											<a class="btn btn-light justify-content-end" th:href="@{/backend/cars}">
+												回上一頁
+											</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer th:replace="frontend/partials/fragment :: footer"></footer>
+	<!-- Back to top -->
+	<div th:replace="frontend/partials/fragment :: toTop"></div>
+	<!-- Modal1 -->
+	<div th:replace="frontend/partials/fragment :: modal1"></div>
+	<!-- javascript -->
+	<div th:replace="frontend/partials/fragment :: script"></div>
+	
+	<script th:src="@{/js/tw-city-selector.min.js}"></script>
+	<script>
+	  new TwCitySelector();
+	</script>
+
+</body>
+
+</html>

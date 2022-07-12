@@ -26,7 +26,7 @@ public class Comment {
 	private Integer rating;
 	private String content;
 	private String status;
-	@OneToMany(mappedBy="comment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="comment", cascade = CascadeType.ALL)
 	private Set<CommentImage> images;
 	
 	
@@ -133,7 +133,7 @@ public class Comment {
 		}
 		return imagePaths;
 	}
-
+	
 	public void setImages(Set<CommentImage> images) {
 		this.images = images;
 	}

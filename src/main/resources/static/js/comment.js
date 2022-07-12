@@ -196,13 +196,9 @@ jQuery(document).ready(function ($) {
     // 顯示商品資訊
     $('.btn-select').on('click', function () {
         let itemTb = $(this).attr('value');
-        let mapping = "";
-        if (itemTb == 'hotels') {
-            mapping = 'hotel/'
-        }
         $.ajax({
             type: 'GET',
-            url: '/gotrip/' + mapping + 'api/' + itemTb,
+            url: '/gotrip/api/' + itemTb,
             dataType: 'json',
             success: function (data) {
                 // 清空tbody內容
@@ -263,13 +259,9 @@ jQuery(document).ready(function ($) {
 
 
     function popUpInfo(itemTb, itemId) {
-	    let mapping = "";
-        if (itemTb == 'hotels') {
-            mapping = 'hotel/'
-        }
         $.ajax({
             type: 'GET',
-            url: '/gotrip/' + mapping + 'api/' + itemTb + '/' + itemId,
+            url: '/gotrip/api/' + itemTb + '/' + itemId,
             dataType: 'json',
             success: function (data) {
                 let itemInfo;

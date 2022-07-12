@@ -33,9 +33,9 @@ public class CarController {
 		this.locationService = locationService;
 	}
 
-	
+	// 後台管理系統
 	@GetMapping({"/backend/cars", "/backend/cars/models"})
-	public String getCarList(Model model) {
+	public String findAllModelsBk(Model model) {
 		List<CarModel> carModels = modelService.findAll();
 		model.addAttribute("carModels", carModels);
 		return "backend/car-list";
@@ -60,31 +60,6 @@ public class CarController {
 		return "backend/car-form";
 	}
 	
-	@GetMapping("/cars")
-	public String getCars(Model model) {
-		List<CarModel> carModels = modelService.findAll();
-		model.addAttribute("carModels", carModels);
-		return "frontend/car";
-	}
-	
-	@GetMapping("/cars/locations")
-	public String findAllLocation(Model model) {
-//		List<CarLocation> carLocations = locationService.findAll();
-		CarLocation carLocation = locationService.findById(1);
-//		model.addAttribute("carLocations", carLocations);
-		model.addAttribute("location", carLocation);
-		System.out.println(carLocation);
-		return "frontend/car-location";
-	}
-	
-	@GetMapping("/cars/{id}")
-	public String getCar(@PathVariable Integer id, Model model) {
-		CarModel carModel = modelService.findById(id);
-		model.addAttribute("car", carModel);
-
-		return "frontend/car-detail";
-	}
-	
 	@PostMapping("/backend/cars")
 	public String insertComment(@ModelAttribute CarModel carModel, 
 								@RequestParam(value = "carImage", required = false) MultipartFile file) {
@@ -99,12 +74,43 @@ public class CarController {
 
 		return "redirect:/backend/cars";
 	}
-	
-	
+
 	@DeleteMapping("/backend/cars/{id}")
 	public String deleteById(@PathVariable Integer id) {
 		modelService.deleteById(id);
 		return "redirect:/backend/cars";
 	}
+		
+	@GetMapping("/cars")
+	public String findAllModel(Model model) {
+		List<CarModel> carModels = modelService.findAll();
+		model.addAttribute("carModels", carModels);
+		return "frontend/car";
+	}
+	
+	@GetMapping("/cars/locations")
+	public String findAllLocation(Model model) {
+		List<CarLocation> carLocations = locationService.findAll();
+		model.addAttribute("carLocations", carLocations);
+		return "frontend/car-location";
+	}
+	
+	@GetMapping("/cars/{id}")
+	public String findById(@PathVariable Integer id, Model model) {
+		CarModel carModel = modelService.findById(id);
+		model.addAttribute("car", carModel);
+		return "frontend/car-detail";
+	}
+	
+	@GetMapping("/cars/locations/form")
+	public String showNewForm(Model model) {
+		CarLocation carLocation = new CarLocation();
+		model.addAttribute("location", carLocation);
+		return "frontend/car-location-form";
+	}
+	
+	
+	
+	
 	
 }
