@@ -3,14 +3,14 @@
 
 <head th:replace="frontend/partials/fragment :: head"></head>
 
-<body class="animsition">
+<body class="">
 	<!-- Header -->
   <header th:replace="frontend/partials/fragment :: header"></header>
 	<!-- Cart 購物車 -->
 	<div th:replace="frontend/partials/fragment :: cart"></div>
 	
 	<!-- Product 內文 -->
-	<div class="bg0 m-t-23 p-b-140">
+	<div class="bg0 m-t-60 p-b-140">
 		<div class="container">
 			
 			<div class="flex-w flex-sb-m p-b-52">
@@ -31,40 +31,28 @@
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-5">
-					<div
-						class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						條件篩選
-					</div>
-
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						搜尋行程
-					</div>
+					<a class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3  m-tb-4"
+						th:href="@{/cars/locations}">
+						以地點查詢
+					</a>
 				</div>
-
-				<!-- Search product -->
-				<div th:replace="frontend/partials/fragment :: search"></div>
-			
-				<!-- Filter -->
-				<div th:replace="frontend/partials/fragment :: filter"></div>
-
 			</div>
+
+
 
 			<div class="row isotope-grid">
 <!-- 			 isotope-grid  -->
 				<div class="col-sm-3">
-					<div></div>
+					<div class="card">
+						
+					</div>
 				</div>
 				<!-- Block2 -->
 				<div class="col-sm-9">
-				<div th:each="car:${carModels}" class="m-b-30  isotope-item">
-<!-- 					<div class="block2">-->
+					<div th:each="car:${carModels}" class="m-b-30  isotope-item">
 					
 						<div class="card d-block">
-							<div class="row ">
+							<div class="row">
 								<div class="col-sm-4 ">
 								<div class="px-3 pos-relative hov-img0 card-img-left ">
 									<img th:src="@{${car.image}}" class="mt-4 pt-3" alt="IMG-CAR">
@@ -79,8 +67,8 @@
 										<div class="rating-count" th:id="${car.id}" value="carRental">
 											尚無評論
 										</div>
-										<p class="clblack mtext-101 p-t-6 text-right">
-<!-- 											TWD $<span th:text="${car.price}"></span> -->
+										<p class="clblack mtext-101 p-t-6 text-right" th:each="option:${carOptions}">
+											TWD $<span th:text="${car.carOptions.price}"></span>
 										</p>
 										<i class="zmdi zmdi-flash"></i>
 										<span th:text="${car.power}" class="pr-3"></span>
@@ -96,18 +84,11 @@
 								</div>
 							</div>
 						</div>
-<!-- 					</div> -->
-				</div>
+					</div>
 
 				</div>
 			</div>
 
-			<!-- Load more -->
-			<div class="flex-c-m flex-w w-full p-t-45">
-				<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-					Load More
-				</a>
-			</div>
 		</div>
 	</div>
 

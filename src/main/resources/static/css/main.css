@@ -228,7 +228,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .header-v4 .container-menu-desktop {
-  height: 124px;
+  height: 70px !important;
 }
 
 
@@ -264,7 +264,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .right-top-bar a:hover {
-  color: #6c7ae0;
+  color: orange;
 }
 
 
@@ -379,7 +379,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .main-menu>li>a {
   font-family: Poppins-Medium;
-  font-size: 14px;
+/*   font-size: 14px; */
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;

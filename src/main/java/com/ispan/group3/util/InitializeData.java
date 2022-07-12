@@ -108,11 +108,11 @@ public class InitializeData {
 			try {
 				conn = ds.getConnection();
 				stmt = conn.createStatement();
-				stmt.executeUpdate("DROP DATABASE IF EXISTS " + DB_NAME);
-				stmt.executeUpdate("CREATE DATABASE " + DB_NAME + " COLLATE Chinese_Taiwan_Stroke_CI_AI");
-				System.out.println("成功新增Database: " + DB_NAME);
+//				stmt.executeUpdate("DROP DATABASE IF EXISTS " + DB_NAME);
+//				stmt.executeUpdate("CREATE DATABASE " + DB_NAME + " COLLATE Chinese_Taiwan_Stroke_CI_AI");
+//				System.out.println("成功新增Database: " + DB_NAME);
 			} catch (SQLException e) {
-				System.err.println("無法新增Databsae");
+//				System.err.println("無法新增Databsae");
 				e.printStackTrace();
 			}
 			((SQLServerDataSource) ds).setDatabaseName(DB_NAME);
@@ -170,7 +170,7 @@ public class InitializeData {
 
 	// Insert data of comments then close connection
 	public static void insertComments(Connection conn) {
-		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/comments.csv");
+		try (FileInputStream fis = new FileInputStream("src/main/resources/data/comments.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 			 BufferedReader br = new BufferedReader(isr)) {
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
@@ -200,7 +200,7 @@ public class InitializeData {
 
 	
 	public static void insertCommentImages(Connection conn) {
-		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/comment-images.csv");
+		try (FileInputStream fis = new FileInputStream("src/main/resources/data/comment-images.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 			 BufferedReader br = new BufferedReader(isr)) {
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
@@ -220,7 +220,7 @@ public class InitializeData {
 
 	
 	public static String uploadFile(String fileName) {
-		File inputFile = new File("src/main/resources/static/data/images/" + fileName);
+		File inputFile = new File("src/main/resources/data/images/" + fileName);
 		String savePath = null;
 		try {
 			savePath = FileUploadUtil.saveFile(IMAGE_DIR, inputFile);
@@ -232,7 +232,7 @@ public class InitializeData {
 	
 	
 	public static void insertCarModels(Connection conn) {
-		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/car-model.csv");
+		try (FileInputStream fis = new FileInputStream("src/main/resources/data/car-model.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 			 BufferedReader br = new BufferedReader(isr)) {
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
@@ -262,7 +262,7 @@ public class InitializeData {
 	}
 	
 	public static void insertCarLocations(Connection conn) {
-		try (FileInputStream fis = new FileInputStream("src/main/resources/static/data/car-location.csv");
+		try (FileInputStream fis = new FileInputStream("src/main/resources/data/car-location.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
 			 BufferedReader br = new BufferedReader(isr)) {
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
@@ -288,8 +288,6 @@ public class InitializeData {
 		} catch (SQLException | IOException e) {
 				e.printStackTrace();
 		} 
-		
 	}
-
 
 }
