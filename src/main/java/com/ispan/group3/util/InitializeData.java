@@ -276,12 +276,10 @@ public class InitializeData {
 				System.out.println("成功新增" + data.length + "筆租車地點資料");
 		} catch (SQLException | IOException e) {
 				e.printStackTrace();
-<<<<<<< HEAD
-		} 
-=======
-		}
 
->>>>>>> 192f46b9de5e0a9bc92ffa1b668eb0ff744fa08a
+		} 
+
+
 	}
 
 }
