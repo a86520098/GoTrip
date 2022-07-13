@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,22 +33,25 @@ public class CarController {
 		this.locationService = locationService;
 	}
 
-	// 後台管理系統
+	// ======== 後台管理系統 ========
+	// ---------- 車款列表 ----------
 	@GetMapping({ "/backend/cars", "/backend/cars/models" })
-	public String findAllModelsBk(Model model) {
+	public String findAllCarBk(Model model) {
 		List<CarModel> carModels = modelService.findAll();
 		model.addAttribute("carModels", carModels);
-		return "backend/car-list";
+		return "backend/car/car-model";
 	}
 
-	@GetMapping({ "/backend/cars/form" })
-	public String showNewCarForm(Model model) {
-		CarModel carModel = new CarModel();
-		model.addAttribute("carModel", carModel);
-		return "backend/car-new-form";
+	// ---------- 地點列表 ----------
+	@GetMapping("/backend/cars/locations")
+	public String findAllLocBk(Model model) {
+		List<CarLocation> carLocations = locationService.findAll();
+		model.addAttribute("carLocations",carLocations);
+		return "backend/car/car-location";
 	}
 
-	@GetMapping({ "/backend/cars/form/{id}" })
+	// ---------- 車款表單 ----------
+	@GetMapping({"/backend/cars/form", "/backend/cars/form/{id}" })
 	public String showCarForm(Model model, @PathVariable(required = false) Integer id) {
 		CarModel carModel;
 		if (id != null) {
@@ -58,11 +60,12 @@ public class CarController {
 			carModel = new CarModel();
 		}
 		model.addAttribute("carModel", carModel);
-		return "backend/car-form";
+		return "backend/car/car-form";
 	}
 
+	// ---------- 儲存車款 ----------
 	@PostMapping("/backend/cars")
-	public String insertComment(@ModelAttribute CarModel carModel,
+	public String saveCar(@ModelAttribute CarModel carModel,
 			@RequestParam(value = "carImage", required = false) MultipartFile file) {
 		try {
 			String savePath = FileUploadUtil.saveFile("comment", file);
@@ -74,33 +77,39 @@ public class CarController {
 		return "redirect:/backend/cars";
 	}
 
+	// ---------- 刪除車款 ----------
 	@DeleteMapping("/backend/cars/{id}")
 	public String deleteById(@PathVariable Integer id) {
 		modelService.deleteById(id);
 		return "redirect:/backend/cars";
 	}
 
+	// ========== 前台系統 ==========
+	// ---------- 車款找車 ----------
 	@GetMapping("/cars")
 	public String findAllModel(Model model) {
 		List<CarModel> carModels = modelService.findAll();
 		model.addAttribute("carModels", carModels);
-		return "frontend/car";
+		return "frontend/car/car-model";
 	}
 
+	// ---------- 地圖找車 ----------
 	@GetMapping("/cars/locations")
 	public String findAllLocation(Model model) {
 		List<CarLocation> carLocations = locationService.findAll();
 		model.addAttribute("carLocations", carLocations);
-		return "frontend/car-location";
+		return "frontend/car/car-location";
 	}
 
+	// ---------- 車款頁面 ----------
 	@GetMapping("/cars/{id}")
 	public String findById(@PathVariable Integer id, Model model) {
 		CarModel carModel = modelService.findById(id);
 		model.addAttribute("car", carModel);
-		return "frontend/car-detail";
+		return "frontend/car/car-detail";
 	}
 
+	// ---------- 地點表單 ----------
 	@GetMapping({ "/cars/locations/form", "/cars/locations/form/{id}" })
 	public String showNewForm(@PathVariable(required = false) Integer id, Model model) {
 		CarLocation carLocation;
@@ -112,20 +121,15 @@ public class CarController {
 		model.addAttribute("carLocation", carLocation);
 		List<CarModel> existModels = modelService.findAll();
 		model.addAttribute("existModels", existModels);
-		return "frontend/car-location-form";
+		return "frontend/car/car-location-form";
 	}
-
-//	@PostMapping(value = "/cars/locations/save", params = "addRow")
-//	public String addRow(CarLocation carLocation, final BindingResult bindingResult) {
-//		carLocation.getCarOptions().add(new CarOption());
-//		return "frontend/car-location-form";
-//	}
 	
+	// ---------- 儲存地點 ----------
 	@PostMapping("/cars/locations")
 	public String save(@ModelAttribute CarLocation carLocation) {
-		
+		List<CarOption> carOptions = locationService.findById(carLocation.getId()).getCarOptions();
+		carLocation.setCarOptions(carOptions);
 		locationService.save(carLocation);
-
 		return "redirect:/cars/locations";
 	}
 

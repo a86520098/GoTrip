@@ -2,17 +2,14 @@ package com.ispan.group3.repository;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "car_location")
@@ -21,6 +18,7 @@ public class CarLocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(updatable = false)
 	private Integer companyId;
 	private String name;
 	private String country;
@@ -31,14 +29,14 @@ public class CarLocation {
 	private String openTime;
 	private String closeTime;
 
-	@ManyToMany
-	@JoinTable(name = "car_option",
-			   joinColumns = @JoinColumn(name = "location_id"),
-			   inverseJoinColumns = @JoinColumn(name = "model_id"))
-	@JsonIgnore
-	private List<CarModel> carModels;
+//	@ManyToMany
+//	@JoinTable(name = "car_option",
+//			   joinColumns = @JoinColumn(name = "location_id"),
+//			   inverseJoinColumns = @JoinColumn(name = "model_id"))
+//	@JsonIgnore
+//	private List<CarModel> carModels;
 	
-	@OneToMany(mappedBy = "carOptionKey.carLocation")
+	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY)
 	private List<CarOption> carOptions;
 	
 	public CarLocation() {
@@ -47,8 +45,7 @@ public class CarLocation {
 
 	
 	public CarLocation(Integer id, Integer companyId, String name, String country, String county, String district,
-			String address, String phone, String openTime, String closeTime, List<CarModel> carModels,
-			List<CarOption> carOptions) {
+			String address, String phone, String openTime, String closeTime, List<CarOption> carOptions) {
 		this.id = id;
 		this.companyId = companyId;
 		this.name = name;
@@ -59,13 +56,13 @@ public class CarLocation {
 		this.phone = phone;
 		this.openTime = openTime;
 		this.closeTime = closeTime;
-		this.carModels = carModels;
+//		this.carModels = carModels;
 		this.carOptions = carOptions;
 	}
 
 
 	public CarLocation(Integer companyId, String name, String country, String county, String district, String address,
-			String phone, String openTime, String closeTime, List<CarModel> carModels, List<CarOption> carOptions) {
+			String phone, String openTime, String closeTime,List<CarOption> carOptions) {
 		this.companyId = companyId;
 		this.name = name;
 		this.country = country;
@@ -75,7 +72,6 @@ public class CarLocation {
 		this.phone = phone;
 		this.openTime = openTime;
 		this.closeTime = closeTime;
-		this.carModels = carModels;
 		this.carOptions = carOptions;
 	}
 	
@@ -173,10 +169,10 @@ public class CarLocation {
 		this.closeTime = closeTime;
 	}
 
-	public List<CarModel> getCarModels() {
-		return carModels;
-	}
-
+//	public List<CarModel> getCarModels() {
+//		return carModels;
+//	}
+//
 //	public void setCarModels(List<CarModel> carModels) {
 //		this.carModels = carModels;
 //	}
@@ -185,9 +181,9 @@ public class CarLocation {
 		return carOptions;
 	}
 
-//	public void setCarOptions(List<CarOption> carOptions) {
-//		this.carOptions = carOptions;
-//	}
+	public void setCarOptions(List<CarOption> carOptions) {
+		this.carOptions = carOptions;
+	}
 	
 	
 		

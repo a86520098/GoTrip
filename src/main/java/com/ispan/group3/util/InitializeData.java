@@ -79,6 +79,7 @@ public class InitializeData {
 												+ ");";
 
 	private static final String CREATE_TB_OPT = "CREATE TABLE " + TB_NAME_OPT + " ("
+													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
 													+ "	location_id int FOREIGN KEY REFERENCES " + TB_NAME_LOC + "(id),"
 													+ "	model_id int FOREIGN KEY REFERENCES " + TB_NAME_CAR + "(id),"
 													+ "	price int,"

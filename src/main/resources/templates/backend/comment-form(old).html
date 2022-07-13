@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!-- <html xmlns:th="http://www.thymeleaf.org"> -->
 
 <head>
 <!-- Required meta tags -->
@@ -10,15 +10,15 @@
 <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css" >
 <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
 <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css" >
+<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
 <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css}" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" >
 <link rel="stylesheet" th:href="@{/css/stars.css}" href="../../css/stars.css">
-<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
 <style>
-	img {
-		object-fit: cover;
-		width: 100%;
-		height: 100%;
-	}
+img {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+}
 </style>
 </head>
 
@@ -39,19 +39,19 @@
 								<div class="card-body">
 									<h4 class="card-title">新增商品評論</h4>
 									<form id="insertForm" name="form" th:action="@{/backend/comments}" method="post" th:object="${comment}" 
-										  class="form-horizontal needs-validation" enctype="multipart/form-data">
+										class="form-horizontal needs-validation" enctype="multipart/form-data">
 										<div class="mt-4">
 											<input th:field="*{id}" id="id" type="hidden" class="form-control"	placeholder="" />
 											
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label" for="itemTb">項目類別</label>
 												<div class="col-sm-9">
-													<select th:field="*{itemTb}" id="itemTb" name="itemTb" class="custom-select" style="height: 46px;">
-														<option value="no" th:selected="selected" hidden>請選擇類別</option>
-														<option value="tickets">行程</option>
-														<option value="restaurants">餐廳</option>
-														<option value="hotels">住宿</option>
-														<option value="cars">租車</option>
+													<select th:field="*{itemTb}" id="itemTb" name="itemTb" class="form-control ">
+														<option value="">請選擇類別</option>
+														<option value="ticket">行程</option>
+														<option value="restaurant">餐廳</option>
+														<option value="hotel">住宿</option>
+														<option value="carRental">租車</option>
 													</select>
 													<div class="invalid-feedback">請選擇商品項目類別</div>
 												</div>
@@ -113,12 +113,22 @@
 												</div>
 											</div>
 											<div class="row justify-content-end"> 
-
+<!-- 											<div class="row justify-content-end" th:if="${images != null}">  -->
+<!-- 											<div class="row justify-content-end" th:if="${not #lists.isEmpty(images)}"> -->
+<!-- 											<div class="row justify-content-end" th:unless="${#lists.isEmpty({images})}">  -->
+	                        <div class="col-sm-9">
+		                        <div class="row">        
+        											<label for="imagesFromDB"></label>
+        											<div th:each="image:*{images}" class="col-sm-4 mb-5">
+																<input type="checkbox" name="imagesFromDB" value="image1" id="">刪除
+																<img th:src="@{${image}}" class="rounded"/>
+        											</div>
+														</div>
+													</div>
 											</div>
 											<div class="row justify-content-end mb-3">
 												<div class="col-sm-9">
 													<div class="row" id="formFile"></div>
-													<div class="invalid-feedback" id="isAdult">請勿上傳色情、暴力或任何包含成人內容的圖片</div>
 												</div>
 											</div>
 											<div class="d-flex justify-content-end mb-4">
@@ -131,33 +141,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6 ">
-			            	<div class="card">
-			              		<div class="card-body">
-			                		<div class="d-flex justify-content-center">
-					                	<button type="button" name="select" id="btn-ticket" value="tickets" class="btn btn-outline-dark mb-3 mx-1 btn-select">行程列表</button>
-					                	<button type="button" name="select" id="btn-resaturant" value="resaturants" class="btn btn-outline-dark mb-3 mx-1 btn-select">餐廳列表</button>
-					                	<button type="button" name="select" id="btn-hotel" value="hotels" class="btn btn-outline-dark mb-3 mx-1 btn-select">住宿列表</button>
-					                	<button type="button" name="select" id="btn-carRental" value="cars" class="btn btn-outline-dark mb-3 mx-1 btn-select">租車列表</button>
-									</div>
-                  					<table id="table_id" class="display table table-hover" style="font-size: 1rem;">
-										<thead>
-											<tr class="text-center">
-												<th>項目</th>
-												<th>編號</th>
-												<th>名稱</th>
-												<th>內容</th>
-											</tr>
-										</thead>
-										<tbody id="rows">
-											<tr>
-												<td style="text-align: center;" colspan="4">點選上方選項以載入項目列表</td>
-											</tr>
-										</tbody>
-									</table>
-                				</div>
-              				</div>
-          				</div>
 					</div>
 				</div>
 				<footer th:replace="backend/partials/fragment :: footer"></footer>
@@ -168,14 +151,61 @@
 	<!-- container-scroller -->
 	<!-- plugins:js -->
 
+	<!--   <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script> -->
+	<!--   <script src="../../vendors/select2/select2.min.js"></script> -->
+
 	<script th:src="@{/vendors/js/vendor.bundle.base.js}"	src="vendors/js/vendor.bundle.base.js"></script>
 	<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
 	<script th:src="@{/js/hoverable-collapse.js}"	src="js/hoverable-collapse.js"></script>
 	<script th:src="@{/js/template.js}" src="js/template.js"></script>
 	<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+
+	<!--   <script src="../../js/file-upload.js"></script> -->
+	<!--   <script src="../../js/typeahead.js"></script> -->
+	<!--   <script src="../../js/select2.js"></script> -->
 	<script th:src="@{/vendors/sweetalert/sweetalert.min.js}"></script>
 	<script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}"></script>
 	<script th:src="@{/js/comment.js}"></script>
+	<script>
+	$(function() {
+        let contentMax = 200;
+        let imagefilesMax = 3;
+
+    		let contentLength = $("#content").val().length;
+        $("#content-length").text('('+contentLength+'/'+contentMax+')');
+        
+        // 確認表單內容
+        $('#btn-insert').click(function (e) {
+            let isItemTbValid = $('#itemTb').val() !== null;
+            let isItemIdVaild = $('#itemId').val() !== '';
+            let isUserIdVaild = $('#userId').val() !== '';
+            let isContentVaild = $("#content").val().length <= contentMax;
+            let isimagefilesVaild = $("#imagefiles")[0].files.length <= imagefilesMax;
+            
+            if (!isItemTbValid || !isItemIdVaild || !isUserIdVaild || !isContentVaild || !isimagefilesVaild ) {
+                e.preventDefault();					
+                isItemTbValid ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));
+                isItemIdVaild ? hideInvalidText($('#itemId')) : showInvalidText($('#itemId'));
+                isUserIdVaild ? hideInvalidText($('#userId')) : showInvalidText($('#userId'));
+                isContentVaild ? hideInvalidText($('#content')) : showInvalidText($('#content'));
+                isimagefilesVaild ? hideInvalidText($('#imagefiles')) : showInvalidText($('#imagefiles'));
+                $("form").addClass('validated');
+            } else {
+               e.preventDefault();		
+                 Swal.fire({
+                   icon: 'success',
+                   title: '儲存成功',
+                   showConfirmButton: false,
+                   timer: 1500
+                 });
+                 
+                 setInterval(function() {
+                     $('#insertForm').submit()
+                 }, 1500);
+            }
+        });
+	})
+	</script>
 	<!-- End custom js for this page-->
 </body>
 

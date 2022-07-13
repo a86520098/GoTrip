@@ -2,360 +2,471 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GoTrip後台管理</title>
-<!-- 通用css樣式 plugins:css -->
-<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}"
-	href="css/vertical-layout-light/style.css">
-<link rel="stylesheet"
-	th:href="@{/vendors/ti-icons/css/themify-icons.css}"
-	href="vendors/ti-icons/css/themify-icons.css">
-<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}"
-	href="vendors/feather/feather.css">
-<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
-<!-- 本頁面使用css樣式 Plugin css for this page -->
-<link rel="stylesheet"
-	th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}"
-	href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-<link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}"
-	href="vendors/datatables.net-bs4/select.dataTables.min.css">
-<!-- TABLE -->
-<link rel="stylesheet"
-	th:href="@{/css/tickeTableStyle/bootstrap.min.css}">
-<link rel="stylesheet"
-	th:href="@{/css/ticketTableStyle/bootstrap.min.table.css}">
-<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jstable.css}">
-<!-- JSON CSV CSS -->
-<!-- <link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.css}"> -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GoTrip 後臺系統</title>
+   <!-- 本頁面使用css樣式 Plugin css for this page -->
+   <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+   <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
+   !-- 通用css樣式 plugins:css -->
+   <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css" >
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css" >
+  <link rel="stylesheet" th:href="@{/vendors/mdi/css/materialdesignicons.min.css}" href="vendors/mdi/css/materialdesignicons.min.css" >
+  <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}" href="vendors/css/vendor.bundle.base.css" >
+  <link rel="shortcut icon" href="images/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+   <style type="text/css">
+	.img-com {
+		object-fit: cover;
+		width: 70px;
+		height: 70px;
+	}
+	
+	/* 字數太長隱藏 */
+	.single-ellipsis {
+		/* display: -webkit-box; */
+  		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+	}
+	/* .single-ellipsis {
+		width: 100px;
+		padding: 10px;
+		border: 2px solid #4d4d4d;
+		overflow:hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	} */
 
-<style type="text/css">
-.img-com {
-	object-fit: cover;
-	width: 70px;
-	height: 70px;
-}
-/* 字數太長 */
-#textMain {
-	display: inline-block;
-	/* background: yellow; */
-}
+	.ellipsis {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 
-#menu {
-	float: right;
-	/* background: red; */
-}
-
-.noText {
-	width: 100%;
-	overflow: none;
-	white-space: normal;
-}
-
-.showText {
-	width: 87%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.none {
-	display: none;
-}
-
-/* 字數太長隱藏 */
-.box {
-	width: 300px;
-	padding: 10px;
-	border: #4caf50 2px solid;
-}
-
-.ellipsis {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	white-space: normal;
-}
-</style>
+	</style>
 </head>
 
 <body>
-	<div class="container-scroller">
+  <div class="container-scroller">
+	<nav th:replace="backend/partials/fragment :: navbar"></nav>
+	<div class="container-fluid page-body-wrapper">
+	  <div th:replace="backend/partials/fragment :: setting"></div>
+	  <nav th:replace="backend/partials/fragment :: sidebar"></nav>
+      <!-- 主要內容 partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title" style="float:left">景點資料列表</div>
 
-		<nav th:replace="backend/partials/fragment :: navbar"></nav>
+				  <!--新增、匯出CSV JSON按鈕 -->
+                  <div style="float:right">
+					<p class="text-right">
+						<a href="./ticketInput.html" th:href="@{/ticketList/ticketInput}" class="btn btn-primary">新增</a>
+						<button class="btn btn-primary" onclick="x.DownloadCSV('csv');">匯出CSV</button>
+						<span>
+						<button class="btn btn-primary" onclick="x.DownloadJSON('json');">匯出JSON</button>
+					</p>
+                  <!-- <a href="addMem" class="btn btn-sm btn-warning rounded-pill" style="text-align: right ; right:0">新增會員資料</a> -->
+                  </div>
 
-		<div class="container-fluid page-body-wrapper">
-			<div th:replace="backend/partials/fragment :: setting"></div>
-			<nav th:replace="backend/partials/fragment :: sidebar"></nav>
-			<!-- 主要內容 partial -->
-			<div class="main-panel">
-				<div class="content-wrapper">
-
-					<div class="row">
-						<div class="col-md-12 grid-margin stretch-card">
-							<div class="card">
-								<div class="card-body">
-									<!-- 									<div class="page-header"> -->
-									<h2>景點列表</h2>
-									<div class="table-responsive">
-										<div class="alert alert-warning alert-dismissible fade show"
-											role="alert" th:unless="${#strings.isEmpty(message)}">
-											<a href="#" class="btn-close" data-dismiss="alert"
-												aria-label="Close">&times;</a> <strong>恭喜，</strong> <span
-												th:text="${message}">信息提交成功</span>
-										</div>
-										<!--新增 -->
-										<p class="text-right">
-											<a href="./ticketInput.html"
-												th:href="@{/ticketList/ticketInput}" class="btn btn-primary">新增</a>
-											<!-- </p> -->
-											<!-- <p class="text-right"> -->
-											<button class="btn btn-primary"
-												onclick="x.DownloadCSV('csv');">匯出CSV</button>
-											<span>
-												<button class="btn btn-primary"
-													onclick="x.DownloadJSON('json');">匯出JSON</button>
-										</p>
-										<div class="table-responsive">
-											<!-- <div id="basic"> -->
-											<table id="basic" class="table table-bordered table-striped">
-												<thead>
-													<tr>
-														<th>#</th>
-														<th>景點套票名稱</th>
-														<th>景點套票簡介</th>
-														<!-- <th>店家營業日期</th> -->
-														<th>店家起始營業時間</th>
-														<th>店家結束營業時間</th>
-														<th>電話</th>
-														<th>國家</th>
-														<th>城市</th>
-														<th>地區</th>
-														<th>地址</th>
-														<th>價格</th>
-														<!-- <th>圖片</th> -->
-														<th>標籤編號</th>
-														<th>標籤名稱</th>
-														<th>上架時間</th>
-														<th>下架時間</th>
-														<th>image</th>
-														<!-- <th>新增日期</th> -->
-													</tr>
-												</thead>
-												<tbody>
-													<tr th:each="ticket,iterStat:${page.content}">
-														<td th:text="${iterStat.count}">1</td>
-														<td><a href="#" th:text="${ticket.ticketName}"
-															th:href="@{'/ticketList/' + ${ticket.ticketNo}}">景點套票名稱</a></td>
-														<!-- 資料收起有問題 -->
-														<!-- <span id="textMain"> -->
-														<div id="box">
-															<td class="ellipsis" th:text="${ticket.ticketIntro}"
-																id="textMain" style="width: 350px; height: 35px;">景點套票敘述
-																<!-- </span> --> <!-- </div>	 -->
-																<div id="menu">
-																	<span class="textBtn" id="unfold">(展開)</span> <span
-																		class="textBtn none" id="packUp">(收起)</span>
-																</div>
-															</td>
-															<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
-															<td th:text="${ticket.ticketOpenTime}">店家起始營業時間</td>
-															<td th:text="${ticket.ticketEndTime}">店家結束營業時間</td>
-															<td th:text="${ticket.phone}">電話</td>
-															<td th:text="${ticket.country}">國家</td>
-															<td th:text="${ticket.city}">城市</td>
-															<td th:text="${ticket.location}">地區</td>
-															<td th:text="${ticket.address}">地址</td>
-															<td th:text="${ticket.price}">價格</td>
-															<td th:text="${ticket.tagNo}">標籤編號</td>
-															<td th:text="${ticket.tagName}">標籤名稱</td>
-															<td th:text="${ticket.ticketStartDate}">上架時間</td>
-															<td th:text="${ticket.ticketEndDate}">下架時間</td>
-															<td>
-																<div th:each="image:${ticket.images}" class="d-inline-block">
-																	<img th:src="@{${image}}" class="rounded img-com" />
-																</div>
-															</td>
-															<!-- <td th:text="${ticket.newDate}">新增日期</td> -->
-															<!-- <td th:text="${ticket.imagePath}">圖片</td> -->
-															<!-- 編輯、刪除 -->
-															<td><a href="#"	th:href="@{/ticketList/{ticketNo}/ticketInput(ticketNo=${ticket.ticketNo})}">更新</a>&nbsp;
-																<a href="#" th:href="@{/ticketList/{ticketNo}/delete(ticketNo=${ticket.ticketNo})}">删除</a>
-															<!-- onclick="javascript:return del();" -->
-															</td>
-													</tr>
-												</tbody>
-											</table>
-
-											<!-- 上一頁、下一頁 BookController.java內同步設定-->
-											<!-- 首頁不會出現上一頁按鈕 th:unless="${page.first}" 末頁不會出現下一頁按鈕 th:unless="${page.last}" -->
-											<!-- <nav>
-												<ul class="pager">
-												<li class="previous"><a href="#"
-														th:href="@{'/ticketList?page='+ ${page.number-1}}"
-														th:unless="${page.first}">上一頁</a></li>
-												<li class="next"><a href="#"
-														th:href="@{/ticketList(page=${page.number} + 1)}"
-														th:unless="${page.last}">下一頁</a></li>
-												</ul>
-											</nav>
-										</div> -->
-										</div>
-
-										<!-- CSV、JSON匯出 -->
-										<div>
-											<table id="myTable" hidden="hidden"
-												class="table table-bordered table-striped"
-												style="display: none">
-												<thead>
-													<tr>
-														<th>#</th>
-														<th>景點套票名稱</th>
-														<th>景點套票簡介</th>
-														<!-- <th>店家營業日期</th> -->
-														<th>店家起始營業時間</th>
-														<th>店家結束營業時間</th>
-														<th>電話</th>
-														<th>國家</th>
-														<th>城市</th>
-														<th>地區</th>
-														<th>地址</th>
-														<th>價格</th>
-														<!-- <th>圖片</th> -->
-														<th>標籤編號</th>
-														<th>標籤名稱</th>
-														<th>上架時間</th>
-														<th>下架時間</th>
-														<!-- <th>新增日期</th> -->
-													</tr>
-												</thead>
-												<tbody>
-													<tr th:each="ticket,iterStat:${page.content}">
-														<td th:text="${iterStat.count}">1</td>
-														<td th:text="${ticket.ticketName}">景點套票名稱</td>
-														<td th:text="${ticket.ticketIntro}">景點套票敘述</td>
-														<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
-														<td th:text="${ticket.ticketOpenTime}">店家起始營業時間</td>
-														<td th:text="${ticket.ticketEndTime}">店家結束營業時間</td>
-														<td th:text="${ticket.phone}">電話</td>
-														<td th:text="${ticket.country}">國家</td>
-														<td th:text="${ticket.city}">城市</td>
-														<td th:text="${ticket.location}">地區</td>
-														<td th:text="${ticket.address}">地址</td>
-														<td th:text="${ticket.price}">價格</td>
-														<!-- <td th:text="${ticket.ticketImage}">圖片</td> -->
-														<td th:text="${ticket.tagNo}">標籤編號</td>
-														<td th:text="${ticket.tagName}">標籤名稱</td>
-														<td th:text="${ticket.ticketStartDate}">上架時間</td>
-														<td th:text="${ticket.ticketEndDate}">下架時間</td>
-														<!-- <td th:text="${ticket.newDate}">新增日期</td> -->
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
+				  <!-- Table -->
+                  <div class="table-responsive">
+                    <table id="table_id" class="display expandable-table w-100">
+                      <colgroup>
+                        <col span="1" style="width: 4%;">
+                        <col span="1" style="width: 12%;">
+                        <col span="1" style="width: 12%;">
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 6%;">
+                        <col span="1" style="width: 4.5%;">
+                        <col span="1" style="width: 4.5%;">
+                        <col span="1" style="width: 4.5%;">
+                        <col span="1" style="width: 13%;">
+                        <col span="1" style="width: 4%;">
+                        <col span="1" style="width: 6%;">
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 5%;">
+                        <col span="1" style="width: 5%;">
+                      </colgroup>
+                      <thead>
+						<tr>
+							<th>ID</th>
+							<th>景點套票名稱</th>
+							<!-- <th>景點套票簡介</th> -->
+							<!-- <th>店家營業日期</th> -->
+							<th>店家起始營業時間</th>
+							<th>店家結束營業時間</th>
+							<th>電話</th>
+							<th>國家</th>
+							<th>城市</th>
+							<th>地區</th>
+							<th>地址</th>
+							<th>價格</th>
+							<!-- <th>圖片</th> -->
+							<th>標籤編號</th>
+							<th>標籤名稱</th>
+							<!-- <th>上架時間</th>
+							<th>下架時間</th> -->
+							<th>image</th>
+							<!-- <th>新增日期</th> -->
+							<th>狀態</th>
+							<th>編輯<br>刪除</th>
+							<!-- <th>刪除</th> -->
+						</tr>
+                      </thead>
+                      <tbody>
+						<tr th:each="ticket,iterStat:${page.content}" class="odd gradeX">
+							<!-- <td th:text="${iterStat.count}">1</td> -->
+							<td th:text="${ticket.ticketNo}" class="font-weight-bold"></td>
+							<td><a href="#" th:text="${ticket.ticketName}" th:href="@{'/ticketList/' + ${ticket.ticketNo}}">景點套票名稱</a></td>														
+							<!-- <td class="single-ellipsis" th:text="${ticket.ticketIntro}">景點套票敘述</td>  -->
+							<!-- style="width: 150px; height: 60px;" -->
+							<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
+							<td th:text="${ticket.ticketOpenTime}" class="font-weight-bold">店家起始營業時間</td>
+							<td th:text="${ticket.ticketEndTime}" class="font-weight-bold">店家結束營業時間</td>
+							<td th:text="${ticket.phone}" class="font-weight-bold">電話</td>
+							<td th:text="${ticket.country}" class="font-weight-bold">國家</td>
+							<td th:text="${ticket.city}" class="font-weight-bold">城市</td>
+							<td th:text="${ticket.location}" class="font-weight-bold">地區</td>
+							<td th:text="${ticket.address}" class="font-weight-bold">地址</td>
+							<td th:text="${ticket.price}" class="font-weight-bold">價格</td>
+							<td th:text="${ticket.tagNo}" class="font-weight-bold">標籤編號</td>
+							<td th:text="${ticket.tagName}" class="font-weight-bold">標籤名稱</td>
+							<!-- <td th:text="${ticket.ticketStartDate}" class="font-weight-bold">上架時間</td>
+							<td th:text="${ticket.ticketEndDate}" class="font-weight-bold">下架時間</td> -->
+							<!-- 圖片 -->
+							<td>
+								<div th:each="image:${ticket.images}" class="d-inline-block">
+									<img th:src="@{${image}}" class="rounded img-com" />
 								</div>
-							</div>
-						</div>
-						<!-- Footer -->
-						<footer th:replace="backend/partials/fragment :: footer"></footer>
-						<!-- partial -->
-					</div>
-				</div>
-			</div>
-			<script th:src="@{/vendors/js/vendor.bundle.base.js}"
-				src="vendors/js/vendor.bundle.base.js"></script>
-			<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
-			<script th:src="@{/static/js/hoverable-collapse.js}"
-				src="../../static/js/hoverable-collapse.js"></script>
-			<script th:src="@{/static/js/template.js}"
-				src="../../static/js/template.js"></script>
-			<script th:src="@{/static/js/settings.js}"
-				src="../../static/js/settings.js"></script>
+							</td>
+							<!-- <td th:text="${ticket.newDate}">新增日期</td> -->
+							<td th:text="${ticket.status}" class="font-weight-bold">狀態</td>
+							<!-- 編輯、刪除 -->
+							<td><a href="#"	th:href="@{/ticketList/{ticketNo}/ticketInput(ticketNo=${ticket.ticketNo})}">更新</a>&nbsp;<br>
+								<a href="#" th:href="@{/ticketList/{ticketNo}/delete(ticketNo=${ticket.ticketNo})}" onclick="javascript:return del();">删除</a>
+							</td>
+                        </tr>                                                                                               
+					</tbody>
+                    </table>
+                  </div>
 
-			<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
-				src="vendors/datatables.net/jquery.dataTables.js"></script>
-			<script
-				th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
-				src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-			<script th:src="@{/js/dataTables.select.min.js}"
-				src="js/dataTables.select.min.js"></script>
-			<script th:src="@{/js/dashboard-comment.js}"
-				src="js/dashboard-comment.js"></script>
-			<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}"
-				src="vendors/sweetalert/sweetalert2.all.min.js"></script>
-			<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+				  <!-- CSV、JSON匯出 -->
+				  <div>
+					<table id="myTable" hidden="hidden" style="display: none">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>景點套票名稱</th>
+								<th>景點套票簡介</th>
+								<!-- <th>店家營業日期</th> -->
+								<th>店家起始營業時間</th>
+								<th>店家結束營業時間</th>
+								<th>電話</th>
+								<th>國家</th>
+								<th>城市</th>
+								<th>地區</th>
+								<th>地址</th>
+								<th>價格</th>
+								<!-- <th>圖片</th> -->
+								<th>標籤編號</th>
+								<th>標籤名稱</th>
+								<th>狀態</th>
+								<!-- <th>上架時間</th>
+								<th>下架時間</th> -->
+								<!-- <th>image</th> -->
+								<!-- <th>新增日期</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="ticket,iterStat:${page.content}">
+								<!-- <td th:text="${iterStat.count}">1</td> -->
+								<td th:text="${ticket.ticketNo}" class="font-weight-bold"></td>
+								<td th:text="${ticket.ticketName}">景點套票名稱</td>
+								<td th:text="${ticket.ticketIntro}">景點套票敘述</td>
+								<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
+								<td th:text="${ticket.ticketOpenTime}">店家起始營業時間</td>
+								<td th:text="${ticket.ticketEndTime}">店家結束營業時間</td>
+								<td th:text="${ticket.phone}">電話</td>
+								<td th:text="${ticket.country}">國家</td>
+								<td th:text="${ticket.city}">城市</td>
+								<td th:text="${ticket.location}">地區</td>
+								<td th:text="${ticket.address}">地址</td>
+								<td th:text="${ticket.price}">價格</td>
+								<!-- <td th:text="${ticket.ticketImage}">圖片</td> -->
+								<td th:text="${ticket.tagNo}">標籤編號</td>
+								<td th:text="${ticket.tagName}">標籤名稱</td>
+								<!-- <td th:text="${ticket.ticketStartDate}">上架時間</td>
+								<td th:text="${ticket.ticketEndDate}">下架時間</td> -->
+								<!-- <td th:text="${ticket.newDate}">新增日期</td> -->
+								<!-- <td>
+									<div th:each="image:${ticket.images}" class="d-inline-block">
+										<img th:src="@{${image}}" class="rounded img-com" />
+									</div>
+								</td> -->
+								<td th:text="${ticket.status}" class="font-weight-bold">狀態</td>
+							</tr>
+						</tbody>
+					</table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+		<footer th:replace="backend/partials/fragment :: footer">
+        <!-- partial -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+  <script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+  <script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+  <script th:src="@{/js/template.js}" src="js/template.js"></script>
+  <script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+  <script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+  <script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+ <!-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script> -->
+<!--   <script th:src="@{/js/member.js}" src="js/member.js"></script> -->
 
-			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-			<script
-				src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 
-			<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
-			<!-- TABLE樣式 -->
-			<script th:src="@{/js/ticketTableJS/bootstrap.min.js}"></script>
-			<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
-			<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-			<script th:src="@{/vendors/js/vendor.bundle.base.js}"
-				src="../static/vendors/js/vendor.bundle.base.js"></script>
-			<!-- <script src="../static/js/jstable.min.js"></script> -->
-			<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
+<!-- CSV JSON -->
+<script th:src="@{/js/ticketTableJS/index.js}"></script>
+<script th:src="@{/js/ticketTableJS/bootstrap.bundle.min.js}"></script>
 
-			<!-- CSV JSON -->
-			<!-- <script th:src="@{/js/ticketTableJS/buttonToCsvJson.js}"></script> -->
-			<script th:src="@{/js/ticketTableJS/index.js}"></script>
-			<script th:src="@{/js/ticketTableJS/bootstrap.bundle.min.js}"></script>
-			<!-- <script th:src="@{/js/ticketTableJS/index.js}"></script>
-			<script th:src="@{/js/ticketTableJS/bootstrap.bundle.min.js}"></script> -->
+<!-- CSV JSON Script -->
+<script> let x = new RdataTB('myTable'); </script>
 
-			<!-- TABLE JS -->
-			<script>
-				new JSTable("#basic");
-			</script>
-			<!-- CSV JSON Script -->
-			<script>
-				let x = new RdataTB('myTable');
-			</script>
+<!-- TABLE -->
+<script>
+// 	(function ($) {
+//    $(document).ready( function () {
+// 		$('#table_id').DataTable({
+			
+// 			 columnDefs: [
+// 				 {
+// 				  "targets":[ 0,1,2,3,4,5,6 ],
+// 				  "className": "text-center",
+// 				 }
+// 				],
+// 			 "language":{
+// 				"processing": "處理中...",
+// 				"loadingRecords": "載入中...",
+// 				"lengthMenu": "顯示_MENU_項結果",
+// 				"info": "顯示第_START_至_END_項結果，共_TOTAL_項",
+// 				"infoEmpty": "顯示第 0 至 0 項結果，共 0 項",
+// 				"infoFiltered": "(從_MAX_項結果中過濾)",
+// 				"search": "搜尋:",
+// 				"paginate": {
+// 					"first": "第一頁",
+// 					"previous": "上一頁",
+// 					"next": "下一頁",
+// 					"last": "最後一頁"
+// 				},
+// 				"aria": {
+// 					"sortAscending": ": 升冪排列",
+// 					"sortDescending": ": 降冪排列"
+// 				},
+// 				"emptyTable": "目前沒有資料",
+// 				"datetime": {
+// 					"previous": "上一頁",
+// 					"next": "下一頁",
+// 					"hours": "時",
+// 					"minutes": "分",
+// 					"seconds": "秒",
+// 					"amPm": [
+// 						"上午",
+// 						"下午"
+// 					],
+// 					"unknown": "未知",
+// 					"weekdays": [
+// 						"週日",
+// 						"週一",
+// 						"週二",
+// 						"週三",
+// 						"週四",
+// 						"週五",
+// 						"週六"
+// 					],
+// 					"months": [
+// 						"一月",
+// 						"二月",
+// 						"三月",
+// 						"四月",
+// 						"五月",
+// 						"六月",
+// 						"七月",
+// 						"八月",
+// 						"九月",
+// 						"十月",
+// 						"十一月",
+// 						"十二月"
+// 					]
+// 				},
+// 				"searchBuilder": {
+// 					"add": "新增條件",
+// 					"condition": "條件",
+// 					"deleteTitle": "刪除過濾條件",
+// 					"button": {
+// 						"_": "複合查詢 (%d)",
+// 						"0": "複合查詢"
+// 					},
+// 					"clearAll": "清空",
+// 					"conditions": {
+// 						"array": {
+// 							"contains": "含有",
+// 							"equals": "等於",
+// 							"empty": "空值",
+// 							"not": "不等於",
+// 							"notEmpty": "非空值",
+// 							"without": "不含"
+// 						},
+// 						"date": {
+// 							"after": "大於",
+// 							"before": "小於",
+// 							"between": "在其中",
+// 							"empty": "為空",
+// 							"equals": "等於",
+// 							"not": "不為",
+// 							"notBetween": "不在其中",
+// 							"notEmpty": "不為空"
+// 						},
+// 						"number": {
+// 							"between": "在其中",
+// 							"empty": "為空",
+// 							"equals": "等於",
+// 							"gt": "大於",
+// 							"gte": "大於等於",
+// 							"lt": "小於",
+// 							"lte": "小於等於",
+// 							"not": "不為",
+// 							"notBetween": "不在其中",
+// 							"notEmpty": "不為空"
+// 						},
+// 						"string": {
+// 							"contains": "含有",
+// 							"empty": "為空",
+// 							"endsWith": "字尾為",
+// 							"equals": "等於",
+// 							"not": "不為",
+// 							"notEmpty": "不為空",
+// 							"startsWith": "字首為",
+// 							"notContains": "不含",
+// 							"notStarts": "開頭不是",
+// 							"notEnds": "結尾不是"
+// 						}
+// 					},
+// 					"data": "欄位",
+// 					"leftTitle": "群組條件",
+// 					"logicAnd": "且",
+// 					"logicOr": "或",
+// 					"rightTitle": "取消群組",
+// 					"title": {
+// 						"_": "複合查詢 (%d)",
+// 						"0": "複合查詢"
+// 					},
+// 					"value": "內容"
+// 				},
+// 				"editor": {
+// 					"close": "關閉",
+// 					"create": {
+// 						"button": "新增",
+// 						"title": "新增資料",
+// 						"submit": "送出新增"
+// 					},
+// 					"remove": {
+// 						"button": "刪除",
+// 						"title": "刪除資料",
+// 						"submit": "送出刪除",
+// 						"confirm": {
+// 							"_": "您確定要刪除您所選取的 %d 筆資料嗎？",
+// 							"1": "您確定要刪除您所選取的 1 筆資料嗎？"
+// 						}
+// 					},
+// 					"error": {
+// 						"system": "系統發生錯誤(更多資訊)"
+// 					},
+// 					"edit": {
+// 						"button": "修改",
+// 						"title": "修改資料",
+// 						"submit": "送出修改"
+// 					},
+// 					"multi": {
+// 						"title": "多重值",
+// 						"info": "您所選擇的多筆資料中，此欄位包含了不同的值。若您想要將它們都改為同一個值，可以在此輸入，要不然它們會保留各自原本的值。",
+// 						"restore": "復原",
+// 						"noMulti": "此輸入欄需單獨輸入，不容許多筆資料一起修改"
+// 					}
+// 				},
+// 				"autoFill": {
+// 					"cancel": "取消"
+// 				},
+// 				"buttons": {
+// 					"copySuccess": {
+// 						"_": "複製了 %d 筆資料",
+// 						"1": "複製了 1 筆資料"
+// 					},
+// 					"copyTitle": "已經複製到剪貼簿",
+// 					"excel": "Excel",
+// 					"pdf": "PDF",
+// 					"print": "列印",
+// 					"copy": "複製"
+// 				},
+// 				"searchPanes": {
+// 					"collapse": {
+// 						"_": "搜尋面版 (%d)",
+// 						"0": "搜尋面版"
+// 					},
+// 					"emptyPanes": "沒搜尋面版",
+// 					"loadMessage": "載入搜尋面版中...",
+// 					"clearMessage": "清空"
+// 				},
+// 				"stateRestore": {
+// 					"emptyError": "名稱不能空白。"
+// 				},
+// 				"select": {
+// 					"columns": {
+// 						"_": "選擇了 %d 欄資料"
+// 					},
+// 					"rows": {
+// 						"1": "選擇了 1 筆資料",
+// 						"_": "選擇了 %d 筆資料"
+// 					}
+// 				},
+// 				"zeroRecords": "沒有符合的資料"
+// 			 }
+			
+// 		});
+//    } );
+// })(jQuery);
+$(document).ready(function() {
+	$('#table_id').DataTable({
+	})
+});
+</script> 
+<!-- 刪除資料 -->
+<script>
+function del() {
+  var msg = "確定要刪除這筆會員資料嗎？";
+  if (confirm(msg)==true){
+  return true;
+  }else{
+  return false;
+  }
+}
+</script>
 
-				<!-- 確認刪除訊息 -->
-<!-- 				function del() { -->
-<!-- 					var msg = "您真的確定要刪除嗎？\n\n請確認！"; -->
-<!-- 					if (confirm(msg)==true){ -->
-<!-- 					return true; -->
-<!-- 					}else{ -->
-<!-- 					return false; -->
-<!-- 					} -->
-<!-- 				} -->
-			<!-- 字數太長 -->
-			<script>
-				let box = document.querySelectorAll('#text')[0] //容器
-				let isOverflow = document.querySelectorAll('#textMain')[0] //文本
-				let btn1 = document.querySelectorAll('#unfold')[0] //展开按钮
-				let btn2 = document.querySelectorAll('#packUp')[0] //收起按钮
-				let menuBox = document.querySelectorAll('#menu')[0] //菜单
-				let cWidth = box.clientWidth;//获取容器宽度
-				let sWidth = isOverflow.scrollWidth;//获取文本宽度
-				if (sWidth >= cWidth) { //当文本长度大于容器长度时 显示缩率标题
-					isOverflow.classList.add('showText')
-					menuBox.style.display = 'block'
-				} else {
-					isOverflow.classList.add('noText')
-					menuBox.style.display = 'none'
-				}
-				btn1.onclick = function() {
-					btn2.style.display = 'block'
-					btn1.style.display = 'none'
-					isOverflow.classList.remove('showText')
-					isOverflow.classList.add('noText')
-				}
-				btn2.onclick = function() {
-					btn1.style.display = 'block'
-					btn2.style.display = 'none'
-					isOverflow.classList.remove('noText')
-					isOverflow.classList.add('showText')
-				}
-			</script>
 </body>
+
 </html>

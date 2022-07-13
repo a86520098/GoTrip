@@ -73,10 +73,12 @@
 									<div class="col-lg-6">
 										<div class="city-selector-set row" >
 											<div class="col-4 pr-0">
-												<select class="county form-control" th:field="*{county}"></select>
+												<p id="county" th:text="*{county}" hidden="true"></p>
+												<select class="form-control county" style="background-color: white" th:field="*{county}"></select>
 											</div>
 											<div class="col-4 pr-0">
-												<select class="district form-control" th:field="*{district}"></select>
+												<p id="district" th:text="*{district}" hidden="true"></p>
+												<select class="form-control district" style="background-color: white" th:field="*{district}"></select>
 											</div>
 											<div class="col-4">
 												<input class="zipcode form-control" type="text" size="3" readonly placeholder="郵遞區號">
@@ -108,7 +110,7 @@
 									<label class="col-lg-2 col-form-label" for="">營業時間</label>
 									<label class="col-lg-2 col-form-label" for="openTime">開始營業</label>
 									<div class="col-lg-4 mr-5">
-										<input th:field="*{openTime}" id="openTime" type="time" class="form-control"/>
+										<input th:field="*{openTime}" id="openTime" type="datetime" class="form-control"/>
 										<div class="invalid-feedback">請輸入營業時間</div>
 									</div>
 								</div>
@@ -116,7 +118,7 @@
 									<div class="col-lg-3"></div>
 									<label class="col-lg-2 col-form-label" for="closeTime">結束營業</label>
 									<div class="col-lg-4">
-										<input th:field="*{closeTime}" id="closeTime" type="time" class="form-control"/>
+										<input th:field="*{closeTime}" id="closeTime" type="text" class="form-control"/>
 										<div class="invalid-feedback">請輸入營業時間</div>
 									</div>
 								</div>
@@ -167,7 +169,7 @@
 <!-- 								      <td> -->
 <!-- 								        <input type="text" th:field="*{carOptions[__${optionStat.index}__].price}" /> -->
 <!-- 								        <input type="text" th:field="*{carOptions[__${optionStat.index}__].discount}" /> -->
-<!-- <!-- 								        <input type="text" th:field="*{option.price}" /> --> -->
+<!-- <!-- 								        <input type="text" th:field="*{option.price}" /> -->
 <!-- 								      </td> -->
 <!-- 								      <td> -->
 <!-- 								        <button type="submit" name="removeRow">Remove row</button> -->
@@ -346,12 +348,19 @@
 		$('#btn-addModel').on('click', function() {
 			
 		})
+
 		
-// 		let test = $('#test').text();
-// 		console.log(test)
-// 		let test2 = $('#test2').text();
-// 		console.log(test2)
-		
+		$(document).ready(function(){
+
+			$('.county').focus()
+			$('.county').val($('#county').text())
+			$('.county').blur()
+			
+			$(".county option[value='"+$('.county option:selected').val($('#county').text())+"']").prop("selected",true);
+			$('.district').focus()
+			$('.district').val($('#district').text())
+			$('.district').blur()
+		})
 	</script>
 
 </body>
