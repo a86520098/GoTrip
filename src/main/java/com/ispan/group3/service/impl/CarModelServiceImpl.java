@@ -1,6 +1,8 @@
 package com.ispan.group3.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,31 +23,38 @@ public class CarModelServiceImpl implements CarModelService{
 	}
 
 	@Override
-	public List<CarModel> getCarModels() {
+	public List<CarModel> findAll() {
 		return carRepository.findAll();
+	}
+	
+	@Override
+	public Map<String, List<String>> findAllModels() {
+		List<String> carMakes = carRepository.findAllMakes();
+		Map<String, List<String>> carModelByMake = new HashMap<>();
+		for (String carMake : carMakes) {
+			carModelByMake.put(carMake, carRepository.findAllModels(carMake));
+		}
+		return carModelByMake;
 	}
 
 	@Override
-	public CarModel getCarModel(Integer id) {
+	public CarModel findById(Integer id) {
 		return carRepository.findById(id).get();
 	}
 
 	@Override
-	public void insertCarModel(CarModel carModel) {
+	public void save(CarModel carModel) {
 		carRepository.save(carModel);
 	}
 
 	@Override
-	public void updateCarModel(CarModel carModel) {
-		carRepository.save(carModel);
-	}
-
-	@Override
-	public void deleteCarModel(Integer id) {
+	public void deleteById(Integer id) {
 		if (!carRepository.existsById(id))
 			throw new IllegalStateException("Car model with id " + id + " does not exist");
 		carRepository.deleteById(id);
 	}
+
+
 
 	
 	

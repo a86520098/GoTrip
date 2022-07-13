@@ -1,7 +1,5 @@
 package com.ispan.group3.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +17,7 @@ public class CommentImageServiceImpl implements CommentImageService {
 		this.ciRepository = ciRepository;
 	}
 	
-	@Override
-	public List<CommentImage> getImages(Integer commentId) {
-		return ciRepository.findByComment(commentId);
-	}
+
 
 	@Override
 	public void insertImage(CommentImage commentImage) {

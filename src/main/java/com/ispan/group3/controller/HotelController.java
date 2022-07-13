@@ -33,7 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ispan.group3.repository.Hotel;
 
 @Controller
-@RequestMapping("/hotel")
+
 public class HotelController {
 	
 	HotelService hotelService;
@@ -44,7 +44,7 @@ public class HotelController {
 		this.context = context;
 	}
 
-	@GetMapping("/hotel123")
+	@GetMapping("/backHotel")
 		public  String inDex(Model m) {
 		Model kkk = m.addAttribute("Hotel", hotelService.findAll());
 		System.out.println( "get Data from MySQl "+kkk);
@@ -98,7 +98,7 @@ public class HotelController {
 			return "user-form";
 		}
 		System.out.println("222此方法儲存");
-		return "redirect:/hotel/hotel123";
+		return "redirect:/backHotel";
 	}
 @GetMapping("/picture")
 public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
@@ -156,23 +156,20 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 				System.out.println("已經幫你把"+id+"刪除了");
 			}
 
-			return "redirect:/hotel/hotel123";
+			return "redirect:/backHotel";
 		}
 		
 		
 		
-		@RequestMapping(path = "/editForm/{id}",method = RequestMethod.GET)
-		public String showEditForm(@PathVariable("id")Integer update, Model m ){
+		@RequestMapping(path = "/showEdit",method = RequestMethod.GET)
+		public String showEditForm(@RequestParam("id")Integer update, Model m ){
 		m.addAttribute("hotel", hotelService.findById(update) );
 		System.out.println("This is success transfer to Edit form");
 			return "backend/hotel/hotelEditForm";
 		}
-		
-		
-	
-		
-		
-		
+
+
+
 		@RequestMapping(path = "/editHotel",method = RequestMethod.POST)
 		public String update(
 				@ModelAttribute("hotel")Hotel hotels,
@@ -204,7 +201,7 @@ public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
 				}
 			}
 			hotelService.save(hotels);
-			return "redirect:/hotel/hotel123";
+			return "redirect:/backHotel";
 		}
 
 	@RequestMapping(path = "/enterPic",method = RequestMethod.GET)

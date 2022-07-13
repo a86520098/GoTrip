@@ -35,7 +35,7 @@
                       <div class="col-md-12 grid-margin stretch-card">
                           <div class="card">
                               <div class="card-body">
-                                  <div class="card-title">評論列表</div>
+                                  <div class="card-title">Hotel List </div>
                                   <div class="table-responsive">
                                       <table id="comment-table" class="display expandable-table w-100">
 
@@ -57,9 +57,7 @@
 
                       </tr>
                       </thead>
-                      <th:url var="updateLink" value="/showEditForm">
-                        <th:param name="UpdateId" value="${hotel.id}" />
-                      </th:url>
+
                       <tbody>
                       <tr th:each="hotel : ${Hotel}">
                         <td th:text="${hotel.id}" />
@@ -69,7 +67,7 @@
                         <td th:text="${hotel.boss_name}"/>
                         <td th:text="${hotel.status}" />
                         <td th:text="${hotel.roomtype}" />
-                          <td> <a th:href="@{enterPic(id=${hotel.id})}">  <img width='60' height='72' th:src="@{/hotel/picture(id=${hotel.id})}"> </a> </td>
+                          <td> <a th:href="@{enterPic(id=${hotel.id})}">  <img width='60' height='72' th:src="@{/picture(id=${hotel.id})}"> </a> </td>
 <!--                        <td><img width='60' height='72' th:src="@{/Goods/picture(id=${good.id})}"></td>-->
                         <td>
                           <button class="btn btn-sm btn-danger"
@@ -79,7 +77,7 @@
                         </td>
 
                         <td>
-                            <a th:href="@{'/hotel/editForm/' + ${hotel.id} }"
+                            <a th:href="@{showEdit(id=${hotel.id})}"
                                class="btn btn-sm btn-danger"><i class="bi bi-pencil-fill"></i>修改</a>
                         </td>
 
@@ -133,7 +131,7 @@
             if (result.isConfirmed) {
               $.ajax({
                 type: "get",
-                url: "/gotrip/hotel/delete/" + id,
+                url: "/gotrip/delete/" + id,
 
                 success: function (msg) {
                   Swal.fire(

@@ -18,14 +18,14 @@ public class CarOption {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "location_id")
+	@JoinColumn(name = "location_id", updatable = false)
 	private CarLocation carLocation;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "model_id")
+	@JoinColumn(name = "model_id", updatable = false)
 	private CarModel carModel;
 	
-	private Integer priceOrig;
+	private Integer price;
 	private Float discount;
 	@Transient
 	private Integer priceSale;
@@ -34,36 +34,41 @@ public class CarOption {
 	public CarOption() {
 		
 	}
-
-	public CarOption(Integer id, CarLocation carLocation, CarModel carModel, Integer priceOrig, Float discount,
+	
+	public CarOption(Integer id, CarLocation carLocation, CarModel carModel, Integer price, Float discount,
 			Integer priceSale, Integer amount) {
 		this.id = id;
 		this.carLocation = carLocation;
 		this.carModel = carModel;
-		this.priceOrig = priceOrig;
+		this.price = price;
 		this.discount = discount;
 		this.priceSale = priceSale;
 		this.amount = amount;
 	}
-	public CarOption(CarLocation carLocation, CarModel carModel, Integer priceOrig, Integer amount) {
+
+
+	public CarOption(CarLocation carLocation, CarModel carModel, Integer price, Float discount, Integer priceSale,
+			Integer amount) {
 		this.carLocation = carLocation;
 		this.carModel = carModel;
-		this.priceOrig = priceOrig;
+		this.price = price;
+		this.discount = discount;
+		this.priceSale = priceSale;
 		this.amount = amount;
 	}
+	
 
 	public Integer getId() {
 		return id;
 	}
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
 	public CarLocation getCarLocation() {
 		return carLocation;
 	}
-
 	public void setCarLocation(CarLocation carLocation) {
 		this.carLocation = carLocation;
 	}
@@ -75,39 +80,33 @@ public class CarOption {
 	public void setCarModel(CarModel carModel) {
 		this.carModel = carModel;
 	}
-
-	public Integer getPriceOrig() {
-		return priceOrig;
+	
+	public Integer getPrice() {
+		return price;
 	}
-
-	public void setPriceOrig(Integer priceOrig) {
-		this.priceOrig = priceOrig;
+	
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
-
+	
 	public Float getDiscount() {
 		return discount;
 	}
-
 	public void setDiscount(Float discount) {
 		this.discount = discount;
 	}
-
 	public Integer getPriceSale() {
-		return priceSale;
+		return (int) (price * discount);
 	}
-
 	public void setPriceSale(Integer priceSale) {
 		this.priceSale = priceSale;
 	}
-
 	public Integer getAmount() {
 		return amount;
 	}
-
 	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 
-	
 	
 }

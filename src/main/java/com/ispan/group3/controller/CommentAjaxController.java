@@ -27,18 +27,18 @@ public class CommentAjaxController {
 	}
 
 	@GetMapping("/comments")
-	public List<Comment> getComments() {
-		return cService.getComments();
+	public List<Comment> findAll() {
+		return cService.findAll();
 	}
 	
 	@GetMapping("/comments/{id}")
-	public Comment getComment(@PathVariable Integer id) {
-		return cService.getComment(id);
+	public Comment findById(@PathVariable Integer id) {
+		return cService.findById(id);
 	}
 	
 	@PostMapping
 	public void insertComment(@RequestBody Comment comment) {
-		cService.insertComment(comment);
+		cService.save(comment);
 	}
 	
 //	@PutMapping("/comments/{id}")
@@ -50,25 +50,12 @@ public class CommentAjaxController {
 	
 	@DeleteMapping("/comments/{id}")
 	public void deleteComment(@PathVariable Integer id) {
-		cService.deleteComment(id);
+		cService.deleteById(id);
 	}
 	
-	// 針對某商品平均分數、評論數量
-//	@GetMapping("/comments/rating")
-//	public Map<String, String> getAvgRating(@RequestParam String itemTb, @RequestParam Integer itemId) {
-//	    Map<String, String> map = new HashMap<String, String>();
-//	    Float avgRating = cService.getAvgRating(itemTb, itemId);
-//	    Integer count = cService.countByItem(itemTb, itemId);
-//	    map.put("itemTb", itemTb);
-//	    map.put("itemId", String.valueOf(itemId));
-//	    map.put("avgRating", String.valueOf(avgRating));
-//	    map.put("count", String.valueOf(count));
-//	    return map;
-//	}
-	
 	@GetMapping("/comments/ratings")
-	public List<CommentCount> getAvgRating() {
-	    return cService.getRatings();
+	public List<CommentCount> findAllRatings() {
+	    return cService.findAllRatings();
 	}
 
 

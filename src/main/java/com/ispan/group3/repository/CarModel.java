@@ -2,7 +2,6 @@ package com.ispan.group3.repository;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,31 +19,32 @@ public class CarModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String type;
-	@Column(name = "make_ch")
 	private String makeCh;
-	@Column(name = "make_en")
 	private String makeEn;
 	private String model;
 	private String power;
 	private String transmission;
-	private Integer displacement;
-	private Integer price;
+	private Integer engine;
 	private Integer seat;
 	private Integer door;
 	private Integer suitcase;
 	private Integer bag;
 	private String image;
+//	@ManyToMany(mappedBy="carModels")
+//	@JsonIgnore
+//	private List<CarLocation> carLocations;
+	
+	@OneToMany(mappedBy = "carModel")
 	@JsonIgnore
-	@OneToMany(mappedBy="carModel")
 	private List<CarOption> carOptions;
 	
-	
 	public CarModel() {
+		
 	}
-	
-	public CarModel(Integer id, String type, String makeCh, String makeEn, String model, String power, String transmission,
-			Integer displacement, Integer price, Integer seat, Integer door, Integer suitcase, Integer bag, String image,
-			List<CarOption> carOptions) {
+
+	public CarModel(Integer id, String type, String makeCh, String makeEn, String model, String power,
+			String transmission, Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag,
+			String image, List<CarLocation> carLocations, List<CarOption> carOptions) {
 		this.id = id;
 		this.type = type;
 		this.makeCh = makeCh;
@@ -52,8 +52,7 @@ public class CarModel {
 		this.model = model;
 		this.power = power;
 		this.transmission = transmission;
-		this.displacement = displacement;
-		this.price = price;
+		this.engine = engine;
 		this.seat = seat;
 		this.door = door;
 		this.suitcase = suitcase;
@@ -62,7 +61,25 @@ public class CarModel {
 		this.carOptions = carOptions;
 	}
 	
-	
+	public CarModel(String type, String makeCh, String makeEn, String model, String power, String transmission,
+			Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag, String image, List<CarOption> carOptions) {
+		this.type = type;
+		this.makeCh = makeCh;
+		this.makeEn = makeEn;
+		this.model = model;
+		this.power = power;
+		this.transmission = transmission;
+		this.engine = engine;
+		this.seat = seat;
+		this.door = door;
+		this.suitcase = suitcase;
+		this.bag = bag;
+		this.image = image;
+		this.carOptions = carOptions;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -105,11 +122,11 @@ public class CarModel {
 	public void setTransmission(String transmission) {
 		this.transmission = transmission;
 	}
-	public Integer getDisplacement() {
-		return displacement;
+	public Integer getEngine() {
+		return engine;
 	}
-	public void setDisplacement(Integer displacement) {
-		this.displacement = displacement;
+	public void setEngine(Integer engine) {
+		this.engine = engine;
 	}
 	public Integer getSeat() {
 		return seat;
@@ -141,21 +158,14 @@ public class CarModel {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	
 	public List<CarOption> getCarOptions() {
 		return carOptions;
 	}
 	public void setCarOptions(List<CarOption> carOptions) {
 		this.carOptions = carOptions;
 	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-	
 	
 
 }

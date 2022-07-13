@@ -677,7 +677,7 @@
 				</h3>
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						<a th:href="@{/hotel/findHotelList}">所有住宿</a>
+						<a th:href="@{/findHotelList}">所有住宿</a>
 					</button>
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".hotel">
 						星級飯店
@@ -697,7 +697,7 @@
 					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						住宿列表
+						<a th:href="@{/findHotelList}">所有住宿</a>
 					</div>
 				</div>
 
@@ -710,7 +710,7 @@
 					<div class="block2 ">
 						<div class="block2-pic hov-img0">
 <!--							照片提供網址-->
-							<a  th:href="@{hotel/tohotelDetail(id=38)}">
+							<a  th:href="@{/tohotelDetail(id=1)}">
 								<img src="images/hotels/villa-taoyuan-01.jpg" alt="IMG-PRODUCT">
 								<span
 									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
@@ -885,20 +885,17 @@
 
 			<div class="flex-w flex-sb-m p-b-15">
 				<h3 class="mtext-111 cl5 font-weight-bold p-b-10">
-					超值交通
+					超值租車
 				</h3>
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-					<!-- <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-						所有行程
-					</button> -->
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".outdoor">
-						租車自駕
+						經濟轎車
 					</button>
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".art">
-						包車服務
+						豪華轎車
 					</button>
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".family">
-						交通聯票
+						休旅車/SUV
 					</button>
 				</div>
 				<div class="flex-w flex-c-m m-tb-10">

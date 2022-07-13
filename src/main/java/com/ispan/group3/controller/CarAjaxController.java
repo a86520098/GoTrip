@@ -27,18 +27,19 @@ public class CarAjaxController {
 	}
 	
 	@GetMapping({"/cars","/cars/models"})
-	public List<CarModel> getCarModels() {
-		return modelService.getCarModels();
+	public List<CarModel> findAll() {
+		return modelService.findAll();
 	}
 	
-	@GetMapping("/cars/{id}")
-	public CarModel getCarModel(@PathVariable Integer id) {
-		return modelService.getCarModel(id);
+	@GetMapping("/cars/models/{id}")
+	public CarModel findById(@PathVariable Integer id) {
+		return modelService.findById(id);
 	}
 	
 	@GetMapping("/cars/locations")
-	public List<CarLocation> getCarLocations() {
-		return locationService.getCarLocations();
+	public List<CarLocation> findAllLocations() {
+		return locationService.findAll();
 	}
+	
 	
 }
