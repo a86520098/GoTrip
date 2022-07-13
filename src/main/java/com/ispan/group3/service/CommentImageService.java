@@ -4,9 +4,8 @@ import com.ispan.group3.repository.CommentImage;
 
 public interface CommentImageService {
 
+	void save(CommentImage commentImage);
 
-	void insertImage(CommentImage commentImage);
-
-	void deleteImage(Integer id);
+	void deleteById(Integer id);
 
 }
