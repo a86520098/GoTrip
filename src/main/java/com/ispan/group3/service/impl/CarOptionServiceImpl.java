@@ -21,27 +21,27 @@ public class CarOptionServiceImpl implements CarOptionService{
 	}
 
 	@Override
-	public List<CarOption> getCarOptions() {
+	public List<CarOption> findAll() {
 		return optionRepository.findAll();
 	}
 
 	@Override
-	public CarOption getCarOption(Integer id) {
+	public CarOption findById(Integer id) {
 		return optionRepository.findById(id).get();
 	}
 
 	@Override
-	public void insertCarOption(CarOption carOption) {
+	public void save(CarOption carOption) {
 		optionRepository.save(carOption);
 	}
 
-	@Override
-	public void updateCarOption(CarOption carOption) {
-		optionRepository.save(carOption);
-	}
+//	@Override
+//	public void updateCarOption(CarOption carOption) {
+//		optionRepository.save(carOption);
+//	}
 
 	@Override
-	public void deleteCarOption(Integer id) {
+	public void deleteById(Integer id) {
 		boolean exists = optionRepository.existsById(id);
 		if (!exists) {
 			throw new IllegalStateException("Car option with id " + id + " does not exist");

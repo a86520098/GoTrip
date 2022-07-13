@@ -7,14 +7,14 @@ import com.ispan.group3.repository.CarOption;
 
 public interface CarOptionService {
 
-	List<CarOption> getCarOptions();
+	List<CarOption> findAll();
 	
-	CarOption getCarOption(Integer id);
+	CarOption findById(Integer id);
 
-	void insertCarOption(CarOption carOption);
+	void save(CarOption carOption);
 
-	void updateCarOption(CarOption carOption);
+//	void updateCarOption(CarOption carOption);
 
-	void deleteCarOption(Integer id);
+	void deleteById(Integer id);
 
 }

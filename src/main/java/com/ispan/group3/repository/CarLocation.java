@@ -1,7 +1,6 @@
 package com.ispan.group3.repository;
 
-import java.time.LocalTime;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "car_location")
 public class CarLocation {
@@ -23,35 +24,36 @@ public class CarLocation {
 	private Integer companyId;
 	private String name;
 	private String country;
-	private String city;
+	private String county;
 	private String district;
 	private String address;
 	private String phone;
-	private LocalTime openTime;
-	private LocalTime closeTime;
+	private String openTime;
+	private String closeTime;
 
 	@ManyToMany
 	@JoinTable(name = "car_option",
 			   joinColumns = @JoinColumn(name = "location_id"),
 			   inverseJoinColumns = @JoinColumn(name = "model_id"))
-	private Set<CarModel> carModels;
+	@JsonIgnore
+	private List<CarModel> carModels;
 	
-	@OneToMany(mappedBy = "carLocation")
-	private Set<CarOption> carOptions;
+	@OneToMany(mappedBy = "carOptionKey.carLocation")
+	private List<CarOption> carOptions;
 	
 	public CarLocation() {
 		
 	}
 
 	
-	public CarLocation(Integer id, Integer companyId, String name, String country, String city, String district,
-			String address, String phone, LocalTime openTime, LocalTime closeTime, Set<CarModel> carModels,
-			Set<CarOption> carOptions) {
+	public CarLocation(Integer id, Integer companyId, String name, String country, String county, String district,
+			String address, String phone, String openTime, String closeTime, List<CarModel> carModels,
+			List<CarOption> carOptions) {
 		this.id = id;
 		this.companyId = companyId;
 		this.name = name;
 		this.country = country;
-		this.city = city;
+		this.county = county;
 		this.district = district;
 		this.address = address;
 		this.phone = phone;
@@ -62,12 +64,12 @@ public class CarLocation {
 	}
 
 
-	public CarLocation(Integer companyId, String name, String country, String city, String district, String address,
-			String phone, LocalTime openTime, LocalTime closeTime, Set<CarModel> carModels, Set<CarOption> carOptions) {
+	public CarLocation(Integer companyId, String name, String country, String county, String district, String address,
+			String phone, String openTime, String closeTime, List<CarModel> carModels, List<CarOption> carOptions) {
 		this.companyId = companyId;
 		this.name = name;
 		this.country = country;
-		this.city = city;
+		this.county = county;
 		this.district = district;
 		this.address = address;
 		this.phone = phone;
@@ -75,6 +77,19 @@ public class CarLocation {
 		this.closeTime = closeTime;
 		this.carModels = carModels;
 		this.carOptions = carOptions;
+	}
+	
+	public CarLocation(Integer companyId, String name, String country, String county, String district, String address,
+			String phone, String openTime, String closeTime) {
+		this.companyId = companyId;
+		this.name = name;
+		this.country = country;
+		this.county = county;
+		this.district = district;
+		this.address = address;
+		this.phone = phone;
+		this.openTime = openTime;
+		this.closeTime = closeTime;
 	}
 
 
@@ -110,12 +125,12 @@ public class CarLocation {
 		this.country = country;
 	}
 
-	public String getCity() {
-		return city;
+	public String getCounty() {
+		return county;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setCounty(String county) {
+		this.county = county;
 	}
 
 	public String getDistrict() {
@@ -142,37 +157,37 @@ public class CarLocation {
 		this.phone = phone;
 	}
 
-	public LocalTime getOpenTime() {
+	public String getOpenTime() {
 		return openTime;
 	}
 
-	public void setOpenTime(LocalTime openTime) {
+	public void setOpenTime(String openTime) {
 		this.openTime = openTime;
 	}
 
-	public LocalTime getCloseTime() {
+	public String getCloseTime() {
 		return closeTime;
 	}
 
-	public void setCloseTime(LocalTime closeTime) {
+	public void setCloseTime(String closeTime) {
 		this.closeTime = closeTime;
 	}
 
-	public Set<CarModel> getCarModels() {
+	public List<CarModel> getCarModels() {
 		return carModels;
 	}
 
-	public void setCarModels(Set<CarModel> carModels) {
-		this.carModels = carModels;
-	}
+//	public void setCarModels(List<CarModel> carModels) {
+//		this.carModels = carModels;
+//	}
 
-	public Set<CarOption> getCarOptions() {
+	public List<CarOption> getCarOptions() {
 		return carOptions;
 	}
 
-	public void setCarOptions(Set<CarOption> carOptions) {
-		this.carOptions = carOptions;
-	}
+//	public void setCarOptions(List<CarOption> carOptions) {
+//		this.carOptions = carOptions;
+//	}
 	
 	
 		
