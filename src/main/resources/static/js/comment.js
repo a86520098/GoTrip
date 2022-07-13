@@ -220,7 +220,23 @@ jQuery(document).ready(function($) {
 				$("td").on('click', function() {
 					let id = $(this).closest("tr").find('td').eq(1).html();
 					$("#itemId").val(id);
-					$("#itemTb").val(itemTb)
+					switch (itemTb) {
+						case "tickets":
+							$("#itemTb").val("ticket");
+							break;
+						case "hotels":
+							$("#itemTb").val("hotel");
+							break;
+						case "restaurants":
+							$("#itemTb").val("restaurant");
+							break;
+						case "cars":
+							$("#itemTb").val("carRental");
+							break;
+						default :
+							$("#itemTb").val("");
+					}
+					
 					// form validation 設定更改
 					if ($("form").hasClass('validated')) {
 						$('#itemTb').val() !== null ? hideInvalidText($('#itemTb')) : showInvalidText($('#itemTb'));

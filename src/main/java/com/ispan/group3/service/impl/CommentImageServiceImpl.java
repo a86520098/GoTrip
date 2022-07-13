@@ -16,16 +16,14 @@ public class CommentImageServiceImpl implements CommentImageService {
 	public CommentImageServiceImpl(CommentImageRepository ciRepository) {
 		this.ciRepository = ciRepository;
 	}
-	
-
 
 	@Override
-	public void insertImage(CommentImage commentImage) {
+	public void save(CommentImage commentImage) {
 		ciRepository.save(commentImage);
 	}
 
 	@Override
-	public void deleteImage(Integer id) {
+	public void deleteById(Integer id) {
 		boolean exists = ciRepository.existsById(id);
 		if (!exists) {
 			throw new IllegalStateException("Image of comment with id " + id + " does not exist");

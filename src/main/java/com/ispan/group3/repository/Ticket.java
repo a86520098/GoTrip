@@ -70,9 +70,6 @@ public class Ticket {
 	@Column(name="ticketEndDate")
 	private Date ticketEndDate;
 	
-	@Column(name="status")
-	private String status;
-	
 	@OneToMany(mappedBy="ticket",cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	private Set<TicketImage> images;
 
@@ -222,18 +219,9 @@ public class Ticket {
 		this.ticketEndDate = ticketEndDate;
 	}
 
-	
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public Ticket(long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
 			String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
-			String address, int price, String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status) {
+			String address, int price, String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate) {
 		super();
 		this.ticketNo = ticketNo;
 		this.ticketName = ticketName;
@@ -251,12 +239,11 @@ public class Ticket {
 		this.tagName = tagName;
 		this.ticketStartDate = ticketStartDate;
 		this.ticketEndDate = ticketEndDate;
-		this.status = status;
 	}
 
 	public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
 			String ticketEndTime, String phone, String country, String city, String location, String address, int price,
-			String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status) {
+			String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate) {
 		super();
 		this.ticketName = ticketName;
 		this.ticketIntro = ticketIntro;
@@ -273,7 +260,6 @@ public class Ticket {
 		this.tagName = tagName;
 		this.ticketStartDate = ticketStartDate;
 		this.ticketEndDate = ticketEndDate;
-		this.status = status;
 	}
 
 	//	Image相關
@@ -291,7 +277,7 @@ public class Ticket {
 
 	 public Ticket(Long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
 	 		String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
-	 		String address, int price , Set<TicketImage> images, String status) {
+	 		String address, int price , Set<TicketImage> images) {
 	 	super();
 	 	this.ticketNo = ticketNo;
 	 	this.ticketName = ticketName;
@@ -306,12 +292,11 @@ public class Ticket {
 	 	this.address = address;
 	 	this.price = price;
 	 	this.images = images;
-	 	this.status = status;
 	 }
 
 	 public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
 	 		String ticketEndTime, String phone, String country, String city, String location, String address, int price
-	 		,Set<TicketImage> images, String status) {
+	 		,Set<TicketImage> images) {
 	 	super();
 	 	this.ticketName = ticketName;
 	 	this.ticketIntro = ticketIntro;
@@ -325,6 +310,5 @@ public class Ticket {
 	 	this.address = address;
 	 	this.price = price;
 	 	this.images = images;
-	 	this.status = status;
 	 }
 }

@@ -111,17 +111,19 @@ public class CarController {
 
 	// ---------- 地點表單 ----------
 	@GetMapping({ "/cars/locations/form", "/cars/locations/form/{id}" })
-	public String showNewForm(@PathVariable(required = false) Integer id, Model model) {
-		CarLocation carLocation;
+	public String showLocForm(@PathVariable(required = false) Integer id, Model model) {
+		CarLocation carLocation = new CarLocation();
 		if (id != null) {
 			carLocation = locationService.findById(id);
-		} else {
-			carLocation = new CarLocation();
-		}
+		} 
 		model.addAttribute("carLocation", carLocation);
 		List<CarModel> existModels = modelService.findAll();
 		model.addAttribute("existModels", existModels);
-		return "frontend/car/car-location-form";
+		if (id != null) {
+			return "redirect:/cars/options/form" + id;
+		}
+		return "redirect:/cars/options/form";
+
 	}
 	
 	// ---------- 儲存地點 ----------
@@ -131,6 +133,19 @@ public class CarController {
 		carLocation.setCarOptions(carOptions);
 		locationService.save(carLocation);
 		return "redirect:/cars/locations";
+	}
+	
+	// ---------- 方案表單 ----------
+	@GetMapping({ "/cars/options/form", "/cars/options/form/{id}" })
+	public String showOptForm(@PathVariable(required = false) Integer id, Model model) {
+		CarLocation carLocation = new CarLocation();
+		List<CarOption> carOptions = carLocation.getCarOptions();
+		if (id != null) {
+			carLocation = locationService.findById(id);
+			carOptions = carLocation.getCarOptions();
+		}
+		model.addAttribute("carOptions", carOptions);
+		return "frontend/car/car-option-form";
 	}
 
 }

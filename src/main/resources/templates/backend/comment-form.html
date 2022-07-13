@@ -42,16 +42,15 @@
 										  class="form-horizontal needs-validation" enctype="multipart/form-data">
 										<div class="mt-4">
 											<input th:field="*{id}" id="id" type="hidden" class="form-control"	placeholder="" />
-											
 											<div class="form-group row">
 												<label class="col-sm-3 col-form-label" for="itemTb">項目類別</label>
 												<div class="col-sm-9">
-													<select th:field="*{itemTb}" id="itemTb" name="itemTb" class="custom-select" style="height: 46px;">
-														<option value="no" th:selected="selected" hidden>請選擇類別</option>
-														<option value="tickets">行程</option>
-														<option value="restaurants">餐廳</option>
-														<option value="hotels">住宿</option>
-														<option value="cars">租車</option>
+													<select th:field="*{itemTb}" id="itemTb" name="itemTb" class="form-control ">
+														<option value="">請選擇類別</option>
+														<option value="ticket">行程</option>
+														<option value="restaurant">餐廳</option>
+														<option value="hotel">住宿</option>
+														<option value="carRental">租車</option>
 													</select>
 													<div class="invalid-feedback">請選擇商品項目類別</div>
 												</div>
@@ -112,8 +111,15 @@
 													</div>
 												</div>
 											</div>
-											<div class="row justify-content-end"> 
-
+											<div class="row justify-content-end "> 
+		                        				<div class="col-sm-9">
+			                        				<div class="row">        
+	        											<div th:each="image:*{images}" class="col-sm-4 mb-5">
+															<input type="checkbox" name="deleteImages" th:value="${image.id}" th:id="${image.id}">刪除
+															<img th:src="@{${image.imagePath}}" class="rounded"/>
+	        											</div>
+													</div>
+												</div>
 											</div>
 											<div class="row justify-content-end mb-3">
 												<div class="col-sm-9">
@@ -167,7 +173,6 @@
 	</div>
 	<!-- container-scroller -->
 	<!-- plugins:js -->
-
 	<script th:src="@{/vendors/js/vendor.bundle.base.js}"	src="vendors/js/vendor.bundle.base.js"></script>
 	<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
 	<script th:src="@{/js/hoverable-collapse.js}"	src="js/hoverable-collapse.js"></script>
