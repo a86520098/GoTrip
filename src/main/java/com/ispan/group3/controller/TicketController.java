@@ -53,7 +53,7 @@ public class TicketController {
 	
 	/**
 	 * 獲取列表
-	 * 
+	 * @PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC)
 	 * @param model
 	 * @return
 	 */
@@ -61,7 +61,7 @@ public class TicketController {
 	// 這就是引入Thymeleaf模版(pom.xml要註冊)
 	// @PageableDefault : 針對分頁傳參數; sort ={"id"}排序
 	@GetMapping("/ticketList")
-	public String list(@PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC) Pageable pageable,
+	public String list(Pageable pageable,
 			Model model) {
 		Page<Ticket> page1 = ticketService.findAllByPage(pageable);
 		// StringBuilder sbOpen_week = new StringBuilder();
@@ -88,11 +88,15 @@ public class TicketController {
 		// 	Ticket.setTicketOpenWeek(TicketOpenWeek);
 		// 	sbOpen_week.setLength(0);
 		// }
-		for (Ticket Ticket : page1) { // 每筆record
-			int Lastindex = Ticket.getTicketIntro().length() > 20 ? 19: Ticket.getTicketIntro().length()-1;
-			System.err.println("Lastindex->"+Lastindex);
-			Ticket.setTicketIntro(Ticket.getTicketIntro().substring(0, Lastindex ));
-		}
+//		for (Ticket Ticket : page1) { // 每筆record
+//			String TicketIntro= Ticket.getTicketIntro();
+//			if(TicketIntro==null) {
+//				TicketIntro = "  ";
+//			}
+//			int Lastindex = TicketIntro.length() > 20 ? 19: TicketIntro.length()-1;
+//			System.err.println("Lastindex->"+Lastindex);
+//			Ticket.setTicketIntro(TicketIntro.substring(0, Lastindex ));
+//		}
 		model.addAttribute("page", page1);
 		return "backend/ticketList";
 	}
@@ -162,13 +166,15 @@ public class TicketController {
 	 */
 	@PostMapping("/ticketList")
 	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
-			@RequestParam("image") MultipartFile files) {
+			@RequestParam("imagefiles") List<MultipartFile> files) {
 		
 		 try {
+//			 System.err.println("ticket"+ticket.toString());
+//			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
 		 	Set<TicketImage> images = new HashSet<>();
-//		 	for (MultipartFile file : files) {
+		 	for (MultipartFile file : files) {
 		 		try {
-		 			String savePath = FileUploadUtil.saveFile("ticket", files);
+		 			String savePath = FileUploadUtil.saveFile("ticket", file);
 		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
 		 			images.add(ticketImage);
 		 		} catch (IOException e) {
@@ -177,6 +183,7 @@ public class TicketController {
 //		 	}
 		 	ticket.setImages(images);
 			ticketService.save(ticket);
+		 	}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -188,6 +195,37 @@ public class TicketController {
 		// return "books";
 		return "redirect:/ticketList";
 	}
+	
+// 	@PostMapping("/ticketList")
+// 	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
+// 			@RequestParam("image") MultipartFile files) {
+		
+// 		 try {
+// 			 System.err.println("ticket"+ticket.toString());
+// 			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
+// 		 	Set<TicketImage> images = new HashSet<>();
+// //		 	for (MultipartFile file : files) {
+// 		 		try {
+// 		 			String savePath = FileUploadUtil.saveFile("ticket", files);
+// 		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
+// 		 			images.add(ticketImage);
+// 		 		} catch (IOException e) {
+// 		 			e.printStackTrace();
+// 		 		}
+// //		 	}
+// 		 	ticket.setImages(images);
+// 			ticketService.save(ticket);
+// 		} catch (Exception e) {
+// 			e.printStackTrace();
+// 		}
+// 		// ticketService.save(ticket);
+// 		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
+
+// 		// List<Book> books = bookService.findAll();
+// 		// model.addAttribute("books", books);
+// 		// return "books";
+// 		return "redirect:/ticketList";
+// 	}
 
 	@GetMapping("/ticketList/{ticketNo}/delete")
 	public String delete(@PathVariable long ticketNo, final RedirectAttributes attributes) {

@@ -25,7 +25,7 @@
 	
 	/* 字數太長隱藏 */
 	.single-ellipsis {
-		display: -webkit-box;
+		/* display: -webkit-box; */
   		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
 		overflow: hidden;
@@ -63,8 +63,8 @@
                 <div class="card-body">
                   <div class="card-title" style="float:left">景點資料列表</div>
 
+				  <!--新增、匯出CSV JSON按鈕 -->
                   <div style="float:right">
-					<!--新增、匯出CSV JSON按鈕 -->
 					<p class="text-right">
 						<a href="./ticketInput.html" th:href="@{/ticketList/ticketInput}" class="btn btn-primary">新增</a>
 						<button class="btn btn-primary" onclick="x.DownloadCSV('csv');">匯出CSV</button>
@@ -73,29 +73,33 @@
 					</p>
                   <!-- <a href="addMem" class="btn btn-sm btn-warning rounded-pill" style="text-align: right ; right:0">新增會員資料</a> -->
                   </div>
+
+				  <!-- Table -->
                   <div class="table-responsive">
                     <table id="table_id" class="display expandable-table w-100">
                       <colgroup>
-                        <col span="1" style="width: 5%;">
-                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 4%;">
+                        <col span="1" style="width: 12%;">
                         <col span="1" style="width: 12%;">
                         <col span="1" style="width: 8%;">
+                        <col span="1" style="width: 6%;">
+                        <col span="1" style="width: 4.5%;">
+                        <col span="1" style="width: 4.5%;">
+                        <col span="1" style="width: 4.5%;">
+                        <col span="1" style="width: 13%;">
+                        <col span="1" style="width: 4%;">
+                        <col span="1" style="width: 6%;">
+                        <col span="1" style="width: 8%;">
                         <col span="1" style="width: 8%;">
                         <col span="1" style="width: 5%;">
                         <col span="1" style="width: 5%;">
-                        <col span="1" style="width: 5.5%;">
-                        <col span="1" style="width: 5.5%;">
-                        <col span="1" style="width: 8%;">
-                        <col span="1" style="width: 2%;">
-                        <col span="1" style="width: 2%;">
-                        <col span="1" style="width: 7.5%;">
                       </colgroup>
                       <thead>
 						<tr>
 							<th>ID</th>
 							<th>景點套票名稱</th>
-							<th>景點套票簡介</th>
-						<!--<th>店家營業日期</th> -->
+							<!-- <th>景點套票簡介</th> -->
+							<!-- <th>店家營業日期</th> -->
 							<th>店家起始營業時間</th>
 							<th>店家結束營業時間</th>
 							<th>電話</th>
@@ -107,11 +111,13 @@
 							<!-- <th>圖片</th> -->
 							<th>標籤編號</th>
 							<th>標籤名稱</th>
-							<th>上架時間</th>
-							<th>下架時間</th>
+							<!-- <th>上架時間</th>
+							<th>下架時間</th> -->
 							<th>image</th>
 							<!-- <th>新增日期</th> -->
-							<th></th>
+							<th>狀態</th>
+							<th>編輯<br>刪除</th>
+							<!-- <th>刪除</th> -->
 						</tr>
                       </thead>
                       <tbody>
@@ -119,7 +125,7 @@
 							<!-- <td th:text="${iterStat.count}">1</td> -->
 							<td th:text="${ticket.ticketNo}" class="font-weight-bold"></td>
 							<td><a href="#" th:text="${ticket.ticketName}" th:href="@{'/ticketList/' + ${ticket.ticketNo}}">景點套票名稱</a></td>														
-							<td class="single-ellipsis" th:text="${ticket.ticketIntro}">景點套票敘述</td> 
+							<!-- <td class="single-ellipsis" th:text="${ticket.ticketIntro}">景點套票敘述</td>  -->
 							<!-- style="width: 150px; height: 60px;" -->
 							<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
 							<td th:text="${ticket.ticketOpenTime}" class="font-weight-bold">店家起始營業時間</td>
@@ -132,8 +138,8 @@
 							<td th:text="${ticket.price}" class="font-weight-bold">價格</td>
 							<td th:text="${ticket.tagNo}" class="font-weight-bold">標籤編號</td>
 							<td th:text="${ticket.tagName}" class="font-weight-bold">標籤名稱</td>
-							<td th:text="${ticket.ticketStartDate}" class="font-weight-bold">上架時間</td>
-							<td th:text="${ticket.ticketEndDate}" class="font-weight-bold">下架時間</td>
+							<!-- <td th:text="${ticket.ticketStartDate}" class="font-weight-bold">上架時間</td>
+							<td th:text="${ticket.ticketEndDate}" class="font-weight-bold">下架時間</td> -->
 							<!-- 圖片 -->
 							<td>
 								<div th:each="image:${ticket.images}" class="d-inline-block">
@@ -141,21 +147,22 @@
 								</div>
 							</td>
 							<!-- <td th:text="${ticket.newDate}">新增日期</td> -->
-
+							<td th:text="${ticket.status}" class="font-weight-bold">狀態</td>
 							<!-- 編輯、刪除 -->
-							<td><a href="#"	th:href="@{/ticketList/{ticketNo}/ticketInput(ticketNo=${ticket.ticketNo})}">更新</a>&nbsp;
+							<td><a href="#"	th:href="@{/ticketList/{ticketNo}/ticketInput(ticketNo=${ticket.ticketNo})}">更新</a>&nbsp;<br>
 								<a href="#" th:href="@{/ticketList/{ticketNo}/delete(ticketNo=${ticket.ticketNo})}" onclick="javascript:return del();">删除</a>
 							</td>
                         </tr>                                                                                               
-                      </tbody>
+					</tbody>
                     </table>
                   </div>
+
 				  <!-- CSV、JSON匯出 -->
 				  <div>
 					<table id="myTable" hidden="hidden" style="display: none">
 						<thead>
 							<tr>
-								<th>#</th>
+								<th>ID</th>
 								<th>景點套票名稱</th>
 								<th>景點套票簡介</th>
 								<!-- <th>店家營業日期</th> -->
@@ -170,15 +177,17 @@
 								<!-- <th>圖片</th> -->
 								<th>標籤編號</th>
 								<th>標籤名稱</th>
-								<th>上架時間</th>
-								<th>下架時間</th>
-								<th>image</th>
+								<th>狀態</th>
+								<!-- <th>上架時間</th>
+								<th>下架時間</th> -->
+								<!-- <th>image</th> -->
 								<!-- <th>新增日期</th> -->
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="ticket,iterStat:${page.content}">
-								<td th:text="${iterStat.count}">1</td>
+								<!-- <td th:text="${iterStat.count}">1</td> -->
+								<td th:text="${ticket.ticketNo}" class="font-weight-bold"></td>
 								<td th:text="${ticket.ticketName}">景點套票名稱</td>
 								<td th:text="${ticket.ticketIntro}">景點套票敘述</td>
 								<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
@@ -193,28 +202,30 @@
 								<!-- <td th:text="${ticket.ticketImage}">圖片</td> -->
 								<td th:text="${ticket.tagNo}">標籤編號</td>
 								<td th:text="${ticket.tagName}">標籤名稱</td>
-								<td th:text="${ticket.ticketStartDate}">上架時間</td>
-								<td th:text="${ticket.ticketEndDate}">下架時間</td>
+								<!-- <td th:text="${ticket.ticketStartDate}">上架時間</td>
+								<td th:text="${ticket.ticketEndDate}">下架時間</td> -->
 								<!-- <td th:text="${ticket.newDate}">新增日期</td> -->
-								<td>
+								<!-- <td>
 									<div th:each="image:${ticket.images}" class="d-inline-block">
 										<img th:src="@{${image}}" class="rounded img-com" />
 									</div>
-								</td>
+								</td> -->
+								<td th:text="${ticket.status}" class="font-weight-bold">狀態</td>
 							</tr>
 						</tbody>
 					</table>
-                   </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 		<footer th:replace="backend/partials/fragment :: footer">
         <!-- partial -->
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
   <script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
   <script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
   <script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
@@ -231,11 +242,11 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 
 <!-- CSV JSON -->
-<!--<script th:src="@{/js/ticketTableJS/index.js}"></script>-->
-<!--<script th:src="@{/js/ticketTableJS/bootstrap.bundle.min.js}"></script>-->
+<script th:src="@{/js/ticketTableJS/index.js}"></script>
+<script th:src="@{/js/ticketTableJS/bootstrap.bundle.min.js}"></script>
 
 <!-- CSV JSON Script -->
-<!--<script> let x = new RdataTB('myTable'); </script>-->
+<script> let x = new RdataTB('myTable'); </script>
 
 <!-- TABLE -->
 <script>
@@ -455,6 +466,7 @@ function del() {
   }
 }
 </script>
+
 </body>
 
 </html>
