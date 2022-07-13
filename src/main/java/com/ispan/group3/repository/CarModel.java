@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,9 +30,9 @@ public class CarModel {
 	private Integer suitcase;
 	private Integer bag;
 	private String image;
-	@ManyToMany(mappedBy="carModels")
-	@JsonIgnore
-	private List<CarLocation> carLocations;
+//	@ManyToMany(mappedBy="carModels")
+//	@JsonIgnore
+//	private List<CarLocation> carLocations;
 	
 	@OneToMany(mappedBy = "carModel")
 	@JsonIgnore
@@ -59,13 +58,11 @@ public class CarModel {
 		this.suitcase = suitcase;
 		this.bag = bag;
 		this.image = image;
-		this.carLocations = carLocations;
 		this.carOptions = carOptions;
 	}
 	
 	public CarModel(String type, String makeCh, String makeEn, String model, String power, String transmission,
-			Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag, String image,
-			List<CarLocation> carLocations, List<CarOption> carOptions) {
+			Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag, String image, List<CarOption> carOptions) {
 		this.type = type;
 		this.makeCh = makeCh;
 		this.makeEn = makeEn;
@@ -78,7 +75,6 @@ public class CarModel {
 		this.suitcase = suitcase;
 		this.bag = bag;
 		this.image = image;
-		this.carLocations = carLocations;
 		this.carOptions = carOptions;
 	}
 
@@ -162,12 +158,8 @@ public class CarModel {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public List<CarLocation> getCarLocations() {
-		return carLocations;
-	}
-	public void setCarLocations(List<CarLocation> carLocations) {
-		this.carLocations = carLocations;
-	}
+
+	
 	public List<CarOption> getCarOptions() {
 		return carOptions;
 	}

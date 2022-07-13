@@ -79,9 +79,7 @@
                           <td th:text="${location.phone}"></td>
                           <td th:text="${location.openTime}"></td>
                           <td th:text="${location.closeTime}"></td>
-                          <td>
-<!--                           	<img th:src="@{${car.image}}" class="rounded img-com"/> -->
-                          </td>
+
 													<td>
 														<form th:action="@{/cars/locations/form/}+${location.id}" method="get" class="inline-block">
 															<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">

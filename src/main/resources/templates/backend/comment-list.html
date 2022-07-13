@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GoTrip後台管理</title>
 <!-- 通用css樣式 plugins:css -->
+<link rel="stylesheet" th:href="@{/vendors/bootstrap/css/bootstrap.min.css}" href="vendors/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css">
 <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
 <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css">
@@ -43,11 +44,10 @@
 										<a class="text-right btn btn-primary my-2" th:href="@{/backend/comments/form}">新增評論</a>
 									</div>
 									<div class="table-responsive">
-										<table id="comment-table" class="display expandable-table w-100">
+										<table id="comment-table" class="display expandable-table table-hover w-100">
 											<colgroup>
 												<col span="1" style="width: 5%;" class="font-weight-bold">
-												<col span="1" style="width: 8%;" class="font-weight-bold">
-												<col span="1" style="width: 6%;">
+												<col span="1" style="width: 12%;" class="font-weight-bold">
 												<col span="1" style="width: 8%;">
 												<col span="1" style="width: 10%;">
 												<col span="1" style="width: 5%;">
@@ -60,7 +60,6 @@
 												<tr>
 													<th>ID</th>
 													<th>項目</th>
-													<th>編號</th>
 													<th>使用者</th>
 													<th>評論日期</th>
 													<th>評分</th>
@@ -73,10 +72,13 @@
 											<tbody id="tbody">
 												<tr th:each="comment:${comments}" class="odd gradeX">
 													<td th:text="${comment.id}" class="font-weight-bold"></td>
-													<td th:text="${comment.itemTb}" class="font-weight-bold"></td>
-													<td th:text="${comment.itemId}" class="font-weight-bold"></td>
+													<td>
+														<button th:text="${comment.itemTb + '#' +comment.itemId}" data-toggle="modal" data-target="#exampleModal"
+															    class="btn btn-link font-weight-bold js-show-modal-item px-0" style="color:#d15f08"></button>
+														<i class='ti-info-alt'></i>
+													</td>
 													<td th:text="${comment.userId}"></td>
-													<td th:text="${comment.date}"></td>
+													<td th:text="${#dates.format(comment.date, 'yyyy/MM/dd HH:mm:ss')}"></td>
 													<td>
 														<span class="text-warning">★</span>
 														<span th:text="${comment.rating}"></span>
@@ -97,8 +99,7 @@
 																修改
 															</button>
 														</form>
-														<form th:action="@{/backend/comments/}+${comment.id}"
-															th:method="delete" class="inline-block">
+														<form th:action="@{/backend/comments/}+${comment.id}" th:method="delete" class="inline-block">
 															<button type="button" th:value="${comment.id}"
 																class="px-2 btn btn-delete btn-info btn-rounded btn-sm">
 																<!-- <i class="ti-trash"></i> -->
@@ -116,6 +117,32 @@
 						</div>
 					</div>
 				</div>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+				
+				<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+				
+				
 				<footer th:replace="backend/partials/fragment :: footer"></footer>
 				<!-- partial -->
 			</div>
@@ -123,6 +150,7 @@
 	</div>
 
 	<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+	<script th:src="@{/vendors/bootstrap/js/bootstrap.min.js}" src="vendors/bootstrap/js/bootstrap.min.js"></script>
 	<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
 	<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
 	<script th:src="@{/js/template.js}" src="js/template.js"></script>
@@ -160,7 +188,17 @@
 	 					$(this).parent().submit();
 	 				}
 	 			})
-			})
+		})
+			
+			
+	$('.js-show-modal-item').on('click',function(e){
+        e.preventDefault();
+        $('.js-modal-item').addClass('show-modal1');
+    });
+
+    $('.js-hide-modal-item').on('click',function(){
+        $('.js-modal1-item').removeClass('show-modal1');
+    });
 	</script>
 </body>
 
