@@ -3,61 +3,47 @@ package com.ispan.group3.repository;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Embeddable
 public class CarOptionKey implements Serializable{
 
-
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	@JoinColumn(name = "location_id")
-	@JsonIgnore
-	private CarLocation carLocation;
-	
-	@ManyToOne
-	@JoinColumn(name = "model_id")
-	private CarModel carModel;	
-	
-//	@Column(name = "location_id")
-//	Integer locationId;
-//	
-//	@Column(name = "model_id")
-//	Integer modelId;
+	@Column(name = "location_id", updatable = false)
+	Integer locationId;
+
+	@Column(name = "model_id", updatable = false)
+	Integer modelId;
 
 	public CarOptionKey() {
 	}
-	
-	public CarOptionKey(CarLocation carLocation, CarModel carModel) {
-		this.carLocation = carLocation;
-		this.carModel = carModel;
+
+	public CarOptionKey(Integer locationId, Integer modelId) {
+		this.locationId = locationId;
+		this.modelId = modelId;
 	}
 
-	public CarLocation getCarLocation() {
-		return carLocation;
+	public Integer getLocationId() {
+		return locationId;
 	}
 
-	public void setCarLocation(CarLocation carLocation) {
-		this.carLocation = carLocation;
+	public void setLocationId(Integer locationId) {
+		this.locationId = locationId;
 	}
 
-	public CarModel getCarModel() {
-		return carModel;
+	public Integer getModelId() {
+		return modelId;
 	}
 
-	public void setCarModel(CarModel carModel) {
-		this.carModel = carModel;
+	public void setModelId(Integer modelId) {
+		this.modelId = modelId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(carLocation, carModel);
+		return Objects.hash(locationId, modelId);
 	}
 
 	@Override
@@ -69,11 +55,8 @@ public class CarOptionKey implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		CarOptionKey other = (CarOptionKey) obj;
-		return Objects.equals(carLocation, other.carLocation) && Objects.equals(carModel, other.carModel);
+		return Objects.equals(locationId, other.locationId) && Objects.equals(modelId, other.modelId);
 	}
 
-	
-	
-	
-	
+
 }

@@ -35,7 +35,7 @@ public class CarModel {
 	@JsonIgnore
 	private List<CarLocation> carLocations;
 	
-	@OneToMany(mappedBy = "carOptionKey.carModel")
+	@OneToMany(mappedBy = "carModel")
 	@JsonIgnore
 	private List<CarOption> carOptions;
 	
@@ -165,15 +165,15 @@ public class CarModel {
 	public List<CarLocation> getCarLocations() {
 		return carLocations;
 	}
-//	public void setCarLocations(List<CarLocation> carLocations) {
-//		this.carLocations = carLocations;
-//	}
+	public void setCarLocations(List<CarLocation> carLocations) {
+		this.carLocations = carLocations;
+	}
 	public List<CarOption> getCarOptions() {
 		return carOptions;
 	}
-//	public void setCarOptions(List<CarOption> carOptions) {
-//		this.carOptions = carOptions;
-//	}
+	public void setCarOptions(List<CarOption> carOptions) {
+		this.carOptions = carOptions;
+	}
 	
 
 }

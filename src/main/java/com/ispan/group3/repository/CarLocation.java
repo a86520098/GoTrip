@@ -2,7 +2,9 @@ package com.ispan.group3.repository;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,6 +23,7 @@ public class CarLocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(updatable = false)
 	private Integer companyId;
 	private String name;
 	private String country;
@@ -38,7 +41,7 @@ public class CarLocation {
 	@JsonIgnore
 	private List<CarModel> carModels;
 	
-	@OneToMany(mappedBy = "carOptionKey.carLocation")
+	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY)
 	private List<CarOption> carOptions;
 	
 	public CarLocation() {
@@ -177,17 +180,17 @@ public class CarLocation {
 		return carModels;
 	}
 
-//	public void setCarModels(List<CarModel> carModels) {
-//		this.carModels = carModels;
-//	}
+	public void setCarModels(List<CarModel> carModels) {
+		this.carModels = carModels;
+	}
 
 	public List<CarOption> getCarOptions() {
 		return carOptions;
 	}
 
-//	public void setCarOptions(List<CarOption> carOptions) {
-//		this.carOptions = carOptions;
-//	}
+	public void setCarOptions(List<CarOption> carOptions) {
+		this.carOptions = carOptions;
+	}
 	
 	
 		

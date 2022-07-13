@@ -39,15 +39,23 @@ public class CarController {
 	public String findAllModelsBk(Model model) {
 		List<CarModel> carModels = modelService.findAll();
 		model.addAttribute("carModels", carModels);
-		return "backend/car-list";
+		return "backend/car-model-list";
 	}
 
-	@GetMapping({ "/backend/cars/form" })
+	@GetMapping("/backend/cars/locations")
+	public String findAllLocsBk(Model model) {
+		List<CarLocation> carLocations = locationService.findAll();
+		model.addAttribute("carLocations",carLocations);
+		return "backend/car-location-list";
+	}
+	
+	@GetMapping("/backend/cars/form")
 	public String showNewCarForm(Model model) {
 		CarModel carModel = new CarModel();
 		model.addAttribute("carModel", carModel);
 		return "backend/car-new-form";
 	}
+	
 
 	@GetMapping({ "/backend/cars/form/{id}" })
 	public String showCarForm(Model model, @PathVariable(required = false) Integer id) {
@@ -123,7 +131,8 @@ public class CarController {
 	
 	@PostMapping("/cars/locations")
 	public String save(@ModelAttribute CarLocation carLocation) {
-		
+		List<CarOption> carOptions = locationService.findById(carLocation.getId()).getCarOptions();
+		carLocation.setCarOptions(carOptions);
 		locationService.save(carLocation);
 
 		return "redirect:/cars/locations";
