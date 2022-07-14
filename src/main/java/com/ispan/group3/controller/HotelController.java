@@ -222,7 +222,8 @@ public class HotelController {
     }
 
     @GetMapping("/goGoogleMap")
-    public String togoGoogleMap() {
+    public String togoGoogleMap(Model m, @RequestParam("id") Integer id) {
+        m.addAttribute("roomDetail", hotelService.findById(id));
         return "/frontend/hotel-Google";
     }
 
