@@ -54,6 +54,153 @@ public class Hotel {
 	@Transient
 	@JsonIgnore
 	private  MultipartFile productImage;//前端照片
+	
+	
+	
+//	public Integer getId() {
+//		return id;
+//	}
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
+//	public String getStatus() {
+//		return status;
+//	}
+//	public void setStatus(String status) {
+//		this.status = status;
+//	}
+//	public String getHotelStyle() {
+//		return hotelStyle;
+//	}
+//	public void setHotelStyle(String hotelStyle) {
+//		this.hotelStyle = hotelStyle;
+//	}
+//	public Integer getHotelArea() {
+//		return hotelArea;
+//	}
+//	public void setHotelArea(Integer hotelArea) {
+//		this.hotelArea = hotelArea;
+//	}
+//	public Integer getBathCount() {
+//		return bathCount;
+//	}
+//	public void setBathCount(Integer bathCount) {
+//		this.bathCount = bathCount;
+//	}
+//	public Integer getBedroomCount() {
+//		return bedroomCount;
+//	}
+//	public void setBedroomCount(Integer bedroomCount) {
+//		this.bedroomCount = bedroomCount;
+//	}
+//	public Integer getBedCount() {
+//		return bedCount;
+//	}
+//	public void setBedCount(Integer bedCount) {
+//		this.bedCount = bedCount;
+//	}
+//	public String getFullAddress() {
+//		return fullAddress;
+//	}
+//	public void setFullAddress(String fullAddress) {
+//		this.fullAddress = fullAddress;
+//	}
+//	public String getNotional() {
+//		return notional;
+//	}
+//	public void setNotional(String notional) {
+//		this.notional = notional;
+//	}
+//	public String getCity() {
+//		return city;
+//	}
+//	public void setCity(String city) {
+//		this.city = city;
+//	}
+//	public String getHotelRule() {
+//		return hotelRule;
+//	}
+//	public void setHotelRule(String hotelRule) {
+//		this.hotelRule = hotelRule;
+//	}
+//	public String getHowgoto() {
+//		return Howgoto;
+//	}
+//	public void setHowgoto(String howgoto) {
+//		Howgoto = howgoto;
+//	}
+//	public String getHotel_name() {
+//		return hotel_name;
+//	}
+//	public void setHotel_name(String hotel_name) {
+//		this.hotel_name = hotel_name;
+//	}
+//	public String getIntroduce() {
+//		return introduce;
+//	}
+//	public void setIntroduce(String introduce) {
+//		this.introduce = introduce;
+//	}
+//	public String getProvide() {
+//		return provide;
+//	}
+//	public void setProvide(String provide) {
+//		this.provide = provide;
+//	}
+//	public Integer getPhone() {
+//		return phone;
+//	}
+//	public void setPhone(Integer phone) {
+//		this.phone = phone;
+//	}
+//	public Integer getPrice() {
+//		return price;
+//	}
+//	public void setPrice(Integer price) {
+//		this.price = price;
+//	}
+//	public String getBoss_name() {
+//		return boss_name;
+//	}
+//	public void setBoss_name(String boss_name) {
+//		this.boss_name = boss_name;
+//	}
+//	public String getRoomtype() {
+//		return roomtype;
+//	}
+//	public void setRoomtype(String roomtype) {
+//		this.roomtype = roomtype;
+//	}
+//	public Integer getPeopleCount() {
+//		return peopleCount;
+//	}
+//	public void setPeopleCount(Integer peopleCount) {
+//		this.peopleCount = peopleCount;
+//	}
+//	public Blob getImage() {
+//		return image;
+//	}
+//	public void setImage(Blob image) {
+//		this.image = image;
+//	}
+//	public String getFileName() {
+//		return fileName;
+//	}
+//	public void setFileName(String fileName) {
+//		this.fileName = fileName;
+//	}
+//	public Timestamp getAdmissionTime() {
+//		return admissionTime;
+//	}
+//	public void setAdmissionTime(Timestamp admissionTime) {
+//		this.admissionTime = admissionTime;
+//	}
+//	public MultipartFile getProductImage() {
+//		return productImage;
+//	}
+//	public void setProductImage(MultipartFile productImage) {
+//		this.productImage = productImage;
+//	}
 
 
 

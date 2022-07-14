@@ -1,9 +1,14 @@
 package com.ispan.group3.repository;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,33 +22,28 @@ public class OrderBean {
 	String orderDate;
 	Integer totalPrice;
 	Integer status;
-//	@Transient
-//	@OneToMany(mappedBy = "orderBean", cascade = CascadeType.ALL)
-//	Set<OrderItemBean> items = new LinkedHashSet<>();
+	
+	@OneToMany(mappedBy = "orderBean", cascade = CascadeType.ALL)
+	Set<OrderItemBean> items = new LinkedHashSet<>();
 
-//	public OrderBean(Integer orderNo, String memberId, Integer totalPrice, String orderDate, Integer status,
-//			Set<OrderItemBean> items) {
-//		super();
-//		this.orderNo = orderNo;
-//		this.memberId = memberId;
-//		this.totalPrice = totalPrice;
-//		this.orderDate = orderDate;
-//		this.items = items;
-//		this.status = status;
-//	}
-	public OrderBean(Integer orderNo, String memberId, Integer totalPrice, String orderDate, Integer status) {
-		super();
-		this.orderNo = orderNo;
-		this.memberId = memberId;
-		this.totalPrice = totalPrice;
-		this.orderDate = orderDate;
-		this.status = status;
-	}
+
+
 
 	public OrderBean() {
 
 	}
 
+	public OrderBean(Integer orderNo, String memberId, String orderDate, Integer totalPrice, Integer status) {
+		super();
+		this.orderNo = orderNo;
+		this.memberId = memberId;
+		this.orderDate = orderDate;
+		this.totalPrice = totalPrice;
+		this.status = status;
+	}
+
+	
+	
 	public Integer getOrderNo() {
 		return orderNo;
 	}
@@ -84,12 +84,12 @@ public class OrderBean {
 		this.orderDate = orderDate;
 	}
 
-//	public Set<OrderItemBean> getItems() {
-//		return items;
-//	}
-//
-//	public void setItems(Set<OrderItemBean> items) {
-//		this.items = items;
-//	}
+	public Set<OrderItemBean> getItems() {
+		return items;
+	}
+
+	public void setItems(Set<OrderItemBean> items) {
+		this.items = items;
+	}
 
 }
