@@ -32,6 +32,10 @@ public class FileUploadUtil {
         // 檔案名稱為原始名稱
         String fileName = multipartFile.getOriginalFilename();
         Path filePath = uploadPath.resolve(fileName);
+        
+        System.err.println("Path->"+ fileName);
+        System.err.println("Path->"+SAVE_PATH + saveDir + "/" + fileName);
+        
         try (InputStream inputStream = multipartFile.getInputStream()) {
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             return SAVE_PATH + saveDir + "/" + fileName;
