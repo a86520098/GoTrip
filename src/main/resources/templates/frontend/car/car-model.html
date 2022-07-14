@@ -69,15 +69,50 @@
 										<div class="rating-count" th:id="${car.id}" value="carRental">
 											尚無評論
 										</div>
-										<p class="clblack mtext-101 p-t-6 text-right" th:each="option:${carOptions}">
-											TWD $<span th:text="${car.carOptions.price}"></span>
-										</p>
+										<div th:each="option:${car.carOptions}">
+											<p class="clblack mtext-101 p-t-6 text-right" >
+												TWD $<span th:text="${option.price}"></span>
+											</p>
+										</div>
 										<i class="zmdi zmdi-flash"></i> <span th:text="${car.power}" class="p-r-15"></span>
 										<i class="zmdi zmdi-wb-auto"></i> 變速 <span th:text="${car.transmission}" class="p-r-15"></span>
 										<i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位 <span th:text="${car.seat}" class="p-r-15"></span>
 										<i class="zmdi zmdi-car"></i> 排氣量 <span th:text="${car.engine}+'cc'" class="p-r-5"></span>
+										<div class="flex-r">
+											<button class="btn btn-warning text-right" type="button" data-toggle="collapse" th:data-target="'#collapseExample'+${car.id}" aria-expanded="false" aria-controls="collapseExample">
+												<i class="fa fa-angle-down" aria-hidden="true"></i>
+											</button>
+										</div>
 									</div>
+								</div>
+							</div>
+							<div class="collapse p-lr-20" th:id="'collapseExample'+${car.id}">
+								<div th:each="option:${car.carOptions}" >
+									<div class="bor18 ">
+										<div class="row">
 
+											<div class="col-sm-8 card-body block2-txt flex-w flex-t p-t-14 ">
+												<div class="block2-txt-child1 mb-1">
+													<p class="m-t-15" th:text="${option.carLocation.name}"></p>
+													<a th:href="@{'/cars/'+${option.id}}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-15">
+														<p th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="pr-3"></p>
+													</a>
+													<div class="rating-count" th:id="${option.carModel.id}" value="carRental">
+														尚無評論
+													</div>
+													<i class="zmdi zmdi-flash"></i> <span th:text="${option.carModel.power}" class="p-r-15"></span>
+													<i class="zmdi zmdi-wb-auto"></i> 變速 <span th:text="${option.carModel.transmission}" class="p-r-15"></span>
+													<i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位 <span th:text="${option.carModel.seat}" class="p-r-15"></span>
+													<i class="zmdi zmdi-car"></i> 排氣量 <span th:text="${option.carModel.engine}+'cc'" class="p-r-5"></span> 
+													<div class="p-t-6 text-right">
+														<del><span class="cl3" th:text="'TWD $' + ${option.price}"></span></del>
+														<span class="clblack mtext-109" th:text="'TWD $' + ${option.priceSale}"></span>
+														<button class="ml-3 btn btn-warning">選擇車款</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

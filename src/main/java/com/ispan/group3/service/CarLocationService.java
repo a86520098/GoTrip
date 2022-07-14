@@ -15,4 +15,6 @@ public interface CarLocationService {
 //	void updateCarLocation(CarLocation carLocation);
 
 	void deleteById(Integer id);
+
+	List<CarLocation> findByCompany(Integer id);
 }

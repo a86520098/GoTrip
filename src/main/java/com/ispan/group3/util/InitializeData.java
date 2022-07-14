@@ -86,7 +86,7 @@ public class InitializeData {
 													+ "	discount float,"
 													+ "	amount int,"
 												+ ");";
-	
+
 	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -148,7 +148,7 @@ public class InitializeData {
 			insertCarModels(conn);
 			// Insert car-renting locations
 			insertCarLocations(conn);
-			
+
 			insertCarOptions(conn);
 
 		} catch (Exception e) {
@@ -284,10 +284,10 @@ public class InitializeData {
 		} catch (SQLException | IOException e) {
 				e.printStackTrace();
 
-		} 
+		}
 
 	}
-	
+
 	public static void insertCarOptions(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/data/car-option.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
@@ -308,10 +308,10 @@ public class InitializeData {
 		} catch (SQLException | IOException e) {
 				e.printStackTrace();
 
-		} 
-		
+		}
+
 	}
-	
-	
+
+
 
 }

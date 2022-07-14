@@ -86,7 +86,7 @@
 													<td th:text="${comment.content}"></td>
 													<td>
 														<div th:each="image:${comment.images}" class="d-inline-block">
-															<img th:src="@{${image}}" class="rounded img-com" />
+															<img th:src="@{${image.imagePath}}" class="rounded img-com" />
 														</div>
 													</td>
 													<td class="font-weight-medium">

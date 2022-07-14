@@ -53,13 +53,20 @@
                                             <div class="card-body">
 
                                                 <caption>
-                                                    <h2>Hotel New
+                                                    <h2>Hotel Edit
 
                                                     </h2>
                                                 </caption>
 
-                                                <form method="post" th:action="@{/addHotel}" th:object="${hotel}"
+                                                <form method="post" th:action="@{/editHotel}" th:object="${hotel}"
                                                       enctype="multipart/form-data">
+
+                                                    <fieldset class="form-group">
+                                                        <label>ID</label>
+                                                        <input type="text" th:field="*{id}" id="name"
+                                                               class="form-control" readonly/>
+                                                    </fieldset>
+
 
                                                     <td>住宿類型</td>
                                                     <fieldset class="form-group">
@@ -72,6 +79,7 @@
                                                             <option value="專業大飯店">專業大飯店</option>
                                                         </select>
                                                     </fieldset>
+
 
                                                     <fieldset class="form-group">
                                                         <label>住宿面積大小</label>
@@ -169,7 +177,6 @@
                                                         <option th:value="'提供美式餐點'" th:text="提供美式餐點"></option>
                                                         <option th:value="'提供中式餐點'" th:text="提供中式餐點"></option>
                                                     </select>
-
 
                                                     <fieldset class="form-group">
                                                         <label>你提供什麼設施呢?</label><br>

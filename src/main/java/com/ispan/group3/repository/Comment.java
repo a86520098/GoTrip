@@ -1,8 +1,7 @@
 package com.ispan.group3.repository;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -27,7 +26,7 @@ public class Comment {
 	private String content;
 	private String status;
 	@OneToMany(mappedBy="comment", cascade = CascadeType.ALL)
-	private Set<CommentImage> images;
+	private List<CommentImage> images;
 	
 	
 	public Comment() {
@@ -35,7 +34,7 @@ public class Comment {
 	}
 	
 	public Comment(Integer id, String itemTb, Integer itemId, String userId, Timestamp date, Integer rating,
-			String content, String status, Set<CommentImage> images) {
+			String content, String status, List<CommentImage> images) {
 		this.id = id;
 		this.itemTb = itemTb;
 		this.itemId = itemId;
@@ -48,7 +47,7 @@ public class Comment {
 	}
 
 	public Comment(String itemTb, Integer itemId, String userId, Timestamp date, Integer rating, String content,
-			 String status, Set<CommentImage> images) {
+			 String status, List<CommentImage> images) {
 		this.itemTb = itemTb;
 		this.itemId = itemId;
 		this.userId = userId;
@@ -126,15 +125,11 @@ public class Comment {
 		this.content = content;
 	}
 
-	public Set<String> getImages() {
-		Set<String> imagePaths = new LinkedHashSet<>();
-		for (CommentImage image : images) {
-			imagePaths.add(image.getImagePath());
-		}
-		return imagePaths;
+	public List<CommentImage> getImages() {
+		return images;
 	}
 	
-	public void setImages(Set<CommentImage> images) {
+	public void setImages(List<CommentImage> images) {
 		this.images = images;
 	}
 

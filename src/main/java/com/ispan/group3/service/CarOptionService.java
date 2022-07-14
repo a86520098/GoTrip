@@ -17,4 +17,6 @@ public interface CarOptionService {
 
 	void deleteById(Integer id);
 
+	Long count();
+
 }
