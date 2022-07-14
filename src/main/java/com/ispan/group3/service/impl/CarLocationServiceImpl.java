@@ -40,11 +40,6 @@ public class CarLocationServiceImpl implements CarLocationService{
 		locationRepository.save(carLocation);
 	}
 
-//	@Override
-//	public void save(CarLocation carLocation) {
-//		locationRepository.save(carLocation);
-//	}
-
 	@Override
 	public void deleteById(Integer id) {
 		if (!locationRepository.existsById(id))
@@ -52,5 +47,10 @@ public class CarLocationServiceImpl implements CarLocationService{
 		locationRepository.deleteById(id);
 	}
 
+	@Override
+	public List<CarLocation> findByCompany(Integer id) {
+		return locationRepository.findByCompany(id);
+	}
+	
 	
 }
