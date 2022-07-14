@@ -197,36 +197,7 @@ public class TicketController {
 		return "redirect:/ticketList";
 	}
 	
-// 	@PostMapping("/ticketList")
-// 	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
-// 			@RequestParam("image") MultipartFile files) {
-		
-// 		 try {
-// 			 System.err.println("ticket"+ticket.toString());
-// 			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
-// 		 	Set<TicketImage> images = new HashSet<>();
-// //		 	for (MultipartFile file : files) {
-// 		 		try {
-// 		 			String savePath = FileUploadUtil.saveFile("ticket", files);
-// 		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
-// 		 			images.add(ticketImage);
-// 		 		} catch (IOException e) {
-// 		 			e.printStackTrace();
-// 		 		}
-// //		 	}
-// 		 	ticket.setImages(images);
-// 			ticketService.save(ticket);
-// 		} catch (Exception e) {
-// 			e.printStackTrace();
-// 		}
-// 		// ticketService.save(ticket);
-// 		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
 
-// 		// List<Book> books = bookService.findAll();
-// 		// model.addAttribute("books", books);
-// 		// return "books";
-// 		return "redirect:/ticketList";
-// 	}
 
 	@GetMapping("/ticketList/{ticketNo}/delete")
 	public String delete(@PathVariable long ticketNo, final RedirectAttributes attributes) {
@@ -247,30 +218,34 @@ public class TicketController {
 	public Ticket jsonFindById(@PathVariable Integer id) {
 		return ticketService.findById(id).get();
 	}
-	
-	
-	
 }
-// @PostMapping("/ticketList")
-// public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
-// 		@RequestParam("image") MultipartFile file) {
+//	@PostMapping("/ticketList")
+//	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
+//			@RequestParam("image") MultipartFile files) {
 	
-// 	 try {
-// 		 Set<TicketImage> images = new HashSet<>();
-// //		 	for (MultipartFile file : files) {
-// 			 try {
-// 				 String savePath = FileUploadUtil.saveFile("ticket", file);
-// 				 TicketImage ticketImage = new TicketImage(savePath, ticket);
-// 				 images.add(ticketImage);
-// 			 } catch (IOException e) {
-// 				 e.printStackTrace();
-// 			 }
-// //		 	}
-// 		 ticket.setImages(images);
-// //			 ticketService.save(ticket);
-		
-// 		 } catch (Exception e) {
-// 				 e.printStackTrace();
-// 			 }
-// 			ticketService.save(ticket);
-// 	attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
+//		 try {
+//			 System.err.println("ticket"+ticket.toString());
+//			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
+//		 	Set<TicketImage> images = new HashSet<>();
+////		 	for (MultipartFile file : files) {
+//		 		try {
+//		 			String savePath = FileUploadUtil.saveFile("ticket", files);
+//		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
+//		 			images.add(ticketImage);
+//		 		} catch (IOException e) {
+//		 			e.printStackTrace();
+//		 		}
+////		 	}
+//		 	ticket.setImages(images);
+//			ticketService.save(ticket);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		// ticketService.save(ticket);
+//		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
+
+//		// List<Book> books = bookService.findAll();
+//		// model.addAttribute("books", books);
+//		// return "books";
+//		return "redirect:/ticketList";
+//	}
