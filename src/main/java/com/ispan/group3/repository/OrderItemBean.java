@@ -16,11 +16,12 @@ public class OrderItemBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private	Integer itemNo;
-	private Integer ticketId;
+	private Integer productId;
+	private String type;
 	private String itemInfo;
 	private Integer unitPrice;
 	private	Integer quantity;
-	private String phone;
+	private Integer phone;
 	private Blob photo;
 	@ManyToOne
 	@JoinColumn(name = "orderNo")
@@ -31,13 +32,14 @@ public class OrderItemBean {
 		super();
 	}
 
-	public OrderItemBean(Integer ticketId, String itemInfo, Integer unitPrice, Integer quantity, String phone) {
+	public OrderItemBean(Integer productId,String type,String itemInfo, Integer unitPrice, Integer quantity, Integer phone) {
 		super();
-		this.ticketId = ticketId;
+		this.productId = productId;
 		this.itemInfo = itemInfo;
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
 		this.phone = phone;
+		this.type = type;
 	}
 	
 	public Blob getPhoto() {
@@ -54,14 +56,6 @@ public class OrderItemBean {
 
 	public void setItemNo(Integer itemNo) {
 		this.itemNo = itemNo;
-	}
-
-	public Integer getTicketId() {
-		return ticketId;
-	}
-
-	public void setTicketId(Integer ticketId) {
-		this.ticketId = ticketId;
 	}
 
 	public String getItemInfo() {
@@ -88,11 +82,11 @@ public class OrderItemBean {
 		this.quantity = quantity;
 	}
 
-	public String getPhone() {
+	public Integer getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
+	public void setPhone(Integer phone) {
 		this.phone = phone;
 	}
 
@@ -103,6 +97,22 @@ public class OrderItemBean {
 
 	public void setOrderBean(OrderBean orderBean) {
 		this.orderBean = orderBean;
+	}
+
+	public Integer getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Integer productId) {
+		this.productId = productId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

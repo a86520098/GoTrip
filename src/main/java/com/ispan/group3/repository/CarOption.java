@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "car_option")
 public class CarOption {
@@ -18,6 +20,7 @@ public class CarOption {
 	private Integer id;
 
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "location_id", updatable = false)
 	private CarLocation carLocation;
 

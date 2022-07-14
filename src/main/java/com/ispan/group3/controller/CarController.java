@@ -19,6 +19,7 @@ import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.CarOption;
 import com.ispan.group3.service.CarLocationService;
 import com.ispan.group3.service.CarModelService;
+import com.ispan.group3.service.CarOptionService;
 import com.ispan.group3.util.FileUploadUtil;
 
 @Controller
@@ -26,11 +27,13 @@ public class CarController {
 
 	private final CarModelService modelService;
 	private final CarLocationService locationService;
+	private final CarOptionService optionService;
 
 	@Autowired
-	public CarController(CarModelService modelService, CarLocationService locationService) {
+	public CarController(CarModelService modelService, CarLocationService locationService, CarOptionService optionService) {
 		this.modelService = modelService;
 		this.locationService = locationService;
+		this.optionService = optionService;
 	}
 
 	// ======== 後台管理系統 ========
@@ -79,14 +82,15 @@ public class CarController {
 
 	// ---------- 刪除車款 ----------
 	@DeleteMapping("/backend/cars/{id}")
-	public String deleteById(@PathVariable Integer id) {
+	public String deleteByIdBk(@PathVariable Integer id) {
 		modelService.deleteById(id);
 		return "redirect:/backend/cars";
 	}
 
+
 	// ========== 前台系統 ==========
 	// ---------- 車款找車 ----------
-	@GetMapping("/cars")
+	@GetMapping({"/cars", "/cars/models"})
 	public String findAllModel(Model model) {
 		List<CarModel> carModels = modelService.findAll();
 		model.addAttribute("carModels", carModels);
@@ -102,15 +106,25 @@ public class CarController {
 	}
 
 	// ---------- 車款頁面 ----------
-	@GetMapping("/cars/{id}")
+	@GetMapping("/cars/{locationId}/{optionId}")
 	public String findById(@PathVariable Integer id, Model model) {
 		CarModel carModel = modelService.findById(id);
 		model.addAttribute("car", carModel);
 		return "frontend/car/car-detail";
 	}
 
+	
+	// ======== 前台商家系統 ========
+	// ---------- 地圖找車 ----------
+	@GetMapping("/vendor/cars/locations/{companyId}")
+	public String findByCompany(@PathVariable Integer companyId, Model model) {
+		List<CarLocation> carLocations = locationService.findByCompany(companyId);
+		model.addAttribute("carLocations", carLocations);
+		return "frontend/car/vendor-location";
+	}
+	
 	// ---------- 地點表單 ----------
-	@GetMapping({ "/cars/locations/form", "/cars/locations/form/{id}" })
+	@GetMapping({ "/vendor/cars/locations/form", "/vendor/cars/locations/form/{id}" })
 	public String showLocForm(@PathVariable(required = false) Integer id, Model model) {
 		CarLocation carLocation = new CarLocation();
 		if (id != null) {
@@ -119,33 +133,47 @@ public class CarController {
 		model.addAttribute("carLocation", carLocation);
 		List<CarModel> existModels = modelService.findAll();
 		model.addAttribute("existModels", existModels);
-		if (id != null) {
-			return "redirect:/cars/options/form" + id;
-		}
-		return "redirect:/cars/options/form";
-
+		return "frontend/car/vendor-loc-form";
 	}
 	
 	// ---------- 儲存地點 ----------
-	@PostMapping("/cars/locations")
-	public String save(@ModelAttribute CarLocation carLocation) {
-		List<CarOption> carOptions = locationService.findById(carLocation.getId()).getCarOptions();
-		carLocation.setCarOptions(carOptions);
+	@PostMapping("/vendor/cars/locations")
+	public String save(@ModelAttribute CarLocation carLocation, @RequestParam String closeTime, @RequestParam String openTime) {
+		carLocation.setCloseTime(closeTime);
+		carLocation.setOpenTime(openTime);
 		locationService.save(carLocation);
-		return "redirect:/cars/locations";
+		return "redirect:/vendor/cars/options/form/" + carLocation.getId();
 	}
 	
 	// ---------- 方案表單 ----------
-	@GetMapping({ "/cars/options/form", "/cars/options/form/{id}" })
+	@GetMapping({ "/vendor/cars/options/form", "/vendor/cars/options/form/{id}" })
 	public String showOptForm(@PathVariable(required = false) Integer id, Model model) {
 		CarLocation carLocation = new CarLocation();
-		List<CarOption> carOptions = carLocation.getCarOptions();
 		if (id != null) {
 			carLocation = locationService.findById(id);
-			carOptions = carLocation.getCarOptions();
-		}
-		model.addAttribute("carOptions", carOptions);
-		return "frontend/car/car-option-form";
+		} 
+		model.addAttribute("carLocation", carLocation);
+		return "frontend/car/vendor-opt-form";
 	}
-
+	
+	// ---------- 儲存選項 ----------
+	@PostMapping("/vendor/cars/options")
+	public String saveOpt(@ModelAttribute CarLocation carLocation) {
+		List<CarOption> carOptions = carLocation.getCarOptions();
+		for (CarOption option: carOptions) {
+			System.out.println(option.getId());
+			System.out.println(option.getDiscount());
+			optionService.save(option);
+		}
+		return "redirect:/vendor/cars/locations/" + carLocation.getId();
+	}
+	
+	
+	// ---------- 刪除車款 ----------
+	@DeleteMapping("/vendor/cars/locations/{id}")
+	public String deleteById(@PathVariable Integer id) {
+		modelService.deleteById(id);
+		return "redirect:/vendor/cars/locations";
+	}
+	
 }

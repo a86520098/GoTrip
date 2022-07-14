@@ -8,33 +8,35 @@ import java.util.Set;
 //@Scope("session")
 public class ShoppingCart {   
 	
-	private Map<Integer, OrderItemBean> cart = new LinkedHashMap< >();
+	private Map<String, OrderItemBean> cart = new LinkedHashMap<>();
 	
 	public ShoppingCart() {
 	}
 	
-	public Map<Integer, OrderItemBean>  getContent() { // ${ShoppingCart.content}
+	public Map<String, OrderItemBean>  getContent() { // ${ShoppingCart.content}
 		return cart;
 	}
-	public void addToCart(int productId, OrderItemBean  oib) {
+	public void addToCart(String oId,OrderItemBean  oib) {
+		
+		
 		if (oib.getQuantity() <= 0 ) {
 			return;
 		}
 		// 如果客戶在伺服器端沒有此項商品的資料，則客戶第一次購買此項商品
-		if ( cart.get(productId) == null ) {
-		    cart.put(productId, oib);
+		if ( cart.get(oId) == null ) {
+		    cart.put(oId, oib);
 		} else {
-	        // 如果客戶在伺服器端已有此項商品的資料，則客戶『加購』此項商品
-			OrderItemBean oiBean = cart.get(productId);
+	        
+			OrderItemBean oiBean = cart.get(oId);
 			// 加購的數量：bean.getQuantity()
 			// 原有的數量：oBean.getQuantity()			
 			oiBean.setQuantity(oib.getQuantity() + oiBean.getQuantity());
 		}
 	}
 
-	public boolean modifyQty(int bookId, int newQty) {
-		if ( cart.get(bookId) != null ) {
-		   OrderItemBean  bean = cart.get(bookId);
+	public boolean modifyQty(String oid, int newQty) {
+		if ( cart.get(oid) != null ) {
+		   OrderItemBean  bean = cart.get(oid);
 		   bean.setQuantity(newQty);
 	       return true;
 		} else {
@@ -42,9 +44,9 @@ public class ShoppingCart {
 		}
 	}
 	// 刪除某項商品
-	public int deleteBook(int bookId) {
-		if ( cart.get(bookId) != null ) {
-	       cart.remove(bookId);  // Map介面的remove()方法
+	public int deleteBook(String productId) {
+		if ( cart.get(productId) != null ) {
+	       cart.remove(productId);  // Map介面的remove()方法
 	       return 1;
 		} else {
 		   return 0;
@@ -54,10 +56,10 @@ public class ShoppingCart {
 		return cart.size();
 	}
 	//計算購物車內所有商品的合計金額(每項商品的單價*數量的總和)
-	public double getSubtotal(){
-		double subTotal = 0 ;
-		Set<Integer> set = cart.keySet();
-		for(int n : set){
+	public int getSubtotal(){
+		int subTotal = 0 ;
+		Set<String> set = cart.keySet();
+		for(String n : set){
 			OrderItemBean oib = cart.get(n);
 			double price    = oib.getUnitPrice();
 			int qty      = oib.getQuantity();

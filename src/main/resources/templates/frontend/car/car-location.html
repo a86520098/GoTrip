@@ -67,7 +67,7 @@
 											<i class="fa fa-angle-right" aria-hidden="true"></i>
 											<span class="" th:text="${location.district}"></span>
 										</div>
-											<p th:text="${location.name}" class="pr-3 m-tb-8 fs-24 clblack font-weight-bold trans-04 js-name-b2"></p>
+										<p th:text="${location.name}" class="pr-3 m-tb-8 fs-24 clblack font-weight-bold trans-04 js-name-b2"></p>
 										<i class="fa fa-map-marker cl3" aria-hidden="true"></i>
 										<span th:text="${location.county + location.district + location.address}"></span>
 <!-- 										<div class="rating-count" th:id="${car.id}" value="carRental"> -->
@@ -135,6 +135,29 @@
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js}"></script>
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js}"></script>
 	<script th:src="@{/js/clusterMap.js}" src="js/clusterMap.js"></script>
+	<script th:src="@{https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js}"></script>
+	<script>
+	$(function () {
+		$.ajax({
+			url: "https://api.mapbox.com/geocoding/v5/mapbox.places/new york.json",
+			method: "GET",
+			data: {
+				access_token: "pk.eyJ1IjoibHlubjgxMTExMiIsImEiOiJjbDFha2phZ28yN2tqM2RwMzZ4YncycHl5In0.QtgMdcDbNV24FrpgU4sHCw",
+				limit: 1
+			},
+			dataType: "json",
+			success: function(data) {
+				console.log(data);
+			},
+			error: function(err) {
+				console.log(err);
+			},
+		});
+
+
+	})
+	
+	</script>
 	
 </body>
 
