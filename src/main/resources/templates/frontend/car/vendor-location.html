@@ -27,20 +27,20 @@
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/cars/locations?companyId=1}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+									<a th:href="@{/vendor/cars/locations/1}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
 										地點與車款列表
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
-										新增地點與車款
+									<a th:href="@{/vendor/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增地點
 									</a>
 								</li>
-<!-- 								<li class="bor18"> -->
-<!-- 									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4"> -->
-<!-- 										新增車款 -->
-<!-- 									</a> -->
-<!-- 								</li> -->
+								<li class="bor18">
+									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增車款
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -76,12 +76,10 @@
 											<td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td>
 											<td th:text="${location.carOptions.size()}"></td>
 											<td>
-												<form th:action="@{/cars/locations/form/}+${location.id}" method="get" class="inline-block">
-													<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">
-														修改
-													</button>
-												</form>
-												<form th:id="'deleteLocation' + ${location.id}" th:action="@{/backend/cars/locations/}+${location.id}"
+												<a th:href="@{/vendor/cars/locations/form/{id}(id=${location.id})}" class="px-2  btn btn-warning btn-rounded btn-sm">
+													修改
+												</a>
+												<form th:id="'deleteLocation' + ${location.id}" th:action="@{/vendor/cars/locations/}+${location.id}"
 													th:method="delete" class="inline-block">
 													<button type="button" th:value="${location.id}" class="px-2 btn btn-delete btn-info btn-rounded btn-sm">
 														刪除

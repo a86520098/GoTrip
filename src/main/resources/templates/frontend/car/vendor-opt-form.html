@@ -27,20 +27,20 @@
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/cars/locations?companyId=1}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+									<a th:href="@{/vendor/cars/locations/1}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
 										地點與車款列表
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
-										新增地點與車款
+									<a th:href="@{/vendor/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增地點
 									</a>
 								</li>
-<!-- 								<li class="bor18"> -->
-<!-- 									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4"> -->
-<!-- 										新增車款 -->
-<!-- 									</a> -->
-<!-- 								</li> -->
+								<li class="bor18">
+									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增車款
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -50,17 +50,25 @@
 					<div class="card">
 						<div class="card-body ">
 							<h4 class="card-title font-weight-bold">租車選項</h4>
-							<form id="insertForm" name="form" th:action="@{/cars/options}" method="post" th:object="${carLocation}"
-								  class="form-horizontal needs-validation" enctype="multipart/form-data">
-								  
-<!-- 								<input th:field="*{id}" id="id" type="text"/> -->
+							<form id="insertForm" name="form" th:action="@{/vendor/cars/options}" method="post" th:object="${carLocation}"
+								  class="form-horizontal needs-validation">
+								<input th:field="*{id}" id="id" type="text"/>
 								<div th:each="option, optionStat : *{carOptions}">
 									<p class="card-description mt-4">車款資料</p>
+									<input th:field="*{carOptions[__${optionStat.index}__].id}" id="name" type="hidden" class="form-control" />
 									<div class="row form-group my-4">
 										<div class="col-lg-1"></div>
-	<!-- 									<input th:field="*{carModel.id}" id="id" type="text" class="form-control" placeholder="" /> -->
+										<label class="col-lg-2 col-form-label" for="name">車款Id</label>
+										<div class="col-lg-6">
+											<input th:field="*{carOptions[__${optionStat.index}__].carModel.id}" id="name" type="number" class="form-control" />
+											<div class="invalid-feedback">請選擇車款</div>
+										</div>
+									</div>
+									<div class="row form-group my-4">
+										<div class="col-lg-1"></div>
 										<label class="col-lg-2 col-form-label" for="name">車款</label>
 										<div class="col-lg-6">
+											<input th:field="*{carOptions[__${optionStat.index}__].carModel.makeEn}" id="name" type="text" class="form-control" />
 											<input th:field="*{carOptions[__${optionStat.index}__].carModel.model}" id="name" type="text" class="form-control" />
 											<div class="invalid-feedback">請選擇車款</div>
 										</div>
