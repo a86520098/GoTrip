@@ -52,16 +52,20 @@
 													<div>
 														<!-- <h3>景點套票詳情</h3> -->
 														<p>
-															<strong>景點套票名稱：</strong>
+															<strong>景點名稱：</strong>
 															<span th:text="*{ticketName}"></span>
 															<!-- book對應的是 model.addAttribute("book", book);-->
 														</p>
 														<p>
-															<strong>景點套票簡介：</strong>
-															<span th:text="*{ticketIntro}"></span>
+															<strong>景點商品說明：</strong>
 														</p>
+														<div id ='intro'></div>
+														<p>
+															<strong>景點簡介：</strong>
+														</p>
+														<div id ='intro1'></div>
 														<!-- 店家營業日期隱藏中 -->
-													<!-- <p>
+														<!-- <p>
 															<strong>店家營業日期：</strong><span
 																th:text="*{ticketOpenWeek}"></span>
 														</p> -->
@@ -78,7 +82,7 @@
 															<span th:text="*{phone}"></span>
 														</p>
 														<p>
-															<strong>國家：</strong>
+															<strong>國家/地區：</strong>
 															<span th:text="*{country}"></span>
 														</p>
 														<p>
@@ -86,7 +90,7 @@
 															<span th:text="*{city}"></span>
 														</p>
 														<p>
-															<strong>地區：</strong>
+															<strong>鄉鎮區：</strong>
 															<span th:text="*{location}"></span>
 														</p>
 														<p>
@@ -106,13 +110,26 @@
 															<span th:text="*{tagName}"></span>
 														</p>
 														<p>
+															<strong>圖片：</strong>
+															<!-- <span th:text="*{images}"></span> -->
+															<!-- <img th:src="@{${images}}" class="rounded img-com" /> -->
+															<div th:each="image:*{images}" class="d-inline-block">
+																<img th:src="@{${image}}" class="rounded img-com" />
+															</div>
+														</p>
+														<p>
+															<strong>狀態：</strong>
+															<span th:text="*{status}"></span>
+														</p>
+														<!-- <p>
 															<strong>上架時間：</strong>
 															<span th:text="*{ticketStartDate}"></span>
 														</p>
 														<p>
 															<strong>下架時間：</strong>
 															<span th:text="*{ticketEndDate}"></span>
-														</p>
+														</p> -->
+
 														<!-- 加一個返回按鈕 -->
 														<a href="javascript:history.go(-1)" class="btn btn-success">返回</a>
 													</div>
@@ -126,36 +143,42 @@
 						<!-- Footer -->
 						<footer th:replace="backend/partials/fragment :: footer"></footer>
 					</div>
-					<script th:src="@{/vendors/js/vendor.bundle.base.js}"
-						src="vendors/js/vendor.bundle.base.js"></script>
-					<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
-					<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
-					<script th:src="@{/js/template.js}" src="js/template.js"></script>
-					<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+				</div>
+			</div>
+		</div>
+		<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+		<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+		<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+		<script th:src="@{/js/template.js}" src="js/template.js"></script>
+		<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
 
-					<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
-						src="vendors/datatables.net/jquery.dataTables.js"></script>
-					<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
-						src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-					<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
-					<script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
-					<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}"
-						src="vendors/sweetalert/sweetalert2.all.min.js"></script>
-					<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+		<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
+			src="vendors/datatables.net/jquery.dataTables.js"></script>
+		<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
+			src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+		<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+		<script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+		<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}"
+			src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+		<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 
-					<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-					<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
-					<script th:src="@{/js/bootstrap.min.js}" src="../../static/js/ticketTableJS/bootstrap.min.js"></script>
-					<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
-					<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-					<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="../../static/vendors/js/vendor.bundle.base.js"></script>
-					<!-- <script src="../static/js/jstable.min.js"></script> -->
-					<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
-					<script>
-						new JSTable("#basic");
-					</script>
-
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
+		<script th:src="@{/js/bootstrap.min.js}" src="../../static/js/ticketTableJS/bootstrap.min.js"></script>
+		<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="../../static/vendors/js/vendor.bundle.base.js"></script>
+		<!-- <script src="../static/js/jstable.min.js"></script> -->
+		<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
+		<script th:inline="javascript">
+			var ticketIntro = /*[[${ticket.ticketIntro}]]*/ 'default';
+			document.getElementById("intro").innerHTML=ticketIntro;
+		</script>
+		<script th:inline="javascript">
+			var ticketIntro = /*[[${ticket.ticketBriefIntro}]]*/ 'default';
+			document.getElementById("intro1").innerHTML=ticketIntro;
+		</script>
 </body>
 
 </html>

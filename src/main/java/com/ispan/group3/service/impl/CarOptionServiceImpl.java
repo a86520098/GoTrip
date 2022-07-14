@@ -47,7 +47,11 @@ public class CarOptionServiceImpl implements CarOptionService{
 			throw new IllegalStateException("Car option with id " + id + " does not exist");
 		}
 		optionRepository.deleteById(id);
-		
+	}
+	
+	@Override
+	public Long count() {
+		return optionRepository.count();
 	}
 
 	

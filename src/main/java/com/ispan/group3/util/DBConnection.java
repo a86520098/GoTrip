@@ -1,5 +1,4 @@
 package com.ispan.group3.util;
-
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 import javax.sql.DataSource;
@@ -18,4 +17,5 @@ public class DBConnection {
         return ds;
     }
 
-}
+	}
+
