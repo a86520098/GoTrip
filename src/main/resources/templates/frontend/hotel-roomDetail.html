@@ -329,17 +329,21 @@
                                 th:src="@{/images/icons/door.svg}">
                             <p>快速入住/退房服務</p></li>
                         <li id="3icon" style="margin-right: 5vh;margin-left: 5vh"><img
-                                th:src="@{/images/icons/like.svg}">
-                            <p>距離海灘近</p></li>
+                                th:src="@{/images/icons/PoolAndFitness.svg}">
+                            <p>附屬游泳池</p></li>
                         <li id="4icon" style="margin-right: 5vh;margin-left: 5vh"><img
                                 th:src="@{/images/icons/location.svg}">
                             <p>按摩浴池</p></li>
+                        <li id="4icon" style="margin-right: 5vh;margin-left: 5vh"><img
+                                th:src="@{/images/icons/transfer.svg}">
+                            <p>機場接送服務</p></li>
                     </ul>
                 </div>
             </div>
             <div class="col-4">
                 <div class="m-t-10 p-xl-3  border border-1 bg-white rounded">
                     <h4 class="colorWord1">住宿規定</h4>
+                    <td th:text="${hotel.hotelRule}"></td>
                 </div>
             </div>
         </div>
@@ -390,7 +394,8 @@
             </div>
             <div class="col-4">
                 <div class="m-t-10 p-xl-3  border border-1 bg-white rounded">
-                    <h1>這裡放評論</h1>
+                    <a th:href="@{/goGoogleMap(id=${hotel.id})}"> <img th:src="@{/images/hotels/GoogleMap.png}"
+                                                                       width="400px"></a>
                 </div>
             </div>
         </div>

@@ -221,5 +221,10 @@ public class HotelController {
         return "frontend/hotel-Index";
     }
 
+    @GetMapping("/goGoogleMap")
+    public String togoGoogleMap() {
+        return "/frontend/hotel-Google";
+    }
+
 
 }
