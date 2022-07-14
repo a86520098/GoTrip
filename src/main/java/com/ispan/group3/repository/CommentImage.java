@@ -2,12 +2,15 @@ package com.ispan.group3.repository;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "comment_image")
@@ -18,8 +21,9 @@ public class CommentImage {
 	private Integer id;
 	@Column(name = "image_path")
 	private String imagePath;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "comment_id")
+	@JsonIgnore
 	private Comment comment;
 
 	public CommentImage() {

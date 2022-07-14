@@ -1,14 +1,15 @@
 package com.ispan.group3.repository;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "car_model")
@@ -23,25 +24,27 @@ public class CarModel {
 	private String model;
 	private String power;
 	private String transmission;
-	private Integer displacement;
+	private Integer engine;
 	private Integer seat;
 	private Integer door;
 	private Integer suitcase;
 	private Integer bag;
 	private String image;
-	@ManyToMany(mappedBy="carModels")
-	private Set<CarLocation> carLocations;
+//	@ManyToMany(mappedBy="carModels")
+//	@JsonIgnore
+//	private List<CarLocation> carLocations;
 	
 	@OneToMany(mappedBy = "carModel")
-	private Set<CarOption> carOptions;
+	@JsonIgnore
+	private List<CarOption> carOptions;
 	
 	public CarModel() {
 		
 	}
 
 	public CarModel(Integer id, String type, String makeCh, String makeEn, String model, String power,
-			String transmission, Integer displacement, Integer seat, Integer door, Integer suitcase, Integer bag,
-			String image, Set<CarLocation> carLocations, Set<CarOption> carOptions) {
+			String transmission, Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag,
+			String image, List<CarLocation> carLocations, List<CarOption> carOptions) {
 		this.id = id;
 		this.type = type;
 		this.makeCh = makeCh;
@@ -49,32 +52,29 @@ public class CarModel {
 		this.model = model;
 		this.power = power;
 		this.transmission = transmission;
-		this.displacement = displacement;
+		this.engine = engine;
 		this.seat = seat;
 		this.door = door;
 		this.suitcase = suitcase;
 		this.bag = bag;
 		this.image = image;
-		this.carLocations = carLocations;
 		this.carOptions = carOptions;
 	}
 	
 	public CarModel(String type, String makeCh, String makeEn, String model, String power, String transmission,
-			Integer displacement, Integer seat, Integer door, Integer suitcase, Integer bag, String image,
-			Set<CarLocation> carLocations, Set<CarOption> carOptions) {
+			Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag, String image, List<CarOption> carOptions) {
 		this.type = type;
 		this.makeCh = makeCh;
 		this.makeEn = makeEn;
 		this.model = model;
 		this.power = power;
 		this.transmission = transmission;
-		this.displacement = displacement;
+		this.engine = engine;
 		this.seat = seat;
 		this.door = door;
 		this.suitcase = suitcase;
 		this.bag = bag;
 		this.image = image;
-		this.carLocations = carLocations;
 		this.carOptions = carOptions;
 	}
 
@@ -122,11 +122,11 @@ public class CarModel {
 	public void setTransmission(String transmission) {
 		this.transmission = transmission;
 	}
-	public Integer getDisplacement() {
-		return displacement;
+	public Integer getEngine() {
+		return engine;
 	}
-	public void setDisplacement(Integer displacement) {
-		this.displacement = displacement;
+	public void setEngine(Integer engine) {
+		this.engine = engine;
 	}
 	public Integer getSeat() {
 		return seat;
@@ -158,16 +158,12 @@ public class CarModel {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	public Set<CarLocation> getCarLocations() {
-		return carLocations;
-	}
-	public void setCarLocations(Set<CarLocation> carLocations) {
-		this.carLocations = carLocations;
-	}
-	public Set<CarOption> getCarOptions() {
+
+	
+	public List<CarOption> getCarOptions() {
 		return carOptions;
 	}
-	public void setCarOptions(Set<CarOption> carOptions) {
+	public void setCarOptions(List<CarOption> carOptions) {
 		this.carOptions = carOptions;
 	}
 	

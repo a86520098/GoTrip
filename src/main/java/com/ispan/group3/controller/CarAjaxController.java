@@ -31,7 +31,7 @@ public class CarAjaxController {
 		return modelService.findAll();
 	}
 	
-	@GetMapping("/cars/{id}")
+	@GetMapping("/cars/models/{id}")
 	public CarModel findById(@PathVariable Integer id) {
 		return modelService.findById(id);
 	}
@@ -40,5 +40,6 @@ public class CarAjaxController {
 	public List<CarLocation> findAllLocations() {
 		return locationService.findAll();
 	}
+	
 	
 }

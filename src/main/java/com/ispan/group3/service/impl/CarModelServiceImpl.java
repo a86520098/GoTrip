@@ -1,6 +1,8 @@
 package com.ispan.group3.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,16 @@ public class CarModelServiceImpl implements CarModelService{
 	public List<CarModel> findAll() {
 		return carRepository.findAll();
 	}
+	
+	@Override
+	public Map<String, List<String>> findAllModels() {
+		List<String> carMakes = carRepository.findAllMakes();
+		Map<String, List<String>> carModelByMake = new HashMap<>();
+		for (String carMake : carMakes) {
+			carModelByMake.put(carMake, carRepository.findAllModels(carMake));
+		}
+		return carModelByMake;
+	}
 
 	@Override
 	public CarModel findById(Integer id) {
@@ -41,6 +53,8 @@ public class CarModelServiceImpl implements CarModelService{
 			throw new IllegalStateException("Car model with id " + id + " does not exist");
 		carRepository.deleteById(id);
 	}
+
+
 
 	
 	

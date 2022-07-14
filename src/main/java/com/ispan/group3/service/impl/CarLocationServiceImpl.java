@@ -31,6 +31,12 @@ public class CarLocationServiceImpl implements CarLocationService{
 
 	@Override
 	public void save(CarLocation carLocation) {
+		if (carLocation.getCountry() == null) {
+			carLocation.setCountry("台灣");
+		}
+		if (carLocation.getCompanyId() == null) {
+			carLocation.setCompanyId(1);
+		}
 		locationRepository.save(carLocation);
 	}
 

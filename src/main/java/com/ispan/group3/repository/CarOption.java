@@ -1,31 +1,28 @@
 package com.ispan.group3.repository;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import lombok.Data;
-
 @Entity
-@Data
 @Table(name = "car_option")
 public class CarOption {
 
-	@EmbeddedId
-	private CarOptionKey id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@ManyToOne
-	@MapsId("location_id")
-	@JoinColumn(name = "location_id")
+	@JoinColumn(name = "location_id", updatable = false)
 	private CarLocation carLocation;
-	
+
 	@ManyToOne
-	@MapsId("mode_id")
-	@JoinColumn(name = "model_id")
+	@JoinColumn(name = "model_id", updatable = false)
 	private CarModel carModel;
 	
 	private Integer price;
@@ -37,8 +34,8 @@ public class CarOption {
 	public CarOption() {
 		
 	}
-
-	public CarOption(CarOptionKey id, CarLocation carLocation, CarModel carModel, Integer price, Float discount,
+	
+	public CarOption(Integer id, CarLocation carLocation, CarModel carModel, Integer price, Float discount,
 			Integer priceSale, Integer amount) {
 		this.id = id;
 		this.carLocation = carLocation;
@@ -49,6 +46,7 @@ public class CarOption {
 		this.amount = amount;
 	}
 
+
 	public CarOption(CarLocation carLocation, CarModel carModel, Integer price, Float discount, Integer priceSale,
 			Integer amount) {
 		this.carLocation = carLocation;
@@ -58,19 +56,19 @@ public class CarOption {
 		this.priceSale = priceSale;
 		this.amount = amount;
 	}
+	
 
-	public CarOptionKey getId() {
+	public Integer getId() {
 		return id;
 	}
-
-	public void setId(CarOptionKey id) {
+	
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
 	public CarLocation getCarLocation() {
 		return carLocation;
 	}
-
 	public void setCarLocation(CarLocation carLocation) {
 		this.carLocation = carLocation;
 	}
@@ -82,39 +80,33 @@ public class CarOption {
 	public void setCarModel(CarModel carModel) {
 		this.carModel = carModel;
 	}
-
-	public Integer getPriceOrig() {
+	
+	public Integer getPrice() {
 		return price;
 	}
-
-	public void setPriceOrig(Integer price) {
+	
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
-
+	
 	public Float getDiscount() {
 		return discount;
 	}
-
 	public void setDiscount(Float discount) {
 		this.discount = discount;
 	}
-
 	public Integer getPriceSale() {
-		return priceSale;
+		return (int) (price * discount);
 	}
-
 	public void setPriceSale(Integer priceSale) {
 		this.priceSale = priceSale;
 	}
-
 	public Integer getAmount() {
 		return amount;
 	}
-
 	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 
-	
 	
 }
