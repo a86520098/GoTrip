@@ -52,17 +52,20 @@
 													<div>
 														<!-- <h3>景點套票詳情</h3> -->
 														<p>
-															<strong>景點套票名稱：</strong>
+															<strong>景點名稱：</strong>
 															<span th:text="*{ticketName}"></span>
 															<!-- book對應的是 model.addAttribute("book", book);-->
 														</p>
 														<p>
-															<strong>景點套票簡介：</strong>
-															<!-- <span th:text="*{ticketIntro}"></span> -->
+															<strong>景點商品說明：</strong>
 														</p>
 														<div id ='intro'></div>
+														<p>
+															<strong>景點簡介：</strong>
+														</p>
+														<div id ='intro1'></div>
 														<!-- 店家營業日期隱藏中 -->
-													<!-- <p>
+														<!-- <p>
 															<strong>店家營業日期：</strong><span
 																th:text="*{ticketOpenWeek}"></span>
 														</p> -->
@@ -79,7 +82,7 @@
 															<span th:text="*{phone}"></span>
 														</p>
 														<p>
-															<strong>國家：</strong>
+															<strong>國家/地區：</strong>
 															<span th:text="*{country}"></span>
 														</p>
 														<p>
@@ -87,7 +90,7 @@
 															<span th:text="*{city}"></span>
 														</p>
 														<p>
-															<strong>地區：</strong>
+															<strong>鄉鎮區：</strong>
 															<span th:text="*{location}"></span>
 														</p>
 														<p>
@@ -126,6 +129,7 @@
 															<strong>下架時間：</strong>
 															<span th:text="*{ticketEndDate}"></span>
 														</p> -->
+
 														<!-- 加一個返回按鈕 -->
 														<a href="javascript:history.go(-1)" class="btn btn-success">返回</a>
 													</div>
@@ -170,6 +174,10 @@
 		<script th:inline="javascript">
 			var ticketIntro = /*[[${ticket.ticketIntro}]]*/ 'default';
 			document.getElementById("intro").innerHTML=ticketIntro;
+		</script>
+		<script th:inline="javascript">
+			var ticketIntro = /*[[${ticket.ticketBriefIntro}]]*/ 'default';
+			document.getElementById("intro1").innerHTML=ticketIntro;
 		</script>
 </body>
 

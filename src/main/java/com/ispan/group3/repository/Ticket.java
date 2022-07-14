@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -73,7 +72,10 @@ public class Ticket {
 	@Column(name="status")
 	private String status;
 	
-	@OneToMany(mappedBy="ticket",cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.EAGER)
+	@Column(name="ticketBriefIntro")
+	private String ticketBriefIntro;
+
+	@OneToMany(mappedBy="ticket",cascade = CascadeType.ALL)
 	private Set<TicketImage> images;
 
 //	@Column(name = "ticketImage")
@@ -231,9 +233,17 @@ public class Ticket {
 		this.status = status;
 	}
 
+	public String getTicketBriefIntro() {
+		return ticketBriefIntro;
+	}
+
+	public void setTicketBriefIntro(String ticketBriefIntro) {
+		this.ticketBriefIntro = ticketBriefIntro;
+	}
+	
 	public Ticket(long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
 			String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
-			String address, int price, String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status) {
+			String address, int price, String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status,String ticketBriefIntro) {
 		super();
 		this.ticketNo = ticketNo;
 		this.ticketName = ticketName;
@@ -252,11 +262,12 @@ public class Ticket {
 		this.ticketStartDate = ticketStartDate;
 		this.ticketEndDate = ticketEndDate;
 		this.status = status;
+		this.ticketBriefIntro = ticketBriefIntro;
 	}
 
 	public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
 			String ticketEndTime, String phone, String country, String city, String location, String address, int price,
-			String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status) {
+			String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status,String ticketBriefIntro) {
 		super();
 		this.ticketName = ticketName;
 		this.ticketIntro = ticketIntro;
@@ -274,6 +285,7 @@ public class Ticket {
 		this.ticketStartDate = ticketStartDate;
 		this.ticketEndDate = ticketEndDate;
 		this.status = status;
+		this.ticketBriefIntro = ticketBriefIntro;
 	}
 
 	//	Image相關
@@ -291,7 +303,7 @@ public class Ticket {
 
 	 public Ticket(Long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
 	 		String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
-	 		String address, int price , Set<TicketImage> images, String status) {
+	 		String address, int price , Set<TicketImage> images, String status,String ticketBriefIntro) {
 	 	super();
 	 	this.ticketNo = ticketNo;
 	 	this.ticketName = ticketName;
@@ -307,11 +319,12 @@ public class Ticket {
 	 	this.price = price;
 	 	this.images = images;
 	 	this.status = status;
+	 	this.ticketBriefIntro = ticketBriefIntro;
 	 }
 
 	 public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
 	 		String ticketEndTime, String phone, String country, String city, String location, String address, int price
-	 		,Set<TicketImage> images, String status) {
+	 		,Set<TicketImage> images, String status,String ticketBriefIntro) {
 	 	super();
 	 	this.ticketName = ticketName;
 	 	this.ticketIntro = ticketIntro;
@@ -326,5 +339,6 @@ public class Ticket {
 	 	this.price = price;
 	 	this.images = images;
 	 	this.status = status;
+	 	this.ticketBriefIntro = ticketBriefIntro;
 	 }
 }

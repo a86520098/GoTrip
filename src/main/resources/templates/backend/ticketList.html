@@ -97,43 +97,44 @@
                       <thead>
 						<tr>
 							<th>ID</th>
-							<th>景點套票名稱</th>
-							<!-- <th>景點套票簡介</th> -->
+							<th>景點名稱</th>
+							<!-- <th>景點商品說明</th> -->
+							<!-- <th>景點簡介</th> -->
 							<!-- <th>店家營業日期</th> -->
 							<th>店家起始營業時間</th>
 							<th>店家結束營業時間</th>
 							<th>電話</th>
-							<th>國家</th>
+							<th>國家/地區</th>
 							<th>城市</th>
-							<th>地區</th>
+							<th>鄉鎮區</th>
 							<th>地址</th>
 							<th>價格</th>
-							<!-- <th>圖片</th> -->
 							<th>標籤編號</th>
 							<th>標籤名稱</th>
-							<!-- <th>上架時間</th>
-							<th>下架時間</th> -->
-							<th>image</th>
+							<!-- <th>上架時間</th> -->
+							<!-- <th>下架時間</th> -->
+							<!-- <th>圖片</th> -->
+							<!-- <th>image</th> -->
 							<!-- <th>新增日期</th> -->
 							<th>狀態</th>
 							<th>編輯<br>刪除</th>
-							<!-- <th>刪除</th> -->
 						</tr>
                       </thead>
                       <tbody>
 						<tr th:each="ticket,iterStat:${page.content}" class="odd gradeX">
 							<!-- <td th:text="${iterStat.count}">1</td> -->
 							<td th:text="${ticket.ticketNo}" class="font-weight-bold"></td>
-							<td><a href="#" th:text="${ticket.ticketName}" th:href="@{'/ticketList/' + ${ticket.ticketNo}}">景點套票名稱</a></td>														
-							<!-- <td class="single-ellipsis" th:text="${ticket.ticketIntro}">景點套票敘述</td>  -->
+							<td><a href="#" th:text="${ticket.ticketName}" th:href="@{'/ticketList/' + ${ticket.ticketNo}}">景點名稱</a></td>														
+							<!-- <td class="single-ellipsis" th:text="${ticket.ticketIntro}">景點商品說明</td>  -->
+							<!-- <td th:text="${ticket.ticketBriefIntro}">景點簡介</td> -->
 							<!-- style="width: 150px; height: 60px;" -->
 							<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
 							<td th:text="${ticket.ticketOpenTime}" class="font-weight-bold">店家起始營業時間</td>
 							<td th:text="${ticket.ticketEndTime}" class="font-weight-bold">店家結束營業時間</td>
 							<td th:text="${ticket.phone}" class="font-weight-bold">電話</td>
-							<td th:text="${ticket.country}" class="font-weight-bold">國家</td>
+							<td th:text="${ticket.country}" class="font-weight-bold">國家/地區</td>
 							<td th:text="${ticket.city}" class="font-weight-bold">城市</td>
-							<td th:text="${ticket.location}" class="font-weight-bold">地區</td>
+							<td th:text="${ticket.location}" class="font-weight-bold">鄉鎮區</td>
 							<td th:text="${ticket.address}" class="font-weight-bold">地址</td>
 							<td th:text="${ticket.price}" class="font-weight-bold">價格</td>
 							<td th:text="${ticket.tagNo}" class="font-weight-bold">標籤編號</td>
@@ -141,11 +142,11 @@
 							<!-- <td th:text="${ticket.ticketStartDate}" class="font-weight-bold">上架時間</td>
 							<td th:text="${ticket.ticketEndDate}" class="font-weight-bold">下架時間</td> -->
 							<!-- 圖片 -->
-							<td>
-								<div th:each="image:${ticket.images}" class="d-inline-block">
-									<img th:src="@{${image}}" class="rounded img-com" />
+							<!-- <td>
+								<div th:each="image:${ticket.images}" class="d-inline-block" style="border: 0">
+									<img th:src="@{${image}}" class="rounded img-com"  />
 								</div>
-							</td>
+							</td> -->
 							<!-- <td th:text="${ticket.newDate}">新增日期</td> -->
 							<td th:text="${ticket.status}" class="font-weight-bold">狀態</td>
 							<!-- 編輯、刪除 -->
@@ -163,24 +164,25 @@
 						<thead>
 							<tr>
 								<th>ID</th>
-								<th>景點套票名稱</th>
-								<th>景點套票簡介</th>
-								<!-- <th>店家營業日期</th> -->
+								<th>景點名稱</th>
+								<th>景點商品說明</th>
+								<th>景點簡介</th>
+								<th>店家營業日期</th>
 								<th>店家起始營業時間</th>
 								<th>店家結束營業時間</th>
 								<th>電話</th>
-								<th>國家</th>
+								<th>國家/地區</th>
 								<th>城市</th>
-								<th>地區</th>
+								<th>鄉鎮區</th>
 								<th>地址</th>
 								<th>價格</th>
 								<!-- <th>圖片</th> -->
 								<th>標籤編號</th>
 								<th>標籤名稱</th>
+								<!-- <th>圖片</th> -->
 								<th>狀態</th>
 								<!-- <th>上架時間</th>
 								<th>下架時間</th> -->
-								<!-- <th>image</th> -->
 								<!-- <th>新增日期</th> -->
 							</tr>
 						</thead>
@@ -188,15 +190,16 @@
 							<tr th:each="ticket,iterStat:${page.content}">
 								<!-- <td th:text="${iterStat.count}">1</td> -->
 								<td th:text="${ticket.ticketNo}" class="font-weight-bold"></td>
-								<td th:text="${ticket.ticketName}">景點套票名稱</td>
-								<td th:text="${ticket.ticketIntro}">景點套票敘述</td>
-								<!-- <td th:text="${ticket.ticketOpenWeek}">店家營業日期</td> -->
+								<td th:text="${ticket.ticketName}">景點名稱</td>
+								<td th:text="${ticket.ticketIntro}">景點商品說明</td>
+								<td th:text="${ticket.ticketBriefIntro}">景點簡介</td>
+								<td th:text="${ticket.ticketOpenWeek}">店家營業日期</td>
 								<td th:text="${ticket.ticketOpenTime}">店家起始營業時間</td>
 								<td th:text="${ticket.ticketEndTime}">店家結束營業時間</td>
 								<td th:text="${ticket.phone}">電話</td>
-								<td th:text="${ticket.country}">國家</td>
+								<td th:text="${ticket.country}">國家/地區</td>
 								<td th:text="${ticket.city}">城市</td>
-								<td th:text="${ticket.location}">地區</td>
+								<td th:text="${ticket.location}">鄉鎮區</td>
 								<td th:text="${ticket.address}">地址</td>
 								<td th:text="${ticket.price}">價格</td>
 								<!-- <td th:text="${ticket.ticketImage}">圖片</td> -->

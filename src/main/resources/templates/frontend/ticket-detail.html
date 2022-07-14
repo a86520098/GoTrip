@@ -11,10 +11,13 @@
 	.siderBar li{margin-bottom:1px;padding:20px;line-height:50px;font-size:18px;background:#f0f0f0;cursor:pointer;transition:all .5s;}
 	.siderBar li.cur{color:#fff;background:#000;}
 	.content{float:right;width:70%;}
-	.content .item{padding:300px 0;font-size:50px;color:#fff;text-align:center;overflow:hidden;}
+	.content .item{padding:50px 0;font-size:50px;color:#fff;text-align:center;overflow:hidden;}
 	/* 上下滾動消息視窗 */
 	body {
-	position: relative;
+		position: relative;
+	}
+	*{
+		font-size: medium;
 	}
 	.box {
 		width: 900px;
@@ -42,6 +45,17 @@
 	box-sizing: border-box;
 	cursor: pointer;
 	}
+
+	#map {
+  	height: 100%;
+	}
+	html,
+	body {
+ 	height: 100%;
+  	margin: 0;
+  	padding: 0;
+	}
+
 	</style>
 
 <body>
@@ -52,7 +66,7 @@
 	<div th:replace="frontend/partials/fragment :: cart"></div>
 
 	<!-- breadcrumb -->
-	<div class="container">
+	<div class="container" th:object="${ticket}">
 		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-20 p-lr-0-lg">
 			<a href="/index" class="stext-110 cl8 hov-cl1 trans-04">
 				台灣
@@ -63,7 +77,7 @@
 				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
 			<span class="stext-110 cl4">
-				Xpark都會型水生公園
+				<a href="#" th:text="${ticket.ticketName}"  class="stext-110 cl8 hov-cl1 trans-04"></a>
 			</span>
 		</div>
 	</div>
@@ -78,7 +92,8 @@
 							Xpark都會型水生公園
 						</h3>
 					</div> -->
-				
+
+				<!-- 圖片路徑 -->
 				<div class="col-md-8 col-lg-8 p-b-30">
 					<div class="p-l-25 p-r-30 p-lr-0-lg">
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -91,10 +106,9 @@
 								<li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
 							</ol>
 
-							<!-- 圖片路徑 -->
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img th:src="@{/images/tickets/Xpark_1.jpg}" class="d-block w-100" alt="...">
+									<img th:src="@{/images/tickets/Xpark_1.jpg}"  class="d-block w-100" alt="...">
 								</div>
 
 								<div class="carousel-item">
@@ -151,9 +165,7 @@
 				<!-- 圖片右側bar -->
 				<div class="col-md-4 p-b-30">
 					<div class="p-t-5">
-						<h4 class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14">
-							Xpark都會型水生公園門票
-						</h4>
+						<h4 class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14" th:text="${ticket.ticketName}"></h4>
 						<div class="p-b-10">
 							<div id="rating-count">
 								<i class="fa fa-star cl1" aria-hidden="true"></i>
@@ -164,18 +176,19 @@
 								<span id="rating">4.6</span> (<span id="count">56</span>則評論)
 							</div>
 							<div class="p-t-20">
-								<i class="fa fa-map-marker" aria-hidden="true"></i>
-								桃園, 青埔
+								<a href="#" class="fa fa-map-marker" aria-hidden="true"  th:text="${ticket.city}"></a>
+								<a href="#"class="fa fa-map-marker" aria-hidden="true"  th:text="${ticket.location}"></a>
+								<!-- <i class="fa fa-map-marker" aria-hidden="true"  th:text="${ticket.location}"></i> -->
+								<!-- 桃園, 青埔 -->
 							</div>
 						</div>
-						<p class="stext-102 cl3 p-t-23">
-							由日本橫濱八景島首度跨海來台桃園開設分館「Xpark」，Xpark
-							主打新都會型水族館，驅使最先端的科技，營造出環境的溫度、濕度、氣味、聲音，帶您到地球上每個不可思議的角落，受到啟發、感受療癒、洗滌心靈。
-						</p>
+						<p class="stext-102 cl3 p-t-23" th:text="${ticket.ticketBriefIntro}">
+							<!-- 由日本橫濱八景島首度跨海來台桃園開設分館「Xpark」，Xpark
+							主打新都會型水族館，驅使最先端的科技，營造出環境的溫度、濕度、氣味、聲音，帶您到地球上每個不可思議的角落，受到啟發、感受療癒、洗滌心靈。 -->
+						</p>						
 						<p class="mtext-106 cl2 p-t-30">
 							TWD $450
 						</p>
-						<!--  -->
 						<div class=" p-t-33">
 							<div class="row m-b-10">
 								<div class="col-3">
@@ -220,12 +233,6 @@
 			</div>
 		</div>
 	</section>
-
-	<!-- announcement -->
-	<!-- <div class="box">
-		<ul>
-		</ul>
-	</div> -->
 	
 	<!-- 跟<head th:replace="frontend/partials/fragment :: head">衝突 -->
 	<main class="main">
@@ -243,14 +250,57 @@
 
 		<div class="content" style="float:left;">
 			<div id="s1" class="item" style="background:rgb(114, 114, 114);">
-				<p>
-					<strong>景點套票簡介：</strong>
-					<span th:text="${ticket.ticketName}"></span>
+				<p style="text-align: left;font-size: 2rem; position: relative;top: 0px; left: 50px; padding-right: 100px;">
+					景點套票簡介：
+					<!-- <span th:text="${ticket.ticketIntro}"></span> -->
 				</p>
+				<div id ='intro' style="text-align: left; font-size: 1.4rem; position: relative;top: 30px; left: 50px; padding-right: 100px;"></div>
 			</div>
-			<div id="s2" class="item" style="background:#888;">二</div>
-			<div id="s3" class="item" style="background:#777;">三</div>
-			<div id="s4" class="item" style="background:#666;">四</div>
+			<div id="s2" class="item" style="background:#888;">
+				<p style="text-align: left;font-size: 2rem; position: relative;top: 0px; left: 50px; padding-right: 100px;">
+					購買須知：
+					<!-- <span th:text="${ticket.ticketIntro}"></span> -->
+				</p>
+				<div style="text-align: left; font-size: 1.4rem; position: relative;top: 30px; left: 50px; padding-right: 100px;">
+					<p>&mdash; 重要資訊 &mdash;</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; 配合中央流行疫情指揮中心推行防疫重要措施如下：</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1. 遊客入館宣導措施：</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(一)入館民眾須全程「佩戴口罩」、「量體溫」、「酒精 消毒」，並保持「室內至少1.5公尺」、「室外至少1公尺」社交安全距離。 (依中央疫情指揮中心規定之情況下得免戴口罩(滾動 式調整))</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(二)如有持續咳嗽或有發燒、體溫超過37.5度症狀.請勿入館。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(三)請下載「台灣社交距離APP」。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2. 清消作業：每2小時針對扶手、電梯按鈕、把、廁所經觸加強消毒。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3. 餐飲防疫管理</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(一)館內餐廳開放內用,並依照衛福部及屏縣政府規定辦理。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(二)館內戶外通風處每桌間保持安全距離&middot;開放戶外桌椅供遊客臨時簡易用餐。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(三)喝水、服藥、哺乳者，請與遊客距離1.5尺以於完畢後速佩戴口罩。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(四)館內禁止「邊走邊吃」。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4. 本館暫停開放項目有： &nbsp;</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(一)戶外區：戶外親水設施,太平洋親水廣場戲水池。 &nbsp;</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(二)室內：展館內部份互動設施、兒童、海洋爬類劇場。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;5. 未佩戴口罩經勸導不聽者,將依規定通報地方主管機關</p>
+
+					
+				</div>
+			</div>
+			<div id="s3" class="item" style="background:#777;">預計放map</div>
+			<div id="s4" class="item" style="background:#666;">
+				預計放商品評論
+			</div>
 			<!-- <div id="s5" class="item" style="background:#555;">五</div> -->
 		</div>
 	</main>
@@ -269,6 +319,13 @@
 	<script th:src="@{/js/ticketTableJS/jquery.min.js}" src="../../static/js/ticketTableJS/jquery.min.js"></script>
 	<!-- <script src="js/jquery.sticky-sidebar.min.js"></script> -->
 	
+	<!-- Google Map -->
+	<!-- <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw"></script> -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
+
+	<!-- https://www.google.com/maps/embed/v1/place?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw -->
+
 	<script>
 		var a = new StickySidebar('.siderBar', {
 			topSpacing: 20,
@@ -310,71 +367,14 @@
 			})
 		}, 0);
 
-	//消息内容，可以任意长度
-	let arr = ["消息1 : 2006年1月John Resig等人创建了jQuery", "消息2 : 2007年7月，jQuery 1.1.3版发布", "消息3 : 2008年5月，jQuery 1.2.6版发布", "消息4 : 2010年1月，也是jQuery的四周年生日"];
-	
-	var settings = {
-	  speeds: 10, //滚动的速度,单位ms
-	  isPause: true, //滚动后每个消息是否需要暂停，true和false,
-	  isHover:true, //鼠标悬停是否需要暂停
-	};
-	
-	var ul = document.querySelector("ul");
-	//渲染数据
-	arr.forEach((item) => {
-	  var li = document.createElement("li");
-	  li.innerHTML = item;
-	  ul.appendChild(li);
-	});
-	//获取当前滚动的高度，支持ie请自行使用currentStyle
-	var currentTop = parseInt(window.getComputedStyle(ul).top);
-	
-	//滚动函数
-	function run() {
-	  currentTop--;
-	  ul.style.top = currentTop + "px";
-	  
-	  //当页面滚动最后一个时，把第一个复制push到尾部
-	  if (currentTop == (arr.length - 1) * -50) {
-		let li = document.createElement("li");
-		li.innerHTML = arr[0];
-		ul.appendChild(li);
-	  }
-	
-	  //无缝替换
-	  if (currentTop == arr.length * -50) {
-		currentTop = 0;
-		ul.style.top = currentTop + "px";
-		var li = document.querySelectorAll("li");
-		ul.removeChild(li[li.length - 1]);
-	  }
-	
-	  //滚动后每个消息是否需要暂停
-	  if (settings.isPause) {
-		if (currentTop % 50 == 0) {
-		  clearInterval(timer);
-		  setTimeout(function () {
-			timer = setInterval(run, settings.speeds);
-		  }, 3000);
-		}
-	  }
-	}
-	var timer = setInterval(run, settings.speeds);
-	
-	//鼠标悬停是否需要暂停
-	ul.onmouseover = function () {
-		if(settings.isHover){
-			clearInterval(timer);
-		}
-	};
-	ul.onmouseleave = function () {
-		if(settings.isHover){
-			timer = setInterval(run, settings.speeds);
-		}
-	};
-	
-	
 	</script>
+
+	<!-- 簡介 -->
+	<script th:inline="javascript">
+			var ticketIntro = /*[[${ticket.ticketIntro}]]*/ 'default';
+			document.getElementById("intro").innerHTML=ticketIntro;
+	</script>
+
 </body>
 
 </html>

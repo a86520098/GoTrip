@@ -53,7 +53,7 @@ public class TicketController {
 	
 	/**
 	 * 獲取列表
-	 * @PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC)
+	 * @PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC, value = 50)
 	 * @param model
 	 * @return
 	 */
@@ -61,8 +61,9 @@ public class TicketController {
 	// 這就是引入Thymeleaf模版(pom.xml要註冊)
 	// @PageableDefault : 針對分頁傳參數; sort ={"id"}排序
 	@GetMapping("/ticketList")
-	public String list(Pageable pageable,
+	public String list(@PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC, value = 50)Pageable pageable,
 			Model model) {
+
 		Page<Ticket> page1 = ticketService.findAllByPage(pageable);
 		// StringBuilder sbOpen_week = new StringBuilder();
 		// Map<String, String> weekNameMap = new HashMap<String, String>();
@@ -169,8 +170,8 @@ public class TicketController {
 			@RequestParam("imagefiles") List<MultipartFile> files) {
 		
 		 try {
-//			 System.err.println("ticket"+ticket.toString());
-//			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
+			 System.err.println("ticket"+ticket.toString());
+			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
 		 	Set<TicketImage> images = new HashSet<>();
 		 	for (MultipartFile file : files) {
 		 		try {
