@@ -1963,6 +1963,42 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 /*//////////////////////////////////////////////////////////////////
+[ loginModal ]*/
+.wrap-loginModal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 9000;
+  overflow: auto;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay-loginModal {
+  position: fixed;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.8;
+}
+
+.show-loginModal {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*//////////////////////////////////////////////////////////////////
 [ Table Shopping Cart ]*/
 
 .wrap-table-shopping-cart {
