@@ -464,6 +464,17 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   opacity: 1;
 }
 
+.wrap-icon-header>.account:hover>.sub-menu {
+  visibility: visible;
+  opacity: 1;
+  top: 100%;
+  left: auto;
+}
+
+.account {
+	height: 70px
+}
+
 .sub-menu li:hover {
   background-color: transparent;
 }

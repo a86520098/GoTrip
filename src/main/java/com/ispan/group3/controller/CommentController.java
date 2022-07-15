@@ -68,8 +68,10 @@ public class CommentController {
 		}
 		comment.setImages(images);
 		cService.save(comment);
-		for (Integer deleteImage : deleteImages) {
-			iService.deleteById(deleteImage);
+		if (deleteImages != null) {
+			for (Integer deleteImage : deleteImages) {
+				iService.deleteById(deleteImage);
+			}
 		}
 
 		return "redirect:/backend/comments";

@@ -54,10 +54,10 @@
 				<div class="col-sm-9">
 					<div th:each="location:${carLocations}" class="m-b-30  isotope-item">
 						<div class="card d-block">
-							<div class="row ">
+							<div class="row">
 								<div class="col-sm-4">
 									<div class="pos-relative hov-img0 card-img-left">
-										<img th:src="@{/data/uploadimages/car/default-map.jpg}" class="" alt="IMG-CAR">
+										<img th:src="@{/data/uploadimages/car/default-map.jpg}" style="height: 100%" alt="IMG-CAR">
 									</div>
 								</div>
 								<div class="col-sm-8 card-body block2-txt flex-w flex-t p-t-14">
@@ -67,6 +67,7 @@
 											<i class="fa fa-angle-right" aria-hidden="true"></i>
 											<span class="" th:text="${location.district}"></span>
 										</div>
+										<p th:text="${location.carCompany.name}" class="pr-3 m-tb-8 clblack js-name-b2"></p>
 										<p th:text="${location.name}" class="pr-3 m-tb-8 fs-24 clblack font-weight-bold trans-04 js-name-b2"></p>
 										<i class="fa fa-map-marker cl3" aria-hidden="true"></i>
 										<span th:text="${location.county + location.district + location.address}"></span>
@@ -106,7 +107,7 @@
 													<div class="p-t-6 text-right">
 														<del><span class="cl3" th:text="'TWD $' + ${option.price}"></span></del>
 														<span class="clblack mtext-109" th:text="'TWD $' + ${option.priceSale}"></span>
-														<button class="ml-3 btn btn-warning">選擇車款</button>
+														<a th:href="@{/cars/options/{id}(id=${option.id})}" class="ml-3 btn btn-warning">選擇車款</a>
 													</div>
 												</div>
 											</div>

@@ -99,6 +99,7 @@
 														<i class="fa fa-angle-right" aria-hidden="true"></i>
 														<span class="" th:text="${option.carLocation.district}"></span>
 													</div>
+													<p class="m-t-15" th:text="${option.carLocation.carCompany.name}"></p>
 													<p class="m-t-15" th:text="${option.carLocation.name}"></p>
 													<a th:href="@{'/cars/'+${option.id}}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-15">
 														<p th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="pr-3"></p>
@@ -109,7 +110,7 @@
 													<div class="p-t-6 text-right">
 														<del><span class="cl3" th:text="'TWD $' + ${option.price}"></span></del>
 														<span class="clblack mtext-109" th:text="'TWD $' + ${option.priceSale}"></span>
-														<button class="ml-3 btn btn-warning">選擇車款</button>
+														<a th:href="@{/cars/options/{id}(id=${option.id})}" class="ml-3 btn btn-warning">選擇車款</a>
 													</div>
 												</div>
 											</div>

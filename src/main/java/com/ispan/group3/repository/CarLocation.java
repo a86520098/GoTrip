@@ -2,12 +2,13 @@ package com.ispan.group3.repository;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,8 +19,9 @@ public class CarLocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(updatable = false)
-	private Integer companyId;
+	@ManyToOne
+	@JoinColumn(name = "company_id", updatable = false)
+	private CarCompany carCompany;
 	private String name;
 	private String country;
 	private String county;
@@ -39,10 +41,10 @@ public class CarLocation {
 		
 	}
 	
-	public CarLocation(Integer id, Integer companyId, String name, String country, String county, String district,
+	public CarLocation(Integer id, CarCompany carCompany, String name, String country, String county, String district,
 			String address, String phone, String openTime, String closeTime,String longitude, String latitude, List<CarOption> carOptions) {
 		this.id = id;
-		this.companyId = companyId;
+		this.carCompany = carCompany;
 		this.name = name;
 		this.country = country;
 		this.county = county;
@@ -57,9 +59,9 @@ public class CarLocation {
 	}
 
 
-	public CarLocation(Integer companyId, String name, String country, String county, String district, String address,
+	public CarLocation(CarCompany carCompany, String name, String country, String county, String district, String address,
 			String phone, String openTime, String closeTime, String longitude, String latitude, List<CarOption> carOptions) {
-		this.companyId = companyId;
+		this.carCompany = carCompany;
 		this.name = name;
 		this.country = country;
 		this.county = county;
@@ -71,9 +73,9 @@ public class CarLocation {
 		this.carOptions = carOptions;
 	}
 	
-	public CarLocation(Integer companyId, String name, String country, String county, String district, String address,
+	public CarLocation(CarCompany carCompany, String name, String country, String county, String district, String address,
 			String phone, String openTime, String closeTime, String longitude, String latitude) {
-		this.companyId = companyId;
+		this.carCompany = carCompany;
 		this.name = name;
 		this.country = country;
 		this.county = county;
@@ -95,12 +97,12 @@ public class CarLocation {
 		this.id = id;
 	}
 	
-	public Integer getCompanyId() {
-		return companyId;
+	public CarCompany getCarCompany() {
+		return carCompany;
 	}
 
-	public void setCompanyId(Integer companyId) {
-		this.companyId = companyId;
+	public void setCarCompany(CarCompany carCompany) {
+		this.carCompany = carCompany;
 	}
 
 	public String getName() {

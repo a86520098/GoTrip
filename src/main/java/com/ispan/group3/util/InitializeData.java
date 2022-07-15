@@ -27,6 +27,7 @@ public class InitializeData {
 	private static final String TB_NAME_COM = "comment";
 	private static final String TB_NAME_IMG = "comment_image";
 	private static final String TB_NAME_CAR = "car_model";
+	private static final String TB_NAME_CMP = "car_company";
 	private static final String TB_NAME_LOC = "car_location";
 	private static final String TB_NAME_OPT = "car_option";
 
@@ -64,6 +65,10 @@ public class InitializeData {
 													+ "	bag int,"
 													+ "	image nvarchar(max),"
 												+ ");";
+	private static final String CREATE_TB_CMP = "CREATE TABLE " + TB_NAME_CMP + " ("
+													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
+													+ "	name nvarchar(10)"
+												+ ");";
 
 	private static final String CREATE_TB_LOC = "CREATE TABLE " + TB_NAME_LOC + " ("
 													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
@@ -90,6 +95,7 @@ public class InitializeData {
 	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_SQL_CMP = "INSERT INTO " + TB_NAME_CMP + " VALUES (?)";
 	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_OPT = "INSERT INTO " + TB_NAME_OPT + " VALUES (?, ?, ?, ?, ?)";
 
@@ -131,6 +137,8 @@ public class InitializeData {
 				System.out.println("成功新增Table: " + TB_NAME_IMG);
 				stmt.executeUpdate(CREATE_TB_CAR);
 				System.out.println("成功新增Table: " + TB_NAME_CAR);
+				stmt.executeUpdate(CREATE_TB_CMP);
+				System.out.println("成功新增Table: " + TB_NAME_CMP);
 				stmt.executeUpdate(CREATE_TB_LOC);
 				System.out.println("成功新增Table: " + TB_NAME_LOC);
 				stmt.executeUpdate(CREATE_TB_OPT);
@@ -260,6 +268,26 @@ public class InitializeData {
 
 	}
 
+	public static void insertCarCompanies(Connection conn) {
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL_CMP);
+			pstmt.setString(1, "隔尚租車");
+			pstmt.addBatch();
+			pstmt.setString(1, "隔尚租車");
+			pstmt.addBatch();
+			pstmt.setString(1, "隔尚租車");
+			pstmt.addBatch();
+			int[] data = pstmt.executeBatch();
+			pstmt.close();
+			System.out.println("成功新增" + data.length + "筆租車公司資料");
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+
+	}
+
+	
 	public static void insertCarLocations(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/data/car-location.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
