@@ -87,11 +87,18 @@
                         <i class="zmdi zmdi-favorite-outline"></i>
                     </a>
                     <!-- 						<a th:href="@{/login}" -->
-                    <a th:href="@{/backend/index}"
-                       class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                       data-notify="0">
-                        <i class="zmdi zmdi-account"></i>
-                    </a>
+                    <div class="account p-t-22">
+	                    <a th:href="@{/backend/index}" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+	                       data-notify="0">
+	                        <i class="zmdi zmdi-account"></i>
+	                    </a>
+		                <ul class="sub-menu">
+		                    <li><a th:href="@{/backend/index}">後台管理</a></li>
+		                    <li><a th:href="@{/vendor/tickets}">景點商家管理</a></li>
+		                    <li><a th:href="@{/vendor/hotels}">飯店商家管理</a></li>
+		                    <li><a th:href="@{/vendor/cars/locations/1}">租車商家管理</a></li>
+		                </ul>
+                    </div>
                 </div>
             </nav>
         </div>
