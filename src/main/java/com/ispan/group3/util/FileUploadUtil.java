@@ -32,10 +32,6 @@ public class FileUploadUtil {
         // 檔案名稱為原始名稱
         String fileName = multipartFile.getOriginalFilename();
         Path filePath = uploadPath.resolve(fileName);
-        
-        System.err.println("Path->"+ fileName);
-        System.err.println("Path->"+SAVE_PATH + saveDir + "/" + fileName);
-        
         try (InputStream inputStream = multipartFile.getInputStream()) {
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             return SAVE_PATH + saveDir + "/" + fileName;
@@ -45,10 +41,10 @@ public class FileUploadUtil {
         }
     }
 
-	// 從本磁碟直接上傳
-	public static String saveFile(String saveDir, File file) throws IOException {
-		Path currentDir = Paths.get("").toAbsolutePath();
-		String savePath = currentDir + APP_PATH + SAVE_PATH + saveDir;
+    // 從本磁碟直接上傳
+    public static String saveFile(String saveDir, File file) throws IOException {
+        Path currentDir = Paths.get("").toAbsolutePath();
+        String savePath = currentDir + APP_PATH + SAVE_PATH + saveDir;
 //		String savePath = currentDir + APP_PATH + SAVE_PATH;
         Path uploadPath = Paths.get(savePath);
         if (!Files.exists(uploadPath)) {
