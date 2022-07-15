@@ -106,10 +106,10 @@ public class CarController {
 	}
 
 	// ---------- 車款頁面 ----------
-	@GetMapping("/cars/{locationId}/{optionId}")
+	@GetMapping("/cars/options/{id}")
 	public String findById(@PathVariable Integer id, Model model) {
-		CarModel carModel = modelService.findById(id);
-		model.addAttribute("car", carModel);
+		CarOption carOption = optionService.findById(id);
+		model.addAttribute("option", carOption);
 		return "frontend/car/car-detail";
 	}
 

@@ -316,6 +316,20 @@ jQuery(document).ready(function($) {
     $('.js-hide-modal-item').on('click',function(){
         $('.js-modal1-item').removeClass('show-modal1');
     });
+    
+    
+    $("#btn-insert-correct").on("click", function() {
+	console.log('ok')
+		$('#itemTb').val('carRental')
+		$('#userId').val(1)
+		$('#first-rate3').selected()
+		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。'+
+						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!'+ '經過這次的租賃經驗，幾點心得跟大家分享：' + 
+						  '1)若你沒有車子，或是車子的空間不足，租車是個好選擇。' + '2)車種選擇非常多，可以嘗試許多廠牌的車子，讓駕馭變有趣。'+
+						  '整體來說我覺得格上租車的服務確實相當好，若有租車需求的話，不妨參考看看我們這次的心得囉。')
+
+	});
+    
 
 })
 
