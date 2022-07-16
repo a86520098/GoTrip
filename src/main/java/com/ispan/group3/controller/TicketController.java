@@ -45,15 +45,15 @@ public class TicketController {
 //		if (ticketNo != null) {
 //			ticket = TicketService.getBookById(ticketNo);
 //		} else {
-//			ticket = new Ticket();			
+//			ticket = new Ticket();
 //		}
 //		model.addAttribute("ticket", ticket);
 //		return "backend/ticketInput";
 //	}
-	
+
 	/**
 	 * 獲取列表
-	 * 
+	 *
 	 * @param model
 	 * @return
 	 */
@@ -94,7 +94,7 @@ public class TicketController {
 
 	/**
 	 * 獲取書單單筆資料
-	 * 
+	 *
 	 * @param id
 	 * @param model
 	 * @return
@@ -114,7 +114,7 @@ public class TicketController {
 
 	/**
 	 * 跳轉input提交頁面
-	 * 
+	 *
 	 * @return
 	 */
 	@GetMapping("/ticketList/ticketInput")
@@ -125,7 +125,7 @@ public class TicketController {
 
 	/**
 	 * 跳轉到更新頁面
-	 * 
+	 *
 	 * @param id
 	 * @param model
 	 * @return
@@ -144,21 +144,21 @@ public class TicketController {
 
 	/**
 	 * 提交一個書單資料 或是一筆一筆@RequestParam加資料進去
-	 * 
+	 *
 	 * @param book
 	 * @return
 	 */
 	/**
 	 * Post ---> redirect ---> Get RedirectAttributes 跨過 redirect步驟
-	 * 
+	 *
 	 * @param Ticket
 	 * @param model
 	 * @return
 	 */
 	@PostMapping("/ticketList")
-	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
+	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes,
 			@RequestParam("image") MultipartFile file) {
-		
+
 		 try {
 		 	Set<TicketImage> images = new HashSet<>();
 //		 	for (MultipartFile file : files) {
@@ -172,7 +172,7 @@ public class TicketController {
 //		 	}
 		 	ticket.setImages(images);
 //			 ticketService.save(ticket);
-			
+
 			 } catch (Exception e) {
 				 	e.printStackTrace();
 				 }
@@ -191,22 +191,22 @@ public class TicketController {
 		attributes.addFlashAttribute("message", "信息刪除成功");
 		return "redirect:/ticketList";
 	}
-	
-	
+
+
 	@GetMapping("/api/tickets")
 	@ResponseBody
 	public List<Ticket> findTickets() {
 		return ticketService.findAll();
 	}
-	
+
 	@GetMapping("/api/tickets/{id}")
 	@ResponseBody
 	public Ticket jsonFindById(@PathVariable Integer id) {
 		return ticketService.findById(id).get();
 	}
-	
-	
-	
+
+
+
 }
 
 // /**

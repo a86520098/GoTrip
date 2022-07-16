@@ -17,8 +17,8 @@ public class FileUploadUtil {
 //	private static final String APP_PATH = "/src/main";
 	private static final String SAVE_PATH = "/data/uploadimages/";
 //	private static final String SAVE_PATH = "/uploadimages/";
-	
-	
+
+
 	// 從web透過input type = file 上傳
 	public static String saveFile(String saveDir, MultipartFile multipartFile) throws IOException {
 		// 上傳檔案統一放到靜態資源目錄下，saveDir為自訂項目資料夾名稱
@@ -36,15 +36,15 @@ public class FileUploadUtil {
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             return SAVE_PATH + saveDir + "/" + fileName;
 //            return SAVE_PATH + fileName;
-        } catch (IOException e) {        
+        } catch (IOException e) {
             throw new IOException("Could not save image file: " + fileName, e);
         }
     }
-	
-	// 從本磁碟直接上傳
-	public static String saveFile(String saveDir, File file) throws IOException {
-		Path currentDir = Paths.get("").toAbsolutePath();
-		String savePath = currentDir + APP_PATH + SAVE_PATH + saveDir;
+
+    // 從本磁碟直接上傳
+    public static String saveFile(String saveDir, File file) throws IOException {
+        Path currentDir = Paths.get("").toAbsolutePath();
+        String savePath = currentDir + APP_PATH + SAVE_PATH + saveDir;
 //		String savePath = currentDir + APP_PATH + SAVE_PATH;
         Path uploadPath = Paths.get(savePath);
         if (!Files.exists(uploadPath)) {
@@ -57,9 +57,9 @@ public class FileUploadUtil {
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
             return SAVE_PATH + saveDir + "/" + fileName;
 //            return SAVE_PATH + fileName;
-        } catch (IOException e) {        
+        } catch (IOException e) {
             throw new IOException("Could not save image file: " + fileName, e);
         }
     }
-	
+
 }

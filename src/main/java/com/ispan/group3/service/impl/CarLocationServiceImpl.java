@@ -35,15 +35,10 @@ public class CarLocationServiceImpl implements CarLocationService{
 			carLocation.setCountry("台灣");
 		}
 		if (carLocation.getCompanyId() == null) {
-			carLocation.setCompanyId(1);
+			carLocation.getCompanyId();
 		}
 		locationRepository.save(carLocation);
 	}
-
-//	@Override
-//	public void save(CarLocation carLocation) {
-//		locationRepository.save(carLocation);
-//	}
 
 	@Override
 	public void deleteById(Integer id) {
@@ -52,5 +47,10 @@ public class CarLocationServiceImpl implements CarLocationService{
 		locationRepository.deleteById(id);
 	}
 
+	@Override
+	public List<CarLocation> findByCompany(Integer id) {
+		return locationRepository.findByCompany(id);
+	}
+	
 	
 }

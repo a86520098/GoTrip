@@ -46,14 +46,14 @@ public class CommentController {
 		if (id != null) {
 			comment = cService.findById(id);
 		} else {
-			comment = new Comment();			
+			comment = new Comment();
 		}
 		model.addAttribute("comment", comment);
 		return "backend/comment-form";
 	}
 
 	@PostMapping("/backend/comments")
-	public String save(@ModelAttribute Comment comment, 
+	public String save(@ModelAttribute Comment comment,
 					   @RequestParam(value = "imagefiles", required = false) List<MultipartFile> files,
 					   @RequestParam(value = "deleteImages", required = false) List<Integer> deleteImages) {
 		List<CommentImage> images = new ArrayList<>();
@@ -68,8 +68,10 @@ public class CommentController {
 		}
 		comment.setImages(images);
 		cService.save(comment);
-		for (Integer deleteImage : deleteImages) {
-			iService.deleteById(deleteImage);
+		if (deleteImages != null) {
+			for (Integer deleteImage : deleteImages) {
+				iService.deleteById(deleteImage);
+			}
 		}
 
 		return "redirect:/backend/comments";
@@ -80,6 +82,6 @@ public class CommentController {
 		cService.deleteById(id);
 		return "redirect:/backend/comments";
 	}
-	
+
 
 }

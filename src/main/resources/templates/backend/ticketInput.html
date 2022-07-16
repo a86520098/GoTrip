@@ -52,124 +52,256 @@
 	<div class="container-scroller">
 		<nav th:replace="backend/partials/fragment :: navbar"></nav>
 		<div class="container-fluid page-body-wrapper">
-			<div th:replace="backend/partials/fragment :: setting"></div>
-			<nav th:replace="backend/partials/fragment :: sidebar"></nav>
-			<!-- 主要內容 partial -->
-			<div class="main-panel">
-				<div class="content-wrapper">
-					<div class="row">
-						<div class="col-md-12 grid-margin stretch-card">
-							<div class="card">
-								<div class="card-body">
-									<div class="card-title">新增/編輯景點資料</div>
-									<div class="well">
-										<form action="/ticketList" th:action="@{/ticketList}" th:object="${ticket}" method="post" enctype="multipart/form-data">
-											<!-- form表單內加 圖片: enctype="multipart/form-data" -->
-											<!-- 提交edit後的值，若未加入，BookController的save會幫你產生一筆新的 -->
-											<input type="hidden" th:value="*{ticketNo}" name="ticketNo">
-											<div class="form-group">
-												<!-- th:field=""也可以用th:value="" -->
-												<label for="nameId">景點套票名稱</label>
-												<input class="form-control" name="ticketName" id="nameId" type="text" th:field="*{ticketName}">
-											</div>
-											<div class="form-group">
-												<label for="descriptionId">景點套票簡介</label>
-												<textarea class="sr" type="text" name="ticketIntro" id="descriptionId" style="white-space: normal" onkeyUp="textLimitCheck(this, 300);" th:field="*{ticketIntro}"></textarea>
-												<br>
-												<font color=#666666>限 300 個字，已輸入 <font color="#CC0000"><span id="messageCount">0</span></font> 個字</font>
-											</div>
-<!-- 											<div class="form-group"> -->
-<!-- 												<label for="openWeekId">店家營業日期</label> <input type="text" name="ticketOpenWeek" id="openWeekId" class="form-control" th:field="*{ticketOpenWeek}"> -->
-<!-- 											</div> -->
-											<!-- 跟上面字數限制空一行分開 -->
-											<br>
-										<!-- 店家營業日期隱藏 -->
-										<!-- <div class="form-group">
-												<label for="openWeekId">店家營業日期</label>
-												<input type="text" name="ticketOpenWeek" id="openWeekId"
-													class="form-control" th:field="*{ticketOpenWeek}">
-											</div> -->
-											<div class="wrapper">
-												<label for="openTimeId">店家起始營業時間</label>
-												<!-- <input type="text" class="timepicker" id="picker1" data-mintime="now"> -->
-												<input type="text" name="ticketOpenTime" id="picker1" class="timepicker" th:field="*{ticketOpenTime}" data-mintime="now">
-											</div>
-											<!-- <div class="form-group"> -->
-											<div class="wrapper">
-												<label for="endTimeId">店家結束營業時間</label>
-												<input type="text" name="ticketEndTime" id="picker1" class="timepicker" th:field="*{ticketEndTime}" data-mintime="now">
-											</div>
-											<div class="form-group">
-												<label for="phoneId">電話</label>
-												<input type="text" name="phone" id="phoneId" class="form-control" th:field="*{phone}">
-											</div>
-											<div class="form-group">
-												<label for="countryId">國家</label> <select type="text" name="country" id="countryId" class="form-select" th:field="*{country}">
-												<option value="台灣">台灣</option>
-												</select>
-											</div>
-											<!--城市 -->
-											<div class="form-group">
-												<label for="city">城市</label>
-												<select name="city" id="city" class="form-select" th:field="*{city}" placeholder="請選擇縣市"></select>
-											</div>
-											<div class="form-group">
-												<label for="locationId">地區</label>
-												<select name="location" id="dist" class="form-select" th:field="*{location}" placeholder="請選擇鄉鎮區"></select>
-											</div>
-											<div class="form-group">
-												<label for="addressId">地址</label>
-												<input type="text" name="address" id="addressId" class="form-control" th:field="*{address}">
-											</div>
-											<div class="form-group">
-												<label for="priceId">價格</label>
-												<input type="text" name="price" id="priceId" class="form-control" th:field="*{price}">
-											</div>
-											<div class="form-group">
-												<label for="tagNoId">標籤編號</label>
-												<select id="sel" class="form-control" th:field="*{tagNo}">
-													<option value="0">請選擇</option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-												</select>
-												<!-- <input type="text" name="price" id="priceId" class="form-control" th:field="*{price}"> -->
-											</div>
-											<div class="form-group">
-												<label for="tagNameId">標籤名稱</label>
-												<select name="tagName" id="sel2" class="form-select" th:field="*{tagName}" readonly></select>
-												<!-- <input type="text" name="price" id="priceId" class="form-control" th:field="*{price}"> -->
-											</div>
-											<div class="form-group">
-												<label for="startDate">上架時間</label>
-												<input type="text" id="startDate" name="reservatTime"
-													placeholder="請選擇上架日期" class="form_datetime"
-													style="width:10.6rem;border:0px;outline:none;"
-													th:field="*{ticketStartDate}">
-												<label for="endDate">下架時間</label>
-												<input type="text" id="endDate" name='leaveTime' placeholder="請選擇下架日期"
-													class="form_datetime"
-													style="width: 10.6rem;border:0px;outline:none;"
-													th:field="*{ticketEndDate}">
-											</div>
-											<!-- 圖片 -->
-											<input type="file" name="image" id="image">
-											<div class="form-group row mt-5 justify-content-end">
-												<div class="col-sm-3">
-													<label for="image" class="col-form-label">上傳照片</label>
-<!-- 													<div id="images-length" class="text-black-50 small">(0/3)</div> -->
-												</div>
-											</div>
-											<p class="text-center">
-												<button type="button" class="btn btn-primary" onclick="history.go(-1)">返回</button>
-												<button type="submit" class="btn btn-primary">提交</button>
-											</p>
-										</form>
+		
+		  <div th:replace="backend/partials/fragment :: setting"></div>
+		  <nav th:replace="backend/partials/fragment :: sidebar"></nav>
+		  
+		  <!-- 主要內容 partial -->
+		 <div class="main-panel">
+			<div class="content-wrapper">
+			  <div class="row">
+				<div class="col-12 grid-margin">
+				  <div class="card">
+					<div class="card-body">
+					  <h4 class="card-title">新增/修改景點資料</h4>
+					  <form  class="form-sample" id="form" action="/ticketList" th:action="@{/ticketList}" th:object="${ticket}" method="post" enctype="multipart/form-data">
+						<input type="hidden" th:value="*{ticketNo}" name="ticketNo">
+						
+						<!-- 景點套票名稱、電話 -->
+						<div class="row mt-4">
+						  <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="nameId">景點套票名稱</label>
+							  <div class="col-sm-9">
+								<input id="nameId" type="text" class="form-control" name="ticketName" th:field="*{ticketName}" />
+							  </div>
+							</div>
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="phoneId">電話</label>
+							  <div class="col-sm-9">
+								<input id="phoneId" type="text" class="form-control" name="phone" th:field="*{phone}"  maxlength="10"/>
+							  </div>
+							</div>
+						  </div>
+						</div>
+
+						<!-- 開始營業時間、結束營業時間 -->
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="openTimeId">開始營業時間</label>
+							  <div class="col-sm-9">
+								<input id="picker1" type="text" class="timepicker"  name="ticketOpenTime" th:field="*{ticketOpenTime}" style="width:10.6rem;border:0px;outline:none" />
+							  </div>
+							</div>
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="endTimeId">結束營業時間</label>
+							  <div class="col-sm-9">
+								<input id="picker2" type="text" class="timepicker" name="ticketEndTime"th:field="*{ticketEndTime}" style="width:10.6rem;border:0px;outline:none">
+							  </div>
+							</div>
+						  </div>
+						</div>
+						
+						<!-- 國家\地區、縣市 -->
+						<div class="row">
+							<div class="col-md-6">
+							  <div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="countryId">國家/地區</label>
+								<div class="col-sm-9">
+								<!-- <input type="hidden" class="js-demeter-tw-zipcode-selector" data-city="#city" data-dist="#location"  size="6" id="yoyo" name="yoyo" readonly/>  -->
+								<select type="text" name="country" id="countryId" class="form-control" th:field="*{country}">
+									<option value="台灣">台灣</option>
+								</select>
+								</div>
+							  </div>
+							</div>
+						  <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label">縣市</label>
+							  <div class="col-sm-9">
+							  <!-- <input type="hidden" data-city="#city" data-dist="#location" size="6" readonly/>  -->
+								<select id="city" name="city" placeholder=" " class="form-control" th:field="*{city}" data-city="#city"></select>
+							  </div>
+							</div>
+						  </div>
+						</div>
+
+						<!-- 地區、地址 -->
+						<div class="row">
+							<div class="col-md-6">
+							  <div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="locationId">鄉鎮區</label>
+								<div class="col-sm-9">
+								<!-- <input type="hidden" class="js-demeter-tw-zipcode-selector" data-city="#city" data-dist="#location"  size="6" id="yoyo" name="yoyo" readonly/>  -->
+								<select id="dist" name="location"  placeholder=" " class="form-control" th:field="*{location}" data-dist="#dist"></select>
+								</div>
+							  </div>
+							</div>
+						  	<div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="addressId">地址</label>
+							  <div class="col-sm-9">
+								<input id="addressId" name="address"   class="form-control" th:field="*{address}"></select>
+							  </div>
+							</div>
+						  	</div>
+						</div>
+
+						<!-- 標籤編號、標籤名稱 -->
+						<div class="row mt-4">
+							<div class="col-md-6">
+							  <div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="tagNoId">標籤編號</label>
+								<div class="col-sm-9">
+								  <select id="sel2" type="text" class="form-control"  th:field="*{tagNo}" readonly> 
+									<!-- <option value="0">請選擇</option> -->
+									  <!-- <option value="1">1</option>
+									  <option value="2">2</option>
+									  <option value="3">3</option>
+									  <option value="4">4</option> -->
+								  </select>
+								</div>
+							  </div>
+							</div>
+							<div class="col-md-6">
+							  <div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="tagNameId">標籤名稱</label>
+								<div class="col-sm-9">
+								  <select id="sel" type="text" class="form-control" name="tagName" th:field="*{tagName}">
+									  <option value="0">請選擇</option>
+									  <option value="1">主題樂園</option>
+									  <option value="2">博物館&美術館</option>
+									  <option value="3">水族館&動物園</option>
+									  <option value="4">歷史景點</option>
+								  </select>
+								</div>
+							  </div>
+							</div>
+						</div>
+
+						<!-- 上、下架時間 -->
+						<!-- <div class="row">
+							<div class="col-md-6">
+							  <div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="startDate">上架時間</label>
+								<div class="col-sm-9">
+								<input id="ticketStartDate" name="reservatTime" type="text" class="form_datetime" placeholder="請選擇上架日期" required="required" style="width: 10.6rem;border:0px;outline:none;" th:field="*{ticketStartDate}"/>
+						</div>
+							</div>
+							  </div>
+							  <div class="col-md-6">
+							  <div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="endDate">下架時間</label>
+								<div class="col-sm-9">
+								  <input id="ticketEndDate" name="ticketEndDate" type="text" class="form_datetime" placeholder="請選擇下架日期" style="width: 10.6rem;border:0px;outline:none;" th:field="*{ticketEndDate}" >
+								  <span id="checkMsg" style="position:absolute ; right:17px;"></span>
+								</div>
+							  </div>
+							</div>
+						</div> -->
+
+						<!-- 價格、狀態 -->
+						<div class="row mt-4">
+						  <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="priceId">價格</label>
+							  <div class="col-sm-9">
+								<input id="priceId" type="text" class="form-control" name="price" th:field="*{price}" />
+							  </div>
+							</div>
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="statusId">狀態</label>
+							  <div class="col-sm-9">
+								<select id="status" type="text" class="form-control" name="status" th:field="*{status}" readonly>
+									<option value="上架中">上架中</option>
+									<option value="已上架">已下架</option>
+								</select>
+							  </div>
+							</div>
+						  </div>
+						</div>
+
+						<!-- 照片 -->
+						<div class="row mt-4">
+							<div class="col-md-6">
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label" for="images">上傳照片</label>
+									<div class="col-sm-9">
+										<input id="images" type="file" class="form-control custom-file-input pb-1" name="images" multiple/>
+										<label class="custom-file-label">選擇檔案</label>
+										<!-- <input id="nameId" type="text" class="form-control" name="ticketName" th:field="*{ticketName}" /> -->
 									</div>
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="form-group row">
+									<label class="col-sm-3 col-form-label" for="ticketBriefIntroId">景點簡介</label>
+									<div class="col-sm-9"> 
+									  <!-- <textarea name="ticketIntro"  th:field="*{ticketIntro}" id="descriptionId" ></textarea>  -->
+									<input id="ticketBriefIntroId" type="text" class="form-control" name="ticketBriefIntro" th:field="*{ticketBriefIntro}"/>
+								  </div>
+								</div>
+							</div>
 						</div>
+
+						<!-- 景點簡介 -->
+						<!-- <div class="col-md-6">
+							<div class="form-group row">
+							  <label class="col-sm-3 col-form-label" for="ticketIntroId">商品簡介</label>
+							  <div class="col-sm-9">
+								<input id="ticketIntroId" type="text" class="form-control" name="ticketIntro" th:field="*{ticketIntro}"/>
+							  </div>
+							</div>
+						</div> -->
+
+						<!-- 圖片上傳 -->
+						<!-- <div class="row mt-4">
+								<div class="col-md-6">
+								  <div class="form-group row">
+									<label for="images" class="col-sm-3 col-form-label">上傳照片</label>
+									<div class="col-sm-1">
+										<div id="images-length" class="text-black-50 small">(0/3)</div>
+									</div>
+								<div class="col-md-9">
+									<div class="form-group row">
+										<input id="image" type="file" class="col-form-label" name="image" />
+										<input type="file" class="form-control custom-file-input pb-1"	name="imagefiles" id="imagefiles" multiple>
+										<div class="invalid-feedback">最多選取3張圖片</div>
+										<label class="custom-file-label">選擇檔案</label>
+									</div>
+								</div>
+							</div> -->
+
+
+						<!-- 簡介 -->
+						<div class="col-md-9">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="descriptionId">景點商品說明</label>
+								<div class="col-sm-9">
+									<textarea name="ticketIntro" th:field="*{ticketIntro}" id="descriptionId" ></textarea>
+									<!-- <textarea class="sr" type="text" name="ticketIntro" id="descriptionId" style="white-space: normal" onkeyUp="textLimitCheck(this, 300);" th:field="*{ticketIntro}"></textarea>
+										<div class="col-sm-15" style="width: 110%;">
+										<font color=#666666>限 300 個字，已輸入 <font color="#CC0000"><span id="messageCount">0</span></font> 個字</font> -->
+									<!-- </div> -->
+								</div>
+							</div>
+						</div>
+
+						<!-- 返回、提交、一鍵輸入、一鍵錯誤按鈕 -->
+						<p class="text-left" style="position: relative; left:300px;bottom: 10px;">
+							<button type="button" class="btn btn-primary" onclick="history.go(-1)">返回</button>
+							<button type="submit" class="btn btn-primary">提交</button>
+							<button type="button" class="btn btn-secondary" id="correctInput">一鍵輸入</button>
+							<button type="button" class="btn btn-secondary" id="wrongInput">一鍵錯誤</button>
+						</p>
+					  </form>
 					</div>
 				</div>
 				<!-- Footer -->
@@ -220,21 +352,145 @@
 	<!-- <script type="text/javascript" src="assets/js/mdtimepicker.js"></script> -->
 	<script th:src="@{/js/ticketTableJS/mdtimepicker.js}" src="../../static/js/ticketTableJS/mdtimepicker.js"></script>
 
-	<!-- 判斷城市資料後再自動代入地區 -->
-	<script>
-		window.addEventListener('load', function () {
-			console.log("load complete");
+<!-- ckeditor -->
+<script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+<!-- <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script> -->
+
+<!-- 判斷城市資料後再自動代入地區 -->
+<script th:inline="javascript">
+	window.addEventListener('load', function () {
+		console.log("load complete");
+		setTimeout(function () {
+			console.log("I am the third log after 2 seconds");
+			
+			var city = /*[[${ticket.city}]]*/ 'default';
+		//console.log(document.getElementById("city").value = "<th:value='{ticket.city}'/>");
+			console.log(city); 
+			document.getElementById("city").value = city;
+			// document.getElementById("city").value = "<th:value='*{city}'/>";
+			document.getElementById("city").dispatchEvent(new Event('change'));
 			setTimeout(function () {
-				console.log("I am the third log after 2 seconds");
-				console.log(document.getElementById("city").value = "<th:value='*{city}'/>");
-				document.getElementById("city").value = "<c:out value='${ticketBean.city}'/>";
-				// document.getElementById("city").value = "<th:value='*{city}'/>";
-				document.getElementById("city").dispatchEvent(new Event('change'));
-				setTimeout(function () {
-					// document.getElementById("dist").value = "<th:value='*{location}'/>";
-					document.getElementById("dist").value = "<c:out value='${TicketBean.location}'/>";
-				}, 1000);
-			}, 1000);
+				var location = /*[[${ticket.location}]]*/ 'default';
+				// document.getElementById("dist").value = "<th:value='*{location}'/>";
+				document.getElementById("dist").value = location;
+			}, 500);
+		}, 1000);
+
+		document.getElementById("sel").dispatchEvent(new Event('change'));
+	})
+</script>
+</script>
+<!-- TABLE + CSV + JSON JS -->
+<script>new JSTable("#basic");</script>
+<!-- TAGNO + TAGNAME SELECTOR -->
+<script>
+$("#sel").change(function () {
+	switch (parseInt($(this).val())) {
+		case 0:
+			$("#sel2 option").remove();
+			break;
+		case 1:
+			$("#sel2 option").remove();
+			var array = ["1"];
+			//利用each遍歷array中的值並將每個值新增到Select中
+			$.each(array, function (i, val) {
+				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+			});
+			break;
+		case 2:
+			$("#sel2 option").remove();
+			var array = ["2"];
+			//利用each遍歷array中的值並將每個值新增到Select中
+			$.each(array, function (i, val) {
+				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+			});
+			break;
+		case 3:
+			$("#sel2 option").remove();
+			var array = ["3"];
+			//利用each遍歷array中的值並將每個值新增到Select中
+			$.each(array, function (i, val) {
+				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+			});
+			break;
+		case 4:
+			$("#sel2 option").remove();
+			var array = ["4"];
+			//利用each遍歷array中的值並將每個值新增到Select中
+			$.each(array, function (i, val) {
+				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+			});
+			break;
+	}
+});
+</script>
+
+<!-- 上、下架時間 -->
+<script>
+	// 	表單提交
+	var bool = false;
+	function toSubmit() {
+		var name = $('#reservationName').val();
+		var mobile = $('#reservationPhone').val();
+		var id = $('#reservationId').val();
+		// 		$('form').submit(function(){
+		if ($("#endDate").val() == '') {
+			showMsg('請選擇下架日期');
+			bool = false;
+			return bool;
+		} else {
+			bool = true;
+		}
+		if (bool) {
+			var sdate = new Date($("#startDate").val());
+			var edate = new Date($("#endDate").val());
+
+		}
+	}
+	var obj;
+	var sdate = '2018-07-04';
+	obj = ['2018-07-12', '2018-07-13', '2018-07-20'];//禁用日期可以從數據庫查
+	// 	自定義格式
+	$.fn.datetimepicker.dates['zdy'] = {
+		days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+		daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+		daysMin: ["日", "一", "二", "三", "四", "五", "六"],
+		months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+		monthsShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+		today: "今天",
+		format: "yyyy-mm-dd",
+		titleFormat: "yyyy-mm-",
+		weekStart: 1,
+		suffix: [],
+		meridiem: ["上午", "下午"]
+	};
+	$('#startDate').datetimepicker({
+		language: 'zdy',
+		weekStart: 1,
+		todayBtn: 1,
+		autoclose: 1,
+		startDate: sdate,
+		minView: 2,
+		maxView: 3,
+		onRenderDay: function (date) {
+			// 	    	alert(date);
+			var date1 = date.getFullYear() + '-'
+				+ (date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
+				+ '-'
+				+ (date.getDate() < 10 ? '0' + (date.getDate() - 1) : date.getDate() - 1);
+		}
+	}).on('changeDate', function (ev) {
+		// 		alert($("#startDate").val());
+		$('#endDate').datetimepicker('remove');
+		$('#endDate').val('');
+		var sdate = $("#startDate").val();
+		var edate;
+		for (var o in obj) {
+			if (new Date(sdate) <= new Date(obj[o])) {
+				var date = new Date(obj[o])
+				var ndate = +date + 24 * 60 * 60 * 1000;
+				var leaveTime = new Date(ndate);
+				edate = leaveTime.getFullYear() + '-' + (leaveTime.getMonth() + 1) + '-' + leaveTime.getDate();
 
 			document.getElementById("sel").dispatchEvent(new Event('change'));
 		})
@@ -251,7 +507,7 @@
 				break;
 			case 1:
 				$("#sel2 option").remove();
-				var array = ["主題樂園"];
+				var array = ["1"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -259,7 +515,7 @@
 				break;
 			case 2:
 				$("#sel2 option").remove();
-				var array = ["博物館&美術館"];
+				var array = ["2"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -267,7 +523,7 @@
 				break;
 			case 3:
 				$("#sel2 option").remove();
-				var array = ["水族館&動物園"];
+				var array = ["3"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -275,7 +531,7 @@
 				break;
 			case 4:
 				$("#sel2 option").remove();
-				var array = ["歷史景點"];
+				var array = ["4"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -375,20 +631,67 @@
 			} else {
 				showMsg('請先選擇上架日期');
 			}
-		});
-	</script>
+		})
 	
-	<!-- 簡介字數限制 -->
-	<script>
-		function textLimitCheck(thisArea, maxLength) {
-			if (thisArea.value.length > maxLength) {
-				alert(maxLength + ' 個字限制。 \r超出部分將自動去除。');
-				thisArea.value = thisArea.value.substring(0, 300);
-				thisArea.focus();
-			}    /*回寫span的值，當前填寫文字的數量*/
-			messageCount.innerText = thisArea.value.length;
-		}
-	</script>
+	window.onload = function () {
+		mdtimepicker('#picker2', {
+			events: {
+				timeChanged: function (data) {
+					console.log('timeChanged', data)
+					log('timeChanged: ' + data.value)
+				}
+			}
+		})
+	}
+</script>
+
+<!-- 一鍵輸入 -->
+<script>
+$('#correctInput').click(function () {
+    //對應ID值，不是NAME值
+    $('#nameId').val('阿里山國家森林遊樂區門票')
+	$('#descriptionId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏，然從 1912年起成為台灣最具規模的林場，一直到 1960 年代末期為止。歷經日本、國民政府的採伐後，原始檜木林幾乎伐盡，現今存有第一期與第二期巨木群棧道近四十株的紅檜巨木，讓人緬懷過去神木林的壯闊神聖。其中最高的「阿里山香林神木」，高 45 公尺，樹圍 12.3 公尺，樹齡約2300年，是到訪阿里山的必遊之處。在阿里山國家森林遊樂區內有豐富的生態，其中最特殊的植物，莫過於稀有的蓧蕨、相馬氏石杉、阿里山十大功勞與一葉蘭了；動物則有台灣獼猴、帝雉、藪鳥、阿里山鴝、阿里山山椒魚等小明星助陣，熱鬧非凡。除了神木，阿里山還有非常多具可看性的景點：森林小火車、空靈飄渺的姊妹潭、壯闊動人的雲海、美麗的祝山日出、受鎮宮、百年慈雲寺、林業史蹟、春天盛開的各類櫻花與杜鵑…阿里山森林遊樂區是一個足以代表台灣霧林帶的國際級觀光景點，歡迎著來自全世界的旅人們，前來認識台灣山林豐富而美麗的面貌。「春賞花、夏避暑、秋攬楓、冬觀雲」詳述了一年四季萬種風情的阿里山國家森林遊樂區。在阿里山您只須放慢腳步，享受舒適宜人的綿延群山，伴蟲鳴入眠、被林間輕脆鳥啼喚醒，不妨現在就背起行李，規劃一趟阿里山輕旅行，讓自己徜徉於神木群的芬多精中，為身心靈安排一趟大自然的洗禮吧。')
+ 	$('#ticketBriefIntroId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏')
+    $('#picker1').val('8:30 AM')
+    $('#picker2').val('5:30 PM')
+    $('#phoneId').val('052679917')
+    $('#countryId').val('台灣')
+    $('#city').val('嘉義縣')
+    $('#dist').val('阿里山鄉')
+    $('#addressId').val('59號')
+ 	$('#priceId').val('215')
+ 	$('#statusId').val('已上架')
+    $('#sel').val('4')
+    $('#sel2').val('歷史景點')
+    // $('#ticketStartDate').val('2022-07-29')
+    // $('#ticketEndDate').val('2022-12-31')
+    // $('#note').val('')
+	
+})
+</script>
+
+<!-- 一鍵錯誤 -->
+<script>
+$('#wrongInput').click(function () {
+	$('#nameId').val('阿里山國家森林遊樂區門票')
+ 	$('#descriptionId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏，然從 191 2年起成為台灣最具規模的林場，一直到 1960 年代末期為止。歷經日本、國民政府的採伐後，原始檜木林幾乎伐盡，現今存有第一期與第二期巨木群棧道近四十株的紅檜巨木，讓人緬懷過去神木林的壯闊神聖。其中最高的「阿里山香林神木」，高 45 公尺，樹圍 12.3 公尺，樹齡約2300年，是到訪阿里山的必遊之處。在阿里山國家森林遊樂區內有豐富的生態，其中最特殊的植物，莫過於稀有的蓧蕨、相馬氏石杉、阿里山十大功勞與一葉蘭了；動物則有台灣獼猴、帝雉、藪鳥、阿里山鴝、阿里山山椒魚等小明星助陣，熱鬧非凡。除了神木，阿里山還有非常多具可看性的景點：森林小火車、空靈飄渺的姊妹潭、壯闊動人的雲海、美麗的祝山日出、受鎮宮、百年慈雲寺、林業史蹟、春天盛開的各類櫻花與杜鵑…阿里山森林遊樂區是一個足以代表台灣霧林帶的國際級觀光景點，歡迎著來自全世界的旅人們，前來認識台灣山林豐富而美麗的面貌。「春賞花、夏避暑、秋攬楓、冬觀雲」詳述了一年四季萬種風情的阿里山國家森林遊樂區。在阿里山您只須放慢腳步，享受舒適宜人的綿延群山，伴蟲鳴入眠、被林間輕脆鳥啼喚醒，不妨現在就背起行李，規劃一趟阿里山輕旅行，讓自己徜徉於神木群的芬多精中，為身心靈安排一趟大自然的洗禮吧。')
+    $('#picker1').val('8:30 AM')
+    $('#picker2').val('5:30 PM')
+    $('#phoneId').val('052679917')
+    $('#countryId').val('台灣')
+    $('#city').val('嘉義縣')
+    $('#dist').val('阿里山鄉')
+    $('#addressId').val('59號')
+ 	$('#priceId').val('215')
+    $('#sel').val('4')
+    $('#sel2').val('歷史景點')
+    // $('#ticketStartDate').val('2022-07-29')
+    // $('#ticketEndDate').val('2022-12-31')
+})
+</script>
+
+<!-- CKEDITOR -->
+<script>CKEDITOR.replace('ticketIntro');</script>
 
 	<!-- 時鐘 -->
 	<script type="text/javascript">
@@ -408,5 +711,66 @@
 			})
 		}
 	</script>
+	<script type="text/javascript">
+		mdtimepicker.defaults({
+			theme: 'green',
+			hourPadding: true,
+			clearBtn: true
+		});
+		window.onload = function () {
+			mdtimepicker('#picker2', {
+				events: {
+					timeChanged: function (data) {
+						console.log('timeChanged', data)
+						log('timeChanged: ' + data.value)
+					}
+				}
+			})
+		}
+	</script>
 </body>
+
 </html>
+
+
+<!--  <script>
+// 	$("#sel").change(function () {
+// 		switch (parseInt($(this).val())) {
+// 			case 0:
+// 				$("#sel2 option").remove();
+// 				break;
+// 			case 1:
+// 				$("#sel2 option").remove();
+// 				var array = ["主題樂園"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 			case 2:
+// 				$("#sel2 option").remove();
+// 				var array = ["博物館&美術館"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 			case 3:
+// 				$("#sel2 option").remove();
+// 				var array = ["水族館&動物園"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 			case 4:
+// 				$("#sel2 option").remove();
+// 				var array = ["歷史景點"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 		}
+// 	});
+ 	</script>-->
