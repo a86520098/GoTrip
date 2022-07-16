@@ -167,13 +167,10 @@
 							</div>
 						</div>
 						<div class="row">
-							<button
-								class="col-6 flex-c-m stext-101 cl2 size-116  bg8 bor14 hov-btn3 p-lr-15 trans-04 pointer flex-c-m">
-								繼續購物</button>
+							<a href="/gotrip" class="col-6 flex-c-m stext-101 cl2 size-116  bg8 bor14 hov-btn3 p-lr-15 trans-04 pointer flex-c-m">
+								繼續購物</a>
 							<a href="/gotrip/creatOrder" class="col-6 flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							<button
-								>
-								結帳</button></a>
+								結帳</a>
 						</div>
 
 					</div>
@@ -197,11 +194,11 @@
 
 	<!--套版 script -->
 	<script>
-<<<<<<< HEAD
+
 		$(".js-select2").each(function() {
-=======
+
 		$(".js-select2").each(function(){
->>>>>>> 602618a87b33ed8f14efd2002adf1c6a1d1e14fd
+
 			$(this).select2({
 				minimumResultsForSearch : 20,
 				dropdownParent : $(this).next('.dropDownSelect2')
@@ -223,9 +220,9 @@
 		});
 		
 		
-		$('#addtocart').change(function() {
-			var value=$(this).val();
-			
+		$('#addtocart').on('change',function() {
+		
+			var value=$(this).val();	
 			
 			var id = 1;
 			var qty = 1;
@@ -245,7 +242,7 @@
 				console.log('switch錯誤')
 			break;
 			}
-			 
+			
 			 $.ajax({
 		            type: 'GET',
 		            url: '/gotrip/addToCart',
@@ -255,6 +252,7 @@
 		            	qty:qty
 		            	},
 		            dataType: 'json',
+		            async:false,
 		            success: function (data) {
 		                // 清空tbody內容
 		                $('tbody').html('');
@@ -265,7 +263,7 @@
 		                const keys = Object.keys(data.content);
 						for (let i = 0; i < keys.length; i++) {
   						const key = keys[i];
- 						console.log(key,data.content[key].itemInfo);
+//  						console.log(key,data.content[key].itemInfo);
  						
 	                     putback += "<tr class='table_row'>" +
 	                    	 		"<td class='column-1'>" +data.content[key].itemInfo  +"</td>" +
@@ -298,7 +296,7 @@
 // 	                    	i++
 // 	                    			console.log(i);
 // 		            });    
-		                console.log(putback);
+// 		                console.log(putback);
 // 		            分隔線----
 // 		                $.each(data,function(key,val){
 // 		                	console.log(val);
@@ -311,13 +309,16 @@
 							
 // 	                    });
 		                $('tbody').append(putback)
-		                console.log(data.subtotal);
+		                console.log(data.itemNumber);	
+		                
+		                $('#cartIcon').attr("data-notify",data.itemNumber);
 		            },
 		            error: function () {
 		                console.log('error')
 		            }
 		                
 		                
+		});
 		});
 		});
 	</script>

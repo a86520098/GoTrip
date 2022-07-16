@@ -105,8 +105,8 @@ public class InitializeData {
 			try {
 				conn = ds.getConnection();
 				stmt = conn.createStatement();
-				stmt.executeUpdate("DROP DATABASE IF EXISTS " + DB_NAME);
-				stmt.executeUpdate("CREATE DATABASE " + DB_NAME + " COLLATE Chinese_Taiwan_Stroke_CI_AI");
+//				stmt.executeUpdate("DROP DATABASE IF EXISTS " + DB_NAME);
+//				stmt.executeUpdate("CREATE DATABASE " + DB_NAME + " COLLATE Chinese_Taiwan_Stroke_CI_AI");
 				System.out.println("成功新增Database: " + DB_NAME);
 			} catch (SQLException e) {
 				System.err.println("無法新增Databsae");

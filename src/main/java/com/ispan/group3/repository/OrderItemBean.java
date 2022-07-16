@@ -3,12 +3,15 @@ package com.ispan.group3.repository;
 import java.sql.Blob;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "OrderItems")
@@ -21,10 +24,14 @@ public class OrderItemBean {
 	private String itemInfo;
 	private Integer unitPrice;
 	private	Integer quantity;
-	private Integer phone;
+	@JsonIgnore
+	private Integer phone;	
+	@JsonIgnore
 	private Blob photo;
+
 	@ManyToOne
 	@JoinColumn(name = "orderNo")
+	@JsonIgnore
 	OrderBean orderBean;
 
 
