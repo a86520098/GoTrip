@@ -5,11 +5,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table
@@ -22,7 +25,7 @@ public class OrderBean {
 	String orderDate;
 	Integer totalPrice;
 	Integer status;
-	
+
 	@OneToMany(mappedBy = "orderBean", cascade = CascadeType.ALL)
 	Set<OrderItemBean> items = new LinkedHashSet<>();
 

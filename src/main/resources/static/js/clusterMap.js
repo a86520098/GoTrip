@@ -1,8 +1,7 @@
+function showMap(carLocation) {
 
-
-
-
-
+console.log("hi")
+console.log(carLocation)
 mapboxgl.accessToken = 'pk.eyJ1IjoibHlubjgxMTExMiIsImEiOiJjbDFha2phZ28yN2tqM2RwMzZ4YncycHl5In0.QtgMdcDbNV24FrpgU4sHCw';
 const map = new mapboxgl.Map({
 	container: 'map',
@@ -18,80 +17,11 @@ map.addControl(new MapboxLanguage({
 
 map.addControl(new mapboxgl.NavigationControl());
 
-//mapboxClient.geocoding
-//	.forwardGeocode({
-//		query: 'Wellington, New Zealand',
-//		autocomplete: false,
-//		limit: 1
-//	})
-//	.send()
-//	.then((response) => {
-//		if (
-//			!response ||
-//			!response.body ||
-//			!response.body.features ||
-//			!response.body.features.length
-//		) {
-//			console.error('Invalid response:');
-//			console.error(response);
-//			return;
-//		}
-//		const feature = response.body.features[0];
-//
-//		const map = new mapboxgl.Map({
-//			container: 'map',
-//			style: 'mapbox://styles/mapbox/streets-v11',
-//			center: feature.center,
-//			zoom: 10
-//		});
-//
-//		// Create a marker and add it to the map.
-//		new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
-//	});
-
 map.on('load', () => {
-	// Add a new source from our GeoJSON data and
-	// set the 'cluster' option to true. GL-JS will
-	// add the point_count property to your source data.
-	//    map.addSource('campgrounds', {
-	//        type: 'geojson',
-	//        // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
-	//        // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
-	//        data: campgrounds,
-	//        cluster: true,
-	//        clusterMaxZoom: 14, // Max zoom to cluster points on
-	//        clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
-	//    });
-
+	
 	map.addSource('my-data', {
 		"type": "geojson",
-		'data': {
-			'type': 'FeatureCollection',
-			'features': [
-				{
-					// feature for Mapbox DC
-					'type': 'Feature',
-					'geometry': {
-						'type': 'Point',
-						'coordinates': [121.5328, 25.0456]
-					},
-					'properties': {
-						'title': 'Mapbox DC'
-					}
-				},
-				{
-					// feature for Mapbox SF
-					'type': 'Feature',
-					'geometry': {
-						'type': 'Point',
-						'coordinates': [121.5177, 25.0463]
-					},
-					'properties': {
-						'title': 'Mapbox SF'
-					}
-				}
-			]
-		},
+		'data': carLocation,
 		cluster: true,
 		clusterMaxZoom: 14, // Max zoom to cluster points on
 		clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
@@ -201,3 +131,8 @@ map.on('load', () => {
 		map.getCanvas().style.cursor = '';
 	});
 });
+
+
+
+
+}

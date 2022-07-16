@@ -1,10 +1,16 @@
 package com.ispan.group3.repository;
 
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name="user_data")
@@ -79,6 +85,10 @@ public class User{
 		this.address = address;
 		this.image = image;
 		this.status = status;
+	}
+
+	public User(String email, String password, List<Object> emptyList) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getUser_id() {
@@ -163,6 +173,42 @@ public class User{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public String getUsername() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonExpired() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonLocked() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean isCredentialsNonExpired() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean isEnabled() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 
 //	@Override

@@ -87,7 +87,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
 	public User getByEmail(String Email) throws NullPointerException {
 		return userRepository.getByEmail(Email);
 	}

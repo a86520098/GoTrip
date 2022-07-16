@@ -237,10 +237,6 @@
                                                         <p>目前沒有圖片</p>
                                                     </div>
 
-
-                                                    <!-- -------------------------------------------------------------以下修改 -->
-
-
                                                     <td>房型</td>
                                                     <fieldset class="form-group">
                                                         <select th:field="*{roomtype}" class="form-select"
@@ -318,29 +314,51 @@
         document.getElementById('fullAddress').value = city + location;
     }
 
-    $("#imagefiles").change(function () {
-        $("#preview_progressbarTW_imgs").html(""); // 清除預覽
-        readURL(this);
-    });
+    <
+    <
+    <
+    <
+    <
+    << HEAD
+        $("#imagefiles"
+    ).change(function () {
+    ======
+        =
+            <!-- JavaScript part -->
 
+            $("#progressbarTWInput").change(function () {
+            >>>>>>>
+                a0959fad88e53a1a2e6949c33f262e539983f88b
+                $("#preview_progressbarTW_imgs").html(""); // 清除預覽
+                readURL(this);
+            });
 
-    // 照片即時預覽
+        <
+        <
+        <
+        <
+        <
+        << HEAD
 
-    function readURL(input) {
-        if (input.files && input.files.length >= 0) {
-            for (var i = 0; i < input.files.length; i++) {
+                // 照片即時預覽
+
+            =======
+        >>>>>>> a0959fad88e53a1a2e6949c33f262e539983f88b
+            function readURL(input) {
+                if (input.files && input.files.length >= 0) {
+                for (var i = 0; i < input.files.length; i++) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    var img = $("<img width='300' height='200'>").attr('src', e.target.result);
-                    $("#preview_progressbarTW_imgs").append(img);
-                }
+                var img = $("<img width='300' height='200'>").attr('src', e.target.result);
+                $("#preview_progressbarTW_imgs").append(img);
+            }
                 reader.readAsDataURL(input.files[i]);
             }
-        } else {
-            var noPictures = $("<p>目前沒有圖片</p>");
-            $("#preview_progressbarTW_imgs").append(noPictures);
-        }
-    }
+            } else {
+                var noPictures = $("<p>目前沒有圖片</p>");
+                $("#preview_progressbarTW_imgs").append(noPictures);
+            }
+            }
 
 </script>
 
