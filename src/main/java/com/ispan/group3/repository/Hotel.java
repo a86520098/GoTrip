@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.sql.Blob;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -43,6 +44,8 @@ public class Hotel {
     private String feature1;// 特色1
     private String feature2;// 特色1
     private String feature3;// 特色1
+    @OneToMany(mappedBy = "Hotel", cascade = CascadeType.ALL) //通過註解 維護多方 建立關係
+    private List<HotelRoom> HotelRoom;
     @JsonIgnore
     private Blob image;   //之後接受照片的容器
     private String fileName; //接檔案名稱
