@@ -1,7 +1,9 @@
 package com.ispan.group3.controller;
 
 import com.ispan.group3.repository.Hotel;
+import com.ispan.group3.repository.HotelImage;
 import com.ispan.group3.service.HotelService;
+import com.ispan.group3.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.ServletContext;
 import javax.sql.rowset.serial.SerialBlob;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -49,42 +53,58 @@ public class HotelController {
     }
 
     @PostMapping(value = "/addHotel")
-    public String insert(@ModelAttribute("hotel") Hotel hotels, BindingResult result) {
+    public String insert(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
+                         @RequestParam(value = "imagefiles", required = false) List<MultipartFile> files
+    ) {
         System.out.println("準備新增接收資料了");
-        MultipartFile picture = hotels.getProductImage();
-        String originalFilename = picture.getOriginalFilename();
+//        MultipartFile picture = hotels.getProductImage(); //拿照片
+//        String originalFilename = picture.getOriginalFilename(); //拿檔案名稱
+//        Timestamp adminTime = new Timestamp(System.currentTimeMillis()); //拿檔案接受到的當下時間
+//        hotels.setAdmissionTime(adminTime); //塞進去
 
-
-        if (originalFilename.length() > 0 && originalFilename.lastIndexOf(".") > -1) {
-            hotels.setFileName(originalFilename);
-        }
-
-        // 建立Blob物件，交由 Hibernate 寫入資料庫
-        if (picture != null && !picture.isEmpty()) {
+        List<HotelImage> images = new ArrayList<>();
+        for (MultipartFile file : files) {
             try {
-                byte[] b = picture.getBytes();
-                Blob blob = new SerialBlob(b);
-                hotels.setImage(blob);
-            } catch (Exception e) {
+                String savePath = FileUploadUtil.saveFile("hotelImage", file);
+                HotelImage hotelImage = new HotelImage(savePath, hotels);
+                images.add(hotelImage);
+            } catch (IOException e) {
                 e.printStackTrace();
-                throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
             }
         }
-//		
+        hotels.setImages(images);
+        hotelService.save(hotels);
 
-        Timestamp adminTime = new Timestamp(System.currentTimeMillis());
-        hotels.setAdmissionTime(adminTime);
-
-        try {
-            hotelService.save(hotels);
-        } catch (org.hibernate.exception.ConstraintViolationException e) {
-            result.rejectValue("account", "", "帳號已存在，請重新輸入");
-            return "user-form";
-        } catch (Exception ex) {
-            System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-            result.rejectValue("account", "", "請通知系統人員...");
-            return "user-form";
-        }
+//        if (originalFilename.length() > 0 && originalFilename.lastIndexOf(".") > -1) {
+//            hotels.setFileName(originalFilename);
+//        }
+//
+//        // 建立Blob物件，交由 Hibernate 寫入資料庫
+//        if (picture != null && !picture.isEmpty()) {
+//            try {
+//                byte[] b = picture.getBytes();
+//                Blob blob = new SerialBlob(b);
+//                hotels.setImage(blob);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
+//            }
+//        }
+////
+//
+//        Timestamp adminTime = new Timestamp(System.currentTimeMillis());
+//        hotels.setAdmissionTime(adminTime);
+//
+//        try {
+//            hotelService.save(hotels);
+//        } catch (org.hibernate.exception.ConstraintViolationException e) {
+//            result.rejectValue("account", "", "帳號已存在，請重新輸入");
+//            return "user-form";
+//        } catch (Exception ex) {
+//            System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
+//            result.rejectValue("account", "", "請通知系統人員...");
+//            return "user-form";
+//        }
         System.out.println("222此方法儲存");
         return "redirect:/backHotel";
     }

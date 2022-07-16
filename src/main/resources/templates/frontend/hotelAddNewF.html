@@ -228,9 +228,10 @@
 
                                                     <!-- HTML part -->
                                                     <label>照片</label>
-                                                    <input type="file" multiple th:field="*{productImage}"
-                                                           id="progressbarTWInput"
-                                                           accept="image/gif, image/jpeg, image/png" multiple/ >
+                                                    <input type="file" multiple
+                                                           name="imagefiles"
+                                                           id="imagefiles"
+                                                           accept="image/gif, image/jpeg, image/png"/>
                                                     <div id="preview_progressbarTW_imgs"
                                                          style="width:300px;  overflow:scroll;">
                                                         <p>目前沒有圖片</p>
@@ -317,7 +318,7 @@
         document.getElementById('fullAddress').value = city + location;
     }
 
-    $("#progressbarTWInput").change(function () {
+    $("#imagefiles").change(function () {
         $("#preview_progressbarTW_imgs").html(""); // 清除預覽
         readURL(this);
     });

@@ -44,8 +44,6 @@ public class Hotel {
     private String feature1;// 特色1
     private String feature2;// 特色1
     private String feature3;// 特色1
-    @OneToMany(mappedBy = "Hotel", cascade = CascadeType.ALL) //通過註解 維護多方 建立關係
-    private List<HotelRoom> HotelRoom;
     @JsonIgnore
     private Blob image;   //之後接受照片的容器
     private String fileName; //接檔案名稱
@@ -54,6 +52,8 @@ public class Hotel {
     @Transient
     @JsonIgnore
     private MultipartFile productImage;//前端照片
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL) //通過註解 維護多方 建立關係
+    private List<HotelImage> images;
 
 
 //	public Integer getId() {
