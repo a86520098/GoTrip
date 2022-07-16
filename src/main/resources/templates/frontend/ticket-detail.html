@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="frontend/partials/fragment :: head"></head>
+<head th:replace="frontend/partials/fragment :: head">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <!-- <head> -->
 	<meta charset="UTF-8">
-	<style>
+	<!-- 方案選擇css -->
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/style_plan.css}" href="../../static/css/ticketTableStyle/style_plan.css" >
+	<style type="text/css">
+
 	*{margin:0;padding:0;}
 	ul,li{list-style:none;}
 	.main{position:relative;margin:100px auto;width:1300px;overflow:hidden;}
@@ -56,9 +61,117 @@
   	padding: 0;
 	}
 
+	/* announcement */
+	.huadong {
+            /* width: 60rem;
+            height: 4rem;
+            padding: 0.5rem 0 0.3rem 0;
+            border-bottom: 1px solid #F0F0F0;
+            position: relative;
+            font: 12px/1.5 "Hiragino Sans GB", "Microsoft YaHei", simsun;
+            margin: 0 auto; */
+			width: 900px;
+			height: 50px;
+			background-color: rgb(159, 196, 198);
+			position: relative;
+			top: 0;
+			right: 600px;
+			bottom: 0;
+			left: -200px;
+			margin: auto;
+			overflow: hidden;
+			color: #fff;
+			border-radius: 5px;
+        }
+
+        .huadong .huabox {
+            margin: 0 auto;
+            width: 80%;
+            line-height: 4rem;
+        }
+
+        .huadong .hdimg {
+            float: left;
+            line-height: 3.5rem;
+        }
+
+        .huadong .hdimg img {
+            width: 100%;
+            vertical-align: middle;
+        }
+
+        .huadong h5 {
+            font-size: 1rem;
+            float: left;
+            line-height: 2.2rem;
+            margin: 0.8rem 0 0 0;
+        }
+
+        .huadong .gg_more {
+            float: left;
+        }
+
+        .huadong .gg_more a {
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .huadong .notice_active {
+            float: left;
+            width: 55%;
+            height: 4rem;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .huadong .notice_active li {
+            list-style-type: none;
+            line-height: 2.4rem;
+            overflow: hidden;
+        }
+
+        /*.huadong .notice_active li.notice_active_ch {}*/
+        .huadong .notice_active li.notice_active_ch span {
+            color: #656972;
+            font-size: 1rem;
+            display: block;
+            overflow: hidden;
+            width: 80%;
+            float: left;
+            overflow: hidden;
+            margin: 0 0 2rem 0;
+        }
+
+        .huadong .gg_more .news_ck {
+            float: left;
+            margin: 0 1rem 0 1rem;
+            color: #888;
+            width: 5rem;
+            height: 2rem;
+            line-height: 2rem;
+            display: block;
+            border: 1px solid #656972;
+            text-align: center;
+            border-radius: 0.7rem;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .huadong .gg_more .news_more {}
+
+        .huadong .notice_active li.notice_active_ch em {
+            text-align: right;
+            float: right;
+            color: #888;
+            font-size: 0.8rem;
+            font-style: normal;
+        }
+
 	</style>
 
 <body>
+		
 	<!-- class="animsition" -->
 	<!-- Header -->
 	<header th:replace="frontend/partials/fragment :: header"></header>
@@ -93,7 +206,17 @@
 						</h3>
 					</div> -->
 
-				<!-- 圖片路徑 -->
+				<!--原 圖片路徑位置 -->
+				<!-- 圖片路徑找位置中 -->
+				<!-- <div class="slideshow" style="height: 0; margin-top:15px;overflow: hidden">
+					<div class="slide"><img th:src="@{/images/tickets/Xpark_1.jpg}"></div>
+					<div class="slide"><img th:src="@{/images/tickets/Xpark_2.jpg}"></div>
+					<div class="slide"><img th:src="@{/images/tickets/Xpark_3.jpg}"></div>
+					<div class="slide"><img th:src="@{/images/tickets/Xpark_4.jpg}"></div>
+					<div class="slide"><img th:src="@{/images/tickets/Xpark_5.jpg}"></div>
+					<div class="slide"><img th:src="@{/images/tickets/Xpark_6.jpg}"></div>
+				</div> -->
+
 				<div class="col-md-8 col-lg-8 p-b-30">
 					<div class="p-l-25 p-r-30 p-lr-0-lg">
 						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -230,11 +353,68 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- announcement  -->
+
 			</div>
 		</div>
 	</section>
-	
-	<!-- 跟<head th:replace="frontend/partials/fragment :: head">衝突 -->
+
+	<!-- announcement -->
+	<div class="huadong">
+        <div class="huabox">
+            <div class="hdimg"><img th:src="@{/images/tickets/lingdang.png}" src="../../static/images/tickets/lingdang.png"></div>
+            <!-- <div class="hdimg"><img src="static/picture/lingdang.png"></div> -->
+            <!-- <h5>【公告】</h5> -->
+            <div class="notice_active">
+                <ul>
+                    <li class="notice_active_ch"><span>公告測試一</span>
+                    <li class="notice_active_ch"><span>公告測試二</span><em>2017-01-20</em></li>
+                    <!-- <li class="notice_active_ch"><span>站长素材文字滚动播放</span><em>2017-01-20</em></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+	<!-- 方案選擇 -->
+	<div class="row">
+		<!-- <div class="col">
+		<h2>Open <b>multiple</b></h2>
+		<div class="tabs">
+			<div class="tab">
+			<input type="checkbox" id="chck1">
+			<label class="tab-label" for="chck1">Item 1</label>
+			<div class="tab-content"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum, reiciendis! </div>
+			</div>
+			<div class="tab">
+			<input type="checkbox" id="chck2">
+			<label class="tab-label" for="chck2">Item 2</label>
+			<div class="tab-content"> Lorem ipsum dolor sit amet consectetur adipisicing elit. A, in! </div>
+			</div>
+		</div>
+		</div> -->
+		<div class="col">
+		<h2>方案選擇 <b></b></h2>
+		<div class="tabs">
+			<div class="tab">
+			<input type="radio" id="rd1" name="rd">
+			<label class="tab-label" for="rd1">Item 1</label>
+			<div class="tab-content"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, facilis. </div>
+			</div>
+			<div class="tab">
+			<input type="radio" id="rd2" name="rd">
+			<label class="tab-label" for="rd2">Item 2</label>
+			<div class="tab-content"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, aut. </div>
+			</div>
+			<!-- <div class="tab">
+			<input type="radio" id="rd3" name="rd">
+			<label for="rd3" class="tab-close">Close others &times;</label>
+			</div> -->
+		</div>
+		</div>
+	</div>
+
+	<!-- sticky-bar -->
 	<main class="main">
 		<div class="siderBar" style="float:right;">
 			<div class="menu">
@@ -323,9 +503,24 @@
 	<!-- <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> -->
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw"></script> -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script>
-
 	<!-- https://www.google.com/maps/embed/v1/place?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw -->
 
+	<!-- 圖片JS -->
+	<script type="text/javascript" th:src="@{/js/ticketTableJS/jquery-1.11.0.min.js}" src="../../static/js/ticketTableJS/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" th:src="@{/js/ticketTableJS/imagesloaded.js}" src="../../static/js/ticketTableJS/imagesloaded.js"></script>
+	<script type="text/javascript" th:src="@{/js/ticketTableJS/smartresize.js}" src="../../static/js/ticketTableJS/smartresize.js"></script>
+	<script type="text/javascript" th:src="@{/js/ticketTableJS/jquery.skidder.js}" src="../../static/js/ticketTableJS/jquery.skidder.js"></script>
+	
+	<!-- announcement JS -->
+	<script th:src="@{/js/ticketTableJS/jquery.min.js}" src="../../static/js/ticketTableJS/jquery.min.js"></script>
+
+	<!-- announcement -->
+	<script type="text/javascript">
+	function timer(opj) { $(opj).find('ul').animate({ marginTop: "-3.5rem" }, 500, function () { $(this).css({ marginTop: "0.7rem" }).find("li:first").appendTo(this); }) } $(function () { var num = $('.notice_active').find('li').length; if (num > 1) { var time = setInterval('timer(".notice_active")', 3500); $('.gg_more a').mousemove(function () { clearInterval(time); }).mouseout(function () { time = setInterval('timer(".notice_active")', 3500); }); } $(".news_ck").click(function () { location.href = $(".notice_active .notice_active_ch").children(":input").val(); }) });
+	</script>
+
+
+	<!-- sideBar -->
 	<script>
 		var a = new StickySidebar('.siderBar', {
 			topSpacing: 20,
@@ -373,6 +568,60 @@
 	<script th:inline="javascript">
 			var ticketIntro = /*[[${ticket.ticketIntro}]]*/ 'default';
 			document.getElementById("intro").innerHTML=ticketIntro;
+	</script>
+
+	<!-- 圖片播放 -->
+	<script type="text/javascript">
+		$('.slideshow').each( function() {
+			var $slideshow = $(this);
+			$slideshow.imagesLoaded( function() {
+				$slideshow.skidder({
+				slideClass    : '.slide',
+				animationType : 'css',
+				scaleSlides   : true,
+				maxWidth : 1300,
+				maxHeight: 500,
+				paging        : true,
+				autoPaging    : true,
+				pagingWrapper : ".skidder-pager",
+				pagingElement : ".skidder-pager-dot",
+				swiping       : true,
+				leftaligned   : false,
+				cycle         : true,
+				jumpback      : false,
+				speed         : 400,
+				autoplay      : true,
+				autoplayResume: false,
+				interval      : 3000,
+				transition    : "slide",
+				afterSliding  : function() {},
+				afterInit     : function() {}
+				});
+			});
+		});
+		// $('.slideshow-nocycle').each( function() {
+		//   var $slideshow = $(this);
+		//   $slideshow.imagesLoaded( function() {
+		//     $slideshow.skidder({
+		//       slideClass    : '.slide',
+		//       scaleSlides   : true,
+		//       maxWidth : 1300,
+		//       maxHeight: 500,
+		//       leftaligned   : true,
+		//       cycle         : false,
+		//       paging        : true,
+		//       swiping       : true,
+		//       jumpback      : false,
+		//       speed         : 400,
+		//       autoplay      : false,
+		//       interval      : 4000,
+		//       afterSliding  : function() {}
+		//     });
+		//   });
+		// });
+		$(window).smartresize(function(){
+			$('.slideshow').skidder('resize');
+		});
 	</script>
 
 </body>
