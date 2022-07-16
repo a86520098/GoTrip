@@ -52,9 +52,9 @@
 												<col span="1" style="width: 10%;">
 												<col span="1" style="width: 5%;">
 												<col span="1" style="width: 22%;">
-												<col span="1" style="width: 22%;">
+												<col span="1" style="width: 20%;">
 												<col span="1" style="width: 7%;">
-												<col span="1" style="width: 7%;">
+												<col span="1" style="width: 9%;">
 											</colgroup>
 											<thead>
 												<tr>
@@ -93,18 +93,18 @@
 														<div class="badge badge-warning" th:text="${comment.status}"></div>
 													</td>
 													<td>
-														<form th:action="@{/backend/comments/form/}+${comment.id}"	method="get" class="inline-block">
-															<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">
-																<!-- <i class="ti-pencil"></i> -->
-																修改
+														<form th:action="@{/backend/comments/form/}+${comment.id}"	method="get" class="d-inline">
+															<button type="submit" class="px-2 btn btn-light btn-sm">
+																<i class="ti-pencil"></i>
+																
 															</button>
 														</form>
-														<form th:action="@{/backend/comments/}+${comment.id}" th:method="delete" class="inline-block">
+														<form th:action="@{/backend/comments/}+${comment.id}" th:method="delete" class="inline">
 															<button type="button" th:value="${comment.id}"
-																class="px-2 btn btn-delete btn-info btn-rounded btn-sm">
-																<!-- <i class="ti-trash"></i> -->
+																class="px-2 btn btn-delete btn-light btn-sm">
+																<i class="ti-trash"></i>
 																<!-- th:id="'btn-delete' + ${comment.id}" -->
-																刪除
+																
 															</button>
 														</form>
 													</td>

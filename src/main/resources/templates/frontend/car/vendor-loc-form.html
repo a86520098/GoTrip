@@ -55,6 +55,7 @@
 								  
 								<p class="card-description mt-4">據點資料</p>
 								<input th:field="*{id}" id="number" type="hidden"/>
+								<input th:field="*{carCompany.id}" id="number" type="hidden"/>
 								<div class="row form-group my-4">
 									<div class="col-lg-1"></div>
 									<input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder="" />
@@ -120,6 +121,8 @@
 										<div class="invalid-feedback">請輸入營業時間</div>
 									</div>
 								</div>
+								<input th:field="*{longitude}" id="longitude" type="hidden" class="form-control" />
+								<input th:field="*{latitude}" id="latitude" type="hidden" class="form-control" />
 								
 								<div class="d-flex justify-content-end">
 									<button id="btn-insert" type="submit" class="btn btn-warning mr-2 justify-content-end mr-4">
@@ -145,14 +148,12 @@
 	
 	<script th:src="@{/js/tw-city-selector.min.js}"></script>
 	<script>
-// 	  	new TwCitySelector();
-
-		 new TwCitySelector({
-		    el: '.city-selector-set',
-		    elCounty: '.county', // 在 el 裡查找 element
+		new TwCitySelector({
+			el: '.city-selector-set',
+			elCounty: '.county', // 在 el 裡查找 element
 		    elDistrict: '.district', // 在 el 裡查找 element
 		    elZipcode: '.zipcode' // 在 el 裡查找 element
-		  });
+		});
 	  	
 		$('#carModel').on('change', function(){
 	  		let carModelId = $(this).val();
@@ -180,7 +181,6 @@
 
 		
 		$(document).ready(function(){
-
 			$('.county').focus()
 			$('.county').val($('#county').text())
 			$('.county').blur()
@@ -189,6 +189,29 @@
 			$('.district').focus()
 			$('.district').val($('#district').text())
 			$('.district').blur()
+		})
+		
+		
+		$('#address').on('change', function () {
+			let address = $('.county').val()+"+"+$('.district').val()+"+"+$('#address').val()
+			console.log(address);
+			$.ajax({
+				url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+ address +".json",
+				method: "GET",
+				data: {
+					access_token: "pk.eyJ1IjoibHlubjgxMTExMiIsImEiOiJjbDFha2phZ28yN2tqM2RwMzZ4YncycHl5In0.QtgMdcDbNV24FrpgU4sHCw",
+					limit: 1
+				},
+				dataType: "json",
+				success: function(data) {
+					console.log(data);
+				},
+				error: function(err) {
+					console.log(err);
+				},
+			});
+	
+	
 		})
 	</script>
 

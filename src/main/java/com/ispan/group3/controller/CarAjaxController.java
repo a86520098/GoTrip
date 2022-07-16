@@ -46,21 +46,30 @@ public class CarAjaxController {
 	}
 	
 	@GetMapping("/cars/locations/geojson")
-	public void findAllGeos() {
+	public Map findAllGeos() {
 		List<CarLocation> locations = locationService.findAll();
-		Map<String, String[]> coordinates = new HashMap<>();
-		String[] coordinatesValue = new String[2];
+		int listLength = locations.size();
+		Map<String, double[]> coordinates = new HashMap<>();
+//		String[] coordinatesValue = new String[2];
 		List<Map> coordinatess = new ArrayList<Map>();
 		for (CarLocation location : locations) {
-			coordinatesValue[0] = location.getName();
-			coordinatesValue[1] = location.getDistrict();
+			double[] coordinatesValue = {location.getId(), -17.5};
+//			coordinatesValue[0] = location.getName();
+//			coordinatesValue[1] = location.getDistrict();
 			coordinates.put("coordinates", coordinatesValue);
 			coordinatess.add(coordinates);
 		}
+		Map<String, Object> geometry = new HashMap<>();
+//		for (int i = 0; i < listLength; i++) {
+//			
+//			coordinates.put("coordinates", coordinates);
+//			coordinatess.add(coordinates);
+//		}
 		
 		Gson gson = new Gson();
 		String json = gson.toJson(coordinatess);
 		System.out.println(json);
+		return geometry;
 	}
 	
 }

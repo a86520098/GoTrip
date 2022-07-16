@@ -27,7 +27,6 @@ public class InitializeData {
 	private static final String TB_NAME_COM = "comment";
 	private static final String TB_NAME_IMG = "comment_image";
 	private static final String TB_NAME_CAR = "car_model";
-	private static final String TB_NAME_CMP = "car_company";
 	private static final String TB_NAME_LOC = "car_location";
 	private static final String TB_NAME_OPT = "car_option";
 
@@ -65,14 +64,11 @@ public class InitializeData {
 													+ "	bag int,"
 													+ "	image nvarchar(max),"
 												+ ");";
-	private static final String CREATE_TB_CMP = "CREATE TABLE " + TB_NAME_CMP + " ("
-													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
-													+ "	name nvarchar(10)"
-												+ ");";
 
 	private static final String CREATE_TB_LOC = "CREATE TABLE " + TB_NAME_LOC + " ("
 													+ "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
 													+ "	company_id int,"
+													+ "	company_name nvarchar(10),"
 													+ "	name nvarchar(10),"
 													+ "	country nvarchar(10),"
 													+ "	county nvarchar(10),"
@@ -81,6 +77,9 @@ public class InitializeData {
 													+ " phone varchar(20),"
 													+ "	open_time time,"
 													+ "	close_time time,"
+													+ "	image nvarchar(max),"
+													+ "	longitude float,"
+													+ "	latitude float,"
 												+ ");";
 
 	private static final String CREATE_TB_OPT = "CREATE TABLE " + TB_NAME_OPT + " ("
@@ -95,8 +94,7 @@ public class InitializeData {
 	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String INSERT_SQL_CMP = "INSERT INTO " + TB_NAME_CMP + " VALUES (?)";
-	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL)";
 	private static final String INSERT_SQL_OPT = "INSERT INTO " + TB_NAME_OPT + " VALUES (?, ?, ?, ?, ?)";
 
 
@@ -137,8 +135,6 @@ public class InitializeData {
 				System.out.println("成功新增Table: " + TB_NAME_IMG);
 				stmt.executeUpdate(CREATE_TB_CAR);
 				System.out.println("成功新增Table: " + TB_NAME_CAR);
-				stmt.executeUpdate(CREATE_TB_CMP);
-				System.out.println("成功新增Table: " + TB_NAME_CMP);
 				stmt.executeUpdate(CREATE_TB_LOC);
 				System.out.println("成功新增Table: " + TB_NAME_LOC);
 				stmt.executeUpdate(CREATE_TB_OPT);
@@ -213,7 +209,7 @@ public class InitializeData {
 			Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(br);
 			PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL_IMG);
 			for (CSVRecord record : records) {
-				pstmt.setString(1, uploadFile(record.get(1)));
+				pstmt.setString(1, uploadFile(IMAGE_DIR, record.get(1)));
 				pstmt.setInt(2, Integer.parseInt(record.get(0)));
 				pstmt.addBatch();
 			}
@@ -226,16 +222,7 @@ public class InitializeData {
 	}
 
 
-	public static String uploadFile(String fileName) {
-		File inputFile = new File("src/main/resources/data/images/" + fileName);
-		String savePath = null;
-		try {
-			savePath = FileUploadUtil.saveFile(IMAGE_DIR, inputFile);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		return savePath;
-	}
+
 
 
 	public static void insertCarModels(Connection conn) {
@@ -256,7 +243,7 @@ public class InitializeData {
 				pstmt.setInt(9, Integer.parseInt(record.get(8)));
 				pstmt.setInt(10, Integer.parseInt(record.get(9)));
 				pstmt.setInt(11, Integer.parseInt(record.get(10)));
-				pstmt.setString(12, record.get(11));
+				pstmt.setString(12, uploadFile("car", record.get(11)));
 				pstmt.addBatch();
 			}
 				int[] data = pstmt.executeBatch();
@@ -267,26 +254,6 @@ public class InitializeData {
 		}
 
 	}
-
-	public static void insertCarCompanies(Connection conn) {
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL_CMP);
-			pstmt.setString(1, "隔尚租車");
-			pstmt.addBatch();
-			pstmt.setString(1, "隔尚租車");
-			pstmt.addBatch();
-			pstmt.setString(1, "隔尚租車");
-			pstmt.addBatch();
-			int[] data = pstmt.executeBatch();
-			pstmt.close();
-			System.out.println("成功新增" + data.length + "筆租車公司資料");
-		} catch (SQLException e) {
-			e.printStackTrace();
-
-		}
-
-	}
-
 	
 	public static void insertCarLocations(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/data/car-location.csv");
@@ -304,6 +271,8 @@ public class InitializeData {
 				pstmt.setString(7, record.get(6));
 				pstmt.setString(8, record.get(7));
 				pstmt.setString(9, record.get(8));
+				pstmt.setString(10, record.get(9));
+				pstmt.setString(11, uploadFile("car", record.get(10)));
 				pstmt.addBatch();
 			}
 				int[] data = pstmt.executeBatch();
@@ -338,6 +307,17 @@ public class InitializeData {
 
 		}
 
+	}
+	
+	public static String uploadFile(String saveDir, String fileName) {
+		File inputFile = new File("src/main/resources/data/images/" + saveDir + "/" + fileName);
+		String savePath = null;
+		try {
+			savePath = FileUploadUtil.saveFile(saveDir, inputFile);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return savePath;
 	}
 
 

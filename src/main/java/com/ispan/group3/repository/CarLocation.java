@@ -2,13 +2,12 @@ package com.ispan.group3.repository;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,9 +18,8 @@ public class CarLocation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToOne
-	@JoinColumn(name = "company_id", updatable = false)
-	private CarCompany carCompany;
+	private Integer companyId;
+	private String companyName;
 	private String name;
 	private String country;
 	private String county;
@@ -32,19 +30,21 @@ public class CarLocation {
 	private String closeTime;
 	private String longitude;
 	private String latitude;
+	private String image;
 
 	
-	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<CarOption> carOptions;
 	
 	public CarLocation() {
 		
 	}
 	
-	public CarLocation(Integer id, CarCompany carCompany, String name, String country, String county, String district,
-			String address, String phone, String openTime, String closeTime,String longitude, String latitude, List<CarOption> carOptions) {
+	public CarLocation(Integer id, Integer companyId, String companyName, String name, String country, String county, String district,
+			String address, String phone, String openTime, String closeTime,String longitude, String latitude, String image, List<CarOption> carOptions) {
 		this.id = id;
-		this.carCompany = carCompany;
+		this.companyId = companyId;
+		this.companyName = companyName;
 		this.name = name;
 		this.country = country;
 		this.county = county;
@@ -55,13 +55,15 @@ public class CarLocation {
 		this.closeTime = closeTime;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		this.image = image;
 		this.carOptions = carOptions;
 	}
 
 
-	public CarLocation(CarCompany carCompany, String name, String country, String county, String district, String address,
-			String phone, String openTime, String closeTime, String longitude, String latitude, List<CarOption> carOptions) {
-		this.carCompany = carCompany;
+	public CarLocation(Integer companyId, String companyName, String name, String country, String county, String district, String address,
+			String phone, String openTime, String closeTime, String longitude, String latitude, String image, List<CarOption> carOptions) {
+		this.companyId = companyId;
+		this.companyName = companyName;
 		this.name = name;
 		this.country = country;
 		this.county = county;
@@ -70,12 +72,16 @@ public class CarLocation {
 		this.phone = phone;
 		this.openTime = openTime;
 		this.closeTime = closeTime;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.image = image;
 		this.carOptions = carOptions;
 	}
 	
-	public CarLocation(CarCompany carCompany, String name, String country, String county, String district, String address,
-			String phone, String openTime, String closeTime, String longitude, String latitude) {
-		this.carCompany = carCompany;
+	public CarLocation(Integer companyId, String companyName, String name, String country, String county, String district, String address,
+			String phone, String openTime, String closeTime, String longitude, String latitude, String image) {
+		this.companyId = companyId;
+		this.companyName = companyName;
 		this.name = name;
 		this.country = country;
 		this.county = county;
@@ -86,6 +92,7 @@ public class CarLocation {
 		this.closeTime = closeTime;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		this.image = image;
 	}
 
 
@@ -97,12 +104,21 @@ public class CarLocation {
 		this.id = id;
 	}
 	
-	public CarCompany getCarCompany() {
-		return carCompany;
+
+	public Integer getCompanyId() {
+		return companyId;
 	}
 
-	public void setCarCompany(CarCompany carCompany) {
-		this.carCompany = carCompany;
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public String getName() {
@@ -184,6 +200,14 @@ public class CarLocation {
 
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public List<CarOption> getCarOptions() {

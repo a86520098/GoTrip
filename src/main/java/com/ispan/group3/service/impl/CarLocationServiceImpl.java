@@ -34,8 +34,8 @@ public class CarLocationServiceImpl implements CarLocationService{
 		if (carLocation.getCountry() == null) {
 			carLocation.setCountry("台灣");
 		}
-		if (carLocation.getCarCompany().getId() == null) {
-			carLocation.getCarCompany().setId(1);
+		if (carLocation.getCompanyId() == null) {
+			carLocation.getCompanyId();
 		}
 		locationRepository.save(carLocation);
 	}
