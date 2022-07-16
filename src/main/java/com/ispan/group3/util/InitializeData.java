@@ -1,15 +1,25 @@
 package com.ispan.group3.util;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
-
-import javax.sql.DataSource;
-import java.io.*;
-import java.sql.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class InitializeData {
 
@@ -93,7 +103,7 @@ public class InitializeData {
 
 
 
-<<<<<<< HEAD
+
 		// Create DB
 		try {
 			try {
@@ -107,7 +117,7 @@ public class InitializeData {
 				e.printStackTrace();
 			}
 			((SQLServerDataSource) ds).setDatabaseName(DB_NAME);
-=======
+
     @SuppressWarnings("resource")
     public static void main(String args[]) {
         DataSource ds = DBConnection.dataSource();
@@ -128,7 +138,7 @@ public class InitializeData {
             }
             ((SQLServerDataSource) ds).setDatabaseName(DB_NAME);
 
->>>>>>> 99f2db3f201c98c2884c25545b5b70a3b578a231
+
 
 			// Create Table
 			try {
