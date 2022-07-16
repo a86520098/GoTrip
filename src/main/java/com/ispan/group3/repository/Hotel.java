@@ -51,6 +51,7 @@ public class Hotel {
 	@JsonIgnore
 	private  MultipartFile productImage;//前端照片
 	
+	
 
 
 }

@@ -73,4 +73,13 @@ public class OrderController {
 //			return itemlist;
 	  
 	}
+	
+	@PostMapping("/changestatus")
+	public String changeStatus(@RequestParam Integer orderId) {
+		
+			orderService.updateOrderStatus(2, orderId);
+	
+		return "backend/order/orderList";
+		
+	}
 }

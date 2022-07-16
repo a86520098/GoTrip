@@ -25,6 +25,5 @@ public class HotelRoom {
     @JsonIgnore
     private HotelRoom Hotel;
 
-
     
 }
