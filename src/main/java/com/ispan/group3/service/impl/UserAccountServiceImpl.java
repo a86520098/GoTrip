@@ -1,9 +1,13 @@
 package com.ispan.group3.service.impl;
 
+import java.util.Collections;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -105,5 +109,13 @@ public class UserAccountServiceImpl implements UserAccountService {
 		// TODO Auto-generated method stub
 		return userAccountDao.findMemberAccountByEmail(email);
 	}
+	
+	
+//	@Override
+//    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException, NotFoundException {
+//        User user = userService.getByEmail(email);
+//
+//		return new User(user.getEmail(), user.getPassword(), Collections.emptyList());
+//    }
 
 }
