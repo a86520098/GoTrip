@@ -27,20 +27,20 @@
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/cars/locations?companyId=1}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+									<a th:href="@{/vendor/cars/locations/1}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
 										地點與車款列表
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
-										新增地點與車款
+									<a th:href="@{/vendor/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增地點
 									</a>
 								</li>
-<!-- 								<li class="bor18"> -->
-<!-- 									<a href="#" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4"> -->
-<!-- 										新增車款 -->
-<!-- 									</a> -->
-<!-- 								</li> -->
+								<li class="bor18">
+									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 p-lr-4">
+										新增車款
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -76,12 +76,10 @@
 											<td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td>
 											<td th:text="${location.carOptions.size()}"></td>
 											<td>
-												<form th:action="@{/cars/locations/form/}+${location.id}" method="get" class="inline-block">
-													<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">
-														修改
-													</button>
-												</form>
-												<form th:id="'deleteLocation' + ${location.id}" th:action="@{/backend/cars/locations/}+${location.id}"
+												<a th:href="@{/vendor/cars/locations/form/{id}(id=${location.id})}" class="px-2  btn btn-warning btn-rounded btn-sm">
+													修改
+												</a>
+												<form th:id="'deleteLocation' + ${location.id}" th:action="@{/vendor/cars/locations/}+${location.id}"
 													th:method="delete" class="inline-block">
 													<button type="button" th:value="${location.id}" class="px-2 btn btn-delete btn-info btn-rounded btn-sm">
 														刪除
@@ -95,92 +93,6 @@
 						</div>
 					</div>
 				</div>
-				
-				
-<!-- 				<div class="col-md-9 grid-margin my-5 pl-5"> -->
-<!-- 					<div class="card"> -->
-<!-- 						<div class="card-body "> -->
-<!-- 							<h4 class="card-title font-weight-bold">租車據點</h4> -->
-<!-- 							<form id="insertForm" name="form" th:action="@{/cars/locations}" method="post" th:object="${carLocation}" -->
-<!-- 								  class="form-horizontal needs-validation" enctype="multipart/form-data"> -->
-								  
-<!-- 								<p class="card-description mt-4">據點資料</p> -->
-<!-- 								<input th:field="*{id}" id="number" type="hidden"/> -->
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-1"></div> -->
-<!-- 									<input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder="" /> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="name">據點名稱</label> -->
-<!-- 									<div class="col-lg-6"> -->
-<!-- 										<input th:field="*{name}" id="name" type="text" class="form-control" /> -->
-<!-- 										<div class="invalid-feedback">請輸入據點名稱</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-								
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-1"></div> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="county">縣市行政區</label> -->
-<!-- 									<div class="col-lg-6"> -->
-<!-- 										<div class="city-selector-set row" > -->
-<!-- 											<div class="col-4 pr-0"> -->
-<!-- 												<p id="county" th:text="*{county}" hidden="true"></p> -->
-<!-- 												<select class="form-control county" style="background-color: white" th:field="*{county}"></select> -->
-<!-- 											</div> -->
-<!-- 											<div class="col-4 pr-0"> -->
-<!-- 												<p id="district" th:text="*{district}" hidden="true"></p> -->
-<!-- 												<select class="form-control district" style="background-color: white" th:field="*{district}"></select> -->
-<!-- 											</div> -->
-<!-- 											<div class="col-4"> -->
-<!-- 												<input class="zipcode form-control" type="text" size="3" readonly placeholder="郵遞區號"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="invalid-feedback">請選擇車款類別</div> -->
-<!-- 								</div> -->
-								
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-1"></div> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="address">地址</label> -->
-<!-- 									<div class="col-lg-6"> -->
-<!-- 										<input th:field="*{address}" id="address" type="text" class="form-control" /> -->
-<!-- 										<div class="invalid-feedback">請輸入地址</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-								
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-1"></div> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="phone">連絡電話</label> -->
-<!-- 									<div class="col-lg-6"> -->
-<!-- 										<input th:field="*{phone}" id="phone" type="text" class="form-control" placeholder="02-1234-5678"/> -->
-<!-- 										<div class="invalid-feedback">請輸入正確的電話格式</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-1"></div> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="">營業時間</label> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="openTime">開始營業</label> -->
-<!-- 									<div class="col-lg-4 mr-5"> -->
-<!-- 										<input th:field="*{openTime}" id="openTime" type="datetime" class="form-control"/> -->
-<!-- 										<div class="invalid-feedback">請輸入營業時間</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-3"></div> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="closeTime">結束營業</label> -->
-<!-- 									<div class="col-lg-4"> -->
-<!-- 										<input th:field="*{closeTime}" id="closeTime" type="text" class="form-control"/> -->
-<!-- 										<div class="invalid-feedback">請輸入營業時間</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-								
-<!-- 								<div class="d-flex justify-content-end"> -->
-<!-- 									<button id="btn-insert" type="submit" class="btn btn-warning mr-2 justify-content-end mr-4"> -->
-<!-- 										儲存資料 -->
-<!-- 									</button> -->
-<!-- 								</div> -->
-<!-- 							</form> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
 			</div>
 		</div>
 	</div>

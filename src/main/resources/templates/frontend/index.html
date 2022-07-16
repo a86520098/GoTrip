@@ -721,7 +721,7 @@
 
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l">
-								<a href="tohotelDetail"
+								<a th:href="@{/goGoogleMap}"
 									class="fs-17 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-6">
 									大溪威斯汀度假酒店
 								</a>
@@ -1236,6 +1236,8 @@
 	<div th:replace="frontend/partials/fragment :: toTop"></div>
 	<!-- Modal1 -->
 	<div th:replace="frontend/partials/fragment :: modal1"></div>
+<!-- 	<!-- loginModal --> -->
+<!-- 	<div th:replace="frontend/login :: loginModal"></div> -->
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
 	<script>

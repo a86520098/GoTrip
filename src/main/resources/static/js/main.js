@@ -276,7 +276,16 @@
     $('.js-hide-modal1').on('click',function(){
         $('.js-modal1').removeClass('show-modal1');
     });
+    /*==================================================================
+    [ Show loginModal ]*/
+    $('.js-show-loginModal').on('click',function(e){
+        e.preventDefault();
+        $('.js-loginModal').addClass('show-loginModal');
+    });
 
+    $('.js-hide-loginModal').on('click',function(){
+        $('.js-loginModal').removeClass('show-loginModal');
+    });
 
 
 })(jQuery);

@@ -1,18 +1,15 @@
 //package com.ispan.group3.config;
 //
-//import java.time.LocalTime;
+//import java.util.ArrayList;
+//import java.util.List;
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.CommandLineRunner;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
 //
-//import com.ispan.group3.repository.CarLocation;
-//import com.ispan.group3.repository.CarModel;
-//import com.ispan.group3.repository.CarOption;
-//import com.ispan.group3.service.CarLocationService;
-//import com.ispan.group3.service.CarModelService;
-//import com.ispan.group3.service.CarOptionService;
+//import com.ispan.group3.repository.CarCompany;
+//import com.ispan.group3.repository.CarCompanyRepository;
 //
 //@Configuration
 //public class CarConfig {
@@ -20,6 +17,7 @@
 //	private final CarLocationService locationService;
 //	private final CarModelService modelService;
 //	private final CarOptionService optionService;
+//	private final CarCompanyRepository companyRepository;
 //	
 //	@Autowired
 //	public CarConfig(CarLocationService locationService, CarModelService modelService, CarOptionService optionService) {
@@ -27,6 +25,26 @@
 //		this.modelService = modelService;
 //		this.optionService = optionService;
 //	}
+//	
+//	@Autowired
+//	public CarConfig(CarCompanyRepository companyRepository) {
+//		this.companyRepository = companyRepository;
+//	}
+//	
+//	@Bean
+//	CommandLineRunner carCompanyRunner() {
+//		return args -> {
+//			List<CarCompany> companies = new ArrayList<>();
+//			CarCompany company1 = new CarCompany("隔尚租車");
+//			companies.add(company1);
+//			CarCompany company2 = new CarCompany("合韻租車");
+//			companies.add(company2);
+//			CarCompany company3 = new CarCompany("安為思租車");
+//			companies.add(company3);
+//			companyRepository.saveAll(companies);
+//		};
+//	}
+//	
 //
 //	@Bean
 //	CommandLineRunner carLocationRunner() {

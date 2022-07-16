@@ -45,15 +45,15 @@ public class TicketController {
 //		if (ticketNo != null) {
 //			ticket = TicketService.getBookById(ticketNo);
 //		} else {
-//			ticket = new Ticket();			
+//			ticket = new Ticket();
 //		}
 //		model.addAttribute("ticket", ticket);
 //		return "backend/ticketInput";
 //	}
-	
+
 	/**
 	 * 獲取列表
-	 * @PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC, value = 50)
+	 *
 	 * @param model
 	 * @return
 	 */
@@ -61,50 +61,40 @@ public class TicketController {
 	// 這就是引入Thymeleaf模版(pom.xml要註冊)
 	// @PageableDefault : 針對分頁傳參數; sort ={"id"}排序
 	@GetMapping("/ticketList")
-	public String list(@PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC, value = 50)Pageable pageable,
+	public String list(@PageableDefault(sort = { "ticketNo" }, direction = Sort.Direction.DESC) Pageable pageable,
 			Model model) {
-
 		Page<Ticket> page1 = ticketService.findAllByPage(pageable);
-		// StringBuilder sbOpen_week = new StringBuilder();
-		// Map<String, String> weekNameMap = new HashMap<String, String>();
-		// weekNameMap.put("1", "星期一");
-		// weekNameMap.put("2", "星期二");
-		// weekNameMap.put("3", "星期三");
-		// weekNameMap.put("4", "星期四");
-		// weekNameMap.put("5", "星期五");
-		// weekNameMap.put("6", "星期六");
-		// weekNameMap.put("7", "星期日");
+		StringBuilder sbOpen_week = new StringBuilder();
+		Map<String, String> weekNameMap = new HashMap<String, String>();
+		weekNameMap.put("1", "星期一");
+		weekNameMap.put("2", "星期二");
+		weekNameMap.put("3", "星期三");
+		weekNameMap.put("4", "星期四");
+		weekNameMap.put("5", "星期五");
+		weekNameMap.put("6", "星期六");
+		weekNameMap.put("7", "星期日");
 
-		// for (Ticket Ticket : page1) { // 每筆record
-		// 	String Open_weekStr = Ticket.getTicketOpenWeek() == null ? "" : Ticket.getTicketOpenWeek();
-		// 	String[] Open_weekArr = Open_weekStr.split(",");
-		// 	for (String TicketOpenWeek : Open_weekArr) {
-		// 		if ("".equals(TicketOpenWeek)) {
-		// 			break;
-		// 		}
-		// 		sbOpen_week.append(weekNameMap.get(TicketOpenWeek));
-		// 		sbOpen_week.append(",");
-		// 	}
-		// 	String TicketOpenWeek = sbOpen_week.length() > 0 ? sbOpen_week.substring(0, sbOpen_week.length() - 1) : "";
-		// 	Ticket.setTicketOpenWeek(TicketOpenWeek);
-		// 	sbOpen_week.setLength(0);
-		// }
-//		for (Ticket Ticket : page1) { // 每筆record
-//			String TicketIntro= Ticket.getTicketIntro();
-//			if(TicketIntro==null) {
-//				TicketIntro = "  ";
-//			}
-//			int Lastindex = TicketIntro.length() > 20 ? 19: TicketIntro.length()-1;
-//			System.err.println("Lastindex->"+Lastindex);
-//			Ticket.setTicketIntro(TicketIntro.substring(0, Lastindex ));
-//		}
+		for (Ticket Ticket : page1) { // 每筆record
+			String Open_weekStr = Ticket.getTicketOpenWeek() == null ? "" : Ticket.getTicketOpenWeek();
+			String[] Open_weekArr = Open_weekStr.split(",");
+			for (String TicketOpenWeek : Open_weekArr) {
+				if ("".equals(TicketOpenWeek)) {
+					break;
+				}
+				sbOpen_week.append(weekNameMap.get(TicketOpenWeek));
+				sbOpen_week.append(",");
+			}
+			String TicketOpenWeek = sbOpen_week.length() > 0 ? sbOpen_week.substring(0, sbOpen_week.length() - 1) : "";
+			Ticket.setTicketOpenWeek(TicketOpenWeek);
+			sbOpen_week.setLength(0);
+		}
 		model.addAttribute("page", page1);
 		return "backend/ticketList";
 	}
 
 	/**
 	 * 獲取書單單筆資料
-	 * 
+	 *
 	 * @param id
 	 * @param model
 	 * @return
@@ -124,7 +114,7 @@ public class TicketController {
 
 	/**
 	 * 跳轉input提交頁面
-	 * 
+	 *
 	 * @return
 	 */
 	@GetMapping("/ticketList/ticketInput")
@@ -135,7 +125,7 @@ public class TicketController {
 
 	/**
 	 * 跳轉到更新頁面
-	 * 
+	 *
 	 * @param id
 	 * @param model
 	 * @return
@@ -154,26 +144,24 @@ public class TicketController {
 
 	/**
 	 * 提交一個書單資料 或是一筆一筆@RequestParam加資料進去
-	 * 
+	 *
 	 * @param book
 	 * @return
 	 */
 	/**
 	 * Post ---> redirect ---> Get RedirectAttributes 跨過 redirect步驟
-	 * 
+	 *
 	 * @param Ticket
 	 * @param model
 	 * @return
 	 */
 	@PostMapping("/ticketList")
-	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
-			@RequestParam("imagefiles") List<MultipartFile> files) {
-		
+	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes,
+			@RequestParam("image") MultipartFile file) {
+
 		 try {
-			 System.err.println("ticket"+ticket.toString());
-			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
 		 	Set<TicketImage> images = new HashSet<>();
-		 	for (MultipartFile file : files) {
+//		 	for (MultipartFile file : files) {
 		 		try {
 		 			String savePath = FileUploadUtil.saveFile("ticket", file);
 		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
@@ -183,12 +171,12 @@ public class TicketController {
 		 		}
 //		 	}
 		 	ticket.setImages(images);
-			ticketService.save(ticket);
-		 	}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// ticketService.save(ticket);
+//			 ticketService.save(ticket);
+
+			 } catch (Exception e) {
+				 	e.printStackTrace();
+				 }
+				ticketService.save(ticket);
 		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
 
 		// List<Book> books = bookService.findAll();
@@ -196,8 +184,6 @@ public class TicketController {
 		// return "books";
 		return "redirect:/ticketList";
 	}
-	
-
 
 	@GetMapping("/ticketList/{ticketNo}/delete")
 	public String delete(@PathVariable long ticketNo, final RedirectAttributes attributes) {
@@ -205,47 +191,32 @@ public class TicketController {
 		attributes.addFlashAttribute("message", "信息刪除成功");
 		return "redirect:/ticketList";
 	}
-	
-	
+
+
 	@GetMapping("/api/tickets")
 	@ResponseBody
 	public List<Ticket> findTickets() {
 		return ticketService.findAll();
 	}
-	
+
 	@GetMapping("/api/tickets/{id}")
 	@ResponseBody
 	public Ticket jsonFindById(@PathVariable Integer id) {
 		return ticketService.findById(id).get();
 	}
-}
-//	@PostMapping("/ticketList")
-//	public String post(@ModelAttribute Ticket ticket, final RedirectAttributes attributes, 
-//			@RequestParam("image") MultipartFile files) {
-	
-//		 try {
-//			 System.err.println("ticket"+ticket.toString());
-//			 System.err.println("TicketIntro->"+ticket.getTicketIntro());
-//		 	Set<TicketImage> images = new HashSet<>();
-////		 	for (MultipartFile file : files) {
-//		 		try {
-//		 			String savePath = FileUploadUtil.saveFile("ticket", files);
-//		 			TicketImage ticketImage = new TicketImage(savePath, ticket);
-//		 			images.add(ticketImage);
-//		 		} catch (IOException e) {
-//		 			e.printStackTrace();
-//		 		}
-////		 	}
-//		 	ticket.setImages(images);
-//			ticketService.save(ticket);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		// ticketService.save(ticket);
-//		attributes.addFlashAttribute("message", "《" + ticket.getTicketName() + "》信息提交成功");
 
-//		// List<Book> books = bookService.findAll();
-//		// model.addAttribute("books", books);
-//		// return "books";
-//		return "redirect:/ticketList";
-//	}
+
+
+}
+
+// /**
+// * 讀取讀書清單列表
+// * 排序上有問題
+// * 從BookApp.java抓來的
+// * @return
+// */
+// @GetMapping("/books")
+// public Page<Book> getAll(@PageableDefault(size = 5, sort ={"ticketNo"},
+// direction = Sort.Direction.DESC) Pageable pageable) {
+// return bookService.findAllByPage(pageable);
+// }

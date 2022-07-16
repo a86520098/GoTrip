@@ -1,3 +1,8 @@
+
+
+
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoibHlubjgxMTExMiIsImEiOiJjbDFha2phZ28yN2tqM2RwMzZ4YncycHl5In0.QtgMdcDbNV24FrpgU4sHCw';
 const map = new mapboxgl.Map({
 	container: 'map',
@@ -173,8 +178,8 @@ map.on('load', () => {
 	// the unclustered-point layer, open a popup at
 	// the location of the feature, with
 	// description HTML from its properties.
-	map.on('click', 'unclustered-point', (e) => {
-		const { popUpMarkup } = e.features[0].properties.title;
+	map.on('mouseenter', 'unclustered-point', (e) => {
+		const popUpMarkup = e.features[0].properties.title;
 		const coordinates = e.features[0].geometry.coordinates.slice();
 		// Ensure that if the map is zoomed out such that
 		// multiple copies of the feature are visible, the

@@ -19,6 +19,7 @@ import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.CarOption;
 import com.ispan.group3.service.CarLocationService;
 import com.ispan.group3.service.CarModelService;
+import com.ispan.group3.service.CarOptionService;
 import com.ispan.group3.util.FileUploadUtil;
 
 @Controller
@@ -26,11 +27,13 @@ public class CarController {
 
 	private final CarModelService modelService;
 	private final CarLocationService locationService;
+	private final CarOptionService optionService;
 
 	@Autowired
-	public CarController(CarModelService modelService, CarLocationService locationService) {
+	public CarController(CarModelService modelService, CarLocationService locationService, CarOptionService optionService) {
 		this.modelService = modelService;
 		this.locationService = locationService;
+		this.optionService = optionService;
 	}
 
 	// ======== 後台管理系統 ========
@@ -103,10 +106,10 @@ public class CarController {
 	}
 
 	// ---------- 車款頁面 ----------
-	@GetMapping("/cars/{locationId}/{optionId}")
+	@GetMapping("/cars/options/{id}")
 	public String findById(@PathVariable Integer id, Model model) {
-		CarModel carModel = modelService.findById(id);
-		model.addAttribute("car", carModel);
+		CarOption carOption = optionService.findById(id);
+		model.addAttribute("option", carOption);
 		return "frontend/car/car-detail";
 	}
 
@@ -135,15 +138,11 @@ public class CarController {
 	
 	// ---------- 儲存地點 ----------
 	@PostMapping("/vendor/cars/locations")
-	public String save(@ModelAttribute CarLocation carLocation) {
-		List<CarOption> carOptions = locationService.findById(carLocation.getId()).getCarOptions();
-		carLocation.setCarOptions(carOptions);
-		Integer id = carLocation.getId();
+	public String save(@ModelAttribute CarLocation carLocation, @RequestParam String closeTime, @RequestParam String openTime) {
+		carLocation.setCloseTime(closeTime);
+		carLocation.setOpenTime(openTime);
 		locationService.save(carLocation);
-		if (id != null) {
-			return "redirect:/vendor/cars/options/form/" + id;
-		}
-		return "redirect:/vendor/cars/options/form";
+		return "redirect:/vendor/cars/options/form/" + carLocation.getId();
 	}
 	
 	// ---------- 方案表單 ----------
@@ -156,6 +155,19 @@ public class CarController {
 		model.addAttribute("carLocation", carLocation);
 		return "frontend/car/vendor-opt-form";
 	}
+	
+	// ---------- 儲存選項 ----------
+	@PostMapping("/vendor/cars/options")
+	public String saveOpt(@ModelAttribute CarLocation carLocation) {
+		List<CarOption> carOptions = carLocation.getCarOptions();
+		for (CarOption option: carOptions) {
+			System.out.println(option.getId());
+			System.out.println(option.getDiscount());
+			optionService.save(option);
+		}
+		return "redirect:/vendor/cars/locations/" + carLocation.getId();
+	}
+	
 	
 	// ---------- 刪除車款 ----------
 	@DeleteMapping("/vendor/cars/locations/{id}")

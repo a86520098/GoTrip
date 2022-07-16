@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="Existing Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+  <script type="application/x-javascript">addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }</script>
+        <!-- //Meta-Tags -->
+  <link rel="stylesheet" th:href="@{/css/loginCSS/popuo-box.css}"/>
+        <!-- Style -->
+  <link rel="stylesheet" th:href="@{/css/loginCSS/style.css}"/>
+  
+  <title>GoTrip Login</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}">
+  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}">
+  <link rel="stylesheet" th:href="@{/vendors/css/vendor.bundle.base.css}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}">
+  <!-- endinject -->
+  <link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+</head>
+
+<body>
+<!--       <main> -->
+<!--         <h1>會員登入</h1> -->
+<!--         <form id=loginForm method="POST" th:action="@{/login}" th:Object="${userAccount}" enctype="multipart/form-data" autocomplete="off"> -->
+<!--         	<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/> -->
+<!--             <section class="form-input"> -->
+<!--                 <label>帳號/Email</label> -->
+<!--                 <div class="input-area"> -->
+<!--                     <div class="input-img"><img th:src="@{/images/userAccount/person.png}"></div> -->
+<!--                     <input type="text" th:field="*{email}" placeholder="請輸入您的Email"/> -->
+<!--                 </div> -->
+<!--             </section> -->
+<!--             <section class="form-input"> -->
+<!--                 <label>密碼</label> -->
+<!--                 <div class="input-area"> -->
+<!--                     <div class="input-img"><img th:src="@{/images/userAccount/lock.png}"></div> -->
+<!--                     <input type="password" th:field="*{password}" maxlength="16" placeholder="請輸入您的密碼"/> -->
+<!--                 </div> -->
+<!--             </section> -->
+<!--             <button>登入</button> -->
+<!--             <span>還不是會員嗎?<a th:href="@{/register}">立即加入</a></span> -->
+<!--         </form> -->
+<!--     </main> -->
+
+<div th:fragment="loginModal" class="wrap-loginModal js-loginModal p-t-20 p-b-20 agile_main_grid">
+<form id=loginForm method="POST" th:action="@{/login}" th:Object="${userAccount}" enctype="multipart/form-data" autocomplete="off">
+    <input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/>
+    <div class="overlay-loginModal js-hide-loginModal w3_agile_main_left"></div>
+    <div class="container w3l_main_grid1_w3ls_grid">
+        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+
+      <div class="w3_agile_main_left_grid_w3_agileits">
+        <h2 class="modal-title" id="exampleModalLabel">登入GoTrip</h2>
+      		</div>
+      			<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/>
+            <section class="form-input">
+                <label>帳號/Email</label>
+                <div class="input-area">
+                    <i><img th:src="@{/images/userAccount/person.png}"></i>
+                    <input type="text" id="email" name="email" placeholder="請輸入您的Email"/>
+                </div>
+            </section>
+            <section class="form-input">
+                <label>密碼</label>
+                <div class="input-area">
+                <i><img th:src="@{/images/userAccount/lock.png}"></i>
+                    <input type="password" id="password" name="password" maxlength="16" placeholder="請輸入您的密碼"/>
+                </div>
+            </section>
+            <button>登入</button>
+            <span>還不是會員嗎?<a th:href="@{/register}">立即加入</a></span>
+        </div>
+    </div>
+    </form>
+</div>
+
+
+
+<!-- <div th:fragment="loginModal" class="wrap-loginModal js-loginModal agile_main_grid p-t-20 p-b-20"> -->
+<!--                 <div class="overlay-loginModal js-hide-loginModal w3_agile_main_left"> -->
+<!--                     <div class="container w3l_main_grid1_w3ls_grid"> -->
+<!--                         <h3>登录</h3> -->
+<!--                         <div class="w3_agile_main_left_grid_w3_agileits"> -->
+<!--                             <form id=loginForm method="POST" th:action="@{/login}" th:Object="${userAccount}" enctype="multipart/form-data" autocomplete="off"> -->
+<!--     							<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/> -->
+<!--                                 <div class="agileits_w3layouts_user"> -->
+<!--                                     <i class="fa fa-user" aria-hidden="true"></i> -->
+<!--                                     <input type="text" name="Name" placeholder="用户名" required=""> -->
+<!--                                 </div> -->
+<!--                                 <div class="agileits_w3layouts_user"> -->
+<!--                                     <i class="fa fa-key" aria-hidden="true"> -->
+<!--                                     </i><input type="password" name="Password" placeholder="密码" required=""> -->
+<!--                                 </div> -->
+<!--                                 <div class="agile_remember"> -->
+<!--                                     <div class="agile_remember_left"> -->
+<!--                                         <div class="check"> -->
+<!--                                             <label class="checkbox"> -->
+<!--                                                 <input type="checkbox" name="checkbox"> -->
+<!--                                                 <i></i>记住</label> -->
+<!--                                         </div> -->
+<!--                                     </div> -->
+<!--                                     <div class="agile_remember_right"> -->
+<!--                                         <a href="#">忘记密码?</a> -->
+<!--                                     </div> -->
+<!--                                     <div class="clear"> -->
+<!--                                     </div> -->
+<!--                                 </div> -->
+                                
+<!--                                 <input type="submit" value="Sign In"> -->
+<!--                                 <h4>第三方账号</h4> -->
+<!--                                 <div class="wthree_social_icons"> -->
+<!--                                     <ul> -->
+<!--                                         <li><a href="#" class="w3_agile_facebook"> -->
+<!--                                             <i class="fa fa-facebook" aria-hidden="true"></i></a> -->
+<!--                                         </li><li><a href="#" class="agile_twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li><li><a href="#" class="w3_agile_dribble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li><li><a href="#" class="w3_agile_vimeo"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li> -->
+                                    
+<!--                                     </ul> -->
+<!--                                 </div> -->
+<!--                                 <h5>还没有账号? <a href="#">注册</a> -->
+<!--                                 </h5> -->
+<!--                                 </form> -->
+<!--                   </div> -->
+<!--           </div> -->
+<!--      </div> -->
+<!--  </div> -->
+              
+
+
+
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
+<!--   <script src="/lib/jquery.min.js"></script> -->
+<!--   <script src="/lib/jquery.plugin.js"></script> -->
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+<!--   <script th:src="@{/js/jquery-3.6.0.js}"></script> -->
+  <script th:src="@{/js/off-canvas.js}"></script>
+  <script th:src="@{/js/hoverable-collapse.js}"></script>
+  <script th:src="@{/js/template.js}"></script>
+  <script th:src="@{/js/settings.js}"></script>
+  <script th:src="@{/js/todolist.js}"></script>
+  <script th:src="@{/js/loginJS/lib/jquery-3.4.1.js}"></script>
+  <script th:src="@{/js/loginJS/common.js}"></script>
+  <script th:src="@{/js/loginJS/validation.js}"></script>
+  <script th:src="@{/js/loginJS/login.js}"></script>
+
+  <!-- endinject -->
+</body>
+
+
+
+
+
+
+<!-- <head> -->
+<!--     <meta charset="UTF-8"> -->
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<!--     <title>會員登入</title> -->
+<!--     <head th:insert="load/css :: css"></head> -->
+<!--     <link rel="stylesheet" th:href="@{/css/login.css}"> -->
+<!-- </head> -->
+<!-- <body> -->
+<!--     <main> -->
+<!--         <h1>會員登入</h1> -->
+<!--         <form id=loginForm method="POST" th:action="@{/login}" th:Object="${userAccount}" enctype="multipart/form-data" autocomplete="off"> -->
+<!--         	<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/> -->
+<!--             <section class="form-input"> -->
+<!--                 <label>帳號/Email</label> -->
+<!--                 <div class="input-area"> -->
+<!--                     <div class="input-img"><img th:src="@{/images/userAccount/person.png}"></div> -->
+<!--                     <input type="text" th:field="*{email}" placeholder="請輸入您的Email"/> -->
+<!--                 </div> -->
+<!--             </section> -->
+<!--             <section class="form-input"> -->
+<!--                 <label>密碼</label> -->
+<!--                 <div class="input-area"> -->
+<!--                     <div class="input-img"><img th:src="@{/images/userAccount/lock.png}"></div> -->
+<!--                     <input type="password" th:field="*{password}" maxlength="16" placeholder="請輸入您的密碼"/> -->
+<!--                 </div> -->
+<!--             </section> -->
+<!--             <button>登入</button> -->
+<!--             <span>還不是會員嗎?<a th:href="@{/register}">立即加入</a></span> -->
+<!--         </form> -->
+<!--     </main> -->
+
+<!--     <script th:replace="load/js :: js"></script> -->
+<!--     <script th:src="@{/js/login.js}"></script> -->
+<!-- </body> -->
+
+</html>

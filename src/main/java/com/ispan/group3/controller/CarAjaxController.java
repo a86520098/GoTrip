@@ -1,6 +1,9 @@
 package com.ispan.group3.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.Gson;
 import com.ispan.group3.repository.CarLocation;
 import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.service.CarLocationService;
@@ -41,5 +45,22 @@ public class CarAjaxController {
 		return locationService.findAll();
 	}
 	
+	@GetMapping("/cars/locations/geojson")
+	public void findAllGeos() {
+		List<CarLocation> locations = locationService.findAll();
+		Map<String, String[]> coordinates = new HashMap<>();
+		String[] coordinatesValue = new String[2];
+		List<Map> coordinatess = new ArrayList<Map>();
+		for (CarLocation location : locations) {
+			coordinatesValue[0] = location.getName();
+			coordinatesValue[1] = location.getDistrict();
+			coordinates.put("coordinates", coordinatesValue);
+			coordinatess.add(coordinates);
+		}
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(coordinatess);
+		System.out.println(json);
+	}
 	
 }
