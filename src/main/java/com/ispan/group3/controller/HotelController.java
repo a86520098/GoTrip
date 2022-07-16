@@ -25,6 +25,7 @@ public class HotelController {
     HotelService hotelService;
     ServletContext context;
 
+
     @Autowired
     public HotelController(HotelService hotelService, ServletContext context) {
         this.hotelService = hotelService;
@@ -48,11 +49,12 @@ public class HotelController {
     }
 
     @PostMapping(value = "/addHotel")
-    public String insert(
-            @ModelAttribute("hotel") Hotel hotels, BindingResult result) {
+    public String insert(@ModelAttribute("hotel") Hotel hotels, BindingResult result) {
         System.out.println("準備新增接收資料了");
         MultipartFile picture = hotels.getProductImage();
         String originalFilename = picture.getOriginalFilename();
+
+
         if (originalFilename.length() > 0 && originalFilename.lastIndexOf(".") > -1) {
             hotels.setFileName(originalFilename);
         }
@@ -190,6 +192,9 @@ public class HotelController {
         return "backend/hotel/intoPicture";
     }
 
+
+//    以上後端
+
     @GetMapping("/tohotelDetail")
     public String toHotelDetail(@RequestParam("id") Integer id, Model m) {
         m.addAttribute("roomDetail", hotelService.findById(id));
@@ -228,4 +233,10 @@ public class HotelController {
     }
 
 
+    @GetMapping("/showFHotelNew")
+    public String toHotelNewF(Model m) {
+        m.addAttribute("hotel", new Hotel());
+        System.out.println("going to front hotelNew page");
+        return "/frontend/hotelAddNewF";
+    }
 }

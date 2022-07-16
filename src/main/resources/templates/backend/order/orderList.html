@@ -76,12 +76,11 @@
                       			<span th:case="1">已付款</span>     
                       			<span th:case="2">已完成</span>     
                       			</td>
-                      		<td><a th:href="@{'/order/edit/' + ${orderBean.orderNo}}">
-                      		<button type="button" class="btn btn-success">詳細</button></a></td>	
+                      		<td>
+                      		<button type="button" th:value="${orderBean.orderNo}" class="btn btn-success btn-detail">詳細</button></td>	
                       		<td><button type="button" class="btn btn-danger btn-delete"
                       		th:onclick="deletelert([[${orderBean.orderNo}]])" th:if="${orderBean.status == 0}">刪除</button></td>
                         </tr>
-                      
                       </tbody>
                     			</table>
                     		</div>
@@ -157,7 +156,75 @@
 	            }
 	          })
 	        }
-	  
+	  	$('.btn-detail').on('click', function() {
+	  		var	orderId = $(this).attr('value');
+	  		console.log(orderId);
+	  		$.ajax({
+	  			type:'post',
+	  			url:'/gotrip/order/getSingleOrder',
+	  			datatype:'josn',
+	  			data:{
+	  				orderId:orderId
+	  			},
+	  			success: function(data){
+	  				
+	  			
+	  				console.log(data);
+	  				
+	  				html = '<table class="table table-bordered">' +
+	  				    	'<thead>' +
+		  				    '<tr>' +
+		  				    '<th scope="col">商品編號</th>>' +
+		  				    '<th scope="col">類別</th>>' +
+		  				    '<th scope="col">品項</th>>' +
+		  				    '<th scope="col">單價</th>>' +
+		  				    '<th scope="col">數量</th>>' +
+		  				    '<th scope="col">總價</th>>' +
+		  				    '</tr>' +
+		  				    '</thead>' +
+		  					 '<tbody>';
+		  			$.each(data.items, function(i) {
+		  			let category;	
+		  			if(data.items[i].type == "ticket"){
+		  				category = '票券'
+		  			}else if(data.items[i].type == "hotel"){
+		  				category = '住宿'
+		  			}else if(data.items[i].type == "car"){
+		  				category = '租車'
+		  			}
+	  				html += '<tr>' +
+	  						'<td>' + data.items[i].itemNo + '</td>' +
+	  						'<td>' + category + '</td>' +
+	  						'<td>' + data.items[i].itemInfo + '</td>' +
+	  						'<td>' + data.items[i].unitPrice + '</td>' +
+	  						'<td>' + data.items[i].quantity + '</td>' +
+	  						'<td>' + data.items[i].unitPrice * data.items[i].quantity + '</td>' +
+	  						'</tr>';
+		  			});
+		  			html += '</tbody>' +
+  							'</table>';	
+	  				Swal.fire({
+	
+	  				  html:html,
+	  				  
+	  				   
+	  				})
+	  			}, 
+				error: function(jqXHR,textStatus,errorThrown) {
+					console.log(jqXHR);
+					console.log(textStatus); 
+					console.log(errorThrown);
+				}
+	  			
+	  			
+	  			
+	  		});
+	  	
+	  		
+	  		
+	  	});
+	     
+	     
 	</script>	
 </body>
 

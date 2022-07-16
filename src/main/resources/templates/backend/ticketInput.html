@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GoTrip 後臺系統</title>
-  <!-- 本頁面使用css樣式 Plugin css for this page -->
-  <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
-  <!-- 通用css樣式 plugins:css -->
-  <link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css" >
-  <link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css" >
-  <link rel="shortcut icon" href="images/favicon.png" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoTrip後台管理</title>
+<!-- 通用css樣式 plugins:css -->
+<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css">
+<link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css">
+<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+<!-- 本頁面使用css樣式 Plugin css for this page -->
+<link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+<link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
+<!-- TABLE -->
+<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap.min.table.css}">
+<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jstable.css}">
+
+<!-- Place favicon.ico in the root directory -->
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" th:href="@{/css/ticketTableStyle/main.css}">
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/2.2.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/ticketTableStyle/bootstrap-datetimepicker.min.css}">
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 
 <!-- Time 時鐘 -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/ticketTableStyle/mdtimepicker-theme.css}" href="../../static/css/ticketTableStyle/mdtimepicker-theme.css">
 <!-- <link rel="stylesheet" th:href="@{/css/tickeTableStyle/bootstrap-datetimepicker.min.css}"> -->
 <link rel="stylesheet" type="text/css" th:href="@{/css/ticketTableStyle/mdtimepicker.css}" href="../../static/css/ticketTableStyle/mdtimepicker.css">
-  
-  <style type="text/css">
-  #eyes{
-  	height:auto;
-  	width:50px;
-  }
-  .img-com {
+<!-- <link rel="stylesheet" type="text/css" href="assets/css/mdtimepicker.css"> -->
+
+<style type="text/css">
+.img-com {
 	object-fit: cover;
 	width: 70px;
 	height: 70px;
@@ -38,14 +45,12 @@
 	border: 1px solid #D4D4D4;
 	/* background-color: #F3F3F3; */
 }
-  </style>
+</style>
 </head>
 
 <body>
 	<div class="container-scroller">
-  
 		<nav th:replace="backend/partials/fragment :: navbar"></nav>
-		
 		<div class="container-fluid page-body-wrapper">
 		
 		  <div th:replace="backend/partials/fragment :: setting"></div>
@@ -154,7 +159,7 @@
 								<label class="col-sm-3 col-form-label" for="tagNoId">標籤編號</label>
 								<div class="col-sm-9">
 								  <select id="sel2" type="text" class="form-control"  th:field="*{tagNo}" readonly> 
-									<option value="0">請選擇</option>
+									<!-- <option value="0">請選擇</option> -->
 									  <!-- <option value="1">1</option>
 									  <option value="2">2</option>
 									  <option value="3">3</option>
@@ -229,7 +234,7 @@
 								<div class="form-group row">
 									<label class="col-sm-3 col-form-label" for="images">上傳照片</label>
 									<div class="col-sm-9">
-										<input id="imagefiles" type="file" class="form-control custom-file-input pb-1" name="imagefiles" multiple/>
+										<input id="images" type="file" class="form-control custom-file-input pb-1" name="images" multiple/>
 										<label class="custom-file-label">選擇檔案</label>
 										<!-- <input id="nameId" type="text" class="form-control" name="ticketName" th:field="*{ticketName}" /> -->
 									</div>
@@ -298,55 +303,54 @@
 						</p>
 					  </form>
 					</div>
-				  </div>
 				</div>
-			  </div>
+				<!-- Footer -->
+				<footer th:replace="backend/partials/fragment :: footer"></footer>
+				<!-- partial -->
 			</div>
-			<footer th:replace="backend/partials/fragment :: footer"></footer>
-		 </div>
 		</div>
 	</div>
-	
+	<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+	<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+	<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+	<script th:src="@{/js/template.js}" src="js/template.js"></script>
+	<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
 
-  <script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
-  <script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
-  <script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
-  <script th:src="@{/js/template.js}" src="js/template.js"></script>
-  <script th:src="@{/js/settings.js}" src="js/settings.js"></script>
-  
-  <script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
-  <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-  <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
-  <script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
-  
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
+	<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+	<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+	<script th:src="@{/js/dashboard-comment.js}" src="js/dashboard-comment.js"></script>
+	<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+	<!--   <script th:src="@{//cdn.jsdelivr.net/npm/sweetalert2@11}" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
-<script th:src="@{/js/ticketTableJS/bootstrap.min.js}" src="../../static/js/ticketTableJS/bootstrap.min.js"></script>
-<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="../../static/vendors/js/vendor.bundle.base.js"></script>
-<!-- <script src="../static/js/jstable.min.js"></script> -->
-<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- 跟bootstrap一樣，固定src位置 th:src="@{/js/bootstrap.min.js}" -->
+	<script th:src="@{/js/bootstrap.min.js}" src="../static/js/ticketTableJS/bootstrap.min.js"></script>
+	<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="../../static/vendors/js/vendor.bundle.base.js"></script>
+	<!-- <script src="../static/js/jstable.min.js"></script> -->
+	<script th:src="@{/js/ticketTableJS/jstable.min.js}"></script>
 
-<!-- 城市及地區判斷 -->
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script type='text/javascript' src="https://demeter.5fpro.com/tw/zipcode-selector.js" data-city="#city" data-dist="#dist" ></script>
-<script type='text/javascript' class="js-demeter-tw-zipcode-selector" data-city="#city" data-dist="#dist" />
-</script>
-<script type="text/javascript"></script>
-<script th:src="@{/js/ticketTableJS/bootstrap.min.js}" src="../../static/js/ticketTableJS/bootstrap.min.js"></script>
-<!-- 上、下架日期 -->
-<script th:src="@{/js/ticketTableJS/bootstrap-datetimepicker.min.js}"
-	src="../../static/js/ticketTableJS/bootstrap-datetimepicker.min.js"></script>
-<!-- <script src="js/bootstrap-datetimepicker.min.js"></script> -->
+	<!-- 城市及地區判斷 -->
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script type='text/javascript' src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+	<script type='text/javascript' class="js-demeter-tw-zipcode-selector" data-city="#city" data-dist="#dist" />
+	</script>
+	<script type="text/javascript"></script>
+	<script th:src="@{/js/bootstrap.min.js}" src="../../static/js/ticketTableJS/bootstrap.min.js"></script>
+	<!-- 上、下架日期 -->
+	<script th:src="@{/js/ticketTableJS/bootstrap-datetimepicker.min.js}"
+		src="../../static/js/ticketTableJS/bootstrap-datetimepicker.min.js"></script>
+	<!-- <script src="js/bootstrap-datetimepicker.min.js"></script> -->
 
-<!-- 時間 -->
-<!-- <script type="text/javascript" src="assets/js/mdtimepicker.js"></script> -->
-<script th:src="@{/js/ticketTableJS/mdtimepicker.js}" src="../../static/js/ticketTableJS/mdtimepicker.js"></script>
+	<!-- 時間 -->
+	<!-- <script type="text/javascript" src="assets/js/mdtimepicker.js"></script> -->
+	<script th:src="@{/js/ticketTableJS/mdtimepicker.js}" src="../../static/js/ticketTableJS/mdtimepicker.js"></script>
 
 <!-- ckeditor -->
 <script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
@@ -488,61 +492,147 @@ $("#sel").change(function () {
 				var leaveTime = new Date(ndate);
 				edate = leaveTime.getFullYear() + '-' + (leaveTime.getMonth() + 1) + '-' + leaveTime.getDate();
 
+			document.getElementById("sel").dispatchEvent(new Event('change'));
+		})
+	</script>
+	</script>
+	<!-- TABLE + CSV + JSON JS -->
+	<script>new JSTable("#basic");</script>
+	<!-- TAGNO + TAGNAME SELECTOR -->
+	<script>
+	$("#sel").change(function () {
+		switch (parseInt($(this).val())) {
+			case 0:
+				$("#sel2 option").remove();
 				break;
+			case 1:
+				$("#sel2 option").remove();
+				var array = ["1"];
+				//利用each遍歷array中的值並將每個值新增到Select中
+				$.each(array, function (i, val) {
+					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+				});
+				break;
+			case 2:
+				$("#sel2 option").remove();
+				var array = ["2"];
+				//利用each遍歷array中的值並將每個值新增到Select中
+				$.each(array, function (i, val) {
+					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+				});
+				break;
+			case 3:
+				$("#sel2 option").remove();
+				var array = ["3"];
+				//利用each遍歷array中的值並將每個值新增到Select中
+				$.each(array, function (i, val) {
+					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+				});
+				break;
+			case 4:
+				$("#sel2 option").remove();
+				var array = ["4"];
+				//利用each遍歷array中的值並將每個值新增到Select中
+				$.each(array, function (i, val) {
+					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+				});
+				break;
+		}
+	});
+	</script>
+
+	<!-- 上、下架時間 -->
+	<script>
+		// 	表單提交
+		var bool = false;
+		function toSubmit() {
+			var name = $('#reservationName').val();
+			var mobile = $('#reservationPhone').val();
+			var id = $('#reservationId').val();
+			// 		$('form').submit(function(){
+			if ($("#endDate").val() == '') {
+				showMsg('請選擇下架日期');
+				bool = false;
+				return bool;
+			} else {
+				bool = true;
+			}
+			if (bool) {
+				var sdate = new Date($("#startDate").val());
+				var edate = new Date($("#endDate").val());
+
 			}
 		}
-		$('#endDate').datetimepicker({
+		var obj;
+		var sdate = '2018-07-04';
+		obj = ['2018-07-12', '2018-07-13', '2018-07-20'];//禁用日期可以從數據庫查
+		// 	自定義格式
+		$.fn.datetimepicker.dates['zdy'] = {
+			days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+			daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+			daysMin: ["日", "一", "二", "三", "四", "五", "六"],
+			months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+			monthsShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+			today: "今天",
+			format: "yyyy-mm-dd",
+			titleFormat: "yyyy-mm-",
+			weekStart: 1,
+			suffix: [],
+			meridiem: ["上午", "下午"]
+		};
+		$('#startDate').datetimepicker({
 			language: 'zdy',
 			weekStart: 1,
 			todayBtn: 1,
 			autoclose: 1,
 			startDate: sdate,
-			endDate: edate,
 			minView: 2,
-			maxView: 3
+			maxView: 3,
+			onRenderDay: function (date) {
+				// 	    	alert(date);
+				var date1 = date.getFullYear() + '-'
+					+ (date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
+					+ '-'
+					+ (date.getDate() < 10 ? '0' + (date.getDate() - 1) : date.getDate() - 1);
+			}
 		}).on('changeDate', function (ev) {
-		});
-	});
-	// });
-	// });
-	$("#endDate").click(function () {
-		if ($("#startDate").val() != '') {
+			// 		alert($("#startDate").val());
+			$('#endDate').datetimepicker('remove');
+			$('#endDate').val('');
+			var sdate = $("#startDate").val();
+			var edate;
+			for (var o in obj) {
+				if (new Date(sdate) <= new Date(obj[o])) {
+					var date = new Date(obj[o])
+					var ndate = +date + 24 * 60 * 60 * 1000;
+					var leaveTime = new Date(ndate);
+					edate = leaveTime.getFullYear() + '-' + (leaveTime.getMonth() + 1) + '-' + leaveTime.getDate();
 
-		} else {
-			showMsg('請先選擇上架日期');
-		}
-	});
-</script>
-
-<!-- 簡介字數限制 -->
-<script>
-	function textLimitCheck(thisArea, maxLength) {
-		if (thisArea.value.length > maxLength) {
-			alert(maxLength + ' 個字限制。 \r超出部分將自動去除。');
-			thisArea.value = thisArea.value.substring(0, 200);
-			thisArea.focus();
-		}    /*回寫span的值，當前填寫文字的數量*/
-		messageCount.innerText = thisArea.value.length;
-	}
-</script>
-
-<!-- 時鐘 -->
-<script type="text/javascript">
-	mdtimepicker.defaults({
-		theme: 'green',
-		hourPadding: true,
-		clearBtn: true
-	});
-	window.onload = function () {
-		mdtimepicker('#picker1', {
-			events: {
-				timeChanged: function (data) {
-					console.log('timeChanged', data)
-					log('timeChanged: ' + data.value)
+					break;
 				}
 			}
+			$('#endDate').datetimepicker({
+				language: 'zdy',
+				weekStart: 1,
+				todayBtn: 1,
+				autoclose: 1,
+				startDate: sdate,
+				endDate: edate,
+				minView: 2,
+				maxView: 3
+			}).on('changeDate', function (ev) {
+			});
+		});
+		// });
+		// });
+		$("#endDate").click(function () {
+			if ($("#startDate").val() != '') {
+
+			} else {
+				showMsg('請先選擇上架日期');
+			}
 		})
-	}
+	
 	window.onload = function () {
 		mdtimepicker('#picker2', {
 			events: {
@@ -560,7 +650,8 @@ $("#sel").change(function () {
 $('#correctInput').click(function () {
     //對應ID值，不是NAME值
     $('#nameId').val('阿里山國家森林遊樂區門票')
- 	$('#descriptionId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏，然從 1912年起成為台灣最具規模的林場，一直到 1960 年代末期為止。歷經日本、國民政府的採伐後，原始檜木林幾乎伐盡，現今存有第一期與第二期巨木群棧道近四十株的紅檜巨木，讓人緬懷過去神木林的壯闊神聖。其中最高的「阿里山香林神木」，高 45 公尺，樹圍 12.3 公尺，樹齡約2300年，是到訪阿里山的必遊之處。在阿里山國家森林遊樂區內有豐富的生態，其中最特殊的植物，莫過於稀有的蓧蕨、相馬氏石杉、阿里山十大功勞與一葉蘭了；動物則有台灣獼猴、帝雉、藪鳥、阿里山鴝、阿里山山椒魚等小明星助陣，熱鬧非凡。除了神木，阿里山還有非常多具可看性的景點：森林小火車、空靈飄渺的姊妹潭、壯闊動人的雲海、美麗的祝山日出、受鎮宮、百年慈雲寺、林業史蹟、春天盛開的各類櫻花與杜鵑…阿里山森林遊樂區是一個足以代表台灣霧林帶的國際級觀光景點，歡迎著來自全世界的旅人們，前來認識台灣山林豐富而美麗的面貌。「春賞花、夏避暑、秋攬楓、冬觀雲」詳述了一年四季萬種風情的阿里山國家森林遊樂區。在阿里山您只須放慢腳步，享受舒適宜人的綿延群山，伴蟲鳴入眠、被林間輕脆鳥啼喚醒，不妨現在就背起行李，規劃一趟阿里山輕旅行，讓自己徜徉於神木群的芬多精中，為身心靈安排一趟大自然的洗禮吧。')
+	$('#descriptionId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏，然從 1912年起成為台灣最具規模的林場，一直到 1960 年代末期為止。歷經日本、國民政府的採伐後，原始檜木林幾乎伐盡，現今存有第一期與第二期巨木群棧道近四十株的紅檜巨木，讓人緬懷過去神木林的壯闊神聖。其中最高的「阿里山香林神木」，高 45 公尺，樹圍 12.3 公尺，樹齡約2300年，是到訪阿里山的必遊之處。在阿里山國家森林遊樂區內有豐富的生態，其中最特殊的植物，莫過於稀有的蓧蕨、相馬氏石杉、阿里山十大功勞與一葉蘭了；動物則有台灣獼猴、帝雉、藪鳥、阿里山鴝、阿里山山椒魚等小明星助陣，熱鬧非凡。除了神木，阿里山還有非常多具可看性的景點：森林小火車、空靈飄渺的姊妹潭、壯闊動人的雲海、美麗的祝山日出、受鎮宮、百年慈雲寺、林業史蹟、春天盛開的各類櫻花與杜鵑…阿里山森林遊樂區是一個足以代表台灣霧林帶的國際級觀光景點，歡迎著來自全世界的旅人們，前來認識台灣山林豐富而美麗的面貌。「春賞花、夏避暑、秋攬楓、冬觀雲」詳述了一年四季萬種風情的阿里山國家森林遊樂區。在阿里山您只須放慢腳步，享受舒適宜人的綿延群山，伴蟲鳴入眠、被林間輕脆鳥啼喚醒，不妨現在就背起行李，規劃一趟阿里山輕旅行，讓自己徜徉於神木群的芬多精中，為身心靈安排一趟大自然的洗禮吧。')
+ 	$('#ticketBriefIntroId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏')
     $('#picker1').val('8:30 AM')
     $('#picker2').val('5:30 PM')
     $('#phoneId').val('052679917')
@@ -602,49 +693,84 @@ $('#wrongInput').click(function () {
 <!-- CKEDITOR -->
 <script>CKEDITOR.replace('ticketIntro');</script>
 
+	<!-- 時鐘 -->
+	<script type="text/javascript">
+		mdtimepicker.defaults({
+			theme: 'green',
+			hourPadding: true,
+			clearBtn: true
+		});
+		window.onload = function () {
+			mdtimepicker('#picker1', {
+				events: {
+					timeChanged: function (data) {
+						console.log('timeChanged', data)
+						log('timeChanged: ' + data.value)
+					}
+				}
+			})
+		}
+	</script>
+	<script type="text/javascript">
+		mdtimepicker.defaults({
+			theme: 'green',
+			hourPadding: true,
+			clearBtn: true
+		});
+		window.onload = function () {
+			mdtimepicker('#picker2', {
+				events: {
+					timeChanged: function (data) {
+						console.log('timeChanged', data)
+						log('timeChanged: ' + data.value)
+					}
+				}
+			})
+		}
+	</script>
 </body>
 
 </html>
 
 
-<!-- <script>
-	$("#sel").change(function () {
-		switch (parseInt($(this).val())) {
-			case 0:
-				$("#sel2 option").remove();
-				break;
-			case 1:
-				$("#sel2 option").remove();
-				var array = ["主題樂園"];
-				//利用each遍歷array中的值並將每個值新增到Select中
-				$.each(array, function (i, val) {
-					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-				});
-				break;
-			case 2:
-				$("#sel2 option").remove();
-				var array = ["博物館&美術館"];
-				//利用each遍歷array中的值並將每個值新增到Select中
-				$.each(array, function (i, val) {
-					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-				});
-				break;
-			case 3:
-				$("#sel2 option").remove();
-				var array = ["水族館&動物園"];
-				//利用each遍歷array中的值並將每個值新增到Select中
-				$.each(array, function (i, val) {
-					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-				});
-				break;
-			case 4:
-				$("#sel2 option").remove();
-				var array = ["歷史景點"];
-				//利用each遍歷array中的值並將每個值新增到Select中
-				$.each(array, function (i, val) {
-					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-				});
-				break;
-		}
-	});
-	</script> -->
+<!--  <script>
+// 	$("#sel").change(function () {
+// 		switch (parseInt($(this).val())) {
+// 			case 0:
+// 				$("#sel2 option").remove();
+// 				break;
+// 			case 1:
+// 				$("#sel2 option").remove();
+// 				var array = ["主題樂園"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 			case 2:
+// 				$("#sel2 option").remove();
+// 				var array = ["博物館&美術館"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 			case 3:
+// 				$("#sel2 option").remove();
+// 				var array = ["水族館&動物園"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 			case 4:
+// 				$("#sel2 option").remove();
+// 				var array = ["歷史景點"];
+// 				//利用each遍歷array中的值並將每個值新增到Select中
+// 				$.each(array, function (i, val) {
+// 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
+// 				});
+// 				break;
+// 		}
+// 	});
+ 	</script>-->
