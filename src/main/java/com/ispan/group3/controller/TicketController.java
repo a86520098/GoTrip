@@ -128,21 +128,21 @@ public class TicketController {
 	
 	// ========== 前台系統 ==========
 	// ---------- 篩選門票種類頁面 ----------
-	@GetMapping("/ticket")
-	public String toTicket() {
-		return "frontend/ticket";
-	}
-	
-	// ---------- 門票商品頁面 ----------
-	@GetMapping("/ticket/detail/{ticketNo}")
-	public String toTicketDetail(@PathVariable long ticketNo, Model model) {
-		Ticket Ticket = ticketService.getBookById(ticketNo);
-		if (Ticket == null) {
-			Ticket = new Ticket();
-		}
-		model.addAttribute("ticket", Ticket);
-		return "frontend/ticket-detail";
-	}
+//	@GetMapping("/ticket")
+//	public String toTicket() {
+//		return "frontend/ticket";
+//	}
+//	
+//	// ---------- 門票商品頁面 ----------
+//	@GetMapping("/ticket/detail/{ticketNo}")
+//	public String toTicketDetail(@PathVariable long ticketNo, Model model) {
+//		Ticket Ticket = ticketService.getBookById(ticketNo);
+//		if (Ticket == null) {
+//			Ticket = new Ticket();
+//		}
+//		model.addAttribute("ticket", Ticket);
+//		return "frontend/ticket-detail";
+//	}
 	
 //	// ======== 前台商家系統 ========
 //	// ---------- 門票列表 ----------
