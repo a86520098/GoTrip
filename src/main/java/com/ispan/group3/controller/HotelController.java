@@ -296,9 +296,16 @@ public class HotelController {
     @PostMapping("/getNewRoom")
 
     public String getNewRoom(@ModelAttribute("HotelRoom") HotelRoom hotelRoom, Model model) {
-        System.out.println(hotelRoom);
-        hotelRoom.setId(5);
-        hotelroomService.save(hotelRoom);
+        Hotel hotel = new Hotel();
+        hotel.setHotel_name("豪華大酒店");
+        List<HotelRoom> list = new ArrayList<HotelRoom>();
+        HotelRoom hotelRoom1 = new HotelRoom();
+        hotelRoom1.setRoomname("崩逼逼");
+        hotelRoom1.setRoomprice(213123);
+        hotelRoom1.setHotel(hotel);
+        list.add(hotelRoom1);
+        hotel.setHotelroomList(list);
+        hotelService.save(hotel);
         for (int i = 0; i < 10; i++) {
             System.out.println("前台商家新增房間");
         }

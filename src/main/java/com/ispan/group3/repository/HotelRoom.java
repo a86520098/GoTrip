@@ -19,11 +19,11 @@ public class HotelRoom {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String roomname;
-    private String roomprice;
+    private Integer roomprice;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hotelroomid")
+    @JoinColumn(name = "hotel_id")
     @JsonIgnore
-    private HotelRoom hotelroom;
+    private Hotel hotel;
 
     public HotelRoom() {
     }

@@ -56,8 +56,8 @@ public class Hotel {
     private MultipartFile productImage;//前端照片
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL) //   表示被維護端
     private List<HotelImage> images;
-    @OneToMany(mappedBy = "hotelroom", cascade = CascadeType.ALL) //表示被維護端
-    private List<HotelRoom> hotelroom;
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL) //表示被維護端
+    private List<HotelRoom> hotelroomList;
 
 
 }
