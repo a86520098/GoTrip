@@ -277,7 +277,7 @@ public class HotelController {
     //前-後台主頁面
     @GetMapping("/vendor/hotels/{companyId}")
     public String findByCompany(@PathVariable Integer companyId, Model model) {
-
+        model.addAttribute("hotel", hotelService.findByCompany(companyId));
         return "/frontend/hotel/hotel-index";
     }
 
