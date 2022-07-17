@@ -3,6 +3,7 @@ package com.ispan.group3.controller;
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.HotelImage;
 import com.ispan.group3.repository.HotelRoom;
+import com.ispan.group3.service.HotelRoomService;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,13 @@ import java.util.List;
 public class HotelController {
 
     HotelService hotelService;
+    HotelRoomService hotelroomService;
     ServletContext context;
 
-
     @Autowired
-    public HotelController(HotelService hotelService, ServletContext context) {
+    public HotelController(HotelService hotelService, HotelRoomService hotelroomService, ServletContext context) {
         this.hotelService = hotelService;
+        this.hotelroomService = hotelroomService;
         this.context = context;
     }
 
@@ -285,8 +287,22 @@ public class HotelController {
     @GetMapping("/addHotelRoom")
     public String showNewRoom(Model model, @RequestParam("id") Integer id) {
         System.out.println("I get the id from hotel " + id + " is hotel id ");
-        model.addAttribute("hotel", new HotelRoom());
+        model.addAttribute("hotelroom", new HotelRoom());
+        model.addAttribute("hotelid", id);
         return "/frontend/hotel/hotel-newRoom";
+    }
+
+
+    @PostMapping("/getNewRoom")
+
+    public String getNewRoom(@ModelAttribute("HotelRoom") HotelRoom hotelRoom, Model model) {
+        System.out.println(hotelRoom);
+        hotelRoom.setId(5);
+        hotelroomService.save(hotelRoom);
+        for (int i = 0; i < 10; i++) {
+            System.out.println("前台商家新增房間");
+        }
+        return "redirect:/backend/index";
     }
 
 }

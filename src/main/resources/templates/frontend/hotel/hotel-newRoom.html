@@ -68,7 +68,7 @@
                         <h6 class="card-title font-weight-bold"></h6>
                         <div class="p-t-20">
 
-                            <form method="post" th:action="@{/xxxx}" th:object="${hotel}">
+                            <form method="post" th:action="@{/getNewRoom}" th:object="${hotelroom}">
                                 <fieldset class="form-group">
                                     <label>房間名稱</label>
                                     <input type="text" th:field="*{roomname}" id="hotelArea"
@@ -81,7 +81,7 @@
                                            class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
 
-
+                                <button type="submit" class="btn btn-success">Save</button>
                             </form>
                         </div>
                     </div>
