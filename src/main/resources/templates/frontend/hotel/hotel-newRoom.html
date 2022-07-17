@@ -67,8 +67,14 @@
                         <h4 class="card-title font-weight-bold">註冊房間</h4>
                         <h6 class="card-title font-weight-bold"></h6>
                         <div class="p-t-20">
-
+                            <td th:text="${hotelroom.hotel.id}"></td>
                             <form method="post" th:action="@{/getNewRoom}" th:object="${hotelroom}">
+                                <fieldset class="form-group">
+                                    <label>ID</label>
+                                    <input th:field="*{hotel.id}" type="text">
+                                </fieldset>
+
+
                                 <fieldset class="form-group">
                                     <label>房間名稱</label>
                                     <input type="text" th:field="*{roomname}" id="hotelArea"
