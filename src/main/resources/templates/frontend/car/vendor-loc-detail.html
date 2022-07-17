@@ -50,7 +50,9 @@
 				<div class="col-md-9 grid-margin my-5 pl-5">
 					<div class="card">
 						<div class="card-body">
-							<h4 class="card-title font-weight-bold">租車地點列表</h4>
+							<h4 class="card-title font-weight-bold">據點詳細資料</h4>
+
+							
 
 							<div class="p-t-20">
 								<table id="data-table" class="display table table-hover w-100" style="text-align: center">
@@ -76,21 +78,17 @@
 											<td th:text="${location.address}"></td>
 <!-- 											<td th:text="${location.phone}"></td> -->
 <!-- 											<td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td> -->
-											<td>
-												<span th:text="${location.carOptions.size()}"></span>
-												<a th:href="@{/vendor/cars/options/form/{id}(id=${location.id})}" class="btn btn-light btn-rounded btn-sm">
-													<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-												</a>
-											</td>
+											<td th:text="${location.carOptions.size()}"></td>
 											<td>
 												<div class="btn-group" role="group" aria-label="Basic example">
-													<button class="btn btn-light btn-rounded btn-sm">
+													<a th:href="@{/vendor/cars/locations/detail/{id}(id=${location.id})}" class="btn btn-light btn-rounded btn-sm">
 														<i class="fa fa-search" aria-hidden="true"></i>
-													</button>
+													</a>
 													<a th:href="@{/vendor/cars/locations/form/{id}(id=${location.id})}" class="btn btn-light btn-rounded btn-sm">
 														<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 													</a>
-													<form th:id="'deleteLocation' + ${location.id}" th:action="@{/vendor/cars/locations/}+${location.id}" th:method="delete" class="d-inline">
+													<form th:id="'deleteLocation' + ${location.id}" th:action="@{/vendor/cars/locations/}+${location.id}"
+														th:method="delete" class="d-inline">
 														<button type="button" th:value="${location.id}" class="btn btn-delete btn-light btn-rounded btn-sm">
 															<i class="fa fa-trash-o" aria-hidden="true"></i>
 														</button>
@@ -143,7 +141,7 @@
 //          }
 //      })
 	  
-	  $(".btn-delete-loc").click(function(e){
+	  $(".btn-delete").click(function(e){
 			e.preventDefault(); // 取消原始動作
 			let id = $(this).val();
 	 			Swal.fire({

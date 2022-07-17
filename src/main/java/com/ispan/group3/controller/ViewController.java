@@ -8,11 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.CarOption;
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.Ticket;
-import com.ispan.group3.service.CarModelService;
 import com.ispan.group3.service.CarOptionService;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.service.TicketService;
