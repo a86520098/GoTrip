@@ -21,9 +21,9 @@ public class HotelRoom {
     private String roomname;
     private String roomprice;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hotelid")
+    @JoinColumn(name = "hotelroomid")
     @JsonIgnore
-    private HotelRoom Hotel;
+    private HotelRoom hotelroom;
 
-    
+
 }

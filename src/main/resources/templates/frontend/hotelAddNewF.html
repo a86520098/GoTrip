@@ -225,24 +225,17 @@
                                                                class="form-control" onkeypress="return my_key(event)"/>
                                                     </fieldset>
 
-                                                    <!--                                                    <fieldset class="form-group">-->
-                                                    <!--                                                        <label>照片</label>-->
-                                                    <!--                                                        <input th:field="*{productImage}" name="fileName" id="filename"-->
-                                                    <!--                                                               type='file' accept="image/png, image/jpeg, image/jpg"-->
-                                                    <!--                                                               multiple="multiple"/>-->
-                                                    <!--                                                    </fieldset>-->
 
-
-                                                    <!-- -------------------------------------------------------------以下修改 -->
+                                                    <!-- HTML part -->
                                                     <label>照片</label>
-                                                    <input type="file" th:field="*{productImage}"
-                                                           id="progressbarTWInput"
-                                                           accept="image/gif, image/jpeg, image/png" multiple/ >
+                                                    <input type="file" multiple
+                                                           name="imagefiles"
+                                                           id="imagefiles"
+                                                           accept="image/gif, image/jpeg, image/png"/>
                                                     <div id="preview_progressbarTW_imgs"
-                                                         style="width:100%; height: 300px; overflow:scroll;">
+                                                         style="width:300px;  overflow:scroll;">
                                                         <p>目前沒有圖片</p>
                                                     </div>
-
 
                                                     <td>房型</td>
                                                     <fieldset class="form-group">
@@ -321,28 +314,51 @@
         document.getElementById('fullAddress').value = city + location;
     }
 
-    <!-- JavaScript part -->
+    <
+    <
+    <
+    <
+    <
+    << HEAD
+        $("#imagefiles"
+    ).change(function () {
+    ======
+        =
+            <!-- JavaScript part -->
 
-    $("#progressbarTWInput").change(function () {
-        $("#preview_progressbarTW_imgs").html(""); // 清除預覽
-        readURL(this);
-    });
+            $("#progressbarTWInput").change(function () {
+            >>>>>>>
+                a0959fad88e53a1a2e6949c33f262e539983f88b
+                $("#preview_progressbarTW_imgs").html(""); // 清除預覽
+                readURL(this);
+            });
 
-    function readURL(input) {
-        if (input.files && input.files.length >= 0) {
-            for (var i = 0; i < input.files.length; i++) {
+        <
+        <
+        <
+        <
+        <
+        << HEAD
+
+                // 照片即時預覽
+
+            =======
+        >>>>>>> a0959fad88e53a1a2e6949c33f262e539983f88b
+            function readURL(input) {
+                if (input.files && input.files.length >= 0) {
+                for (var i = 0; i < input.files.length; i++) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    var img = $("<img width='300' height='200'>").attr('src', e.target.result);
-                    $("#preview_progressbarTW_imgs").append(img);
-                }
+                var img = $("<img width='300' height='200'>").attr('src', e.target.result);
+                $("#preview_progressbarTW_imgs").append(img);
+            }
                 reader.readAsDataURL(input.files[i]);
             }
-        } else {
-            var noPictures = $("<p>目前沒有圖片</p>");
-            $("#preview_progressbarTW_imgs").append(noPictures);
-        }
-    }
+            } else {
+                var noPictures = $("<p>目前沒有圖片</p>");
+                $("#preview_progressbarTW_imgs").append(noPictures);
+            }
+            }
 
 </script>
 

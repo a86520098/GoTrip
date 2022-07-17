@@ -1,6 +1,12 @@
 package com.ispan.group3.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface HotelRoomRepositoryInterFace extends JpaRepository<HotelRoom, Long> {
+import java.util.List;
+
+public interface HotelRoomRepositoryInterFace extends JpaRepository<HotelRoom, Integer> {
+
+    @Query(value = "SELECT * FROM hotel_room l WHERE l.company_id = ?1", nativeQuery = true)
+    List<CarLocation> findByCompany(Integer companyId);
 }

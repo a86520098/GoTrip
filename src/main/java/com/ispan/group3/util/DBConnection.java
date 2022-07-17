@@ -1,8 +1,8 @@
 package com.ispan.group3.util;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
-
 import javax.sql.DataSource;
+
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 public class DBConnection {
 
