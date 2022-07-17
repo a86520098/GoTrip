@@ -23,6 +23,7 @@ public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;  //自動生成
+    private Integer companyId; //連接會員id作用
     private String status;  //是專業經理 Or 自由業者
     private String hotelStyle;   // 公寓 & 整間小屋  & 整棟住宅 & 別墅 & 專業大飯店
     private Integer hotelArea;  // 接受使用者  住宿大小坪數
@@ -53,8 +54,10 @@ public class Hotel {
     @Transient
     @JsonIgnore
     private MultipartFile productImage;//前端照片
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL) //通過註解 維護多方 建立關係
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL) //   表示被維護端
     private List<HotelImage> images;
+    @OneToMany(mappedBy = "hotelroom", cascade = CascadeType.ALL) //表示被維護端
+    private List<HotelRoom> hotelroom;
 
-    
+
 }

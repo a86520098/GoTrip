@@ -36,6 +36,7 @@ public class HotelController {
         this.context = context;
     }
 
+    //    進入首頁
     @GetMapping("/backHotel")
     public String inDex(Model m) {
         Model kkk = m.addAttribute("Hotel", hotelService.findAll());
@@ -44,7 +45,7 @@ public class HotelController {
         return "backend/hotel/hotelIndex";
     }
 
-
+    //負責新增
     @GetMapping("/showForm")
     public String showNewForm(Model m) {
         m.addAttribute("hotel", new Hotel());
@@ -109,6 +110,10 @@ public class HotelController {
         return "redirect:/backHotel";
     }
 
+
+    //負責新增
+
+    //負責秀出資料庫二位元的照片
     @GetMapping("/picture")
     public ResponseEntity<byte[]> getPicture(@RequestParam("id") Integer id) {
         byte[] body = null;
@@ -151,7 +156,7 @@ public class HotelController {
         return re;
     }
 
-
+    //後台刪除
     @GetMapping(value = "/delete/{id}")
     public String deleteHotel(@PathVariable Integer id) {
         hotelService.delete(id);
@@ -162,7 +167,7 @@ public class HotelController {
         return "redirect:/backHotel";
     }
 
-
+    //    負責編輯的頁面
     @RequestMapping(path = "/showEdit", method = RequestMethod.GET)
     public String showEditForm(@RequestParam("id") Integer update, Model m) {
         m.addAttribute("hotel", hotelService.findById(update));
@@ -205,6 +210,8 @@ public class HotelController {
         return "redirect:/backHotel";
     }
 
+
+    //    測試照片帶值
     @RequestMapping(path = "/enterPic", method = RequestMethod.GET)
     public String intoPicture(@RequestParam("id") Integer pictureID, Model m) {
         m.addAttribute("hotel", hotelService.findById(pictureID));
@@ -213,8 +220,11 @@ public class HotelController {
     }
 
 
-//    以上後端
+    //    以上後端
 
+
+    //    以下前端的後台
+//    負責房間詳細資料
     @GetMapping("/tohotelDetail")
     public String toHotelDetail(@RequestParam("id") Integer id, Model m) {
         m.addAttribute("roomDetail", hotelService.findById(id));
@@ -234,6 +244,7 @@ public class HotelController {
         return hotelService.findById(id);
     }
 
+    //    所有住宿列表
     @GetMapping("/findHotelList")
     public String findHotelList(Model m) {
         m.addAttribute("hotel", hotelService.findAll());
@@ -246,17 +257,28 @@ public class HotelController {
         return "frontend/hotel-Index";
     }
 
+    //    負責地圖
     @GetMapping("/goGoogleMap")
     public String togoGoogleMap(Model m, @RequestParam("id") Integer id) {
         m.addAttribute("roomDetail", hotelService.findById(id));
         return "/frontend/hotel-Google";
     }
 
-
+    //    前台負責新增頁面
     @GetMapping("/showFHotelNew")
     public String toHotelNewF(Model m) {
         m.addAttribute("hotel", new Hotel());
         System.out.println("going to front hotelNew page");
         return "/frontend/hotelAddNewF";
     }
+
+    // ======== 前台商家系統 ========
+
+    //前-後台主頁面
+    @GetMapping("/vendor/hotels/{companyId}")
+    public String findByCompany(@PathVariable Integer companyId, Model model) {
+
+        return "/frontend/hotel/hotel-index";
+    }
+
 }

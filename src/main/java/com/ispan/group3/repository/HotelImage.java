@@ -25,6 +25,7 @@ public class HotelImage {
     @JsonIgnore
     private Hotel hotel;
 
+    
     @Column(name = "fileName")
     private String fileName; //接檔案名稱
     @CreationTimestamp
