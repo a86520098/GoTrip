@@ -2,6 +2,7 @@ package com.ispan.group3.controller;
 
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.HotelImage;
+import com.ispan.group3.repository.HotelRoom;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -279,6 +280,13 @@ public class HotelController {
     public String findByCompany(@PathVariable Integer companyId, Model model) {
         model.addAttribute("hotel", hotelService.findByCompany(companyId));
         return "/frontend/hotel/hotel-index";
+    }
+
+    @GetMapping("/addHotelRoom")
+    public String showNewRoom(Model model, @RequestParam("id") Integer id) {
+        System.out.println("I get the id from hotel " + id + " is hotel id ");
+        model.addAttribute("hotel", new HotelRoom());
+        return "/frontend/hotel/hotel-newRoom";
     }
 
 }
