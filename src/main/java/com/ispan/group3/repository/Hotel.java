@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.*;
 import java.sql.Blob;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,9 +19,11 @@ import java.sql.Timestamp;
 @Table(name = "Hotel")
 @Component("Hotel")
 public class Hotel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;  //自動生成
+    private Integer companyId; //連接會員id作用
     private String status;  //是專業經理 Or 自由業者
     private String hotelStyle;   // 公寓 & 整間小屋  & 整棟住宅 & 別墅 & 專業大飯店
     private Integer hotelArea;  // 接受使用者  住宿大小坪數
@@ -51,152 +54,10 @@ public class Hotel {
     @Transient
     @JsonIgnore
     private MultipartFile productImage;//前端照片
-
-
-//	public Integer getId() {
-//		return id;
-//	}
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
-//	public String getStatus() {
-//		return status;
-//	}
-//	public void setStatus(String status) {
-//		this.status = status;
-//	}
-//	public String getHotelStyle() {
-//		return hotelStyle;
-//	}
-//	public void setHotelStyle(String hotelStyle) {
-//		this.hotelStyle = hotelStyle;
-//	}
-//	public Integer getHotelArea() {
-//		return hotelArea;
-//	}
-//	public void setHotelArea(Integer hotelArea) {
-//		this.hotelArea = hotelArea;
-//	}
-//	public Integer getBathCount() {
-//		return bathCount;
-//	}
-//	public void setBathCount(Integer bathCount) {
-//		this.bathCount = bathCount;
-//	}
-//	public Integer getBedroomCount() {
-//		return bedroomCount;
-//	}
-//	public void setBedroomCount(Integer bedroomCount) {
-//		this.bedroomCount = bedroomCount;
-//	}
-//	public Integer getBedCount() {
-//		return bedCount;
-//	}
-//	public void setBedCount(Integer bedCount) {
-//		this.bedCount = bedCount;
-//	}
-//	public String getFullAddress() {
-//		return fullAddress;
-//	}
-//	public void setFullAddress(String fullAddress) {
-//		this.fullAddress = fullAddress;
-//	}
-//	public String getNotional() {
-//		return notional;
-//	}
-//	public void setNotional(String notional) {
-//		this.notional = notional;
-//	}
-//	public String getCity() {
-//		return city;
-//	}
-//	public void setCity(String city) {
-//		this.city = city;
-//	}
-//	public String getHotelRule() {
-//		return hotelRule;
-//	}
-//	public void setHotelRule(String hotelRule) {
-//		this.hotelRule = hotelRule;
-//	}
-//	public String getHowgoto() {
-//		return Howgoto;
-//	}
-//	public void setHowgoto(String howgoto) {
-//		Howgoto = howgoto;
-//	}
-//	public String getHotel_name() {
-//		return hotel_name;
-//	}
-//	public void setHotel_name(String hotel_name) {
-//		this.hotel_name = hotel_name;
-//	}
-//	public String getIntroduce() {
-//		return introduce;
-//	}
-//	public void setIntroduce(String introduce) {
-//		this.introduce = introduce;
-//	}
-//	public String getProvide() {
-//		return provide;
-//	}
-//	public void setProvide(String provide) {
-//		this.provide = provide;
-//	}
-//	public Integer getPhone() {
-//		return phone;
-//	}
-//	public void setPhone(Integer phone) {
-//		this.phone = phone;
-//	}
-//	public Integer getPrice() {
-//		return price;
-//	}
-//	public void setPrice(Integer price) {
-//		this.price = price;
-//	}
-//	public String getBoss_name() {
-//		return boss_name;
-//	}
-//	public void setBoss_name(String boss_name) {
-//		this.boss_name = boss_name;
-//	}
-//	public String getRoomtype() {
-//		return roomtype;
-//	}
-//	public void setRoomtype(String roomtype) {
-//		this.roomtype = roomtype;
-//	}
-//	public Integer getPeopleCount() {
-//		return peopleCount;
-//	}
-//	public void setPeopleCount(Integer peopleCount) {
-//		this.peopleCount = peopleCount;
-//	}
-//	public Blob getImage() {
-//		return image;
-//	}
-//	public void setImage(Blob image) {
-//		this.image = image;
-//	}
-//	public String getFileName() {
-//		return fileName;
-//	}
-//	public void setFileName(String fileName) {
-//		this.fileName = fileName;
-//	}
-//	public Timestamp getAdmissionTime() {
-//		return admissionTime;
-//	}
-//	public void setAdmissionTime(Timestamp admissionTime) {
-//		this.admissionTime = admissionTime;
-//	}
-//	public MultipartFile getProductImage() {
-//		return productImage;
-//	}
-//	public void setProductImage(MultipartFile productImage) {
-//		this.productImage = productImage;
-//	}
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL) //   表示被維護端
+    private List<HotelImage> images;
+    @OneToMany(mappedBy = "hotelroom", cascade = CascadeType.ALL) //表示被維護端
+    private List<HotelRoom> hotelroom;
 
 
 }

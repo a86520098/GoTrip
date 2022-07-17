@@ -113,7 +113,7 @@ public class CarController {
 		return "frontend/car/car-detail";
 	}
 
-	
+
 	// ======== 前台商家系統 ========
 	// ---------- 地圖找車 ----------
 	@GetMapping("/vendor/cars/locations/{companyId}")
@@ -122,20 +122,20 @@ public class CarController {
 		model.addAttribute("carLocations", carLocations);
 		return "frontend/car/vendor-location";
 	}
-	
+
 	// ---------- 地點表單 ----------
 	@GetMapping({ "/vendor/cars/locations/form", "/vendor/cars/locations/form/{id}" })
 	public String showLocForm(@PathVariable(required = false) Integer id, Model model) {
 		CarLocation carLocation = new CarLocation();
 		if (id != null) {
 			carLocation = locationService.findById(id);
-		} 
+		}
 		model.addAttribute("carLocation", carLocation);
 		List<CarModel> existModels = modelService.findAll();
 		model.addAttribute("existModels", existModels);
 		return "frontend/car/vendor-loc-form";
 	}
-	
+
 	// ---------- 儲存地點 ----------
 	@PostMapping("/vendor/cars/locations")
 	public String save(@ModelAttribute CarLocation carLocation, @RequestParam String closeTime, @RequestParam String openTime) {
@@ -144,18 +144,18 @@ public class CarController {
 		locationService.save(carLocation);
 		return "redirect:/vendor/cars/options/form/" + carLocation.getId();
 	}
-	
+
 	// ---------- 方案表單 ----------
 	@GetMapping({ "/vendor/cars/options/form", "/vendor/cars/options/form/{id}" })
 	public String showOptForm(@PathVariable(required = false) Integer id, Model model) {
 		CarLocation carLocation = new CarLocation();
 		if (id != null) {
 			carLocation = locationService.findById(id);
-		} 
+		}
 		model.addAttribute("carLocation", carLocation);
 		return "frontend/car/vendor-opt-form";
 	}
-	
+
 	// ---------- 儲存選項 ----------
 	@PostMapping("/vendor/cars/options")
 	public String saveOpt(@ModelAttribute CarLocation carLocation) {
@@ -167,13 +167,13 @@ public class CarController {
 		}
 		return "redirect:/vendor/cars/locations/" + carLocation.getId();
 	}
-	
-	
+
+
 	// ---------- 刪除車款 ----------
 	@DeleteMapping("/vendor/cars/locations/{id}")
 	public String deleteById(@PathVariable Integer id) {
 		modelService.deleteById(id);
 		return "redirect:/vendor/cars/locations";
 	}
-	
+
 }

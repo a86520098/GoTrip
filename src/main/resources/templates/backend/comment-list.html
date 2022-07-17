@@ -52,9 +52,9 @@
 												<col span="1" style="width: 10%;">
 												<col span="1" style="width: 5%;">
 												<col span="1" style="width: 22%;">
-												<col span="1" style="width: 22%;">
+												<col span="1" style="width: 20%;">
 												<col span="1" style="width: 7%;">
-												<col span="1" style="width: 7%;">
+												<col span="1" style="width: 9%;">
 											</colgroup>
 											<thead>
 												<tr>
@@ -93,18 +93,18 @@
 														<div class="badge badge-warning" th:text="${comment.status}"></div>
 													</td>
 													<td>
-														<form th:action="@{/backend/comments/form/}+${comment.id}"	method="get" class="inline-block">
-															<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">
-																<!-- <i class="ti-pencil"></i> -->
-																修改
+														<form th:action="@{/backend/comments/form/}+${comment.id}"	method="get" class="d-inline">
+															<button type="submit" class="px-2 btn btn-light btn-sm">
+																<i class="ti-pencil"></i>
+																
 															</button>
 														</form>
-														<form th:action="@{/backend/comments/}+${comment.id}" th:method="delete" class="inline-block">
+														<form th:action="@{/backend/comments/}+${comment.id}" th:method="delete" class="inline">
 															<button type="button" th:value="${comment.id}"
-																class="px-2 btn btn-delete btn-info btn-rounded btn-sm">
-																<!-- <i class="ti-trash"></i> -->
+																class="px-2 btn btn-delete btn-light btn-sm">
+																<i class="ti-trash"></i>
 																<!-- th:id="'btn-delete' + ${comment.id}" -->
-																刪除
+																
 															</button>
 														</form>
 													</td>
@@ -119,23 +119,30 @@
 				</div>
 				
 				<!-- Modal -->
+				<div id="itemModal"></div>
 				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-				      </div>
-				      <div class="modal-body">
-				        ...
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        <button type="button" class="btn btn-primary">Save changes</button>
-				      </div>
-				    </div>
+				  	<div class="row">
+				  		<div class="col-10">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLabel">商品快照</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+						        ...
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						        <button type="button" class="btn btn-primary">Save changes</button>
+						      </div>
+						    </div>
+				  		
+				  		
+				  		</div>
+				  	</div>
 				  </div>
 				</div>
 				
@@ -187,9 +194,13 @@
 	 			})
 		})
 			
-			
+	
+		
+		
+		
 	$('.js-show-modal-item').on('click',function(e){
         e.preventDefault();
+        
         $('.js-modal-item').addClass('show-modal1');
     });
 

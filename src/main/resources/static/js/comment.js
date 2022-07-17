@@ -322,14 +322,14 @@ jQuery(document).ready(function($) {
 		})
 	}
 
-    $('.js-show-modal-item').on('click',function(e){
-        e.preventDefault();
-        $('.js-modal-item').addClass('show-modal1');
-    });
-
-    $('.js-hide-modal-item').on('click',function(){
-        $('.js-modal1-item').removeClass('show-modal1');
-    });
+//    $('.js-show-modal-item').on('click',function(e){
+//        e.preventDefault();
+//        $('.js-modal-item').addClass('show-modal1');
+//    });
+//
+//    $('.js-hide-modal-item').on('click',function(){
+//        $('.js-modal1-item').removeClass('show-modal1');
+//    });
     
     
     $("#btn-insert-correct").on("click", function() {

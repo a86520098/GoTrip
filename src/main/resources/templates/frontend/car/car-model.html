@@ -42,39 +42,28 @@
 
 
 
-			<div class="row isotope-grid">
+			<div class="row">
 				<div class="col-sm-3">
 					<div class="card">
-						<input type="checkbox" value="台北市">台北
-						<input type="checkbox" value="台北市">新竹
-						<input type="checkbox" value="台北市">台中
-						<input type="checkbox" value="台北市">高雄
-						<input type="checkbox" value="台北市">東部
+						<div id="select-county" class="card-body"></div>
 					</div>
 				</div>
 				<!-- Block2 -->
-				<div class="col-sm-9">
-					<div th:each="car:${carModels}" class="m-b-30 isotope-item">
+				<div class="isotope-grid col-sm-9">
+					<div th:each="car:${carModels}" class="m-b-30 isotope-item suv">
 						<div class="card d-block">
 							<div class="row">
-								<div class="col-sm-4 ">
-								<div class="px-3 pos-relative hov-img0 card-img-left ">
-									<img th:src="@{${car.image}}" class="mt-4 pt-3" alt="IMG-CAR">
-								</div>
+								<div class="col-sm-4">
+									<div class="px-3 pos-relative hov-img0 card-img-left" style="height: 180px">
+										<img th:src="@{${car.image}}" class="mt-4 pt-3" alt="IMG-CAR">
+									</div>
 								</div>
 								<div class="col-sm-8 card-body block2-txt flex-w flex-t p-t-14">
-									<div class="block2-txt-child1 mb-4">
-										<p th:text="${car.type}"></p>
-										<a th:href="@{'/cars/'+${car.id}}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-6">
-											<p th:text="${car.makeCh + ' ' + car.makeEn + ' ' + car.model}" class="pr-3"></p>
-										</a>
+									<div class="block2-txt-child1">
+										<p th:text="${car.type}" class="pt-2"></p>
+										<p th:text="${car.makeCh + ' ' + car.makeEn + ' ' + car.model}" class="pr-3 fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-6"></p>
 										<div class="rating-count" th:id="${car.id}" value="carRental">
 											尚無評論
-										</div>
-										<div th:each="option:${car.carOptions}">
-											<p class="clblack mtext-101 p-t-6 text-right" >
-												TWD $<span th:text="${option.price}"></span>
-											</p>
 										</div>
 										<i class="zmdi zmdi-flash"></i> <span th:text="${car.power}" class="p-r-15"></span>
 										<i class="zmdi zmdi-wb-auto"></i> 變速 <span th:text="${car.transmission}" class="p-r-15"></span>
@@ -99,12 +88,10 @@
 														<i class="fa fa-angle-right" aria-hidden="true"></i>
 														<span class="" th:text="${option.carLocation.district}"></span>
 													</div>
-													<p class="m-t-15" th:text="${option.carLocation.carCompany.name}"></p>
-													<p class="m-t-15" th:text="${option.carLocation.name}"></p>
-													<a th:href="@{'/cars/'+${option.id}}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-15">
-														<p th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="pr-3"></p>
-													</a>
-													<div class="rating-count" th:id="${option.carModel.id}" value="carRental">
+													<p class="m-t-15" th:text="${option.carLocation.companyName}"></p>
+													<p class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2" th:text="${option.carLocation.name}"></p>
+													<p class="m-t-15" th:text="${option.carLocation.county + option.carLocation.district + option.carLocation.address}"></p>
+													<div class="rating-count" th:id="${option.id}" value="carRental">
 														尚無評論
 													</div>
 													<div class="p-t-6 text-right">
@@ -120,10 +107,8 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
-
 		</div>
 	</div>
 
@@ -135,7 +120,9 @@
 	<div th:replace="frontend/partials/fragment :: modal1"></div>	
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
-	
+	<script th:src="@{/vendor/isotope/isotope.pkgd.min.js}"></script>
+	<script th:src="@{/js/car.js}" src="js/car.js"></script>
+
 </body>
 
 </html>

@@ -14,7 +14,7 @@ public class DBConnection {
         ds.setServerName("localhost");
         ds.setPortNumber(1433);
         ds.setUser(USER);
-        ds.setPassword(PASSWORD);	
+        ds.setPassword(PASSWORD);
         return ds;
     }
 
