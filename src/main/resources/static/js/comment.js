@@ -8,6 +8,27 @@
 //}
 
 jQuery(document).ready(function($) {
+	
+		  $(".btn-delete").click(function(e){
+			e.preventDefault(); // 取消原始動作
+			let id = $(this).val();
+	 			Swal.fire({
+	 				icon: 'warning',
+	 				title: '確定刪除?',
+	 				text: "確認刪除後將不可復原",
+	 				showCancelButton: true,
+	 				confirmButtonColor: '#FF8D29',
+	 				cancelButtonColor: '#FFCD38',
+	 				confirmButtonText: '確認',
+	 				cancelButtonText: '取消',
+	 				reverseButtons: true
+	 			}).then((result) => {
+	 				if (result.isConfirmed) {
+	 					$(this).parent().submit();
+	 				}
+	 			})
+		})
+			
 
 	// 立即顯示多張照片 - 評論
 	$('#imagefiles').on('change', function() {
@@ -35,49 +56,49 @@ jQuery(document).ready(function($) {
 		}
 	})
 
-	function processImageFile(imageObject) {
-		//確認區域與所選擇的相同，因為使用免費的，所以區域選West Center US
-		var uriBase = "https://computer-vision-lynn.cognitiveservices.azure.com/vision/v2.1/analyze";
-
-		var params = {
-			"visualFeatures": "Adult",
-			"details": "",
-			"language": "en",
-		};
-
-		//送出分析
-		$.ajax({
-			url: uriBase + "?" + $.param(params),
-			// Request header
-			beforeSend: function(xhrObj) {
-				xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
-				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "");
-			},
-			type: "POST",
-			processData: false,
-			contentType: false,
-			// Request body
-			data: imageObject
-		})
-			.done(function(data) {
-				//顯示JSON內容
-
-				if (data.adult.isAdultContent == true || data.adult.isRacyContent == true || data.adult.isGoryContent == true) {
-					console.log('請勿上傳色情、暴力或任何包含成人內容的圖片')
-					$('#isAdult').css('display', 'block');
-				} else {
-					hideInvalidText($('#formFile'));
-					$('#isAdult').css('display', 'none');
-				}
-
-			})
-			.fail(function(jqXHR, textStatus, errorThrown) {
-				//丟出錯誤訊息
-				//            var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
-				//            errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
-				//            alert(errorString);
-			});
-	};
+//	function processImageFile(imageObject) {
+//		//確認區域與所選擇的相同，因為使用免費的，所以區域選West Center US
+//		var uriBase = "https://computer-vision-lynn.cognitiveservices.azure.com/vision/v2.1/analyze";
+//
+//		var params = {
+//			"visualFeatures": "Adult",
+//			"details": "",
+//			"language": "en",
+//		};
+//
+//		//送出分析
+//		$.ajax({
+//			url: uriBase + "?" + $.param(params),
+//			// Request header
+//			beforeSend: function(xhrObj) {
+//				xhrObj.setRequestHeader("Content-Type", "application/octet-stream");
+//				xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "");
+//			},
+//			type: "POST",
+//			processData: false,
+//			contentType: false,
+//			// Request body
+//			data: imageObject
+//		})
+//			.done(function(data) {
+//				//顯示JSON內容
+//
+//				if (data.adult.isAdultContent == true || data.adult.isRacyContent == true || data.adult.isGoryContent == true) {
+//					console.log('請勿上傳色情、暴力或任何包含成人內容的圖片')
+//					$('#isAdult').css('display', 'block');
+//				} else {
+//					hideInvalidText($('#formFile'));
+//					$('#isAdult').css('display', 'none');
+//				}
+//
+//			})
+//			.fail(function(jqXHR, textStatus, errorThrown) {
+//				//丟出錯誤訊息
+//				//            var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+//				//            errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
+//				//            alert(errorString);
+//			});
+//	};
 
 
 
