@@ -158,12 +158,12 @@
 							  <div class="form-group row">
 								<label class="col-sm-3 col-form-label" for="tagNoId">標籤編號</label>
 								<div class="col-sm-9">
-								  <select id="sel2" type="text" class="form-control"  th:field="*{tagNo}" readonly> 
-									<!-- <option value="0">請選擇</option> -->
-									  <!-- <option value="1">1</option>
+								  <select id="sel"  class="form-control"  th:field="*{tagNo}"> 
+									<option value="0">請選擇</option>
+									  <option value="1">1</option>
 									  <option value="2">2</option>
 									  <option value="3">3</option>
-									  <option value="4">4</option> -->
+									  <option value="4">4</option>
 								  </select>
 								</div>
 							  </div>
@@ -172,13 +172,12 @@
 							  <div class="form-group row">
 								<label class="col-sm-3 col-form-label" for="tagNameId">標籤名稱</label>
 								<div class="col-sm-9">
-								  <select id="sel" type="text" class="form-control" name="tagName" th:field="*{tagName}">
-									  <option value="0">請選擇</option>
+								  <select id="sel2" type="text" class="form-control" name="tagName" th:field="*{tagName}" readonly></select>
+									  <!-- <option value="0">請選擇</option>
 									  <option value="1">主題樂園</option>
 									  <option value="2">博物館&美術館</option>
 									  <option value="3">水族館&動物園</option>
-									  <option value="4">歷史景點</option>
-								  </select>
+									  <option value="4">歷史景點</option> -->
 								</div>
 							  </div>
 							</div>
@@ -294,6 +293,36 @@
 							</div>
 						</div>
 
+						<!-- 方案名稱、方案價格 -->
+						<!-- <div class="row mt-4">
+							<div class="col-md-6">
+								<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="ticketPlanNameId">景點方案名稱</label>
+								<div class="col-sm-9">
+									<input id="ticketPlanNameId" type="text" class="form-control" name="ticketPlanName" th:field="*{ticketPlanName}" />
+								</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="phoneId">方案價格</label>
+								<div class="col-sm-9">
+									<input id="ticketPlanPriceId" type="text" class="form-control" name="ticketPlanPrice" th:field="*{ticketPlanPrice}"/>
+								</div>
+								</div>
+							</div>
+						</div> -->
+
+						<!-- 方案簡介 -->
+						<!-- <div class="col-md-9">
+							<div class="form-group row">
+								<label class="col-sm-3 col-form-label" for="ticketPlanIntroId">方案說明</label>
+								<div class="col-sm-9">
+									<textarea name="ticketPlanIntro" th:field="*{ticketPlanIntro}" id="ticketPlanIntroId" ></textarea>
+								</div>
+							</div>
+						</div> -->
+
 						<!-- 返回、提交、一鍵輸入、一鍵錯誤按鈕 -->
 						<p class="text-left" style="position: relative; left:300px;bottom: 10px;">
 							<button type="button" class="btn btn-primary" onclick="history.go(-1)">返回</button>
@@ -380,134 +409,18 @@
 	})
 </script>
 </script>
-<!-- TABLE + CSV + JSON JS -->
-<script>new JSTable("#basic");</script>
-<!-- TAGNO + TAGNAME SELECTOR -->
-<script>
-$("#sel").change(function () {
-	switch (parseInt($(this).val())) {
-		case 0:
-			$("#sel2 option").remove();
-			break;
-		case 1:
-			$("#sel2 option").remove();
-			var array = ["1"];
-			//利用each遍歷array中的值並將每個值新增到Select中
-			$.each(array, function (i, val) {
-				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-			});
-			break;
-		case 2:
-			$("#sel2 option").remove();
-			var array = ["2"];
-			//利用each遍歷array中的值並將每個值新增到Select中
-			$.each(array, function (i, val) {
-				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-			});
-			break;
-		case 3:
-			$("#sel2 option").remove();
-			var array = ["3"];
-			//利用each遍歷array中的值並將每個值新增到Select中
-			$.each(array, function (i, val) {
-				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-			});
-			break;
-		case 4:
-			$("#sel2 option").remove();
-			var array = ["4"];
-			//利用each遍歷array中的值並將每個值新增到Select中
-			$.each(array, function (i, val) {
-				$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
-			});
-			break;
-	}
-});
-</script>
-
-<!-- 上、下架時間 -->
-<script>
-	// 	表單提交
-	var bool = false;
-	function toSubmit() {
-		var name = $('#reservationName').val();
-		var mobile = $('#reservationPhone').val();
-		var id = $('#reservationId').val();
-		// 		$('form').submit(function(){
-		if ($("#endDate").val() == '') {
-			showMsg('請選擇下架日期');
-			bool = false;
-			return bool;
-		} else {
-			bool = true;
-		}
-		if (bool) {
-			var sdate = new Date($("#startDate").val());
-			var edate = new Date($("#endDate").val());
-
-		}
-	}
-	var obj;
-	var sdate = '2018-07-04';
-	obj = ['2018-07-12', '2018-07-13', '2018-07-20'];//禁用日期可以從數據庫查
-	// 	自定義格式
-	$.fn.datetimepicker.dates['zdy'] = {
-		days: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
-		daysShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-		daysMin: ["日", "一", "二", "三", "四", "五", "六"],
-		months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-		monthsShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-		today: "今天",
-		format: "yyyy-mm-dd",
-		titleFormat: "yyyy-mm-",
-		weekStart: 1,
-		suffix: [],
-		meridiem: ["上午", "下午"]
-	};
-	$('#startDate').datetimepicker({
-		language: 'zdy',
-		weekStart: 1,
-		todayBtn: 1,
-		autoclose: 1,
-		startDate: sdate,
-		minView: 2,
-		maxView: 3,
-		onRenderDay: function (date) {
-			// 	    	alert(date);
-			var date1 = date.getFullYear() + '-'
-				+ (date.getMonth() < 9 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
-				+ '-'
-				+ (date.getDate() < 10 ? '0' + (date.getDate() - 1) : date.getDate() - 1);
-		}
-	}).on('changeDate', function (ev) {
-		// 		alert($("#startDate").val());
-		$('#endDate').datetimepicker('remove');
-		$('#endDate').val('');
-		var sdate = $("#startDate").val();
-		var edate;
-		for (var o in obj) {
-			if (new Date(sdate) <= new Date(obj[o])) {
-				var date = new Date(obj[o])
-				var ndate = +date + 24 * 60 * 60 * 1000;
-				var leaveTime = new Date(ndate);
-				edate = leaveTime.getFullYear() + '-' + (leaveTime.getMonth() + 1) + '-' + leaveTime.getDate();
-
-			document.getElementById("sel").dispatchEvent(new Event('change'));
-		})
-	</script>
-	</script>
 	<!-- TABLE + CSV + JSON JS -->
 	<script>new JSTable("#basic");</script>
 	<!-- TAGNO + TAGNAME SELECTOR -->
 	<script>
-	$("#sel").change(function () {
+$("#sel").change(function () {
 		switch (parseInt($(this).val())) {
 			case 0:
 				$("#sel2 option").remove();
 				break;
 			case 1:
 				$("#sel2 option").remove();
-				var array = ["1"];
+				var array = ["主題樂園"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -515,7 +428,7 @@ $("#sel").change(function () {
 				break;
 			case 2:
 				$("#sel2 option").remove();
-				var array = ["2"];
+				var array = ["博物館&美術館"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -523,7 +436,7 @@ $("#sel").change(function () {
 				break;
 			case 3:
 				$("#sel2 option").remove();
-				var array = ["3"];
+				var array = ["水族館&動物園"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
@@ -531,7 +444,7 @@ $("#sel").change(function () {
 				break;
 			case 4:
 				$("#sel2 option").remove();
-				var array = ["4"];
+				var array = ["歷史景點"];
 				//利用each遍歷array中的值並將每個值新增到Select中
 				$.each(array, function (i, val) {
 					$("#sel2").append($("<option value='" + array[i] + "'>" + array[i] + "</option>"));
