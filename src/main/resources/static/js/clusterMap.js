@@ -1,7 +1,3 @@
-function showMap(carLocation) {
-
-console.log("hi")
-console.log(carLocation)
 mapboxgl.accessToken = 'pk.eyJ1IjoibHlubjgxMTExMiIsImEiOiJjbDFha2phZ28yN2tqM2RwMzZ4YncycHl5In0.QtgMdcDbNV24FrpgU4sHCw';
 const map = new mapboxgl.Map({
 	container: 'map',
@@ -21,7 +17,7 @@ map.on('load', () => {
 	
 	map.addSource('my-data', {
 		"type": "geojson",
-		'data': carLocation,
+		'data': "/gotrip/api/cars/locations/geojson",
 		cluster: true,
 		clusterMaxZoom: 14, // Max zoom to cluster points on
 		clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
@@ -109,7 +105,7 @@ map.on('load', () => {
 	// the location of the feature, with
 	// description HTML from its properties.
 	map.on('mouseenter', 'unclustered-point', (e) => {
-		const popUpMarkup = e.features[0].properties.title;
+		const popUpMarkup = e.features[0].properties.name;
 		const coordinates = e.features[0].geometry.coordinates.slice();
 		// Ensure that if the map is zoomed out such that
 		// multiple copies of the feature are visible, the
@@ -131,8 +127,3 @@ map.on('load', () => {
 		map.getCanvas().style.cursor = '';
 	});
 });
-
-
-
-
-}

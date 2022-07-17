@@ -49,13 +49,13 @@
 				<div class="col-md-9 grid-margin my-5 pl-5">
 					<div class="card">
 						<div class="card-body ">
-							<h4 class="card-title font-weight-bold">租車據點</h4>
+							<h4 class="card-title font-weight-bold my-3">租車據點</h4>
 							<form id="insertForm" name="form" th:action="@{/vendor/cars/locations}" method="post" th:object="${carLocation}"
 								  class="form-horizontal needs-validation" enctype="multipart/form-data">
 								  
 								<p class="card-description mt-4">據點資料</p>
 								<input th:field="*{id}" id="number" type="hidden"/>
-								<input th:field="*{carCompany.id}" id="number" type="hidden"/>
+								<input th:field="*{companyId}" id="number" type="hidden"/>
 								<div class="row form-group my-4">
 									<div class="col-lg-1"></div>
 									<input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder="" />
@@ -74,17 +74,18 @@
 											<div class="col-4 pr-0">
 												<p id="county" th:text="*{county}" hidden="true"></p>
 												<select class="form-control county" style="background-color: white" th:field="*{county}"></select>
+												<div class="invalid-feedback">請選擇縣市</div>
 											</div>
 											<div class="col-4 pr-0">
 												<p id="district" th:text="*{district}" hidden="true"></p>
 												<select class="form-control district" style="background-color: white" th:field="*{district}"></select>
+												<div class="invalid-feedback">請選擇行政區</div>
 											</div>
 											<div class="col-4">
 												<input class="zipcode form-control" style="background-color: white" type="text" size="3" readonly placeholder="郵遞區號">
 											</div>
 										</div>
 									</div>
-									<div class="invalid-feedback">請選擇車款類別</div>
 								</div>
 								
 								<div class="row form-group my-4">
@@ -124,7 +125,13 @@
 								<input th:field="*{longitude}" id="longitude" type="hidden" class="form-control" />
 								<input th:field="*{latitude}" id="latitude" type="hidden" class="form-control" />
 								
-								<div class="d-flex justify-content-end">
+								<div class="d-flex justify-content-end mr-5 my-4">
+									<button id="btn-car-wrong" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+										錯誤輸入
+									</button>
+									<button id="btn-insert-correct" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+										正確輸入
+									</button>
 									<button id="btn-insert" type="submit" class="btn btn-warning mr-2 justify-content-end mr-4">
 										儲存資料
 									</button>
@@ -146,6 +153,7 @@
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
 	
+	<script th:src="@{/js/car.js}"></script>
 	<script th:src="@{/js/tw-city-selector.min.js}"></script>
 	<script>
 		new TwCitySelector({

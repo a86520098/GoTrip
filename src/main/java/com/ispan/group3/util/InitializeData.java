@@ -35,21 +35,21 @@ public class InitializeData {
     private static final String IMAGE_DIR = "comment";
 
     private static final String CREATE_TB_COM = "CREATE TABLE " + TB_NAME_COM + " ("
-            + " id int PRIMARY KEY IDENTITY(1,1) NOT NULL,"
-            + "	item_tb varchar(25) NOT NULL,"
-            + "	item_id int NOT NULL,"
-            + "	user_id varchar(20) NOT NULL,"
-            + "	date smalldatetime NOT NULL,"
-            + "	rating int NOT NULL,"
-            + "	content nvarchar(200),"
-            + "	status nvarchar(20),"
-            + ");";
+										            + " id int PRIMARY KEY IDENTITY(1,1) NOT NULL,"
+										            + "	item_tb varchar(25) NOT NULL,"
+										            + "	item_id int NOT NULL,"
+										            + "	user_id varchar(20) NOT NULL,"
+										            + "	date smalldatetime NOT NULL,"
+										            + "	rating int NOT NULL,"
+										            + "	content nvarchar(200),"
+										            + "	status nvarchar(20),"
+										        + ");";
 
     private static final String CREATE_TB_IMG = "CREATE TABLE " + TB_NAME_IMG + " ("
-            + " id int PRIMARY KEY IDENTITY(1,1) NOT NULL,"
-            + "	image_path nvarchar(max) NOT NULL,"
-            + "	comment_id int FOREIGN KEY REFERENCES " + TB_NAME_COM + "(id),"
-            + ");";
+										            + " id int PRIMARY KEY IDENTITY(1,1) NOT NULL,"
+										            + "	image_path nvarchar(max) NOT NULL,"
+										            + "	comment_id int FOREIGN KEY REFERENCES " + TB_NAME_COM + "(id),"
+									            + ");";
 
 
 	private static final String CREATE_TB_CAR = "CREATE TABLE " + TB_NAME_CAR + " ("
@@ -86,46 +86,28 @@ public class InitializeData {
 												+ ");";
 
     private static final String CREATE_TB_OPT = "CREATE TABLE " + TB_NAME_OPT + " ("
-            + "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
-            + "	location_id int FOREIGN KEY REFERENCES " + TB_NAME_LOC + "(id),"
-            + "	model_id int FOREIGN KEY REFERENCES " + TB_NAME_CAR + "(id),"
-            + "	price int,"
-            + "	discount float,"
-            + "	amount int,"
-            + ");";
+										            + "	id int IDENTITY(1,1) NOT NULL PRIMARY KEY,"
+										            + "	location_id int FOREIGN KEY REFERENCES " + TB_NAME_LOC + "(id),"
+										            + "	model_id int FOREIGN KEY REFERENCES " + TB_NAME_CAR + "(id),"
+										            + "	price int,"
+										            + "	discount float,"
+										            + "	amount int,"
+									            + ");";
 
-
-	private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL)";
 	private static final String INSERT_SQL_OPT = "INSERT INTO " + TB_NAME_OPT + " VALUES (?, ?, ?, ?, ?)";
 
-
-
-
-		// Create DB
-		try {
-			try {
-				conn = ds.getConnection();
-				stmt = conn.createStatement();
-//				stmt.executeUpdate("DROP DATABASE IF EXISTS " + DB_NAME);
-//				stmt.executeUpdate("CREATE DATABASE " + DB_NAME + " COLLATE Chinese_Taiwan_Stroke_CI_AI");
-				System.out.println("成功新增Database: " + DB_NAME);
-			} catch (SQLException e) {
-				System.err.println("無法新增Databsae");
-				e.printStackTrace();
-			}
-			((SQLServerDataSource) ds).setDatabaseName(DB_NAME);
-
     @SuppressWarnings("resource")
-    public static void main(String args[]) {
+	public static void main(String args[]) {
         DataSource ds = DBConnection.dataSource();
         Connection conn = null;
         Statement stmt;
 
-        // Create DB
         try {
+        	// Create DB
             try {
                 conn = ds.getConnection();
                 stmt = conn.createStatement();
@@ -137,8 +119,6 @@ public class InitializeData {
                 e.printStackTrace();
             }
             ((SQLServerDataSource) ds).setDatabaseName(DB_NAME);
-
-
 
 			// Create Table
 			try {
@@ -166,7 +146,6 @@ public class InitializeData {
 				e.printStackTrace();
 			}
 
-
             // Insert comments
             insertComments(conn);
             // Insert images of comments
@@ -190,7 +169,6 @@ public class InitializeData {
                 }
             }
         }
-
     }
 
 
@@ -225,7 +203,6 @@ public class InitializeData {
     }
 
 
-
 	public static void insertCommentImages(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/data/comment-images.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
@@ -245,10 +222,7 @@ public class InitializeData {
 		}
 	}
 
-
-
-
-
+	
 	public static void insertCarModels(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/data/car-model.csv");
 			 InputStreamReader isr = new InputStreamReader(fis, "UTF-8");
@@ -276,8 +250,8 @@ public class InitializeData {
 		} catch (SQLException | IOException e) {
 				e.printStackTrace();
 		}
-
 	}
+	
 	
 	public static void insertCarLocations(Connection conn) {
 		try (FileInputStream fis = new FileInputStream("src/main/resources/data/car-location.csv");

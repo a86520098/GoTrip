@@ -50,7 +50,9 @@
 				<div class="col-md-9 grid-margin my-5 pl-5">
 					<div class="card">
 						<div class="card-body">
-							<h4 class="card-title font-weight-bold">租車地點列表</h4>
+							<h4 class="card-title font-weight-bold">據點詳細資料</h4>
+
+							
 
 							<div class="p-t-20">
 								<table id="data-table" class="display table table-hover w-100" style="text-align: center">
@@ -79,9 +81,9 @@
 											<td th:text="${location.carOptions.size()}"></td>
 											<td>
 												<div class="btn-group" role="group" aria-label="Basic example">
-													<button class="btn btn-light btn-rounded btn-sm">
+													<a th:href="@{/vendor/cars/locations/detail/{id}(id=${location.id})}" class="btn btn-light btn-rounded btn-sm">
 														<i class="fa fa-search" aria-hidden="true"></i>
-													</button>
+													</a>
 													<a th:href="@{/vendor/cars/locations/form/{id}(id=${location.id})}" class="btn btn-light btn-rounded btn-sm">
 														<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 													</a>
