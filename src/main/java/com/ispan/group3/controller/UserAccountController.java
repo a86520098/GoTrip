@@ -22,7 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 //import com.ispan.group3.context.UserContext;
 import com.ispan.group3.repository.RegisterForm;
 import com.ispan.group3.repository.UserData;
-import com.ispan.group3.repository.UserAccountVO;
 import com.ispan.group3.repository.UserRepository;
 import com.ispan.group3.service.impl.UserDetailsServiceImpl;
 
@@ -92,11 +91,11 @@ public class UserAccountController {
 //		return "frontend/index";
 //	}
 	
-	@GetMapping("/register")
-	public String register(@ModelAttribute UserAccountVO memberAccountVO) {
-		
-		return "frontend/register";
-	}
+//	@GetMapping("/register")
+//	public String register(@ModelAttribute UserAccountVO memberAccountVO) {
+//		
+//		return "frontend/register";
+//	}
 	
 	@PostMapping({"/register"})
 	public String doRegister( @ModelAttribute RegisterForm registerForm , BindingResult result){
