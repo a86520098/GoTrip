@@ -1,4 +1,3 @@
-USE
 [GoTrip];
 
 SET
@@ -142,6 +141,158 @@ INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone], [city], [location], [address], [image], [authority]) VALUES (2, N'dealer', NULL, NULL, N'$2a$10$iVMluTlijqCYBRs3DtGO9./iYxFI/9wB2BP5fQavZeIpatQOeJMfC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'dealer')
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone], [city], [location], [address], [image], [authority]) VALUES (12, N'elvispan@gmail.com', NULL, NULL, N'$2a$10$rJUmwbkulb//M5phPQVQxuHCQozOcBeCd100fKJuycpxtyikGKl4K', NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'user')
 SET IDENTITY_INSERT [dbo].[user_data] OFF
+DROP TABLE IF EXISTS `hotel_room`;
+DROP TABLE IF EXISTS `hotel_image`;
+DROP TABLE IF EXISTS `hotel`;
+CREATE TABLE `hotel`
+(
+    `id`             int NOT NULL AUTO_INCREMENT,
+    `howgoto`        varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `admission_time` datetime                                                    DEFAULT NULL,
+    `bath_count`     int                                                         DEFAULT NULL,
+    `bed_count`      int                                                         DEFAULT NULL,
+    `bedroom_count`  int                                                         DEFAULT NULL,
+    `boss_name`      varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `city`           varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `company_id`     int                                                         DEFAULT NULL,
+    `feature1`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `feature2`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `feature3`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `file_name`      varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `full_address`   varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `hotel_area`     int                                                         DEFAULT NULL,
+    `hotel_rule`     varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `hotel_style`    varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `hotel_name`     varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `image`          longblob,
+    `introduce`      varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8_general_ci DEFAULT NULL,
+    `notional`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `people_count`   int                                                         DEFAULT NULL,
+    `phone`          int                                                         DEFAULT NULL,
+    `price`          int                                                         DEFAULT NULL,
+    `provide`        varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `roomtype`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `status`         varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of hotel
+-- ----------------------------
+BEGIN;
+INSERT INTO `hotel` (`id`, `howgoto`, `admission_time`, `bath_count`, `bed_count`, `bedroom_count`, `boss_name`, `city`,
+                     `company_id`, `feature1`, `feature2`, `feature3`, `file_name`, `full_address`, `hotel_area`,
+                     `hotel_rule`, `hotel_style`, `hotel_name`, `image`, `introduce`, `notional`, `people_count`,
+                     `phone`, `price`, `provide`, `roomtype`, `status`)
+VALUES (3, '國一南下，交流道下來\r\n導航即可到達', '2022-07-18 22:13:46', NULL, NULL, NULL, '嚴長壽', '宜蘭縣', 1, '附屬健身房', '提供機場接送服務',
+        '提供BBQ餐點', NULL, '宜蘭縣宜蘭市凱旋路135號', 790, NULL, '公寓', '煙波大飯店宜蘭館 (Lakeshore Hotel Yilan)', NULL,
+        '住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於宜蘭縣宜蘭市的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的宜蘭車站幾米公園。 這間4星級飯店提供餐廳，給您舒適難忘的住宿體驗。',
+        'Taiwan', 300, 916755122, NULL, NULL, NULL, '營業中');
+INSERT INTO `hotel` (`id`, `howgoto`, `admission_time`, `bath_count`, `bed_count`, `bedroom_count`, `boss_name`, `city`,
+                     `company_id`, `feature1`, `feature2`, `feature3`, `file_name`, `full_address`, `hotel_area`,
+                     `hotel_rule`, `hotel_style`, `hotel_name`, `image`, `introduce`, `notional`, `people_count`,
+                     `phone`, `price`, `provide`, `roomtype`, `status`)
+VALUES (4, '開車南下或是火車都可以', NULL, NULL, NULL, NULL, '戴愛玲', '', 2, '附屬健身房', '提供機場接送服務', '提供BBQ餐點', NULL, '', 470, NULL,
+        '公寓', '東旅湯宿溫泉飯店-風華漾 (Yunoyado Onsen Hotspring Hotel Deyang)', NULL,
+        '住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於宜蘭縣礁溪鄉的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的宜蘭車站幾米公園。 這間高品質飯店被評為4星級，提供客人熱水浴缸、溫泉浴池和餐廳。',
+        'Taiwan', 30, 912333222, NULL, NULL, NULL, '營業中');
+INSERT INTO `hotel` (`id`, `howgoto`, `admission_time`, `bath_count`, `bed_count`, `bedroom_count`, `boss_name`, `city`,
+                     `company_id`, `feature1`, `feature2`, `feature3`, `file_name`, `full_address`, `hotel_area`,
+                     `hotel_rule`, `hotel_style`, `hotel_name`, `image`, `introduce`, `notional`, `people_count`,
+                     `phone`, `price`, `provide`, `roomtype`, `status`)
+VALUES (5, 'MRT  & Google', '2022-07-18 22:22:30', NULL, NULL, NULL, 'KennyShow', '新北市', 3, '附屬健身房', '提供機場接送服務',
+        '提供BBQ餐點', NULL, '新北市深坑區', 400, NULL, '公寓', '中天溫泉渡假飯店 (Hotel Valletta)', NULL,
+        '住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於宜蘭縣礁溪鄉的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的宜蘭車站幾米公園。 這間高品質飯店被評為4星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        'Taiwan', 20, 916721123, NULL, NULL, NULL, '營業中');
+COMMIT;
+
+SET
+FOREIGN_KEY_CHECKS = 1;
+
+CREATE TABLE `hotel_room`
+(
+    `id`             int NOT NULL AUTO_INCREMENT,
+    `bath_count`     int                                                         DEFAULT NULL,
+    `bed_count`      int                                                         DEFAULT NULL,
+    `bedroom_count`  int                                                         DEFAULT NULL,
+    `feature1`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `feature2`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `feature3`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `hotel_area`     int                                                         DEFAULT NULL,
+    `people_count`   int                                                         DEFAULT NULL,
+    `provide`        varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `room_introduce` varchar(2000) CHARACTER SET utf8mb3 COLLATE utf8_general_ci DEFAULT NULL,
+    `room_rule`      varchar(2000) CHARACTER SET utf8mb3 COLLATE utf8_general_ci DEFAULT NULL,
+    `roomname`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `roomprice`      int                                                         DEFAULT NULL,
+    `roomtype`       varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci  DEFAULT NULL,
+    `hotel_id`       int                                                         DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY              `FKkidx9n5p4parnjnpg912svvgi` (`hotel_id`),
+    CONSTRAINT `FKkidx9n5p4parnjnpg912svvgi` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of hotel_room
+-- ----------------------------
+BEGIN;
+INSERT INTO `hotel_room` (`id`, `bath_count`, `bed_count`, `bedroom_count`, `feature1`, `feature2`, `feature3`,
+                          `hotel_area`, `people_count`, `provide`, `room_introduce`, `room_rule`, `roomname`,
+                          `roomprice`, `roomtype`, `hotel_id`)
+VALUES (2, 2, 4, 1, '提供優質的健身房', '24小時皆可入住', '提供BOSE 音響 ＆音樂家咖啡系列', 47, 2, '浴巾,空調,陽台或露台,書桌,免鑰匙進出', '24小時可入住',
+        '兒童與加床收費標準\r\n\r\n加床規定依房型而異，請查看各房型的人數限制瞭解詳細規定。\r\n\r\n歡迎兒童入住。', '高級家庭房', 4000, '雙人房', 5);
+INSERT INTO `hotel_room` (`id`, `bath_count`, `bed_count`, `bedroom_count`, `feature1`, `feature2`, `feature3`,
+                          `hotel_area`, `people_count`, `provide`, `room_introduce`, `room_rule`, `roomname`,
+                          `roomprice`, `roomtype`, `hotel_id`)
+VALUES (3, 1, 2, 1, '提供優質健身房', '24小時皆可入住', '提供BOS音響  & 音樂系列咖啡', 22, 2, '廚房用具(廚具`油`調味料),電視', '充滿各式各樣的音響 提供給喜愛音樂的您',
+        '兒童與加床收費標準\r\n\r\n加床規定依房型而異，請查看各房型的人數限制瞭解詳細規定。\r\n\r\n歡迎兒童入住。', '大煙波雙人房', 4000, '雙人房', 3);
+COMMIT;
+
+SET
+FOREIGN_KEY_CHECKS = 1;
+
+
+CREATE TABLE `hotel_image`
+(
+    `id`             int NOT NULL AUTO_INCREMENT,
+    `admission_time` datetime                                                   DEFAULT NULL,
+    `file_name`      varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci DEFAULT NULL,
+    `image_path`     varchar(255) CHARACTER SET utf8mb3 COLLATE utf8_general_ci DEFAULT NULL,
+    `hotel_id`       int                                                        DEFAULT NULL,
+    PRIMARY KEY (`id`),
+    KEY              `FK293ve9b0ocbfji4u5hl2oh3ks` (`hotel_id`),
+    CONSTRAINT `FK293ve9b0ocbfji4u5hl2oh3ks` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------
+-- Records of hotel_image
+-- ----------------------------
+BEGIN;
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (1, '2022-07-18 22:13:46', NULL, '/data/uploadimages/hotelImage/pexels-freemockupsorg-775219.jpg', 3);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (2, '2022-07-18 22:13:46', NULL, '/data/uploadimages/hotelImage/pexels-francesco-ungaro-96444.jpg', 3);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (3, '2022-07-18 22:16:59', NULL, '/data/uploadimages/hotelImage/pexels-markus-spiske-26139.jpg', 4);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (4, '2022-07-18 22:16:59', NULL, '/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg', 4);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (5, '2022-07-18 22:20:14', NULL, '/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg', 4);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (6, '2022-07-18 22:20:14', NULL, '/data/uploadimages/hotelImage/pexels-engin-akyurt-1579253.jpg', 4);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (7, '2022-07-18 22:20:32', NULL, '/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg', 4);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (8, '2022-07-18 22:20:32', NULL, '/data/uploadimages/hotelImage/pexels-pixabay-161758.jpg', 4);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (9, '2022-07-18 22:22:30', NULL, '/data/uploadimages/hotelImage/pexels-julie-aagaard-2096983.jpg', 5);
+INSERT INTO `hotel_image` (`id`, `admission_time`, `file_name`, `image_path`, `hotel_id`)
+VALUES (10, '2022-07-18 22:22:30', NULL, '/data/uploadimages/hotelImage/pexels-konstantinos-eleftheriadis-2034335.jpg',
+        5);
+COMMIT;
+
+SET
+FOREIGN_KEY_CHECKS = 1;
 
 
 

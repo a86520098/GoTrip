@@ -70,11 +70,10 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="text-center">#</th>
-                                    <th scope="col" class="text-center">房間名稱</th>
-                                    <th scope="col" class="text-center">價格</th>
+                                    <th scope="col" class="text-center">飯店名稱</th>
                                     <th scope="col" class="text-center">容納人數</th>
                                     <th scope="col" class="text-center">地址</th>
-                                    <th scope="col" class="text-center">房間數</th>
+                                    <th scope="col" class="text-center">狀態</th>
                                     <th scope="col" class="text-center">修改</th>
                                     <th scope="col" class="text-center">刪除</th>
                                     <th scope="col" class="text-center">新增房間</th>
@@ -84,10 +83,9 @@
                                 <tr th:each="hotel:${hotel}" class="odd gradeX" scope="row">
                                     <td th:text="${hotel.id}"></td>
                                     <td th:text="${hotel.hotel_name}"></td>
-                                    <td th:text="${hotel.price}"></td>
                                     <td th:text="${hotel.peopleCount}"></td>
                                     <td th:text="${hotel.fullAddress}"></td>
-                                    <td th:text="${hotel.bedroomCount}"></td>
+                                    <td th:text="${hotel.status}"></td>
                                     <td> 修改</td>
                                     <td> 刪除</td>
                                     <th>
