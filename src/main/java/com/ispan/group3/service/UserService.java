@@ -2,20 +2,21 @@ package com.ispan.group3.service;
 
 import java.util.List;
 
-import com.ispan.group3.repository.User;
+import org.springframework.stereotype.Service;
 
+import com.ispan.group3.repository.UserData;
 
 public interface UserService {
 
 //	boolean isDup(String id);
 
-	List<User> getAllUsers();
+	List<UserData> getAllUsers();
 
-	void saveOrUpdate(User user);
+	void saveOrUpdate(UserData user);
 
-	User getUser(int user_id);
+	UserData getUser(int user_id);
 	
-	User getByEmail(String email);
+	UserData findByUsername(String username);
 
 	void deleteUser(int user_id);
 

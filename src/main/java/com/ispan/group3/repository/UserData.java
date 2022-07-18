@@ -9,16 +9,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
+@ToString
 @Entity
 @Table(name="user_data")
-public class User{
+public class UserData{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_id;
-	private String email;
+	private String username;
 	private String ch_name;
 	private String en_name;
 	private String password;
@@ -29,15 +40,15 @@ public class User{
 	private String location;
 	private String address;
 	private String image;
-	private String status;
+	private String authority;
 	
 	
 	
-	public User(int user_id, String email, String ch_name, String en_name, String password, String gender,
+	public UserData(int user_id, String username, String ch_name, String en_name, String password, String gender,
 			String birthday2, String phone, String city, String location, String address) {
 		super();
 		this.user_id = user_id;
-		this.email = email;
+		this.username = username;
 		this.ch_name = ch_name;
 		this.en_name = en_name;
 		this.password = password;
@@ -50,10 +61,10 @@ public class User{
 //		this.image = image;
 	}
 	
-	public User(String email, String ch_name, String en_name, String password, String gender, String birthday,
+	public UserData(String username, String ch_name, String en_name, String password, String gender, String birthday,
 			String phone, String city, String location, String address) {
 		super();
-		this.email = email;
+		this.username = username;
 		this.ch_name = ch_name;
 		this.en_name = en_name;
 		this.password = password;
@@ -65,15 +76,15 @@ public class User{
 		this.address = address;
 	}
 
-	public User() {
+	public UserData() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(int user_id, String email, String ch_name, String en_name, String password, String gender,
-			String birthday, String phone, String city, String location, String address, String image, String status) {
+	public UserData(int user_id, String username, String ch_name, String en_name, String password, String gender,
+			String birthday, String phone, String city, String location, String address, String image, String authority) {
 		super();
 		this.user_id = user_id;
-		this.email = email;
+		this.username = username;
 		this.ch_name = ch_name;
 		this.en_name = en_name;
 		this.password = password;
@@ -84,76 +95,79 @@ public class User{
 		this.location = location;
 		this.address = address;
 		this.image = image;
-		this.status = status;
+		this.authority = authority;
 	}
 
-	public User(String email, String password, List<Object> emptyList) {
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public int getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(int user_no) {
-		this.user_id = user_no;
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+
 	public String getCh_name() {
 		return ch_name;
 	}
+
 	public void setCh_name(String ch_name) {
 		this.ch_name = ch_name;
 	}
+
 	public String getEn_name() {
 		return en_name;
 	}
+
 	public void setEn_name(String en_name) {
 		this.en_name = en_name;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public String getBirthday() {
 		return birthday;
 	}
+
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
+
 	public String getLocation() {
 		return location;
 	}
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
@@ -166,64 +180,29 @@ public class User{
 		this.image = image;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getAuthority() {
+		return authority;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+	
+	public String getUsername() {
+		return username;
 	}
 
-//	@Override
-//	public Collection<? extends GrantedAuthority> getAuthorities() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public String getUsername() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public boolean isAccountNonExpired() {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean isAccountNonLocked() {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean isCredentialsNonExpired() {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean isEnabled() {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
 
-
-//	@Override
-//	public String toString() {
-//		return "Member [id=" + user_id + 
-//				", itemTb=" + itemTb + 
-//				", itemId=" + itemId + 
-//				", userId=" + userId + 
-//				", date=" + date + 
-//				", rating=" + rating + 
-//				", content=" + content + 
-//				", image1=" + image1 + 
-//				", image2=" + image2 + 
-//				", image3=" + image3 + "]";
-//	}
+	public void setPassword(String password) {
+		this.password = password;
+	}	
 	
 	
 

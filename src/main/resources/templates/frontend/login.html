@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <!-- Head -->
     <head>
         <title>立即登入GoTrip！</title>
@@ -13,6 +14,7 @@
         <link th:href="@{css/loginCSS/popuo-box.css}" rel="stylesheet" type="text/css" media="all" />
         <!-- Style -->
         <link rel="stylesheet" th:href="@{css/loginCSS/style.css}" type="text/css" media="all">
+        
     </head>
     <!-- //Head -->
 
@@ -20,17 +22,20 @@
     <body><h1>立即登入GoTrip！</h1>
         <div class="w3layoutscontaineragileits">
             <h2>Login here</h2>
-            <form id=loginForm method="POST" th:action="@{/login}" th:Object="${userAccount}" enctype="multipart/form-data" autocomplete="off">
-    		<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/>
-                <input type="email" Name="email" placeholder="EMAIL" required>
+            <form id=loginForm method="POST" th:action="@{/login}">
+<!--     		<form id="loginForm" th:action="@{/loginUrl}" method="POST"> -->
+<!--     		<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/> -->
+                <input type="text" Name="username" placeholder="EMAIL" required>
                 <input type="password" Name="password" placeholder="PASSWORD" required>
+                <input type="hidden" name="${_csrf.parameterName}" th:value="${_csrf.token}" th:if="${_csrf}" />
                 <ul class="agileinfotickwthree">
-                    <li><input type="checkbox" id="brand1" value="">
+                    <li><input type="checkbox" id="brand1" name="remember-me" value="true">
                         <label for="brand1">
                             <span></span>Remember me</label>
                             <a href="#">Forgot password?</a>
                     </li>
                 </ul>
+                
                 <div class="aitssendbuttonw3ls">
                     <input type="submit" value="登入">
                     <p>還沒有GoTrip會員？<span>→</span><a class="w3_play_icon1" href="#small-dialog1">點我加入！</a></p>
@@ -45,14 +50,14 @@
                 <div class="contact-w3-agileits">
                     <h3>Register Form</h3>
                     <form id="registerForm" method="POST" th:action="@{/register}" th:Object="${userAccountVO}" enctype="multipart/form-data" autocomplete="off">
+<!--                         <div class="form-sub-w3ls"> -->
+<!--                             <input placeholder="User Name"  type="text" name="ch_name" required> -->
+<!--                             <div class="icon-agile"> -->
+<!--                                 <i class="fa fa-user" aria-hidden="true"></i> -->
+<!--                             </div> -->
+<!--                         </div> -->
                         <div class="form-sub-w3ls">
-                            <input placeholder="User Name"  type="text" name="ch_name" required>
-                            <div class="icon-agile">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <div class="form-sub-w3ls">
-                            <input placeholder="Email" class="mail" type="email" name="email"　required>
+                            <input placeholder="Email" class="mail" type="email" name="username" required>
                             <div class="icon-agile">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </div>
@@ -63,6 +68,7 @@
                                 <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             </div>
                         </div>
+<!--                         <input type="hidden" name="authority" value="user"> -->
 <!--                         <div class="form-sub-w3ls"> -->
 <!--                             <input placeholder="Confirm Password"  type="password" name="password" required> -->
 <!--                             <div class="icon-agile"> -->

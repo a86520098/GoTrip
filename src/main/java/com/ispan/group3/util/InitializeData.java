@@ -105,7 +105,6 @@ public class InitializeData {
 
 
 		// Create DB
-		try {
 			try {
 				conn = ds.getConnection();
 				stmt = conn.createStatement();
