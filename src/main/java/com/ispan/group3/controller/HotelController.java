@@ -308,6 +308,7 @@ public class HotelController {
 //        hotel.setHotelroomList(list);
 //        hotelService.save(hotel);
 //        hotelroomService.save(hotelRoom);
+        
         Hotel byId = hotelService.findById(id);
 
         for (int i = 0; i < 10; i++) {
