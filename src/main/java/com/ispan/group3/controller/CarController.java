@@ -155,7 +155,7 @@ public class CarController {
 			e.printStackTrace();
 		}
 		locationService.save(carLocation);
-		return "redirect:/vendor/cars/options/form/" + carLocation.getId();
+		return "redirect:/vendor/cars/locations/" + carLocation.getCompanyId();
 	}
 
 	// ---------- 方案表單 ----------

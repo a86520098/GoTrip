@@ -48,24 +48,20 @@ jQuery(document).ready(function($) {
 	})
 
 
-	//	$(function() {
-
-	//		let contentLength = $("#content").val().length;
-	//		$("#content-length").text('(' + contentLength + '/' + contentMax + ')');
-
 	let isNameValid, isCountyVaild, isDistrictVaild, isZipcodeVaild, isAddresseVaild, isPhoneVaild;
 
 	// 確認表單內容
 	$('#btn-insert-loc').click(function(e) {
-		//			let isContentVaild = $("#content").val().length <= contentMax;
-		//			let isimagefilesVaild = $("#imagefiles")[0].files.length <= imagefilesMax;
 		isNameValid = $('#name').val() !== '';
 		isCountyVaild = $('.county').val() !== '';
 		isDistrictVaild = $('.district').val() !== '';
 		isZipcodeVaild = $('.zipcode').val() !== '';
 		isAddresseVaild = $('#address').val() !== '';
-		isPhoneVaild = $('#phone').val().indexOf(2) == '-' && $('#phone').val().length >= 10 && $('#phone').val().length <= 11;
-		if (!isNameValid || !isCountyVaild || !isDistrictVaild || !isZipcodeVaild || !isAddresseVaild || !isPhoneVaild) {
+		isPhoneVaild = $('#phone').val().charAt(2) == '-' && $('#phone').val().length >= 10 && $('#phone').val().length <= 11;
+		isOpenVaild = $('#openTime').val().substring(3) < 60 && $('#openTime').val().substring(0,2) < 24;
+		isCloseVaild = $('#openTime').val().substring(3) < 60 && $('#openTime').val().substring(0,2) < 24;
+		
+		if (!isNameValid || !isCountyVaild || !isDistrictVaild || !isZipcodeVaild || !isAddresseVaild || !isPhoneVaild || !isOpenVaild || !isCloseVaild) {
 			e.preventDefault();
 			isNameValid ? hideInvalidText($('#name')) : showInvalidText($('#name'));
 			isCountyVaild ? hideInvalidText($('.county')) : showInvalidText($('.county'));
@@ -73,16 +69,16 @@ jQuery(document).ready(function($) {
 			isZipcodeVaild ? hideInvalidText($('.district')) : showInvalidText($('.district'));
 			isAddresseVaild ? hideInvalidText($('#address')) : showInvalidText($('#address'));
 			isPhoneVaild ? hideInvalidText($('#phone')) : showInvalidText($('#phone'));
-			//				isContentVaild ? hideInvalidText($('#content')) : showInvalidText($('#content'));
-			//				isimagefilesVaild ? hideInvalidText($('#imagefiles')) : showInvalidText($('#imagefiles'));
+			isOpenVaild ? hideInvalidText($('#openTime')) : showInvalidText($('#openTime'));
+			isCloseVaild ? hideInvalidText($('#closeTime')) : showInvalidText($('#closeTime'));
 			$("form").addClass('validated');
-			console.log('validated')
 		} else {
 			console.log('success')
 			e.preventDefault();
 			Swal.fire({
 				icon: 'success',
 				title: '儲存成功',
+				text: "即將會您導回地點列表",
 				showConfirmButton: false,
 				timer: 1500
 			});
@@ -92,7 +88,6 @@ jQuery(document).ready(function($) {
 			}, 1500);
 		}
 	})
-	//	});
 
 	function showInvalidText(selector) {
 		selector.removeClass('is-valid').addClass('is-invalid');
@@ -130,9 +125,20 @@ jQuery(document).ready(function($) {
 		if ($("form").hasClass('validated'))
 			isAddressVaild ? showInvalidText($('#address')) : hideInvalidText($('#address'))
 	})
-	$('#phone').on('change', function() {
+	
+	$('#phone').on('blur', function() {
 		if ($("form").hasClass('validated'))
 			isPhoneVaild ? showInvalidText($('#phone')) : hideInvalidText($('#phone'))
+	})
+	
+	$('#openTime').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isOpenVaild ? showInvalidText($('#openTime')) : hideInvalidText($('#openTime'))
+	})
+	
+	$('#closeTime').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isCloseVaild ? showInvalidText($('#closeTime')) : hideInvalidText($('#closeTime'))
 	})
 
 
@@ -148,46 +154,49 @@ jQuery(document).ready(function($) {
 	});
 
 
-	$("#btn-insert-correct").on("click", function() {
-		console.log('ok');
-		//		$('#content').focus()
-
-		$('#name').val('資策中壢站')
+	$("#btn-insert-correct-loc").on("click", function() {
+		$('#companyId').val(5)
+		$('#companyName').val('資展租車')
+		$('#name').val('資展中壢站')
 		$('#county').val('台灣')
-		//		$('#county').val('桃園市')
-		//		$('#district').val('中壢區')
 		$('.county').focus()
 		$('.county').val('桃園市')
 		$('.county').blur()
 
 		$(".county option[value='" + $('.county option:selected').val('桃園市') + "']").prop("selected", true);
+		$('.district').focus().val('中壢區').blur()
+
+		$('#address').val('新生路二段421號')
+		$('#openTime').focus()
+		$('#phone').focus().val('03-4533013').blur()
+		
+		$('#openTime').focus().val('09:00').blur()
+		$('#closeTime').focus().val('16:30').blur()
+
+
+	});
+
+	$("#btn-insert-wrong-loc").on("click", function() {
+		$('#companyId').val(5)
+		$('#companyName').val('資展租車')
+		$('#name').val('資展中壢站')
+		$('#county').val('台灣')
+		$('.county').focus()
+		$('.county').val('桃園市')
+		$('.county').blur()
+		$(".county option[value='" + $('.county option:selected').val('桃園市') + "']").prop("selected", true);
 		$('.district').focus()
 		$('.district').val('中壢區')
 		$('.district').blur()
-
-
 		$('#address').val('新生路二段421號')
-		$('#phone').val('03-4533013')
-		$('#openTime').val('09:00')
-		$('#closeTime').val('16:30')
-		$('#userId').val(12)
-	});
+		$('#phone').val('(03)4533013')
+		$('#openTime').val('上午9點')
+		$('#closeTime').val('晚上8點')
 
-	$("#btn-insert-wrong").on("click", function() {
-		console.log('ok');
-		$('#content').focus()
-		$('#itemTb').val('carRental')
-		$('#itemId').val(1)
-		$('#userId').val(12)
-		$("input[name='rating'][value='2']").attr("checked", true);
-		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。' +
-			'別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!' + '經過這次的租賃經驗，幾點心得跟大家分享：' +
-			'1)若你沒有車子，或是車子的空間不足，租車是個好選擇。' + '2)車種選擇非常多，可以嘗試許多廠牌的車子，讓駕馭變有趣。' +
-			'3)駕駛租賃車時保持平常心，把它當成自己的車子愛護，心情就會輕鬆愉快。' +
-			'整體來說我覺得格上租車的服務確實相當好，若有租車需求的話，不妨參考看看我們這次的心得囉。')
-
-		$('#content').blur()
 	});
+	
+	
+
 
 
 })

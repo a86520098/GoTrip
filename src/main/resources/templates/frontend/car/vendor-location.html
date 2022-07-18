@@ -33,12 +33,12 @@
 								</li>
 								<li class="bor18">
 									<a th:href="@{/vendor/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-										新增地點
+										新增地點資訊
 									</a>
 								</li>
 								<li class="bor18">
 									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-										新增車款
+										新增車款選項
 									</a>
 								</li>
 							</ul>
@@ -68,8 +68,9 @@
 										</tr>
 									</thead>
 									<tbody id="tbody">
-										<tr th:each="location:${carLocations}" class="odd gradeX" scope="row">
-											<td th:text="${location.id}"></td>
+										<tr th:each="location, locationStat:${carLocations}" class="odd gradeX" scope="row">
+											<td th:text="${locationStat.index}"></td>
+<!-- 											<td th:text="${location.id}"></td> -->
 											<td th:text="${location.name}"></td>
 											<td th:text="${location.county}"></td>
 											<td th:text="${location.district}"></td>
@@ -80,6 +81,9 @@
 												<span th:text="${location.carOptions.size()}"></span>
 												<a th:href="@{/vendor/cars/options/form/{id}(id=${location.id})}" class="btn btn-light btn-rounded btn-sm">
 													<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+												</a>
+												<a th:href="@{/vendor/cars/models/form}" class="btn btn-light btn-rounded btn-sm">
+													<i class="fa fa-plus" aria-hidden="true"></i>
 												</a>
 											</td>
 											<td>
@@ -143,7 +147,7 @@
 //          }
 //      })
 	  
-	  $(".btn-delete-loc").click(function(e){
+	  $(".btn-delete").click(function(e){
 			e.preventDefault(); // 取消原始動作
 			let id = $(this).val();
 	 			Swal.fire({

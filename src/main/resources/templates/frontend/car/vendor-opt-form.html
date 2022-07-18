@@ -33,12 +33,12 @@
 								</li>
 								<li class="bor18">
 									<a th:href="@{/vendor/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-										新增地點
+										新增地點資訊
 									</a>
 								</li>
 								<li class="bor18">
 									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-										新增車款
+										新增車款選項
 									</a>
 								</li>
 							</ul>
@@ -139,32 +139,15 @@
 										<div class="col-lg-1"></div>
 										<label class="col-lg-2 col-form-label" for="discount">折扣</label>
 										<div class="col-lg-6">
-											<input th:field="*{carOptions[__${optionStat.index}__].discount}" id="discount" type="text" name="discount" class="form-control" placeholder="0.8"/>
+											<input th:field="*{carOptions[__${optionStat.index}__].discount}" id="discount" type="text" name="discount" class="form-control" placeholder="折扣請以小數格式輸入，輸入0.8即是打八折"/>
 											<div class="invalid-feedback">折扣請以小數格式輸入，ex:輸入0.8即[原定價x0.8=銷售金額]</div>
 										</div>
 									</div>
 								</div>
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-1"></div> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="">營業時間</label> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="openTime">開始營業</label> -->
-<!-- 									<div class="col-lg-4 mr-5"> -->
-<!-- 										<input th:field="*{openTime}" id="openTime" type="datetime" class="form-control"/> -->
-<!-- 										<div class="invalid-feedback">請輸入營業時間</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="row form-group my-4"> -->
-<!-- 									<div class="col-lg-3"></div> -->
-<!-- 									<label class="col-lg-2 col-form-label" for="closeTime">結束營業</label> -->
-<!-- 									<div class="col-lg-4"> -->
-<!-- 										<input th:field="*{closeTime}" id="closeTime" type="text" class="form-control"/> -->
-<!-- 										<div class="invalid-feedback">請輸入營業時間</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-								<select name="carModel" class="form-control">
-									<option value="0">select option</option>
-									<option th:each="carModel : ${carModels}" th:value="${carModel.id}" th:text="${carModel.makeCh + carModel.makeEn + carModel.model}"></option>
-								</select>
+<!-- 								<select name="carModel" class="form-control"> -->
+<!-- 									<option value="0">select option</option> -->
+<!-- 									<option th:each="carModel : ${carModels}" th:value="${carModel.id}" th:text="${carModel.makeCh + carModel.makeEn + carModel.model}"></option> -->
+<!-- 								</select> -->
 								
 								<div class="d-flex justify-content-end">
 									<button id="btn-insert-opts" type="submit" class="btn btn-warning mr-2 justify-content-end mr-4">
