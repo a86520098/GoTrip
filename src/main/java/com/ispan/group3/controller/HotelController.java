@@ -298,24 +298,24 @@ public class HotelController {
     @PostMapping("/getNewRoom")
 
     public String getNewRoom(@ModelAttribute("HotelRoom") HotelRoom hotelRoom, Model model) {
-        Hotel hotel = new Hotel();//主表bean
-        hotel.setHotel_name("豪華大酒店");
-        List<HotelRoom> list = new ArrayList<HotelRoom>();
-        HotelRoom hotelRoom1 = new HotelRoom(); //附表
-        hotelRoom1.setRoomname("雙人房");
-        hotelRoom1.setRoomprice(213123);
-        hotelRoom1.setHotel(hotel);
-        list.add(hotelRoom1);
-        hotel.setHotelroomList(list);
-        hotelService.save(hotel);
-        hotelroomService.save(hotelRoom);
-//        ArrayList<HotelRoom> hotelRooms = new ArrayList<>();
-//        HotelRoom hotelRoom1 = new HotelRoom(); //附表（多方）
-//        hotelRooms.add(hotelRoom);
-//        Hotel hotel = new Hotel(); //主表（單）
-//        hotel.setHotelroomList(new ArrayList<>());
-//        hotel.setHotelroomList(hotelRooms);
+//        Hotel hotel = new Hotel();//主表bean
+//        hotel.setHotel_name("豪華大酒店");
+//        List<HotelRoom> list = new ArrayList<HotelRoom>();
+//        HotelRoom hotelRoom1 = new HotelRoom(); //附表
+//        hotelRoom1.setRoomname("雙人房");
+//        hotelRoom1.setRoomprice(213123);
+//        hotelRoom1.setHotel(hotel);
+//        list.add(hotelRoom1);
+//        hotel.setHotelroomList(list);
 //        hotelService.save(hotel);
+//        hotelroomService.save(hotelRoom);
+        ArrayList<HotelRoom> hotelRooms = new ArrayList<>();
+        HotelRoom hotelRoom1 = new HotelRoom(); //附表（多方）
+        hotelRooms.add(hotelRoom);
+        Hotel hotel = new Hotel(); //主表（單）
+        hotel.setHotelroomList(new ArrayList<>());
+        hotel.setHotelroomList(hotelRooms);
+        hotelService.save(hotel);
         for (int i = 0; i < 10; i++) {
             System.out.println("前台商家新增房間");
         }
