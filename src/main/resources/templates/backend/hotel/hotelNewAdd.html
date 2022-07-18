@@ -60,8 +60,9 @@
 
                                                 <form method="post" th:action="@{/addHotel}" th:object="${hotel}"
                                                       enctype="multipart/form-data">
-
-                                                    <td>住宿類型</td>
+                                                    <h3>填寫您住宿資料</h3>
+                                                    <hr>
+                                                    <td>您住宿類型</td>
                                                     <fieldset class="form-group">
                                                         <select th:field="*{hotelStyle}" class="form-select"
                                                                 aria-label="Default select example">
@@ -72,6 +73,80 @@
                                                             <option value="專業大飯店">專業大飯店</option>
                                                         </select>
                                                     </fieldset>
+
+                                                    <fieldset class="form-group">
+                                                        <label>飯店名稱</label>
+                                                        <input type="text" th:field="*{hotel_name}" id="name"
+                                                               class="form-control"/>
+                                                    </fieldset>
+
+                                                    <fieldset class="form-group">
+                                                        <label>介紹一下你的地方</label>
+                                                        <textarea th:field="*{introduce}" id="introduce"
+                                                                  class="form-control"> </textarea>
+                                                    </fieldset>
+
+                                                    <fieldset class="form-group">
+                                                        <label>國家</label>
+                                                        <input type="text" th:field="*{notional}" id="notional"
+                                                               class="form-control"/>
+                                                    </fieldset>
+
+                                                    <p class="card-description mt-4">
+                                                        聯絡地址
+                                                    </p>
+                                                    <input type="hidden" class="js-demeter-tw-zipcode-selector"
+                                                           data-city="#city" data-dist="#location" placeholder="郵遞區號"
+                                                           size="6" id="yoyo" name="yoyo" readonly/>
+                                                    <select id="city" name="city" placeholder="請選擇縣市"
+                                                            onchange="addressChange()" class="form-control"></select>
+                                                    <select id="location" name="location" placeholder="請選擇鄉鎮區"
+                                                            onchange="addressChange()" class="form-control"></select>
+
+                                                    <input type="text" name="fullAddress" id="fullAddress"
+                                                           class="form-control"/>
+                                                    <!--                            //縣市鄉鎮自動帶入此地址欄位-->
+
+                                                    <fieldset class="form-group">
+                                                        <label>房客該如何前往妳的住宿</label>
+                                                        <textarea th:field="*{Howgoto}" id="Howgoto"
+                                                                  class="form-control"> </textarea>
+                                                    </fieldset>
+
+                                                    <td>狀態</td>
+                                                    <fieldset class="form-group">
+                                                        <select th:field="*{status}" class="form-select"
+                                                                aria-label="Default select example">
+                                                            <option value="營業中">營業中</option>
+                                                            <option value="未營業">未業中</option>
+                                                        </select>
+                                                    </fieldset>
+                                                    <h3>填寫您房間資料</h3>
+
+                                                    <hr>
+
+                                                    <label>您住宿的特色1</label>
+                                                    <select class="form-select form-select-lg mb-3"
+                                                            aria-label=".form-select-lg example" th:field="*{feature1}">
+                                                        <option th:value="'附屬健身房'" th:text="附屬健身房"></option>
+                                                        <option th:value="'附屬spa'" th:text="附屬spa"></option>
+                                                        <option th:value="'附屬美容室'" th:text="附屬美容室"></option>
+                                                    </select>
+                                                    <label>您住宿的特色2</label>
+                                                    <select class="form-select form-select-lg mb-3"
+                                                            aria-label=".form-select-lg example" th:field="*{feature2}">
+                                                        <option th:value="'提供機場接送服務'" th:text="提供機場接送服務"></option>
+                                                        <option th:value="'提供超跑特別租借'" th:text="提供超跑特別租借"></option>
+                                                        <option th:value="'提供3c高級筆電'" th:text="提供3c高級筆電"></option>
+                                                    </select>
+                                                    <label>您住宿的特色3</label>
+                                                    <select class="form-select form-select-lg mb-3"
+                                                            aria-label=".form-select-lg example" th:field="*{feature3}">
+                                                        <option th:value="'提供BBQ餐點'" th:text="提供BBQ餐點"></option>
+                                                        <option th:value="'提供美式餐點'" th:text="提供美式餐點"></option>
+                                                        <option th:value="'提供中式餐點'" th:text="提供中式餐點"></option>
+                                                    </select>
+
 
                                                     <fieldset class="form-group">
                                                         <label>住宿面積大小</label>
@@ -101,74 +176,12 @@
                                                                class="form-control" onkeypress="return my_key(event)"/>
                                                     </fieldset>
 
-                                                    <fieldset class="form-group">
-                                                        <label>國家</label>
-                                                        <input type="text" th:field="*{notional}" id="notional"
-                                                               class="form-control"/>
-                                                    </fieldset>
-
-                                                    <p class="card-description mt-4">
-                                                        聯絡地址
-                                                    </p>
-
-
-                                                    <input type="hidden" class="js-demeter-tw-zipcode-selector"
-                                                           data-city="#city" data-dist="#location" placeholder="郵遞區號"
-                                                           size="6" id="yoyo" name="yoyo" readonly/>
-                                                    <select id="city" name="city" placeholder="請選擇縣市"
-                                                            onchange="addressChange()" class="form-control"></select>
-                                                    <select id="location" name="location" placeholder="請選擇鄉鎮區"
-                                                            onchange="addressChange()" class="form-control"></select>
-
-                                                    <input type="text" name="fullAddress" id="fullAddress"
-                                                           class="form-control"/>
-                                                    <!--                            //縣市鄉鎮自動帶入此地址欄位-->
 
                                                     <fieldset class="form-group">
                                                         <label>住宿規定</label>
                                                         <textarea th:field="*{hotelRule}" id="hotelRule"
                                                                   class="form-control"> </textarea>
                                                     </fieldset>
-
-                                                    <fieldset class="form-group">
-                                                        <label>房客該如何前往妳的住宿</label>
-                                                        <textarea th:field="*{Howgoto}" id="Howgoto"
-                                                                  class="form-control"> </textarea>
-                                                    </fieldset>
-
-
-                                                    <fieldset class="form-group">
-                                                        <label>飯店名稱</label>
-                                                        <input type="text" th:field="*{hotel_name}" id="name"
-                                                               class="form-control"/>
-                                                    </fieldset>
-                                                    <fieldset class="form-group">
-                                                        <label>介紹一下你的地方</label>
-                                                        <textarea th:field="*{introduce}" id="introduce"
-                                                                  class="form-control"> </textarea>
-                                                    </fieldset>
-
-                                                    <label>您住宿的特色1</label>
-                                                    <select class="form-select form-select-lg mb-3"
-                                                            aria-label=".form-select-lg example" th:field="*{feature1}">
-                                                        <option th:value="'附屬健身房'" th:text="附屬健身房"></option>
-                                                        <option th:value="'附屬spa'" th:text="附屬spa"></option>
-                                                        <option th:value="'附屬美容室'" th:text="附屬美容室"></option>
-                                                    </select>
-                                                    <label>您住宿的特色2</label>
-                                                    <select class="form-select form-select-lg mb-3"
-                                                            aria-label=".form-select-lg example" th:field="*{feature2}">
-                                                        <option th:value="'提供機場接送服務'" th:text="提供機場接送服務"></option>
-                                                        <option th:value="'提供超跑特別租借'" th:text="提供超跑特別租借"></option>
-                                                        <option th:value="'提供3c高級筆電'" th:text="提供3c高級筆電"></option>
-                                                    </select>
-                                                    <label>您住宿的特色3</label>
-                                                    <select class="form-select form-select-lg mb-3"
-                                                            aria-label=".form-select-lg example" th:field="*{feature3}">
-                                                        <option th:value="'提供BBQ餐點'" th:text="提供BBQ餐點"></option>
-                                                        <option th:value="'提供美式餐點'" th:text="提供美式餐點"></option>
-                                                        <option th:value="'提供中式餐點'" th:text="提供中式餐點"></option>
-                                                    </select>
 
 
                                                     <fieldset class="form-group">
@@ -219,25 +232,13 @@
                                                                class="form-control" onkeypress="return my_key(event)"/>
                                                     </fieldset>
 
-                                                    <fieldset class="form-group">
-                                                        <label>照片</label>
-                                                        <input th:field="*{productImage}" name="fileName" id="filename"
-                                                               type='file' accept="image/png, image/jpeg, image/jpg"
-                                                               multiple="multiple"/>
-                                                        <input type="button" id="submitBtn" onclick="checkSubmit()"
-                                                               value="上传"/>
-                                                    </fieldset>
 
-                                                    <td>狀態</td>
-                                                    <fieldset class="form-group">
-                                                        <select th:field="*{status}" class="form-select"
-                                                                aria-label="Default select example">
-                                                            <option value="營業中">營業中</option>
-                                                            <option value="未營業">未業中</option>
-                                                        </select>
-                                                    </fieldset>
-                                                    <!-- -------------------------------------------------------------以下修改 -->
-
+                                                    <!-- HTML part -->
+                                                    <label>照片</label>
+                                                    <input type="file"  name="imagefiles"  id="progressbarTWInput" accept="image/gif, image/jpeg, image/png" multiple >
+                                                    <div id="preview_progressbarTW_imgs" style="width:100%; height: 300px; overflow:scroll;">
+                                                        <p>目前沒有圖片</p>
+                                                    </div>
 
                                                     <td>房型</td>
                                                     <fieldset class="form-group">
@@ -318,7 +319,29 @@
 
 
 </script>
+<!-- JavaScript part -->
+<script>
+    $("#progressbarTWInput").change(function(){
+        $("#preview_progressbarTW_imgs").html(""); // 清除預覽
+        readURL(this);
+    });
 
+    function readURL(input){
+        if (input.files && input.files.length >= 0) {
+            for(var i = 0; i < input.files.length; i ++){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = $("<img width='300' height='200'>").attr('src', e.target.result);
+                    $("#preview_progressbarTW_imgs").append(img);
+                }
+                reader.readAsDataURL(input.files[i]);
+            }
+        }else{
+            var noPictures = $("<p>目前沒有圖片</p>");
+            $("#preview_progressbarTW_imgs").append(noPictures);
+        }
+    }
+</script>
 </body>
 
 </html>

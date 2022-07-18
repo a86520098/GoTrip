@@ -228,12 +228,9 @@
 
                                                     <!-- HTML part -->
                                                     <label>照片</label>
-                                                    <input type="file" multiple
-                                                           name="imagefiles"
-                                                           id="imagefiles"
-                                                           accept="image/gif, image/jpeg, image/png"/>
-                                                    <div id="preview_progressbarTW_imgs"
-                                                         style="width:300px;  overflow:scroll;">
+                                                    <label>照片</label>
+                                                    <input type="file"  name="imagefiles"  id="progressbarTWInput" accept="image/gif, image/jpeg, image/png" multiple >
+                                                    <div id="preview_progressbarTW_imgs" style="width:100%; height: 300px; overflow:scroll;">
                                                         <p>目前沒有圖片</p>
                                                     </div>
 
@@ -314,52 +311,30 @@
         document.getElementById('fullAddress').value = city + location;
     }
 
-    <
-    <
-    <
-    <
-    <
-    << HEAD
-        $("#imagefiles"
-    ).change(function () {
-    ======
-        =
-            <!-- JavaScript part -->
 
-            $("#progressbarTWInput").change(function () {
-            >>>>>>>
-                a0959fad88e53a1a2e6949c33f262e539983f88b
-                $("#preview_progressbarTW_imgs").html(""); // 清除預覽
-                readURL(this);
-            });
+</script>
+<!-- JavaScript part -->
+<script>
+    $("#progressbarTWInput").change(function(){
+        $("#preview_progressbarTW_imgs").html(""); // 清除預覽
+        readURL(this);
+    });
 
-        <
-        <
-        <
-        <
-        <
-        << HEAD
-
-                // 照片即時預覽
-
-            =======
-        >>>>>>> a0959fad88e53a1a2e6949c33f262e539983f88b
-            function readURL(input) {
-                if (input.files && input.files.length >= 0) {
-                for (var i = 0; i < input.files.length; i++) {
+    function readURL(input){
+        if (input.files && input.files.length >= 0) {
+            for(var i = 0; i < input.files.length; i ++){
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                var img = $("<img width='300' height='200'>").attr('src', e.target.result);
-                $("#preview_progressbarTW_imgs").append(img);
-            }
+                    var img = $("<img width='300' height='200'>").attr('src', e.target.result);
+                    $("#preview_progressbarTW_imgs").append(img);
+                }
                 reader.readAsDataURL(input.files[i]);
             }
-            } else {
-                var noPictures = $("<p>目前沒有圖片</p>");
-                $("#preview_progressbarTW_imgs").append(noPictures);
-            }
-            }
-
+        }else{
+            var noPictures = $("<p>目前沒有圖片</p>");
+            $("#preview_progressbarTW_imgs").append(noPictures);
+        }
+    }
 </script>
 
 </body>

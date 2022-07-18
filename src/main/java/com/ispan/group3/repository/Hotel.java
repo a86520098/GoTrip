@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Nationalized;
+import org.hibernate.engine.jdbc.Size;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,6 +38,7 @@ public class Hotel {
     private String hotelRule;  //住宿規則
     private String Howgoto;   //顧客該如何去
     private String hotel_name;  // 住宿的Name
+    @Column (length = 1000)
     private String introduce;   //介紹你的hotel
     private String provide;    // checkbox 多值
     private Integer phone;     //聯絡的電話
