@@ -3,7 +3,7 @@ const map = new mapboxgl.Map({
 	container: 'map',
 	style: 'mapbox://styles/mapbox/light-v10',
 	center: [121.5328, 25.0456],
-	zoom: 9
+	zoom: 10
 });
 
 mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js');
@@ -38,9 +38,9 @@ map.on('load', () => {
 				'step',
 				['get', 'point_count'],
 				'#51bbd6',
-				5,
-				'#f1f075',
 				10,
+				'#f1f075',
+				50,
 				'#f28cb1'
 			],
 			'circle-radius': [

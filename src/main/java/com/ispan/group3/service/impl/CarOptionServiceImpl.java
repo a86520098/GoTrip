@@ -50,11 +50,6 @@ public class CarOptionServiceImpl implements CarOptionService{
 	}
 	
 	@Override
-	public void deleteAllInBatch(List<CarOption> carOptions) {
-		optionRepository.deleteAllInBatch(carOptions);
-	}
-	
-	@Override
 	public Long count() {
 		return optionRepository.count();
 	}

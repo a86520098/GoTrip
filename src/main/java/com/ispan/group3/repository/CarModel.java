@@ -2,7 +2,6 @@ package com.ispan.group3.repository;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,15 +18,10 @@ public class CarModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(updatable = false)
 	private String type;
-	@Column(updatable = false)
 	private String makeCh;
-	@Column(updatable = false)
 	private String makeEn;
-	@Column(updatable = false)
 	private String model;
-	@Column(updatable = false)
 	private String power;
 	private String transmission;
 	private Integer engine;
@@ -36,7 +30,9 @@ public class CarModel {
 	private Integer suitcase;
 	private Integer bag;
 	private String image;
-
+//	@ManyToMany(mappedBy="carModels")
+//	@JsonIgnore
+//	private List<CarLocation> carLocations;
 	
 	@OneToMany(mappedBy = "carModel")
 	@JsonIgnore
@@ -162,6 +158,8 @@ public class CarModel {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	
 	public List<CarOption> getCarOptions() {
 		return carOptions;
 	}

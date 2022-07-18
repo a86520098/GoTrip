@@ -17,9 +17,6 @@ public interface CarOptionService {
 
 	void deleteById(Integer id);
 
-	void deleteAllInBatch(List<CarOption> carOptions);
-
 	Long count();
-
 
 }

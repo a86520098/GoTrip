@@ -33,7 +33,7 @@ public class CarLocation {
 	private String image;
 
 	
-	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<CarOption> carOptions;
 	
 	public CarLocation() {

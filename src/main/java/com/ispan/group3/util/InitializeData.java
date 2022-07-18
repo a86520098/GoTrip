@@ -97,7 +97,7 @@ public class InitializeData {
     private static final String INSERT_SQL_COM = "INSERT INTO " + TB_NAME_COM + " VALUES (?, ?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_SQL_IMG = "INSERT INTO " + TB_NAME_IMG + " VALUES (?, ?)";
 	private static final String INSERT_SQL_CAR = "INSERT INTO " + TB_NAME_CAR + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_SQL_LOC = "INSERT INTO " + TB_NAME_LOC + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, NULL)";
 	private static final String INSERT_SQL_OPT = "INSERT INTO " + TB_NAME_OPT + " VALUES (?, ?, ?, ?, ?)";
 
     @SuppressWarnings("resource")
@@ -271,8 +271,6 @@ public class InitializeData {
 				pstmt.setString(9, record.get(8));
 				pstmt.setString(10, record.get(9));
 				pstmt.setString(11, uploadFile("car", record.get(10)));
-				pstmt.setString(12, record.get(11));
-				pstmt.setString(13, record.get(12));
 				pstmt.addBatch();
 			}
 				int[] data = pstmt.executeBatch();

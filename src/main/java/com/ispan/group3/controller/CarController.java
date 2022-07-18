@@ -116,15 +116,9 @@ public class CarController {
 
 	// ======== 前台商家系統 ========
 	// ---------- 地圖找車 ----------
-	@GetMapping({"/vendor/cars/locations", "/vendor/cars/locations/{companyId}"})
-	public String findByCompany(@PathVariable(required = false) Integer companyId, Model model) {
-		List<CarLocation> carLocations;
-		if (companyId != null) {
-			carLocations = locationService.findByCompany(companyId);
-		} else {
-			carLocations = locationService.findByCompany(1);
-		}
-		
+	@GetMapping("/vendor/cars/locations/{companyId}")
+	public String findByCompany(@PathVariable Integer companyId, Model model) {
+		List<CarLocation> carLocations = locationService.findByCompany(companyId);
 		model.addAttribute("carLocations", carLocations);
 		return "frontend/car/vendor-location";
 	}
@@ -141,33 +135,24 @@ public class CarController {
 		model.addAttribute("existModels", existModels);
 		return "frontend/car/vendor-loc-form";
 	}
+
 	// ---------- 儲存地點 ----------
 	@PostMapping("/vendor/cars/locations")
-	public String save(@ModelAttribute CarLocation carLocation, 
-					   @RequestParam String closeTime, @RequestParam String openTime, 
-					   @RequestParam(value = "imagefile", required = false) MultipartFile file) {
+	public String save(@ModelAttribute CarLocation carLocation, @RequestParam String closeTime, @RequestParam String openTime) {
 		carLocation.setCloseTime(closeTime);
 		carLocation.setOpenTime(openTime);
-		try {
-			String savePath = FileUploadUtil.saveFile("car", file);
-			carLocation.setImage(savePath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		locationService.save(carLocation);
 		return "redirect:/vendor/cars/options/form/" + carLocation.getId();
 	}
 
 	// ---------- 方案表單 ----------
-	@GetMapping("/vendor/cars/options/form/{locationId}")
-	public String showOptForm(@PathVariable(required = false) Integer locationId, Model model) {
-		List<CarModel> carModels = modelService.findAll();
+	@GetMapping({ "/vendor/cars/options/form", "/vendor/cars/options/form/{id}" })
+	public String showOptForm(@PathVariable(required = false) Integer id, Model model) {
 		CarLocation carLocation = new CarLocation();
-		if (locationId != null) {
-			carLocation = locationService.findById(locationId);
+		if (id != null) {
+			carLocation = locationService.findById(id);
 		}
 		model.addAttribute("carLocation", carLocation);
-		model.addAttribute("carModels", carModels);
 		return "frontend/car/vendor-opt-form";
 	}
 
@@ -180,15 +165,14 @@ public class CarController {
 			System.out.println(option.getDiscount());
 			optionService.save(option);
 		}
-		return "redirect:/vendor/cars/locations";
+		return "redirect:/vendor/cars/locations/" + carLocation.getId();
 	}
 
-	// ---------- 刪除據點 ----------
+
+	// ---------- 刪除車款 ----------
 	@DeleteMapping("/vendor/cars/locations/{id}")
 	public String deleteById(@PathVariable Integer id) {
-		List<CarOption> options = locationService.findById(id).getCarOptions();
-		optionService.deleteAllInBatch(options);
-		locationService.deleteById(id);
+		modelService.deleteById(id);
 		return "redirect:/vendor/cars/locations";
 	}
 

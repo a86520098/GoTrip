@@ -17922,7 +17922,7 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ BACKGROUND ]*/
 .bgwhite {
-	background-color: white !important;
+	background-color: white;
 }
 
 .bgblack {
