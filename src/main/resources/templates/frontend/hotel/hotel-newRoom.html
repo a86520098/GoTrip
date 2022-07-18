@@ -60,42 +60,33 @@
             </div>
             <!-- Block2 -->
 
+
             <div class="col-md-9 grid-margin my-5 pl-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title font-weight-bold">飯店＆房間列表</h4>
-                        <h6 class="card-title font-weight-bold">預計放房間</h6>
+                        <h4 class="card-title font-weight-bold">註冊房間</h4>
+                        <h6 class="card-title font-weight-bold"></h6>
                         <div class="p-t-20">
-                            <table id="data-table" class="display table table-hover w-100" style="text-align: center">
-                                <thead>
-                                <tr>
-                                    <th scope="col" class="text-center">#</th>
-                                    <th scope="col" class="text-center">房間名稱</th>
-                                    <th scope="col" class="text-center">價格</th>
-                                    <th scope="col" class="text-center">容納人數</th>
-                                    <th scope="col" class="text-center">地址</th>
-                                    <th scope="col" class="text-center">房間數</th>
-                                    <th scope="col" class="text-center">修改</th>
-                                    <th scope="col" class="text-center">刪除</th>
-                                    <th scope="col" class="text-center">新增房間</th>
-                                </tr>
-                                </thead>
-                                <tbody id="tbody">
-                                <tr th:each="hotel:${hotel}" class="odd gradeX" scope="row">
-                                    <td th:text="${hotel.id}"></td>
-                                    <td th:text="${hotel.hotel_name}"></td>
-                                    <td th:text="${hotel.price}"></td>
-                                    <td th:text="${hotel.peopleCount}"></td>
-                                    <td th:text="${hotel.fullAddress}"></td>
-                                    <td th:text="${hotel.bedroomCount}"></td>
-                                    <td> 修改</td>
-                                    <td> 刪除</td>
-                                    <th>
-                                        <a class="btn1" th:href="@{/addHotelRoom(id=${hotel.id})}">新增房間</a>
-                                    </th>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <!--                            <td th:text="${hotelroom.hotel.id}"></td>-->
+                            <!--                            <td th:text="${hotelroom.id}"></td>-->
+                            <form method="post" th:action="@{/getNewRoom/{id}(id=${mainHotel.id})}"
+                                  th:object="${hotelroom}">
+                                <!--                                <td th:text="${hotelroom.hotel.id}"></td>-->
+                                <td th:text="${hotelroom.id}"></td>
+                                <fieldset class="form-group">
+                                    <label>房間名稱</label>
+                                    <input type="text" th:field="*{roomname}" id="hotelArea"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+
+                                <fieldset class="form-group">
+                                    <label>房間價格</label>
+                                    <input type="text" th:field="*{roomprice}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </form>
                         </div>
                     </div>
                 </div>
