@@ -210,7 +210,7 @@
 		})
 		
 		
-		$('#address').on('change', function () {
+		$('#address').on('blur', function () {
 			let address = $('.county').val()+"+"+$('.district').val()+"+"+$('#address').val()
 			console.log(address);
 			$.ajax({

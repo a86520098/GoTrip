@@ -55,6 +55,7 @@ public class CarAjaxController {
 		for (CarLocation location : locations) {
 			JSONObject properties = new JSONObject();
 			properties.put("name", location.getName());
+			properties.put("id", location.getId());
 			
 			JSONObject feature = new JSONObject();
 			feature.put("type", "Feature");
