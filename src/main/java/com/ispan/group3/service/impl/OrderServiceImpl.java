@@ -37,4 +37,16 @@ public class OrderServiceImpl implements OrderService {
 		orderRepository.save(orderBean);	
 	}
 
+	@Override
+	public List<OrderBean> findBymemberId(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateOrderStatus(Integer status, Integer orderId) {
+		orderRepository.updateByStatus(status, orderId);
+		
+	}
+
 }

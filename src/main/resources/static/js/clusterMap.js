@@ -1,13 +1,9 @@
-function showMap(carLocation) {
-
-console.log("hi")
-console.log(carLocation)
 mapboxgl.accessToken = 'pk.eyJ1IjoibHlubjgxMTExMiIsImEiOiJjbDFha2phZ28yN2tqM2RwMzZ4YncycHl5In0.QtgMdcDbNV24FrpgU4sHCw';
 const map = new mapboxgl.Map({
 	container: 'map',
 	style: 'mapbox://styles/mapbox/light-v10',
 	center: [121.5328, 25.0456],
-	zoom: 10
+	zoom: 9
 });
 
 mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js');
@@ -21,7 +17,7 @@ map.on('load', () => {
 	
 	map.addSource('my-data', {
 		"type": "geojson",
-		'data': carLocation,
+		'data': "/gotrip/api/cars/locations/geojson",
 		cluster: true,
 		clusterMaxZoom: 14, // Max zoom to cluster points on
 		clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
@@ -42,9 +38,9 @@ map.on('load', () => {
 				'step',
 				['get', 'point_count'],
 				'#51bbd6',
-				10,
+				5,
 				'#f1f075',
-				50,
+				10,
 				'#f28cb1'
 			],
 			'circle-radius': [
@@ -109,7 +105,7 @@ map.on('load', () => {
 	// the location of the feature, with
 	// description HTML from its properties.
 	map.on('mouseenter', 'unclustered-point', (e) => {
-		const popUpMarkup = e.features[0].properties.title;
+		const popUpMarkup = '<a href="#'+e.features[0].properties.id+'"><h5 class="font-weight-bold">' + e.features[0].properties.name + '</h5></a>';
 		const coordinates = e.features[0].geometry.coordinates.slice();
 		// Ensure that if the map is zoomed out such that
 		// multiple copies of the feature are visible, the
@@ -131,8 +127,3 @@ map.on('load', () => {
 		map.getCanvas().style.cursor = '';
 	});
 });
-
-
-
-
-}

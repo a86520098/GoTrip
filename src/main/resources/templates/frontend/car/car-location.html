@@ -47,16 +47,18 @@
 
 			<div class="row isotope-grid">
 				<div class="col-sm-3">
-					<div></div>
+					<div class="card">
+						<div class="card-body select-county"></div>
+					</div>
 				</div>
 				<!-- Block2 -->
 				<div class="col-sm-9">
-					<div th:each="location:${carLocations}" class="m-b-30  isotope-item">
+					<div th:each="location:${carLocations}" th:id="${location.id}" class="m-b-30  isotope-item">
 						<div class="card d-block">
 							<div class="row">
 								<div class="col-sm-4">
-									<div class="pos-relative hov-img0 card-img-left">
-										<img th:src="@{/data/uploadimages/car/default-map.jpg}" style="height: 100%" alt="IMG-CAR">
+									<div class="pos-relative hov-img0 card-img-left pr-0">
+										<img th:src="@{${location.image}}" style="height: 210px; object-fit: cover" alt="IMG-CAR">
 									</div>
 								</div>
 								<div class="col-sm-8 card-body block2-txt flex-w flex-t p-t-14">
@@ -83,7 +85,7 @@
 							</div>
 							<div class="collapse p-lr-20" th:id="'collapseExample'+${location.id}">
 								<div th:each="option:${location.carOptions}" >
-									<div class="bor18 ">
+									<div class="bor18">
 										<div class="row">
 											<div class="col-sm-4">
 												<div class="px-3 pos-relative hov-img0 card-img-left ">
@@ -137,55 +139,8 @@
 	
 	<script th:src="@{https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js}"></script>
 	<script th:src="@{/js/clusterMap.js}" src="js/clusterMap.js"></script>
-	<script>
-	let longitude;
-	let latitude;
-	
-	
-	$(function () {
-		$.ajax({
-			url: "/gotrip/api/cars/locations",
-			method: "GET",
-			dataType: "json",
-			success: function(data) {
-				longitude = data[0].longitude
-				console.log(longitude)
-				latitude = data[0].latitude
-				console.log(latitude)
-			},
-			error: function(err) {
-				console.log(err);
-			},
-		});
+	<script th:src="@{/js/car.js}" src="js/car.js"></script>
 
-
-	});
-	
-	let carLocation = { 
-						type: "Feature",
-						properties: {},
-						geometry: {
-							type: "Point",
-							coordinates: [121.5371,25.0512]
-					    }
-	                  };
-	
-
-	console.log(carLocation)
-	
-	let carLocation2 = { 
-						 type: "FeatureCollection",
-						 features: [carLocation]
-						}
-	
-	let carLocation3 = JSON.stringify(carLocation2)
-	showMap(carLocation3);
-	
-	
-	
-	
-	
-	</script>
 
 </body>
 
