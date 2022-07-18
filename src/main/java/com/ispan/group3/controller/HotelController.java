@@ -289,15 +289,14 @@ public class HotelController {
         System.out.println("I get the id from hotel " + id + " is hotel id ");
         HotelRoom hotelRoom = new HotelRoom();
         Hotel byId = hotelService.findById(id);
-        hotelRoom.setHotel(byId);
+        model.addAttribute("mainHotel", byId);
         model.addAttribute("hotelroom", hotelRoom);
         return "/frontend/hotel/hotel-newRoom";
     }
 
 
-    @PostMapping("/getNewRoom")
-
-    public String getNewRoom(@ModelAttribute("HotelRoom") HotelRoom hotelRoom, Model model) {
+    @PostMapping("/getNewRoom/{id}")
+    public String getNewRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom, Model model, @PathVariable("id") Integer id) {
 //        Hotel hotel = new Hotel();//主表bean
 //        hotel.setHotel_name("豪華大酒店");
 //        List<HotelRoom> list = new ArrayList<HotelRoom>();
@@ -309,13 +308,15 @@ public class HotelController {
 //        hotel.setHotelroomList(list);
 //        hotelService.save(hotel);
 //        hotelroomService.save(hotelRoom);
-        ArrayList<HotelRoom> hotelRooms = new ArrayList<>();
-        HotelRoom hotelRoom1 = new HotelRoom(); //附表（多方）
-        hotelRooms.add(hotelRoom);
-        Hotel hotel = new Hotel(); //主表（單）
-        hotel.setHotelroomList(new ArrayList<>());
-        hotel.setHotelroomList(hotelRooms);
-        hotelService.save(hotel);
+        Hotel byId = hotelService.findById(id);
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println(byId.getId());
+
+        }
+
+        hotelRoom.setHotel(byId);
+        hotelroomService.save(hotelRoom);
         for (int i = 0; i < 10; i++) {
             System.out.println("前台商家新增房間");
         }
