@@ -2,7 +2,6 @@ package com.ispan.group3.repository;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,7 +32,7 @@ public class CarLocation {
 	private String image;
 
 	
-	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY)
 	private List<CarOption> carOptions;
 	
 	public CarLocation() {

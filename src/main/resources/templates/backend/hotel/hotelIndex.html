@@ -70,10 +70,10 @@
                                             <td th:text="${hotel.boss_name}"/>
                                             <td th:text="${hotel.status}"/>
                                             <td th:text="${hotel.roomtype}"/>
-                                            <!--                                                                                        <td><a th:href="@{enterPic(id=${hotel.id})}"> <img width='60' height='72'-->
-                                            <!--                                                                                                                                           th:src="@{/picture(id=${hotel.id})}">-->
-                                            <!--                                                                                        </a></td>-->
-                                            <!--                                                                    <td><img width='60' height='72' th:src="@{/Goods/picture(id=${good.id})}"></td>-->
+                                            <!--                                            <td><a th:href="@{enterPic(id=${hotel.id})}"> <img width='60' height='72'-->
+                                            <!--                                                                                               th:src="@{/picture(id=${hotel.id})}">-->
+                                            <!--                                            </a></td>-->
+                                            <!--                        <td><img width='60' height='72' th:src="@{/Goods/picture(id=${good.id})}"></td>-->
                                             <td>
                                                 <div th:each="image:${hotel.images}" class="d-inline-block">
                                                     <img th:src="@{${image.imagePath}}" class="rounded img-com"

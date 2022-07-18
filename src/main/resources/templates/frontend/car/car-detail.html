@@ -23,9 +23,8 @@
 			</a>
 			<a th:href="@{/cars/locations}" class="stext-110 cl8 hov-cl1 trans-04">
 				<span th:text="${option.carLocation.district}"></span>
-				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
 			</a>
-			<span th:text="${option.carLocation.carCompany.name}" class="stext-110 cl4"></span>
+			
 		</div>
 	</div>
 
@@ -42,6 +41,7 @@
 
 				<div class="col-md-4 m-t-45 p-b-30">
 					<div class="p-t-5">
+						<p th:text="${option.carLocation.companyName}" class="stext-110 cl4"></p>
 						<h4 th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14"></h4>
 						<div class="p-b-10">
 							<div class="rating-count" th:id="${option.id}" value="carRental">

@@ -1,5 +1,7 @@
 package com.ispan.group3.repository;
 
+import javax.persistence.Entity;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
