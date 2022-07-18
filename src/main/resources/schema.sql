@@ -1,2 +1,5 @@
-show
-tables;
+USE
+[GoTrip];
+
+select id
+from hotel;
