@@ -57,90 +57,70 @@
 								  
 								<input th:field="*{id}" id="id" type="hidden"/>
 								
-								<div th:each="option, optionStat : *{carOptions}">
+								<div th:each="option, optionStat : *{carOptions}" class="fs-17 bor18">
 								
-									<p class="card-description mt-4">車款資料</p>
+									<p class="fs-20 mt-5">
+										車款資料 #
+										<span th:text="${optionStat.index +1}">
+									</p>
 									
 									<!-- 隱藏的方案與車款id -->
 									<input th:field="*{carOptions[__${optionStat.index}__].id}" id="name" type="hidden" class="form-control" />
 									<input th:field="*{carOptions[__${optionStat.index}__].carModel.id}" id="name" type="hidden" class="form-control" />
 										
-									
-<!-- 									<div class="row form-group my-4"> -->
-<!-- 										<div class="col-lg-1"></div> -->
-<!-- 										<label class="col-lg-2 col-form-label" for="name">車款</label> -->
-<!-- 										<div class="col-lg-6"> -->
-<!-- 											<span th:text="*{carOptions[__${optionStat.index}__].carModel.makeCh}" id="name"></span> -->
-<!-- 											<span th:text="*{carOptions[__${optionStat.index}__].carModel.makeEn}" id="name"></span> -->
-<!-- 											<span th:text="*{carOptions[__${optionStat.index}__].carModel.model}" id="name"></span> -->
-<!-- 											<div class="invalid-feedback">請選擇車款</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-
-									<div class="row form-group my-4">
+									<div class="row form-group mb-4">
 										<div class="col-lg-3"></div>
-										<div class="col-lg-2">
+										<div class="col-lg-5">
 											<img th:src="@{*{carOptions[__${optionStat.index}__].carModel.image}}">
 										</div>
-										<div class="col-lg-2">
-<!-- 											<p th:text="*{carOptions[__${optionStat.index}__].carModel.image}"> -->
+										<div class="col-lg-3">
+											<p> <i class="zmdi zmdi-flash"></i>&nbsp;&nbsp;
+												<span th:text="*{carOptions[__${optionStat.index}__].carModel.power}"></span>
+											</p>
+											<p> <i class="zmdi zmdi-wb-auto"></i> 變速
+												<span th:text="*{carOptions[__${optionStat.index}__].carModel.transmission}" ></span>
+											</p>
+											<p> <i class="zmdi zmdi-car"></i>&nbsp;排氣量 
+												<span th:text="*{carOptions[__${optionStat.index}__].carModel.engine}" class="p-r-5"></span>
+											</p>
+											<p> <i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位
+												<span th:text="*{carOptions[__${optionStat.index}__].carModel.seat}" ></span>
+											</p>
+											<p> <i class="zmdi zmdi-case"></i>
+												<span th:text="*{carOptions[__${optionStat.index}__].carModel.suitcase}" ></span>大 + 
+												<span th:text="*{carOptions[__${optionStat.index}__].carModel.bag}" ></span>小
+											</p>
 										</div>
 									</div>
 									
 									<div class="row form-group my-4">
 										<div class="col-lg-1"></div>
-										<label class="col-lg-2 col-form-label" for="name">車款</label>
+										<label class="col-lg-2 col-form-label" for="name">製造商與車款</label>
 										<div class="col-lg-7">
-<!-- 											<div class="row"> -->
-												<div class="pr-0">
-													<input th:value="*{carOptions[__${optionStat.index}__].carModel.makeCh + '  ' + carOptions[__${optionStat.index}__].carModel.makeEn + '  ' + 
-													carOptions[__${optionStat.index}__].carModel.model}" name="makeCh" type="text" class="form-control" readonly/>
-												</div>
-<!-- 												<div class="col-sm-4 pr-0"> -->
-<!-- 													<input th:field="*{}" name="makeEn" type="text" class="form-control" readonly/> -->
-<!-- 												</div> -->
-<!-- 												<div class="col-sm-4"> -->
-<!-- 													<input th:field="*{carOptions[__${optionStat.index}__].carModel.model}" name="model" type="text" class="form-control" readonly/> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-											<div class="invalid-feedback">請選擇車款</div>
-										</div>
-									</div>
-									
-<!-- 									<div class="row form-group my-4"> -->
-<!-- 										<div class="col-lg-1"></div> -->
-<!-- 										<label class="col-lg-2 col-form-label" for="name">車款</label> -->
-<!-- 										<div class="col-lg-6"> -->
-<!-- 											<div class="row"> -->
-<!-- 												<div class="col-sm-4 pr-0"> -->
-<!-- 													<input th:field="*{carOptions[__${optionStat.index}__].carModel.makeCh}" name="makeCh" type="text" class="form-control" readonly/> -->
-<!-- 												</div> -->
-<!-- 												<div class="col-sm-4 pr-0"> -->
-<!-- 													<input th:field="*{carOptions[__${optionStat.index}__].carModel.makeEn}" name="makeEn" type="text" class="form-control" readonly/> -->
-<!-- 												</div> -->
-<!-- 												<div class="col-sm-4"> -->
-<!-- 													<input th:field="*{carOptions[__${optionStat.index}__].carModel.model}" name="model" type="text" class="form-control" readonly/> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 											<div class="invalid-feedback">請選擇車款</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-									
-									<div class="row form-group my-4">
-										<div class="col-lg-1"></div>
-										<label class="col-lg-2 col-form-label" for="price">定價</label>
-										<div class="col-lg-6">
-											<input th:field="*{carOptions[__${optionStat.index}__].price}" id="price" name="price" type="number" class="form-control" />
-											<div class="invalid-feedback">請輸入地址</div>
+											<div class="pr-0">
+												<input th:value="*{carOptions[__${optionStat.index}__].carModel.makeCh + '  ' + carOptions[__${optionStat.index}__].carModel.makeEn + '  ' + 
+												carOptions[__${optionStat.index}__].carModel.model}" name="makeCh" type="text" class="form-control" readonly/>
+											</div>
 										</div>
 									</div>
 									
 									<div class="row form-group my-4">
 										<div class="col-lg-1"></div>
-										<label class="col-lg-2 col-form-label" for="discount">折扣</label>
-										<div class="col-lg-6">
-											<input th:field="*{carOptions[__${optionStat.index}__].discount}" id="discount" type="text" name="discount" class="form-control" placeholder="折扣請以小數格式輸入，輸入0.8即是打八折"/>
-											<div class="invalid-feedback">折扣請以小數格式輸入，ex:輸入0.8即[原定價x0.8=銷售金額]</div>
+										<label class="col-lg-2 col-form-label" for="price">定價與售價</label>
+										<div class="col-lg-7 row pr-0" >
+											<div class="col-sm-4 pr-0">
+												<input th:field="*{carOptions[__${optionStat.index}__].price}" id="price" name="price" type="number" class="form-control col-10 d-inline text text-center"/>
+												<span class="d-inline">x</span>
+<!-- 												<div class="invalid-feedback">請輸入定價</div> -->
+											</div>
+											<div class="col-sm-4 pr-0 d-inline" >
+												<input th:field="*{carOptions[__${optionStat.index}__].discount}" id="discount" type="text" name="discount" class="form-control discount d-inline col-10" placeholder="輸入0.8即是打八折"/>
+												<span class="d-inline">=</span>
+<!-- 												<div class="invalid-feedback">折扣請以小數格式輸入，ex:輸入0.8即[原定價x0.8=銷售金額]</div> -->
+											</div>
+											<div class="col-sm-4 pr-0 d-inline">
+												<input type="number" name="priceSale" class="form-control" th:value="*{#strings.substring(carOptions[__${optionStat.index}__].discount * carOptions[__${optionStat.index}__].price, 0, 4)}" readonly="readonly"/>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -149,7 +129,7 @@
 <!-- 									<option th:each="carModel : ${carModels}" th:value="${carModel.id}" th:text="${carModel.makeCh + carModel.makeEn + carModel.model}"></option> -->
 <!-- 								</select> -->
 								
-								<div class="d-flex justify-content-end">
+								<div class="d-flex justify-content-end my-5">
 									<button id="btn-insert-opts" type="submit" class="btn btn-warning mr-2 justify-content-end mr-4">
 										儲存資料
 									</button>
@@ -173,52 +153,10 @@
 	
 	<script th:src="@{/js/tw-city-selector.min.js}"></script>
 	<script>
-// 	  	new TwCitySelector();
-
-		 new TwCitySelector({
-		    el: '.city-selector-set',
-		    elCounty: '.county', // 在 el 裡查找 element
-		    elDistrict: '.district', // 在 el 裡查找 element
-		    elZipcode: '.zipcode' // 在 el 裡查找 element
-		  });
-	  	
-		$('#carModel').on('change', function(){
-	  		let carModelId = $(this).val();
-			$.ajax({
-				type: 'GET',
-				url: '/gotrip/api/cars/models/' + carModelId,
-				dataType: 'json',
-				success: function(data) {
-// 					let str = '<i class="zmdi zmdi-flash"></i> <span th:text="${option.carModel.power}" class="p-r-15"></span>'+
-// 						'<i class="zmdi zmdi-wb-auto"></i> 變速 <span th:text="${option.carModel.transmission}" class="p-r-15"></span>'+
-// 						'<i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位 <span th:text="${option.carModel.seat}" class="p-r-15"></span>'+
-// 						<i class="zmdi zmdi-car"></i> 排氣量 <span th:text="${option.carModel.engine}+'cc'" class="p-r-5"></span> ';
-					$("#carModelInfo").html(str);
-				},
-				error: function() {
-					console.log('error')
-				}
-			})
-			
-		})
 		
 		$('#btn-addModel').on('click', function() {
 			
 		})
-
-		
-		$(document).ready(function(){
-
-			$('.county').focus()
-			$('.county').val($('#county').text())
-			$('.county').blur()
-			
-			$(".county option[value='"+$('.county option:selected').val($('#county').text())+"']").prop("selected",true);
-			$('.district').focus()
-			$('.district').val($('#district').text())
-			$('.district').blur()
-		})
-		
 		
 		$(".btn-insert-opts").click(function(e){
 			e.preventDefault();
@@ -233,6 +171,13 @@
 			setInterval(function() {
 				$('#insert-opt-form').submit()
 			}, 1500);
+		})
+		
+		$('.discount').on('blur', function () {
+			console.log('hi')
+			let price = $(this).prev('.price').val()
+			let discount = $(this).val()
+			$(this).next('.priceSale').val(price*discount)
 		})
 		
 	

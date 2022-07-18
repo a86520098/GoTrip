@@ -79,7 +79,7 @@
                       <tbody>
                       	<tr th:each="user:${Users}" class="odd gradeX">
                             <td th:text=${user.user_id}></td>
-							<td th:text=${user.email}></td>
+							<td th:text=${user.username}></td>
 							<td th:text=${user.ch_name}></td>
 							<td th:text=${user.en_name}></td>
 <!-- 							<td th:text=${member.password}></td> -->
@@ -98,12 +98,14 @@
 <!-- 								</a> -->
 							</p>
 							<p>
-								<form action="/userDel/${user.user_id}'/>" th:action="@{userDel/}+${user.user_id}" method="POST" class="inline-block">
+							<form action="/userDel/${user.user_id}" th:action="@{userDel/}+${user.user_id}" method="POST" class="inline-block">
 									<button type="submit" onclick="javascript:return del();" class="delete btn btn-info btn-sm ">
 									<i class="mdi mdi-delete-forever"></i>
 									</button>
-								</form>
+							</form>
 							</p>
+							
+
 							</td>
                         </tr>                                                                                               
                       </tbody>

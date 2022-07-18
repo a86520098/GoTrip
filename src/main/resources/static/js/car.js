@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
 			'</div>';
 	}
 
-	$('#select-county').html(str)
+	$('.select-county').html(str)
 
 	// 立即顯示多張照片 - 租車
 	$('#imagefile').on('change', function() {
@@ -144,14 +144,14 @@ jQuery(document).ready(function($) {
 
 
 
-	$('.js-show-modal-item').on('click', function(e) {
-		e.preventDefault();
-		$('.js-modal-item').addClass('show-modal1');
-	});
-
-	$('.js-hide-modal-item').on('click', function() {
-		$('.js-modal1-item').removeClass('show-modal1');
-	});
+//	$('.js-show-modal-item').on('click', function(e) {
+//		e.preventDefault();
+//		$('.js-modal-item').addClass('show-modal1');
+//	});
+//
+//	$('.js-hide-modal-item').on('click', function() {
+//		$('.js-modal1-item').removeClass('show-modal1');
+//	});
 
 
 	$("#btn-insert-correct-loc").on("click", function() {
@@ -166,13 +166,14 @@ jQuery(document).ready(function($) {
 		$(".county option[value='" + $('.county option:selected').val('桃園市') + "']").prop("selected", true);
 		$('.district').focus().val('中壢區').blur()
 
-		$('#address').val('新生路二段421號')
+		$('#address').val('新生路二段421號').blur()
 		$('#openTime').focus()
 		$('#phone').focus().val('03-4533013').blur()
 		
 		$('#openTime').focus().val('09:00').blur()
 		$('#closeTime').focus().val('16:30').blur()
-
+		$('#longitude').val(121.222129)
+		$('#latitude').val(24.984981)
 
 	});
 
@@ -181,14 +182,10 @@ jQuery(document).ready(function($) {
 		$('#companyName').val('資展租車')
 		$('#name').val('資展中壢站')
 		$('#county').val('台灣')
-		$('.county').focus()
-		$('.county').val('桃園市')
-		$('.county').blur()
+		$('.county').focus().val('桃園市').blur()
 		$(".county option[value='" + $('.county option:selected').val('桃園市') + "']").prop("selected", true);
-		$('.district').focus()
-		$('.district').val('中壢區')
-		$('.district').blur()
-		$('#address').val('新生路二段421號')
+		$('.district').focus().val('中壢區').blur()
+		$('#address').focus().val('新生路二段421號').blur()
 		$('#phone').val('(03)4533013')
 		$('#openTime').val('上午9點')
 		$('#closeTime').val('晚上8點')

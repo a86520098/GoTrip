@@ -125,3 +125,8 @@ INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount],
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount]) VALUES (19, 10, 8, 3000, 0.89999997615814209, 3)
 SET IDENTITY_INSERT [dbo].[car_option] OFF;
 
+SET IDENTITY_INSERT [dbo].[user_data] ON 
+INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone], [city], [location], [address], [image], [authority]) VALUES (1, N'admin', NULL, NULL, N'$2a$10$juAszWkBW1M0P5l8A6bQw..z3h4bU2AlzpPlerAfnxy2AqhiVwlai', NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'admin')
+INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone], [city], [location], [address], [image], [authority]) VALUES (2, N'dealer', NULL, NULL, N'$2a$10$iVMluTlijqCYBRs3DtGO9./iYxFI/9wB2BP5fQavZeIpatQOeJMfC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'dealer')
+INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone], [city], [location], [address], [image], [authority]) VALUES (12, N'elvispan@gmail.com', NULL, NULL, N'$2a$10$rJUmwbkulb//M5phPQVQxuHCQozOcBeCd100fKJuycpxtyikGKl4K', NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'user')
+SET IDENTITY_INSERT [dbo].[user_data] OFF
