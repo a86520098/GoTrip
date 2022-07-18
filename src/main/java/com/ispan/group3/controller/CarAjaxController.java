@@ -70,81 +70,12 @@ public class CarAjaxController {
 			feature.put("properties", properties);
 
 			features.add(feature);
-		}
-//		JSONObject properties = new JSONObject();
-//		properties.put("name", location.getName());
-//		
-//		JSONArray features = new JSONArray();
-//		JSONObject feature = new JSONObject();
-//		feature.put("type", "Feature");
-//		JSONObject geometry = new JSONObject();
-//
-//		JSONArray JSONArrayCoord = new JSONArray();
-//
-//		JSONArrayCoord.add(0, location.getLongitude());
-//		JSONArrayCoord.add(1, location.getLatitude());
-//		geometry.put("type", "Point");
-//		geometry.put("coordinates", JSONArrayCoord);
-//		feature.put("geometry", geometry);
-//		feature.put("properties", properties);
-//
-//		features.add(feature);
-//		
-//		
-//		CarLocation location2 = locationService.findById(8);
-//		
-//		JSONObject properties2 = new JSONObject();
-//		properties2.put("name", location2.getName());
-//		
-//		JSONArray features2 = new JSONArray();
-//		JSONObject feature2 = new JSONObject();
-//		feature2.put("type", "Feature");
-//		JSONObject geometry2 = new JSONObject();
-//
-//		JSONArray JSONArrayCoord2 = new JSONArray();
-//
-//		JSONArrayCoord2.add(0, location2.getLongitude());
-//		JSONArrayCoord2.add(1, location2.getLatitude());
-//		geometry2.put("type", "Point");
-//		geometry2.put("coordinates", JSONArrayCoord2);
-//		feature2.put("geometry", geometry2);
-//		feature2.put("properties", properties2);
-//
-//		features.add(feature2);
-		
+		}		
 		
 		featureCollection.put("features", features);
 
 		return(featureCollection);
-		
-		
-		
-		
-		
-		
-//		List<CarLocation> locations = locationService.findAll();
-//		int listLength = locations.size();
-//		Map<String, double[]> coordinates = new HashMap<>();
-////		String[] coordinatesValue = new String[2];
-//		List<Map> coordinatess = new ArrayList<Map>();
-//		for (CarLocation location : locations) {
-//			double[] coordinatesValue = {location.getId(), -17.5};
-////			coordinatesValue[0] = location.getName();
-////			coordinatesValue[1] = location.getDistrict();
-//			coordinates.put("coordinates", coordinatesValue);
-//			coordinatess.add(coordinates);
-//		}
-//		Map<String, Object> geometry = new HashMap<>();
-////		for (int i = 0; i < listLength; i++) {
-////			
-////			coordinates.put("coordinates", coordinates);
-////			coordinatess.add(coordinates);
-////		}
-//		
-//		Gson gson = new Gson();
-//		String json = gson.toJson(coordinatess);
-//		System.out.println(json);
-//		return geometry;
+
 	}
 	
 }

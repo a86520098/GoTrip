@@ -2,6 +2,8 @@ package com.ispan.group3.controller;
 
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.HotelImage;
+import com.ispan.group3.repository.HotelRoom;
+import com.ispan.group3.service.HotelRoomService;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.util.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +29,13 @@ import java.util.List;
 public class HotelController {
 
     HotelService hotelService;
+    HotelRoomService hotelroomService;
     ServletContext context;
 
-
     @Autowired
-    public HotelController(HotelService hotelService, ServletContext context) {
+    public HotelController(HotelService hotelService, HotelRoomService hotelroomService, ServletContext context) {
         this.hotelService = hotelService;
+        this.hotelroomService = hotelroomService;
         this.context = context;
     }
 
@@ -277,8 +280,46 @@ public class HotelController {
     //前-後台主頁面
     @GetMapping("/vendor/hotels/{companyId}")
     public String findByCompany(@PathVariable Integer companyId, Model model) {
-
+        model.addAttribute("hotel", hotelService.findByCompany(companyId));
         return "/frontend/hotel/hotel-index";
+    }
+
+    @GetMapping("/addHotelRoom")
+    public String showNewRoom(Model model, @RequestParam("id") Integer id) {
+        System.out.println("I get the id from hotel " + id + " is hotel id ");
+        HotelRoom hotelRoom = new HotelRoom();
+        Hotel byId = hotelService.findById(id);
+        hotelRoom.setHotel(byId);
+        model.addAttribute("hotelroom", hotelRoom);
+        return "/frontend/hotel/hotel-newRoom";
+    }
+
+
+    @PostMapping("/getNewRoom")
+
+    public String getNewRoom(@ModelAttribute("HotelRoom") HotelRoom hotelRoom, Model model) {
+        Hotel hotel = new Hotel();//主表bean
+        hotel.setHotel_name("豪華大酒店");
+        List<HotelRoom> list = new ArrayList<HotelRoom>();
+        HotelRoom hotelRoom1 = new HotelRoom(); //附表
+        hotelRoom1.setRoomname("雙人房");
+        hotelRoom1.setRoomprice(213123);
+        hotelRoom1.setHotel(hotel);
+        list.add(hotelRoom1);
+        hotel.setHotelroomList(list);
+        hotelService.save(hotel);
+        hotelroomService.save(hotelRoom);
+//        ArrayList<HotelRoom> hotelRooms = new ArrayList<>();
+//        HotelRoom hotelRoom1 = new HotelRoom(); //附表（多方）
+//        hotelRooms.add(hotelRoom);
+//        Hotel hotel = new Hotel(); //主表（單）
+//        hotel.setHotelroomList(new ArrayList<>());
+//        hotel.setHotelroomList(hotelRooms);
+//        hotelService.save(hotel);
+        for (int i = 0; i < 10; i++) {
+            System.out.println("前台商家新增房間");
+        }
+        return "redirect:/backend/index";
     }
 
 }

@@ -1,0 +1,9 @@
+diff a/src/main/resources/templates/frontend/car/vendor-location.html b/src/main/resources/templates/frontend/car/vendor-location.html	(rejected hunks)
+@@ -76,6 +76,7 @@
+ 											<td th:text="${location.address}"></td>
+ <!-- 											<td th:text="${location.phone}"></td> -->
+ <!-- 											<td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td> -->
++											<td>
+ 												<span th:text="${location.carOptions.size()}"></span>
+ 												<a th:href="@{/vendor/cars/options/form/{id}(id=${location.id})}" class="btn btn-light btn-rounded btn-sm">
+ 													<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
