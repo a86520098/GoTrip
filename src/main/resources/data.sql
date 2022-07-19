@@ -334,8 +334,6 @@ SET IDENTITY_INSERT [dbo].[user_data] OFF
 
 
 SET IDENTITY_INSERT [dbo].[hotel] ON
-
-
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -390,7 +388,252 @@ VALUES (N'8', N'1.搭乘捷運出站可到達
         NULL,
         N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於桃園市復興區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間5星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
         N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'9', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:08:53.5640000', NULL, NULL, NULL, N'龍王英', N'高雄市', N'6', N'附屬美容室',
+        N'提供超跑特別租借', N'提供中式餐點', NULL, N'中山二路199號, 前鎮區, 高雄市', N'20000', NULL, N'公寓', N'高雄菁英國際旅館',
+        NULL,
+        N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於桃園市復興區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間5星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
 
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'11', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'名人堂花園大飯店 (Fame Hall Garden Hotel)', NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'12', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'花園淘淘國際酒店 (Fame Hall Garden Hotel)', NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'13', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'歐嗨喲國際商業旅館 (Fame Hall Garden Hotel)', NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'14', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'牙拜一旅館 (Fame Hall Garden Hotel)', NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'15', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'6', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'鴻泰爽 (Fame Hall Garden Hotel)', NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'16', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'17', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'18', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'19', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'20', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'21', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'22', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'23', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'24', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'25', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'26', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'27', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'28', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'29', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'30', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'31', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'32', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'33', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'34', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
+        NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
 
 SET IDENTITY_INSERT [dbo].[hotel] OFF
 
@@ -457,6 +700,146 @@ VALUES (N'14', N'2022-07-19 10:08:53.5680000', NULL, N'/data/uploadimages/hotelI
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'15', N'2022-07-19 10:08:53.5690000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'8')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'16', N'2022-07-19 10:08:53.5690000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'9')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'17', N'2022-07-19 10:04:55.0060000', NULL,
+        N'/data/uploadimages/hotelImage/pexels-konstantinos-eleftheriadis-2034335.jpg', N'9')
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'18', N'2022-07-19 10:04:55.0060000', NULL,
+        N'/data/uploadimages/hotelImage/pexels-konstantinos-eleftheriadis-2034335.jpg', N'9')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'20', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'11')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'21', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'11')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'22', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'11')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'23', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'12')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'24', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'12')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'25', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'12')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'26', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'13')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'27', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'13')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'29', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'13')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'30', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'14')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'31', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'14')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'32', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'14')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'33', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'15')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'34', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'15')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'35', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'15')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'36', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'16')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'37', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'16')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'38', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'16')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'39', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'17')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'40', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'17')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'41', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'17')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'42', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'18')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'43', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'18')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'44', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'18')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'45', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'19')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'46', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'19')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'47', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
+        N'19')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'48', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
+        N'20')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'49', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'20')
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'50', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'20')
 
 
 SET IDENTITY_INSERT [dbo].[hotel_image] OFF
