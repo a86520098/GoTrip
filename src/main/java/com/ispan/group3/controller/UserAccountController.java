@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ispan.group3.repository.RegisterForm;
 import com.ispan.group3.repository.UserData;
 import com.ispan.group3.repository.UserRepository;
+import com.ispan.group3.service.UserService;
 import com.ispan.group3.service.impl.UserDetailsServiceImpl;
 
 
@@ -33,6 +35,8 @@ public class UserAccountController {
 
 //	@Autowired
 //	private UserContext userContext;
+	
+	private UserService userService;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -48,12 +52,17 @@ public class UserAccountController {
 		return "frontend/index";
 	}
 	
+	@RequestMapping("/fail")
+	public String loginFailed() {
+		return "frontend/login";
+	}
+	
 	@GetMapping({"/admin"})
-	public String admin() {
+	public String admin() { 
 		return "backend/index";
 	}
 	
-	@GetMapping({"/logout"})
+	@RequestMapping("/logout")
 	public String logout() {
 		return "frontend/index";
 	}
@@ -68,34 +77,6 @@ public class UserAccountController {
 	public String rederect() {
 		return "frontend/index";
 	}
-	
-	@GetMapping({"/fail"})
-	@ResponseBody
-	public String loginFailed() {
-		return "failed";
-	}
-//	
-//	@PostMapping("/login")
-//	public String doLogin(
-//			@ModelAttribute UserAccount userAccount,
-//			HttpSession session, 
-//			RedirectAttributes redirectAttributes) {
-//		
-//		UserAccountVO userAccountVO = userAccountService.login(userAccount);
-//		if(userAccountVO == null) {
-//			String message = userAccountVO == null ? "帳號或密碼錯誤" : "";	
-//			redirectAttributes.addFlashAttribute("MESSAGE", message);
-//			return "redirect:login";
-//		}
-//		session.setAttribute("user", userAccountVO);	
-//		return "frontend/index";
-//	}
-	
-//	@GetMapping("/register")
-//	public String register(@ModelAttribute UserAccountVO memberAccountVO) {
-//		
-//		return "frontend/register";
-//	}
 	
 	@PostMapping({"/register"})
 	public String doRegister( @ModelAttribute RegisterForm registerForm , BindingResult result){
@@ -118,13 +99,23 @@ public class UserAccountController {
 
 		userRepository.save(user); //新增使用者到資料庫
 //		userContext.setCurrentUser(user); //設定使用者為已登入
-		return "redirect:/";
+		return "redirect:/login";
 	}
-
-//		Optional<String> optional = userAccountService.register(userAccountVO);
-//		String message = optional.orElse("註冊成功");
-//		redirectAttributes.addFlashAttribute("MESSAGE", message);
-//		return "redirect:login";
-//	}
+	
+	@GetMapping({"/userdetails"})
+	public String UserDetail() {
+		return "frontend/user-detail";
+	}
+	
+	//檢查Email是否已存在
+		@ResponseBody
+		@PostMapping(value = "/CheckEmail", produces = "application/json; charset = UTF-8")
+		public boolean checkUser(@RequestParam String username) {
+			UserData mem = userService.findByUsername(username);
+			if (mem == null) {
+				return true;
+			}
+			return false;
+		}
 
 }

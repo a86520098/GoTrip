@@ -14,6 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
+
+import com.ispan.group3.enums.MyAccessDeniedHandler;
 
 
 
@@ -25,6 +28,8 @@ public class SecurityConfig{
 	@Autowired
 	UserDetailsService userDetailsService;
 	
+	@Autowired
+	private MyAccessDeniedHandler myAccessDeniedHandler;
 	
 	@Bean
 	public PasswordEncoder encoder() {
@@ -35,9 +40,9 @@ public class SecurityConfig{
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests()
-		.antMatchers("/login","/","/resources/**","/css/**","/fonts/**","/images/**","/js/**","/vendors/**","/register").permitAll() //resource資料夾靜態資料可匿名存取
+		.antMatchers("/login","/","/index","/resources/**","/css/**","/fonts/**","/images/**","/js/**","/vendors/**","/register","/CheckEmail","/logout","/data/**","/ticket/**","/findHotelList/**","/cars/**","/api").permitAll() //resource資料夾靜態資料可匿名存取
 //		.antMatchers("/login") //對象為所有網址
-		.antMatchers("/admin","/vendors/**").hasRole("ADMIN") //admin才可以訪問後台
+		.antMatchers("/admin","/vendors/**","/").hasRole("ADMIN") //admin才可以訪問後台
 		.antMatchers("/frontend/user/**").hasRole("USER") //user只能訪問前台user畫面
 		.antMatchers("/frontend/**").hasAnyRole("DEALER","ADMIN") //dealer可以訪問前台所有畫面
 		.anyRequest().authenticated() //存取必須通過驗證
@@ -51,8 +56,19 @@ public class SecurityConfig{
 		.permitAll()
 	.and()
 	.logout()
-		.logoutSuccessUrl("/logout") //
+		.deleteCookies("JSESSIONID")
+		.logoutUrl("/logout")
+        .logoutSuccessUrl("/")
+//		.logoutSuccessUrl("/logout") //
 	    .permitAll()
+	.and()
+		.exceptionHandling()
+//		.accessDeniedPage("/異常處理頁面")
+		.accessDeniedHandler(myAccessDeniedHandler)
+	.and()
+		.rememberMe()
+		.userDetailsService(userDetailsService)
+		.tokenValiditySeconds(60*60*24*5) //5天
 	.and()
 	.userDetailsService(userDetailsService)
 	.csrf().disable() //關閉csrf防護

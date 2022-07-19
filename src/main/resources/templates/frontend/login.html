@@ -57,16 +57,24 @@
 <!--                             </div> -->
 <!--                         </div> -->
                         <div class="form-sub-w3ls">
-                            <input placeholder="Email" class="mail" type="email" name="username" required>
+                            <input id="username" placeholder="Email" class="mail" type="email" name="username" required onkeyup="CheckEmail()">
                             <div class="icon-agile">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </div>
+                            <span id="message" style="position:absolute ; right:17px;"></span>
                         </div>
                         <div class="form-sub-w3ls">
-                            <input placeholder="Password"  type="password" name="password" required>
+                            <input id="pwd1" placeholder="Password"  type="password" name="password" required>
                             <div class="icon-agile">
                                 <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             </div>
+                        </div>
+                        <div class="form-sub-w3ls">
+                            <input id="pwd2" placeholder="Confirm Password"  type="password" name="passwd" required onkeyup="validate()">
+                            <div class="icon-agile">
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            </div>
+                            <span id="checkMsg" style="position:absolute ; right:17px;"></span>
                         </div>
 <!--                         <input type="hidden" name="authority" value="user"> -->
 <!--                         <div class="form-sub-w3ls"> -->
@@ -79,7 +87,7 @@
                             <label class="checkbox"><input type="checkbox" name="checkbox" checked="">I Accept Terms & Conditions</label>
                         </div>
                         <div class="submit-w3l">
-                            <input type="submit" value="註冊">
+                            <input id="submit" type="submit" value="註冊">
                         </div>
                     </form>
                 </div>
@@ -112,6 +120,56 @@
                 });																				
             });
         </script>
+        
+         <script>
+  	function CheckEmail() {
+
+		var email = document.getElementById("username").value;
+// 		var res = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+// 		var flag1 = res.test(email);
+// 		if (flag1) {
+			$.ajax({
+				type : "POST",
+				url : "./CheckEmail",
+				data : "username=" + username,
+				success : function(data) {
+					if (data == true) {
+					document.getElementById("message").innerHTML = "<font color='green'>此信箱可以使用</font>"
+					document.getElementById('submit').disabled=false;
+					return true;
+					} else {
+					document.getElementById("message").innerHTML = "<font color='red'>此信箱已被註冊</font>";
+					document.getElementById('submit').disabled=true;
+					return false;
+					}
+				}
+			});
+// 		} else {
+// 			document.getElementById("s_email").innerHTML = "<p class='wrong'>Email格式錯誤</p>";
+// 			document.getElementById('submit').disabled=true;
+// 			return false;
+// 		}
+			
+	}
+  	
+  	
+// 	檢查兩次密碼輸入是否相同
+    function validate() {
+        var pwd1 = document.getElementById("pwd1").value;
+        var pwd2 = document.getElementById("pwd2").value;
+       if(pwd1 == pwd2) {
+         document.getElementById("checkMsg").innerHTML="<font color='green'>OK</font>";
+         document.getElementById("submit").disabled = false;
+        }
+        else {
+         document.getElementById("checkMsg").innerHTML="<font color='red'>兩次密碼不同</font>";
+          document.getElementById("submit").disabled = true;
+        }
+    }
+  	
+  	</script>
+  	
+  	
         
     </body>
     
