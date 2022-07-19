@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    .btn1 {
+        background: mediumpurple;
+        width: 150px;
+        color: white;
+        border-radius: 5px;
+        font-size: 15px;
+        text-align: center;
+    }
+</style>
+<head th:replace="frontend/partials/fragment :: head"></head>
+
+<body class="">
+<!-- Header -->
+<header th:replace="frontend/partials/fragment :: header"></header>
+<!-- Cart 購物車 -->
+<div th:replace="frontend/partials/fragment :: cart"></div>
+
+<section class="bg-img1 txt-center p-lr-15 p-tb-92"
+         th:style="'background-image: url(' + @{/images/hotelpic.jpg} + ');'">
+    <h2 class="ltext-103 font-weight-bold clwhite txt-center">個人住宿管理</h2>
+</section>
+<!-- Product 內文 -->
+<div class="bg0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 p-b-80 bg6">
+                <div class="side-menu">
+                    <div class="p-t-55">
+                        <h2 class="ltext-103 cl5 font-weight-bold m-b-30 p-lr-20">住宿管理</h2>
+                        <ul class="p-lr-20">
+                            <li class="bor18">
+                                <a th:href="@{#}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    檢視訂單
+                                </a>
+                            </li>
+                            <li class="bor18">
+                                <a th:href="@{/vendor/cars/locations/1}"
+                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    房間列表
+                                </a>
+                            </li>
+                            <li class="bor18">
+                                <a th:href="@{/vendor/cars/locations/form}"
+                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    新增飯店
+                                </a>
+                            </li>
+                            <li class="bor18">
+                                <a th:href="@{/vendor/cars/options/form}"
+                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    新增房間
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Block2 -->
+
+
+            <div class="col-md-9 grid-margin my-5 pl-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title font-weight-bold">註冊房間</h4>
+                        <h6 class="card-title font-weight-bold"></h6>
+                        <div class="p-t-20">
+                            <!--                            <td th:text="${hotelroom.hotel.id}"></td>-->
+                            <!--                            <td th:text="${hotelroom.id}"></td>-->
+                            <form method="post" th:action="@{/getNewRoom/{id}(id=${mainHotel.id})}"
+                                  th:object="${hotelroom}">
+                                <!--                                <td th:text="${hotelroom.hotel.id}"></td>-->
+                                <td th:text="${hotelroom.id}"></td>
+                                <fieldset class="form-group">
+                                    <label>房間名稱</label>
+                                    <input type="text" th:field="*{roomname}" id="hotelArea"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+
+                                <fieldset class="form-group">
+                                    <label>房間價格</label>
+                                    <input type="text" th:field="*{roomprice}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>衛浴數量</label>
+                                    <input type="text" th:field="*{bathCount}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>房間數量</label>
+                                    <input type="text" th:field="*{bedroomCount}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>每房間床的數量</label>
+                                    <input type="text" th:field="*{bedCount}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>房間總坪數</label>
+                                    <input type="text" th:field="*{hotelArea}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>建議住的人數</label>
+                                    <input type="text" th:field="*{peopleCount}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+
+                                <fieldset class="form-group">
+                                    <label>房間使用規則</label>
+                                    <textarea th:field="*{roomRule}" id="Howgoto"
+                                              class="form-control"> </textarea>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>介紹一下你的房間</label>
+                                    <textarea th:field="*{roomIntroduce}" id="Howgoto"
+                                              class="form-control"> </textarea>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>介紹你房間的特色1</label>
+                                    <input type="text" th:field="*{feature1}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>介紹你房間的特色2</label>
+                                    <input type="text" th:field="*{feature2}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label>介紹你房間的特色3</label>
+                                    <input type="text" th:field="*{feature3}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </fieldset>
+
+                                <td>此房的房型</td>
+                                <fieldset class="form-group">
+                                    <select th:field="*{roomtype}" class="form-select"
+                                            aria-label="Default select example">
+                                        <option value="單人房">單人房</option>
+                                        <option value="雙人房">雙人房</option>
+                                        <option value="四人房">四人房</option>
+                                    </select>
+                                </fieldset>
+
+
+                                <fieldset class="form-group">
+                                    <label>你提供什麼設施呢?</label><br>
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="浴巾"/>浴巾
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="空調"/>空調
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="陽台或露台"/>陽台或露台
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="書桌"/>書桌
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="免鑰匙進出"/>免鑰匙進出
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="濱海"/>濱海
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="免費停車"/>免費停車
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="免費wifi"/>免費wifi
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="暖風"/>暖風
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="廚房用具(廚具`油`調味料)"/>廚房用具(廚具`油`調味料)
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="專用入口"/>專用入口
+                                    <input type="checkbox" th:field="*{provide}" id="provide"
+                                           value="電視"/>電視
+
+                                </fieldset>
+
+
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer th:replace="frontend/partials/fragment :: footer"></footer>
+<!-- Back to top -->
+<div th:replace="frontend/partials/fragment :: toTop"></div>
+<!-- Modal1 -->
+<div th:replace="frontend/partials/fragment :: modal1"></div>
+<!-- javascript -->
+<div th:replace="frontend/partials/fragment :: script"></div>
+
+<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
+        src="vendors/datatables.net/jquery.dataTables.js"></script>
+<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
+        src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#data-table').DataTable({})
+    });
+
+    // 		$('#data-table tbody').on('click', function () {
+    //          var tr = $(this).closest('tr');
+    //          var row = table.row(tr);
+    //          if (row.child.isShown()) {
+    //              // This row is already open - close it
+    //              row.child.hide();
+    //              tr.removeClass('shown');
+    //          }
+    //          else {
+    //              // Open this row
+    //              row.child(format(row.data())).show();
+    //              tr.addClass('shown');
+    //          }
+    //      })
+
+    $(".btn-delete").click(function (e) {
+        e.preventDefault(); // 取消原始動作
+        let id = $(this).val();
+        Swal.fire({
+            icon: 'warning',
+            title: '確定刪除?',
+            text: "確認刪除後將不可復原",
+            showCancelButton: true,
+            confirmButtonColor: '#FF8D29',
+            cancelButtonColor: '#FFCD38',
+            confirmButtonText: '確認',
+            cancelButtonText: '取消',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).parent().submit();
+            }
+        })
+    })
+
+</script>
+
+</body>
+
+</html>
