@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,6 +40,11 @@ public class HotelRoom {
     @JoinColumn(name = "hotel_id")
     @JsonIgnore
     private Hotel hotel;
+
+
+    @OneToMany(mappedBy = "hotelRoom", cascade = CascadeType.ALL)
+    private List<HotelRoomImage> hotelRoomImageList;
+
 
     public HotelRoom() {
     }
