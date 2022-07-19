@@ -1,11 +1,12 @@
 USE
-    [GoTrip];
+[GoTrip];
 
 
 SET
-    IDENTITY_INSERT [dbo].[comment] ON;
+IDENTITY_INSERT [dbo].[comment] ON;
 
-INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
+INSERT
+[dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (1, N'hotel', 1, N'david_lin', CAST(N'2022-04-25T01:00:00' AS SmallDateTime), 5, N'環境舒適，交通方便，真的超級推薦!', N'show')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (2, N'restaurant', 1, N'kelly', CAST(N'2022-04-26T02:00:00' AS SmallDateTime), 4,
@@ -75,9 +76,10 @@ VALUES (25, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime
 SET IDENTITY_INSERT [dbo].[comment] OFF;
 
 SET
-    IDENTITY_INSERT [dbo].[comment_image] ON;
+IDENTITY_INSERT [dbo].[comment_image] ON;
 
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+INSERT
+[dbo].[comment_image] ([id], [image_path], [comment_id])
 VALUES (1, N'/data/uploadimages/comment/hotel.jpg', 1)
 INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
 VALUES (2, N'/data/uploadimages/comment/hotel-room.jpg', 1)
@@ -140,9 +142,10 @@ VALUES (30, N'/data/uploadimages/comment/friends-min.jpg', 24)
 SET IDENTITY_INSERT [dbo].[comment_image] OFF;
 
 SET
-    IDENTITY_INSERT [dbo].[car_model] ON;
+IDENTITY_INSERT [dbo].[car_model] ON;
 
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+INSERT
+[dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
                           [door], [suitcase], [bag], [image])
 VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
         N'/data/uploadimages/car/toyota-yaris.png')
@@ -181,9 +184,10 @@ VALUES (9, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT
 SET IDENTITY_INSERT [dbo].[car_model] OFF;
 
 SET
-    IDENTITY_INSERT [dbo].[car_location] ON;
+IDENTITY_INSERT [dbo].[car_location] ON;
 
-INSERT [dbo].[car_location] ([id], [company_id], [company_name], [name], [country], [county], [district], [address],
+INSERT
+[dbo].[car_location] ([id], [company_id], [company_name], [name], [country], [county], [district], [address],
                              [phone], [open_time], [close_time], [image], [longitude], [latitude])
 VALUES (1, 1, N'隔尚租車', N'台北建北站', N'台灣', N'台北市', N'中山區', N'建國北路一段71-1號', N'02-25021389', CAST(N'08:30:00' AS Time),
         CAST(N'20:30:00' AS Time), N'/data/uploadimages/car/1-201.jpg', 121.537212, 25.051116)
@@ -274,9 +278,10 @@ VALUES (22, 2, N'隔尚租車', N'新竹中華站', N'台灣', N'新竹市', N'�
 SET IDENTITY_INSERT [dbo].[car_location] OFF;
 
 SET
-    IDENTITY_INSERT [dbo].[car_option] ON;
+IDENTITY_INSERT [dbo].[car_option] ON;
 
-INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+INSERT
+[dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (1, 1, 1, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (2, 1, 2, 2000, 0.800000011920929, 4)
@@ -317,7 +322,7 @@ VALUES (19, 10, 8, 3000, 0.89999997615814209, 3)
 SET IDENTITY_INSERT [dbo].[car_option] OFF;
 
 SET
-    IDENTITY_INSERT [dbo].[user_data] ON
+IDENTITY_INSERT [dbo].[user_data] ON
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (1, N'admin', NULL, NULL, N'$2a$10$juAszWkBW1M0P5l8A6bQw..z3h4bU2AlzpPlerAfnxy2AqhiVwlai', NULL, NULL, NULL,

@@ -2864,6 +2864,10 @@ input.num-product::-webkit-inner-spin-button {
 /*==================================================================
        BORDER BORDER  BORDER  BORDER  BORDER  BORDER  BORDER  BORDER
 ==================================================================*/
+.bornone {
+	border: none;
+}
+
 .bor0 {
   border-radius: 50%;
 }

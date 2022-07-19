@@ -3,6 +3,7 @@ package com.ispan.group3.controller;
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.HotelImage;
 import com.ispan.group3.repository.HotelRoom;
+import com.ispan.group3.repository.HotelRoomImage;
 import com.ispan.group3.service.HotelRoomService;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.util.FileUploadUtil;
@@ -296,7 +297,10 @@ public class HotelController {
 
 
     @PostMapping("/getNewRoom/{id}")
-    public String getNewRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom, Model model, @PathVariable("id") Integer id) {
+    public String getNewRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
+                             @RequestParam(value = "imageFiles", required = false) List<MultipartFile> files,
+                             @PathVariable("id") Integer id
+    ) {
 //        Hotel hotel = new Hotel();//主表bean
 //        hotel.setHotel_name("豪華大酒店");
 //        List<HotelRoom> list = new ArrayList<HotelRoom>();
@@ -308,13 +312,25 @@ public class HotelController {
 //        hotel.setHotelroomList(list);
 //        hotelService.save(hotel);
 //        hotelroomService.save(hotelRoom);
-        
+
         Hotel byId = hotelService.findById(id);
+        List<HotelRoomImage> imagesLish = new ArrayList<>();
+        for (MultipartFile file : files) {
+            try {
+                String savePath = FileUploadUtil.saveFile("hotelroomImage", file);
+                HotelRoomImage hotelRoomImage = new HotelRoomImage(savePath, hotelRoom);
+                imagesLish.add(hotelRoomImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        hotelRoom.setHotelRoomImageList(imagesLish);
 
         for (int i = 0; i < 10; i++) {
-            System.out.println(byId.getId());
+            System.out.println("看到我代表是更新" + byId.getId());
 
         }
+
 
         hotelRoom.setHotel(byId);
         hotelroomService.save(hotelRoom);

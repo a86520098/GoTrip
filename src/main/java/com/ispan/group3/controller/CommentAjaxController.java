@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ispan.group3.repository.Comment;
 import com.ispan.group3.repository.CommentCount;
 import com.ispan.group3.service.CommentService;
 
-@RestController
 @RequestMapping(path = "/api")
+@RestController
 public class CommentAjaxController {
 
 	private final CommentService cService;
@@ -34,6 +35,11 @@ public class CommentAjaxController {
 	@GetMapping("/comments/{id}")
 	public Comment findById(@PathVariable Integer id) {
 		return cService.findById(id);
+	}
+	
+	@GetMapping("/comments/item")
+	public List<Comment> findByItem(@RequestParam String table, @RequestParam Integer id) {
+		return cService.findByItem(table, id);
 	}
 	
 	@PostMapping

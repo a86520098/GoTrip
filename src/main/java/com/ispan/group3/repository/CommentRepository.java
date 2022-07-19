@@ -12,5 +12,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer>{
     @Query(value = "SELECT c.item_tb AS itemTb, c.item_id AS itemId, ROUND(AVG(CAST(c.rating AS FLOAT)), 1) AS avgRating, COUNT(*) AS count FROM comment c GROUP BY c.item_tb, c.item_id", nativeQuery = true)
     List<CommentCount> findAllRatings();
 
-
+    @Query(value = "SELECT * FROM comment WHERE item_tb = ?1 AND item_id = ?2", nativeQuery = true)
+    List<Comment> findByItem(String table, Integer id);
 }
