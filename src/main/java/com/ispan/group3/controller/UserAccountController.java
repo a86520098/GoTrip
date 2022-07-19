@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ispan.group3.repository.RegisterForm;
 import com.ispan.group3.repository.UserData;
 import com.ispan.group3.repository.UserRepository;
+import com.ispan.group3.service.UserService;
 import com.ispan.group3.service.impl.UserDetailsServiceImpl;
 
 
@@ -33,6 +35,8 @@ public class UserAccountController {
 
 //	@Autowired
 //	private UserContext userContext;
+	
+	private UserService userService;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -48,12 +52,17 @@ public class UserAccountController {
 		return "frontend/index";
 	}
 	
+	@RequestMapping("/fail")
+	public String loginFailed() {
+		return "frontend/login";
+	}
+	
 	@GetMapping({"/admin"})
-	public String admin() {
+	public String admin() { 
 		return "backend/index";
 	}
 	
-	@GetMapping({"/logout"})
+	@RequestMapping("/logout")
 	public String logout() {
 		return "frontend/index";
 	}
@@ -69,11 +78,7 @@ public class UserAccountController {
 		return "frontend/index";
 	}
 	
-	@GetMapping({"/fail"})
-	@ResponseBody
-	public String loginFailed() {
-		return "failed";
-	}
+
 //	
 //	@PostMapping("/login")
 //	public String doLogin(
@@ -126,5 +131,16 @@ public class UserAccountController {
 //		redirectAttributes.addFlashAttribute("MESSAGE", message);
 //		return "redirect:login";
 //	}
+	
+	//檢查Email是否已存在
+		@ResponseBody
+		@PostMapping(value = "/CheckEmail", produces = "application/json; charset = UTF-8")
+		public boolean checkUser(@RequestParam String username) {
+			UserData mem = userService.findByUsername(username);
+			if (mem == null) {
+				return true;
+			}
+			return false;
+		}
 
 }
