@@ -26,6 +26,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	public static class UserAuthorityUtils {
 		
+		//Dealer只能看到前台+商家管理
+		private static final List<GrantedAuthority> EVERYONE_ROLES = AuthorityUtils
+				.createAuthorityList("ROLE_ADMIN","ROLE_DEALER","ROLE_USER");
+		
 		//Admin可以看到所有內容
 		private static final List<GrantedAuthority> ADMIN_ROLES = AuthorityUtils
 				.createAuthorityList("ROLE_ADMIN");
