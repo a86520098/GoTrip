@@ -1,6 +1,7 @@
 USE
     [GoTrip];
 
+
 SET
     IDENTITY_INSERT [dbo].[comment] ON;
 
@@ -330,6 +331,241 @@ INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password
 VALUES (12, N'elvispan@gmail.com', NULL, NULL, N'$2a$10$rJUmwbkulb//M5phPQVQxuHCQozOcBeCd100fKJuycpxtyikGKl4K', NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, N'user')
 SET IDENTITY_INSERT [dbo].[user_data] OFF
+
+
+SET IDENTITY_INSERT [dbo].[hotel] ON
+
+
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'4', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:00:08.6030000', NULL, NULL, NULL, N'嚴長壽', N'臺中市', N'1', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'臺中市東區', N'400', NULL, N'公寓', N'雙星大飯店 (Twinstar Hotel)', NULL,
+        N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於台中市東區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的台中彩虹眷村。 這間4星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
+        N'Taiwan', N'300', N'976472309', NULL, NULL, NULL, N'營業中')
+
+
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'5', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:01:52.1490000', NULL, NULL, NULL, N'陳佳鑫', N'臺中市', N'2', N'附屬spa',
+        N'提供3c高級筆電', N'提供美式餐點', NULL, N'臺中市西區', N'2000', NULL, N'公寓', N'台中金典酒店 (Splendor Hotel)', NULL,
+        N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於台中市東區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的台中彩虹眷村。 這間4星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
+        N'Taiwan', N'800', N'916752161', NULL, NULL, NULL, N'營業中')
+
+
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'6', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:02.4310000', NULL, NULL, NULL, N'王家豪', N'桃園市', N'3', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市中壢區', N'20000', NULL, N'公寓', N'古華花園飯店 (Kuva Chateau Hotel)', NULL,
+        N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於桃園市中壢區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人健身中心、餐廳和室外泳池',
+        N'Taiwan', N'1000', N'911223333', NULL, NULL, NULL, N'營業中')
+
+
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'7', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
+        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'名人堂花園大飯店 (Fame Hall Garden Hotel)', NULL,
+        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+
+
+INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
+                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
+                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
+                           [people_count], [phone], [price], [provide], [roomtype], [status])
+VALUES (N'8', N'1.搭乘捷運出站可到達
+2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:08:53.5640000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'5', N'附屬美容室',
+        N'提供超跑特別租借', N'提供中式餐點', NULL, N'桃園市復興區華陵村巴崚156-7號, 桃園市復興區華陵村巴崚156-7號', N'20000', NULL, N'公寓', N'拉拉山桃山渡假農場',
+        NULL,
+        N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於桃園市復興區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間5星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
+        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+
+
+SET IDENTITY_INSERT [dbo].[hotel] OFF
+
+SET IDENTITY_INSERT [dbo].[hotel_image] ON
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'1', N'2022-07-19 10:00:08.6080000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-161758.jpg', N'4')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'2', N'2022-07-19 10:00:08.6110000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-164595.jpg', N'4')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'3', N'2022-07-19 10:00:08.6110000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-221457.jpg', N'4')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'4', N'2022-07-19 10:01:52.1530000', NULL, N'/data/uploadimages/hotelImage/pexels-francesco-ungaro-96444.jpg',
+        N'5')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'5', N'2022-07-19 10:01:52.1550000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271618.jpg', N'5')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'6', N'2022-07-19 10:01:52.1560000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'5')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'7', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg', N'6')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'8', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg', N'6')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'9', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'6')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'10', N'2022-07-19 10:04:55.0060000', NULL,
+        N'/data/uploadimages/hotelImage/pexels-konstantinos-eleftheriadis-2034335.jpg', N'7')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'11', N'2022-07-19 10:04:55.0080000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271618.jpg', N'7')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'12', N'2022-07-19 10:04:55.0090000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'7')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'13', N'2022-07-19 10:08:53.5670000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-261169.jpg', N'8')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'14', N'2022-07-19 10:08:53.5680000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271618.jpg', N'8')
+
+
+INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
+VALUES (N'15', N'2022-07-19 10:08:53.5690000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'8')
+
+
+SET IDENTITY_INSERT [dbo].[hotel_image] OFF
+
+SET IDENTITY_INSERT [dbo].[hotel_room] ON
+
+
+INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+                                [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
+                                [roomprice], [roomtype], [hotel_id])
+VALUES (N'1', N'2', N'2', N'2', N'拉拉山桃山渡假農場提供每日免費早餐。', N'附近有虎頭山公園', N'提供B&W 整套音響', N'40', N'2', N'浴巾,免鑰匙進出,免費停車', N'入住拉拉山桃山渡假農場，盡情享受桃園市冒險之旅。
+拉拉山桃山渡假農場提供完善的設施服務，讓您享受無憂無慮的度假時光。 飯店提供免費Wi-Fi，無論您想發照片、回郵件，都能輕鬆完成。 自駕前往的住客可免費停車。 想一整天都宅在客房裡嗎？每日客房清潔等客房服務讓您躺著就能享受愉快假期。
+拉拉山桃山渡假農場客房都有貼心設施。 浴室設施對住客來說非常重要，因此這間飯店的部分客房提供吹風機和盥洗用品。
+', N's', N'愛情海房間', N'4000', N'雙人房', N'4')
+
+
+INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+                                [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
+                                [roomprice], [roomtype], [hotel_id])
+VALUES (N'2', N'2', N'2', N'2', N'鴻海農場提供每日免費早餐。', N'附近有非洲大草原公園', N'提供B&W 整套音響', N'40', N'2',
+        N'浴巾,免鑰匙進出,免費停車,廚房用具(廚具`油`調味料),專用入口', N'入住郭董套房，盡情享受鴻海冒險之旅。
+鴻海農場提供完善的設施服務，讓您享受無憂無慮的度假時光。 飯店提供免費Wi-Fi，無論您想發照片、回郵件，都能輕鬆完成。 自駕前往的住客可免費停車。 想一整天都宅在客房裡嗎？每日客房清潔等客房服務讓您躺著就能享受愉快假期。
+拉拉山桃山渡假農場客房都有貼心設施。 浴室設施對住客來說非常重要，因此這間飯店的部分客房提供吹風機和盥洗用品。
+', N'兒童與加床收費標準
+歡迎兒童入住。
+
+其他規定
+請注意：若單筆預訂超過5間客房，可能會需要遵守其他相關規定以及符合額外的要求。
+加床規定依房型而異，更多細節請向住宿洽詢。', N'郭董愛情房間', N'5000', N'雙人房', N'4')
+
+
+INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+                                [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
+                                [roomprice], [roomtype], [hotel_id])
+VALUES (N'3', N'2', N'2', N'2', N'◎房間陽台面對清境最美的山景。', N'◎房間均以台灣檜木或肖楠構築而成，充滿木頭的香氣。', N'◎精心設計的室內空間，自然通風的溫暖舒適遠勝人工空調。', N'40',
+        N'2', N'浴巾,免鑰匙進出,免費停車,廚房用具(廚具`油`調味料),專用入口', N'1.台灣檜木/肖楠打造的室內空間，讓房間充滿天然木頭芬芳。
+2.樓中樓房型挑高閣樓設計，讓您全家出遊仍有寬敞舒適的活動空間。
+3.景觀陽台讓您坐擁日出、雲海、廬山溫泉夜景。
+4.獨立筒彈簧床墊與高級羽毛被，提供您ㄧ年四季溫暖好眠。
+5.房間內提供免費寬頻上網(有線)，公共空間提供免費無線上網。', N'兒童與加床收費標準
+歡迎兒童入住。
+
+其他規定
+請注意：若單筆預訂超過5間客房，可能會需要遵守其他相關規定以及符合額外的要求。
+加床規定依房型而異，更多細節請向住宿洽詢。', N'愛情泡泡房間', N'5000', N'四人房', N'4')
+
+
+INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+                                [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
+                                [roomprice], [roomtype], [hotel_id])
+VALUES (N'4', N'1', N'1', N'1', N'◎房間陽台面對清境最美的山景。', N'◎房間均以台灣檜木或肖楠構築而成，充滿木頭的香氣。', N'◎精心設計的室內空間，自然通風的溫暖舒適遠勝人工空調。', N'10',
+        N'2', N'浴巾,免鑰匙進出,免費停車,廚房用具(廚具`油`調味料),專用入口', N'可以養寵物', N'兒童與加床收費標準
+歡迎兒童入住。
+
+其他規定
+請注意：若單筆預訂超過5間客房，可能會需要遵守其他相關規定以及符合額外的要求。
+加床規定依房型而異，更多細節請向住宿洽詢。', N'寵物房', N'1200', N'雙人房', N'4')
+
+
+INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+                                [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
+                                [roomprice], [roomtype], [hotel_id])
+VALUES (N'5', N'2', N'3', N'2', N'◎房間陽台面對清境最美的山景。', N'附近有非洲大草原公園', N'提供B&W 整套音響', N'2', N'4', N'濱海,免費停車,免費wifi,暖風,電視', N'採用肖楠壁板的房間，散發著淡淡的木頭香氣。高級的材質加上與眾不同的設計讓房間內部呈現不同於一般飯店旅館的感受。
+下雨過後，坐在私人的陽台欣賞瞬息萬變的山嵐；靜謐的夜晚，在躺椅上仰望滿天星斗；四季風情讓人輕易地忘卻時光的流逝。', N'加床規定依房型而異，更多細節請向住宿洽詢。', N' 巴里風情二人房', N'4000', N'單人房', N'5')
+
+
+INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+                                [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
+                                [roomprice], [roomtype], [hotel_id])
+VALUES (N'6', N'4', N'4', N'4', N'1. 私人景觀陽台，可觀賞奇萊山日出、雲海、山嵐與廬山夜景。', N'2. 肖楠原木壁板採透氣漆處理，散發天然原木香氣。', N'提供B&W 整套音響', N'100',
+        N'4', N'浴巾,空調,陽台或露台,書桌', N'高雅靜謐的精緻客房，私人陽台提供頂樓的絕佳視野。早上拉開窗簾就可以看日出；在陽台上不論是做瑜珈、打太極或是裹在棉被裡捧著一杯溫暖香醇的咖啡，都是享受！
+肖楠原木經過費力耗時的裁切，將堅硬的原木裁切成長短厚薄不一的條狀木片，然後再一片片、一條條拼貼成參差而具有立體感的牆面，是考驗工匠技藝的精心傑作。
+浴室天花板採用台灣檜木，再加上進口石英岩所打造的淋浴空間，天然的防滑特性與潔淨的色澤，讓您不用擔心家裡小朋友與老人家的浴室安全。絕佳的通風與排水，讓您一早起來就能享受乾爽的衛浴空間。', N'1.不得抽菸
+2.必須化妝
+3.必須有車
+4.不得偷竊任何物品
+5.必須有品味
+進房時間：16:00~20:00，逾時未辦理入住程序亦未事先電話通知者視同取消訂房
+　　　　　，訂金將不予退還。
+超時入住：超過20:00入住亦未事先電話連絡者，將酌收超時入住費用(500元/房)，
+　　　　　敬請按規定時間辦理入住程序或事先電話連絡。
+退房時間：中午12:00，超時退房將酌收超時費用(500元/小時)。', N'日出四人房', N'7500', N'四人房', N'7')
+
+
+INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+                                [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
+                                [roomprice], [roomtype], [hotel_id])
+VALUES (N'7', N'4', N'4', N'4', N'Accessible by elevator', N'Safety/security feature', N'房內保險箱', N'100', N'4',
+        N'浴巾,空調,陽台或露台,書桌', N'高雅靜謐的精緻客房，私人陽台提供頂樓的絕佳視野。早上拉開窗簾就可以看日出；在陽台上不論是做瑜珈、打太極或是裹在棉被裡捧著一杯溫暖香醇的咖啡，都是享受！
+肖楠原木經過費力耗時的裁切，將堅硬的原木裁切成長短厚薄不一的條狀木片，然後再一片片、一條條拼貼成參差而具有立體感的牆面，是考驗工匠技藝的精心傑作。
+浴室天花板採用台灣檜木，再加上進口石英岩所打造的淋浴空間，天然的防滑特性與潔淨的色澤，讓您不用擔心家裡小朋友與老人家的浴室安全。絕佳的通風與排水，讓您一早起來就能享受乾爽的衛浴空間。', N'1.不得抽菸
+2.必須化妝
+3.必須有車
+4.不得偷竊任何物品
+5.必須有品味
+進房時間：16:00~20:00，逾時未辦理入住程序亦未事先電話通知者視同取消訂房
+　　　　　，訂金將不予退還。
+超時入住：超過20:00入住亦未事先電話連絡者，將酌收超時入住費用(500元/房)，
+　　　　　敬請按規定時間辦理入住程序或事先電話連絡。
+退房時間：中午12:00，超時退房將酌收超時費用(500元/小時)。', N'御質行驛(港景大床套房) (Silks Club Junior Suite King with Harbour View)', N'7500', N'雙人房',
+        N'7')
+
+
+SET IDENTITY_INSERT [dbo].[hotel_room] OFF
+
+
+-- MySQL區域
+
+
 -- DROP TABLE IF EXISTS `hotel_room`;
 -- DROP TABLE IF EXISTS `hotel_image`;
 -- DROP TABLE IF EXISTS `hotel`;
