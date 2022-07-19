@@ -1,15 +1,11 @@
 package com.ispan.group3.repository;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
-import org.springframework.context.annotation.Role;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserDetailsData implements UserDetails{
@@ -25,15 +21,8 @@ public class UserDetailsData implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-//		String roles = userData.getAuthority();
-//		
-////		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-////		
-////		for (Role role : roles) {
-////			authorities.add(new SimpleGrantedAuthority(role.getClass()));
-////		}
-		
-		return null;
+
+		return AuthorityUtils.createAuthorityList(userData.getAuthority());
 	}
 
 	@Override
@@ -58,14 +47,45 @@ public class UserDetailsData implements UserDetails{
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return false;
+		
+		return userData.isEnabled();
 	}
 	
+	public void setCh_name(String ch_name) {
+		this.userData.setCh_name(ch_name);
+	}
 	
-
+	public void setEn_name(String en_name) {
+		this.userData.setEn_name(en_name);
+	}
+	
+	public void setPhone(String phone) {
+		this.userData.setPhone(phone);
+	}
+	
+	public void setBirthday(String birthday) {
+		this.userData.setBirthday(birthday);
+	}
+	
+	public void setGender(String gender) {
+		this.userData.setGender(gender);
+	}
+	
+	public void setCity(String city) {
+		this.userData.setCity(city);
+	}
+	
+	public void setLocation(String location) {
+		this.userData.setLocation(location);
+	}
+	
+	public void setAddress(String address) {
+		this.userData.setAddress(address);
+	}
+	
 }

@@ -319,17 +319,17 @@ SET IDENTITY_INSERT [dbo].[car_option] OFF;
 SET
     IDENTITY_INSERT [dbo].[user_data] ON
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
-                          [city], [location], [address], [image], [authority])
+                          [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (1, N'admin', NULL, NULL, N'$2a$10$juAszWkBW1M0P5l8A6bQw..z3h4bU2AlzpPlerAfnxy2AqhiVwlai', NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, N'admin')
+        NULL, NULL, NULL, NULL, N'ROLE_ADMIN',1,NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
-                          [city], [location], [address], [image], [authority])
+                          [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (2, N'dealer', NULL, NULL, N'$2a$10$iVMluTlijqCYBRs3DtGO9./iYxFI/9wB2BP5fQavZeIpatQOeJMfC', NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, N'dealer')
+        NULL, NULL, NULL, NULL, N'ROLE_DEALER',1,NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
-                          [city], [location], [address], [image], [authority])
+                          [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (12, N'elvispan@gmail.com', NULL, NULL, N'$2a$10$rJUmwbkulb//M5phPQVQxuHCQozOcBeCd100fKJuycpxtyikGKl4K', NULL,
-        NULL, NULL, NULL, NULL, NULL, NULL, N'user')
+        NULL, NULL, NULL, NULL, NULL, NULL, N'ROLE_USER',1,NULL)
 SET IDENTITY_INSERT [dbo].[user_data] OFF
 
 

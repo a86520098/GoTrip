@@ -24,7 +24,7 @@
 							<ul class="p-lr-20">
 								<li class="bor18">
 									<a th:href="@{/userdetails}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-										基本資料
+										個人資料
 									</a>
 								</li>
 								<li class="bor18">
@@ -54,9 +54,9 @@
 							<h4 class="card-title">修改會員資料</h4>
                   <form class="form-sample" th:action="@{/userdetals/update}" method="post" id="form" th:object="${user}">
                     <input type="hidden" th:field="*{user_id}" />
-<!--                     <p class="card-description mt-5"> -->
-<!--                       基本資料 -->
-<!--                     </p> -->
+                    <p class="card-description mt-5">
+                      個人資料
+                    </p>
                     <div class="row mt-4">
                       <div class="col-md-6">
                         <div class="form-group row">
@@ -94,9 +94,6 @@
                         </div>
                       </div>
                     </div>
-                    
-                    <input type="hidden" name="password" th:field="*{password}"/>
-                    <input type="hidden" name="authority" th:field="*{authority}"/>
 <!--                     <div class="row"> -->
 <!--                       <div class="col-md-6"> -->
 <!--                         <div class="form-group row"> -->
@@ -107,7 +104,16 @@
 <!--                           </div> -->
 <!--                         </div> -->
 <!--                       </div> -->
-
+<!--                       <div class="col-md-6"> -->
+<!--                         <div class="form-group row"> -->
+<!--                           <label class="col-sm-3 col-form-label" for="passwd">確認密碼</label> -->
+<!--                           <div class="col-sm-9"> -->
+<!--                             <input id="pwd2" name="passwd" type="password" class="form-control" placeholder="請輸入再次輸入密碼" required="required" onkeyup="validate()"> -->
+<!--                             <span id="checkMsg" style="position:absolute ; right:17px;"></span> -->
+<!--                           </div> -->
+<!--                         </div> -->
+<!--                       </div> -->
+<!--                     </div> -->
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
@@ -140,9 +146,9 @@
                       </div>
                     </div>
                 
-<!--                     <p class="card-description mt-4"> -->
-<!--                       聯絡地址 -->
-<!--                     </p> -->
+                    <p class="card-description mt-4">
+                      聯絡地址
+                    </p>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">

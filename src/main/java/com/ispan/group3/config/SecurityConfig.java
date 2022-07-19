@@ -17,6 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import com.ispan.group3.enums.MyAccessDeniedHandler;
+import com.ispan.group3.service.impl.UserDetailsServiceImpl;
 
 
 
@@ -32,6 +33,11 @@ public class SecurityConfig{
 	private MyAccessDeniedHandler myAccessDeniedHandler;
 	
 	@Bean
+	public UserDetailsService userDetailsService() {
+		return new UserDetailsServiceImpl();
+	}
+	
+	@Bean
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
@@ -43,8 +49,8 @@ public class SecurityConfig{
 		.antMatchers("/login","/","/index","/resources/**","/css/**","/fonts/**","/images/**","/js/**","/vendors/**","/register","/CheckEmail","/logout","/data/**","/ticket/**","/findHotelList/**","/cars/**","/api").permitAll() //resource資料夾靜態資料可匿名存取
 //		.antMatchers("/login") //對象為所有網址
 		.antMatchers("/admin","/vendors/**","/").hasRole("ADMIN") //admin才可以訪問後台
-		.antMatchers("/frontend/user/**").hasRole("USER") //user只能訪問前台user畫面
-		.antMatchers("/frontend/**").hasAnyRole("DEALER","ADMIN") //dealer可以訪問前台所有畫面
+		.antMatchers("/userdetails","/userdetals/update").hasAnyRole("USER","DEALER") //user只能訪問前台user畫面
+		.antMatchers("/vendors/**","/","/userdetails","/userdetals/update").hasAnyRole("DEALER","ADMIN") //dealer可以訪問前台所有畫面
 		.anyRequest().authenticated() //存取必須通過驗證
 	.and()
 	.formLogin() 
@@ -75,34 +81,6 @@ public class SecurityConfig{
 	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS); 
 	
 	return http.build();
-		
-
-		
-//		http.authorizeRequests()
-//			.antMatchers("/resources/**").permitAll() //resource資料夾靜態資料可匿名存取
-//			.antMatchers("/login") //對象為所有網址
-////			.antMatchers("/backend/index").hasRole("ADMIN") //admin才可以訪問後台
-////			.antMatchers("/frontend/user/**").hasRole("USER") //user只能訪問前台user畫面
-////			.antMatchers("/frontend/**").hasAnyRole("DEALER","ADMIN") //dealer可以訪問前台所有畫面
-//			.authenticated() //存取必須通過驗證
-//		.and()
-//		.formLogin() 
-//			.loginProcessingUrl("/login")
-//			.loginPage("/login") //則產生自訂login表單
-//			.failureForwardUrl("/fail") //如果認證失敗，則導往/login並帶參數error
-////			.defaultSuccessUrl("/backend/index") //認證通過後導往的Url
-//			.successForwardUrl("/")
-//			.permitAll()
-//		.and()
-//		.logout()
-//			.logoutSuccessUrl("/login?logout") //
-//		    .permitAll()
-//		.and()
-//		.userDetailsService(userDetailsService)
-//		.csrf().disable() //關閉csrf防護
-//		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS); 
-//		
-//		return http.build();
 	}
 	
 	@Bean
