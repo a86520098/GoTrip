@@ -66,7 +66,8 @@ jQuery(document).ready(function($) {
 				let n = data.length;
 				for (let i = 0; i < n; i++) {
 					// 使用者id(實際上給的是String)
-					userStr = '<p>' + data[i].userId + '</p>';
+
+					userStr = '<p class="mt-2">' + data[i].userId + '</p>';
 					// 用評分給星星
 					star = "<div>";
 					score = data[i].rating;
@@ -76,14 +77,18 @@ jQuery(document).ready(function($) {
 					for (let x = 0; x < starNum - score; x++) {
 						star += '<i class="fa fa-star cl12" aria-hidden="true"></i>'
 					}
-					star += '</div>';
-					content = '<p>' + data[i].content + '</p>';
-					images = '<div class="row">'
-					for (let j = 0; j < data[i].images.length; j++) {
-						images += '<img class="rounded mb-3 col-4" src="' + data[i].images[j].imagePath + '" />'
+					star += data[i].date.substring(0, 10) + '</div>';
+					
+					comments.append(userStr).append(star)
+					if (data[i].content != "") {
+						content = '<div class="bg6 card bornone mb-2"><div class="card-body"><p >' + data[i].content + '</p>';
+	
+						for (let j = 0; j < data[i].images.length; j++) {
+							content += '<img class="block2-pic mr-3 mt-4" src="/gotrip' + data[i].images[j].imagePath + '"style="object-fit: cover; width:100px; height:100px;"/>'
+						}
+						content += '</div></div>'
+						comments.append(content);
 					}
-
-					comments.append(userStr).append(star).append(content).append(images);
 				}
 
 			},
