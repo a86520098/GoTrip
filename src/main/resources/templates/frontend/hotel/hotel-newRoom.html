@@ -9,6 +9,10 @@
         font-size: 15px;
         text-align: center;
     }
+
+    #provide {
+        display: inline-block;
+    }
 </style>
 <head th:replace="frontend/partials/fragment :: head"></head>
 
@@ -176,6 +180,15 @@
 
                                 </fieldset>
 
+                                <!-- HTML part -->
+                                <label>照片</label>
+                                <input type="file" name="imagefiles" id="progressbarTWInput"
+                                       accept="image/gif, image/jpeg, image/png" multiple>
+                                <div id="preview_progressbarTW_imgs"
+                                     style="width:100%; height: 300px; overflow:scroll;">
+                                    <p>目前沒有圖片</p>
+                                </div>
+
 
                                 <button type="submit" class="btn btn-success">Save</button>
                             </form>
@@ -203,45 +216,64 @@
         src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $('#data-table').DataTable({})
+    (function ($) {
+        $(document).ready(function () {
+            $('#comment-table').DataTable();
+        });
+    })(jQuery);
+
+    function my_key(e) {
+        var key;
+        if (window.event) {
+            key = e.keyCode;
+        } else if (e.which) {
+            key = e.which;
+        } else {
+            return true;
+        }
+        if (8 == key || 46 == key) {//8:backspace 46:delete (倒退鍵和刪除鍵也允許作用)
+            return true;
+        }
+        var keychar = String.fromCharCode(key);
+        var reg = /\d/;
+        return reg.test(keychar);
+    }
+
+</script>
+
+
+<!-- 立即顯示縣市鄉鎮 -->
+<script type="text/javascript">
+    function addressChange() {
+        var city = document.getElementById('city').value;
+        var location = document.getElementById('location').value;
+        document.getElementById('fullAddress').value = city + location;
+    }
+
+
+</script>
+<!-- JavaScript part -->
+<script>
+    $("#progressbarTWInput").change(function () {
+        $("#preview_progressbarTW_imgs").html(""); // 清除預覽
+        readURL(this);
     });
 
-    // 		$('#data-table tbody').on('click', function () {
-    //          var tr = $(this).closest('tr');
-    //          var row = table.row(tr);
-    //          if (row.child.isShown()) {
-    //              // This row is already open - close it
-    //              row.child.hide();
-    //              tr.removeClass('shown');
-    //          }
-    //          else {
-    //              // Open this row
-    //              row.child(format(row.data())).show();
-    //              tr.addClass('shown');
-    //          }
-    //      })
-
-    $(".btn-delete").click(function (e) {
-        e.preventDefault(); // 取消原始動作
-        let id = $(this).val();
-        Swal.fire({
-            icon: 'warning',
-            title: '確定刪除?',
-            text: "確認刪除後將不可復原",
-            showCancelButton: true,
-            confirmButtonColor: '#FF8D29',
-            cancelButtonColor: '#FFCD38',
-            confirmButtonText: '確認',
-            cancelButtonText: '取消',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $(this).parent().submit();
+    function readURL(input) {
+        if (input.files && input.files.length >= 0) {
+            for (var i = 0; i < input.files.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = $("<img width='300' height='200'>").attr('src', e.target.result);
+                    $("#preview_progressbarTW_imgs").append(img);
+                }
+                reader.readAsDataURL(input.files[i]);
             }
-        })
-    })
-
+        } else {
+            var noPictures = $("<p>目前沒有圖片</p>");
+            $("#preview_progressbarTW_imgs").append(noPictures);
+        }
+    }
 </script>
 
 </body>
