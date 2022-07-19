@@ -24,7 +24,7 @@ public class CommentConfig {
 		Random rand = new Random();
         
 		return args -> {
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 75; i++) {
 				int randItemId = rand.nextInt(20); //0-9
 				randItemId += 1; //1~20
 				int randUserId = rand.nextInt(1000); //0-9
@@ -43,7 +43,7 @@ public class CommentConfig {
 		Random rand = new Random();
 		
 		return args -> {
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 75; i++) {
 				int randItemId = rand.nextInt(20); //0-9
 				randItemId += 1; //1~20
 				int randUserId = rand.nextInt(1000); //0-9
@@ -62,14 +62,14 @@ public class CommentConfig {
 		Random rand = new Random();
 		
 		return args -> {
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 75; i++) {
 				int randItemId = rand.nextInt(20); //0-9
 				randItemId += 1; //1~20
 				int randUserId = rand.nextInt(1000); //0-9
 				randUserId += 1; //1~1000
 				int randRating = rand.nextInt(3); //0-2
 				randRating += 3; //3~5
-				Comment comment = new Comment("ticket", randItemId, "account" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
+				Comment comment = new Comment("hotel", randItemId, "account" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
 				cService.save(comment);
 			}
 			

@@ -59,6 +59,11 @@ public class CommentServiceImpl implements CommentService{
 	public List<CommentCount> findAllRatings() {
 		return cRepository.findAllRatings();
 	}
+
+	@Override
+	public List<Comment> findByItem(String table, Integer id) {
+		return cRepository.findByItem(table, id);
+	}
 	
 	
 }
