@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+<head th:replace="frontend/partials/fragment :: head"></head>
+
+<body class="">
+	<!-- Header -->
+	<header th:replace="frontend/partials/fragment :: header"></header>
+	<!-- Cart 購物車 -->
+	<div th:replace="frontend/partials/fragment :: cart"></div>
+
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92"	th:style="'background-image: url(' + @{/images/bg-02.jpg} + ');'">
+		<h2 class="ltext-103 font-weight-bold clwhite txt-center">會員中心</h2>
+	</section>
+	<!-- Product 內文 -->
+	<div class="bg0">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 p-b-80 bg6">
+					<div class="side-menu">
+						<div class="p-t-55">
+							<h2 class="ltext-103 cl5 font-weight-bold m-b-30 p-lr-20">會員中心</h2>
+							<ul class="p-lr-20">
+								<li class="bor18">
+									<a th:href="@{/userdetails}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+										個人資料
+									</a>
+								</li>
+								<li class="bor18">
+									<a th:href="@{/vendor/cars/locations}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+										我的訂單
+									</a>
+								</li>
+								<li class="bor18">
+									<a th:href="@{/vendor/cars/locations/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+										我的優惠券
+									</a>
+								</li>
+								<li class="bor18">
+									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+										帳號安全
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- Block2 -->
+				<div class="col-md-9 grid-margin my-5 pl-5">
+					<div class="card">
+						<div class="card-body ">
+						
+							<h4 class="card-title">修改會員資料</h4>
+                  <form class="form-sample" th:action="@{/user/SaveUser}" action="<'/SaveUser'/>" method="post" id="form">
+                    <p class="card-description mt-5">
+                      個人資料
+                    </p>
+                    <div class="row mt-4">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="ch_name">中文姓名</label>
+                          <div class="col-sm-9">
+                            <input id="ch_name" type="text" class="form-control" name="ch_name" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="en_name">英文姓名</label>
+                          <div class="col-sm-9">
+                            <input id="en_name" type="text" class="form-control" name="en_name"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="email">Email</label>
+                          <div class="col-sm-9">
+                            <input id="email" type="email" class="form-control" placeholder="請輸入正確的Email收確認信使用" name="username" required="required" onchange="CheckEmail()"/>
+                            <span id="message" style="position:absolute ; right:17px;"></span>
+                            <span id="s_email" style="position:absolute ; right:17px;"></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="phone">手機</label>
+                          <div class="col-sm-9">
+                            <input id="phone" type="text" class="form-control" placeholder="請輸入手機號碼10位數字" name="phone" maxlength="10">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+<!--                     <div class="row"> -->
+<!--                       <div class="col-md-6"> -->
+<!--                         <div class="form-group row"> -->
+<!--                           <label class="col-sm-3 col-form-label" for="password">密碼</label> -->
+<!--                           <div class="col-sm-9"> -->
+<!--                             <input id="pwd1" name="password" type="password" class="form-control" placeholder="請輸入8-20位英數混合密碼" required="required"/> -->
+<!--                             <span><img th:src="@{/images/demo/hidePwd.png}" class="col-2" id="eyes"  style="position:absolute ; right:20px ; top:23%"></span> -->
+<!--                           </div> -->
+<!--                         </div> -->
+<!--                       </div> -->
+<!--                       <div class="col-md-6"> -->
+<!--                         <div class="form-group row"> -->
+<!--                           <label class="col-sm-3 col-form-label" for="passwd">確認密碼</label> -->
+<!--                           <div class="col-sm-9"> -->
+<!--                             <input id="pwd2" name="passwd" type="password" class="form-control" placeholder="請輸入再次輸入密碼" required="required" onkeyup="validate()"> -->
+<!--                             <span id="checkMsg" style="position:absolute ; right:17px;"></span> -->
+<!--                           </div> -->
+<!--                         </div> -->
+<!--                       </div> -->
+<!--                     </div> -->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">性別</label>
+                          <div class="col-sm-4">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="gender" id="gender" value="男">
+                                男
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-5">
+                            <div class="form-check">
+                              <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="gender" id="gender" value="女">
+                                女
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label" for="birthday">生日</label>
+                          <div class="col-sm-9">
+                            <input id="birthday" type="date" class="form-control" name="birthday" placeholder="yyyy/mm/dd"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                
+                    <p class="card-description mt-4">
+                      聯絡地址
+                    </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">縣市</label>
+                          <div class="col-sm-9">
+                          <input type="hidden" class="js-demeter-tw-zipcode-selector" data-city="#city" data-dist="#location" placeholder="郵遞區號" 
+									size="6" id="yoyo" name="yoyo" readonly/> 
+                            <select id="city" name="city" placeholder="請選擇縣市" onchange="addressChange()" class="form-control"></select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">鄉鎮市區</label>
+                          <div class="col-sm-9">
+                            <select id="location" name="location" placeholder="請選擇鄉鎮區" onchange="addressChange()" class="form-control"></select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-1 col-form-label mr-5">地址</label>
+                          <div class="col-sm-10" style="width: 110%;">
+                            <input type="text" name="address" id="address" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-sm-inline-block" style="float:left;">
+<!--                     <button type="submit" class="btn btn-warning rounded-pill justify-content-end">新增會員</button> -->
+<!--                     <button class="btn btn-light justify-content-end">取消新增</button> -->
+                    
+	                 <input type="submit" id="submit" name="submit" value="儲存" class="btn btn-warning rounded-pill my-5" style="width:150px">
+<!-- 					 <label><a th:href="@{/user/list}" class="btn btn-light justify-content-end" style="width:160px">取消</a></label> -->
+					</div>
+                  </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer th:replace="frontend/partials/fragment :: footer"></footer>
+	<!-- Back to top -->
+	<div th:replace="frontend/partials/fragment :: toTop"></div>
+	<!-- Modal1 -->
+	<div th:replace="frontend/partials/fragment :: modal1"></div>
+	<!-- javascript -->
+	<div th:replace="frontend/partials/fragment :: script"></div>
+	
+	<script th:src="@{/js/tw-city-selector.min.js}"></script>
+	<script>
+		
+		$('#btn-addModel').on('click', function() {
+			
+		})
+		
+		$(".btn-insert-opts").click(function(e){
+			e.preventDefault();
+			Swal.fire({
+				icon: 'success',
+				title: '儲存成功',
+				text: "即將為您導回地點列表",
+				showConfirmButton: false,
+				timer: 1500
+			});
+
+			setInterval(function() {
+				$('#insert-opt-form').submit()
+			}, 1500);
+		})
+		
+		$('.discount').on('blur', function () {
+			console.log('hi')
+			let price = $(this).prev('.price').val()
+			let discount = $(this).val()
+			$(this).next('.priceSale').val(price*discount)
+		})
+		
+		
+		// 立即顯示縣市鄉鎮
+	function addressChange() {
+        var city = document.getElementById('city').value;
+        var location = document.getElementById('location').value;
+        document.getElementById('address').value = city + location;
+    }
+		
+	
+	</script>
+
+</body>
+
+</html>

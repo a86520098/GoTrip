@@ -78,30 +78,6 @@ public class UserAccountController {
 		return "frontend/index";
 	}
 	
-
-//	
-//	@PostMapping("/login")
-//	public String doLogin(
-//			@ModelAttribute UserAccount userAccount,
-//			HttpSession session, 
-//			RedirectAttributes redirectAttributes) {
-//		
-//		UserAccountVO userAccountVO = userAccountService.login(userAccount);
-//		if(userAccountVO == null) {
-//			String message = userAccountVO == null ? "帳號或密碼錯誤" : "";	
-//			redirectAttributes.addFlashAttribute("MESSAGE", message);
-//			return "redirect:login";
-//		}
-//		session.setAttribute("user", userAccountVO);	
-//		return "frontend/index";
-//	}
-	
-//	@GetMapping("/register")
-//	public String register(@ModelAttribute UserAccountVO memberAccountVO) {
-//		
-//		return "frontend/register";
-//	}
-	
 	@PostMapping({"/register"})
 	public String doRegister( @ModelAttribute RegisterForm registerForm , BindingResult result){
 		
@@ -123,14 +99,13 @@ public class UserAccountController {
 
 		userRepository.save(user); //新增使用者到資料庫
 //		userContext.setCurrentUser(user); //設定使用者為已登入
-		return "redirect:/";
+		return "redirect:/login";
 	}
-
-//		Optional<String> optional = userAccountService.register(userAccountVO);
-//		String message = optional.orElse("註冊成功");
-//		redirectAttributes.addFlashAttribute("MESSAGE", message);
-//		return "redirect:login";
-//	}
+	
+	@GetMapping({"/userdetails"})
+	public String UserDetail() {
+		return "frontend/user-detail";
+	}
 	
 	//檢查Email是否已存在
 		@ResponseBody
