@@ -117,56 +117,59 @@
 				
 				
 				<div class="col-sm-10 col-md-8">
-						<!-- 顧客評論list -->
-						<div>
-							<h3 class="font-weight-bold">顧客評價</h3>
-							<div class="comments-itemId m-5" th:id="${option.id}" value="carRental"></div>
+					<!-- 顧客評論list -->
+					<div>
+						<h3 class="font-weight-bold">顧客評價</h3>
+						<div class="comments-itemId m-5" th:id="${option.id}" value="carRental"></div>
+					</div>
+
+					<!-- Add review -->
+					<div>
+						<input id="itemTb" name="itemTb" type="hidden" value="carRental">
+						<input id="itemId" name="itemId" type="hidden" th:value="${option.id}">
+						<div class="form-group row">
+							<label class="col-sm-3 col-form-label" for="rating">給予評分</label>
+							<div class="col-sm-9">
+								<fieldset class="starability-basic">
+									<input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked/> 
+									<input type="radio" id="first-rate1" name="rating" value="1" /> 
+									<label for="first-rate1" title="Terrible">1 star</label> 
+									<input type="radio" id="first-rate2" name="rating" value="2" />
+									<label for="first-rate2" title="Not good">2 stars</label>
+									<input type="radio" id="first-rate3" name="rating" value="3" /> 
+									<label for="first-rate3" title="Average">3 stars</label> 
+									<input type="radio" id="first-rate4" name="rating" value="4" /> 
+									<label for="first-rate4" title="Very good">4 stars</label> 
+									<input type="radio" id="first-rate5" name="rating" value="5"/> 
+									<label for="first-rate5" title="Amazing">5 stars</label>
+								</fieldset>
+							</div>
 						</div>
-
-						<!-- Add review -->
-<!-- 						<form class="w-full"> -->
-<!-- 							<h5 class="mtext-108 cl2 p-b-7"> -->
-<!-- 								Add a review -->
-<!-- 							</h5> -->
-<!-- 							<p class="stext-102 cl6"> -->
-<!-- 								Your email address will not be published. Required fields are marked * -->
-<!-- 							</p> -->
-							
-<!-- 							<div class="flex-w flex-m p-t-50 p-b-23"> -->
-<!-- 								<span class="stext-102 cl3 m-r-16"> -->
-<!-- 									Your Rating -->
-<!-- 								</span> -->
-
-<!-- 								<span class="wrap-rating fs-18 cl11 pointer"> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<input class="dis-none" type="number" name="rating"> -->
-<!-- 								</span> -->
-<!-- 							</div> -->
-<!-- 							<div class="row p-b-25"> -->
-<!-- 								<div class="col-12 p-b-5"> -->
-<!-- 									<label class="stext-102 cl3" for="review">Your review</label> -->
-<!-- 									<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea> -->
-<!-- 								</div> -->
-
-<!-- 								<div class="col-sm-6 p-b-5"> -->
-<!-- 									<label class="stext-102 cl3" for="name">Name</label> -->
-<!-- 									<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name"> -->
-<!-- 								</div> -->
-
-<!-- 								<div class="col-sm-6 p-b-5"> -->
-<!-- 									<label class="stext-102 cl3" for="email">Email</label> -->
-<!-- 									<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email"> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-
-<!-- 							<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"> -->
-<!-- 								Submit -->
-<!-- 							</button> -->
-<!-- 						</form> -->
+						<div class="form-group row">
+							<div class="col-sm-3">
+								<label class="col-form-label pb-1" for="content">評論內容</label>
+								<div id="content-length" class="text-black-50 small">(0/200)</div>
+							</div>
+							<div class="col-sm-9">
+							<textarea class="form-control" name="content" id="content" cols="30" rows="5" style="resize: none"></textarea>
+								<div class="invalid-feedback">評論內容上限200字</div>
+							</div>
+						</div>
+						<div class="form-group row mt-5 justify-content-end">
+							<div class="col-sm-3">
+								<label for="images" class="col-form-label pb-1">上傳照片</label>
+								<div id="images-length" class="text-black-50 small">(0/3)</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="custom-file">
+									<input type="file" class="form-control custom-file-input pb-1"	name="imagefiles" id="imagefiles" multiple>
+									<div class="invalid-feedback">最多選取3張圖片</div>
+									<label class="custom-file-label">選擇檔案</label>
+								</div>
+							</div>
+						</div>
+						<button type="button" id="btn-insert-com">submit</button>
+					</div>
 				</div>
 			
 				<div class="col-sm-10 col-md-8 txt-justify">
@@ -308,6 +311,87 @@
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js}"></script>
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js}"></script>
 	<script th:src="@{/js/clusterMap.js}" src="js/clusterMap.js"></script>
+	<script>
+		$('#btn-insert-com').on('click', function() {
+			let itemTb = $('itemTb').val();
+			let comment = {
+							"itemTb": $('#itemTb').val(),
+							"itemId": $('#itemId').val(), 
+							"userId": "admin", 
+							"rating": $('input[type=radio]:checked').val(), 
+							"content": $('#content').val()
+						  }
+			console.log($('input[name=itemTb]').val())
+			$.ajax({
+				type: 'POST',
+				url: '/gotrip/api/comments',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(comment),
+				success: function(data) {
+					getComments();
+				},
+				error: function() {
+					console.log('error')
+				}
+			})
+		})
+		
+		
+		
+		function getComments() {
+		let itemTb = $(".comments-itemId").attr('value');
+		let itemId = $(".comments-itemId").attr('id');
+
+		if (itemTb && itemId) {
+			$.ajax({
+				url: "/gotrip/api/comments/item",
+				method: "GET",
+				data: {
+					table: itemTb,
+					id: itemId
+				},
+				dataType: "json",
+				success: function(data) {
+					let comments = $(".comments-itemId");
+					let userStr, star, score, content, images;
+					let starNum = 5;
+					let n = data.length;
+					for (let i = 0; i < n; i++) {
+						// 使用者id(實際上給的是String)
+	
+						userStr = '<p class="mt-2">' + data[i].userId + '</p>';
+						// 用評分給星星
+						star = "<div>";
+						score = data[i].rating;
+						for (let x = 0; x < score; x++) {
+							star += '<i class="fa fa-star cl1" aria-hidden="true"></i>'
+						}
+						for (let x = 0; x < starNum - score; x++) {
+							star += '<i class="fa fa-star cl12" aria-hidden="true"></i>'
+						}
+						star += data[i].date.substring(0, 10) + '</div>';
+						
+						comments.append(userStr).append(star)
+						if (data[i].content != "") {
+							content = '<div class="bg6 card bornone mb-2"><div class="card-body"><p >' + data[i].content + '</p>';
+		
+							for (let j = 0; j < data[i].images.length; j++) {
+								content += '<img class="block2-pic mr-3 mt-4" src="/gotrip' + data[i].images[j].imagePath + '"style="object-fit: cover; width:100px; height:100px;"/>'
+							}
+							content += '</div></div>'
+							comments.append(content);
+						}
+					}
+	
+				},
+				error: function(err) {
+					 $('.rating-count').text('尚無評論')
+				},
+			});
+		}
+	}
+	</script>
 
 </body>
 

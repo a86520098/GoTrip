@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.ispan.group3.repository.CarLocation;
 import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.CarOption;
+import com.ispan.group3.repository.Comment;
 import com.ispan.group3.service.CarLocationService;
 import com.ispan.group3.service.CarModelService;
 import com.ispan.group3.service.CarOptionService;
@@ -112,7 +113,9 @@ public class CarController {
 	@GetMapping("/cars/options/{id}")
 	public String findById(@PathVariable Integer id, Model model) {
 		CarOption carOption = optionService.findById(id);
+		Comment comment = new Comment();
 		model.addAttribute("option", carOption);
+		model.addAttribute("comment", comment);
 		return "frontend/car/car-detail";
 	}
 
@@ -178,15 +181,52 @@ public class CarController {
 
 	// ---------- 儲存選項 ----------
 	@PostMapping("/vendor/cars/options")
-	public String saveOpt(@ModelAttribute CarLocation carLocation) {
+	public String saveOpt(@ModelAttribute CarLocation carLocation, 
+						  @RequestParam(value = "deleteOpts", required = false) List<Integer> deleteOpts) {
 		List<CarOption> carOptions = carLocation.getCarOptions();
 		for (CarOption option: carOptions) {
-			System.out.println(option.getId());
-			System.out.println(option.getDiscount());
 			optionService.save(option);
+		}
+		if (deleteOpts != null) {
+			for (Integer deleteOpt : deleteOpts) {
+				optionService.deleteById(deleteOpt);
+			}
 		}
 		return "redirect:/vendor/cars/locations";
 	}
+	
+    // Request is accepted by the endpoint only if contains "save" parameter.
+//    @PostMapping(path = {"/vendor/cars/options/", "/vendor/cars/options/{id}"}, params = "save")
+//    public String saveOrder(Order order) {
+//        orderService.save(order);
+//        return "order";
+//    }
+
+//    @PostMapping(params = "addOption", path = "/vendor/cars/options")
+//    public String addOrder(@ModelAttribute CarLocation carLocation, HttpServletRequest request) {
+//    	
+//    	carLocation.getCarOptions().add(new CarOption());
+//        if (AJAX_HEADER_VALUE.equals(request.getHeader(AJAX_HEADER_NAME))) {
+//            // It is an Ajax request, render only #items fragment of the page.
+//            return "frontend/car/vendor-opt-form::#options";
+//        } else {
+//            // It is a standard HTTP request, render whole page.
+//            return "frontend/car/vendor-opt-form";
+//        }
+//    }
+//
+//    // "removeItem" parameter contains index of a item that will be removed.
+//    @PostMapping(params = "removeOption", path = "/vendor/cars/options")
+//    public String removeOrder(@ModelAttribute CarLocation carLocation, @RequestParam("removeOption") int index, HttpServletRequest request) {
+//    	System.out.println("Im here to remove");
+//    	carLocation.getCarOptions().remove(index);
+//        if (AJAX_HEADER_VALUE.equals(request.getHeader(AJAX_HEADER_NAME))) {
+//            return "frontend/car/vendor-opt-form::#options";
+//        } else {
+//            return "frontend/car/vendor-opt-form";
+//        }
+//    }
+	
 
 	// ---------- 刪除據點 ----------
 	@DeleteMapping("/vendor/cars/locations/{id}")
