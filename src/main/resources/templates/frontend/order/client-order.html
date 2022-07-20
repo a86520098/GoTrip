@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="frontend/partials/fragment :: head"></head>
+
+<body class="">
+	<!-- Header -->
+	<header th:replace="frontend/partials/fragment :: header"></header>
+	<!-- Cart 購物車 -->
+	<div th:replace="frontend/partials/fragment :: cart"></div>
+
+	<section class="bg-img1 txt-center p-lr-15 p-tb-92" th:style="'background-image: url(' + @{/images/bg-02.jpg} + ');'">
+		<h2 class="ltext-103 font-weight-bold clwhite txt-center">訂單紀錄</h2>
+	</section>
+	<!-- Product 內文 -->
+	<div class="bg0">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 p-b-80 bg6">
+					<div class="side-menu">
+						<div class="p-t-55">
+							<h2 class="ltext-103 cl5 font-weight-bold m-b-30 p-lr-20">訂單紀錄</h2>
+						</div>
+					</div>
+				</div>
+				<!-- Block2 -->
+
+				<div class="col-md-9 grid-margin my-5 pl-5">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title font-weight-bold my-3">訂單列表</h4>
+							<div class="p-t-20">
+								<table id="data-table" class="display table table-hover w-100" style="text-align: center">
+										<thead>
+				                        <tr>
+				                          <th>訂單編號</th>
+				                          <th>會員編號</th>
+				                          <th>訂購日期</th>
+				                          <th>總價</th>                 
+				                          <th>狀態</th>    
+				                          <th>詳細</th>
+				                                 
+				                        </tr>
+				                      </thead>
+				                      <tbody th:each="orderBean:${orderBeans}">
+				                      	  <tr>
+				                      		<td th:text="${orderBean.orderNo}"></td>     
+				                      		<td th:text="${orderBean.memberId}"></td>     
+				                      		<td th:text="${orderBean.orderDate}"></td>     
+				                      		<td th:text="${orderBean.totalPrice}"></td>     
+				                      		<td th:switch="${orderBean.status}">
+				                      			<span th:case="0">未付款</span>     
+				                      			<span th:case="1">已付款</span>     
+				                      			<span th:case="2">已完成</span>     
+				                      			</td>
+				                      		<td>
+				                      		<button type="button" th:value="${orderBean.orderNo}" class="btn btn-success btn-detail">詳細</button>				                      		
+				                      		</td>	
+				                      					
+				                        </tr>
+				                      </tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer th:replace="frontend/partials/fragment :: footer"></footer>
+	<!-- Back to top -->
+	<div th:replace="frontend/partials/fragment :: toTop"></div>
+	<!-- javascript -->
+	<div th:replace="frontend/partials/fragment :: script"></div>
+
+	<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+	<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}" src="vendors/datatables.net/jquery.dataTables.js"></script>
+	<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}" src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+	<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+	<script>
+	
+	 	$(document).ready(function() {
+		    $('#data-table').DataTable({
+ 
+	  		});
+	  		});
+			
+	</script>
+
+</body>
+
+</html>

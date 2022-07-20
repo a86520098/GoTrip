@@ -20,6 +20,7 @@ public class OrderItemBean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private	Integer itemNo;
 	private Integer productId;
+	private String goDate;
 	private String type;
 	private String itemInfo;
 	private Integer unitPrice;
@@ -39,7 +40,7 @@ public class OrderItemBean {
 		super();
 	}
 
-	public OrderItemBean(Integer productId,String type,String itemInfo, Integer unitPrice, Integer quantity, Integer phone) {
+	public OrderItemBean(Integer productId,String goDate, String type,String itemInfo, Integer unitPrice, Integer quantity, Integer phone) {
 		super();
 		this.productId = productId;
 		this.itemInfo = itemInfo;
@@ -47,8 +48,19 @@ public class OrderItemBean {
 		this.quantity = quantity;
 		this.phone = phone;
 		this.type = type;
+		this.goDate = goDate;
 	}
 	
+	
+	
+	public String getGoDate() {
+		return goDate;
+	}
+
+	public void setGoDate(String goDate) {
+		this.goDate = goDate;
+	}
+
 	public Blob getPhoto() {
 		return photo;
 	}
