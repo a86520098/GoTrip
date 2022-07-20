@@ -375,5 +375,11 @@ public class HotelController {
         return "/frontend/hotel/NewHotel-form";
     }
 
+    @GetMapping("/vendor/EditRoom")
+    public String EditHotel(Model model, @RequestParam("id") Integer id) {
+        model.addAttribute("hotel", hotelService.findById(id));
+        return "/frontend/hotel/NewHotel-form";
+    }
+
 
 }

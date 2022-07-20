@@ -88,7 +88,6 @@
                                         <span th:text="${hotel.hotelroomList.size()}"></span>
                                         <a th:href="@{/backHotel/{id}(id=${hotel.id})}"
                                            class="btn btn-light btn-rounded btn-sm">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
                                     <td>
 
@@ -99,13 +98,13 @@
                                             <button class="btn btn-light btn-rounded btn-sm js-show-modal1">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
                                             </button>
-                                            <a th:href="@{/addHotelRoom(id=${hotel.id})}"
+                                            <a th:href="@{/vendor/EditRoom(id=${hotel.id})}"
                                                class="btn btn-light btn-rounded btn-sm">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
-                                            <form th:id="'deleteLocation' + ${hotel.id}"
-                                                  th:action="@{/getHotelRoomList(id=${hotel.id})}"
-                                                  th:method="delete" class="d-inline">
+                                            <form
+                                                    th:action="@{/delete(id=${hotel.id})}"
+                                                    th:method="delete" class="d-inline">
                                                 <button type="button" th:value="${hotel.id}"
                                                         class="btn btn-delete btn-light btn-rounded btn-sm">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
