@@ -59,7 +59,7 @@ public class HotelController {
 
     @PostMapping(value = "/addHotel")
     public String insert(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
-                         @RequestParam(value = "imagefiles", required = false) List<MultipartFile> files
+                         @RequestParam(value = "imagefile", required = false) List<MultipartFile> files
     ) {
         System.out.println("準備新增接收資料了");
 //        MultipartFile picture = hotels.getProductImage(); //拿照片
@@ -299,7 +299,7 @@ public class HotelController {
 
     @PostMapping("/getNewRoom/{id}")
     public String getNewRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
-                             @RequestParam(value = "imageFiles", required = false) List<MultipartFile> files,
+                             @RequestParam(value = "imagefile", required = false) List<MultipartFile> files,
                              @PathVariable("id") Integer id
     ) {
         Hotel byId = hotelService.findById(id);
@@ -350,7 +350,7 @@ public class HotelController {
 
     @PostMapping("/EditRoom")
     public String getEditRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
-                              @RequestParam(value = "imageFiles", required = false) List<MultipartFile> efiles
+                              @RequestParam(value = "imagefile", required = false) List<MultipartFile> efiles
     ) {
         List<HotelRoomImage> imagesLish = new ArrayList<>();
         for (MultipartFile file : efiles) {

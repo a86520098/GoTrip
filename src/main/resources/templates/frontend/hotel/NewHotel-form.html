@@ -60,7 +60,7 @@
                 <div class="card">
                     <div class="card-body ">
                         <h4 class="card-title font-weight-bold my-3">新增飯店</h4>
-                        <form id="insert-loc-form" name="form" th:action="@{/vendor/cars/locations}" method="post"
+                        <form id="insert-loc-form" name="form" th:action="@{/addHotel}" method="post"
                               th:object="${hotel}"
                               class="form-horizontal needs-validation" enctype="multipart/form-data">
 
@@ -85,21 +85,19 @@
                                 <label class="col-lg-2 col-form-label">縣市行政區</label>
                                 <div class="col-lg-7">
                                     <div class="city-selector-set row">
-                                        <div class="col-4 pr-0">
+                                        <div class="col-6 ">
                                             <input type="hidden" class="js-demeter-tw-zipcode-selector"
                                                    data-city="#city"
                                                    data-dist="#location" placeholder="郵遞區號" size="6" id="yoyo"
-                                                   name="yoyo" readonly/>
+                                                   name="yoyo"/>
                                             <select id="city" name="city" placeholder="請選擇縣市" onchange="addressChange()"
-                                                    class="form-control"></select>
+                                                    class="form-control" style="background-color: white"
+                                                    th:field="*{city}"></select>
                                         </div>
-                                        <div class="col-4 pr-0">
+                                        <div class="col-6 ">
                                             <select id="location" name="location" placeholder="請選擇鄉鎮區"
-                                                    onchange="addressChange()" class="form-control"></select>
-                                        </div>
-                                        <div class="col-4">
-                                            <input class="zipcode form-control bgwhite" style="background-color: white"
-                                                   type="text" size="3" readonly placeholder="郵遞區號">
+                                                    onchange="addressChange()" class="form-control"
+                                                    style="background-color: white"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -109,8 +107,9 @@
                                 <div class="col-lg-1"></div>
                                 <label class="col-lg-2 col-form-label" for="address">地址</label>
                                 <div class="col-lg-7">
-                                    <input type="text" name="address" id="address" class="form-control"/>
-                                    //縣市鄉鎮自動帶入此地址欄位
+                                    <input type="text" name="address" id="address" class="form-control"
+                                           th:field="*{fullAddress}"/>
+
                                     <div class="invalid-feedback">請輸入地址</div>
                                 </div>
                             </div>
@@ -143,9 +142,6 @@
                                 </div>
                             </div>
 
-                            <!--                            <input th:field="*{image}" type="hidden" class="form-control"/>-->
-                            <!--                            <input th:field="*{longitude}" id="longitude" type="hidden" class="form-control"/>-->
-                            <!--                            <input th:field="*{latitude}" id="latitude" type="hidden" class="form-control"/>-->
 
                             <div class="d-flex justify-content-end mr-5 my-5">
                                 <button id="btn-insert-wrong-loc" type="button"
