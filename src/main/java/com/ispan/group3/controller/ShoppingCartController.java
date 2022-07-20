@@ -27,12 +27,14 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ispan.group3.repository.CarModel;
+import com.ispan.group3.repository.CarOption;
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.OrderBean;
 import com.ispan.group3.repository.OrderItemBean;
 import com.ispan.group3.repository.ShoppingCart;
 import com.ispan.group3.repository.Ticket;
 import com.ispan.group3.service.CarModelService;
+import com.ispan.group3.service.CarOptionService;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.service.OrderService;
 import com.ispan.group3.service.TicketService;
@@ -48,27 +50,26 @@ public class ShoppingCartController {
 	
 	private TicketService ticketService;
 	
-	private CarModelService carModelService;
+	private CarOptionService carOptionService;
 	
 	private OrderService orderService;
 	
 	@Autowired	
 	public ShoppingCartController(HotelService hotelService, TicketService ticketService,
-			CarModelService carModelService, OrderService orderService) {
+			CarOptionService carOptionService, OrderService orderService) {
 		super();
 		this.hotelService = hotelService;
 		this.ticketService = ticketService;
-		this.carModelService = carModelService;
+		this.carOptionService = carOptionService;
 		this.orderService = orderService;
 	}
 
 //	@ResponseStatus(value = HttpStatus.NO_CONTENT) 返回204 
 	@GetMapping("/addToCart")
 	@ResponseBody
-	public ShoppingCart addToCart(Model model,
-				@RequestParam("productId") Integer productId,
-				@RequestParam("type") String type,
-				@RequestParam("qty") Integer qty) {
+	public ShoppingCart addToCart(Model model,@RequestParam("productId") Integer productId,
+				@RequestParam("qty") Integer qty,@RequestParam("type") String type,
+					@RequestParam("date") String goDate) {
 		
 		// 取出存放在session物件內的ShoppingCart物件
 				ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
@@ -89,8 +90,8 @@ public class ShoppingCartController {
 				case "hotel":
 					Hotel hotelBean = hotelService.findById(productId);	
 //				 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
-					 oib = new OrderItemBean(productId,type,hotelBean.getHotel_name(), 
-							hotelBean.getPrice(), qty,hotelBean.getPhone()); 
+					 oib = new OrderItemBean(productId,goDate,type,hotelBean.getHotel_name(), 
+							hotelBean.getPrice(), qty,null); 
 
 //					 替每種商品設定特定的key
 					 	oId	= "h" + String.valueOf(productId);
@@ -101,7 +102,7 @@ public class ShoppingCartController {
 				case "ticket":
 					Ticket ticket = ticketService.findById(productId).get();
 //					 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
-					 oib = new OrderItemBean(productId,type,ticket.getTicketName(),
+					 oib = new OrderItemBean(productId,goDate,type,ticket.getTicketName(),
 							 ticket.getPrice(),qty,Integer.parseInt(ticket.getPhone())); 
 					 
 //					 替每種商品設定特定的key
@@ -112,16 +113,16 @@ public class ShoppingCartController {
 						
 					break;
 				case "car":	
-					CarModel car= carModelService.findById(productId);
+					CarOption car= carOptionService.findById(productId);
 //					 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
-					 oib = new OrderItemBean(productId,type,car.getType(),
-							 car.getSeat(),qty,car.getSeat()); 
-					 
-//					 替每種商品設定特定的key
-					oId = "c" + String.valueOf(productId);
-					
-//					 將OrderItem物件.每件商品的key加入ShoppingCart的物件內
-						cart.addToCart(oId,oib);
+//					 oib = new OrderItemBean(productId,type,car.getCarModel(),
+//							 car.getSeat(),qty,car.getSeat()); 
+//					 
+////					 替每種商品設定特定的key
+//					oId = "c" + String.valueOf(productId);
+//					
+////					 將OrderItem物件.每件商品的key加入ShoppingCart的物件內
+//						cart.addToCart(oId,oib);
 					break;	
 				default:
 					break;

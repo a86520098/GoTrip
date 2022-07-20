@@ -95,5 +95,7 @@ public class UserData{
 		this.authority = authority;
 	}
 
+	
+	
 
 }

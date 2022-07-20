@@ -55,7 +55,7 @@
 						<h2 th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="font-weight-bold cl2 js-name-detail py-4"></h2>
 						<div class="p-b-10">
 							<!-- 該商品平均分數和評論總數 -->
-							<div class="rating-count" th:id="${option.id}" value="carRental">
+							<div class="rating-count get-itemid" th:id="${option.id}" value="carRental">
 								尚無評論
 							</div>
 							<!-- 據點地址 -->
@@ -102,13 +102,13 @@
 								</div>
 								<div class="col-9 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<input type="date" name="date" class="form-control">
+										<input type="date" name="date" class="form-control get-date">
 										<div class="dropDownSelect2"></div>
 									</div>
 								</div>
 							</div>
 							<!-- 加入購物車 -->
-							<button	class="flex-c-m cl0 size-101 font-weight-bold bg1 bor1 hov-btn1 my-4 trans-04 js-addcart-detail w-full">
+							<button	class="flex-c-m cl0 size-101 font-weight-bold bg1 bor1 hov-btn1 my-4 trans-04 js-addcart-detail w-full plus-cart">
 								加入購物車
 							</button>
 						</div>
@@ -308,7 +308,50 @@
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js}"></script>
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js}"></script>
 	<script th:src="@{/js/clusterMap.js}" src="js/clusterMap.js"></script>
-
+	
+	<script>
+	
+		$(document).on('click','.plus-cart',function(){
+			
+		let	itemId = $('.get-itemid').attr('id');
+		let date = $('.get-date').val();
+		console.log(itemId + "  " + date + "  " + qty)
+			 $.ajax({
+		            type: 'GET',
+		            url: '/gotrip/addToCart',
+		            data:{
+		            	productId:itemId,
+		            	type:car,
+		            	date:date,
+		            	qty:1
+		            	},
+		            dataType: 'json',
+		            async:false,
+		            success: function (data) {
+		     
+		                console.log(data);
+		                
+		                
+		                $('tbody').append(putback)
+		                console.log(data.itemNumber);	
+		                
+		                $('#cartIcon').attr("data-notify",data.itemNumber);
+		                console.log(data.subtotal);
+		                $('.originalPrice').text(data.subtotal);
+		                $('.totalPrice').text(data.subtotal);
+		            },
+		    		error: function(jqXHR,textStatus,errorThrown) {
+						console.log(jqXHR);
+						console.log(textStatus); 
+						console.log(errorThrown);
+					}
+		                
+		                
+		});
+			
+		});
+		
+	</script>
 </body>
 
 </html>
