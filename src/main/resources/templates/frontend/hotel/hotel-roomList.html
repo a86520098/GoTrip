@@ -81,12 +81,12 @@
                                 </tr>
                                 </thead>
                                 <tbody id="tbody">
-                                <tr th:each="hotel:${hotel}" class="odd gradeX" scope="row">
-                                    <td th:text="${hotel.id}"></td>
-                                    <td th:text="${hotel.hotel_name}"></td>
-                                    <td th:text="${hotel.peopleCount}"></td>
-                                    <td th:text="${hotel.fullAddress}"></td>
-                                    <td th:text="${hotel.status}"></td>
+                                <tr th:each="roomList:${roomList}" class="odd gradeX" scope="row">
+                                    <td th:text="${roomList.id}"></td>
+                                    <td th:text="${roomList.roomname}"></td>
+                                    <td th:text="${roomList.peopleCount}"></td>
+                                    <td th:text="${roomList.fullAddress}"></td>
+                                    <td th:text="${roomList.status}"></td>
                                     <td> 修改</td>
                                     <td> 刪除</td>
                                     <th>

@@ -47,6 +47,11 @@ public class HotelRoomServiceImpl implements HotelRoomService {
         return hotelRoomRepository.count();
     }
 
+    @Override
+    public List<HotelRoom> findAllHotelRoom(Integer hotelID) {
+        return hotelRoomRepository.findAllHotelRoom(hotelID);
+    }
+
 
 }
 
