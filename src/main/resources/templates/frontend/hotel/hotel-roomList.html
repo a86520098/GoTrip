@@ -64,7 +64,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title font-weight-bold">房間列表</h4>
-                        <h6 class="card-title font-weight-bold">預計放房間</h6>
                         <div class="p-t-20">
                             <table id="data-table" class="display table table-hover w-100" style="text-align: center">
                                 <thead>
@@ -75,6 +74,7 @@
                                     <th scope="col" class="text-center">評數大小</th>
                                     <th scope="col" class="text-center">房型</th>
                                     <th scope="col" class="text-center">價位</th>
+                                    <th scope="col" class="text-center">照片</th>
                                     <th scope="col" class="text-center">編輯</th>
                                     <th scope="col" class="text-center">刪除</th>
                                 </tr>
@@ -85,8 +85,17 @@
                                     <td th:text="${roomList.roomname}"></td>
                                     <td th:text="${roomList.peopleCount}"></td>
                                     <td th:text="${roomList.hotelArea}"></td>
+
                                     <td th:text="${roomList.roomtype}"></td>
                                     <td th:text="${roomList.roomprice}"></td>
+                                    <td th:text="${roomList.roomprice}"></td>
+                                    <td>
+                                        <div th:each="image:${roomList.hotelRoomImageList}" class="d-inline-block">
+                                            <img th:src="@{${image.imagePath}}" class="rounded img-com"
+                                                 width="60" height="72" style="display: inline-flex"/>
+                                        </div>
+                                    </td>
+
 
                                     <th>
                                         <a class="btn1" th:href="@{/}">編輯房間</a>
