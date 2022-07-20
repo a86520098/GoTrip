@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -266,7 +265,7 @@ public class ShoppingCartController {
 //		付款完成回傳網址
 		aioCheck.setReturnURL("http://localhost:8080/gotrip/returnURL");
 //		Client端回傳網址
-		aioCheck.setClientBackURL("http://localhost:8080/gotrip/client/orderlist");
+		aioCheck.setClientBackURL("http://localhost:8080/gotrip/order/orderlist");
 		
 		aioCheck.setNeedExtraPaidInfo("N");
 //		輸出畫面
@@ -280,7 +279,7 @@ public class ShoppingCartController {
 	@GetMapping("/returnURL")
 	public void returnURL(@RequestParam("MerchantTradeNo") String MerchantTradeNo,
 			@RequestParam("RtnCode") int RtnCode,@RequestParam("TradeAmt") int TradeAmt,
-			 HttpServletRequest request,HttpSession session) {
+			 HttpServletRequest request) {
 //		
 //		if ((request.getRemoteAddr().equalsIgnoreCase("175.99.72.1")
 //				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.11")
@@ -293,17 +292,11 @@ public class ShoppingCartController {
 			System.out.println("是否沒執行" + orderIdStr);
 			orderService.updateOrderStatus(1, orderId);
 			
-			session.removeAttribute("orderBean");
+			
 //		}
+
 	}
-	@GetMapping("/client/orderlist")
-	public String clientOrderList(Model m) {
-		
-		List<OrderBean> orderBeans = orderService.findAllOrder();
-		
-		m.addAttribute("orderBeans", orderBeans);
-		
-		return "frontend/order/client-order";
-	}
+
+	
 	
 }
