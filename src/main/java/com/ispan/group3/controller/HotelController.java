@@ -341,4 +341,9 @@ public class HotelController {
         return "redirect:/backend/index";
     }
 
+    @GetMapping("/updateRoom")
+    public String UpdataRoom(Model model, @RequestParam("id") Integer id) {
+        return "redirect:/backend/index";
+    }
+
 }

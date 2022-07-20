@@ -88,7 +88,6 @@
 
                                     <td th:text="${roomList.roomtype}"></td>
                                     <td th:text="${roomList.roomprice}"></td>
-                                    <td th:text="${roomList.roomprice}"></td>
                                     <td>
                                         <div th:each="image:${roomList.hotelRoomImageList}" class="d-inline-block">
                                             <img th:src="@{${image.imagePath}}" class="rounded img-com"
@@ -98,7 +97,7 @@
 
 
                                     <th>
-                                        <a class="btn1" th:href="@{/}">編輯房間</a>
+                                        <a class="btn1" th:href="@{/updateRoom(id=${roomList.id})}">編輯房間</a>
 
                                     </th>
                                     <th>
