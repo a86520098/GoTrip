@@ -16,6 +16,8 @@ public class RegisterForm {
 	
     
     private String password;
+
+
     
 //    private String authority;
 

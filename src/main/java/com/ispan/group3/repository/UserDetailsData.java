@@ -56,36 +56,4 @@ public class UserDetailsData implements UserDetails{
 		return userData.isEnabled();
 	}
 	
-	public void setCh_name(String ch_name) {
-		this.userData.setCh_name(ch_name);
-	}
-	
-	public void setEn_name(String en_name) {
-		this.userData.setEn_name(en_name);
-	}
-	
-	public void setPhone(String phone) {
-		this.userData.setPhone(phone);
-	}
-	
-	public void setBirthday(String birthday) {
-		this.userData.setBirthday(birthday);
-	}
-	
-	public void setGender(String gender) {
-		this.userData.setGender(gender);
-	}
-	
-	public void setCity(String city) {
-		this.userData.setCity(city);
-	}
-	
-	public void setLocation(String location) {
-		this.userData.setLocation(location);
-	}
-	
-	public void setAddress(String address) {
-		this.userData.setAddress(address);
-	}
-	
 }
