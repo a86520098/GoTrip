@@ -62,7 +62,7 @@
 									<!-- 											<img src="images/tickets/art.jpg" alt="IMG"> -->
 									<!-- 										</div> -->
 									<!-- 									</td> -->
-									<td class="column-3" th:text="${Entry.value.unitPrice}">$
+									<td class="column-3 test" th:text="${Entry.value.unitPrice}">$
 										350</td>
 									<td class="column-4">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
@@ -70,9 +70,9 @@
 												class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product"
-												type="number" name="num-product1"
+			
+											<input class="mtext-104 cl3 txt-center num-product updateNumber"
+												type="number" id="test"
 												th:value="${Entry.value.quantity}">
 
 											<div
@@ -84,7 +84,7 @@
 									<td class="column-5" th:text="${Entry.value.quantity} * ${Entry.value.unitPrice}">$
 										350</td>
 									
-									<td class="column-6"><button type="button" class="btn btn-danger btn-delete">刪除</button></td> 	
+									<td class="column-6"><button type="button" th:value="${Entry.key}" class="btn btn-danger btn-delete ajaxDelete">刪除</button></td> 	
 								</tr>
 								</tbody>
 							</table>
@@ -156,14 +156,14 @@
 							</div>
 
 							<div class="size-209">
-								<span class="mtext-110 cl2" th:text="${ShoppingCart.getSubtotal()}"> $1680 </span>
+								<span class="mtext-110 cl2 originalPrice" th:text="${ShoppingCart.getSubtotal()}"> $1680 </span>
 							</div>
 							<div class="size-208 moneymargin">
-								<span class="mtext-101 cl2 "> 總價: </span>
+								<span class="mtext-101 cl2"> 總價: </span>
 							</div>
 
 							<div class="size-209 p-t-1 moneymargin">
-								<span class="mtext-110 cl2" th:text="${ShoppingCart.getSubtotal()}"> $1580 </span>
+								<span class="mtext-110 cl2 totalPrice" th:text="${ShoppingCart.getSubtotal()}"> $1580 </span>
 							</div>
 						</div>
 						<div class="row">
@@ -220,7 +220,7 @@
 		});
 		
 		
-		$('#addtocart').on('change',function() {
+		$('#addtocart').off('change').on('change',function() {
 		
 			var value=$(this).val();	
 			
@@ -273,14 +273,14 @@
 									"<div class='btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m'>" +
 									"<i class='fs-16 zmdi zmdi-minus'></i>" +
 									"</div> " +
-									"<input class='mtext-104 cl3 txt-center num-product' type='number' name='num-product1'" + "value=" + data.content[key].quantity + ">" +
+									"<input class='mtext-104 cl3 txt-center num-product updateNumber' type='number' name='num-product1'" + "value=" + data.content[key].quantity + ">" +
 									"<div class='btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m'>" +
 									"<i class='fs-16 zmdi zmdi-plus'></i>" +
 									"</div>" +
 									"</div>" +
 									"</td>" +
 									"<td class='column-5'>" + data.content[key].unitPrice * data.content[key].quantity + "</td>" + 
-									"<td class='column-6'><button type='button' class='btn btn-danger btn-delete'>刪除</button></td>" + 	
+									"<td class='column-6'><button type='button' class='btn btn-danger btn-delete ajaxDelete'" + "value=" +  key + ">" + "刪除</button></td>" + 	
 									"</tr>";
 	          								   				
 						};
@@ -312,15 +312,202 @@
 		                console.log(data.itemNumber);	
 		                
 		                $('#cartIcon').attr("data-notify",data.itemNumber);
+		                console.log(data.subtotal);
+		                $('.originalPrice').text(data.subtotal);
+		                $('.totalPrice').text(data.subtotal);
 		            },
-		            error: function () {
-		                console.log('error')
-		            }
+		    		error: function(jqXHR,textStatus,errorThrown) {
+						console.log(jqXHR);
+						console.log(textStatus); 
+						console.log(errorThrown);
+					}
 		                
 		                
 		});
 		});
 		});
+		
+		$(document).on('click','.ajaxDelete',function(){
+			
+			var productKey = $(this).val();
+			
+			 $.ajax({
+		            type: 'GET',
+		            url: '/gotrip/deleteItem',
+		            data:{
+		            	productKey: productKey
+		            	},
+		            dataType: 'json',
+		            async:false,
+		            success: function (data) {
+		                // 清空tbody內容
+		                $('tbody').html('');
+		                let updateItem = "";
+		                // ajax回傳資料放到tbody'
+		                console.log(data);
+		                
+		                const keys = Object.keys(data.content);
+						for (let i = 0; i < keys.length; i++) {
+						const key = keys[i];
+						
+						updateItem += "<tr class='table_row'>" +
+	                    	 		"<td class='column-1'>" +data.content[key].itemInfo  +"</td>" +
+	                    			"<td class=column-3>" + data.content[key].unitPrice +"</td>" +
+	                    			"<td class='column-4'>" + 
+									"<div class='wrap-num-product flex-w m-l-auto m-r-0'>" +
+									"<div class='btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m'>" +
+									"<i class='fs-16 zmdi zmdi-minus'></i>" +
+									"</div> " +
+									"<input class='mtext-104 cl3 txt-center num-product updateNumber' type='number' name='num-product1'" + "value=" + data.content[key].quantity + ">" +
+									"<div class='btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m'>" +
+									"<i class='fs-16 zmdi zmdi-plus'></i>" +
+									"</div>" +
+									"</div>" +
+									"</td>" +
+									"<td class='column-5'>" + data.content[key].unitPrice * data.content[key].quantity + "</td>" + 
+									"<td class='column-6'><button type='button' class='btn btn-danger btn-delete ajaxDelete'" + "value=" +  key + ">" + "刪除</button></td>" + 	
+									"</tr>";
+	          								   				
+						};
+		                
+		                $('tbody').append(updateItem)
+		                console.log(data.itemNumber);	
+		                
+		                $('#cartIcon').attr("data-notify",data.itemNumber);
+		                console.log(data.subtotal);
+		                $('.originalPrice').text(data.subtotal);
+		                $('.totalPrice').text(data.subtotal);
+		            },
+		    		error: function(jqXHR,textStatus,errorThrown) {
+						console.log(jqXHR);
+						console.log(textStatus); 
+						console.log(errorThrown);
+					}
+		                
+		                
+		});
+		});
+		
+// 		$(":input").bind('keyup mouseup', function () {
+// 		    alert("changed");            
+// 		});
+		
+		
+		$(document).on('input','.updateNumber',function(){
+			let productKey = $(this).closest("tr").find('td:last').children('button').val();
+			let itemNumber = $(this).val();		
+			console.log(productKey + " " + itemNumber);
+			let element = $(this);
+			 $.ajax({
+		            type: 'GET',
+		            url: '/gotrip/updateItem',
+		            data:{
+		            	productKey: productKey,
+		            	itemNumber: itemNumber
+		            	},
+		            dataType: 'json',
+		            async:false,
+		            success: function (data) {
+		                
+		            
+		            	
+		            let amount = data.content[productKey].unitPrice * data.content[productKey].quantity
+		            	console.log(element.val());
+		          		element.closest("td").next().text(amount);
+		            	
+		   	
+		                $('.originalPrice').text(data.subtotal);
+		                $('.totalPrice').text(data.subtotal);
+		            },
+		    		error: function(jqXHR,textStatus,errorThrown) {
+						console.log(jqXHR);
+						console.log(textStatus); 
+						console.log(errorThrown);
+					}
+		                
+		                
+		});	
+		});
+		
+	    $(document).on('click','.btn-num-product-down' ,function(){
+	        let numProduct = Number($(this).next().val());
+	        if(numProduct > 1) $(this).next().val(numProduct - 1);
+	        
+	            console.log(numProduct -1);
+	        
+	        let productKey = $(this).closest("tr").find('td:last').children('button').val();
+	        let element = $(this);
+	   	 $.ajax({
+	            type: 'GET',
+	            url: '/gotrip/updateItem',
+	            data:{
+	            	productKey: productKey,
+	            	itemNumber: numProduct -1
+	            	},
+	            dataType: 'json',
+	            async:false,
+	            success: function (data) {
+	                
+	            	
+	            let amount = data.content[productKey].unitPrice * data.content[productKey].quantity
+	            	
+	          		element.closest("td").next().text(amount);
+	            	
+	   	
+	                $('.originalPrice').text(data.subtotal);
+	                $('.totalPrice').text(data.subtotal);
+	            },
+	    		error: function(jqXHR,textStatus,errorThrown) {
+					console.log(jqXHR);
+					console.log(textStatus); 
+					console.log(errorThrown);
+				}
+	                
+	                
+	});
+	    });
+	    
+	    $(document).on('click','.btn-num-product-up', function(){
+	        let numProduct = Number($(this).prev().val());
+	        if(numProduct < 100) $(this).prev().val(numProduct + 1);
+	        
+	            console.log(numProduct +1);
+	        
+	        let productKey = $(this).closest("tr").find('td:last').children('button').val();
+	        let element = $(this);
+	   	 $.ajax({
+	            type: 'GET',
+	            url: '/gotrip/updateItem',
+	            data:{
+	            	productKey: productKey,
+	            	itemNumber: numProduct +1
+	            	},
+	            dataType: 'json',
+	            async:false,
+	            success: function (data) {
+	                
+	            	
+	            let amount = data.content[productKey].unitPrice * data.content[productKey].quantity
+	            	
+	          		element.closest("td").next().text(amount);
+	            	
+	   	
+	                $('.originalPrice').text(data.subtotal);
+	                $('.totalPrice').text(data.subtotal);
+	            },
+	    		error: function(jqXHR,textStatus,errorThrown) {
+					console.log(jqXHR);
+					console.log(textStatus); 
+					console.log(errorThrown);
+				}
+	                
+	                
+	});
+	        
+	    });
+			
+			
+// 		});
 	</script>
 
 </body>

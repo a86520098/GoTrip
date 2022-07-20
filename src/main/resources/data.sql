@@ -823,6 +823,71 @@ VALUES (N'7', N'4', N'4', N'4', N'Accessible by elevator', N'Safety/security fea
 SET IDENTITY_INSERT [dbo].[hotel_room] OFF
 
 
+SET IDENTITY_INSERT [dbo].[ticket] ON;
+INSERT [dbo].[ticket] ([ticket_no], [ticket_name], [address], [city], [country], [location], [phone], [price], [status], [tag_no], [tag_name], [ticket_brief_intro], [ticket_intro]) 
+VALUES (1, N'阿里山國家森林遊樂區門票', N'59號', N'嘉義縣', N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'4', N'歷史景點', N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', N'<h3>商品說明</h3>
+<p>－ 行程說明 －</p>
+<ul>
+	<li>開放時間：24 小時開放</li>
+	<li>兌換方式：本國籍民眾，兌換時請出示身分證明文件，至阿里山國家森林遊樂區收費站由工作人員感應QR code後即可入場。半票、免票等優待票種請於現場購票（<a href="https://www.forest.gov.tw/0000184">票種參考</a>）。</li>
+	<li>聯絡電話：白天 05 - 2679917，夜間 05 - 2679715</li>
+	<li>營業地址：臺灣嘉義縣阿里山鄉正村59號<br />
+	<br />
+	<br />
+	&nbsp;</li>
+</ul>
+<p>－ 介紹 －</p>
+<ul>
+	<li>祝山線(黃線)</li>
+</ul>
+<ol>
+	<li>遊客中心站&rarr;祝山站：距離約 5.5 公里，行駛時間含遊客上下車時間約為 35 分鐘</li>
+	<li>乘車地點為候車總站、遊客中心站及沼平站，停靠站為對高岳站，並在祝山站下車，欲搭回程祝山線的遊客請依時刻表搭車。</li>
+	<li>發車時間(為固定班次)：<br />
+	A. 日間祝山（上山）服務時間： 9：00、 11：00、 13：00、15：00&nbsp;<br />
+	B. 日間祝山（下山）服務時間： 9：30、 11：30、 13：30、15：30、16：30</li>
+	<li>2.祝山站為阿里山國家森林遊樂區內重要的觀日景點，非觀日時間亦有機會從觀景台一覽雲海景觀，而祝山站再往上走即可抵達小笠原觀景台，為360度之絕佳視野觀景台。<br />
+	<br />
+	&nbsp;</li>
+</ol>
+<p>－ 景點介紹 －</p>
+
+<p>阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏，然從 191 2年起成為台灣最具規模的林場，一直到 1960 年代末期為止。歷經日本、國民政府的採伐後，原始檜木林幾乎伐盡，現今存有第一期與第二期巨木群棧道近四十株的紅檜巨木，讓人緬懷過去神木林的壯闊神聖。其中最高的「阿里山香林神木」，高 45 公尺，樹圍 12.3 公尺，樹齡約2300年，是到訪阿里山的必遊之處。<br />
+<br />
+在阿里山國家森林遊樂區內有豐富的生態，其中最特殊的植物，莫過於稀有的蓧蕨、相馬氏石杉、阿里山十大功勞與一葉蘭了；動物則有台灣獼猴、帝雉、藪鳥、阿里山鴝、阿里山山椒魚等小明星助陣，熱鬧非凡。除了神木，阿里山還有非常多具可看性的景點：森林小火車、空靈飄渺的姊妹潭、壯闊動人的雲海、美麗的祝山日出、受鎮宮、百年慈雲寺、林業史蹟、春天盛開的各類櫻花與杜鵑&hellip;阿里山森林遊樂區是一個足以代表台灣霧林帶的國際級觀光景點，歡迎著來自全世界的旅人們，前來認識台灣山林豐富而美麗的面貌。<br />
+<br />
+「春賞花、夏避暑、秋攬楓、冬觀雲」詳述了一年四季萬種風情的阿里山國家森林遊樂區。在阿里山您只須放慢腳步，享受舒適宜人的綿延群山，伴蟲鳴入眠、被林間輕脆鳥啼喚醒，不妨現在就背起行李，規劃一趟阿里山輕旅行，讓自己徜徉於神木群的芬多精中，為身心靈安排一趟大自然的洗禮吧。</p>
+
+<p>阿里山國家森林遊樂區門票核銷地點</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093404_OJoNB/jpg" style="height:540px; width:720px" /></p>
+
+<p>阿里山國家森林遊樂區大門口</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093410_Swr05/jpg" style="height:404px; width:720px" /></p>
+
+<p>&nbsp;</p>
+
+<p>沼平車站就是阿里山舊火車站，建於西元1914年，於大正3年3月14日正式開始營運，原為阿里山林業鐵路登山本線的終點站。</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093406_4V2nx/jpg" style="height:404px; width:720px" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>')
+
+
+SET IDENTITY_INSERT [dbo].[ticket_image] ON;
+INSERT INTO [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1),(2, N'/data/uploadimages/ticket/阿里山2.jpg',1),(3, N'/data/uploadimages/ticket/阿里山3.jpg',1),(4, N'/data/uploadimages/ticket/阿里山4.jpg',1),(5, N'/data/uploadimages/ticket/阿里山5.jpg',1),(6, N'/data/uploadimages/ticket/阿里山6.jpg',1)
+SET IDENTITY_INSERT [dbo].[ticket_image] OFF;
+
+
+
+
+
+
 -- MySQL區域
 
 

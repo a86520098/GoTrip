@@ -1,32 +1,45 @@
 package com.ispan.group3.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ispan.group3.repository.CarModel;
+import com.ispan.group3.repository.CarOption;
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.OrderBean;
 import com.ispan.group3.repository.OrderItemBean;
 import com.ispan.group3.repository.ShoppingCart;
 import com.ispan.group3.repository.Ticket;
 import com.ispan.group3.service.CarModelService;
+import com.ispan.group3.service.CarOptionService;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.service.OrderService;
 import com.ispan.group3.service.TicketService;
+
+import ecpay.payment.integration.AllInOne;
+import ecpay.payment.integration.domain.AioCheckOutDevide;
 
 @Controller
 @SessionAttributes({"ShoppingCart"})
@@ -36,27 +49,26 @@ public class ShoppingCartController {
 	
 	private TicketService ticketService;
 	
-	private CarModelService carModelService;
+	private CarOptionService carOptionService;
 	
 	private OrderService orderService;
 	
 	@Autowired	
 	public ShoppingCartController(HotelService hotelService, TicketService ticketService,
-			CarModelService carModelService, OrderService orderService) {
+			CarOptionService carOptionService, OrderService orderService) {
 		super();
 		this.hotelService = hotelService;
 		this.ticketService = ticketService;
-		this.carModelService = carModelService;
+		this.carOptionService = carOptionService;
 		this.orderService = orderService;
 	}
 
 //	@ResponseStatus(value = HttpStatus.NO_CONTENT) 返回204 
 	@GetMapping("/addToCart")
 	@ResponseBody
-	public ShoppingCart addToCart(Model model,
-				@RequestParam("productId") Integer productId,
-				@RequestParam("type") String type,
-				@RequestParam("qty") Integer qty) {
+	public ShoppingCart addToCart(Model model,@RequestParam("productId") Integer productId,
+				@RequestParam("qty") Integer qty,@RequestParam("type") String type,
+					@RequestParam("date") String goDate) {
 		
 		// 取出存放在session物件內的ShoppingCart物件
 				ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
@@ -71,15 +83,15 @@ public class ShoppingCartController {
 				}
 //				宣告購物車商品變數
 				OrderItemBean oib;
-				System.out.println("是否到這");
+
 				String oId = null;
 				switch (type) {
 				case "hotel":
 					Hotel hotelBean = hotelService.findById(productId);	
 //				 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
-					 oib = new OrderItemBean(productId,type,hotelBean.getHotel_name(), 
-							hotelBean.getPrice(), qty,hotelBean.getPhone()); 
-					 System.out.println("執行?");
+					 oib = new OrderItemBean(productId,goDate,type,hotelBean.getHotel_name(), 
+							hotelBean.getPrice(), qty,null); 
+
 //					 替每種商品設定特定的key
 					 	oId	= "h" + String.valueOf(productId);
 					 	
@@ -89,7 +101,7 @@ public class ShoppingCartController {
 				case "ticket":
 					Ticket ticket = ticketService.findById(productId).get();
 //					 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
-					 oib = new OrderItemBean(productId,type,ticket.getTicketName(),
+					 oib = new OrderItemBean(productId,goDate,type,ticket.getTicketName(),
 							 ticket.getPrice(),qty,Integer.parseInt(ticket.getPhone())); 
 					 
 //					 替每種商品設定特定的key
@@ -100,23 +112,23 @@ public class ShoppingCartController {
 						
 					break;
 				case "car":	
-					CarModel car= carModelService.findById(productId);
+					CarOption car= carOptionService.findById(productId);
 //					 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
-					 oib = new OrderItemBean(productId,type,car.getType(),
-							 car.getSeat(),qty,car.getSeat()); 
-					 
-//					 替每種商品設定特定的key
-					oId = "c" + String.valueOf(productId);
-					
-//					 將OrderItem物件.每件商品的key加入ShoppingCart的物件內
-						cart.addToCart(oId,oib);
+//					 oib = new OrderItemBean(productId,type,car.getCarModel(),
+//							 car.getSeat(),qty,car.getSeat()); 
+//					 
+////					 替每種商品設定特定的key
+//					oId = "c" + String.valueOf(productId);
+//					
+////					 將OrderItem物件.每件商品的key加入ShoppingCart的物件內
+//						cart.addToCart(oId,oib);
 					break;	
 				default:
 					break;
 				}
 				
 				
-				System.out.println("是否執行到此");
+
 				return cart;
 	}
 	//	購物車頁面
@@ -137,10 +149,29 @@ public class ShoppingCartController {
 		
 		return "frontend/shopingcart";
 	}
-	
+	@ResponseBody
+	@GetMapping("/deleteItem")
+	public ShoppingCart deleteItem(Model model,@RequestParam String productKey) {
+		
+		ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
+		
+		cart.deleteItem(productKey);
+		System.out.println("是否刪除");
+		return cart;
+	}
+	@ResponseBody
+	@GetMapping("/updateItem")
+	public ShoppingCart updateItem(Model model,@RequestParam String productKey,@RequestParam Integer itemNumber) {
+		
+		ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
+		
+		cart.updateItem(productKey, itemNumber);
+		System.out.println("是否更新");
+		return cart;
+	}
 	
 	@GetMapping("/creatOrder")
-	public String creatOrder(Model model,RedirectAttributes redirectAttributes) {
+	public String creatOrder(Model model,RedirectAttributes redirectAttributes,HttpSession session) {
 		
 		ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
 		
@@ -171,6 +202,7 @@ public class ShoppingCartController {
 		try {
 //			將訂單物件放到redirectAttributes內，重導至save方法新增進資料庫。
 			redirectAttributes.addFlashAttribute("orderBean",orderBean);
+			session.setAttribute("orderBean", orderBean);
 			System.out.println("這裡還好嗎?");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -201,7 +233,70 @@ public class ShoppingCartController {
 	public String removeCart(Model model,SessionStatus sessionStatus) {
 //		清楚session裡的shoppingcart物件。
 		sessionStatus.setComplete();
+//		webRequest.removeAttribute("ShoppingCart", WebRequest.SCOPE_SESSION);
 //		重導至 OrderBeanController.processAllQuery();
-		return "redirect:/order/orderlist";
+		return "redirect:/goECPay";
 	}
+	@ResponseBody
+	@GetMapping("/goECPay")
+	public String goECPay(Model model,HttpServletRequest request,
+				HttpServletResponse response,HttpSession session) throws IOException {
+		
+			OrderBean orderBean = (OrderBean) session.getAttribute("orderBean");
+			
+			System.out.println(orderBean.getTotalPrice());
+//		設定金流    
+		AllInOne aio = new AllInOne("");
+		AioCheckOutDevide aioCheck = new AioCheckOutDevide();
+//		特店編號
+		aioCheck.setMerchantID("2000214");
+//		特店交易時間
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		simpleDateFormat.setLenient(false);
+		aioCheck.setMerchantTradeDate(simpleDateFormat.format(new Date()));
+//		交易金額
+		aioCheck.setTotalAmount(orderBean.getTotalPrice().toString());
+//		交易描述
+		aioCheck.setTradeDesc("justForTest");
+//		商品名稱
+		aioCheck.setItemName("GoTrip旅遊組合");
+//		特店交易編號
+		aioCheck.setMerchantTradeNo("testECpay" + orderBean.getOrderNo());
+//		付款完成回傳網址
+		aioCheck.setReturnURL("http://localhost:8080/gotrip/returnURL");
+//		Client端回傳網址
+		aioCheck.setClientBackURL("http://localhost:8080/gotrip/order/orderlist");
+		
+		aioCheck.setNeedExtraPaidInfo("N");
+//		輸出畫面
+//		PrintWriter out = response.getWriter();
+//		response.setContentType("text/html");
+//		out.print(aio.aioCheckOut(aioCheck, null));
+		String form = aio.aioCheckOut(aioCheck, null);
+		return form;
+	}
+	
+	@GetMapping("/returnURL")
+	public void returnURL(@RequestParam("MerchantTradeNo") String MerchantTradeNo,
+			@RequestParam("RtnCode") int RtnCode,@RequestParam("TradeAmt") int TradeAmt,
+			 HttpServletRequest request) {
+//		
+//		if ((request.getRemoteAddr().equalsIgnoreCase("175.99.72.1")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.11")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.24")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.28")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.32")) && RtnCode == 1 ) {
+			String orderIdStr =	 MerchantTradeNo.substring(9);
+			System.out.println(orderIdStr);
+			int orderId = Integer.parseInt(orderIdStr);
+			System.out.println("是否沒執行" + orderIdStr);
+			orderService.updateOrderStatus(1, orderId);
+			
+			
+//		}
+
+	}
+
+	
+	
 }
