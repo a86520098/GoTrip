@@ -340,4 +340,10 @@ public class HotelController {
         return "redirect:/backend/index";
     }
 
+    @GetMapping("getHotelRoomList")
+    public String getAllHotelRoom(Model model, @RequestParam("id") Integer id) {
+        System.out.println("Get All RoomList");
+        return "/frontend/hotel/hotel-roomList";
+    }
+
 }
