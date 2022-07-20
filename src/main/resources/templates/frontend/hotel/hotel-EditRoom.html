@@ -68,19 +68,24 @@
             <div class="col-md-9 grid-margin my-5 pl-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title font-weight-bold">註冊房間</h4>
+                        <h4 class="card-title font-weight-bold">修改房間內容</h4>
                         <h6 class="card-title font-weight-bold"></h6>
                         <div class="p-t-20">
                             <!--                            <td th:text="${hotelroom.hotel.id}"></td>-->
                             <!--                            <td th:text="${hotelroom.id}"></td>-->
-                            <form method="post" th:action="@{/getNewRoom/{id}(id=${mainHotel.id})}"
-                                  th:object="${hotelroom} " enctype="multipart/form-data">
+                            <form method="post" th:action="@{/EditRoom}"
+                                  th:object="${update} " enctype="multipart/form-data">
                                 <!--                                <td th:text="${hotelroom.hotel.id}"></td>-->
-                                <td th:text="${hotelroom.id}"></td>
+
+                                <fieldset class="form-group">
+                                    <label>房間編號</label>
+                                    <input type="text" th:field="*{id}" id="id" readonly="readonly"
+                                           class="form-control"/>
+                                </fieldset>
                                 <fieldset class="form-group">
                                     <label>房間名稱</label>
                                     <input type="text" th:field="*{roomname}" id="hotelArea"
-                                           class="form-control" onkeypress="return my_key(event)"/>
+                                           class="form-control"/>
                                 </fieldset>
 
                                 <fieldset class="form-group">
