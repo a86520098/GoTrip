@@ -102,7 +102,7 @@
 
                                     </th>
                                     <th>
-                                        <a class="btn1" th:href="@{/}">刪除房間</a>
+                                        <a class="btn1 " th:href="@{/deleteRoom(id=${roomList.id})}" id="deleteAjax">刪除房間</a>
 
                                     </th>
 
@@ -137,42 +137,8 @@
         $('#data-table').DataTable({})
     });
 
-    // 		$('#data-table tbody').on('click', function () {
-    //          var tr = $(this).closest('tr');
-    //          var row = table.row(tr);
-    //          if (row.child.isShown()) {
-    //              // This row is already open - close it
-    //              row.child.hide();
-    //              tr.removeClass('shown');
-    //          }
-    //          else {
-    //              // Open this row
-    //              row.child(format(row.data())).show();
-    //              tr.addClass('shown');
-    //          }
-    //      })
-
-    $(".btn-delete").click(function (e) {
-        e.preventDefault(); // 取消原始動作
-        let id = $(this).val();
-        Swal.fire({
-            icon: 'warning',
-            title: '確定刪除?',
-            text: "確認刪除後將不可復原",
-            showCancelButton: true,
-            confirmButtonColor: '#FF8D29',
-            cancelButtonColor: '#FFCD38',
-            confirmButtonText: '確認',
-            cancelButtonText: '取消',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $(this).parent().submit();
-            }
-        })
-    })
-
 </script>
+
 
 </body>
 

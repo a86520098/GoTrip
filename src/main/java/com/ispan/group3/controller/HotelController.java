@@ -334,4 +334,11 @@ public class HotelController {
         return "/frontend/hotel/hotel-roomList";
     }
 
+    @GetMapping("/deleteRoom")
+    public String DeleteRoom(Model model, @RequestParam("id") Integer id) {
+        hotelroomService.deleteById(id);
+        System.out.println("已經成功刪除房間刪除代號為=" + id);
+        return "redirect:/backend/index";
+    }
+
 }
