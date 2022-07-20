@@ -51,7 +51,7 @@
 						<div class="card-body ">
 						
 							<h4 class="card-title font-weight-bold my-3">租車選項</h4>
-							
+							<p th:if="${carLocation.carOptions.empty} class="card-title font-weight-bold my-3">租車選項</p>
 							<form id="insert-opt-form" name="form" th:action="@{/vendor/cars/options}" method="post" th:object="${carLocation}"
 								  class="form-horizontal needs-validation">
 								  
@@ -109,7 +109,7 @@
 										<label class="col-lg-2 col-form-label" for="price">定價與售價</label>
 										<div class="col-lg-7 row pr-0" >
 											<div class="col-sm-4 pr-0">
-												<input th:field="*{carOptions[__${optionStat.index}__].price}" id="price" name="price" type="number" class="form-control col-10 d-inline text text-center"/>
+												<input th:field="*{carOptions[__${optionStat.index}__].price}" id="price" name="price" type="number" class="form-control col-10 d-inline text text-center price"/>
 												<span class="d-inline">x</span>
 <!-- 												<div class="invalid-feedback">請輸入定價</div> -->
 											</div>
@@ -119,7 +119,7 @@
 <!-- 												<div class="invalid-feedback">折扣請以小數格式輸入，ex:輸入0.8即[原定價x0.8=銷售金額]</div> -->
 											</div>
 											<div class="col-sm-4 pr-0 d-inline">
-												<input type="number" name="priceSale" class="form-control" th:value="*{#strings.substring(carOptions[__${optionStat.index}__].discount * carOptions[__${optionStat.index}__].price, 0, 4)}" readonly="readonly"/>
+												<input type="number" name="priceSale" class="form-control priceSale"  th:value="*{#strings.substring(carOptions[__${optionStat.index}__].discount * carOptions[__${optionStat.index}__].price, 0, 4)}" readonly="readonly"/>
 											</div>
 										</div>
 									</div>
@@ -174,10 +174,34 @@
 		})
 		
 		$('.discount').on('blur', function () {
-			console.log('hi')
-			let price = $(this).prev('.price').val()
+			let price = $(this).parent().prev().children('.price').val()
 			let discount = $(this).val()
-			$(this).next('.priceSale').val(price*discount)
+			$(this).parent().next().children('.priceSale').val(price*discount)
+		})
+		
+		
+				$('#carModel').on('change', function(){
+	  		let carModelId = $(this).val();
+			$.ajax({
+				type: 'GET',
+				url: '/gotrip/api/cars/models/' + carModelId,
+				dataType: 'json',
+				success: function(data) {
+// 					let str = '<i class="zmdi zmdi-flash"></i> <span th:text="${option.carModel.power}" class="p-r-15"></span>'+
+// 						'<i class="zmdi zmdi-wb-auto"></i> 變速 <span th:text="${option.carModel.transmission}" class="p-r-15"></span>'+
+// 						'<i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位 <span th:text="${option.carModel.seat}" class="p-r-15"></span>'+
+// 						<i class="zmdi zmdi-car"></i> 排氣量 <span th:text="${option.carModel.engine}+'cc'" class="p-r-5"></span> ';
+					$("#carModelInfo").html(str);
+				},
+				error: function() {
+					console.log('error')
+				}
+			})
+			
+		})
+		
+		$('#btn-addModel').on('click', function() {
+			
 		})
 		
 	

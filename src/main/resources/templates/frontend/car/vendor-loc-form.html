@@ -59,7 +59,16 @@
 								<input th:field="*{companyName}" id="companyName" type="hidden"/>
 								<div class="row form-group my-4">
 									<div class="col-lg-1"></div>
-									<input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder="" />
+									<label class="col-lg-2 col-form-label" for="name">上架狀態</label>
+									<div class="col-lg-7">
+										<select th:field="*{status}" name="status" style="background-color: white" class="form-control">
+											<option value="顯示">顯示</option>
+											<option value="隱藏">隱藏</option>
+										</select>									
+									</div>
+								</div>
+								<div class="row form-group my-4">
+									<div class="col-lg-1"></div>
 									<label class="col-lg-2 col-form-label" for="name">據點名稱</label>
 									<div class="col-lg-7">
 										<input th:field="*{name}" id="name" type="text" class="form-control" placeholder="請輸入據點名稱"/>
@@ -163,8 +172,6 @@
 	<footer th:replace="frontend/partials/fragment :: footer"></footer>
 	<!-- Back to top -->
 	<div th:replace="frontend/partials/fragment :: toTop"></div>
-	<!-- Modal1 -->
-	<div th:replace="frontend/partials/fragment :: modal1"></div>
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
 	
@@ -178,31 +185,6 @@
 		    elZipcode: '.zipcode' // 在 el 裡查找 element
 		});
 	  	
-		$('#carModel').on('change', function(){
-	  		let carModelId = $(this).val();
-			$.ajax({
-				type: 'GET',
-				url: '/gotrip/api/cars/models/' + carModelId,
-				dataType: 'json',
-				success: function(data) {
-// 					let str = '<i class="zmdi zmdi-flash"></i> <span th:text="${option.carModel.power}" class="p-r-15"></span>'+
-// 						'<i class="zmdi zmdi-wb-auto"></i> 變速 <span th:text="${option.carModel.transmission}" class="p-r-15"></span>'+
-// 						'<i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位 <span th:text="${option.carModel.seat}" class="p-r-15"></span>'+
-// 						<i class="zmdi zmdi-car"></i> 排氣量 <span th:text="${option.carModel.engine}+'cc'" class="p-r-5"></span> ';
-					$("#carModelInfo").html(str);
-				},
-				error: function() {
-					console.log('error')
-				}
-			})
-			
-		})
-		
-		$('#btn-addModel').on('click', function() {
-			
-		})
-
-		
 		$(document).ready(function(){
 			$('.county').focus()
 			$('.county').val($('#county').text())
@@ -213,7 +195,6 @@
 			$('.district').val($('#district').text())
 			$('.district').blur()
 		})
-		
 		
 		$('#address').on('blur', function () {
 			let address = $('.county').val()+"+"+$('.district').val()+"+"+$('#address').val()
@@ -233,8 +214,6 @@
 					console.log(err);
 				},
 			});
-	
-	
 		})
 	</script>
 

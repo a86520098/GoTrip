@@ -151,15 +151,15 @@ public class CarController {
 					   @RequestParam(value = "imagefile", required = false) MultipartFile file) {
 		carLocation.setCloseTime(closeTime);
 		carLocation.setOpenTime(openTime);
-		try {
-			String savePath = FileUploadUtil.saveFile("car", file);
-			carLocation.setImage(savePath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		if (file != null) {
-			locationService.save(carLocation);
+			try {
+				String savePath = FileUploadUtil.saveFile("car", file);
+				carLocation.setImage(savePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+		locationService.save(carLocation);
 		return "redirect:/vendor/cars/locations/" + carLocation.getCompanyId();
 	}
 
