@@ -822,6 +822,333 @@ VALUES (N'7', N'4', N'4', N'4', N'Accessible by elevator', N'Safety/security fea
 
 SET IDENTITY_INSERT [dbo].[hotel_room] OFF
 
+--Ticket
+SET IDENTITY_INSERT [dbo].[ticket] ON;
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (1, N'59號', N'嘉義縣', N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'歷史景點', N'4', N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', NULL, NULL, N'<h3>商品說明</h3>
+
+<p>－ 行程說明 －</p>
+
+<ul>
+	<li>開放時間：24 小時開放</li>
+	<li>兌換方式：本國籍民眾，兌換時請出示身分證明文件，至阿里山國家森林遊樂區收費站由工作人員感應QR code後即可入場。半票、免票等優待票種請於現場購票（<a href="https://www.forest.gov.tw/0000184">票種參考</a>）。</li>
+	<li>聯絡電話：白天 05 - 2679917，夜間 05 - 2679715</li>
+	<li>營業地址：臺灣嘉義縣阿里山鄉正村59號<br />
+	<br />
+	<br />
+	&nbsp;</li>
+</ul>
+
+<p>－ 介紹 －</p>
+
+<ul>
+	<li>祝山線(黃線)</li>
+</ul>
+
+<ol>
+	<li>遊客中心站&rarr;祝山站：距離約 5.5 公里，行駛時間含遊客上下車時間約為 35 分鐘</li>
+	<li>乘車地點為候車總站、遊客中心站及沼平站，停靠站為對高岳站，並在祝山站下車，欲搭回程祝山線的遊客請依時刻表搭車。</li>
+	<li>發車時間(為固定班次)：<br />
+	A. 日間祝山（上山）服務時間： 9：00、 11：00、 13：00、15：00&nbsp;<br />
+	B. 日間祝山（下山）服務時間： 9：30、 11：30、 13：30、15：30、16：30</li>
+	<li>2.祝山站為阿里山國家森林遊樂區內重要的觀日景點，非觀日時間亦有機會從觀景台一覽雲海景觀，而祝山站再往上走即可抵達小笠原觀景台，為360度之絕佳視野觀景台。<br />
+	<br />
+	&nbsp;</li>
+</ol>
+
+<p>－ 景點介紹 －</p>
+
+<p>阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏，然從 191 2年起成為台灣最具規模的林場，一直到 1960 年代末期為止。歷經日本、國民政府的採伐後，原始檜木林幾乎伐盡，現今存有第一期與第二期巨木群棧道近四十株的紅檜巨木，讓人緬懷過去神木林的壯闊神聖。其中最高的「阿里山香林神木」，高 45 公尺，樹圍 12.3 公尺，樹齡約2300年，是到訪阿里山的必遊之處。<br />
+<br />
+在阿里山國家森林遊樂區內有豐富的生態，其中最特殊的植物，莫過於稀有的蓧蕨、相馬氏石杉、阿里山十大功勞與一葉蘭了；動物則有台灣獼猴、帝雉、藪鳥、阿里山鴝、阿里山山椒魚等小明星助陣，熱鬧非凡。除了神木，阿里山還有非常多具可看性的景點：森林小火車、空靈飄渺的姊妹潭、壯闊動人的雲海、美麗的祝山日出、受鎮宮、百年慈雲寺、林業史蹟、春天盛開的各類櫻花與杜鵑&hellip;阿里山森林遊樂區是一個足以代表台灣霧林帶的國際級觀光景點，歡迎著來自全世界的旅人們，前來認識台灣山林豐富而美麗的面貌。<br />
+<br />
+「春賞花、夏避暑、秋攬楓、冬觀雲」詳述了一年四季萬種風情的阿里山國家森林遊樂區。在阿里山您只須放慢腳步，享受舒適宜人的綿延群山，伴蟲鳴入眠、被林間輕脆鳥啼喚醒，不妨現在就背起行李，規劃一趟阿里山輕旅行，讓自己徜徉於神木群的芬多精中，為身心靈安排一趟大自然的洗禮吧。</p>
+
+<p>阿里山國家森林遊樂區門票核銷地點</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093404_OJoNB/jpg" style="height:540px; width:720px" /></p>
+
+<p>阿里山國家森林遊樂區大門口</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093410_Swr05/jpg" style="height:404px; width:720px" /></p>
+
+<p>&nbsp;</p>
+
+<p>沼平車站就是阿里山舊火車站，建於西元1914年，於大正3年3月14日正式開始營運，原為阿里山林業鐵路登山本線的終點站。</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093406_4V2nx/jpg" style="height:404px; width:720px" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+
+<p>&nbsp;</p>
+', N'阿里山國家森林遊樂區門票', NULL, NULL, NULL)
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (2, N'春德路105號', N'桃園市', N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3', N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, N'
+<p>－ 行程特色 －</p>
+
+
+<p>Xpark 為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出 360&deg; 具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Xpark 是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。<br />
+<br />
+＊館區最新消息及詳細說明請參考<a href="https://www.xpark.com.tw/index.php">Xpark官網</a><br />
+＊購票請先註冊KKday會員<br />
+＊購票請參考線上訂票流程教學<a href="https://www.youtube.com/watch?v=CXmVaSSBYOU&amp;feature=youtu.be">影片</a><br />
+＊<a href="https://www.kkday.com/zh-tw/product/preview/j28vd0xkw1mkgrrhvyr2jrwz3qpn6r47">兒童新樂園ｘXpark</a>｜獨家聯合套票<br />
+＊<a href="https://www.kkday.com/zh-tw/product/125616">Xpark＆國立故宮博物院</a>｜雙展聯票<br />
+＊高鐵國旅聯票<a href="https://www.kkday.com/zh-tw/product/116970">來回車票</a>＆桃園Xpark都會型水生公園門票<br />
+＊高鐵國旅聯票<a href="https://www.kkday.com/zh-tw/product/118924">單程車票</a>＆桃園Xpark都會型水生公園門票<br />
+＊KKday<a href="https://blog.kkday.com/71281/taiwan-taoyuan-xpark-guide">編輯帶路</a>文章</p>
+
+<p>&nbsp;</p>
+
+<p>&mdash; 檔期企劃 &mdash;</p>
+
+<ul>
+	<li>沈浸式繪本『Xbook～流向我們的物語～』<br />
+	- 活動期間：2022/01/15 ~ 2022/12/31<br />
+	- 票價資訊：Xpark 門票（不需另收費）<br />
+	<br />
+	很久很久以前，地球是被岩漿所包圍的星球。<br />
+	不論是動物、植物或是大海，就連一滴水都不存在。<br />
+	然而天空被雲給覆蓋，下了將近千年的雨。<br />
+	最後，誕生了大海。<br />
+	<br />
+	接著物語就開始了。<br />
+	物種的起源、進化、多樣性，孕育生命的海所見證的歷史。<br />
+	從生物上所聽見關於大海的各種傳說與寓言。<br />
+	<br />
+	那便是，流向我們的物語。<br />
+	是否從何處聽見時空鯨魚的呼喚？<br />
+	走吧！一起踏上未知的旅程。</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>－ 入館資訊 －</p>
+
+<ul>
+	<li>使用期限：限於票券指定當日及有效時間內使用</li>
+	<li>入場時間：旅客所選該場次一小時內，建議參觀時間為兩小時。<br />
+	ex：場次 10:00（入場時間 10:00 - 11:00）</li>
+	<li>特殊節日營業時間：無</li>
+	<li>停車折抵：請持票券中的 QRcode 至桃園置地廣場停車場繳費處掃描折抵<br />
+	＊一台車可持一張成人門票折抵停車，折抵上限為 1 小時（僅限成人票）</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>－ Xpark AR －</p>
+
+<p>Xpark 結合影像創意與數位技術的嶄新水族館活動。來到 Xpark 的客人須先下載專屬 APP，在館內的 AR 拍照處開啟 APP 及相機功能，即可開展出獨創角色的 AR 短篇動畫。此外、Xfun 販售之系列商品，也內藏了獨創角色會出現的動畫影片，在家就能體驗擴充實境，將在 Xpark 的美好回憶帶回家。這前所未有的水族館玩法是 Xpark 與 ROBOT 帶給台灣民眾的嶄新體驗。這是一群可愛的獨創角色在「Xpark＝有一點不可思議的另一個地球」探險的全新平行時空冒險故事，歡迎大家來體驗另一個平行時空。</p>
+
+<p>&nbsp;</p>
+
+<p>－ 展區特色 －</p>
+
+<ul>
+	<li>1 樓展區：Xcafe、漫步叢林、潮間戲灘、世外桃源</li>
+	<li>2 樓展區：福爾摩沙、癒見水母、企鵝奇遇</li>
+	<li>3 樓展區：珊瑚潛行、暖海生機、雨林探險、寒帶行凍、深海尋秘</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>－ 新冠肺炎 (COVID-19) 疫情因應措施－</p>
+
+<ul>
+	<li>遊客入館前需消毒手部並全程配戴口罩，社交距離請維持至少1.5公尺，敬請遵循工作人員指示與貼心叮嚀</li>
+	<li>實施紅外線體溫量測儀進行體溫監測。若體溫過高則使用非接觸式體溫計重測，若高於攝氏 37.5 度則得拒絕入館</li>
+	<li>導入時段性入館措施，以便讓遊客確保適當之社交距離。關於每日、每時段的入場上限人數，將遵循開幕時的「防疫新生活運動」之規定</li>
+</ul>
+
+<p>? Xpark 夏日限定活動【涼夏浴衣套票】，穿上浴衣在 Xpark 內漫步享受今年最特別的夏天</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20220622073835_3xhWz/jpg" style="height:479px; width:720px" /></p>
+
+<p>? Xpark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20200715042523_hm6ts/png" style="height:446px; width:720px" /></p>
+
+<p>? 「Xcafe by PRONTO」為 Xpark 與日本知名咖啡連鎖店「PRONTO corporation」攜手合作的台灣一號咖啡店，滿足味蕾享受的各種餐點，充分發揮 Xpark 獨特性的餐點！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20220701103619_c5ob3/jpg" style="height:540px; width:720px" />? ZONE 1 ｜福爾摩沙 Formosa ｜ 台灣被海洋擁抱著，有著豐富多樣的魚種生態、變化萬千的海底地形，福爾摩沙完整呈現了這樣美麗的海洋環境，宛若走進海中，一覽海洋世界的壯闊之美</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20210629031915_yoPZu/jpg" style="height:450px; width:720px" /></p>
+
+<p>? ZONE 2 ｜珊瑚潛行 Diving in Coral Sea | 充滿迫力的 180 度環景設計，完美展現 湛藍海洋與珊瑚礁所交織出的美麗樣貌，邀您一同潛入絢爛的珊瑚之海，徜徉在色彩繽紛的 光、珊瑚、魚群、海水之中</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20200930090309_aKuk2/jpg" style="height:480px; width:720px" /></p>
+
+<p>?「Xfun」是位於 Xpark 的紀念品店，更多限定聯名商品值得你收藏</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20210119011850_Ftlli/jpg" style="height:329px; width:720px" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+', N'Xpark 都會型水生公園門票', NULL, NULL, NULL)
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (3, N'後灣路2號', N'屏東縣', N'台灣', N'車城鄉', N'088825678', 250, 0, N'水族館&動物園', N'3', N'擁有全亞洲最大的海底隧道，台灣水域館、珊瑚王國館、世界水域館及鯨典館四個展示館 虛擬實境運動體驗 VR 設施，邀請大家身歷其境', NULL, NULL, N'
+<h3>－ 館區介紹 －</h3>
+
+<ul>
+	<li>屏東國立海洋生物博物館<br />
+	國立海洋生物博物館位於後灣，是全台灣規模最大的，館內魚類種類豐富，分成台灣水域館、珊瑚王國館、世界水域館，包含三層樓高的水族箱、海底隧道，或是可愛的企鵝、悠游自在的小白鯨與鯊魚，都讓人猶如親臨海底世界般，非常值得一遊！不僅適合家庭團體，就連大人們也能在這裡玩得十分盡興</li>
+	<li>虛擬海世界 VR 體驗館<br />
+	親子必遊景點屏東海生館，除了模擬海洋生態教育展示帶領遊客了解海洋世界真實樣貌，近來更引進時下盛行最新VR技術，帶領遊客潛入海洋，彷彿親身感受海底世界奇幻樣貌；同時搭乘極地探險車，前進南北極探索驚人地形樣貌，讓民眾只要戴上 VR 裝置，就能立刻身歷其境展開一段前所未有的奇幻旅程</li>
+	<li>屏東海生館推出「極境漫遊66.5度」互動展示體驗看看。屏東海生館透過空間造景搭配光雕投影、沉浸式劇場、觸控互動效果，打造沉浸式感官體驗，全面重塑極地水域三個區域「極光隧道、北極區、南極區」，讓你宛如一秒走進雪白的極地世界，為全球首座採用虛擬實境技術所建構的「無水水族館」，以虛擬和實體結合的奇妙參觀體驗。</li>
+	<li>今年夏天推出<a href="https://www.aquarium.com.tw/event.asp?ID=350">魟魚飛行日誌</a>，即日起至10月10日期間，可透過全新打造的大洋池環繞沉浸式投影以及生態互動解說，深度認識不同種類的魟魚外，更可搭上特別設置的魟魚班機，一起跟著魟魚徜徉於大洋中，感受海底遼闊且多樣的景色。常被稱為「海中飛行者」的魟魚，特別是燕魟在海中優游的身影，因翅膀形狀的胸鰭及上下擺動方式，如同在寬闊的海中飛行一般，優雅的姿態總是令人著迷。今年海生館特別以魟魚飛行意象，於海藻森林3樓廊道打造魟魚航班打卡裝置，民眾將可隨著各種拍照裝置，包含航班時刻表、出境口立牌等，打造如同出境的氛圍，帶領民眾猶如登上魟魚航班，下潛到海底世界，穿越大洋、珊瑚礁、藻林海域，彷彿魟魚般飛翔在海洋中，感受不同海底景色與魟魚的曼妙姿態。</li>
+	<li>屏東海生館最新活動及相關節目資訊請至<a href="https://www.aquarium.com.tw/">官網</a>或<a href="https://www.facebook.com/HSWEC/">粉絲專頁</a>查看詳情。&nbsp;</li>
+</ul>
+
+<p>? 漫步於全台灣最大的海底隧道</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20210816064112_rnWvA/jpg" style="height:480px; width:720px" /></p>
+
+<p>? 珊瑚王國館可愛小白鯨</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20211013073751_pz7G4/jpg" style="height:638px; width:720px" />? 觀賞壯觀的海底生物</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20160728043916_pvECV/jpg" style="height:480px; width:720px" /></p>
+
+<p>? 飛行劇場：體驗者透過VR 3D影像結合三軸油壓懸吊模擬系統，前進深海，在穿過美麗的珊瑚礁後，將發現神秘的水下帝國</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20200810084849_fdB9Y/jpg" style="height:479px; width:720px" /></p>
+', N'屏東海生館門票', NULL, NULL, NULL)
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (4, N'189號', N'花蓮縣', N'台灣', N'壽豐鄉', N'038123199', 780, 0, N'主題樂園', N'1', N'8大主題遊樂設施，遊玩精彩一整天 走訪超人氣全台最大海洋公園，享受依山傍海美景，創造無限回憶 欣賞4大主題表演：海豚秀、海獅秀、美人魚生態教室、水晶城堡秀', NULL, NULL, N'
+<p>&ndash; 七月限定「海洋冰風暴2-冰怪來襲」活動 &ndash;</p>
+
+<p>海洋公園獨家暑期限定活動【海洋冰風暴2-冰怪來襲】<br />
+炎熱的夏日即將到來！我們將極凍整個夏天！<br />
+水槍水車激起的水花大戰，帶領大家持續清涼high酷到最高點！</p>
+
+<ul>
+	<li>活動日期：2022.07.01 至 2022.09.11</li>
+	<li>活動內容：</li>
+</ul>
+
+<ol>
+	<li>【冰風暴之冰怪來襲】（地點：布萊登海岸）：<br />
+	海洋家族們在酷涼派對裡為大家帶來清涼水花！ 沒想到真正的大海冰怪「ICE」已悄悄出現，冰怪會從哪裡現身？ 即將為布萊登海岸掀起一場極酷冰涼水花大戰！<br />
+	&nbsp;</li>
+	<li>【超好拍涼感戲水樂】（地點：布萊登海岸）：<br />
+	今夏最夯的網美拍照景點「海豚3D戲水池」、「水漾動感噴泉」， 沁涼必玩消暑NO.1水槍冰桶預備！<br />
+	&nbsp;</li>
+	<li>【冰風暴沁涼主題餐】（地點：多尼漢堡/花車）：<br />
+	主廚推出各式冰品、派對炸物餐點。<br />
+	&nbsp;</li>
+	<li>【可愛酷炫冰怪商品】：<br />
+	冰怪果凍包搭配可愛冰怪防曬披肩，夏季玩水時尚、涼感一次包辦！</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&ndash; 方案說明 &ndash;&nbsp;</p>
+
+<ul>
+	<li>【6月限定套票】遠雄海洋公園 |雙人門票＆卡娜赫拉的小動物下午茶專屬約會</li>
+	<li>【限時87折】遠雄海洋公園 | 雙人套票：成人票＊2，每組1560元<br />
+	-訂購此方案每次訂購為2人為一組，每張QRcode限一人使用。</li>
+	<li>【限時87折】遠雄海洋公園 | 三人套票：成人票＊3，每組2340元<br />
+	&nbsp;-訂購此方案每次訂購為3人為一組，每張QRcode限一人使用。</li>
+	<li>【限時88折】遠雄海洋公園 | 成人票</li>
+	<li>【限時84折】海洋甜心愛戀雙人悠遊 - 雙成人票<br />
+	- 本專案平、假日及特殊節日皆可使用<br />
+	- 每次限2人使用1張憑證（4人使用2張，以此類推），15 人以上之團體不適用</li>
+</ul>
+
+<p>園區營運調整公告】</p>
+
+<p>配合中央流行疫情指揮中心管制原則，相關規範調整、異動如下（最新資訊可參考<a href="https://www.farglory-oceanpark.com.tw/public/info-in/157ZTE4qsbXHcyg2/607Yn54nx4Ms0PI0">官網</a>為準)</p>
+
+<ul>
+	<li>園區每日實施總量管制，入園人數上限為 9,600 人（原承載人數之 80%）</li>
+	<li>營業時間：平日 9:30~17:00，假日 9:00~17:00（閉園前2小時停止售票及入園）</li>
+	<li>採防疫實聯制，需全程配載口罩，保持社交安全距離</li>
+	<li>入園時需量測體溫，如出現疑似病徵或體溫超過 37.5 度等情況，園方有權婉拒入園</li>
+	<li>詳細園區內規範請參考<a href="https://www.farglory-oceanpark.com.tw/info-in/157ZTE4qsbXHcyg2/607Yn54nx4Ms0PI0">官網</a>資訊，規劃行程前請參閱<a href="https://www.farglory-oceanpark.com.tw/notice">園區維修停演公告時程</a></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><br />
+&ndash;&nbsp;樂園特色 &ndash;</p>
+
+<p>【八大主題區】<br />
+海洋村、探險島、海洋劇場、嘉年華歡樂街、海盜灣、布萊登海岸、海底王國、水晶城堡</p>
+
+<p>【三大場館】<br />
+虛實體驗「探險島水族館」、海底探索「海洋哺乳動物生態館」沈浸式「水晶城堡劇場」</p>
+
+<p>【五大主秀】<br />
+水中精靈「海豚傳說-跳浪奇緣」、活潑逗趣「海獅小學堂」、國際級表演「奇妙海洋慶典」、動畫實境劇場「美人魚的神秘傳說」、浩瀚海底世界「大洋池的生態奧秘」</p>
+
+<p>【十大設施】<br />
+有適合各年齡層的遊樂設施，晴空纜車、黑鬍子海盜船、海盜大驚航、愛情摩天輪、海豚3D戲水池、飛琁海豚、碰碰船、小藍鯨探險記</p>
+
+<p>【海景美食街】<br />
+提供多樣異國主題特色餐點的海景風光美食街</p>
+
+<p>【英倫商店街】<br />
+英式建築造景街道，IG網美拍照熱點，還有園區吉祥物海豚、海獅、鯊魚、美人魚等家族成員驚喜現身，與遊客一同拍照遊玩</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>暑期限定活動【海洋冰風暴2-冰怪來襲】：炎熱的夏日即將到來！我們將極凍整個夏天！ 水槍水車激起的水花大戰，帶領大家持續清涼high酷到最高點！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20220711061509_KFo6S/jpg" style="height:1018px; width:720px" />位於臺灣最美麗的東海岸風景區，緊鄰著太平洋左岸，是第一座台灣最大、最美且具有國際水準的海洋主題休閒、旅遊及渡假的王國</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201126074516_D3DEY/jpg" style="height:479px; width:720px" />海洋公園吉祥物，陪伴遊園的好夥伴</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201125094104_UdajR/jpg" style="height:480px; width:720px" /></p>
+
+<p>來訪繽紛的海洋公園！宛如夢遊仙境的場景、精彩表演與遊戲，吸引著大小朋友，喚起心中的童趣夢幻之心！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201125094150_XHHUh/jpg" style="height:482px; width:720px" /></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+', N'花蓮遠雄海洋公園電子門票', NULL, NULL, NULL)
+
+
+SET IDENTITY_INSERT [dbo].[ticket] OFF;
+
+--Ticket_image
+SET IDENTITY_INSERT [dbo].[ticket_image] ON;
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (2, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (3, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (7, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (8, N'/data/uploadimages/ticket/Xpark2.png', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (9, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (10, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (11, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (12, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (13, N'/data/uploadimages/ticket/海生館.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (14, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (15, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (16, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (17, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (18, N'/data/uploadimages/ticket/海生館6.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (19, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (20, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (21, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 4)
+SET IDENTITY_INSERT [dbo].[ticket_image] OFF
+
+
+
+
+
+
 
 -- MySQL區域
 

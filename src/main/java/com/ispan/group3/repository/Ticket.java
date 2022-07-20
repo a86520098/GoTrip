@@ -2,6 +2,7 @@ package com.ispan.group3.repository;
 
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -23,11 +24,13 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ticketNo")
 	private Long ticketNo;
+//	@Column(name="companyId")
+//	private Long companyId;
 
 	@Column(name = "ticketName")
 	private String ticketName;
 
-	@Column(name = "ticketIntro")
+	@Column(name = "ticketIntro",length=5000)
 	private String ticketIntro;
 
 	@Column(name = "ticketOpenWeek")
@@ -70,14 +73,19 @@ public class Ticket {
 	private Date ticketEndDate;
 	
 	@Column(name="status")
-	private String status;
+	private Integer status = 0;
 	
-	@Column(name="ticketBriefIntro")
+	@Column(name="ticketBriefIntro",length=5000)
 	private String ticketBriefIntro;
+
+
 
 	@OneToMany(mappedBy="ticket",cascade = CascadeType.ALL)
 	private Set<TicketImage> images;
-
+	
+//	@OneToMany(mappedBy="ticket",cascade = CascadeType.ALL)
+//	private List<TicketFronted> ticketfronted;
+	
 //	@OneToMany(mappedBy="ticket",cascade = CascadeType.ALL)
 //	private Set<TicketPlan> plans;
 	
@@ -93,15 +101,6 @@ public class Ticket {
 	public Ticket() {
 		super();
 	}
-
-	//Image相關
-//	public String getTicketImage() {
-//		return ticketImage;
-//	}
-//
-//	public void setTicketImage(String ticketImage) {
-//		this.ticketImage = ticketImage;
-//	}
 
 	public void setTicketNo(Long ticketNo) {
 		this.ticketNo = ticketNo;
@@ -228,11 +227,11 @@ public class Ticket {
 	}
 
 	
-	public String getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -244,52 +243,33 @@ public class Ticket {
 		this.ticketBriefIntro = ticketBriefIntro;
 	}
 	
-	public Ticket(long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
-			String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
-			String address, int price, String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status,String ticketBriefIntro) {
-		super();
-		this.ticketNo = ticketNo;
-		this.ticketName = ticketName;
-		this.ticketIntro = ticketIntro;
-		this.ticketOpenWeek = ticketOpenWeek;
-		this.ticketOpenTime = ticketOpenTime;
-		this.ticketEndTime = ticketEndTime;
-		this.phone = phone;
-		this.country = country;
-		this.city = city;
-		this.location = location;
-		this.address = address;
-		this.price = price;
-		this.tagNo = tagNo;
-		this.tagName = tagName;
-		this.ticketStartDate = ticketStartDate;
-		this.ticketEndDate = ticketEndDate;
-		this.status = status;
-		this.ticketBriefIntro = ticketBriefIntro;
-	}
 
-	public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
-			String ticketEndTime, String phone, String country, String city, String location, String address, int price,
-			String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate, String status,String ticketBriefIntro) {
-		super();
-		this.ticketName = ticketName;
-		this.ticketIntro = ticketIntro;
-		this.ticketOpenWeek = ticketOpenWeek;
-		this.ticketOpenTime = ticketOpenTime;
-		this.ticketEndTime = ticketEndTime;
-		this.phone = phone;
-		this.country = country;
-		this.city = city;
-		this.location = location;
-		this.address = address;
-		this.price = price;
-		this.tagNo = tagNo;
-		this.tagName = tagName;
-		this.ticketStartDate = ticketStartDate;
-		this.ticketEndDate = ticketEndDate;
-		this.status = status;
-		this.ticketBriefIntro = ticketBriefIntro;
-	}
+//	public Ticket(Long companyId, String ticketName, String ticketIntro, String ticketOpenWeek,
+//			String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
+//			String address, int price, String tagNo, String tagName, Date ticketStartDate, Date ticketEndDate,
+//			Integer status, String ticketBriefIntro, Set<TicketImage> images, List<TicketFronted> ticketfronted) {
+//		super();
+//		this.companyId = companyId;
+//		this.ticketName = ticketName;
+//		this.ticketIntro = ticketIntro;
+//		this.ticketOpenWeek = ticketOpenWeek;
+//		this.ticketOpenTime = ticketOpenTime;
+//		this.ticketEndTime = ticketEndTime;
+//		this.phone = phone;
+//		this.country = country;
+//		this.city = city;
+//		this.location = location;
+//		this.address = address;
+//		this.price = price;
+//		this.tagNo = tagNo;
+//		this.tagName = tagName;
+//		this.ticketStartDate = ticketStartDate;
+//		this.ticketEndDate = ticketEndDate;
+//		this.status = status;
+//		this.ticketBriefIntro = ticketBriefIntro;
+//		this.images = images;
+//	}
+
 
 	//	Image相關
 	 public Set<String> getImages() {
@@ -306,7 +286,7 @@ public class Ticket {
 
 	 public Ticket(Long ticketNo, String ticketName, String ticketIntro, String ticketOpenWeek,
 	 		String ticketOpenTime, String ticketEndTime, String phone, String country, String city, String location,
-	 		String address, int price , Set<TicketImage> images, String status,String ticketBriefIntro) {
+	 		String address, int price , Set<TicketImage> images, Integer status,String ticketBriefIntro) {
 	 	super();
 	 	this.ticketNo = ticketNo;
 	 	this.ticketName = ticketName;
@@ -323,11 +303,12 @@ public class Ticket {
 	 	this.images = images;
 	 	this.status = status;
 	 	this.ticketBriefIntro = ticketBriefIntro;
+//	 	this.companyId = companyId;
 	 }
 
 	 public Ticket(String ticketName, String ticketIntro, String ticketOpenWeek, String ticketOpenTime,
 	 		String ticketEndTime, String phone, String country, String city, String location, String address, int price
-	 		,Set<TicketImage> images, String status,String ticketBriefIntro) {
+	 		,Set<TicketImage> images, Integer status,String ticketBriefIntro) {
 	 	super();
 	 	this.ticketName = ticketName;
 	 	this.ticketIntro = ticketIntro;
@@ -343,5 +324,15 @@ public class Ticket {
 	 	this.images = images;
 	 	this.status = status;
 	 	this.ticketBriefIntro = ticketBriefIntro;
+//	 	this.companyId = companyId;
 	 }
 }
+
+//Image相關
+//public String getTicketImage() {
+//	return ticketImage;
+//}
+//
+//public void setTicketImage(String ticketImage) {
+//	this.ticketImage = ticketImage;
+//}

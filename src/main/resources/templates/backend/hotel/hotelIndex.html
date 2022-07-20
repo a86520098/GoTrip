@@ -71,8 +71,8 @@
                                             <td th:text="${hotel.status}"/>
                                             <td th:text="${hotel.roomtype}"/>
                                             <td>
-                                                <div th:each="image3:${hotel.images}" class="d-inline-block">
-                                                    <img th:src="@{${image3.imagePath}}" class="rounded img-com"
+                                                <div th:each="image:${hotel.images}" class="d-inline-block">
+                                                    <img th:src="@{${image.imagePath}}" class="rounded img-com"
                                                          width="60" height="72" style="display: inline-flex"/>
                                                 </div>
                                             </td>

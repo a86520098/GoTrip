@@ -213,16 +213,18 @@
     });
 
     /*==================================================================
-    [ +/- num product ]*/
-    $('.btn-num-product-down').on('click', function(){
-        var numProduct = Number($(this).next().val());
-        if(numProduct > 0) $(this).next().val(numProduct - 1);
-    });
-
-    $('.btn-num-product-up').on('click', function(){
-        var numProduct = Number($(this).prev().val());
-        $(this).prev().val(numProduct + 1);
-    });
+//    input number的增加.減少JS，購物車須用同樣Class另外寫兩個，不然會重複，故註解。
+    
+//    [ +/- num product ]*/
+//    $(document).on('click','.btn-num-product-down' ,function(){
+//        var numProduct = Number($(this).next().val());
+//        if(numProduct > 0) $(this).next().val(numProduct - 1);
+//    });
+//    
+//    $(document).on('click','.btn-num-product-up', function(){
+//        var numProduct = Number($(this).prev().val());
+//        $(this).prev().val(numProduct + 1);
+//    });
 
     /*==================================================================
     [ Rating ]*/
