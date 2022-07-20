@@ -1120,7 +1120,7 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [p
 ', N'花蓮遠雄海洋公園電子門票', NULL, NULL, NULL)
 
 
-SET IDENTITY_INSERT [dbo].[ticket] ON;
+SET IDENTITY_INSERT [dbo].[ticket] OFF;
 
 --Ticket_image
 SET IDENTITY_INSERT [dbo].[ticket_image] ON;
