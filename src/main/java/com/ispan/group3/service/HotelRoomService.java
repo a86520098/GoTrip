@@ -16,4 +16,6 @@ public interface HotelRoomService {
     void deleteById(Integer id);
 
     Long count();
+
+    List<HotelRoom> findAllHotelRoom(Integer hotelID);
 }

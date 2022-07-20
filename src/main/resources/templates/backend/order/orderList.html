@@ -13,7 +13,6 @@
   <!-- 本頁面使用css樣式 Plugin css for this page -->
   <link rel="stylesheet" th:href="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.css}" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
   <link rel="stylesheet" th:href="@{/js/select.dataTables.min.css}" href="vendors/datatables.net-bs4/select.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 </head>
  <style>
  .formargin{
@@ -233,15 +232,15 @@
 	  			
 	  				console.log(data);
 	  				
-	  				html = '<table class="table table-bordered">' +
+	  			  var  html =  '<table class="table table-bordered">' +
 	  				    	'<thead>' +
 		  				    '<tr>' +
-		  				    '<th scope="col">商品編號</th>>' +
-		  				    '<th scope="col">類別</th>>' +
-		  				    '<th scope="col">品項</th>>' +
-		  				    '<th scope="col">單價</th>>' +
-		  				    '<th scope="col">數量</th>>' +
-		  				    '<th scope="col">總價</th>>' +
+		  				    '<th scope="col">商品編號</th>' +
+		  				    '<th scope="col">類別</th>' +
+		  				    '<th scope="col">品項</th>' +
+		  				    '<th scope="col">單價</th>' +
+		  				    '<th scope="col">數量</th>' +
+		  				    '<th scope="col">總價</th>' +
 		  				    '</tr>' +
 		  				    '</thead>' +
 		  					 '<tbody>';
@@ -264,13 +263,13 @@
 	  						'</tr>';
 		  			});
 		  			html += '</tbody>' +
-  							'</table>';	
+  							'</table>';
 	  				Swal.fire({
 	  				  icon: 'info',
-	  				  html:html,
-	  				  
-	  				   
+	  				  title: '訂單明細',
+	  				  html : html
 	  				})
+	 
 	  			}, 
 				error: function(jqXHR,textStatus,errorThrown) {
 					console.log(jqXHR);

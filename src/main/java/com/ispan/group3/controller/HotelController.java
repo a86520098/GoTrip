@@ -301,18 +301,6 @@ public class HotelController {
                              @RequestParam(value = "imageFiles", required = false) List<MultipartFile> files,
                              @PathVariable("id") Integer id
     ) {
-//        Hotel hotel = new Hotel();//主表bean
-//        hotel.setHotel_name("豪華大酒店");
-//        List<HotelRoom> list = new ArrayList<HotelRoom>();
-//        HotelRoom hotelRoom1 = new HotelRoom(); //附表
-//        hotelRoom1.setRoomname("雙人房");
-//        hotelRoom1.setRoomprice(213123);
-//        hotelRoom1.setHotel(hotel);
-//        list.add(hotelRoom1);
-//        hotel.setHotelroomList(list);
-//        hotelService.save(hotel);
-//        hotelroomService.save(hotelRoom);
-
         Hotel byId = hotelService.findById(id);
         List<HotelRoomImage> imagesLish = new ArrayList<>();
         for (MultipartFile file : files) {
@@ -325,7 +313,6 @@ public class HotelController {
             }
         }
         hotelRoom.setHotelRoomImageList(imagesLish);
-
         for (int i = 0; i < 10; i++) {
             System.out.println("看到我代表是更新" + byId.getId());
 
@@ -338,6 +325,13 @@ public class HotelController {
             System.out.println("前台商家新增房間");
         }
         return "redirect:/backend/index";
+    }
+
+    @GetMapping("getHotelRoomList")
+    public String getAllHotelRoom(Model model, @RequestParam("id") Integer id) {
+        System.out.println("Get All RoomList");
+        model.addAttribute("roomList", hotelroomService.findAllHotelRoom(id));
+        return "/frontend/hotel/hotel-roomList";
     }
 
 }
