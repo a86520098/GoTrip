@@ -729,10 +729,11 @@
                             <div class="block2-txt-child1 flex-col-l">
                                 <div style="display: inline-flex">
 
-                                    <a th:href="@{/}" class="clblack">
+                                    <a th:href="@{/tohotelDetail(id=${hotel.id})}" class="clblack">
                                         <p th:text="${hotel.hotel_name}"
                                            class="fs-17 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-6">
                                     </a>
+
                                     <div class="block2-txt-child2 flex-r p-t-3">
                                         <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
                                             <img class="icon-heart1 dis-block trans-04"
@@ -752,6 +753,7 @@
 										<td th:text="${hotel.city}"/>
                                         </div>
 									</span>
+
 
                             </div>
                         </div>
