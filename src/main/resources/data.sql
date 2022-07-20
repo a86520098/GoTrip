@@ -61,7 +61,7 @@ VALUES (25, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime
 SET IDENTITY_INSERT [dbo].[comment] OFF;
 
 SET
-    IDENTITY_INSERT [dbo].[comment_image] ON;
+IDENTITY_INSERT [dbo].[comment_image] ON;
 
 INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (1, N'/data/uploadimages/comment/hotel.jpg', 1)
 INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (2, N'/data/uploadimages/comment/hotel-room.jpg', 1)
@@ -96,7 +96,7 @@ INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])VALUES (30, N'/da
 SET IDENTITY_INSERT [dbo].[comment_image] OFF;
 
 SET
-    IDENTITY_INSERT [dbo].[car_model] ON;
+IDENTITY_INSERT [dbo].[car_model] ON;
 
 INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
 VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-yaris.png')
@@ -145,62 +145,68 @@ INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [compa
 
 SET IDENTITY_INSERT [dbo].[car_location] OFF
 
-SET
-    IDENTITY_INSERT [dbo].[car_option] ON;
 
-INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+
+
+
+SET
+IDENTITY_INSERT [dbo].[car_option] ON;
+
+INSERT
+[dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (1, 1, 1, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (2, 1, 2, 2000, 0.800000011920929, 4)
+VALUES (2, 1, 2, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (3, 1, 3, 2200, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (4, 1, 4, 2200, 0.699999988079071, 3)
+VALUES (4, 1, 4, 2200, 0.70, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (5, 2, 1, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (6, 2, 2, 2000, 0.800000011920929, 4)
+VALUES (6, 2, 2, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (7, 3, 4, 2200, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (8, 4, 5, 2200, 0.699999988079071, 3)
+VALUES (8, 4, 5, 2200, 0.70, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (9, 3, 2, 2000, 0.800000011920929, 4)
+VALUES (9, 3, 2, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (10, 4, 3, 2200, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (11, 5, 4, 2200, 0.699999988079071, 3)
+VALUES (11, 5, 4, 2200, 0.70, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (12, 6, 8, 3000, 0.89999997615814209, 1)
+VALUES (12, 6, 8, 3000, 0.90, 1)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (13, 6, 9, 3200, 0.85000002384185791, 2)
+VALUES (13, 6, 9, 3200, 0.85, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (14, 7, 6, 2800, 0.800000011920929, 2)
+VALUES (14, 7, 6, 2800, 0.80, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (15, 7, 7, 2800, 0.85000002384185791, 3)
+VALUES (15, 7, 7, 2800, 0.85, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (16, 8, 5, 2500, 0.89999997615814209, 5)
+VALUES (16, 8, 5, 2500, 0.90, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (17, 9, 7, 3000, 0.800000011920929, 3)
+VALUES (17, 9, 7, 3000, 0.80, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (18, 10, 6, 2800, 0.800000011920929, 4)
+VALUES (18, 10, 6, 2800, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (19, 10, 8, 3000, 0.89999997615814209, 3)
+VALUES (19, 10, 8, 3000, 0.90, 3)
 SET IDENTITY_INSERT [dbo].[car_option] OFF;
 
-SET IDENTITY_INSERT [dbo].[user_data] ON
+SET
+IDENTITY_INSERT [dbo].[user_data] ON
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
-                          [city], [location], [address], [image], [authority])
+                          [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (1, N'admin', NULL, NULL, N'$2a$10$juAszWkBW1M0P5l8A6bQw..z3h4bU2AlzpPlerAfnxy2AqhiVwlai', NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, N'admin')
+        NULL, NULL, NULL, NULL, N'ROLE_ADMIN',1,NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
-                          [city], [location], [address], [image], [authority])
+                          [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (2, N'dealer', NULL, NULL, N'$2a$10$iVMluTlijqCYBRs3DtGO9./iYxFI/9wB2BP5fQavZeIpatQOeJMfC', NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, N'dealer')
+        NULL, NULL, NULL, NULL, N'ROLE_DEALER',1,NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
-                          [city], [location], [address], [image], [authority])
-VALUES (3, N'elvispan@gmail.com', NULL, NULL, N'$2a$10$rJUmwbkulb//M5phPQVQxuHCQozOcBeCd100fKJuycpxtyikGKl4K', NULL,
-        NULL, NULL, NULL, NULL, NULL, NULL, N'user')
+                          [city], [location], [address], [image], [authority], [enabled], [verification_code])
+VALUES (12, N'elvispan@gmail.com', NULL, NULL, N'$2a$10$rJUmwbkulb//M5phPQVQxuHCQozOcBeCd100fKJuycpxtyikGKl4K', NULL,
+        NULL, NULL, NULL, NULL, NULL, NULL, N'ROLE_USER',1,NULL)
 SET IDENTITY_INSERT [dbo].[user_data] OFF
 
 

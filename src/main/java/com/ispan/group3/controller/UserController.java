@@ -55,7 +55,7 @@ public class UserController {
 	//確定新增、修改
 	@PostMapping(path = "/SaveUser")
 	public String add(UserData mb) {
-		userService.saveOrUpdate(mb);
+		   
 		return "redirect:/user/list";
 	}
 	

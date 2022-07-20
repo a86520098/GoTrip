@@ -74,7 +74,7 @@
                             <!--                            <td th:text="${hotelroom.hotel.id}"></td>-->
                             <!--                            <td th:text="${hotelroom.id}"></td>-->
                             <form method="post" th:action="@{/getNewRoom/{id}(id=${mainHotel.id})}"
-                                  th:object="${hotelroom}">
+                                  th:object="${hotelroom} " enctype="multipart/form-data">
                                 <!--                                <td th:text="${hotelroom.hotel.id}"></td>-->
                                 <td th:text="${hotelroom.id}"></td>
                                 <fieldset class="form-group">
@@ -182,7 +182,7 @@
 
                                 <!-- HTML part -->
                                 <label>照片</label>
-                                <input type="file" name="imagefiles" id="progressbarTWInput"
+                                <input type="file" name="imageFiles" id="progressbarTWInput"
                                        accept="image/gif, image/jpeg, image/png" multiple>
                                 <div id="preview_progressbarTW_imgs"
                                      style="width:100%; height: 300px; overflow:scroll;">

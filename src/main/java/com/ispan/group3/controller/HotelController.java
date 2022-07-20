@@ -297,9 +297,9 @@ public class HotelController {
 
 
     @PostMapping("/getNewRoom/{id}")
-    public String getNewRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom, Model model,
-                             @PathVariable("id") Integer id,
-                             @RequestParam(value = "imagefiles", required = false) List<MultipartFile> files
+    public String getNewRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
+                             @RequestParam(value = "imageFiles", required = false) List<MultipartFile> files,
+                             @PathVariable("id") Integer id
     ) {
 //        Hotel hotel = new Hotel();//主表bean
 //        hotel.setHotel_name("豪華大酒店");
