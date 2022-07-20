@@ -70,14 +70,13 @@
                                 <thead>
                                 <tr>
                                     <th scope="col" class="text-center">#</th>
-                                    <th scope="col" class="text-center">飯店名稱</th>
-                                    <th scope="col" class="text-center">容納人數</th>
-                                    <th scope="col" class="text-center">地址</th>
-                                    <th scope="col" class="text-center">狀態</th>
-                                    <th scope="col" class="text-center">修改</th>
+                                    <th scope="col" class="text-center">房間名稱</th>
+                                    <th scope="col" class="text-center">適合人數</th>
+                                    <th scope="col" class="text-center">評數大小</th>
+                                    <th scope="col" class="text-center">房型</th>
+                                    <th scope="col" class="text-center">價位</th>
+                                    <th scope="col" class="text-center">編輯</th>
                                     <th scope="col" class="text-center">刪除</th>
-                                    <th scope="col" class="text-center">新增房間</th>
-                                    <th scope="col" class="text-center">查看房間</th>
                                 </tr>
                                 </thead>
                                 <tbody id="tbody">
@@ -85,8 +84,9 @@
                                     <td th:text="${roomList.id}"></td>
                                     <td th:text="${roomList.roomname}"></td>
                                     <td th:text="${roomList.peopleCount}"></td>
-                                    <td th:text="${roomList.fullAddress}"></td>
-                                    <td th:text="${roomList.status}"></td>
+                                    <td th:text="${roomList.hotelArea}"></td>
+                                    <td th:text="${roomList.roomtype}"></td>
+                                    <td th:text="${roomList.roomprice}"></td>
                                     <td> 修改</td>
                                     <td> 刪除</td>
                                     <th>
