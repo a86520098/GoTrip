@@ -61,7 +61,6 @@ public class Hotel {
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL) //表示被維護端
     private List<HotelRoom> hotelroomList;
     
-
-    	
+    
 
 }
