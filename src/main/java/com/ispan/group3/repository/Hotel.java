@@ -50,7 +50,7 @@ public class Hotel {
 	@Transient
 	@JsonIgnore
 	private  MultipartFile productImage;//前端照片
-	
+
 	
 
 

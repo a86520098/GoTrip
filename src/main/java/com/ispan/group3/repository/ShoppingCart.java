@@ -34,7 +34,7 @@ public class ShoppingCart {
 		}
 	}
 
-	public boolean modifyQty(String oid, int newQty) {
+	public boolean updateItem(String oid, int newQty) {
 		if ( cart.get(oid) != null ) {
 		   OrderItemBean  bean = cart.get(oid);
 		   bean.setQuantity(newQty);
@@ -44,7 +44,7 @@ public class ShoppingCart {
 		}
 	}
 	// 刪除某項商品
-	public int deleteBook(String productId) {
+	public int deleteItem(String productId) {
 		if ( cart.get(productId) != null ) {
 	       cart.remove(productId);  // Map介面的remove()方法
 	       return 1;
