@@ -95,8 +95,7 @@ public class UserData{
 		this.authority = authority;
 	}
 
-<<<<<<< HEAD
-=======
+
 	public int getUser_id() {
 		return user_id;
 	}
@@ -217,9 +216,5 @@ public class UserData{
 		this.verificationCode = verificationCode;
 	}
 
-
->>>>>>> 251aa6bdf4cb16518a7d54479ff28538e7547e16
-	
-	
 
 }

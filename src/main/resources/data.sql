@@ -877,7 +877,7 @@ VALUES (1, N'阿里山國家森林遊樂區門票', N'59號', N'嘉義縣', N'�
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>')
-SET IDENTITY_INSERT [dbo].[ticket] OFF
+
 
 SET IDENTITY_INSERT [dbo].[ticket_image] ON;
 INSERT INTO [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1),(2, N'/data/uploadimages/ticket/阿里山2.jpg',1),(3, N'/data/uploadimages/ticket/阿里山3.jpg',1),(4, N'/data/uploadimages/ticket/阿里山4.jpg',1),(5, N'/data/uploadimages/ticket/阿里山5.jpg',1),(6, N'/data/uploadimages/ticket/阿里山6.jpg',1)
