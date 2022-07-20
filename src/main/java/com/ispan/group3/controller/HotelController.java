@@ -279,9 +279,10 @@ public class HotelController {
     // ======== 前台商家系統 ========
 
     //前-後台主頁面
-    @GetMapping("/vendor/hotels/{companyId}")
-    public String findByCompany(@PathVariable Integer companyId, Model model) {
-        model.addAttribute("hotel", hotelService.findByCompany(companyId));
+    @GetMapping("/vendor/hotels")
+    public String findByCompany(Model model) {
+//        model.addAttribute("hotel", hotelService.findByCompany(companyId));
+        model.addAttribute("hotel", hotelService.findAll());
         return "/frontend/hotel/hotel-index";
     }
 
