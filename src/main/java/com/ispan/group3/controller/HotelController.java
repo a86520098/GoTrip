@@ -369,5 +369,11 @@ public class HotelController {
         return "redirect:/backend/index";
     }
 
+    @GetMapping("/vendor/newHotel")
+    public String NewHotel(Model model) {
+        model.addAttribute("hotel", new Hotel());
+        return "/frontend/hotel/NewHotel-form";
+    }
+
 
 }
