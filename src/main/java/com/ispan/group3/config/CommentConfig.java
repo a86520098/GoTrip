@@ -31,7 +31,7 @@ public class CommentConfig {
 				randUserId += 1; //1~1000
 				int randRating = rand.nextInt(3); //0-2
 				randRating += 3; //3~5
-				Comment comment = new Comment("carRental", randItemId, "account" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
+				Comment comment = new Comment("carRental", randItemId, "user" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
 				cService.save(comment);
 			}
 
@@ -50,7 +50,7 @@ public class CommentConfig {
 				randUserId += 1; //1~1000
 				int randRating = rand.nextInt(3); //0-2
 				randRating += 3; //3~5
-				Comment comment = new Comment("ticket", randItemId, "account" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
+				Comment comment = new Comment("ticket", randItemId, "user" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
 				cService.save(comment);
 			}
 			
@@ -69,7 +69,7 @@ public class CommentConfig {
 				randUserId += 1; //1~1000
 				int randRating = rand.nextInt(3); //0-2
 				randRating += 3; //3~5
-				Comment comment = new Comment("hotel", randItemId, "account" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
+				Comment comment = new Comment("hotel", randItemId, "user" + randUserId, new Timestamp(System.currentTimeMillis()), randRating, "", "show");
 				cService.save(comment);
 			}
 			

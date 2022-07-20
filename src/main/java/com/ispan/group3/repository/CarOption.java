@@ -34,32 +34,6 @@ public class CarOption {
 	private Integer priceSale;
 	private Integer amount;
 	
-	public CarOption() {
-		
-	}
-	
-	public CarOption(Integer id, CarLocation carLocation, CarModel carModel, Integer price, Float discount,
-			Integer priceSale, Integer amount) {
-		this.id = id;
-		this.carLocation = carLocation;
-		this.carModel = carModel;
-		this.price = price;
-		this.discount = discount;
-		this.priceSale = priceSale;
-		this.amount = amount;
-	}
-
-
-	public CarOption(CarLocation carLocation, CarModel carModel, Integer price, Float discount, Integer priceSale,
-			Integer amount) {
-		this.carLocation = carLocation;
-		this.carModel = carModel;
-		this.price = price;
-		this.discount = discount;
-		this.priceSale = priceSale;
-		this.amount = amount;
-	}
-	
 
 	public Integer getId() {
 		return id;

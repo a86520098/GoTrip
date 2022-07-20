@@ -36,52 +36,10 @@ public class CarModel {
 	private Integer suitcase;
 	private Integer bag;
 	private String image;
-
 	
 	@OneToMany(mappedBy = "carModel")
 	@JsonIgnore
 	private List<CarOption> carOptions;
-	
-	public CarModel() {
-		
-	}
-
-	public CarModel(Integer id, String type, String makeCh, String makeEn, String model, String power,
-			String transmission, Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag,
-			String image, List<CarLocation> carLocations, List<CarOption> carOptions) {
-		this.id = id;
-		this.type = type;
-		this.makeCh = makeCh;
-		this.makeEn = makeEn;
-		this.model = model;
-		this.power = power;
-		this.transmission = transmission;
-		this.engine = engine;
-		this.seat = seat;
-		this.door = door;
-		this.suitcase = suitcase;
-		this.bag = bag;
-		this.image = image;
-		this.carOptions = carOptions;
-	}
-	
-	public CarModel(String type, String makeCh, String makeEn, String model, String power, String transmission,
-			Integer engine, Integer seat, Integer door, Integer suitcase, Integer bag, String image, List<CarOption> carOptions) {
-		this.type = type;
-		this.makeCh = makeCh;
-		this.makeEn = makeEn;
-		this.model = model;
-		this.power = power;
-		this.transmission = transmission;
-		this.engine = engine;
-		this.seat = seat;
-		this.door = door;
-		this.suitcase = suitcase;
-		this.bag = bag;
-		this.image = image;
-		this.carOptions = carOptions;
-	}
-
 
 
 	public Integer getId() {

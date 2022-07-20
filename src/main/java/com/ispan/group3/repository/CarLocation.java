@@ -30,70 +30,11 @@ public class CarLocation {
 	private String longitude;
 	private String latitude;
 	private String image;
-
+	private String status;
 	
 	@OneToMany(mappedBy = "carLocation", fetch = FetchType.LAZY)
 	private List<CarOption> carOptions;
 	
-	public CarLocation() {
-		
-	}
-	
-	public CarLocation(Integer id, Integer companyId, String companyName, String name, String country, String county, String district,
-			String address, String phone, String openTime, String closeTime,String longitude, String latitude, String image, List<CarOption> carOptions) {
-		this.id = id;
-		this.companyId = companyId;
-		this.companyName = companyName;
-		this.name = name;
-		this.country = country;
-		this.county = county;
-		this.district = district;
-		this.address = address;
-		this.phone = phone;
-		this.openTime = openTime;
-		this.closeTime = closeTime;
-		this.longitude = longitude;
-		this.latitude = latitude;
-		this.image = image;
-		this.carOptions = carOptions;
-	}
-
-
-	public CarLocation(Integer companyId, String companyName, String name, String country, String county, String district, String address,
-			String phone, String openTime, String closeTime, String longitude, String latitude, String image, List<CarOption> carOptions) {
-		this.companyId = companyId;
-		this.companyName = companyName;
-		this.name = name;
-		this.country = country;
-		this.county = county;
-		this.district = district;
-		this.address = address;
-		this.phone = phone;
-		this.openTime = openTime;
-		this.closeTime = closeTime;
-		this.longitude = longitude;
-		this.latitude = latitude;
-		this.image = image;
-		this.carOptions = carOptions;
-	}
-	
-	public CarLocation(Integer companyId, String companyName, String name, String country, String county, String district, String address,
-			String phone, String openTime, String closeTime, String longitude, String latitude, String image) {
-		this.companyId = companyId;
-		this.companyName = companyName;
-		this.name = name;
-		this.country = country;
-		this.county = county;
-		this.district = district;
-		this.address = address;
-		this.phone = phone;
-		this.openTime = openTime;
-		this.closeTime = closeTime;
-		this.longitude = longitude;
-		this.latitude = latitude;
-		this.image = image;
-	}
-
 
 	public Integer getId() {
 		return id;
@@ -207,6 +148,14 @@ public class CarLocation {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public List<CarOption> getCarOptions() {
