@@ -57,7 +57,7 @@
 <!--                             </div> -->
 <!--                         </div> -->
                         <div class="form-sub-w3ls">
-                            <input id="username" placeholder="Email" class="mail" type="email" name="username" required>
+                            <input id="username" placeholder="Email" class="mail" type="email" name="username" required onkeyup="CheckEmail()">
                             <div class="icon-agile">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </div>
@@ -124,7 +124,7 @@
          <script>
   	function CheckEmail() {
 
-		var email = document.getElementById("username").value;
+		var username = document.getElementById("username").value;
 // 		var res = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 // 		var flag1 = res.test(email);
 // 		if (flag1) {

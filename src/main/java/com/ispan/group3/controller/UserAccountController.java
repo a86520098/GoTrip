@@ -149,8 +149,8 @@ public class UserAccountController {
 		@ResponseBody
 		@PostMapping(value = "/CheckEmail", produces = "application/json; charset = UTF-8")
 		public boolean checkUser(@RequestParam String username) {
-			UserData mem = userService.findByUsername(username);
-			if (mem == null) {
+			UserData user = userRepository.findByUsername(username);
+			if (user == null) {
 				return true;
 			}
 			return false;
