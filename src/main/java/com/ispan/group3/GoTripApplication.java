@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GoTripApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(GoTripApplication.class, args);
 	}
 

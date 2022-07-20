@@ -2,6 +2,7 @@ package com.ispan.group3.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -101,6 +102,8 @@ public class CarController {
 	@GetMapping("/cars/locations")
 	public String findAllLocation(Model model) {
 		List<CarLocation> carLocations = locationService.findAll();
+		Predicate<CarLocation> condition = carLocation -> carLocation.getStatus().equals("隱藏");
+		carLocations.removeIf(condition);
 		model.addAttribute("carLocations", carLocations);
 		return "frontend/car/car-location";
 	}
@@ -154,7 +157,9 @@ public class CarController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		locationService.save(carLocation);
+		if (file != null) {
+			locationService.save(carLocation);
+		}
 		return "redirect:/vendor/cars/locations/" + carLocation.getCompanyId();
 	}
 

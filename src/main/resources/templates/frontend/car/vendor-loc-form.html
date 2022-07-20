@@ -128,10 +128,15 @@
 									<label class="col-lg-2 col-form-label" for="closeTime">據點照片</label>
 									<div class="col-lg-7">
 										<input type="file" class="form-control custom-file-input py-2 bgwhite" style="background-color: white; padding-bottom: 3px" name="imagefile" id="imagefile">
-										<div class="row" id="formFile"></div>
+										<div class="row" id="formFile">
+											<div class="col-12">
+												<img class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
+											</div>
+										</div>
 									</div>
 								</div>
 
+								<input th:field="*{image}" type="hidden" class="form-control" />
 								<input th:field="*{longitude}" id="longitude" type="hidden" class="form-control" />
 								<input th:field="*{latitude}" id="latitude" type="hidden" class="form-control" />
 								
