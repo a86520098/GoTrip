@@ -881,15 +881,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [p
 
 <p>&nbsp;</p>
 
-<<<<<<< HEAD
+
 <p>&nbsp;</p>
 ', N'阿里山國家森林遊樂區門票', NULL, NULL, NULL)
 INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (2, N'春德路105號', N'桃園市', N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3', N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, N'
 <p>－ 行程特色 －</p>
-=======
-<p>&nbsp;</p>')
 
->>>>>>> 5237d29005c02fe14e3c6fc70a8ddf1afceb0377
 
 <p>Xpark 為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出 360&deg; 具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Xpark 是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。<br />
 <br />
