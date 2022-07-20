@@ -71,10 +71,5 @@ public class TicketService{
 	public Ticket getBookById(long ticketNo) {
 		return TicketRepository.findById(ticketNo).orElse(null);
 	}
-
-//	@Override
-//	public Optional<Book> findById(Long id) {
-//		return bookRepository.findById(id).orElse(null);
-//	}
-
+	
 }

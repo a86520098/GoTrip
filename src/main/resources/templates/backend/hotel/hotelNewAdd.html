@@ -60,8 +60,9 @@
 
                                                 <form method="post" th:action="@{/addHotel}" th:object="${hotel}"
                                                       enctype="multipart/form-data">
-
-                                                    <td>住宿類型</td>
+                                                    <h3>填寫您住宿資料</h3>
+                                                    <hr>
+                                                    <td>您住宿類型</td>
                                                     <fieldset class="form-group">
                                                         <select th:field="*{hotelStyle}" class="form-select"
                                                                 aria-label="Default select example">
@@ -74,31 +75,15 @@
                                                     </fieldset>
 
                                                     <fieldset class="form-group">
-                                                        <label>住宿面積大小</label>
-                                                        <input type="text" th:field="*{hotelArea}" id="hotelArea"
-                                                               class="form-control" onkeypress="return my_key(event)"/>
+                                                        <label>飯店名稱</label>
+                                                        <input type="text" th:field="*{hotel_name}" id="name"
+                                                               class="form-control"/>
                                                     </fieldset>
 
                                                     <fieldset class="form-group">
-                                                        <label>可住人數</label>
-                                                        <input type="text" th:field="*{peopleCount}" id="peopleCount"
-                                                               class="form-control" onkeypress="return my_key(event)"/>
-                                                    </fieldset>
-
-                                                    <fieldset class="form-group">
-                                                        <label>衛浴數量</label>
-                                                        <input type="text" th:field="*{bathCount}" id="bathCount"
-                                                               class="form-control" onkeypress="return my_key(event)"/>
-                                                    </fieldset>
-                                                    <fieldset class="form-group">
-                                                        <label>臥室數量</label>
-                                                        <input type="text" th:field="*{bedroomCount}" id="bedroomCount"
-                                                               class="form-control" onkeypress="return my_key(event)"/>
-                                                    </fieldset>
-                                                    <fieldset class="form-group">
-                                                        <label>床的數量</label>
-                                                        <input type="text" th:field="*{bedCount}" id="bedCount"
-                                                               class="form-control" onkeypress="return my_key(event)"/>
+                                                        <label>介紹一下你的地方</label>
+                                                        <textarea th:field="*{introduce}" id="introduce"
+                                                                  class="form-control"> </textarea>
                                                     </fieldset>
 
                                                     <fieldset class="form-group">
@@ -110,8 +95,6 @@
                                                     <p class="card-description mt-4">
                                                         聯絡地址
                                                     </p>
-
-
                                                     <input type="hidden" class="js-demeter-tw-zipcode-selector"
                                                            data-city="#city" data-dist="#location" placeholder="郵遞區號"
                                                            size="6" id="yoyo" name="yoyo" readonly/>
@@ -125,28 +108,22 @@
                                                     <!--                            //縣市鄉鎮自動帶入此地址欄位-->
 
                                                     <fieldset class="form-group">
-                                                        <label>住宿規定</label>
-                                                        <textarea th:field="*{hotelRule}" id="hotelRule"
-                                                                  class="form-control"> </textarea>
-                                                    </fieldset>
-
-                                                    <fieldset class="form-group">
                                                         <label>房客該如何前往妳的住宿</label>
                                                         <textarea th:field="*{Howgoto}" id="Howgoto"
                                                                   class="form-control"> </textarea>
                                                     </fieldset>
 
+                                                    <td>狀態</td>
+                                                    <fieldset class="form-group">
+                                                        <select th:field="*{status}" class="form-select"
+                                                                aria-label="Default select example">
+                                                            <option value="營業中">營業中</option>
+                                                            <option value="未營業">未業中</option>
+                                                        </select>
+                                                    </fieldset>
+                                                    <h3>填寫您房間資料</h3>
 
-                                                    <fieldset class="form-group">
-                                                        <label>飯店名稱</label>
-                                                        <input type="text" th:field="*{hotel_name}" id="name"
-                                                               class="form-control"/>
-                                                    </fieldset>
-                                                    <fieldset class="form-group">
-                                                        <label>介紹一下你的地方</label>
-                                                        <textarea th:field="*{introduce}" id="introduce"
-                                                                  class="form-control"> </textarea>
-                                                    </fieldset>
+                                                    <hr>
 
                                                     <label>您住宿的特色1</label>
                                                     <select class="form-select form-select-lg mb-3"
@@ -172,40 +149,17 @@
 
 
                                                     <fieldset class="form-group">
-                                                        <label>你提供什麼設施呢?</label><br>
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="浴巾"/>浴巾
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="空調"/>空調
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="陽台或露台"/>陽台或露台
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="書桌"/>書桌
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="免鑰匙進出"/>免鑰匙進出
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="濱海"/>濱海
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="免費停車"/>免費停車
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="免費wifi"/>免費wifi
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="暖風"/>暖風
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="廚房用具(廚具`油`調味料)"/>廚房用具(廚具`油`調味料)
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="專用入口"/>專用入口
-                                                        <input type="checkbox" th:field="*{provide}" id="provide"
-                                                               value="電視"/>電視
-
-                                                    </fieldset>
-
-
-                                                    <fieldset class="form-group">
-                                                        <label>價格</label>
-                                                        <input type="text" th:field="*{price}" id="name"
+                                                        <label>您建築評數大小</label>
+                                                        <input type="text" th:field="*{hotelArea}" id="hotelArea"
                                                                class="form-control" onkeypress="return my_key(event)"/>
                                                     </fieldset>
+
+                                                    <fieldset class="form-group">
+                                                        <label>最高容納人數</label>
+                                                        <input type="text" th:field="*{peopleCount}" id="peopleCount"
+                                                               class="form-control" onkeypress="return my_key(event)"/>
+                                                    </fieldset>
+
 
                                                     <fieldset class="form-group">
                                                         <label>業主名稱</label>
@@ -219,35 +173,16 @@
                                                                class="form-control" onkeypress="return my_key(event)"/>
                                                     </fieldset>
 
-                                                    <fieldset class="form-group">
-                                                        <label>照片</label>
-                                                        <input th:field="*{productImage}" name="fileName" id="filename"
-                                                               type='file' accept="image/png, image/jpeg, image/jpg"
-                                                               multiple="multiple"/>
-                                                        <input type="button" id="submitBtn" onclick="checkSubmit()"
-                                                               value="上传"/>
-                                                    </fieldset>
 
-                                                    <td>狀態</td>
-                                                    <fieldset class="form-group">
-                                                        <select th:field="*{status}" class="form-select"
-                                                                aria-label="Default select example">
-                                                            <option value="營業中">營業中</option>
-                                                            <option value="未營業">未業中</option>
-                                                        </select>
-                                                    </fieldset>
-                                                    <!-- -------------------------------------------------------------以下修改 -->
+                                                    <!-- HTML part -->
+                                                    <label>照片</label>
+                                                    <input type="file" name="imagefiles" id="progressbarTWInput"
+                                                           accept="image/gif, image/jpeg, image/png" multiple>
+                                                    <div id="preview_progressbarTW_imgs"
+                                                         style="width:100%; height: 300px; overflow:scroll;">
+                                                        <p>目前沒有圖片</p>
+                                                    </div>
 
-
-                                                    <td>房型</td>
-                                                    <fieldset class="form-group">
-                                                        <select th:field="*{roomtype}" class="form-select"
-                                                                aria-label="Default select example">
-                                                            <option value="單人房">單人房</option>
-                                                            <option value="雙人房">雙人房</option>
-                                                            <option value="四人房">四人房</option>
-                                                        </select>
-                                                    </fieldset>
                                                     <!-- -------------------------------------------------------------以下修改 -->
                                                     <button type="submit" class="btn btn-success">Save</button>
 
@@ -318,7 +253,29 @@
 
 
 </script>
+<!-- JavaScript part -->
+<script>
+    $("#progressbarTWInput").change(function () {
+        $("#preview_progressbarTW_imgs").html(""); // 清除預覽
+        readURL(this);
+    });
 
+    function readURL(input) {
+        if (input.files && input.files.length >= 0) {
+            for (var i = 0; i < input.files.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = $("<img width='300' height='200'>").attr('src', e.target.result);
+                    $("#preview_progressbarTW_imgs").append(img);
+                }
+                reader.readAsDataURL(input.files[i]);
+            }
+        } else {
+            var noPictures = $("<p>目前沒有圖片</p>");
+            $("#preview_progressbarTW_imgs").append(noPictures);
+        }
+    }
+</script>
 </body>
 
 </html>

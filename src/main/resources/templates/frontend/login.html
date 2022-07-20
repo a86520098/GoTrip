@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <!-- Head -->
     <head>
         <title>立即登入GoTrip！</title>
@@ -13,6 +14,7 @@
         <link th:href="@{css/loginCSS/popuo-box.css}" rel="stylesheet" type="text/css" media="all" />
         <!-- Style -->
         <link rel="stylesheet" th:href="@{css/loginCSS/style.css}" type="text/css" media="all">
+        
     </head>
     <!-- //Head -->
 
@@ -20,17 +22,20 @@
     <body><h1>立即登入GoTrip！</h1>
         <div class="w3layoutscontaineragileits">
             <h2>Login here</h2>
-            <form id=loginForm method="POST" th:action="@{/login}" th:Object="${userAccount}" enctype="multipart/form-data" autocomplete="off">
-    		<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/>
-                <input type="email" Name="email" placeholder="EMAIL" required>
+            <form id=loginForm method="POST" th:action="@{/login}">
+<!--     		<form id="loginForm" th:action="@{/loginUrl}" method="POST"> -->
+<!--     		<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/> -->
+                <input type="text" Name="username" placeholder="EMAIL" required>
                 <input type="password" Name="password" placeholder="PASSWORD" required>
+                <input type="hidden" name="${_csrf.parameterName}" th:value="${_csrf.token}" th:if="${_csrf}" />
                 <ul class="agileinfotickwthree">
-                    <li><input type="checkbox" id="brand1" value="">
+                    <li><input type="checkbox" id="brand1" name="remember-me" value="true">
                         <label for="brand1">
                             <span></span>Remember me</label>
                             <a href="#">Forgot password?</a>
                     </li>
                 </ul>
+                
                 <div class="aitssendbuttonw3ls">
                     <input type="submit" value="登入">
                     <p>還沒有GoTrip會員？<span>→</span><a class="w3_play_icon1" href="#small-dialog1">點我加入！</a></p>
@@ -45,24 +50,33 @@
                 <div class="contact-w3-agileits">
                     <h3>Register Form</h3>
                     <form id="registerForm" method="POST" th:action="@{/register}" th:Object="${userAccountVO}" enctype="multipart/form-data" autocomplete="off">
+<!--                         <div class="form-sub-w3ls"> -->
+<!--                             <input placeholder="User Name"  type="text" name="ch_name" required> -->
+<!--                             <div class="icon-agile"> -->
+<!--                                 <i class="fa fa-user" aria-hidden="true"></i> -->
+<!--                             </div> -->
+<!--                         </div> -->
                         <div class="form-sub-w3ls">
-                            <input placeholder="User Name"  type="text" name="ch_name" required>
-                            <div class="icon-agile">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                        <div class="form-sub-w3ls">
-                            <input placeholder="Email" class="mail" type="email" name="email"　required>
+                            <input id="username" placeholder="Email" class="mail" type="email" name="username" required>
                             <div class="icon-agile">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </div>
+                            <span id="message" style="position:absolute ; right:17px;"></span>
                         </div>
                         <div class="form-sub-w3ls">
-                            <input placeholder="Password"  type="password" name="password" required>
+                            <input id="pwd1" placeholder="Password"  type="password" name="password" required>
                             <div class="icon-agile">
                                 <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             </div>
                         </div>
+                        <div class="form-sub-w3ls">
+                            <input id="pwd2" placeholder="Confirm Password"  type="password" name="passwd" required onkeyup="validate()">
+                            <div class="icon-agile">
+                                <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                            </div>
+                            <span id="checkMsg" style="position:absolute ; right:17px;"></span>
+                        </div>
+<!--                         <input type="hidden" name="authority" value="user"> -->
 <!--                         <div class="form-sub-w3ls"> -->
 <!--                             <input placeholder="Confirm Password"  type="password" name="password" required> -->
 <!--                             <div class="icon-agile"> -->
@@ -73,7 +87,7 @@
                             <label class="checkbox"><input type="checkbox" name="checkbox" checked="">I Accept Terms & Conditions</label>
                         </div>
                         <div class="submit-w3l">
-                            <input type="submit" value="註冊">
+                            <input id="submit" type="submit" value="註冊">
                         </div>
                     </form>
                 </div>
@@ -106,6 +120,56 @@
                 });																				
             });
         </script>
+        
+         <script>
+  	function CheckEmail() {
+
+		var email = document.getElementById("username").value;
+// 		var res = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+// 		var flag1 = res.test(email);
+// 		if (flag1) {
+			$.ajax({
+				type : "POST",
+				url : "./CheckEmail",
+				data : "username=" + username,
+				success : function(data) {
+					if (data == true) {
+					document.getElementById("message").innerHTML = "<font color='green'>此信箱可以使用</font>"
+					document.getElementById('submit').disabled=false;
+					return true;
+					} else {
+					document.getElementById("message").innerHTML = "<font color='red'>此信箱已被註冊</font>";
+					document.getElementById('submit').disabled=true;
+					return false;
+					}
+				}
+			});
+// 		} else {
+// 			document.getElementById("s_email").innerHTML = "<p class='wrong'>Email格式錯誤</p>";
+// 			document.getElementById('submit').disabled=true;
+// 			return false;
+// 		}
+			
+	}
+  	
+  	
+// 	檢查兩次密碼輸入是否相同
+    function validate() {
+        var pwd1 = document.getElementById("pwd1").value;
+        var pwd2 = document.getElementById("pwd2").value;
+       if(pwd1 == pwd2) {
+         document.getElementById("checkMsg").innerHTML="<font color='green'>OK</font>";
+         document.getElementById("submit").disabled = false;
+        }
+        else {
+         document.getElementById("checkMsg").innerHTML="<font color='red'>兩次密碼不同</font>";
+          document.getElementById("submit").disabled = true;
+        }
+    }
+  	
+  	</script>
+  	
+  	
         
     </body>
     

@@ -78,8 +78,8 @@ public class Ticket {
 	@OneToMany(mappedBy="ticket",cascade = CascadeType.ALL)
 	private Set<TicketImage> images;
 
-	@OneToMany(mappedBy="ticket",cascade = CascadeType.ALL)
-	private Set<TicketPlan> plans;
+//	@OneToMany(mappedBy="ticket",cascade = CascadeType.ALL)
+//	private Set<TicketPlan> plans;
 	
 //	@Column(name = "ticketImage")
 //	private String ticketImage;

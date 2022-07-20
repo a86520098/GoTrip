@@ -17874,9 +17874,15 @@ iframe {
 	text-align: right;
 }
 
+.txt-justify{
+	text-align: justify;
+}
+
 .txt-middle {
 	vertical-align: middle;
 }
+
+
 
 
 

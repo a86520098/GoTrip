@@ -118,7 +118,6 @@
 															<input type="checkbox" name="deleteImages" th:value="${image.id}" th:id="${image.id}">刪除
 															<img th:src="@{${image.imagePath}}" class="rounded"/>
 	        											</div>
-	        										
 													</div>
 												</div>
 											</div>
@@ -129,8 +128,8 @@
 												</div>
 											</div>
 											<div class="d-flex justify-content-end mb-4">
-												<button id="btn-insert-correct" type="button" class="btn btn-primary mr-1 justify-content-end mr-4 font-weight-bold">正確demo</button>
-												<button id="btn-insert-wrong" type="button" class="btn btn-primary mr-1 justify-content-end mr-4 font-weight-bold">錯誤demo</button>
+												<button id="btn-insert-correct" type="button" class="btn btn-primary mr-1 justify-content-end mr-4 font-weight-bold">正確資料</button>
+												<button id="btn-insert-wrong" type="button" class="btn btn-primary mr-1 justify-content-end mr-4 font-weight-bold">錯誤資料</button>
 												<button id="btn-insert" type="submit" class="btn btn-primary mr-1 justify-content-end mr-4 font-weight-bold">儲存資料</button>
 												<!-- <button class="btn btn-light justify-content-end">取消新增</button> -->
 												<a class="btn btn-light justify-content-end" th:href="@{/backend/comments}">回上一頁</a>

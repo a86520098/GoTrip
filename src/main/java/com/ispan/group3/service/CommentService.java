@@ -16,6 +16,8 @@ public interface CommentService {
 
 	void deleteById(Integer id);
 	
-	List<CommentCount> findAllRatings(); 
+	List<CommentCount> findAllRatings();
+
+	List<Comment> findByItem(String table, Integer id); 
 
 }
