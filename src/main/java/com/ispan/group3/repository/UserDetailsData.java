@@ -52,40 +52,62 @@ public class UserDetailsData implements UserDetails{
 
 	@Override
 	public boolean isEnabled() {
-		
 		return userData.isEnabled();
+	}
+	
+	
+	public void setUsername(String username) {
+		this.userData.setUsername(username);
 	}
 	
 	public void setCh_name(String ch_name) {
 		this.userData.setCh_name(ch_name);
 	}
-
+	
 	public void setEn_name(String en_name) {
 		this.userData.setEn_name(en_name);
 	}
-
+	
 	public void setPhone(String phone) {
 		this.userData.setPhone(phone);
 	}
-
+	
 	public void setBirthday(String birthday) {
 		this.userData.setBirthday(birthday);
 	}
-
+	
 	public void setGender(String gender) {
 		this.userData.setGender(gender);
 	}
-
+	
 	public void setCity(String city) {
 		this.userData.setCity(city);
 	}
-
+	
 	public void setLocation(String location) {
 		this.userData.setLocation(location);
 	}
-
+	
 	public void setAddress(String address) {
 		this.userData.setAddress(address);
 	}
+	
+	public void setDealer_id(String Dealer_id) {
+		this.userData.setDealer_name(Dealer_id);
+	}
+	
+	public void setTax_id(String tax_id) {
+		this.userData.setTax_id(tax_id);
+	}
+	
+	public void setAuthority(String authority) {
+		this.userData.setAuthority(authority);
+	}
+	
+	public boolean isEnabled(boolean b) {
+		return userData.isEnabled();
+	}
+
+
 	
 }

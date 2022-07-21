@@ -8,11 +8,20 @@ public class test {
 	public static void main(String[] args) {
 		
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encode = passwordEncoder.encode("Admin1234");
+		String encode = passwordEncoder.encode("admin");
 		System.out.println(encode);
 
-		String encode2 = passwordEncoder.encode("Aaaa1234");
+		String encode2 = passwordEncoder.encode("dealer");
 		System.out.println(encode2);
-	}
+		
+		String encode3 = passwordEncoder.encode("user");
+		System.out.println(encode3);
+
+	
+	
+	
+	
+	
+}
 
 }

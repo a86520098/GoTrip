@@ -1,16 +1,12 @@
 package com.ispan.group3.repository;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Getter
-@Setter
 @Table(name = "HotelRoomImage")
 @Component
 public class HotelRoomImage {
@@ -18,7 +14,6 @@ public class HotelRoomImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "imagePath")
     private String imagePath;
     @ManyToOne
     @JoinColumn(name = "hotelroom_id")

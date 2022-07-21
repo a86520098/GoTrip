@@ -218,6 +218,6 @@ public class HotelRoom {
 	public void setHotelRoomImageList(List<HotelRoomImage> hotelRoomImageList) {
 		this.hotelRoomImageList = hotelRoomImageList;
 	}
-
-
+    
+    
 }

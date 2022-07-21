@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +14,10 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.ispan.group3.repository.CarLocation;
 import com.ispan.group3.repository.CarModel;
+import com.ispan.group3.repository.CarOption;
 import com.ispan.group3.service.CarLocationService;
 import com.ispan.group3.service.CarModelService;
+import com.ispan.group3.service.CarOptionService;
 
 @RestController
 @RequestMapping(path = "/api")
@@ -21,11 +25,13 @@ public class CarAjaxController {
 
 	private final CarModelService modelService;
 	private final CarLocationService locationService;
+	private final CarOptionService optionService;
 
 	@Autowired
-	public CarAjaxController(CarModelService modelService, CarLocationService locationService) {
+	public CarAjaxController(CarModelService modelService, CarLocationService locationService, CarOptionService optionService) {
 		this.modelService = modelService;
 		this.locationService = locationService;
+		this.optionService = optionService;
 	}
 	
 	@GetMapping({"/cars","/cars/models"})
@@ -41,6 +47,14 @@ public class CarAjaxController {
 	@GetMapping("/cars/locations")
 	public List<CarLocation> findAllLocations() {
 		return locationService.findAll();
+	}
+
+	@PostMapping("/cars/options")
+	public Boolean saveModel(@RequestBody CarOption carOption) {
+		carOption.setCarModel(modelService.findById(7));
+		carOption.setCarLocation(locationService.findById(4));
+		optionService.save(carOption);
+		return true;
 	}
 	
 	@GetMapping("/cars/locations/geojson")
