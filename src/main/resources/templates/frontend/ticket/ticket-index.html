@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="frontend/partials/fragment :: head"></head>
+
+<body class="">
+<!-- Header -->
+<header th:replace="frontend/partials/fragment :: header"></header>
+<!-- Cart 購物車 -->
+<div th:replace="frontend/partials/fragment :: cart"></div>
+
+<section class="bg-img1 txt-center p-lr-15 p-tb-92"
+         th:style="'background-image: url(' + @{/images/hotelpic.jpg} + ');'">
+    <h2 class="ltext-103 font-weight-bold clwhite txt-center">景點門票管理</h2>
+</section>
+<!-- Product 內文 -->
+<div class="bg0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 p-b-80 bg6">
+                <div class="side-menu">
+                    <div class="p-t-55">
+                        <h2 class="ltext-103 cl5 font-weight-bold m-b-30 p-lr-20">門票管理</h2>
+                        <ul class="p-lr-20">
+                            <li class="bor18">
+                                <a th:href="@{#}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    檢視訂單
+                                </a>
+                            </li>
+                            <li class="bor18">
+                                <a th:href="@{/vendor/ticket/1}"
+                                class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    門票列表
+                                </a>
+                            </li>
+                            <li class="bor18">
+                                <a th:href="@{/vendor/ticket/addTicket}"
+                                class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    新增門票
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Block2 -->
+
+            <div class="col-md-9 grid-margin my-5 pl-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title font-weight-bold">門票列表</h4>
+                        <!-- <h6 class="card-title font-weight-bold">預計放房間</h6> -->
+                        <div class="p-t-20">
+                            <table id="data-table" class="display table table-hover w-100" style="text-align: center">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="text-center">#</th>
+                                    <th scope="col" class="text-center">景點名稱</th>
+                                    <!-- <th scope="col" class="text-center">電話</th> -->
+                                    <!-- <th scope="col" class="text-center">國家/地區</th> -->
+                                    <th scope="col" class="text-center">城市</th>
+                                    <th scope="col" class="text-center">鄉鎮區</th>
+                                    <th scope="col" class="text-center">地址</th>
+                                    <th scope="col" class="text-center">價格</th>
+                                    <!-- <th scope="col" class="text-center">圖片</th> -->
+                                    <th scope="col" class="text-center">標籤編號</th>
+                                    <th scope="col" class="text-center">標籤名稱</th>
+                                    <th scope="col" class="text-center">狀態</th>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                    <tr th:each="ticket:${ticketList}" class="odd gradeX" scope="row">
+                                        <td th:text="${ticket.ticketNo}"></td>
+                                        <td th:text="${ticket.ticketName}"></td>
+                                        <!-- <td th:text="${ticket.phone}"></td> -->
+                                        <!-- <td th:text="${ticket.country}"></td> -->
+                                        <td th:text="${ticket.city}"></td>
+                                        <td th:text="${ticket.location}"></td>
+                                        <td th:text="${ticket.address}"></td>
+                                        <td th:text="${ticket.price}"></td>
+                                        <td th:text="${ticket.tagNo}"></td>
+                                        <td th:text="${ticket.tagName}"></td>                                   
+                                        <!-- <td th:text="${location.phone}"></td> -->
+                                        <!-- <td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td> -->
+                                        <!-- <td th:text="${location.carOptions.size()}"></td> -->
+                                        <td class="font-weight-bold" th:switch="${ticket.status}">
+                                            <div th:case="0" th:text="提交完成"></div>
+                                            <div th:case="1" th:text="審核中" ></div>
+                                            <div th:case="2" th:text="已取消" ></div>
+                                            <div th:case="3" th:text="不通過" ></div>
+                                            <!-- <div th:case="4" th:text="課程完成"/> -->
+                                            <!-- <div th:case="5" th:text="已評價"/> -->
+                                        <span th:if="${ticket.status} == 0">
+                                            <i class="icon_error-triangle_alt" th:onclick="|updateState(${ticket.ticketNo},2,'確認取消資料?','')|" style="cursor:pointer;">&nbsp;取消</i>
+                                        </span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <!-- 詳情 -->
+                                                <!-- <input name="ticketImage" type="hidden" th:value="${ticket.images}">
+                                                <button class="btn btn-light btn-rounded btn-sm js-show-modal1">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button> -->
+
+                                                <!-- Edit -->
+                                            <!-- <a th:href="@{/vendor/ticket/{ticketNo}(id=${ticket.ticketNo})}"
+                                                class="btn btn-light btn-rounded btn-sm"> 
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a> -->
+
+                                            <!-- <form th:id="'deleteLocation' + ${ticket.ticketNo}" th:action="@{/vendor/ticket/}+${ticket.ticketNo}"
+                                                th:method="delete" class="d-inline">
+                                                <button type="button" th:value="${ticket.ticketNo}" class="btn btn-delete btn-light btn-rounded btn-sm">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </button>
+                                            </form> -->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <!-- <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
+			    <div class="overlay-modal1 js-hide-modal1"></div>
+			    <div class="container">
+			        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+			            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
+			                <img th:src="@{/images/icons/icon-close.png}" alt="CLOSE">
+			            </button>
+			
+			            <div class="row">
+			                <div class="col-md-4 col-lg-5 p-b-30 px-5">
+			                    <img class="img-responsive my-4" alt="image" width="100%" height="auto" id="locationImage" src="/"/>
+			                </div>
+
+			                <div class="col-md-8 col-lg-7 p-b-30">
+			                    <div class="p-r-50 p-t-5 p-lr-0-lg">
+			                        <h4 id="locationName" class="mtext-105 cl2 js-name-detail p-b-14 font-weight-bold"></h4>
+									<div class="p-b-10">
+										<div class="rating-count" value="carRental">
+											尚無評論
+										</div>
+										<div class="p-t-20">
+											<i class="fa fa-map-marker" aria-hidden="true"></i>
+											<span id="locationDistrict"></span>
+										</div>
+										<p id="locationAddress" ></p>
+									</div>
+			
+			                        <div class="flex-w flex-m p-l-100 p-t-40 respon7">
+			                            <div class="flex-m bor9 p-r-10 m-r-11">
+			                                <a href="#"
+			                                   class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
+			                                   data-tooltip="Add to Wishlist">
+			                                    <i class="zmdi zmdi-favorite"></i>
+			                                </a>
+			                            </div>
+			
+			                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+			                               data-tooltip="Facebook">
+			                                <i class="fa fa-facebook"></i>
+			                            </a>
+			
+			                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+			                               data-tooltip="Twitter">
+			                                <i class="fa fa-twitter"></i>
+			                            </a>
+			
+			                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
+			                               data-tooltip="Google Plus">
+			                                <i class="fa fa-google-plus"></i>
+			                            </a>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div> -->
+    </div>
+</div>
+
+<!-- Footer -->
+<footer th:replace="frontend/partials/fragment :: footer"></footer>
+<!-- Back to top -->
+<div th:replace="frontend/partials/fragment :: toTop"></div>
+<!-- Modal1 -->
+<div th:replace="frontend/partials/fragment :: modal1"></div>
+<!-- javascript -->
+<div th:replace="frontend/partials/fragment :: script"></div>
+
+<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
+<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
+        src="vendors/datatables.net/jquery.dataTables.js"></script>
+<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
+        src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#data-table').DataTable({})
+    });
+
+    // 		$('#data-table tbody').on('click', function () {
+    //          var tr = $(this).closest('tr');
+    //          var row = table.row(tr);
+    //          if (row.child.isShown()) {
+    //              // This row is already open - close it
+    //              row.child.hide();
+    //              tr.removeClass('shown');
+    //          }
+    //          else {
+    //              // Open this row
+    //              row.child(format(row.data())).show();
+    //              tr.addClass('shown');
+    //          }
+    //      })
+
+    $(".btn-delete").click(function (e) {
+        e.preventDefault(); // 取消原始動作
+        let id = $(this).val();
+        Swal.fire({
+            icon: 'warning',
+            title: '確定刪除?',
+            text: "確認刪除後將不可復原",
+            showCancelButton: true,
+            confirmButtonColor: '#FF8D29',
+            cancelButtonColor: '#FFCD38',
+            confirmButtonText: '確認',
+            cancelButtonText: '取消',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).parent().submit();
+            }
+        })
+    })
+
+    // 圖片
+    // $('.js-show-modal1').on('click',function(e){
+	// 		let imgsrc = $(this).prev('input[name="ticketImage"]').val()
+	// 		$('#ticketImage').attr('src', "/gotrip" + imgsrc);
+			
+	// 		$(this).closest("tr");
+	// 		let row = $(this).closest("tr");
+
+	// 		let name = $(row).find('td').eq(2).html();
+	// 		$('#locationName').text(name);
+	// 		let county = $(row).find('td').eq(3).html();
+	// 		let district = $(row).find('td').eq(4).html();
+	// 		let address = $(row).find('td').eq(5).html()
+	// 		$('#locationAddress').text(county + district + address);
+	// 		$('#locationDistrict').text(county + ', ' + district);
+	// 		$('#rating').attr('id', $(row).find('td').eq(1).html());
+			
+	//         $('.js-modal1').addClass('show-modal1');
+	//     });
+
+	//     $('.js-hide-modal1').on('click',function(){
+	//         $('.js-modal1').removeClass('show-modal1');
+	//     });
+
+
+
+//取消報名
+function updateState(ticketNo, status, title, text) {
+ Swal.fire({
+  title: `${title}`,
+  text: `${text}`,
+  icon: 'warning',
+  showCancelButton: true,
+  cancelButtonText: '取消',
+  confirmButtonColor: '#f15e5e',
+  cancelButtonColor: '#ADADAD',
+  confirmButtonText: '確定'
+ }).then((result) => {
+  if (result.isConfirmed) {
+   $.ajax({
+    type: "PUT",
+    url:'/gotrip/ticket/' + ticketNo + '/' + status,
+    // url: '/ticketList/' + ticketNo + '/test/' + status,
+    success: function (msg) {
+     Swal.fire(
+      '成功',
+      '',
+      'success'
+     ).then((result) => {
+      if (result.isConfirmed) {
+       location.reload();
+      }
+     })
+    },
+    error: function (msg) {
+     // console.log(msg.status)
+     Swal.fire({
+      icon: 'error',
+      title: '發生錯誤',
+      text: 'HTTP 狀態碼為 ' + msg.status,
+      footer: '<a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status"  target="_blank">為什麼會有這個問題?</a>'
+     })
+    }
+   });
+  }
+ })
+}
+</script>
+
+</body>
+
+</html>
+
+<!-- 前台商家 -->
+<!-- 							<td class="font-weight-bold" th:switch="${ticket.status}"> -->
+<!--                                 <div th:case="0" th:text="提交完成"></div> -->
+<!--                                 <div th:case="1" th:text="審核中" ></div> -->
+<!--                                 <div th:case="2" th:text="已取消" ></div> -->
+<!--                                 <div th:case="3" th:text="不通過" ></div> -->
+<!--                                 <div th:case="4" th:text="課程完成"/> -->
+<!--                                 <div th:case="5" th:text="已評價"/> -->
+<!--                             </td> -->
+<!--                             <span th:if="${ticket.status}==0"> -->
+<!--      							<i class="icon_error-triangle_alt" th:onclick="|updateState(${ticket.ticketNo},1,'確認取消資料?','')|" style="cursor:pointer;">&nbsp;取消</i> -->
+<!--      						</span> -->

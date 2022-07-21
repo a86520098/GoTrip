@@ -17,7 +17,7 @@
 	.siderBar li{margin-bottom:1px;padding:20px;line-height:50px;font-size:18px;background:#f0f0f0;cursor:pointer;transition:all .5s;}
 	.siderBar li.cur{color:#fff;background:#000;}
 	.content{float:right;width:70%;}
-	.content .item{padding:50px 0;font-size:50px;color:#fff;text-align:center;overflow:hidden;}
+	.content .item{padding:50px 0;font-size:50px;color:rgb(157, 155, 155);text-align:center;overflow:hidden;}
 
 	/* announcement */
 	.huadong {
@@ -30,13 +30,13 @@
             margin: 0 auto; */
 			width: 900px;
 			height: 40px;
-			background-color: rgb(184, 219, 221);
+			background-color: rgb(255, 183, 0);
 			position: relative;
 			top: 0;
 			right: 200px;
-			bottom: 0;
+			bottom: 10px;
 			/* left: -200px; */
-			margin: 100px auto;
+			margin: 0px auto;
 			overflow: hidden;
 			color: #fff;
 			border-radius: 5px;
@@ -166,18 +166,18 @@
 
 	<!-- Image -->
 	<section class="sec-product-detail bg0 p-t-40 p-b-45">
-		<div class="container">
+		<div class="container" style="width: 1000px;">
 			<!-- <div class="row"> -->
 				<!-- <div class="col-md-8 col-lg-8 p-b-30"> -->
 					<!-- <div class="p-l-25 p-r-30 p-lr-0-lg"> -->
 						<!-- <div class="slideshow"> -->
 							<!-- <div class="p-l-25 p-r-30 p-lr-0-lg"> -->
-								<div class="slideshow" style="height: 500px; margin-top:15px;overflow: hidden">
+								<div class="slideshow" style="height: 1000px; margin-top:15px;overflow: hidden">
 									<!-- 圖片可轉換 class="carousel-item active" -->
 									 <!-- <div class="carousel-item active">
 										<img th:src="@{/images/tickets/Xpark_1.jpg}"  class="d-block w-100" alt="...">
 									</div> -->
-									<div th:each="image:*{ticket.images}" class="slide">
+									<div th:each="image:*{ticket.images}" class="slide" style="height: 1000px">
 										<img th:src="@{${image}}" class="d-block w-100" alt="..."/>
 									</div>
 								</div>
@@ -211,12 +211,12 @@
 
 	<!-- 左側bar -->
 	<section class="sec-product-detail bg0 p-t-40 p-b-45">
-		<div class="container" style="width: 100%;">
+		<div class="container" style="width: 80%;">
 			<!-- <div class="row" style="position:absolute ;top: 900px;left: 200px;"> -->
 				<div class="col-md-7 p-b-25">
 					<div class="p-t-5">
 						<h4 class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14" th:text="${ticket.ticketName}"></h4>
-						<hr>
+						<hr style="border:2px #eee  solid;">
 						<div class="p-b-10">
 							<div id="rating-count">
 								<i class="fa fa-star cl1" aria-hidden="true"></i>
@@ -239,13 +239,13 @@
 								主打新都會型水族館，驅使最先端的科技，營造出環境的溫度、濕度、氣味、聲音，帶您到地球上每個不可思議的角落，受到啟發、感受療癒、洗滌心靈。 -->
 						</p>						
 						<!-- announcement -->
-						<div class="huadong" style="width: 105%;margin-left:26%; bottom: 400px;">
+						<div class="huadong" style="width: 120%;margin-left:26%; bottom: 100px;">
 							<div class="huabox">
 								<img th:src="@{/images/tickets/lingdang.png}" src="../../static/images/tickets/lingdang.png" style="width:auto;position:absolute;left: 10px;bottom: 12px;">
 								<div class="notice_active">
 									<ul>
 										<li class="notice_active_ch"><span>GoTrip解封玩暑假！大小朋友一起去溜撘~</span>
-										<li class="notice_active_ch"><span>暑假新體驗！親子同樂遊!熱門親子體驗！動手做～Fun心玩</span>
+										<li class="notice_active_ch"><span>暑假新體驗！親子同樂遊!熱門親子體驗！動手做\\</span>
 										</li>
 									</ul>
 								</div>
@@ -254,8 +254,9 @@
 					</div>
 				</div>
 			<!-- </div> -->
-				<div class="col-md-4 p-b-30" style="margin-left:69%; height: 0px; bottom: 480px;">
-					<div class="p-t-5">
+				<div class="col-md-4 p-b-30" style="margin-left:72%; height: 0px; bottom: 290px;">
+					<div  style="border:1px  #eee solid;padding-top:20px;padding-bottom: 20px;padding-left: 20px;padding-right:20px">
+					<!-- <div class="p-t-5" style="border:1px  #eee solid"> -->
 						<span class="mtext-106 cl2 p-t-30">$</span>
 						<span class="mtext-106 cl2 p-t-30" th:text="${ticket.price}"></span>
 						<span style="display: inline"> TWD</span>
@@ -329,21 +330,6 @@
 		</div>
 	</section> -->
 
-	<!-- announcement -->
-	<!-- <div class="container">
-	  <div class="huadong">
-        <div class="huabox">
-			<img th:src="@{/images/tickets/lingdang.png}" src="../../static/images/tickets/lingdang.png" style="width:auto;position:absolute;left: 10px;bottom: 12px;">
-            <div class="notice_active">
-                <ul>
-                    <li class="notice_active_ch"><span>GoTrip解封玩暑假！大小朋友一起去溜撘~</span>
-                    <li class="notice_active_ch"><span>暑假新體驗！親子同樂遊!熱門親子體驗！動手做～Fun心玩</span>
-					</li>
-                </ul>
-            </div>
-    	</div>
-       </div>
-    </div> -->
 
 	
 	<!-- 方案選擇 -->
@@ -382,7 +368,7 @@
 	  </div>
 		<div class="content" style="float:left;">
 			<!-- 商品說明 -->
-			<div id="s1" class="item" style="background:rgb(114, 114, 114);">
+			<div id="s1" class="item" style="background:rgb(255, 255, 255);">
 				<p style="text-align: left;font-size: 2rem; position: relative;top: 0px; left: 50px; padding-right: 100px;">
 					景點門票簡介：
 					<!-- <span th:text="${ticket.ticketIntro}"></span> -->
@@ -391,7 +377,7 @@
 				<div id ='intro' style="text-align: left; font-size: 1.4rem; position: relative;top: 30px; left: 50px; padding-right: 100px;"></div>
 			</div>
 			<!-- 購買須知 -->
-			<div id="s2" class="item" style="background:#888;">
+			<div id="s2" class="item" style="background:rgb(255, 255, 255);">
 				<p style="text-align: left;font-size: 2rem; position: relative;top: 0px; left: 50px; padding-right: 100px;">
 					購買須知：
 					<!-- <span th:text="${ticket.ticketIntro}"></span> -->
@@ -434,11 +420,30 @@
 				</div>
 			</div>
 			<!-- Map -->
-			<div id="s3" class="item" style="background:#777;">預計放map</div>
-			<!-- 評論 -->
-			<div id="s4" class="item" style="background:#666;">
-				預計放商品評論
+			<div id="s3" class="item" style="background:rgb(255, 255, 255);">
+				<p style="text-align: left;font-size: 2rem; position: relative;top: 0px; left: 50px; padding-right: 100px;">
+					Goolge Map：
+					<!-- <span th:text="${ticket.ticketIntro}"></span> -->
+				</p>
+				<hr>
+				<!-- <p style="display: inline;text-align: left;font-size: 2rem; position: relative;top: 0px; right: 100px; padding-right: 100px;">
+					地址：
+				</p> -->
+				<!-- <span style="display: inline"> TWD</span> -->
+				<iframe id="iframe" name="iframe"
+				width="800"
+				height="500"
+				frameborder="0"
+				style="border:0"
+				th:src="@{${'https://www.google.com/maps/embed/v1/place?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&q='+ ticket.ticketName}}">
+			</iframe>
+			<!-- src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&q=101"> -->
 			</div>
+			<!-- 評論 -->
+<!-- 			<div id="s4" class="item" style="background:#666;"> -->
+<!-- 				預計放商品評論 -->
+<!-- 			</div> -->
+			<div class="comments-itemId m-5" th:id="${ticket.ticketNo}" value="ticket"></div>
 			<!-- <div id="s5" class="item" style="background:#555;">五</div> -->
 		</div>
 	</main>
@@ -447,8 +452,6 @@
 	<footer th:replace="frontend/partials/fragment :: footer"></footer>
 	<!-- Back to top -->
 	<div th:replace="frontend/partials/fragment :: toTop"></div>
-	<!-- Modal1 -->
-	<div th:replace="frontend/partials/fragment :: modal1"></div>
 	<!-- javascript -->
 	<div th:replace="frontend/partials/fragment :: script"></div>
 
@@ -462,6 +465,7 @@
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw"></script> -->
 	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script> -->
 	<!-- https://www.google.com/maps/embed/v1/place?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw -->
+	
 
 	<!-- 圖片JS -->
 	<!-- <script type="text/javascript" th:src="@{/js/ticketTableJS/jquery-1.11.0.min.js}" src="../../static/js/ticketTableJS/jquery-1.11.0.min.js"></script> -->
