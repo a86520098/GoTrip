@@ -345,7 +345,7 @@
                                         th:src="@{/images/icons/PoolAndFitness.svg}">
                                     <p>附屬游泳池</p></li>
                                 <li id="4icon" style="margin-right: 3vh;margin-left: 3vh"><img
-                                        th:src="@{/images/icons/location.svg}">
+                                        th:src="@{/images/icons/people.png}" width="30" height="30">
                                     <p>按摩浴池</p></li>
                                 <li id="4icon" style="margin-right: 1vh;margin-left: 1vh"><img
                                         th:src="@{/images/icons/transfer.svg}">
@@ -354,9 +354,25 @@
                         </div>
                     </div>
                     <div class="col-4 border border-1 bg-white rounded">
-                        <div class="m-t-10 p-xl-3 ">
-                            <h4 class="colorWord1">住宿規定</h4>
-                            <td th:text="${hotel.hotelRule}"></td>
+                        <div class="">
+                            <h4>服務</h4>
+                            <div id="B">
+                                <ul>
+                                    <li id="1icon" style="margin-rieft: 1vh;margin-left: 1vh"><img
+                                            th:src="@{/images/icons/spray.svg}">
+                                        <p>每日酒精消毒 </p></li>
+                                    <li id="2icon" style="margin-right: 3vh;margin-left: 3vh"><img
+                                            th:src="@{/images/icons/house.png}" width="30" height="30">
+                                        <p>整棟私人住宅 </p></li>
+
+                                </ul>
+                            </div>
+                            <!--                            <td th:text="${hotel.provide}"/>-->
+                            <!--                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+                            <!--                                 class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">-->
+                            <!--                                <path fill-rule="evenodd"-->
+                            <!--                                      d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>-->
+                            <!--                            </svg>-->
                         </div>
                     </div>
                 </div>
@@ -366,22 +382,15 @@
                 <div class="row ">
                     <div class="col-8 border border-1 bg-white rounded">
                         <div class="m-t-10 ">
-                            <h4>設施與服務</h4>
 
-                            <td th:text="${hotel.provide}"/>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                 class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
-                            </svg>
                         </div>
                     </div>
                     <div class="col-4 border border-1 bg-white rounded">
                         <div class="m-t-10 p-xl-3  ">
-                            <h1>Google Map</h1>
+                            <h6>Google Map</h6>
                             <iframe id="iframe" name="iframe"
                                     width="350"
-                                    height="400"
+                                    height="150"
                                     frameborder="0"
                                     style="border:0"
                                     th:src="@{${'https://www.google.com/maps/embed/v1/place?key=AIzaSyADjpRo3888omouCJVj2WHZGNETKhZFMwU&q='+hotel.hotel_name}}">
