@@ -55,7 +55,7 @@
 						<h2 th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="font-weight-bold cl2 js-name-detail py-4"></h2>
 						<div class="p-b-10">
 							<!-- 該商品平均分數和評論總數 -->
-							<div class="rating-count" th:id="${option.id}" value="carRental">
+							<div class="rating-count get-itemid" th:id="${option.id}" value="carRental">
 								尚無評論
 							</div>
 							<!-- 據點地址 -->
@@ -102,7 +102,7 @@
 								</div>
 								<div class="col-9 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<input type="date" name="date" class="form-control">
+										<input type="date" name="date" class="form-control get-date">
 										<div class="dropDownSelect2"></div>
 									</div>
 								</div>
@@ -358,7 +358,7 @@
 <!--    購物車script -->	
 	<script>
 	
-		$(document).on('click','.plus-cart',function(){
+	$(document).on('click','.plus-cart',function(){
 		let date = $('.get-date').val();
 		let	itemId = $('.get-itemid').attr('id');
 		let type = 'car';
@@ -396,7 +396,8 @@
 						console.log(jqXHR.responseText);
 					}
 		                	                
-		});		
+		});			
+		
 		});
 		   $(document).on('click','.btn-num-product-down' ,function(){
 		       var numProduct = Number($(this).next().val());
