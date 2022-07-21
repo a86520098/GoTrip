@@ -33,17 +33,17 @@
 								<table id="data-table" class="display table table-hover w-100" style="text-align: center">
 										<thead>
 				                        <tr>
-				                          <th>訂單編號</th>
-				                          <th>會員編號</th>
-				                          <th>訂購日期</th>
-				                          <th>總價</th>                 
-				                          <th>狀態</th>    
-				                          <th>詳細</th>
+				                          <th scope="col" class="text-center">訂單編號</th>
+				                          <th scope="col" class="text-center">會員編號</th>
+				                          <th scope="col" class="text-center">訂購日期</th>
+				                          <th scope="col" class="text-center">總價</th>                 
+				                          <th scope="col" class="text-center">狀態</th>    
+				                          <th scope="col" class="text-center">詳細</th>
 				                                 
 				                        </tr>
 				                      </thead>
-				                      <tbody th:each="orderBean:${orderBeans}">
-				                      	  <tr>
+				                      <tbody>
+				                      	  <tr class="odd gradeX" scope="row" th:each="orderBean:${orderBeans}">
 				                      		<td th:text="${orderBean.orderNo}"></td>     
 				                      		<td th:text="${orderBean.memberId}"></td>     
 				                      		<td th:text="${orderBean.orderDate}"></td>     

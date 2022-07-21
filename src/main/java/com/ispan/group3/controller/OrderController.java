@@ -33,6 +33,16 @@ public class OrderController {
 		
 		return "backend/order/orderList";
 	}
+	@GetMapping("/client/orderlist")
+	public String clientOrderAllQuery(Model m) throws Exception {
+		
+		System.out.println("是否執行");
+		List<OrderBean> orderBeans = orderService.findAllOrder();
+		
+		m.addAttribute("orderBeans", orderBeans);
+		
+		return "frontend/order/client-order";
+	}
 	
 	@GetMapping(value = "/newform")
 	public String processNewForm(Model m) {

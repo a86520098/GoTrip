@@ -50,4 +50,174 @@ public class HotelRoom {
     }
 
 
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getRoomname() {
+		return roomname;
+	}
+
+
+	public void setRoomname(String roomname) {
+		this.roomname = roomname;
+	}
+
+
+	public Integer getRoomprice() {
+		return roomprice;
+	}
+
+
+	public void setRoomprice(Integer roomprice) {
+		this.roomprice = roomprice;
+	}
+
+
+	public Integer getBathCount() {
+		return bathCount;
+	}
+
+
+	public void setBathCount(Integer bathCount) {
+		this.bathCount = bathCount;
+	}
+
+
+	public Integer getBedroomCount() {
+		return bedroomCount;
+	}
+
+
+	public void setBedroomCount(Integer bedroomCount) {
+		this.bedroomCount = bedroomCount;
+	}
+
+
+	public Integer getBedCount() {
+		return bedCount;
+	}
+
+
+	public void setBedCount(Integer bedCount) {
+		this.bedCount = bedCount;
+	}
+
+
+	public Integer getHotelArea() {
+		return hotelArea;
+	}
+
+
+	public void setHotelArea(Integer hotelArea) {
+		this.hotelArea = hotelArea;
+	}
+
+
+	public String getRoomRule() {
+		return roomRule;
+	}
+
+
+	public void setRoomRule(String roomRule) {
+		this.roomRule = roomRule;
+	}
+
+
+	public String getRoomIntroduce() {
+		return roomIntroduce;
+	}
+
+
+	public void setRoomIntroduce(String roomIntroduce) {
+		this.roomIntroduce = roomIntroduce;
+	}
+
+
+	public String getProvide() {
+		return provide;
+	}
+
+
+	public void setProvide(String provide) {
+		this.provide = provide;
+	}
+
+
+	public Integer getPeopleCount() {
+		return peopleCount;
+	}
+
+
+	public void setPeopleCount(Integer peopleCount) {
+		this.peopleCount = peopleCount;
+	}
+
+
+	public String getFeature1() {
+		return feature1;
+	}
+
+
+	public void setFeature1(String feature1) {
+		this.feature1 = feature1;
+	}
+
+
+	public String getFeature2() {
+		return feature2;
+	}
+
+
+	public void setFeature2(String feature2) {
+		this.feature2 = feature2;
+	}
+
+
+	public String getFeature3() {
+		return feature3;
+	}
+
+
+	public void setFeature3(String feature3) {
+		this.feature3 = feature3;
+	}
+
+
+	public String getRoomtype() {
+		return roomtype;
+	}
+
+
+	public void setRoomtype(String roomtype) {
+		this.roomtype = roomtype;
+	}
+
+
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
+
+
+	public List<HotelRoomImage> getHotelRoomImageList() {
+		return hotelRoomImageList;
+	}
+
+
+	public void setHotelRoomImageList(List<HotelRoomImage> hotelRoomImageList) {
+		this.hotelRoomImageList = hotelRoomImageList;
+	}
+
+
 }

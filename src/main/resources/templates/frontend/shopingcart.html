@@ -134,14 +134,14 @@
 							</div>
 
 							<div class="size-209">
-								<span class="mtext-110 cl2"> 滿千送百 </span>
+								<span class="mtext-110 cl2">無</span>
 							</div>
 							<div class="size-208">
 								<span class="stext-110 cl2"> 折扣金額: </span>
 							</div>
 
 							<div class="size-209">
-								<span class="mtext-110 cl2"> $100 </span>
+								<span class="mtext-110 cl2">$0</span>
 							</div>
 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
 
@@ -230,6 +230,7 @@
 			switch (value){
 			case '1':
 				 type = 'hotel';
+				 id = 4;
 			break;
 			case '2':
 				 type = 'ticket';
@@ -437,12 +438,13 @@
 	        
 	        let productKey = $(this).closest("tr").find('td:last').children('button').val();
 	        let element = $(this);
+	        let sandnumProduct = Number($(this).next().val());
 	   	 $.ajax({
 	            type: 'GET',
 	            url: '/gotrip/updateItem',
 	            data:{
 	            	productKey: productKey,
-	            	itemNumber: numProduct -1
+	            	itemNumber: sandnumProduct 
 	            	},
 	            dataType: 'json',
 	            async:false,
@@ -469,18 +471,19 @@
 	    
 	    $(document).on('click','.btn-num-product-up', function(){
 	        let numProduct = Number($(this).prev().val());
-	        if(numProduct < 100) $(this).prev().val(numProduct + 1);
+	        if(numProduct < 99) $(this).prev().val(numProduct + 1);
 	        
 	            console.log(numProduct +1);
 	        
 	        let productKey = $(this).closest("tr").find('td:last').children('button').val();
 	        let element = $(this);
+	        let sandnumProduct = Number($(this).prev().val());
 	   	 $.ajax({
 	            type: 'GET',
 	            url: '/gotrip/updateItem',
 	            data:{
 	            	productKey: productKey,
-	            	itemNumber: numProduct +1
+	            	itemNumber: sandnumProduct
 	            	},
 	            dataType: 'json',
 	            async:false,

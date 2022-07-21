@@ -108,7 +108,7 @@
 								</div>
 							</div>
 							<!-- 加入購物車 -->
-							<button	class="flex-c-m cl0 size-101 font-weight-bold bg1 bor1 hov-btn1 my-4 trans-04 js-addcart-detail w-full plus-cart">
+							<button	class="flex-c-m cl0 size-101 font-weight-bold bg1 bor1 my-4 trans-04 w-full plus-cart">
 								加入購物車
 							</button>
 						</div>
@@ -309,48 +309,58 @@
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js}"></script>
 	<script th:src="@{/js/clusterMap.js}" src="js/clusterMap.js"></script>
 	
+<!--    購物車script -->	
 	<script>
 	
 		$(document).on('click','.plus-cart',function(){
-			
-		let	itemId = $('.get-itemid').attr('id');
 		let date = $('.get-date').val();
-		console.log(itemId + "  " + date + "  " + qty)
+		let	itemId = $('.get-itemid').attr('id');
+		let type = 'car';
+		let qty = 1;
+		console.log(itemId + "  " + date)
 			 $.ajax({
 		            type: 'GET',
 		            url: '/gotrip/addToCart',
 		            data:{
-		            	productId:itemId,
-		            	type:car,
-		            	date:date,
-		            	qty:1
+		            	productId: itemId,
+		            	type: type,
+		            	qty: qty,
+		            	date: date
 		            	},
 		            dataType: 'json',
 		            async:false,
 		            success: function (data) {
-		     
-		                console.log(data);
-		                
-		                
-		                $('tbody').append(putback)
+		     	
 		                console.log(data.itemNumber);	
 		                
 		                $('#cartIcon').attr("data-notify",data.itemNumber);
-		                console.log(data.subtotal);
-		                $('.originalPrice').text(data.subtotal);
-		                $('.totalPrice').text(data.subtotal);
+		                console.log('data' + data.itemNumber)   
+		                Swal.fire({
+		                	  position: 'center',
+		                	  icon: 'success',
+		                	  title: '已加入購物車',
+		                	  showConfirmButton: false,
+		                	  timer: 1500
+		                	});
 		            },
-		    		error: function(jqXHR,textStatus,errorThrown) {
+		    		error: function(jqXHR,textStatus,errorThrown,data) {
+		    			 console.log(data)
 						console.log(jqXHR);
 						console.log(textStatus); 
-						console.log(errorThrown);
+						console.log(jqXHR.responseText);
 					}
-		                
-		                
+		                	                
+		});		
 		});
-			
-		});
-		
+		   $(document).on('click','.btn-num-product-down' ,function(){
+		       var numProduct = Number($(this).next().val());
+		       if(numProduct > 1) $(this).next().val(numProduct - 1);
+		   });
+		   
+		   $(document).on('click','.btn-num-product-up', function(){
+		       var numProduct = Number($(this).prev().val());
+		       if(numProduct < 99) $(this).prev().val(numProduct + 1);
+		   });
 	</script>
 </body>
 

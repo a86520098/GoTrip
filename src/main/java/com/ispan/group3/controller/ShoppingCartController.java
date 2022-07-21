@@ -63,13 +63,26 @@ public class ShoppingCartController {
 		this.orderService = orderService;
 	}
 
+	@GetMapping("showCartItems")
+	@ResponseBody
+	public String showCartItems(Model model) {
+		
+		ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
+		
+		String itemNumber =	String.valueOf(cart.getItemNumber()); 
+		
+		return itemNumber;
+	}
+	
 //	@ResponseStatus(value = HttpStatus.NO_CONTENT) 返回204 
 	@GetMapping("/addToCart")
 	@ResponseBody
-	public ShoppingCart addToCart(Model model,@RequestParam("productId") Integer productId,
-				@RequestParam("qty") Integer qty,@RequestParam("type") String type,
-					@RequestParam("date") String goDate) {
+	public ShoppingCart addToCart(Model model,@RequestParam(value = "productId",required = false) Integer productId,
+				@RequestParam(value = "qty",required = false) Integer qty,
+					@RequestParam(value = "type",required = false) String type,
+						@RequestParam(value = "date",required = false) String goDate) {
 		
+		System.out.println("是否執行go?" + goDate);
 		// 取出存放在session物件內的ShoppingCart物件
 				ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
 				
@@ -89,8 +102,10 @@ public class ShoppingCartController {
 				case "hotel":
 					Hotel hotelBean = hotelService.findById(productId);	
 //				 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
+					
+								
 					 oib = new OrderItemBean(productId,goDate,type,hotelBean.getHotel_name(), 
-							hotelBean.getPrice(), qty,null); 
+							2000, qty,String.valueOf(hotelBean.getPhone())); 
 
 //					 替每種商品設定特定的key
 					 	oId	= "h" + String.valueOf(productId);
@@ -100,9 +115,10 @@ public class ShoppingCartController {
 					break;
 				case "ticket":
 					Ticket ticket = ticketService.findById(productId).get();
+					System.out.println("測試:" + ticket.getPhone());
 //					 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
 					 oib = new OrderItemBean(productId,goDate,type,ticket.getTicketName(),
-							 ticket.getPrice(),qty,Integer.parseInt(ticket.getPhone())); 
+							 ticket.getPrice(),qty,ticket.getPhone()); 
 					 
 //					 替每種商品設定特定的key
 					 oId = "t" + String.valueOf(productId);
@@ -114,14 +130,16 @@ public class ShoppingCartController {
 				case "car":	
 					CarOption car= carOptionService.findById(productId);
 //					 將訂單資料(價格，數量，折扣與BookBean)封裝到OrderItemBean物件內
-//					 oib = new OrderItemBean(productId,type,car.getCarModel(),
-//							 car.getSeat(),qty,car.getSeat()); 
-//					 
-////					 替每種商品設定特定的key
-//					oId = "c" + String.valueOf(productId);
-//					
-////					 將OrderItem物件.每件商品的key加入ShoppingCart的物件內
-//						cart.addToCart(oId,oib);
+					String carInfo = car.getCarLocation().getCompanyName() + "(" + car.getCarModel().getMakeEn() + ")";
+					System.out.println(carInfo);
+					 oib = new OrderItemBean(productId,goDate,type,carInfo,
+							car.getPrice(),qty,car.getCarLocation().getPhone()); 
+					 
+//					 替每種商品設定特定的key
+					oId = "c" + String.valueOf(productId);
+					
+//					 將OrderItem物件.每件商品的key加入ShoppingCart的物件內
+						cart.addToCart(oId,oib);
 					break;	
 				default:
 					break;
@@ -177,7 +195,10 @@ public class ShoppingCartController {
 		
 //		隨機產生memberId
 		String memberId;
-		
+		Object object = model.getAttribute("JSESSIONID");
+		Object object1 = session.getAttribute("JSESSIONID");
+		System.out.println("object=" + object);
+		System.out.println("object1=" + object1);
 		memberId = String.valueOf((int)((Math.random() * 10000) + 1000));
 //		產生日期
 		String date = new SimpleDateFormat("yyyy/MM/dd HH:mm").format(new Date());
