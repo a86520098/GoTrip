@@ -1,180 +1,369 @@
 <!DOCTYPE html>
+<html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
-<style>
-    .btn1 {
-        background: mediumpurple;
-        width: 150px;
-        color: white;
-        border-radius: 5px;
-        font-size: 15px;
-        text-align: center;
-    }
-</style>
-<head th:replace="frontend/partials/fragment :: head"></head>
 
-<body class="">
-<!-- Header -->
-<header th:replace="frontend/partials/fragment :: header"></header>
-<!-- Cart 購物車 -->
-<div th:replace="frontend/partials/fragment :: cart"></div>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<section class="bg-img1 txt-center p-lr-15 p-tb-92"
-         th:style="'background-image: url(' + @{/images/hotelpic.jpg} + ');'">
-    <h2 class="ltext-103 font-weight-bold clwhite txt-center">個人住宿管理</h2>
-</section>
-<!-- Product 內文 -->
-<div class="bg0">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 p-b-80 bg6">
-                <div class="side-menu">
-                    <div class="p-t-55">
-                        <h2 class="ltext-103 cl5 font-weight-bold m-b-30 p-lr-20">住宿管理</h2>
-                        <ul class="p-lr-20">
-                            <li class="bor18">
-                                <a th:href="@{#}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-                                    檢視訂單
-                                </a>
-                            </li>
-                            <li class="bor18">
-                                <a th:href="@{/vendor/hotels}"
-                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-                                    房間列表
-                                </a>
-                            </li>
-                            <li class="bor18">
-                                <a th:href="@{/vendor/newHotel}"
-                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-                                    新增飯店
-                                </a>
-                            </li>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js}"></script>
+<!--   <script src="/../js/hotelJS/fullpage.js"></script>-->
+    <link rel="stylesheet" th:src="@{/js/hotelJS/fullpage.js}">
 
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Block2 -->
 
-            <div class="col-md-9 grid-margin my-5 pl-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title font-weight-bold">飯店列表</h4>
-                        <div class="p-t-20">
-                            <table id="data-table" class="display table table-hover w-100" style="text-align: center">
-                                <thead>
-                                <tr>
-                                    <th scope="col" class="text-center">#</th>
-                                    <th scope="col" class="text-center">飯店名稱</th>
-                                    <th scope="col" class="text-center">容納人數</th>
-                                    <th scope="col" class="text-center">地址</th>
-                                    <th scope="col" class="text-center">狀態</th>
-                                    <th scope="col" class="text-center">房間個數</th>
-                                    <th scope="col" class="text-center">資訊/修改</th>
-                                    <th scope="col" class="text-center">新增</th>
-                                    <th scope="col" class="text-center">查詢</th>
-                                </tr>
-                                </thead>
-                                <tbody id="tbody">
-                                <tr th:each="hotel:${hotel}" class="odd gradeX" scope="row">
-                                    <td th:text="${hotel.id}"></td>
-                                    <td th:text="${hotel.hotel_name}"></td>
-                                    <td th:text="${hotel.peopleCount}"></td>
-                                    <td th:text="${hotel.fullAddress}"></td>
-                                    <td>
-                                        <span th:text="${hotel.status}" class="btn btn-success btn-sm status"> </span>
-                                    </td>
+    <!-- Bootstrap CSS -->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/hotelCSS/fullpage.css}">
+    <link rel="stylesheet" th:href="@{/css/hotelCSS/custom.css}">
+	 <style th:inline="text">
 
-                                    <td>
-                                        <span th:text="${hotel.hotelroomList.size()}"></span>
-                                        <a th:href="@{/backHotel/{id}(id=${hotel.id})}"
-                                           class="btn btn-light btn-rounded btn-sm">
-                                        </a>
-                                    <td>
+        @font-face {
+          font-family: 'Gotham Medium';
+          src: url('[[@{/css/hotelCSS/Gotham-Medium.woff2}]]') format('woff2'),
+          url('[[@{/css/hotelCSS/Gotham-Medium.woff}]]') format('woff');
 
-                                        <div class="btn-group" role="group" aria-label="Basic example">
-                                            <!-- 												<button th:text="${comment.itemTb + '#' +comment.itemId}" data-toggle="modal" data-target="#exampleModal" -->
-                                            <!-- 															    class="btn btn-link font-weight-bold js-show-modal-item px-0" style="color:#d15f08"></button> -->
-                                            <input name="locationImage" type="hidden" th:value="${hotel.image}">
-                                            <button class="btn btn-light btn-rounded btn-sm js-show-modal1">
-                                                <i class="fa fa-search" aria-hidden="true"></i>
-                                            </button>
-                                            <a th:href="@{/vendor/EditRoom(id=${hotel.id})}"
-                                               class="btn btn-light btn-rounded btn-sm">
-                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            </a>
-                                            <form
-                                                    th:action="@{/delete(id=${hotel.id})}"
-                                                    th:method="delete" class="d-inline">
-                                                <button type="button" th:value="${hotel.id}"
-                                                        class="btn btn-delete btn-light btn-rounded btn-sm">
-                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </button>
-                                            </form>
-                                        </div>
+          font-weight: 500;
+          font-style: normal;
+          font-display: swap;
+        }
 
-                                    <th>
-                                        <a class="btn1" th:href="@{/addHotelRoom(id=${hotel.id})}">新增房間</a>
+        @font-face {
+          font-family: 'Gotham Book';
+          src: url('[[@{/css/hotelCSS/Gotham-Book.woff2}]]') format('woff2'),
+          url('[[@{/css/hotelCSS/Gotham-Book.woff}]]') format('woff');
+          font-weight: 500;
+          font-style: normal;
+          font-display: swap;
+        }
+        h1,h2,h3,h4,h5,h6{
+          font-family: 'Gotham Medium';
+        }
+        p, span, li, a{
+          font-family: 'Gotham Book';
+        }
+        .logo{
+          width: 100px;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+        }
+        .section{
+          width: 100%;
+          height: 100vh;
+          position: relative;
+        }
+        #slide1{
+          background-image: url("[[@{/images/hotels/vacation.jpg}]]");
+          background-size: cover;
+          background-position: center;
+        }
+        #slide2{
+          background-image: url("[[@{/images/hotels/house.jpeg}]]");
+          background-size: cover;
+          background-position: center;
+        }
+        #slide3{
+          background-image: url("[[@{/images/hotels/hotel-taipei-marriott.jpg}]]");
+          background-size: cover;
+          background-position: center;
+        }
+        #slide4{
+          background-image: url("[[@{/images/hotels/woodHouse.jpg}]]");
+          background-size: cover;
+          background-position: center;
+        }
 
-                                    </th>
-                                    <th>
-                                        <a class="btn1" th:href="@{/getHotelRoomList(id=${hotel.id})}">查看房間</a>
-
-                                    </th>
-
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        #slide5{
+          background-image: url("[[@{/images/hotels/sleeping3.jpg}]]");
+          background-size: cover;
+          background-position: center;
+        }
+        .nav2{
+          position: absolute;
+          top:9px;
+          right:20px;
+        }
+        .upper{
+          padding-top: 110px;
+        }
+        .upper h2{
+          font-size: 41px;
+          margin-bottom: 0px;
+        }
+        .upper p{
+          font-size: 14px;
+          color:black;
+        }
+        .upper p a{
+          color:black;
+        }
+        .navbar-light .navbar-nav .nav-link {
+          color: black;
+          margin-left: 3px;
+          margin-right: 3px;
+          text-transform: uppercase;
+          font-weight: 800;
+          font-size: 13px;
+          letter-spacing: 1px;
+        }
+        .lower .btn1 {
+          background: #171a20;
+          color: white;
+          padding: 10px 40px;
+          border-radius: 30px;
+          font-size: 12px;
+          width: 250px;
+          display: inline-block;
+          text-align: center;
+          text-decoration: none;
+          margin: 0 8px;
+        }
+        .lower .btn2 {
+          background: rgba(255,255,255,0.5);
+          color: black;
+          padding: 10px 40px;
+          border-radius: 30px;
+          font-size: 12px;
+          width: 250px;
+          display: inline-block;
+          text-align: center;
+          text-decoration: none;
+          margin: 0 8px;
+        }
+        .lower .arrow{
+          margin-top:0px;
+          display: inline-block;
+        }
+        .lower{
+          position: absolute;
+          bottom:20px;
+          text-align: center;
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          left: 0;
+          right: 0;
+        }
+        .fp-tableCell{
+          display: table-cell;
+          vertical-align: top;
+        }
+        .upper h2,.upper p ,.lower .btn1, .lower .btn2,.lower .arrow{
+          opacity: 0;
+          visibility: hidden;
+        }
+        @media only screen and (max-width:990px){
+          .logo {
+            width: 100px;
+            position: absolute;
+            top: 20px;
+            left: auto;
+            right: 20px;
+          }
+          .navbar{
+            background: white;
+          }
+          .nav2{
+            position: relative;
+            right:auto;
+            top:0px;
+          }
+        }
+      </style>
+    <title>kenny web!</title>
+   
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container-fluid">
+          
+          <img class='logo' src='images/icons/logo-GoTrip.png'>
+  
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              
+              <li class="nav-item">
+               <a class="nav-link" href="/gotrip/hotel/hotel123">Hotel S</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Restaurant 3</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Car X</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">House Y</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">View</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">By Kenny</a>
+              </li>
+              
+            </ul>
+  
+            <ul class="navbar-nav nav2">
+              
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tesla Account</a>
+                </li>
+            </ul>
+          </div>
         </div>
+      </nav>
+      
+
+      <div id="fullpage">
+          <section class='section' id='slide1'>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class='upper text-center'>
+                    <h2 style="color: lightskyblue; ">私人度假</h2>
+                    <p style="color: lightblue;">Online Order for <a href='' style="color: lightblue;">for Travel</a></p>
+                  </div>
+                  <div class="lower text-center">
+                    <div>
+                      <a class='btn1' href=''>CUSTOM ORDER</a>
+                      <a class='btn2' href=''>EXISTING INVENTORY</a>
+                    </div>
+                    <div>
+                      <a class='arrow' href=''>
+                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z"/></svg>
+                      </a>
+                      
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class='section' id='slide2'>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class='upper text-center'>
+                    <h2 style="color: lightslategray;">家庭聚會</h2>
+                    <p style="color: gray;">Online Order for <a style="color: gray;" href=''>Touchless Delivery</a></p>
+                  </div>
+                  <div class="lower text-center">
+                    <div>
+                      <a class='btn1' href=''>CUSTOM ORDER</a>
+                      <a class='btn2' href=''>EXISTING INVENTORY</a>
+                    </div>
+                    <div>
+                      <a class='arrow' href=''>
+                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z"/></svg>
+                      </a>
+                      
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class='section' id='slide3'>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class='upper text-center'>
+                    <h2 style="color:white">商業辦公</h2>
+                    <p style="color:white" >Online Order for <a style="color:white" href=''>Touchless Delivery</a></p>
+                  </div>
+                  <div class="lower text-center">
+                    <div>
+                      <a class='btn1' href=''>CUSTOM ORDER</a>
+                      <a class='btn2' href=''>EXISTING INVENTORY</a>
+                    </div>
+                    <div>
+                      <a class='arrow' href=''>
+                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z"/></svg>
+                      </a>
+                      
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class='section' id='slide4'>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class='upper text-center'>
+                    <h2>私人聚會</h2>
+                    <p>Online Order for <a href=''>Touchless Delivery</a></p>
+                  </div>
+                  <div class="lower text-center">
+                    <div>
+                      <a class='btn1' href=''>CUSTOM ORDER</a>
+                      <a class='btn2' href=''>EXISTING INVENTORY</a>
+                    </div>
+                    <div>
+                      <a class='arrow' href=''>
+                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z"/></svg>
+                      </a>
+                      
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class='section' id='slide5'>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class='upper text-center'>
+                    <h2 style="color: gray;">一夜好眠</h2>
+                    <p  style="color: gray;" >Online Order for <a  style="color: gray;"  href=''>Touchless Delivery</a></p>
+                  </div>
+                  <div class="lower text-center">
+                    <div>
+                      <a class='btn1' href=''>CUSTOM ORDER</a>
+                      <a class='btn2' href=''>EXISTING INVENTORY</a>
+                    </div>
+                    <div>
+                      <a class='arrow' href=''>
+                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z"/></svg>
+                      </a>
+                      
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+            </div>
+          </section>
+
     </div>
-</div>
-
-<!-- Footer -->
-<footer th:replace="frontend/partials/fragment :: footer"></footer>
-<!-- Back to top -->
-<div th:replace="frontend/partials/fragment :: toTop"></div>
-<!-- Modal1 -->
-<div th:replace="frontend/partials/fragment :: modal1"></div>
-<!-- javascript -->
-<div th:replace="frontend/partials/fragment :: script"></div>
-
-<script th:src="@{/vendors/sweetalert/sweetalert2.all.min.js}" src="vendors/sweetalert/sweetalert2.all.min.js"></script>
-<script th:src="@{/vendors/datatables.net/jquery.dataTables.js}"
-        src="vendors/datatables.net/jquery.dataTables.js"></script>
-<script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
-        src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-<script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#data-table').DataTable({})
-    });
 
 
-    $(".btn-delete").click(function (e) {
-        e.preventDefault(); // 取消原始動作
-        let id = $(this).val();
-        Swal.fire({
-            icon: 'warning',
-            title: '確定刪除?',
-            text: "確認刪除後將不可復原",
-            showCancelButton: true,
-            confirmButtonColor: '#FF8D29',
-            cancelButtonColor: '#FFCD38',
-            confirmButtonText: '確認',
-            cancelButtonText: '取消',
-            reverseButtons: true
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $(this).parent().submit();
-            }
-        })
-    })
 
-</script>
 
-</body>
-
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <link   th:href="@{/js/hotelJS/fullpage.js} " rel="stylesheet">
+    <script th:href="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script th:href="@{https://cdn.jsdelivr.net/npm/popper.js1.14.7/dist/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script th:href="@{https://cdn.jsdelivr.net/npm/bootstrap4.3.1/dist/js/bootstrap.min.js}" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>

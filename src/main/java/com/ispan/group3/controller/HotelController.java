@@ -80,36 +80,6 @@ public class HotelController {
         hotels.setImages(images);
         hotelService.save(hotels);
 
-//        if (originalFilename.length() > 0 && originalFilename.lastIndexOf(".") > -1) {
-//            hotels.setFileName(originalFilename);
-//        }
-//
-//        // 建立Blob物件，交由 Hibernate 寫入資料庫
-//        if (picture != null && !picture.isEmpty()) {
-//            try {
-//                byte[] b = picture.getBytes();
-//                Blob blob = new SerialBlob(b);
-//                hotels.setImage(blob);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
-//            }
-//        }
-////
-//
-//        Timestamp adminTime = new Timestamp(System.currentTimeMillis());
-//        hotels.setAdmissionTime(adminTime);
-//
-//        try {
-//            hotelService.save(hotels);
-//        } catch (org.hibernate.exception.ConstraintViolationException e) {
-//            result.rejectValue("account", "", "帳號已存在，請重新輸入");
-//            return "user-form";
-//        } catch (Exception ex) {
-//            System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-//            result.rejectValue("account", "", "請通知系統人員...");
-//            return "user-form";
-//        }
         System.out.println("222此方法儲存");
         return "redirect:/backHotel";
     }
@@ -379,7 +349,41 @@ public class HotelController {
     @GetMapping("/vendor/EditRoom")
     public String EditHotel(Model model, @RequestParam("id") Integer id) {
         model.addAttribute("hotel", hotelService.findById(id));
-        return "/frontend/hotel/NewHotel-form";
+        return "/frontend/hotel/EditHotel-form";
+    }
+
+    @GetMapping("/frontDelete")
+    public String frontDelete(@RequestParam("id") Integer id) {
+        hotelService.delete(id);
+        System.out.println("已經刪除飯店 刪除號碼為:=" + id);
+        return "redirect:/vendor/hotels";
+    }
+
+    @PostMapping(value = "/frontNewHotel")
+    public String frontHotel(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
+                             @RequestParam(value = "imagefile", required = false) List<MultipartFile> files
+    ) {
+        System.out.println("準備新增接收資料了");
+//        MultipartFile picture = hotels.getProductImage(); //拿照片
+//        String originalFilename = picture.getOriginalFilename(); //拿檔案名稱
+//        Timestamp adminTime = new Timestamp(System.currentTimeMillis()); //拿檔案接受到的當下時間
+//        hotels.setAdmissionTime(adminTime); //塞進去
+
+        List<HotelImage> images = new ArrayList<>();
+        for (MultipartFile file : files) {
+            try {
+                String savePath = FileUploadUtil.saveFile("hotelImage", file);
+                HotelImage hotelImage = new HotelImage(savePath, hotels);
+                images.add(hotelImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        hotels.setImages(images);
+        hotelService.save(hotels);
+
+        System.out.println("222此方法儲存");
+        return "redirect:/vendor/hotels";
     }
 
 

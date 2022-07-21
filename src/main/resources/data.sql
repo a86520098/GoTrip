@@ -151,93 +151,112 @@ INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], 
                           [door], [suitcase], [bag], [image])
 VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2,
         N'/data/uploadimages/car/toyota-altis.png')
+--INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+--VALUES (4, N'經濟轎車', N'豐田', N'Toyota', N'Prius C', N'燃油車', N'AT', 2000, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-camry.png')
 INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
                           [door], [suitcase], [bag], [image])
-VALUES (4, N'經濟轎車', N'豐田', N'Toyota', N'Prius C', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
+VALUES (4, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2,
         N'/data/uploadimages/car/toyota-camry.png')
+--INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+--VALUES (5, N'豪華轎車', N'豐田', N'Toyota', N'Auris', N'燃油車', N'AT', 2000, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-auris.jpg')
+--INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+--VALUES (5, N'休旅車/SUV', N'豐田', N'Toyota', N'bZ4X', N'電動車', N'AT', 0, 5, 4, 2, 1, N'/data/uploadimages/car/toyota-bz4x.jpg')
 INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
                           [door], [suitcase], [bag], [image])
-VALUES (5, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2,
-        N'/data/uploadimages/car/toyota-prius-c.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (6, N'豪華轎車', N'豐田', N'Toyota', N'Auris', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
-        N'/data/uploadimages/car/toyota-auris.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (7, N'休旅車/SUV', N'豐田', N'Toyota', N'bZ4X', N'電動車', N'AT', 0, 5, 4, 2, 1,
-        N'/data/uploadimages/car/toyota-bz4x.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (8, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2,
+VALUES (5, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2,
         N'/data/uploadimages/car/toyota-corolla-cross.jpg')
 INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
                           [door], [suitcase], [bag], [image])
-VALUES (9, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2,
+VALUES (6, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2,
         N'/data/uploadimages/car/toyota-sienta.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (7, N'經濟轎車', N'裕隆日產', N'Nissan', N'Livina', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan-livina.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (8, N'經濟轎車', N'裕隆日產', N'Nissan', N'TIIDA', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan-tiida.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (9, N'休旅車/SUV', N'裕隆日產', N'Nissan', N'Kicks', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan_kicks.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (10, N'經濟轎車', N'納智捷', N'Luxgen', N'S3', N'燃油車', N'AT', 1600, 5, 4, 1, 2,
+        N'/data/uploadimages/car/luxgen_s3.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (11, N'經濟轎車', N'本田', N'Honda', N'Fit', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
+        N'/data/uploadimages/car/honda_fit.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (12, N'經濟轎車', N'鈴木', N'Suzuki', N'Swift', N'燃油車', N'AT', 1300, 5, 4, 1, 2,
+        N'/data/uploadimages/car/suzuki_swift.png')
+        
 SET IDENTITY_INSERT [dbo].[car_model] OFF;
 
 SET IDENTITY_INSERT [dbo].[car_location] ON
 
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg',
-        N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'隱藏')
+VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg',
+        N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg',
-        N'25.042552', N'121.580242', N'台北忠孝站', N'08:30:00.0000000', N'02-8785662', N'顯示')
+VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg',
+        N'25.042552', N'121.580242', N'台北忠孝站', N'08:30:00.0000000', N'02-8785662', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg',
+VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg',
         N'25.001994', N'121.539215', N'台北景美站', N'08:30:00.0000000', N'02-89310266', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg',
+VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg',
         N'25.10463', N'121.521746', N'台北士林站', N'08:30:00.0000000', N'02-2835110', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg',
+VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg',
         N'25.085367', N'121.559064', N'台北內湖站', N'08:30:00.0000000', N'02-25021389', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg',
-        N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'顯示')
+VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg',
+        N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg',
+VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg',
         N'25.046533', N'121.517414', N'台北車站', N'08:30:00.0000000', N'02-25159393', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg',
+VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg',
         N'25.063869', N'121.549778', N'台北松山機場站', N'08:30:00.0000000', N'02-27151133', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg',
+VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg',
         N'24.978089', N'121.545138', N'台北新店站', N'08:30:00.0000000', N'02-29153311', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (10, N'三民路88號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg',
+VALUES (10, N'三民路88號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg',
         N'25.085351', N'121.473882', N'台北蘆洲站', N'08:30:00.0000000', N'02-22852299', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg',
+VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg',
         N'24.965811', N'121.432132', N'台北土城站', N'08:30:00.0000000', N'02-22693131', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (12, N'連城路126號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg',
-        N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'顯示')
+VALUES (12, N'連城路126號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg',
+        N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (13, N'中正路1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg',
+VALUES (13, N'中正路1號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg',
         N'25.174829', N'121.432696', N'台北淡水站', N'08:30:00.0000000', N'02-26299393', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg',
+VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg',
         N'25.014534', N'121.463512', N'台北板橋車站', N'08:30:00.0000000', N'02-29658080', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (15, N'光榮路334號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg',
+VALUES (15, N'光榮路334號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg',
         N'24.678532', N'121.77797', N'宜蘭羅東站', N'08:30:00.0000000', N'03-9602116', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
@@ -271,47 +290,78 @@ VALUES (22, N'中華路一段315號', N'20:30:00.0000000', 2, N'隔尚租車', N
 SET IDENTITY_INSERT [dbo].[car_location] OFF
 
 
-SET
-    IDENTITY_INSERT [dbo].[car_option] ON;
+SET IDENTITY_INSERT [dbo].[car_option] ON;
 
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (1, 1, 1, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (2, 1, 2, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (3, 1, 3, 2200, 0.75, 3)
+VALUES (3, 1, 4, 2200, 1, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (4, 1, 4, 2200, 0.70, 3)
+VALUES (4, 1, 5, 2800, 0.9, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (5, 2, 1, 2000, 0.75, 5)
+VALUES (5, 2, 2, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (6, 2, 2, 2000, 0.80, 4)
+VALUES (6, 2, 3, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (7, 3, 4, 2200, 0.75, 3)
+VALUES (7, 3, 6, 2600, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (8, 4, 5, 2200, 0.70, 3)
+VALUES (8, 3, 7, 2500, 0.70, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (9, 3, 2, 2000, 0.80, 4)
+VALUES (9, 3, 8, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (10, 4, 3, 2200, 0.75, 3)
+VALUES (10, 3, 9, 2800, 0.88, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (11, 5, 4, 2200, 0.70, 3)
+VALUES (11, 4, 10, 2600, 0.90, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (12, 6, 8, 3000, 0.90, 1)
+VALUES (12, 4, 11, 1900, 0.90, 1)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (13, 6, 9, 3200, 0.85, 2)
+VALUES (13, 4, 12, 1800, 0.95, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (14, 7, 6, 2800, 0.80, 2)
+VALUES (14, 4, 1, 2800, 0.80, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (15, 7, 7, 2800, 0.85, 3)
+VALUES (15, 5, 2, 2100, 0.85, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (16, 8, 5, 2500, 0.90, 5)
+VALUES (16, 5, 3, 2500, 0.90, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (17, 9, 7, 3000, 0.80, 3)
+VALUES (17, 5, 4, 2400, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (18, 10, 6, 2800, 0.80, 4)
+VALUES (18, 5, 5, 2800, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (19, 10, 8, 3000, 0.90, 3)
+VALUES (19, 6, 6, 3000, 0.90, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (20, 6, 7, 2200, 0.70, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (21, 6, 8, 1800, 0.95, 1)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (22, 6, 9, 3200, 0.85, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (23, 7, 10, 2800, 0.80, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (24, 7, 11, 2100, 0.85, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (25, 7, 12, 2500, 0.90, 5)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (26, 7, 1, 2000, 0.80, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (27, 8, 2, 2200, 0.80, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (28, 8, 3, 2200, 0.90, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (29, 9, 4, 2000, 0.85, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (30, 9, 5, 2800, 0.80, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (31, 10, 6, 2800, 0.85, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (32, 10, 7, 2500, 0.75, 5)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (33, 11, 8, 2200, 0.80, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (34, 12, 9, 2600, 0.80, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (35, 12, 10, 3000, 0.90, 3)
 SET IDENTITY_INSERT [dbo].[car_option] OFF;
 
 SET

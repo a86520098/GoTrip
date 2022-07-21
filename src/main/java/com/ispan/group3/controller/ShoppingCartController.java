@@ -134,7 +134,7 @@ public class ShoppingCartController {
 					String carInfo = car.getCarLocation().getCompanyName() + "(" + car.getCarModel().getMakeEn() + ")";
 					System.out.println(carInfo);
 					 oib = new OrderItemBean(productId,goDate,type,carInfo,
-							car.getPrice(),qty,car.getCarLocation().getPhone()); 
+							car.getPriceSale(),qty,car.getCarLocation().getPhone()); 
 					 
 //					 替每種商品設定特定的key
 					oId = "c" + String.valueOf(productId);

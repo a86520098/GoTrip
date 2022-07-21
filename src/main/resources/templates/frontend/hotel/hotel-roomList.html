@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 p-b-80 bg6">
-<!--              <tr th:each="roomList:${roomList}" > -->
+                <!--                  th:object="${ticket}"-->
                 <div class="side-menu">
                     <div class="p-t-55">
                         <h2 class="ltext-103 cl5 font-weight-bold m-b-30 p-lr-20">住宿管理</h2>
@@ -37,7 +37,7 @@
                                     檢視訂單
                                 </a>
                             </li>
-                           
+
                             <li class="bor18">
                                 <a th:href="@{/vendor/newHotel}"
                                    class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
@@ -45,15 +45,15 @@
                                 </a>
                             </li>
                             <li class="bor18">
-                                <a th:href="@{/addHotelRoom}"
+                                <a th:href="@{#}"
                                    class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-                                    新增房間
+                                    ###
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
-<!--                 </tr> -->
+                <!--                 </tr> -->
             </div>
             <!-- Block2 -->
 
@@ -98,7 +98,8 @@
 
                                     </th>
                                     <th>
-                                        <a class="btn1 btn-delete" th:href="@{/deleteRoom(id=${roomList.id})}" id="deleteAjax">刪除房間</a>
+                                        <a class="btn1 btn-delete" th:href="@{/deleteRoom(id=${roomList.id})}"
+                                           id="deleteAjax">刪除房間</a>
 
                                     </th>
 
@@ -135,25 +136,25 @@
 
 </script>
 <script>
-	$(".btn-delete").click(function(e) {
-		e.preventDefault(); // 取消原始動作
-		let id = $(this).val();
-		Swal.fire({
-			icon: 'warning',
-			title: '確定刪除?',
-			text: "確認刪除後將不可復原",
-			showCancelButton: true,
-			confirmButtonColor: '#FF8D29',
-			cancelButtonColor: '#FFCD38',
-			confirmButtonText: '確認',
-			cancelButtonText: '取消',
-			reverseButtons: true
-		}).then((result) => {
-			if (result.isConfirmed) {
-				$(this).parent().submit();
-			}
-		})
-	})
+    $(".btn-delete").click(function (e) {
+        e.preventDefault(); // 取消原始動作
+        let id = $(this).val();
+        Swal.fire({
+            icon: 'warning',
+            title: '確定刪除?',
+            text: "確認刪除後將不可復原",
+            showCancelButton: true,
+            confirmButtonColor: '#FF8D29',
+            cancelButtonColor: '#FFCD38',
+            confirmButtonText: '確認',
+            cancelButtonText: '取消',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).parent().submit();
+            }
+        })
+    })
 </script>
 
 </body>
