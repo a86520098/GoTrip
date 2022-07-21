@@ -173,10 +173,16 @@
                                                                class="form-control" onkeypress="return my_key(event)"/>
                                                     </fieldset>
 
+                                                    <fieldset class="form-group">
+                                                        <label>平均價位</label>
+                                                        <input type="text" th:field="*{price}" id="price"
+                                                               class="form-control" onkeypress="return my_key(event)"/>
+                                                    </fieldset>
+
 
                                                     <!-- HTML part -->
                                                     <label>照片</label>
-                                                    <input type="file" name="imagefiles" id="progressbarTWInput"
+                                                    <input type="file" name="imagefile" id="progressbarTWInput"
                                                            accept="image/gif, image/jpeg, image/png" multiple>
                                                     <div id="preview_progressbarTW_imgs"
                                                          style="width:100%; height: 300px; overflow:scroll;">

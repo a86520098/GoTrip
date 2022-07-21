@@ -42,20 +42,14 @@ public class CommentAjaxController {
 		return cService.findByItem(table, id);
 	}
 	
-	@PostMapping
-	public void insertComment(@RequestBody Comment comment) {
+	@PostMapping("/comments")
+	public Boolean save(@RequestBody Comment comment) {
 		cService.save(comment);
+		return true;
 	}
 	
-//	@PutMapping("/comments/{id}")
-//	public void updateComment(@PathVariable Integer id,
-//							  @RequestParam(required = false) Integer rating,
-//							  @RequestParam(required = false) String content) {
-//		cService.updateComment(id, rating, content);
-//	}
-	
 	@DeleteMapping("/comments/{id}")
-	public void deleteComment(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Integer id) {
 		cService.deleteById(id);
 	}
 	

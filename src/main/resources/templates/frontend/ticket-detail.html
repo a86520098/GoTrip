@@ -154,7 +154,7 @@
 			</span>
 		</div>
 	</div>
-
+	<input type="hidden" th:value="${ticket.ticketNo}" class="get-itemid">
 <!-- 圖片路徑找位置中 -->
 	<!-- <section class="sec-product-detail bg0 p-t-40 p-b-45">
 		<div class="container">
@@ -273,7 +273,7 @@
 										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-minus"></i>
 										</div>
-										<input class="mtext-104 cl3 txt-center num-product" type="number"
+										<input class="mtext-104 cl3 txt-center num-product get-qty" type="number"
 											name="num-product" value="1">
 										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
 											<i class="fs-16 zmdi zmdi-plus"></i>
@@ -282,7 +282,7 @@
 								</div>
 							</div>
 								<button
-									class="flex-c-m stext-101 cl0 size-101 w-full bg1 bor1 hov-btn1 m-t-20 p-lr-15 trans-04 js-addcart-detail">
+									class="flex-c-m stext-101 cl0 size-101 w-full bg1 bor1 hov-btn1 m-t-20 p-lr-15 trans-04 plus-cart">
 									加入購物車
 								</button>
 						</div>
@@ -565,7 +565,62 @@
 			$('.slideshow').skidder('resize');
 		});
 	</script>
-
+	
+	<!--    購物車script -->
+    <script>
+    
+	$(document).on('click','.plus-cart',function(){
+		let	itemId = $('.get-itemid').attr('value');
+		let type = 'ticket';
+		let qty = $('.get-qty').val();
+// 		let date = $('.get-date').val();
+		console.log(itemId + "  ")
+			 $.ajax({
+		            type: 'GET',
+		            url: '/gotrip/addToCart',
+		            data:{
+		            	productId: itemId,
+		            	type: type,
+		            	qty: qty,
+// 		            	date: date
+		            	},
+		            dataType: 'json',
+		            async:false,
+		            success: function (data) {
+		     	
+		                console.log(data.itemNumber);	
+		                
+		                $('#cartIcon').attr("data-notify",data.itemNumber);
+		                console.log('data' + data.itemNumber)   
+		                Swal.fire({
+		                	  position: 'center',
+		                	  icon: 'success',
+		                	  title: '已加入購物車',
+		                	  showConfirmButton: false,
+		                	  timer: 1500
+		                	});
+		            },
+		    		error: function(jqXHR,textStatus,errorThrown,data) {
+		    			 console.log(data)
+						console.log(jqXHR);
+						console.log(textStatus); 
+						console.log(jqXHR.responseText);
+					}
+		                	                
+		});		
+		});
+// 	  input number的增加.減少JS
+//    [ +/- num product ]*/
+		   $(document).on('click','.btn-num-product-down' ,function(){
+		       var numProduct = Number($(this).next().val());
+		       if(numProduct > 1) $(this).next().val(numProduct - 1);
+		   });
+		   
+		   $(document).on('click','.btn-num-product-up', function(){
+		       var numProduct = Number($(this).prev().val());
+		       if(numProduct < 99) $(this).prev().val(numProduct + 1);
+		   });
+    </script>
 </body>
 
 </html>

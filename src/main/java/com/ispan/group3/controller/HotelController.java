@@ -59,7 +59,7 @@ public class HotelController {
 
     @PostMapping(value = "/addHotel")
     public String insert(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
-                         @RequestParam(value = "imagefiles", required = false) List<MultipartFile> files
+                         @RequestParam(value = "imagefile", required = false) List<MultipartFile> files
     ) {
         System.out.println("準備新增接收資料了");
 //        MultipartFile picture = hotels.getProductImage(); //拿照片
@@ -232,6 +232,7 @@ public class HotelController {
     @GetMapping("/tohotelDetail")
     public String toHotelDetail(@RequestParam("id") Integer id, Model m) {
         m.addAttribute("roomDetail", hotelService.findById(id));
+        m.addAttribute("room", hotelroomService.findAllHotelRoom(id));
         return "frontend/hotel-roomDetail";
     }
 
@@ -279,9 +280,10 @@ public class HotelController {
     // ======== 前台商家系統 ========
 
     //前-後台主頁面
-    @GetMapping("/vendor/hotels/{companyId}")
-    public String findByCompany(@PathVariable Integer companyId, Model model) {
-        model.addAttribute("hotel", hotelService.findByCompany(companyId));
+    @GetMapping("/vendor/hotels")
+    public String findByCompany(Model model) {
+//        model.addAttribute("hotel", hotelService.findByCompany(companyId));
+        model.addAttribute("hotel", hotelService.findAll());
         return "/frontend/hotel/hotel-index";
     }
 
@@ -298,7 +300,7 @@ public class HotelController {
 
     @PostMapping("/getNewRoom/{id}")
     public String getNewRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
-                             @RequestParam(value = "imageFiles", required = false) List<MultipartFile> files,
+                             @RequestParam(value = "imagefile", required = false) List<MultipartFile> files,
                              @PathVariable("id") Integer id
     ) {
         Hotel byId = hotelService.findById(id);
@@ -333,5 +335,52 @@ public class HotelController {
         model.addAttribute("roomList", hotelroomService.findAllHotelRoom(id));
         return "/frontend/hotel/hotel-roomList";
     }
+
+    @GetMapping("/deleteRoom")
+    public String DeleteRoom(Model model, @RequestParam("id") Integer id) {
+        hotelroomService.deleteById(id);
+        System.out.println("已經成功刪除房間刪除代號為=" + id);
+        return "redirect:/backend/index";
+    }
+
+    @GetMapping("/updateRoom")
+    public String UpdataRoom(Model model, @RequestParam("id") Integer id) {
+        model.addAttribute("update", hotelroomService.findByid(id));
+        return "/frontend/hotel/hotel-EditRoom";
+    }
+
+    @PostMapping("/EditRoom")
+    public String getEditRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
+                              @RequestParam(value = "imagefile", required = false) List<MultipartFile> efiles
+    ) {
+        List<HotelRoomImage> imagesLish = new ArrayList<>();
+        for (MultipartFile file : efiles) {
+            try {
+                String savePath = FileUploadUtil.saveFile("hotelroomImage", file);
+                HotelRoomImage hotelRoomImage = new HotelRoomImage(savePath, hotelRoom);
+                imagesLish.add(hotelRoomImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        hotelRoom.setHotelRoomImageList(imagesLish);
+
+        hotelroomService.save(hotelRoom);
+        System.out.println("看到這條代表更新成功");
+        return "redirect:/backend/index";
+    }
+
+    @GetMapping("/vendor/newHotel")
+    public String NewHotel(Model model) {
+        model.addAttribute("hotel", new Hotel());
+        return "/frontend/hotel/NewHotel-form";
+    }
+
+    @GetMapping("/vendor/EditRoom")
+    public String EditHotel(Model model, @RequestParam("id") Integer id) {
+        model.addAttribute("hotel", hotelService.findById(id));
+        return "/frontend/hotel/NewHotel-form";
+    }
+
 
 }

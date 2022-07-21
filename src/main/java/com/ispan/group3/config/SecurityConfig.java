@@ -46,7 +46,7 @@ public class SecurityConfig{
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		
 		http.authorizeHttpRequests()
-		.antMatchers("/login","/","/index","/resources/**","/css/**","/fonts/**","/images/**","/js/**","/vendors/**","/register","/CheckEmail","/logout","/data/**","/ticket/**","/findHotelList/**","/cars/**","/api/**").permitAll() //resource資料夾靜態資料可匿名存取
+		.antMatchers("/login","/","/index","/resources/**","/css/**","/fonts/**","/images/**","/js/**","/vendors/**","/register","/CheckEmail","/logout","/data/**","/ticket/**","/findHotelList/**","/cars/**","/api/**","/use/**","/showCartItems").permitAll() //resource資料夾靜態資料可匿名存取
 //		.antMatchers("/login") //對象為所有網址
 		.antMatchers("/admin","/vendors/**").hasRole("ADMIN") //admin才可以訪問後台
 		.antMatchers("/userdetails","/userdetals/update").hasAnyRole("USER","DEALER") //user只能訪問前台user畫面

@@ -3,7 +3,6 @@ package com.ispan.group3.repository;
 import java.sql.Blob;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +24,7 @@ public class OrderItemBean {
 	private Integer unitPrice;
 	private	Integer quantity;
 	@JsonIgnore
-	private Integer phone;	
+	private String phone;	
 	@JsonIgnore
 	private Blob photo;
 
@@ -39,7 +38,7 @@ public class OrderItemBean {
 		super();
 	}
 
-	public OrderItemBean(Integer productId,String type,String itemInfo, Integer unitPrice, Integer quantity, Integer phone) {
+	public OrderItemBean(Integer productId,String goDate,String type,String itemInfo, Integer unitPrice, Integer quantity, String phone) {
 		super();
 		this.productId = productId;
 		this.itemInfo = itemInfo;
@@ -49,6 +48,15 @@ public class OrderItemBean {
 		this.type = type;
 	}
 	
+	
+	public String getGoDate() {
+		return goDate;
+	}
+
+	public void setGoDate(String goDate) {
+		this.goDate = goDate;
+	}
+
 	public Blob getPhoto() {
 		return photo;
 	}
@@ -89,11 +97,11 @@ public class OrderItemBean {
 		this.quantity = quantity;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

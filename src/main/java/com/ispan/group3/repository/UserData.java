@@ -38,6 +38,8 @@ public class UserData{
 	private boolean enabled;
 	@Column(name = "verification_code", length = 64)
     private String verificationCode;
+	private String tax_id;
+	private String dealer_name;
 	
 	
 	

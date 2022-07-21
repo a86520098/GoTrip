@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+    .btn1 {
+        background: mediumpurple;
+        width: 150px;
+        color: white;
+        border-radius: 5px;
+        font-size: 15px;
+        text-align: center;
+    }
+</style>
+<head th:replace="frontend/partials/fragment :: head"></head>
+<!--自動找城鎮的API-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+<body class="">
+<!-- Header -->
+<header th:replace="frontend/partials/fragment :: header"></header>
+<!-- Cart 購物車 -->
+<div th:replace="frontend/partials/fragment :: cart"></div>
+
+<section class="bg-img1 txt-center p-lr-15 p-tb-92"
+         th:style="'background-image: url(' + @{/images/hotelpic.jpg} + ');'">
+    <h2 class="ltext-103 font-weight-bold clwhite txt-center">個人住宿管理</h2>
+</section>
+<!-- Product 內文 -->
+<div class="bg0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 p-b-80 bg6">
+                <div class="side-menu">
+                    <div class="p-t-55">
+                        <h2 class="ltext-103 cl5 font-weight-bold m-b-30 p-lr-20">住宿管理</h2>
+                        <ul class="p-lr-20">
+                            <li class="bor18">
+                                <a th:href="@{#}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    檢視訂單
+                                </a>
+                            </li>
+                            <li class="bor18">
+                                <a th:href="@{/vendor/hotels}"
+                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    房間列表
+                                </a>
+                            </li>
+                            <li class="bor18">
+                                <a th:href="@{/vendor/newHotel}"
+                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                    新增飯店
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Block2 -->
+            <div class="col-md-9 grid-margin my-5 pl-5">
+                <div class="card">
+                    <div class="card-body ">
+                        <h4 class="card-title font-weight-bold my-3">新增飯店</h4>
+                        <form id="insert-loc-form" name="form" th:action="@{/addHotel}" method="post"
+                              th:object="${hotel}"
+                              class="form-horizontal needs-validation" enctype="multipart/form-data">
+
+                            <p class="card-description mt-4">填寫飯店資訊</p>
+                            <input th:field="*{id}" name="locationId" type="hidden"/>
+                            <input th:field="*{companyId}" id="companyId" type="hidden"/>
+                            <input th:field="*{hotel_name}" id="companyName" type="hidden"/>
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder=""/>
+                                <label class="col-lg-2 col-form-label" for="name">您飯店名稱</label>
+                                <div class="col-lg-7">
+                                    <input th:field="*{hotel_name}" id="name" type="text" class="form-control"
+                                           placeholder="請輸入飯店名稱"/>
+                                    <div class="invalid-feedback">請輸入飯店名稱</div>
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label">縣市行政區</label>
+                                <div class="col-lg-7">
+                                    <div class="city-selector-set row">
+                                        <div class="col-6 ">
+                                            <input type="hidden" class="js-demeter-tw-zipcode-selector"
+                                                   data-city="#city"
+                                                   data-dist="#location" placeholder="郵遞區號" size="6" id="yoyo"
+                                                   name="yoyo"/>
+                                            <select id="city" name="city" placeholder="請選擇縣市" onchange="addressChange()"
+                                                    class="form-control" style="background-color: white"
+                                                    th:field="*{city}"></select>
+                                        </div>
+                                        <div class="col-6 ">
+                                            <select id="location" name="location" placeholder="請選擇鄉鎮區"
+                                                    onchange="addressChange()" class="form-control"
+                                                    style="background-color: white"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="address">地址</label>
+                                <div class="col-lg-7">
+                                    <input type="text" name="address" id="address" class="form-control"
+                                           th:field="*{fullAddress}"/>
+
+                                    <div class="invalid-feedback">請輸入地址</div>
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="phone">連絡電話</label>
+                                <div class="col-lg-7">
+                                    <input th:field="*{phone}" id="phone" type="text" class="form-control"
+                                           placeholder="02-12345678"/>
+                                    <div class="invalid-feedback">請輸入正確的電話格式</div>
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="">據點照片</label>
+                                <div class="col-lg-7">
+                                    <input type="file" class="form-control custom-file-input py-2 bgwhite"
+                                           style="background-color: white; padding-bottom: 3px" name="imagefile"
+                                           id="imagefile">
+                                    <div class="row" id="formFile">
+                                        <div class="col-12">
+                                            <img class="img-responsive my-4" alt="image" width="100%" height="auto"
+                                                 th:src="@{*{image}}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="d-flex justify-content-end mr-5 my-5">
+                                <button id="btn-insert-wrong-loc" type="button"
+                                        class="btn btn-light mr-2 justify-content-end mr-4">
+                                    錯誤輸入
+                                </button>
+                                <button id="btn-insert-correct-loc" type="button"
+                                        class="btn btn-light mr-2 justify-content-end mr-4">
+                                    正確輸入
+                                </button>
+                                <button id="btn-insert-loc" type="submit"
+                                        class="btn btn-warning justify-content-end">
+                                    儲存資料
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer th:replace="frontend/partials/fragment :: footer"></footer>
+<!-- Back to top -->
+<div th:replace="frontend/partials/fragment :: toTop"></div>
+<!-- Modal1 -->
+<div th:replace="frontend/partials/fragment :: modal1"></div>
+<!-- javascript -->
+<div th:replace="frontend/partials/fragment :: script"></div>
+
+<script th:src="@{/js/car.js}"></script>
+<script th:src="@{/js/tw-city-selector.min.js}"></script>
+
+
+<!-- 立即顯示縣市鄉鎮 -->
+<script type="text/javascript">
+    function addressChange() {
+        var city = document.getElementById('city').value;
+        var location = document.getElementById('location').value;
+        document.getElementById('address').value = city + location;
+    }
+</script>
+</body>
+
+</html>
