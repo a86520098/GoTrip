@@ -19,6 +19,7 @@ public class OrderItemBean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private	Integer itemNo;
 	private Integer productId;
+	private	String goDate;
 	private String type;
 	private String itemInfo;
 	private Integer unitPrice;
@@ -41,11 +42,13 @@ public class OrderItemBean {
 	public OrderItemBean(Integer productId,String goDate,String type,String itemInfo, Integer unitPrice, Integer quantity, String phone) {
 		super();
 		this.productId = productId;
+		this.goDate = goDate;
 		this.itemInfo = itemInfo;
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
 		this.phone = phone;
 		this.type = type;
+		
 	}
 	
 	

@@ -1,8 +1,8 @@
 package com.ispan.group3.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -17,22 +17,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ispan.group3.repository.CarModel;
 import com.ispan.group3.repository.CarOption;
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.OrderBean;
 import com.ispan.group3.repository.OrderItemBean;
 import com.ispan.group3.repository.ShoppingCart;
 import com.ispan.group3.repository.Ticket;
-import com.ispan.group3.service.CarModelService;
 import com.ispan.group3.service.CarOptionService;
 import com.ispan.group3.service.HotelService;
 import com.ispan.group3.service.OrderService;
@@ -237,162 +233,83 @@ public class ShoppingCartController {
 	@GetMapping(value = "/save")
 	public String processInsertOrder(@ModelAttribute("orderBean") OrderBean orderBean) throws Exception {
 		
-//		orderBean.setOrderDate(new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
+		orderBean.setOrderDate(new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
 		
-//		if (orderBean.getOrderDate().isEmpty()) {
-//			orderBean.setOrderDate(new SimpleDateFormat("yyyy/MM/dd HH:mm").format(new Date()));
+		if (orderBean.getOrderDate().isEmpty()) {
+			orderBean.setOrderDate(new SimpleDateFormat("yyyy/MM/dd HH:mm").format(new Date()));
+		}
+
+		return "frontend/shopingcart";
+	}
+
+	@GetMapping("/removeCart")
+	public String removeCart(Model model,SessionStatus sessionStatus) {
+//		清楚session裡的shoppingcart物件。
+		sessionStatus.setComplete();
+//		webRequest.removeAttribute("ShoppingCart", WebRequest.SCOPE_SESSION);
+//		重導至 OrderBeanController.processAllQuery();
+		return "redirect:/goECPay";
+	}
+	@ResponseBody
+	@GetMapping("/goECPay")
+	public String goECPay(Model model,HttpServletRequest request,
+				HttpServletResponse response,HttpSession session) throws IOException {
+
+			OrderBean orderBean = (OrderBean) session.getAttribute("orderBean");
+
+			System.out.println(orderBean.getTotalPrice());
+//		設定金流
+		AllInOne aio = new AllInOne("");
+		AioCheckOutDevide aioCheck = new AioCheckOutDevide();
+//		特店編號
+		aioCheck.setMerchantID("2000214");
+//		特店交易時間
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		simpleDateFormat.setLenient(false);
+		aioCheck.setMerchantTradeDate(simpleDateFormat.format(new Date()));
+//		交易金額
+		aioCheck.setTotalAmount(orderBean.getTotalPrice().toString());
+//		交易描述
+		aioCheck.setTradeDesc("justForTest");
+//		商品名稱
+		aioCheck.setItemName("GoTrip旅遊組合");
+//		特店交易編號
+		aioCheck.setMerchantTradeNo("testECpay" + orderBean.getOrderNo());
+//		付款完成回傳網址
+		aioCheck.setReturnURL("http://localhost:8080/gotrip/returnURL");
+//		Client端回傳網址
+		aioCheck.setClientBackURL("http://localhost:8080/gotrip/order/orderlist");
+
+		aioCheck.setNeedExtraPaidInfo("N");
+//		輸出畫面
+//		PrintWriter out = response.getWriter();
+//		response.setContentType("text/html");
+//		out.print(aio.aioCheckOut(aioCheck, null));
+		String form = aio.aioCheckOut(aioCheck, null);
+		return form;
+	}
+
+	@GetMapping("/returnURL")
+	public void returnURL(@RequestParam("MerchantTradeNo") String MerchantTradeNo,
+			@RequestParam("RtnCode") int RtnCode,@RequestParam("TradeAmt") int TradeAmt,
+			 HttpServletRequest request) {
+//
+//		if ((request.getRemoteAddr().equalsIgnoreCase("175.99.72.1")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.11")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.24")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.28")
+//				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.32")) && RtnCode == 1 ) {
+			String orderIdStr =	 MerchantTradeNo.substring(9);
+			System.out.println(orderIdStr);
+			int orderId = Integer.parseInt(orderIdStr);
+			System.out.println("是否沒執行" + orderIdStr);
+			orderService.updateOrderStatus(1, orderId);
+
+
 //		}
-//
-//		return "frontend/shopingcart";
-//	}
-//	@ResponseBody
-//	@GetMapping("/deleteItem")
-//	public ShoppingCart deleteItem(Model model,@RequestParam String productKey) {
-//
-//		ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
-//
-//		cart.deleteItem(productKey);
-//		System.out.println("是否刪除");
-//		return cart;
-//	}
-//	@ResponseBody
-//	@GetMapping("/updateItem")
-//	public ShoppingCart updateItem(Model model,@RequestParam String productKey,@RequestParam Integer itemNumber) {
-//
-//		ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
-//
-//		cart.updateItem(productKey, itemNumber);
-//		System.out.println("是否更新");
-//		return cart;
-//	}
-//
-//	@GetMapping("/creatOrder")
-//	public String creatOrder(Model model,RedirectAttributes redirectAttributes,HttpSession session) {
-//
-//		ShoppingCart cart = (ShoppingCart) model.getAttribute("ShoppingCart");
-//
-////		隨機產生memberId
-//		String memberId;
-//
-//		memberId = String.valueOf((int)((Math.random() * 10000) + 1000));
-////		產生日期
-//		String date = new SimpleDateFormat("yyyy/MM/dd HH:mm").format(new Date());
-//		// 新建訂單物件。OrderBean:封裝一筆訂單資料的容器，包含訂單主檔與訂單明細檔的資料。目前只存放訂單主檔的資料。
-//		OrderBean orderBean = new OrderBean(null,memberId,date,cart.getSubtotal(),0);
-////		獲取存放購物車商品的map
-//		Map<String, OrderItemBean> cartcontent = cart.getContent();
-//
-//		Set<OrderItemBean> items = new LinkedHashSet<>();
-////		取出map所有的key，在下一步用key取出每個orderItem物件。
-//		Set<String> keys = cartcontent.keySet();
-////		取出每個orderItem物件，set進訂單物件(建立關聯關係)。
-//		for (String key : keys) {
-//			OrderItemBean orderItemBean	= cartcontent.get(key);
-//			orderItemBean.setOrderBean(orderBean);
-////		將每個orderItem物件加入Set
-//			items.add(orderItemBean);
-//		}
-//		System.out.println("here?");
-////		 將所有商品物件set進訂單物件
-//			orderBean.setItems(items);
-//		try {
-////			將訂單物件放到redirectAttributes內，重導至save方法新增進資料庫。
-//			redirectAttributes.addFlashAttribute("orderBean",orderBean);
-//			session.setAttribute("orderBean", orderBean);
-//			System.out.println("這裡還好嗎?");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return showCart(model);
-//		}
-////		重導至 OrderController.save();
-//		return "redirect:/save";
-//	}
-//
-//
-//	@GetMapping(value = "/save")
-//	public String processInsertOrder(@ModelAttribute("orderBean") OrderBean orderBean) throws Exception {
-//
-////		orderBean.setOrderDate(new SimpleDateFormat("yyyy/MM/dd HH:mm").format(Calendar.getInstance().getTime()));
-//
-////		if (orderBean.getOrderDate().isEmpty()) {
-////			orderBean.setOrderDate(new SimpleDateFormat("yyyy/MM/dd HH:mm").format(new Date()));
-////		}
-////		System.out.println(orderBean.getOrderDate());
-//		System.out.println(orderBean);
-//
-//		orderService.insertOrder(orderBean);
-//
-//		return "redirect:/removeCart";
-//	}
-//
-//	@GetMapping("/removeCart")
-//	public String removeCart(Model model,SessionStatus sessionStatus) {
-////		清楚session裡的shoppingcart物件。
-//		sessionStatus.setComplete();
-////		webRequest.removeAttribute("ShoppingCart", WebRequest.SCOPE_SESSION);
-////		重導至 OrderBeanController.processAllQuery();
-//		return "redirect:/goECPay";
-//	}
-//	@ResponseBody
-//	@GetMapping("/goECPay")
-//	public String goECPay(Model model,HttpServletRequest request,
-//				HttpServletResponse response,HttpSession session) throws IOException {
-//
-//			OrderBean orderBean = (OrderBean) session.getAttribute("orderBean");
-//
-//			System.out.println(orderBean.getTotalPrice());
-////		設定金流
-//		AllInOne aio = new AllInOne("");
-//		AioCheckOutDevide aioCheck = new AioCheckOutDevide();
-////		特店編號
-//		aioCheck.setMerchantID("2000214");
-////		特店交易時間
-//		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//		simpleDateFormat.setLenient(false);
-//		aioCheck.setMerchantTradeDate(simpleDateFormat.format(new Date()));
-////		交易金額
-//		aioCheck.setTotalAmount(orderBean.getTotalPrice().toString());
-////		交易描述
-//		aioCheck.setTradeDesc("justForTest");
-////		商品名稱
-//		aioCheck.setItemName("GoTrip旅遊組合");
-////		特店交易編號
-//		aioCheck.setMerchantTradeNo("testECpay" + orderBean.getOrderNo());
-////		付款完成回傳網址
-//		aioCheck.setReturnURL("http://localhost:8080/gotrip/returnURL");
-////		Client端回傳網址
-//		aioCheck.setClientBackURL("http://localhost:8080/gotrip/order/orderlist");
-//
-//		aioCheck.setNeedExtraPaidInfo("N");
-////		輸出畫面
-////		PrintWriter out = response.getWriter();
-////		response.setContentType("text/html");
-////		out.print(aio.aioCheckOut(aioCheck, null));
-//		String form = aio.aioCheckOut(aioCheck, null);
-//		return form;
-//	}
-//
-//	@GetMapping("/returnURL")
-//	public void returnURL(@RequestParam("MerchantTradeNo") String MerchantTradeNo,
-//			@RequestParam("RtnCode") int RtnCode,@RequestParam("TradeAmt") int TradeAmt,
-//			 HttpServletRequest request) {
-////
-////		if ((request.getRemoteAddr().equalsIgnoreCase("175.99.72.1")
-////				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.11")
-////				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.24")
-////				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.28")
-////				|| request.getRemoteAddr().equalsIgnoreCase("175.99.72.32")) && RtnCode == 1 ) {
-//			String orderIdStr =	 MerchantTradeNo.substring(9);
-//			System.out.println(orderIdStr);
-//			int orderId = Integer.parseInt(orderIdStr);
-//			System.out.println("是否沒執行" + orderIdStr);
-//			orderService.updateOrderStatus(1, orderId);
-//
-//
-////		}
-//
-//	}
-//
-//
-//
-//}
+
+	}
+
+
+
+}
