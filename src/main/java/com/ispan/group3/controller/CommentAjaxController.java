@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ispan.group3.repository.Comment;
 import com.ispan.group3.repository.CommentCount;
+import com.ispan.group3.repository.CommentImage;
 import com.ispan.group3.service.CommentService;
 
 @RequestMapping(path = "/api")
@@ -44,6 +45,11 @@ public class CommentAjaxController {
 	
 	@PostMapping("/comments")
 	public Boolean save(@RequestBody Comment comment) {
+		List<CommentImage> images = comment.getImages();
+		for (CommentImage image: images) {
+			image.setComment(cService.findById(251));
+		}
+		comment.setImages(images);
 		cService.save(comment);
 		return true;
 	}
