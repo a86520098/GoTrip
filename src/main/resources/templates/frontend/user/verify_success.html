@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <!-- Head -->
+    <head>
+        <title>立即登入GoTrip！</title>
+        <!-- Meta-Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="keywords" content="Existing Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+        <script type="application/x-javascript">addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }</script>
+        <!-- //Meta-Tags -->
+        <link th:href="@{css/loginCSS/popuo-box.css}" rel="stylesheet" type="text/css" media="all" />
+        <!-- Style -->
+        <link rel="stylesheet" th:href="@{css/loginCSS/style.css}" type="text/css" media="all">
+        
+    </head>
+    <!-- //Head -->
+
+    <!-- Body -->
+    <body><h1>驗證成功！</h1>
+    	<div class="w3layoutscontaineragileits">
+        <div class="container text-center">
+		    <h3>恭喜您，您的帳戶已驗證通過，請點選下列連接立即登入！</h3>
+		    <h2>      </h2>
+		    <h3><a th:href="@{/login}">點我登入</a></h3>
+		</div>
+		</div>
+        
+        
+    </body>
+    
+    <!-- //Body -->
+    
+    </html>

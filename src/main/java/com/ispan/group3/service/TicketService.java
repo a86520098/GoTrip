@@ -1,7 +1,12 @@
 package com.ispan.group3.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +42,50 @@ public class TicketService{
 		return TicketRepository.findAll(pageable);
 	}
 
+public Page<Ticket> findAllByCityAndTagNo(String tagNo,String city, Pageable pageable) { 
+		
+		Page<Ticket> rtnListTicket = TicketRepository.findAll(pageable);
+		
+		if(tagNo==null &&  city == null) {//全查詢
+			rtnListTicket = TicketRepository.findAll(pageable);	
+			System.err.println("findAll");
+		}
+		if(tagNo!=null &&  city != null) {
+			rtnListTicket = TicketRepository.findByTagNoAndCity(tagNo,city,pageable);
+			System.err.println("findByTagNoAndCity");
+		}
+		if(tagNo!=null &&  city == null) {
+			rtnListTicket = TicketRepository.findByTagNo(tagNo,pageable);	
+			System.err.println("findByTagNo");
+		}
+		if(tagNo==null &&  city != null) {//
+			rtnListTicket = TicketRepository.findByCity(city,pageable);
+			System.err.println("findByCity");
+		}
+		
+		for(Ticket ticket : rtnListTicket) {
+		    String FristOnePath = ""; 
+		    for(String imagePath : ticket.getImages()) {
+		    	if(imagePath.compareTo(FristOnePath) > 0) {
+		    		FristOnePath = imagePath;
+		    	}
+		    }
+			byte[] fileContent; 
+			try {	
+				//System.out.println("dir-->"+System.getProperty("user.dir"));
+				//TripBoot/src/main/resources/static/data/uploadimages/ticket/Xpark_1.jpg
+				fileContent = FileUtils.readFileToByteArray(new File(System.getProperty("user.dir")+"/src/main/resources/static/"+FristOnePath));
+				String encodedString = Base64.getEncoder().encodeToString(fileContent);
+				ticket.setTicketImageData(encodedString);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return rtnListTicket;
+	}
+	
+	
+	
 	/**
 	 * 新增清單列表
 	 * 
@@ -71,5 +120,9 @@ public class TicketService{
 	public Ticket getBookById(long ticketNo) {
 		return TicketRepository.findById(ticketNo).orElse(null);
 	}
+	
+	 public List<Ticket> findByCompanyId(long companyId){
+		 return TicketRepository.findByCompanyId(companyId);
+	 }
 	
 }

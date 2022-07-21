@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="frontend/partials/fragment :: head">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<!-- <head> -->
+	<meta charset="UTF-8">
+	<!-- 方案選擇css -->
+	<!-- <link rel="stylesheet" th:href="@{/css/ticketTableStyle/style_plan.css}" href="../../static/css/ticketTableStyle/style_plan.css" > -->
+	<link rel="stylesheet" th:href="@{/css/ticketTableStyle/jquery.skidder.css}" href="../../static/css/ticketTableStyle/jquery.skidder.css" >
+	<style type="text/css">
+
+	*{margin:0;padding:0;}
+	ul,li{list-style:none;}
+	.main{position:relative;margin:0px auto;width:1300px;overflow:hidden;}
+	.siderBar{float:left;width:25%;}
+	.siderBar li{margin-bottom:1px;padding:20px;line-height:50px;font-size:18px;background:#f0f0f0;cursor:pointer;transition:all .5s;}
+	.siderBar li.cur{color:#fff;background:#000;}
+	.content{float:right;width:70%;}
+	.content .item{padding:50px 0;font-size:50px;color:#fff;text-align:center;overflow:hidden;}
+
+	/* announcement */
+	.huadong {
+            /* width: 60rem;
+            height: 4rem;
+            padding: 0.5rem 0 0.3rem 0;
+            border-bottom: 1px solid #F0F0F0;
+            position: relative;
+            font: 12px/1.5 "Hiragino Sans GB", "Microsoft YaHei", simsun;
+            margin: 0 auto; */
+			width: 900px;
+			height: 40px;
+			background-color: rgb(184, 219, 221);
+			position: relative;
+			top: 0;
+			right: 200px;
+			bottom: 0;
+			/* left: -200px; */
+			margin: 100px auto;
+			overflow: hidden;
+			color: #fff;
+			border-radius: 5px;
+        }
+
+        .huadong .huabox {
+            margin: 0 auto;
+            width: 80%;
+            line-height: 4rem;
+        }
+
+        .huadong .hdimg {
+            float: left;
+            line-height: 3.5rem;
+			/* right: 200px; */
+        }
+		/* icon圖片 */
+        .huadong .hdimg img {
+            width: 100%;
+            /* vertical-align: middle; */
+			left:200px;
+        }
+
+        .huadong h5 {
+            font-size: 1rem;
+            float: left;
+            line-height: 2.2rem;
+            margin: 0.8rem 0 0 0;
+        }
+
+        .huadong .gg_more {
+            float: left;
+        }
+
+        .huadong .gg_more a {
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .huadong .notice_active {
+            float: left;
+            width: 55%;
+            height: 4rem;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .huadong .notice_active li {
+            list-style-type: none;
+            line-height: 2.4rem;
+            overflow: hidden;
+        }
+
+        /*.huadong .notice_active li.notice_active_ch {}*/
+        .huadong .notice_active li.notice_active_ch span{
+            color: #656972;
+            font-size: 1rem;
+            display: block;
+            overflow: hidden;
+            width: 100%;
+            float: left;
+            overflow: hidden;
+            margin: 0 0 2rem 0;
+        }
+
+        .huadong .gg_more .news_ck {
+            float: left;
+            margin: 0 1rem 0 1rem;
+            color: #888;
+            width: 5rem;
+            height: 2rem;
+            line-height: 2rem;
+            display: block;
+            border: 1px solid #656972;
+            text-align: center;
+            border-radius: 0.7rem;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .huadong .gg_more .news_more {}
+
+        .huadong .notice_active li.notice_active_ch em {
+            text-align: right;
+            float: right;
+            color: #888;
+            font-size: 0.8rem;
+            font-style: normal;
+        }
+
+	
+	</style>
+<body>
+		
+	<!-- class="animsition" -->
+	<!-- Header -->
+	<header th:replace="frontend/partials/fragment :: header"></header>
+	<!-- Cart 購物車 -->
+	<div th:replace="frontend/partials/fragment :: cart"></div>
+
+	<!-- breadcrumb -->
+	<div class="container" th:object="${ticket}">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-20 p-lr-0-lg">
+			<a href="/index" class="stext-110 cl8 hov-cl1 trans-04">
+				台灣
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+			<a href="/product" class="stext-110 cl8 hov-cl1 trans-04">
+				台北
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+			<span class="stext-110 cl4">
+				<a href="#" th:text="${ticket.ticketName}"  class="stext-110 cl8 hov-cl1 trans-04"></a>
+			</span>
+		</div>
+	</div>
+
+<!-- 圖片路徑找位置中 -->
+	<!-- <section class="sec-product-detail bg0 p-t-40 p-b-45">
+		<div class="container">
+			<div class="row">
+
+			</div>
+		</div>
+	</section> -->
+
+	<!-- Image -->
+	<section class="sec-product-detail bg0 p-t-40 p-b-45">
+		<div class="container">
+			<!-- <div class="row"> -->
+				<!-- <div class="col-md-8 col-lg-8 p-b-30"> -->
+					<!-- <div class="p-l-25 p-r-30 p-lr-0-lg"> -->
+						<!-- <div class="slideshow"> -->
+							<!-- <div class="p-l-25 p-r-30 p-lr-0-lg"> -->
+								<div class="slideshow" style="height: 500px; margin-top:15px;overflow: hidden">
+									<!-- 圖片可轉換 class="carousel-item active" -->
+									 <!-- <div class="carousel-item active">
+										<img th:src="@{/images/tickets/Xpark_1.jpg}"  class="d-block w-100" alt="...">
+									</div> -->
+									<div th:each="image:*{ticket.images}" class="slide">
+										<img th:src="@{${image}}" class="d-block w-100" alt="..."/>
+									</div>
+								</div>
+							<!-- 圖片下方橫槓 -->
+							<!-- <ol class="carousel-indicators">
+								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+								<li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+							</ol> -->
+
+							<!-- 左右選擇換圖 -->
+							<!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+								data-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="sr-only">Previous</span>
+							</a>							
+							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+								data-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="sr-only">Next</span>
+							</a> -->
+						<!-- </div> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </div> -->
+		</div>
+	</section>
+
+	<!-- 左側bar -->
+	<section class="sec-product-detail bg0 p-t-40 p-b-45">
+		<div class="container" style="width: 100%;">
+			<!-- <div class="row" style="position:absolute ;top: 900px;left: 200px;"> -->
+				<div class="col-md-7 p-b-25">
+					<div class="p-t-5">
+						<h4 class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14" th:text="${ticket.ticketName}"></h4>
+						<hr>
+						<div class="p-b-10">
+							<div id="rating-count">
+								<i class="fa fa-star cl1" aria-hidden="true"></i>
+								<i class="fa fa-star cl1" aria-hidden="true"></i>
+								<i class="fa fa-star cl1" aria-hidden="true"></i>
+								<i class="fa fa-star cl1" aria-hidden="true"></i>
+								<i class="fa fa-star cl1" aria-hidden="true"></i>
+								<span id="rating">4.6</span> (<span id="count">56</span>則評論)
+							</div>
+							<div class="p-t-20">
+								<a href="#" class="fa fa-map-marker" aria-hidden="true"  th:text="${ticket.city}"></a>
+								<a href="#"class="fa fa-map-marker" aria-hidden="true"  th:text="${ticket.location}"></a>
+								<!-- <i class="fa fa-map-marker" aria-hidden="true"  th:text="${ticket.location}"></i> -->
+								<!-- 桃園, 青埔 -->
+							</div>
+						</div>
+						<!-- 右側bar -->
+						<p class="stext-102 cl3 p-t-23" th:text="${ticket.ticketBriefIntro}">
+							<!-- 由日本橫濱八景島首度跨海來台桃園開設分館「Xpark」，Xpark
+								主打新都會型水族館，驅使最先端的科技，營造出環境的溫度、濕度、氣味、聲音，帶您到地球上每個不可思議的角落，受到啟發、感受療癒、洗滌心靈。 -->
+						</p>						
+						<!-- announcement -->
+						<div class="huadong" style="width: 105%;margin-left:26%; bottom: 400px;">
+							<div class="huabox">
+								<img th:src="@{/images/tickets/lingdang.png}" src="../../static/images/tickets/lingdang.png" style="width:auto;position:absolute;left: 10px;bottom: 12px;">
+								<div class="notice_active">
+									<ul>
+										<li class="notice_active_ch"><span>GoTrip解封玩暑假！大小朋友一起去溜撘~</span>
+										<li class="notice_active_ch"><span>暑假新體驗！親子同樂遊!熱門親子體驗！動手做～Fun心玩</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- </div> -->
+				<div class="col-md-4 p-b-30" style="margin-left:65%; height: 0px; bottom: 530px;">
+					<div class="p-t-5">
+						<span class="mtext-106 cl2 p-t-30">$</span>
+						<span class="mtext-106 cl2 p-t-30" th:text="${ticket.price}"></span>
+						<span style="display: inline"> TWD</span>
+						<div class=" p-t-33">
+							<div class="row p-b-10">
+								<div class="col-3">
+									<!-- <p class="dis-inline-block align-middle p-t-20 d-flex justify-content-center"> -->
+									<p class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14">
+										數量
+									</p>
+								</div>
+								<div class="col-9 ">
+									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-minus"></i>
+										</div>
+										<input class="mtext-104 cl3 txt-center num-product" type="number"
+											name="num-product" value="1">
+										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-plus"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+								<button
+									class="flex-c-m stext-101 cl0 size-101 w-full bg1 bor1 hov-btn1 m-t-20 p-lr-15 trans-04 js-addcart-detail">
+									加入購物車
+								</button>
+						</div>
+					</div>
+				</div>
+		</div>
+	</section>
+
+	<!-- 右側bar -->
+	<!-- <section>
+		<div class="container" style="width: 100%;">
+			<div class="row" style="position:absolute ;top: 900px;left: 1200px;">
+				<div class="col-md-4 p-b-30" style="margin-left:65%; height: 150px; bottom: 400px;">
+					<div class="p-t-5">
+						<p class="mtext-106 cl2 p-t-30" th:text="${ticket.price}">
+						</p>
+						<div class=" p-t-33">
+							<div class="row p-b-10">
+								<div class="col-3">
+									<p class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14">
+										數量
+									</p>
+								</div>
+								<div class="col-9 ">
+									<div class="wrap-num-product flex-w m-r-20 m-tb-10">
+										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-minus"></i>
+										</div>
+										<input class="mtext-104 cl3 txt-center num-product" type="number"
+											name="num-product" value="1">
+										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+											<i class="fs-16 zmdi zmdi-plus"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+								<button
+									class="flex-c-m stext-101 cl0 size-101 w-full bg1 bor1 hov-btn1 m-t-20 p-lr-15 trans-04 js-addcart-detail">
+									加入購物車
+								</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> -->
+
+	<!-- announcement -->
+	<!-- <div class="container">
+	  <div class="huadong">
+        <div class="huabox">
+			<img th:src="@{/images/tickets/lingdang.png}" src="../../static/images/tickets/lingdang.png" style="width:auto;position:absolute;left: 10px;bottom: 12px;">
+            <div class="notice_active">
+                <ul>
+                    <li class="notice_active_ch"><span>GoTrip解封玩暑假！大小朋友一起去溜撘~</span>
+                    <li class="notice_active_ch"><span>暑假新體驗！親子同樂遊!熱門親子體驗！動手做～Fun心玩</span>
+					</li>
+                </ul>
+            </div>
+    	</div>
+       </div>
+    </div> -->
+
+	
+	<!-- 方案選擇 -->
+	<!-- <div class="row">
+		<div class="col">
+		<h3>方案選擇 <b></b></h3>
+		<div class="tabs">
+			<div class="tab">
+			<input type="radio" id="rd1" name="rd">
+			<label class="tab-label" for="rd1">Item 1</label>
+			<div class="tab-content"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, facilis. </div>
+			</div>
+			<div class="tab">
+			<input type="radio" id="rd2" name="rd">
+			<label class="tab-label" for="rd2">Item 2</label>
+			<div class="tab-content"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, aut. </div>
+			</div>
+		</div>
+		</div>
+	</div> -->
+
+	<!-- sticky-bar -->
+	<main class="main">
+	  <div class="container">	
+		<div class="siderBar" style="float:right;">
+			<div class="menu">
+				<ul>
+					<li data-href="#s1">商品說明</li>
+					<li data-href="#s2">購買須知</li>
+					<li data-href="#s3">體驗地點</li>
+					<li data-href="#s4">旅客評價</li>
+					<!-- <li data-href="#s5">栏目五</li> -->
+				</ul>
+			</div>
+		</div>
+	  </div>
+		<div class="content" style="float:left;">
+			<!-- 商品說明 -->
+			<div id="s1" class="item" style="background:rgb(114, 114, 114);">
+				<p style="text-align: left;font-size: 2rem; position: relative;top: 0px; left: 50px; padding-right: 100px;">
+					景點門票簡介：
+					<!-- <span th:text="${ticket.ticketIntro}"></span> -->
+				</p>
+				<hr>
+				<div id ='intro' style="text-align: left; font-size: 1.4rem; position: relative;top: 30px; left: 50px; padding-right: 100px;"></div>
+			</div>
+			<!-- 購買須知 -->
+			<div id="s2" class="item" style="background:#888;">
+				<p style="text-align: left;font-size: 2rem; position: relative;top: 0px; left: 50px; padding-right: 100px;">
+					購買須知：
+					<!-- <span th:text="${ticket.ticketIntro}"></span> -->
+				</p>
+				<hr>
+				<div style="text-align: left; font-size: 1.4rem; position: relative;top: 30px; left: 50px; padding-right: 100px;">
+					<p>&mdash; 重要資訊 &mdash;</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; 配合中央流行疫情指揮中心推行防疫重要措施如下：</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1. 遊客入館宣導措施：</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(一)入館民眾須全程「佩戴口罩」、「量體溫」、「酒精 消毒」，並保持「室內至少1.5公尺」、「室外至少1公尺」社交安全距離。 (依中央疫情指揮中心規定之情況下得免戴口罩(滾動 式調整))</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(二)如有持續咳嗽或有發燒、體溫超過37.5度症狀.請勿入館。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(三)請下載「台灣社交距離APP」。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2. 清消作業：每2小時針對扶手、電梯按鈕、把、廁所經觸加強消毒。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3. 餐飲防疫管理</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(一)館內餐廳開放內用,並依照衛福部及屏縣政府規定辦理。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(二)館內戶外通風處每桌間保持安全距離&middot;開放戶外桌椅供遊客臨時簡易用餐。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(三)喝水、服藥、哺乳者，請與遊客距離1.5尺以於完畢後速佩戴口罩。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(四)館內禁止「邊走邊吃」。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4. 本館暫停開放項目有： &nbsp;</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(一)戶外區：戶外親水設施,太平洋親水廣場戲水池。 &nbsp;</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(二)室內：展館內部份互動設施、兒童、海洋爬類劇場。</p>
+
+					<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;5. 未佩戴口罩經勸導不聽者,將依規定通報地方主管機關</p>
+
+					
+				</div>
+			</div>
+			<!-- Map -->
+			<div id="s3" class="item" style="background:#777;">預計放map</div>
+			<!-- 評論 -->
+			<div id="s4" class="item" style="background:#666;">
+				預計放商品評論
+			</div>
+			<!-- <div id="s5" class="item" style="background:#555;">五</div> -->
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer th:replace="frontend/partials/fragment :: footer"></footer>
+	<!-- Back to top -->
+	<div th:replace="frontend/partials/fragment :: toTop"></div>
+	<!-- Modal1 -->
+	<div th:replace="frontend/partials/fragment :: modal1"></div>
+	<!-- javascript -->
+	<div th:replace="frontend/partials/fragment :: script"></div>
+
+	<!-- 右側menu區塊 -->
+	<script th:src="@{/js/ticketTableJS/jquery.sticky-sidebar.min.js}" src="../../static/js/ticketTableJS/jquery.sticky-sidebar.min.js"></script>
+	<!-- <script th:src="@{/js/ticketTableJS/jquery.min.js}" src="../../static/js/ticketTableJS/jquery.min.js"></script> -->
+	<!-- <script src="js/jquery.sticky-sidebar.min.js"></script> -->
+	
+	<!-- Google Map -->
+	<!-- <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script> -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw"></script> -->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly" defer></script> -->
+	<!-- https://www.google.com/maps/embed/v1/place?key=AIzaSyCZCaVMqDRPK9FWi6p_yGx0iNbb7ATBLBw -->
+
+	<!-- 圖片JS -->
+	<!-- <script type="text/javascript" th:src="@{/js/ticketTableJS/jquery-1.11.0.min.js}" src="../../static/js/ticketTableJS/jquery-1.11.0.min.js"></script> -->
+	<script type="text/javascript" th:src="@{/js/ticketTableJS/imagesloaded.js}" src="../../static/js/ticketTableJS/imagesloaded.js"></script>
+	<script type="text/javascript" th:src="@{/js/ticketTableJS/smartresize.js}" src="../../static/js/ticketTableJS/smartresize.js"></script>
+	<script type="text/javascript" th:src="@{/js/ticketTableJS/jquery.skidder.js}" src="../../static/js/ticketTableJS/jquery.skidder.js"></script>
+	
+	<!-- announcement JS -->
+	<!-- <script th:src="@{/js/ticketTableJS/jquery.min.js}" src="../../static/js/ticketTableJS/jquery.min.js"></script> -->
+
+	<!-- announcement -->
+	<script type="text/javascript">
+	function timer(opj) { $(opj).find('ul').animate({ marginTop: "-3.5rem" }, 500, function () { $(this).css({ marginTop: "0.7rem" }).find("li:first").appendTo(this); }) } $(function () { var num = $('.notice_active').find('li').length; if (num > 1) { var time = setInterval('timer(".notice_active")', 3500); $('.gg_more a').mousemove(function () { clearInterval(time); }).mouseout(function () { time = setInterval('timer(".notice_active")', 3500); }); } $(".news_ck").click(function () { location.href = $(".notice_active .notice_active_ch").children(":input").val(); }) });
+	</script>
+
+
+	<!-- sideBar -->
+	<script>
+		var a = new StickySidebar('.siderBar', {
+			topSpacing: 20,
+			bottomSpacing: 20,
+			containerSelector: '.content',
+			innerWrapperSelector: '.menu'
+		});
+		
+		//点击导航栏滑动到对应板块
+		$('.menu li').eq(0).addClass('cur');
+		$('.menu li').on('click',function(){
+			$(this).addClass('cur').siblings().removeClass('cur');
+			var index = $(this).attr('data-href');
+			var elOffset = $(index).offset().top;
+			$('html,body').animate({'scrollTop':elOffset}, 800);
+		})
+		
+		
+		//创建页面滚动完成之后的回调事件
+		$.fn.scrollEnd = function(callback, timeout) {          
+			  $(this).scroll(function(){
+				var $this = $(this);
+				if ($this.data('scrollTimeout')) {
+					  clearTimeout($this.data('scrollTimeout'));
+				}
+				$this.data('scrollTimeout', setTimeout(callback,timeout));
+			  });
+		};
+		 
+		//with a 1000ms timeout
+		$(window).scrollEnd(function(){
+			var ST = $(this).scrollTop();
+			$('.item').each(function(){
+				var elOffset = $(this).offset().top;
+				if(ST >= elOffset){
+					var index = $(this).index();
+					$('.menu li').eq(index).addClass('cur').siblings().removeClass('cur');
+				}
+			})
+		}, 0);
+
+	</script>
+
+	<!-- 簡介 -->
+	<script th:inline="javascript">
+			var ticketIntro = /*[[${ticket.ticketIntro}]]*/ 'default';
+			document.getElementById("intro").innerHTML=ticketIntro;
+	</script>
+
+	<!-- 圖片播放 -->
+	<script type="text/javascript">
+		$('.slideshow').each( function() {
+			var $slideshow = $(this);
+			$slideshow.imagesLoaded( function() {
+				$slideshow.skidder({
+				slideClass    : '.slide',
+				animationType : 'css',
+				scaleSlides   : true,
+				maxWidth : 1300,
+				maxHeight: 500,
+				paging        : true,
+				autoPaging    : true,
+				pagingWrapper : ".skidder-pager",
+				pagingElement : ".skidder-pager-dot",
+				swiping       : true,
+				leftaligned   : false,
+				cycle         : true,
+				jumpback      : false,
+				speed         : 400,
+				autoplay      : true,
+				autoplayResume: false,
+				interval      : 3000,
+				transition    : "slide",
+				afterSliding  : function() {},
+				afterInit     : function() {}
+				});
+			});
+		});
+		$(window).smartresize(function(){
+			$('.slideshow').skidder('resize');
+		});
+	</script>
+
+</body>
+
+</html>

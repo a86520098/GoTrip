@@ -108,11 +108,12 @@ public class UserAccountController {
 //		return "redirect:/login";
 //	}
 	
+	//呼叫註冊方法
 	@PostMapping("/register")
     public String processRegister(UserData user, HttpServletRequest request) 
     		throws UnsupportedEncodingException, MessagingException {
         userService.register(user, getSiteURL(request));       
-        return "frontend/register_success";
+        return "frontend/user/register_success";
     }
 	
 	
@@ -128,14 +129,16 @@ public class UserAccountController {
         return siteURL.replace(request.getServletPath(), "");
     }
 
+    //導向會員資料
 	@GetMapping({"/userdetails"})
 	public String UserDetail(@AuthenticationPrincipal UserDetailsData loggedUser, Model model) {
 		String username = loggedUser.getUsername();
 		UserData user = userRepository.findByUsername(username);
 		model.addAttribute("user", user);
-		return "frontend/user-detail";
+		return "frontend/user/user-detail";
 	}
 	
+	//更新會員資料
 	@PostMapping({"/userdetals/update"})
 	public String saveDetails (UserData user, RedirectAttributes redirectAttributes,
 			@AuthenticationPrincipal UserDetailsData loggedUser,
@@ -163,12 +166,51 @@ public class UserAccountController {
 		return "redirect:/userdetails";
 	}
 	
+	//導向成為店家畫面
+	@GetMapping({"/become_dealer"})
+	public String BecomeDealer(@AuthenticationPrincipal UserDetailsData loggedUser, Model model) {
+		String username = loggedUser.getUsername();
+		UserData user = userRepository.findByUsername(username);
+		model.addAttribute("user", user);
+		return "frontend/user/become_dealer";
+	}
+	
+	//成為店家 導回登入畫面
+	@PostMapping({"/become_dealer"})
+	public String BecomeDealer(UserData user, RedirectAttributes redirectAttributes,
+			@AuthenticationPrincipal UserDetailsData loggedUser,
+			@RequestParam(value = "imagefile", required = false) MultipartFile file) {
+//		try {
+//			String savePath = FileUploadUtil.saveFile("user", file);
+//			user.setImage(savePath);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		userRepository.save(user);
+		
+		loggedUser.setUsername(user.getUsername());
+		loggedUser.setDealer_id(user.getDealer_name());
+		loggedUser.setCh_name(user.getCh_name());
+		loggedUser.setTax_id(user.getTax_id());
+		loggedUser.setPhone(user.getPhone());
+		loggedUser.setCity(user.getCity());
+		loggedUser.setLocation(user.getLocation());
+		loggedUser.setAddress(user.getAddress());
+		loggedUser.setAuthority(user.getAuthority());
+		loggedUser.isEnabled(true);
+		
+		redirectAttributes.addFlashAttribute("message", "儲存成功！");
+		
+		return "redirect:/login";
+	}
+	
 	@GetMapping("/verify")
 	public String verifyUser(@Param("code") String code) {
 	    if (userService.verify(code)) {
-	        return "frontend/verify_success";
+	        return "frontend/user/verify_success";
 	    } else {
-	        return "frontend/verify_fail";
+	        return "frontend/user/verify_fail";
 	    }
 	}
 	
