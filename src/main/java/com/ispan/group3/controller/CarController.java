@@ -147,6 +147,7 @@ public class CarController {
 		model.addAttribute("existModels", existModels);
 		return "frontend/car/vendor-loc-form";
 	}
+	
 	// ---------- 儲存地點 ----------
 	@PostMapping("/vendor/cars/locations")
 	public String save(@ModelAttribute CarLocation carLocation, 

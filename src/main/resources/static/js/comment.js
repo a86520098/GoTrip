@@ -167,8 +167,23 @@ jQuery(document).ready(function($) {
 							"itemId": $('#itemId').val(), 
 							"userId": "admin", 
 							"rating": $('input[type=radio]:checked').val(), 
-							"content": $('#content').val()
-						  }
+							"content": $('#content').val(),
+							"status": "show",
+						    "images": [
+							        {
+							            "imagePath": "/data/uploadimages/comment/ford.jpg",
+							            "commentId": 251
+							        },
+							        {
+							            "imagePath": "/data/uploadimages/comment/jeep.jpg",
+							            "commentId": 251
+							        },
+							        {
+							            "imagePath": "/data/uploadimages/comment/blue-car.jpg",
+							            "commentId": 251
+							        },
+							    ]
+						  };
 				console.log($('input[name=itemTb]').val())
 				$.ajax({
 					type: 'POST',

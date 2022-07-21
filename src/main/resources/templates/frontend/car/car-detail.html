@@ -137,13 +137,15 @@
 					</p>
 					<p class="ml-4">
 						營業時間 : 
-						<span class="ml-4" th:text="${option.carLocation.openTime +' ~ ' + option.carLocation.closeTime}"></span>
+						<span class="ml-4" th:text="${#strings.substring(option.carLocation.openTime,0,5)}"></span>
+						<span class="" > ~ </span>
+						<span class="" th:text="${#strings.substring(option.carLocation.closeTime,0,5)}"></span>
 					</p>
 				</div>
 				
 				
 				
-				<div class="col-sm-10 col-md-7">
+				<div class="col-sm-10 col-md-7 mt-5">
 					<!-- 顧客評論list -->
 					<div>
 						<h3 class="font-weight-bold">顧客評價</h3>
@@ -407,65 +409,60 @@
 			});
 		}
 	}
-	
-	
-	
-	
-	
-	
-		$(function() {
-			  $('#btn').on('click',function() {
-			  // 獲取檔案列表
-			  var file = $('#ipt')[0].files
-			   // 判斷是否選擇了檔案
-			  if (file.length <= 0) {
-			   return alert('請上傳檔案')
-			  }
-			  // 建立formdata
-			  var fd = new FormData()
-			   // 向formdata中傳入資料
-			   // fd.append()
-			   // file是一個偽陣列
-			  fd.append('avatar',file[0])
-			   // 用ajax傳送資料
-			  $.ajax({
-			   type: 'post',url: 'http://www.liulongbin.top:3006/api/upload/avatar',// 資料不需要編碼
-			   contentType: false,// 資料物件不需要轉換成鍵值對格式
-			   processData: false,data: fd,beforeSend: function() {
-			   $('#loading').show()
-			   },complete: function() {
-			   $('#loading').hide()
-			   },success: function(res) {
-			   // 判斷是否接收成功
-			   if (res.status !== 200) {
-			    return alert(reg.msg)
-			   }
-			   $('#img').attr('src','http://www.liulongbin.top:3006' + res['url']).css('display','block')
+		
+// 		$(function() {
+// 			  $('#btn').on('click',function() {
+// 			  // 獲取檔案列表
+// 			  var file = $('#ipt')[0].files
+// 			   // 判斷是否選擇了檔案
+// 			  if (file.length <= 0) {
+// 			   return alert('請上傳檔案')
+// 			  }
+// 			  // 建立formdata
+// 			  var fd = new FormData()
+// 			   // 向formdata中傳入資料
+// 			   // fd.append()
+// 			   // file是一個偽陣列
+// 			  fd.append('avatar',file[0])
+// 			   // 用ajax傳送資料
+// 			  $.ajax({
+// 			   type: 'post',url: 'http://www.liulongbin.top:3006/api/upload/avatar',// 資料不需要編碼
+// 			   contentType: false,// 資料物件不需要轉換成鍵值對格式
+// 			   processData: false,data: fd,beforeSend: function() {
+// 			   $('#loading').show()
+// 			   },complete: function() {
+// 			   $('#loading').hide()
+// 			   },success: function(res) {
+// 			   // 判斷是否接收成功
+// 			   if (res.status !== 200) {
+// 			    return alert(reg.msg)
+// 			   }
+// 			   $('#img').attr('src','http://www.liulongbin.top:3006' + res['url']).css('display','block')
 
-			   },xhr: function xhr() {
-			   var xhr = new XMLHttpRequest()
-			    // 獲取檔案上傳的進度
-			   xhr.upload.onprogress = function(e) {
-			    // e.lengthComputable表示當前的進度是否是可以計算,返回布林值
-			    if (e.lengthComputable) {
-			     // e.loaded表示下載了多少資料,e.total表示資料總量
-			     var percentComplete = Math.ceil((e.loaded / e.total) * 100)
-			     // 讓進度條的寬度變化
-			     $('#progress').css('width',percentComplete)
-			     // 在進度條中顯示百分比
-			     $('#progress').html(percentComplete + 'px')
-			    }
-			    }
-			    // 檔案載入完成
-			   xhr.upload.onload = function() {
-			    $('#progress').removeClass('progress-bar progress-bar-striped').addClass('progress-bar progress-bar-success')
-			   }
-			   return xhr
-			   }
+// 			   },xhr: function xhr() {
+// 			   var xhr = new XMLHttpRequest()
+// 			    // 獲取檔案上傳的進度
+// 			   xhr.upload.onprogress = function(e) {
+// 			    // e.lengthComputable表示當前的進度是否是可以計算,返回布林值
+// 			    if (e.lengthComputable) {
+// 			     // e.loaded表示下載了多少資料,e.total表示資料總量
+// 			     var percentComplete = Math.ceil((e.loaded / e.total) * 100)
+// 			     // 讓進度條的寬度變化
+// 			     $('#progress').css('width',percentComplete)
+// 			     // 在進度條中顯示百分比
+// 			     $('#progress').html(percentComplete + 'px')
+// 			    }
+// 			    }
+// 			    // 檔案載入完成
+// 			   xhr.upload.onload = function() {
+// 			    $('#progress').removeClass('progress-bar progress-bar-striped').addClass('progress-bar progress-bar-success')
+// 			   }
+// 			   return xhr
+// 			   }
 
-			  })
+// 			  })
 
-			  })
+// 			  })
 	</script>
 
 </body>

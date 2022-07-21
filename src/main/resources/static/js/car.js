@@ -155,8 +155,8 @@ jQuery(document).ready(function($) {
 
 
 	$("#btn-insert-correct-loc").on("click", function() {
-		$('#companyId').val(5)
-		$('#companyName').val('資展租車')
+		$('#companyId').val(1)
+		$('#companyName').val('隔尚租車')
 		$('#name').val('資展中壢站')
 		$('#county').val('台灣')
 		$('.county').focus()
@@ -178,8 +178,8 @@ jQuery(document).ready(function($) {
 	});
 
 	$("#btn-insert-wrong-loc").on("click", function() {
-		$('#companyId').val(5)
-		$('#companyName').val('資展租車')
+		$('#companyId').val(1)
+		$('#companyName').val('隔尚租車')
 		$('#name').val('資展中壢站')
 		$('#county').val('台灣')
 		$('.county').focus().val('桃園市').blur()
