@@ -36,20 +36,15 @@
                                     檢視訂單
                                 </a>
                             </li>
+                           
                             <li class="bor18">
-                                <a th:href="@{/vendor/cars/locations/1}"
-                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-                                    房間列表
-                                </a>
-                            </li>
-                            <li class="bor18">
-                                <a th:href="@{/vendor/cars/locations/form}"
+                                <a th:href="@{/vendor/newHotel}"
                                    class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
                                     新增飯店
                                 </a>
                             </li>
                             <li class="bor18">
-                                <a th:href="@{/vendor/cars/options/form}"
+                                <a th:href="@{/addHotelRoom}"
                                    class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
                                     新增房間
                                 </a>
@@ -101,7 +96,7 @@
 
                                     </th>
                                     <th>
-                                        <a class="btn1 " th:href="@{/deleteRoom(id=${roomList.id})}" id="deleteAjax">刪除房間</a>
+                                        <a class="btn1 btn-delete" th:href="@{/deleteRoom(id=${roomList.id})}" id="deleteAjax">刪除房間</a>
 
                                     </th>
 
@@ -137,7 +132,27 @@
     });
 
 </script>
-
+<script>
+	$(".btn-delete").click(function(e) {
+		e.preventDefault(); // 取消原始動作
+		let id = $(this).val();
+		Swal.fire({
+			icon: 'warning',
+			title: '確定刪除?',
+			text: "確認刪除後將不可復原",
+			showCancelButton: true,
+			confirmButtonColor: '#FF8D29',
+			cancelButtonColor: '#FFCD38',
+			confirmButtonText: '確認',
+			cancelButtonText: '取消',
+			reverseButtons: true
+		}).then((result) => {
+			if (result.isConfirmed) {
+				$(this).parent().submit();
+			}
+		})
+	})
+</script>
 
 </body>
 
