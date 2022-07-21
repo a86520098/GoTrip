@@ -61,7 +61,7 @@
                             <div class="icon-agile">
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </div>
-                            <span id="message" style="position:absolute ; right:17px;"></span>
+                            <span id="message" style="position:absolute ; right:70px; top:37%"></span>
                         </div>
                         <div class="form-sub-w3ls">
                             <input id="pwd1" placeholder="Password"  type="password" name="password" required>
@@ -74,7 +74,7 @@
                             <div class="icon-agile">
                                 <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                             </div>
-                            <span id="checkMsg" style="position:absolute ; right:17px;"></span>
+                            <span id="checkMsg" style="position:absolute ; right:70px; top:66%"></span>
                         </div>
 <!--                         <input type="hidden" name="authority" value="user"> -->
 <!--                         <div class="form-sub-w3ls"> -->
@@ -134,7 +134,7 @@
 				data : "username=" + username,
 				success : function(data) {
 					if (data == true) {
-					document.getElementById("message").innerHTML = "<font color='green'>此信箱可以使用</font>"
+					document.getElementById("message").innerHTML = "<font color='black'>此信箱可以使用</font>"
 					document.getElementById('submit').disabled=false;
 					return true;
 					} else {
@@ -158,7 +158,7 @@
         var pwd1 = document.getElementById("pwd1").value;
         var pwd2 = document.getElementById("pwd2").value;
        if(pwd1 == pwd2) {
-         document.getElementById("checkMsg").innerHTML="<font color='green'>OK</font>";
+         document.getElementById("checkMsg").innerHTML="<font color='black'>OK</font>";
          document.getElementById("submit").disabled = false;
         }
         else {

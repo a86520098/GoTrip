@@ -201,7 +201,7 @@
 
                                     <div class="col-9 respon6-next">
                                         <div class="rs1-select2 bor8 bg0">
-                                            <input type="date" name="date" class="form-control">
+                                            <input type="date" name="date" class="form-control get-date">
                                             <div class="dropDownSelect2"></div>
                                         </div>
                                     </div>
@@ -218,7 +218,7 @@
                                             <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                                 <i class="fs-16 zmdi zmdi-minus"></i>
                                             </div>
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number"
+                                            <input class="mtext-104 cl3 txt-center num-product get-qty" type="number"
                                                    name="num-product"
                                                    value="1">
                                             <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
@@ -228,7 +228,7 @@
 
                                     </div>
                                 </div>
-                                <button class="flex-c-m stext-101 cl0 size-101 w-full bg1 bor1 hov-btn1 m-t-20 p-lr-15 trans-04 js-addcart-detail">
+                                <button class="flex-c-m stext-101 cl0 size-101 w-full bg1 bor1 hov-btn1 m-t-20 p-lr-15 trans-04 plus-cart">
                                     加入購物車
                                 </button>
                             </div>
@@ -280,16 +280,6 @@
                             <hr>
                             <td th:text="${hotel.introduce}"/>
 
-                            </h4>
-                            <div class="p-b-10">
-                                <div class="rating-count get-itemid" th:id="${hotel.id}" value="hotel">
-                                    尚無評論
-                                </div>
-                            </div>
-                            <div class="p-t-20">
-                                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                <td th:text="${hotel.fullAddress}"/>
-                            </div>
                             </p>
                         </div>
                     </div>
@@ -326,45 +316,6 @@
                             <br>
 
 
-                            <div class="row m-b-10">
-                                <div class="col-3">
-                                    <p class="d-flex justify-content-center p-t-8">
-                                        日期
-                                    </p>
-                                </div>
-
-                                <div class="col-9 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <input type="date" name="date" class="form-control get-date">
-                                        <div class="dropDownSelect2"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row p-b-10">
-                                <div class="col-3">
-                                    <p class="dis-inline-block align-middle p-t-20 d-flex justify-content-center">
-                                        人數
-                                    </p>
-                                </div>
-                                <div class="col-9 ">
-                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-minus"></i>
-                                        </div>
-                                        <input class="mtext-104 cl3 txt-center num-product  get-qty" type="number"
-                                               name="num-product"
-                                               value="1">
-                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                            <i class="fs-16 zmdi zmdi-plus"></i>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <button class="flex-c-m stext-101 cl0 size-101 w-full bg1 bor1 hov-btn1 m-t-20 p-lr-15 trans-04 plus-cart">
-                                加入購物車
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -423,7 +374,75 @@
                 <div class="row ">
                     <div class="col-8 border border-1 bg-white rounded">
                         <div class="m-t-10 ">
-
+							<!-- 顧客評論list -->
+							<div>
+								<h3 class="font-weight-bold">顧客評價</h3>
+								<div class="comments-itemId m-5" th:id="${hotel.id}" value="carRental"></div>
+							</div>
+		
+							<!-- Add review -->
+<!-- 							<div> -->
+							
+<!-- 								<form id="insert-loc-form" name="form" action="#" method="post"  -->
+<!-- 										  class="form-horizontal needs-validation" enctype="multipart/form-data"> -->
+<!-- 								<h4 class="font-weight-bold my-3 ml-5">留下你的評論吧!</h4> -->
+<!-- 								<input id="itemTb" name="itemTb" type="hidden" value="carRental"> -->
+<!-- 								<input id="itemId" name="itemId" type="hidden" th:value="${hotel.id}"> -->
+<!-- 								<div class="form-group row ml-5"> -->
+<!-- 									<label class="col-sm-3 col-form-label" for="rating">給予評分</label> -->
+<!-- 									<div class="col-sm-9"> -->
+<!-- 										<fieldset class="starability-basic"> -->
+<!-- 											<input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked/>  -->
+<!-- 											<input type="radio" id="first-rate1" name="rating" value="1" />  -->
+<!-- 											<label for="first-rate1" title="Terrible">1 star</label>  -->
+<!-- 											<input type="radio" id="first-rate2" name="rating" value="2" /> -->
+<!-- 											<label for="first-rate2" title="Not good">2 stars</label> -->
+<!-- 											<input type="radio" id="first-rate3" name="rating" value="3" />  -->
+<!-- 											<label for="first-rate3" title="Average">3 stars</label>  -->
+<!-- 											<input type="radio" id="first-rate4" name="rating" value="4" />  -->
+<!-- 											<label for="first-rate4" title="Very good">4 stars</label>  -->
+<!-- 											<input type="radio" id="first-rate5" name="rating" value="5"/>  -->
+<!-- 											<label for="first-rate5" title="Amazing">5 stars</label> -->
+<!-- 										</fieldset> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="form-group row ml-5"> -->
+<!-- 									<div class="col-sm-3"> -->
+<!-- 										<label class="col-form-label pb-1" for="content">評論內容</label> -->
+<!-- 										<div id="content-length" class="text-black-50 small">(0/200)</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-sm-9"> -->
+<!-- 									<textarea class="form-control" name="content" id="content" cols="30" rows="5" style="resize: none"></textarea> -->
+<!-- 										<div class="invalid-feedback">評論內容上限200字</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="form-group row mt-5 ml-5"> -->
+<!-- 									<div class="col-sm-3"> -->
+<!-- 										<label for="images" class="col-form-label pb-1">上傳照片</label> -->
+<!-- 										<div id="images-length" class="text-black-50 small">(0/3)</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-sm-9"> -->
+<!-- 										<div class=""> -->
+<!-- 											<input type="file" class="form-control custom-file-input pb-1" style="background-color: white " name="imagefiles" id="imagefiles" multiple> -->
+<!-- 											<div class="invalid-feedback">最多選取3張圖片</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="col-sm-3"></div> -->
+<!-- 									<div class="col-sm-9"> -->
+<!-- 										<div class="row img-responsive" id="formFile"></div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 								<div class="d-flex justify-content-end my-3"> -->
+<!-- 									<button id="btn-insert-wrong-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4"> -->
+<!-- 										錯誤輸入 -->
+<!-- 									</button> -->
+<!-- 									<button id="btn-insert-correct-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4"> -->
+<!-- 										正確輸入 -->
+<!-- 									</button> -->
+<!-- 									<button id="btn-insert-com" type="button"class="btn btn-warning">送出評論</button> -->
+<!-- 								</div> -->
+<!-- 								</form> -->
+<!-- 							</div> -->
                         </div>
                     </div>
                     <div class="col-4 border border-1 bg-white rounded">
@@ -453,7 +472,7 @@
 
                     </h5>
                     <div class="p-b-10">
-                        <div class="rating-count" th:id="${hotel.id}" value="hotel">
+                        <div class="rating-count get-itemid" th:id="${hotel.id}" value="hotel">
                             尚無評論
                         </div>
                     </div>
@@ -767,6 +786,21 @@
             </div>
         </div>
     </tr>
+</div>
+</section>
+<!-- Footer -->
+<footer th:replace="frontend/partials/fragment :: footer"></footer>
+<!-- Back to top -->
+<div th:replace="frontend/partials/fragment :: toTop"></div>
+<!-- Modal1 -->
+<div th:replace="frontend/partials/fragment :: modal1"></div>
+<!-- javascript -->
+<div th:replace="frontend/partials/fragment :: script"></div>
+</tr>
+</div>
+
+
+
 <!--    購物車script -->
     <script>
     
@@ -822,28 +856,7 @@
 		       if(numProduct < 99) $(this).prev().val(numProduct + 1);
 		   });
     </script>
-    
-    
-</div>
-</section>
-<!-- Footer -->
-<footer th:replace="frontend/partials/fragment :: footer"></footer>
-<!-- Back to top -->
-<div th:replace="frontend/partials/fragment :: toTop"></div>
-<!-- Modal1 -->
-<div th:replace="frontend/partials/fragment :: modal1"></div>
-<!-- javascript -->
-<div th:replace="frontend/partials/fragment :: script"></div>
-</tr>
-</div>
+
+
 </body>
 
-<!--<script>-->
-
-<!--    document.addEventListener("iFrame", function () {-->
-<!--        var combined = "101"-->
-<!--        var iframeSrcValue = document.getElementById("iFrame").src;-->
-<!--        var combined2 = combined + iframeSrcValue;-->
-<!--        document.getElementById('Iframe').setAttribute("src", combined2); //Change the src's value!-->
-<!--    });-->
-<!--</script>-->

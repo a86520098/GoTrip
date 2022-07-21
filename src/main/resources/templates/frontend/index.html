@@ -514,11 +514,9 @@
                     <div class="block2">
                         <div class="block2-pic hov-img0">
                             <td>
-<!--                                 <div th:each="image3:${hotel.images}" class="d-inline-block"> -->
-                                <div class="d-inline-block">
-<!--                                     <p th:text="${hotel.images[0].imagePath}" class="rounded img-com"> -->
-<!--                                     <img th:src="@{${hotel.images[1].imagePath}}" class="rounded img-com" -->
-<!--                                          width="60" height="200" style="display: inline-flex"/> -->
+                                <div th:each="image3:${hotel.images}" class="d-inline-block">
+                                    <img th:src="@{${image3.imagePath}}" class="rounded img-com"
+                                         width="60" height="200" style="display: inline-flex"/>
                                 </div>
                             </td>
                         </div>
