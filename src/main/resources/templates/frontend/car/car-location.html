@@ -75,7 +75,7 @@
 <!-- 										<div class="rating-count" th:id="${car.id}" value="carRental"> -->
 <!-- 											尚無評論 -->
 <!-- 										</div> -->
-<!-- ${#aggregates.sum(product.paidService.![price])} -->
+<!-- 										${#aggregates.sum(product.paidService.![price])} -->
 										<div class="flex-r">
 											<button class="btn btn-warning text-right" type="button" data-toggle="collapse" th:data-target="'#collapseExample'+${location.id}" aria-expanded="false" aria-controls="collapseExample">
 												<i class="fa fa-angle-down" aria-hidden="true"></i>
@@ -90,7 +90,7 @@
 										<div class="row">
 											<div class="col-sm-4">
 												<div class="px-3 pos-relative hov-img0 card-img-left ">
-													<img th:src="@{${option.carModel.image}}" class="mt-5" alt="IMG-CAR">
+													<img th:src="@{${option.carModel.image}}" class="mt-3" alt="IMG-CAR">
 												</div>
 											</div>
 											<div class="col-sm-8 card-body block2-txt flex-w flex-t p-t-14 ">

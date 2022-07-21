@@ -55,7 +55,7 @@
 						<h2 th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="font-weight-bold cl2 js-name-detail py-4"></h2>
 						<div class="p-b-10">
 							<!-- 該商品平均分數和評論總數 -->
-							<div class="rating-count get-itemid" th:id="${option.id}" value="carRental">
+							<div class="rating-count" th:id="${option.id}" value="carRental">
 								尚無評論
 							</div>
 							<!-- 據點地址 -->
@@ -102,13 +102,13 @@
 								</div>
 								<div class="col-9 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<input type="date" name="date" class="form-control get-date">
+										<input type="date" name="date" class="form-control">
 										<div class="dropDownSelect2"></div>
 									</div>
 								</div>
 							</div>
 							<!-- 加入購物車 -->
-							<button	class="flex-c-m cl0 size-101 font-weight-bold bg1 bor1 hov-btn1 my-4 trans-04 js-addcart-detail w-full plus-cart">
+							<button	class="flex-c-m cl0 size-101 font-weight-bold bg1 bor1 hov-btn1 my-4 trans-04 js-addcart-detail w-full">
 								加入購物車
 							</button>
 						</div>
@@ -117,59 +117,105 @@
 				
 				
 				<div class="col-sm-10 col-md-8">
-						<!-- 顧客評論list -->
-						<div>
-							<h3 class="font-weight-bold">顧客評價</h3>
-							<div class="comments-itemId m-5" th:id="${option.id}" value="carRental"></div>
+					<h3 class="font-weight-bold my-4">租車地點</h3>
+<!-- 					<div id="map" style="width:100%; height: 500px;"></div> -->
+					<p class="ml-4">
+						供應商 : 
+						<span class="ml-4" th:text="${option.carLocation.companyName}"></span>
+					</p>
+					<p class="ml-4">
+						門市名稱 : 
+						<span class="ml-4" th:text="${option.carLocation.name}"></span>
+					</p>
+					<p class="ml-4">
+						門市地址 : 
+						<span class="ml-4" th:text="${option.carLocation.county + option.carLocation.district + option.carLocation.address}"></span>
+					</p>
+					<p class="ml-4">
+						門市電話 : 
+						<span class="ml-4" th:text="${option.carLocation.phone}"></span>
+					</p>
+					<p class="ml-4">
+						營業時間 : 
+						<span class="ml-4" th:text="${option.carLocation.openTime +' ~ ' + option.carLocation.closeTime}"></span>
+					</p>
+				</div>
+				
+				
+				
+				<div class="col-sm-10 col-md-7">
+					<!-- 顧客評論list -->
+					<div>
+						<h3 class="font-weight-bold">顧客評價</h3>
+						<div class="comments-itemId m-5" th:id="${option.id}" value="carRental"></div>
+					</div>
+
+					<!-- Add review -->
+					<div>
+					
+						<form id="insert-loc-form" name="form" action="#" method="post" 
+								  class="form-horizontal needs-validation" enctype="multipart/form-data">
+						<h4 class="font-weight-bold my-3 ml-5">留下你的評論吧!</h4>
+						<input id="itemTb" name="itemTb" type="hidden" value="carRental">
+						<input id="itemId" name="itemId" type="hidden" th:value="${option.id}">
+						<div class="form-group row ml-5">
+							<label class="col-sm-3 col-form-label" for="rating">給予評分</label>
+							<div class="col-sm-9">
+								<fieldset class="starability-basic">
+									<input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked/> 
+									<input type="radio" id="first-rate1" name="rating" value="1" /> 
+									<label for="first-rate1" title="Terrible">1 star</label> 
+									<input type="radio" id="first-rate2" name="rating" value="2" />
+									<label for="first-rate2" title="Not good">2 stars</label>
+									<input type="radio" id="first-rate3" name="rating" value="3" /> 
+									<label for="first-rate3" title="Average">3 stars</label> 
+									<input type="radio" id="first-rate4" name="rating" value="4" /> 
+									<label for="first-rate4" title="Very good">4 stars</label> 
+									<input type="radio" id="first-rate5" name="rating" value="5"/> 
+									<label for="first-rate5" title="Amazing">5 stars</label>
+								</fieldset>
+							</div>
 						</div>
-
-						<!-- Add review -->
-<!-- 						<form class="w-full"> -->
-<!-- 							<h5 class="mtext-108 cl2 p-b-7"> -->
-<!-- 								Add a review -->
-<!-- 							</h5> -->
-<!-- 							<p class="stext-102 cl6"> -->
-<!-- 								Your email address will not be published. Required fields are marked * -->
-<!-- 							</p> -->
-							
-<!-- 							<div class="flex-w flex-m p-t-50 p-b-23"> -->
-<!-- 								<span class="stext-102 cl3 m-r-16"> -->
-<!-- 									Your Rating -->
-<!-- 								</span> -->
-
-<!-- 								<span class="wrap-rating fs-18 cl11 pointer"> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<i class="item-rating pointer zmdi zmdi-star-outline"></i> -->
-<!-- 									<input class="dis-none" type="number" name="rating"> -->
-<!-- 								</span> -->
-<!-- 							</div> -->
-<!-- 							<div class="row p-b-25"> -->
-<!-- 								<div class="col-12 p-b-5"> -->
-<!-- 									<label class="stext-102 cl3" for="review">Your review</label> -->
-<!-- 									<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea> -->
-<!-- 								</div> -->
-
-<!-- 								<div class="col-sm-6 p-b-5"> -->
-<!-- 									<label class="stext-102 cl3" for="name">Name</label> -->
-<!-- 									<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name"> -->
-<!-- 								</div> -->
-
-<!-- 								<div class="col-sm-6 p-b-5"> -->
-<!-- 									<label class="stext-102 cl3" for="email">Email</label> -->
-<!-- 									<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email"> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-
-<!-- 							<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10"> -->
-<!-- 								Submit -->
-<!-- 							</button> -->
-<!-- 						</form> -->
+						<div class="form-group row ml-5">
+							<div class="col-sm-3">
+								<label class="col-form-label pb-1" for="content">評論內容</label>
+								<div id="content-length" class="text-black-50 small">(0/200)</div>
+							</div>
+							<div class="col-sm-9">
+							<textarea class="form-control" name="content" id="content" cols="30" rows="5" style="resize: none"></textarea>
+								<div class="invalid-feedback">評論內容上限200字</div>
+							</div>
+						</div>
+						<div class="form-group row mt-5 ml-5">
+							<div class="col-sm-3">
+								<label for="images" class="col-form-label pb-1">上傳照片</label>
+								<div id="images-length" class="text-black-50 small">(0/3)</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="">
+									<input type="file" class="form-control custom-file-input pb-1" style="background-color: white " name="imagefiles" id="imagefiles" multiple>
+									<div class="invalid-feedback">最多選取3張圖片</div>
+								</div>
+							</div>
+							<div class="col-sm-3"></div>
+							<div class="col-sm-9">
+								<div class="row img-responsive" id="formFile"></div>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end my-3">
+							<button id="btn-insert-wrong-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+								錯誤輸入
+							</button>
+							<button id="btn-insert-correct-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+								正確輸入
+							</button>
+							<button id="btn-insert-com" type="button"class="btn btn-warning">送出評論</button>
+						</div>
+						</form>
+					</div>
 				</div>
 			
-				<div class="col-sm-10 col-md-8 txt-justify">
+				<div class="col-sm-10 col-md-7 txt-justify">
 					<h3 class="font-weight-bold my-3">服務條款</h3>
 					<div>
 						<h4 class="font-weight-bold my-3">取車必備文件</h4>
@@ -239,10 +285,7 @@
 					</div>
 				</div>
 				
-				<div class="col-sm-10 col-md-8">
-					<h3 class="font-weight-bold my-4">租車地點</h3>
-					<div id="map" style="width:100%; height: 500px;"></div>
-				</div>
+				
 			</div>
 			
 		</div>
@@ -308,50 +351,123 @@
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js}"></script>
 	<script th:src="@{https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js}"></script>
 	<script th:src="@{/js/clusterMap.js}" src="js/clusterMap.js"></script>
-	
+	<script th:src="@{/js/comment.js}" src="js/comment.js"></script>
 	<script>
-	
-		$(document).on('click','.plus-cart',function(){
-			
-		let	itemId = $('.get-itemid').attr('id');
-		let date = $('.get-date').val();
-		console.log(itemId + "  " + date + "  " + qty)
-			 $.ajax({
-		            type: 'GET',
-		            url: '/gotrip/addToCart',
-		            data:{
-		            	productId:itemId,
-		            	type:car,
-		            	date:date,
-		            	qty:1
-		            	},
-		            dataType: 'json',
-		            async:false,
-		            success: function (data) {
-		     
-		                console.log(data);
-		                
-		                
-		                $('tbody').append(putback)
-		                console.log(data.itemNumber);	
-		                
-		                $('#cartIcon').attr("data-notify",data.itemNumber);
-		                console.log(data.subtotal);
-		                $('.originalPrice').text(data.subtotal);
-		                $('.totalPrice').text(data.subtotal);
-		            },
-		    		error: function(jqXHR,textStatus,errorThrown) {
-						console.log(jqXHR);
-						console.log(textStatus); 
-						console.log(errorThrown);
-					}
-		                
-		                
-		});
-			
-		});
+
 		
+		function getComments() {
+		let itemTb = $(".comments-itemId").attr('value');
+		let itemId = $(".comments-itemId").attr('id');
+
+		if (itemTb && itemId) {
+			$.ajax({
+				url: "/gotrip/api/comments/item",
+				method: "GET",
+				data: {
+					table: itemTb,
+					id: itemId
+				},
+				dataType: "json",
+				success: function(data) {
+					let comments = $(".comments-itemId");
+					let userStr, star, score, content, images;
+					let starNum = 5;
+					let n = data.length;
+					for (let i = 0; i < n; i++) {
+						// 使用者id(實際上給的是String)
+	
+						userStr = '<p class="mt-2">' + data[i].userId + '</p>';
+						// 用評分給星星
+						star = "<div>";
+						score = data[i].rating;
+						for (let x = 0; x < score; x++) {
+							star += '<i class="fa fa-star cl1" aria-hidden="true"></i>'
+						}
+						for (let x = 0; x < starNum - score; x++) {
+							star += '<i class="fa fa-star cl12" aria-hidden="true"></i>'
+						}
+						star += data[i].date.substring(0, 10) + '</div>';
+						
+						comments.append(userStr).append(star)
+						if (data[i].content != "") {
+							content = '<div class="bg6 card bornone mb-2"><div class="card-body"><p >' + data[i].content + '</p>';
+		
+							for (let j = 0; j < data[i].images.length; j++) {
+								content += '<img class="block2-pic mr-3 mt-4" src="/gotrip' + data[i].images[j].imagePath + '"style="object-fit: cover; width:100px; height:100px;"/>'
+							}
+							content += '</div></div>'
+							comments.append(content);
+						}
+					}
+	
+				},
+				error: function(err) {
+					 $('.rating-count').text('尚無評論')
+				},
+			});
+		}
+	}
+	
+	
+	
+	
+	
+	
+		$(function() {
+			  $('#btn').on('click',function() {
+			  // 獲取檔案列表
+			  var file = $('#ipt')[0].files
+			   // 判斷是否選擇了檔案
+			  if (file.length <= 0) {
+			   return alert('請上傳檔案')
+			  }
+			  // 建立formdata
+			  var fd = new FormData()
+			   // 向formdata中傳入資料
+			   // fd.append()
+			   // file是一個偽陣列
+			  fd.append('avatar',file[0])
+			   // 用ajax傳送資料
+			  $.ajax({
+			   type: 'post',url: 'http://www.liulongbin.top:3006/api/upload/avatar',// 資料不需要編碼
+			   contentType: false,// 資料物件不需要轉換成鍵值對格式
+			   processData: false,data: fd,beforeSend: function() {
+			   $('#loading').show()
+			   },complete: function() {
+			   $('#loading').hide()
+			   },success: function(res) {
+			   // 判斷是否接收成功
+			   if (res.status !== 200) {
+			    return alert(reg.msg)
+			   }
+			   $('#img').attr('src','http://www.liulongbin.top:3006' + res['url']).css('display','block')
+
+			   },xhr: function xhr() {
+			   var xhr = new XMLHttpRequest()
+			    // 獲取檔案上傳的進度
+			   xhr.upload.onprogress = function(e) {
+			    // e.lengthComputable表示當前的進度是否是可以計算,返回布林值
+			    if (e.lengthComputable) {
+			     // e.loaded表示下載了多少資料,e.total表示資料總量
+			     var percentComplete = Math.ceil((e.loaded / e.total) * 100)
+			     // 讓進度條的寬度變化
+			     $('#progress').css('width',percentComplete)
+			     // 在進度條中顯示百分比
+			     $('#progress').html(percentComplete + 'px')
+			    }
+			    }
+			    // 檔案載入完成
+			   xhr.upload.onload = function() {
+			    $('#progress').removeClass('progress-bar progress-bar-striped').addClass('progress-bar progress-bar-success')
+			   }
+			   return xhr
+			   }
+
+			  })
+
+			  })
 	</script>
+
 </body>
 
 </html>

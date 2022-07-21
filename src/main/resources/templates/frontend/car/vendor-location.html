@@ -198,10 +198,15 @@
 	  		})
 	  		
 	  		
-	  		if ($('.status').val() == '隱藏') {
-	  			console.log(123)
-	  			$(this).removeClass('btn-success').addClass('btn-warning')
-	  		}
+	  		$('.status').map(function() {
+	  			if ($(this).text() == '隱藏') {
+		  			console.log(123)
+		  			$(this).removeClass('btn-success').addClass('btn-warning')
+	  				
+	  			}
+	  		})
+// 	  		if ($('.status').val() == '隱藏') {
+// 	  		}
 	  		
 		});
 	  

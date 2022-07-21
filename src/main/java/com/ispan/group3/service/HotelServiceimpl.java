@@ -1,8 +1,7 @@
-package com.ispan.group3.service.impl;
+package com.ispan.group3.service;
 
 import com.ispan.group3.repository.Hotel;
 import com.ispan.group3.repository.HotelRepositoryInterFace;
-import com.ispan.group3.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
