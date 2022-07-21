@@ -37,23 +37,18 @@
                                 </a>
                             </li>
                             <li class="bor18">
-                                <a th:href="@{/vendor/cars/locations/1}"
+                                <a th:href="@{/vendor/hotels}"
                                    class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
                                     房間列表
                                 </a>
                             </li>
                             <li class="bor18">
-                                <a th:href="@{/vendor/cars/locations/form}"
+                                <a th:href="@{/vendor/newHotel}"
                                    class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
                                     新增飯店
                                 </a>
                             </li>
-                            <li class="bor18">
-                                <a th:href="@{/vendor/cars/options/form}"
-                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-                                    新增房間
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -63,8 +58,7 @@
             <div class="col-md-9 grid-margin my-5 pl-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title font-weight-bold">飯店＆房間列表</h4>
-                        <h6 class="card-title font-weight-bold">預計放房間</h6>
+                        <h4 class="card-title font-weight-bold">飯店列表</h4>
                         <div class="p-t-20">
                             <table id="data-table" class="display table table-hover w-100" style="text-align: center">
                                 <thead>
@@ -74,10 +68,10 @@
                                     <th scope="col" class="text-center">容納人數</th>
                                     <th scope="col" class="text-center">地址</th>
                                     <th scope="col" class="text-center">狀態</th>
-                                    <th scope="col" class="text-center">修改</th>
-                                    <th scope="col" class="text-center">刪除</th>
-                                    <th scope="col" class="text-center">新增房間</th>
-                                    <th scope="col" class="text-center">查看房間</th>
+                                    <th scope="col" class="text-center">房間個數</th>
+                                    <th scope="col" class="text-center">資訊/修改</th>
+                                    <th scope="col" class="text-center">新增</th>
+                                    <th scope="col" class="text-center">查詢</th>
                                 </tr>
                                 </thead>
                                 <tbody id="tbody">
@@ -86,9 +80,38 @@
                                     <td th:text="${hotel.hotel_name}"></td>
                                     <td th:text="${hotel.peopleCount}"></td>
                                     <td th:text="${hotel.fullAddress}"></td>
-                                    <td th:text="${hotel.status}"></td>
-                                    <td> 修改</td>
-                                    <td> 刪除</td>
+                                    <td>
+                                        <span th:text="${hotel.status}" class="btn btn-success btn-sm status"> </span>
+                                    </td>
+
+                                    <td>
+                                        <span th:text="${hotel.hotelroomList.size()}"></span>
+                                        <a th:href="@{/backHotel/{id}(id=${hotel.id})}"
+                                           class="btn btn-light btn-rounded btn-sm">
+                                        </a>
+                                    <td>
+
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <!-- 												<button th:text="${comment.itemTb + '#' +comment.itemId}" data-toggle="modal" data-target="#exampleModal" -->
+                                            <!-- 															    class="btn btn-link font-weight-bold js-show-modal-item px-0" style="color:#d15f08"></button> -->
+                                            <input name="locationImage" type="hidden" th:value="${hotel.image}">
+                                            <button class="btn btn-light btn-rounded btn-sm js-show-modal1">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                            </button>
+                                            <a th:href="@{/vendor/EditRoom(id=${hotel.id})}"
+                                               class="btn btn-light btn-rounded btn-sm">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            </a>
+                                            <form
+                                                    th:action="@{/delete(id=${hotel.id})}"
+                                                    th:method="delete" class="d-inline">
+                                                <button type="button" th:value="${hotel.id}"
+                                                        class="btn btn-delete btn-light btn-rounded btn-sm">
+                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+
                                     <th>
                                         <a class="btn1" th:href="@{/addHotelRoom(id=${hotel.id})}">新增房間</a>
 
@@ -129,20 +152,6 @@
         $('#data-table').DataTable({})
     });
 
-    // 		$('#data-table tbody').on('click', function () {
-    //          var tr = $(this).closest('tr');
-    //          var row = table.row(tr);
-    //          if (row.child.isShown()) {
-    //              // This row is already open - close it
-    //              row.child.hide();
-    //              tr.removeClass('shown');
-    //          }
-    //          else {
-    //              // Open this row
-    //              row.child(format(row.data())).show();
-    //              tr.addClass('shown');
-    //          }
-    //      })
 
     $(".btn-delete").click(function (e) {
         e.preventDefault(); // 取消原始動作
