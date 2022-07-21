@@ -51,6 +51,7 @@ jQuery(document).ready(function($) {
 	
 	
 	function getComments() {
+		$(".comments-itemId").text('');
 		let itemTb = $(".comments-itemId").attr('value');
 		let itemId = $(".comments-itemId").attr('id');
 
@@ -65,6 +66,7 @@ jQuery(document).ready(function($) {
 				dataType: "json",
 				success: function(data) {
 					let comments = $(".comments-itemId");
+					
 					let userStr, star, score, content, images;
 					let starNum = 5;
 					let n = data.length;
@@ -85,7 +87,7 @@ jQuery(document).ready(function($) {
 						
 						comments.append(userStr).append(star)
 						if (data[i].content != "") {
-							content = '<div class="bg6 card bornone mb-2"><div class="card-body"><p >' + data[i].content + '</p>';
+							content = '<div class="bg6 card bornone mb-2 "><div class="card-body"><p >' + data[i].content + '</p>';
 		
 							for (let j = 0; j < data[i].images.length; j++) {
 								content += '<img class="block2-pic mr-3 mt-4" src="/gotrip' + data[i].images[j].imagePath + '"style="object-fit: cover; width:100px; height:100px;"/>'

@@ -68,17 +68,18 @@
                         <li>
                             <a th:href="@{/ticket}">景點票券</a>
                             <ul class="sub-menu">
-                                <li><a href="index.html">分類1</a></li>
-                                <li><a href="home-02.html">分類2</a></li>
-                                <li><a href="home-03.html">分類3</a></li>
+                                <li><a th:href="@{/ticket/tagNo/1}">主題樂園</a></li>
+                                <li><a th:href="@{/ticket/tagNo/2}">博物館&美術館</a></li>
+                                <li><a th:href="@{/ticket/tagNo/3}">水族館&動物園</a></li>
+                                <li><a th:href="@{/ticket/tagNo/4}">歷史景點</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a th:href="@{/restaurant}">餐廳</a>
+                            <a th:href="@{/#}">餐廳</a>
                         </li>
                         <!-- 							<li class="label1" data-label1="hot"> -->
                         <li>
-                            <a th:href="@{/ticket}">住宿</a>
+                            <a th:href="@{/findHotelList}">住宿</a>
                             <ul class="sub-menu">
                                 <li><a href="showFHotelNew">刊登空房</a></li>
                             </ul>
@@ -126,16 +127,16 @@
                         
                         <ul class="sub-menu" sec:authorize="hasRole('ADMIN')">
                             <li><a th:href="@{/admin}">後台管理</a></li>
-                            <li><a th:href="@{/vendor/tickets}">景點商家管理</a></li>
+                            <li><a th:href="@{/vendor/ticket}">景點商家管理</a></li>
                             <li><a th:href="@{/vendor/hotels}">飯店商家管理</a></li>
-                            <li><a th:href="@{/vendor/cars/locations/1}">租車商家管理</a></li>
+                            <li><a th:href="@{/vendor/cars/locations}">租車商家管理</a></li>
                             <li><a th:href="@{/logout}">登出</a></li>
                         </ul>
                         <ul class="sub-menu" sec:authorize="hasRole('DEALER')">
                             <li><a th:href="@{/userdetails}">會員中心</a></li>
                             <li><a th:href="@{/vendor/tickets}">景點商家管理</a></li>
                             <li><a th:href="@{/vendor/hotels}">飯店商家管理</a></li>
-                            <li><a th:href="@{/vendor/cars/locations/1}">租車商家管理</a></li>
+                            <li><a th:href="@{/vendor/cars/locations}">租車商家管理</a></li>
                             <li><a th:href="@{/logout}">登出</a></li>
                         </ul>
                         <ul class="sub-menu" sec:authorize="hasRole('USER')">

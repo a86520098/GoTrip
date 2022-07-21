@@ -139,7 +139,7 @@
 										<input type="file" class="form-control custom-file-input py-2 bgwhite" style="background-color: white; padding-bottom: 3px" name="imagefile" id="imagefile">
 										<div class="row" id="formFile">
 											<div class="col-12">
-												<img class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
+												<img th:if="${!#strings.isEmpty(carLocation.image)}" class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
 											</div>
 										</div>
 									</div>

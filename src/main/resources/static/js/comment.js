@@ -37,9 +37,10 @@ jQuery(document).ready(function($) {
 		document.getElementById("formFile").innerHTML = ""
 		for (i = 0; i < number; i++) {
 			var urls = URL.createObjectURL(event.target.files[i]);
+			console.log(urls)
 			document.getElementById("formFile").innerHTML +=
-				'<div class="col-12 mb-3"> <img class="rounded mb-3" src="' + urls + '" /> </div>';
-			processImageFile(event.target.files[i]);
+				'<div class="col-4 mb-3"> <img class="rounded mb-3" width="100%" src="' + urls + '" /> </div>';
+//			processImageFile(event.target.files[i]);
 
 		}
 	})
@@ -139,6 +140,50 @@ jQuery(document).ready(function($) {
 				setInterval(function() {
 					$('#insertForm').submit()
 				}, 1500);
+			}
+		})
+		// 確認表單內容
+		$('#btn-insert-com').click(function(e) {
+			let isContentVaild = $("#content").val().length <= contentMax;
+			let isimagefilesVaild = $("#imagefiles")[0].files.length <= imagefilesMax;
+
+			if (!isContentVaild || !isimagefilesVaild) {
+				e.preventDefault();
+				isContentVaild ? hideInvalidText($('#content')) : showInvalidText($('#content'));
+				isimagefilesVaild ? hideInvalidText($('#imagefiles')) : showInvalidText($('#imagefiles'));
+				$("form").addClass('validated');
+			} else {
+				e.preventDefault();
+				Swal.fire({
+					icon: 'success',
+					title: '儲存成功',
+					showConfirmButton: false,
+					timer: 1500
+				});
+
+				let itemTb = $('itemTb').val();
+				let comment = {
+							"itemTb": $('#itemTb').val(),
+							"itemId": $('#itemId').val(), 
+							"userId": "admin", 
+							"rating": $('input[type=radio]:checked').val(), 
+							"content": $('#content').val()
+						  }
+				console.log($('input[name=itemTb]').val())
+				$.ajax({
+					type: 'POST',
+					url: '/gotrip/api/comments',
+					dataType: 'json',
+					contentType: 'application/json',
+					data: JSON.stringify(comment),
+					success: function(data) {
+						$(".comments-itemId").text('');
+						getComments();
+					},
+					error: function() {
+						console.log('error')
+					}
+				})
 			}
 		})
 	});
@@ -354,11 +399,20 @@ jQuery(document).ready(function($) {
     
     
     $("#btn-insert-correct").on("click", function() {
-		console.log('ok');
 		$('#content').focus()
 		$('#itemTb').val('carRental')
 		$('#itemId').val(1)
 		$('#userId').val(12)
+		$("input[name='rating'][value='4']").attr("checked", true);
+		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。'+
+						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!'+ '經過這次的租賃經驗，幾點心得跟大家分享：' + 
+						  '若你沒有車子，或是車子的空間不足，租車是個好選擇。' + 
+						  '整體來說我覺得格上租車的服務確實相當好，若有租車需求的話，不妨參考看看我們這次的心得囉。')
+
+		$('#content').blur()
+	});
+    $("#btn-insert-correct-com").on("click", function() {
+		$('#content').focus()
 		$("input[name='rating'][value='4']").attr("checked", true);
 		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。'+
 						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!'+ '經過這次的租賃經驗，幾點心得跟大家分享：' + 
@@ -374,6 +428,17 @@ jQuery(document).ready(function($) {
 		$('#itemTb').val('carRental')
 		$('#itemId').val(1)
 		$('#userId').val(12)
+		$("input[name='rating'][value='2']").attr("checked", true);
+		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。'+
+						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!'+ '經過這次的租賃經驗，幾點心得跟大家分享：' + 
+						  '1)若你沒有車子，或是車子的空間不足，租車是個好選擇。' + '2)車種選擇非常多，可以嘗試許多廠牌的車子，讓駕馭變有趣。'+
+						  '3)駕駛租賃車時保持平常心，把它當成自己的車子愛護，心情就會輕鬆愉快。' +
+						  '整體來說我覺得格上租車的服務確實相當好，若有租車需求的話，不妨參考看看我們這次的心得囉。')
+
+		$('#content').blur()
+	});
+	$("#btn-insert-wrong-com").on("click", function() {
+		$('#content').focus()
 		$("input[name='rating'][value='2']").attr("checked", true);
 		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。'+
 						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!'+ '經過這次的租賃經驗，幾點心得跟大家分享：' + 
