@@ -2,12 +2,23 @@ USE [GoTrip];
 
 SET IDENTITY_INSERT [dbo].[comment] ON;
 
-INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status]) VALUES (1, N'hotel', 1, N'david_lin', CAST(N'2022-04-25T01:00:00' AS SmallDateTime), 5, N'環境舒適，交通方便，真的超級推薦!', N'show')
-INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status]) VALUES (2, N'restaurant', 1, N'kelly', CAST(N'2022-04-26T02:00:00' AS SmallDateTime), 4, N'食物很好吃，但服務態度不值得這個價位，店家員工訓練有待加強!', N'show')
-INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status]) VALUES (3, N'carRental', 2, N'nobody', CAST(N'2022-04-27T03:00:00' AS SmallDateTime), 1, N'車上竟然有其他顧客的垃圾...難以置信...', N'banned')
-INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status]) VALUES (4, N'ticket', 1, N'montLover', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 5, N'超棒的露營區!! 竟然還有獨立衛浴!!', N'show')
-INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status]) VALUES (5, N'hotel', 8, N'wendy123', CAST(N'2022-04-29T05:00:00' AS SmallDateTime), 5,N'價格偏高，但整個度假體驗非常好，疫情期間不能出國還是能一秒住villa', N'show')
-INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status]) VALUES (6, N'restaurant', 2, N'michael', CAST(N'2022-04-30T06:00:00' AS SmallDateTime), 3, N'可怕的網美店，拍起來很美但食物調味超怪，標準的一次店', N'show')
+INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
+VALUES (1, N'hotel', 1, N'david_lin', CAST(N'2022-04-25T01:00:00' AS SmallDateTime), 5, N'環境舒適，交通方便，真的超級推薦!', N'show')
+INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
+VALUES (2, N'restaurant', 1, N'kelly', CAST(N'2022-04-26T02:00:00' AS SmallDateTime), 4,
+        N'食物很好吃，但服務態度不值得這個價位，店家員工訓練有待加強!', N'show')
+INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
+VALUES (3, N'carRental', 2, N'nobody', CAST(N'2022-04-27T03:00:00' AS SmallDateTime), 1, N'車上竟然有其他顧客的垃圾...難以置信...',
+        N'banned')
+INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
+VALUES (4, N'ticket', 1, N'montLover', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 5, N'超棒的露營區!! 竟然還有獨立衛浴!!',
+        N'show')
+INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
+VALUES (5, N'hotel', 8, N'wendy123', CAST(N'2022-04-29T05:00:00' AS SmallDateTime), 5,
+        N'價格偏高，但整個度假體驗非常好，疫情期間不能出國還是能一秒住villa', N'show')
+INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
+VALUES (6, N'restaurant', 2, N'michael', CAST(N'2022-04-30T06:00:00' AS SmallDateTime), 3,
+        N'可怕的網美店，拍起來很美但食物調味超怪，標準的一次店', N'show')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (7, N'carRental', 3, N'queenB', CAST(N'2022-05-01T07:00:00' AS SmallDateTime), 5, N'竟然可以租到全新車，服務也很好，很推薦~',
         N'show')
@@ -61,99 +72,209 @@ VALUES (25, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime
 SET IDENTITY_INSERT [dbo].[comment] OFF;
 
 SET
-IDENTITY_INSERT [dbo].[comment_image] ON;
+    IDENTITY_INSERT [dbo].[comment_image] ON;
 
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (1, N'/data/uploadimages/comment/hotel.jpg', 1)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (2, N'/data/uploadimages/comment/hotel-room.jpg', 1)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (3, N'/data/uploadimages/comment/hotel-room2.jpg', 1)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (4, N'/data/uploadimages/comment/healthy-food.jpg', 2)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (5, N'/data/uploadimages/comment/healthy-food-2.jpg', 2)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (6, N'/data/uploadimages/comment/ford.jpg', 3)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (7, N'/data/uploadimages/comment/jepp.jpg', 3)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (8, N'/data/uploadimages/comment/fall.jpg', 4)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (9, N'/data/uploadimages/comment/villa2.jpg', 5)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (10, N'/data/uploadimages/comment/villa-3.jpg', 5)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (11, N'/data/uploadimages/comment/villa.jpg', 5)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (12, N'/data/uploadimages/comment/healthy-food-2.jpg', 6)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (13, N'/data/uploadimages/comment/restaurant.jpg', 8)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (14, N'/data/uploadimages/comment/pizza.jpg', 8)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (15, N'/data/uploadimages/comment/hotel-room-5.jpg', 9)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (16, N'/data/uploadimages/comment/theme_park_1.jpg', 11)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (17, N'/data/uploadimages/comment/theme_park_2.jpg', 11)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (18, N'/data/uploadimages/comment/Xpark_1.jpg', 12)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (19, N'/data/uploadimages/comment/Xpark_2.jpg', 12)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (20, N'/data/uploadimages/comment/Xpark_3.jpg', 12)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (21, N'/data/uploadimages/comment/aquarium.jpg', 14)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (22, N'/data/uploadimages/comment/aquarium.webp', 14)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (23, N'/data/uploadimages/comment/theme_park_1.jpg', 15)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (24, N'/data/uploadimages/comment/hotel-room4.jpg', 19)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (25, N'/data/uploadimages/comment/hotel.jpg', 19)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (26, N'/data/uploadimages/comment/restaurant.jpg', 21)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (27, N'/data/uploadimages/comment/hotel-room4.jpg', 21)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (28, N'/data/uploadimages/comment/art.jpg', 23)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id]) VALUES (29, N'/data/uploadimages/comment/fall.jpg', 24)
-INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])VALUES (30, N'/data/uploadimages/comment/friends-min.jpg', 24)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (1, N'/data/uploadimages/comment/hotel.jpg', 1)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (2, N'/data/uploadimages/comment/hotel-room.jpg', 1)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (3, N'/data/uploadimages/comment/hotel-room2.jpg', 1)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (4, N'/data/uploadimages/comment/healthy-food.jpg', 2)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (5, N'/data/uploadimages/comment/healthy-food-2.jpg', 2)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (6, N'/data/uploadimages/comment/ford.jpg', 3)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (7, N'/data/uploadimages/comment/jepp.jpg', 3)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (8, N'/data/uploadimages/comment/fall.jpg', 4)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (9, N'/data/uploadimages/comment/villa2.jpg', 5)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (10, N'/data/uploadimages/comment/villa-3.jpg', 5)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (11, N'/data/uploadimages/comment/villa.jpg', 5)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (12, N'/data/uploadimages/comment/healthy-food-2.jpg', 6)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (13, N'/data/uploadimages/comment/restaurant.jpg', 8)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (14, N'/data/uploadimages/comment/pizza.jpg', 8)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (15, N'/data/uploadimages/comment/hotel-room-5.jpg', 9)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (16, N'/data/uploadimages/comment/theme_park_1.jpg', 11)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (17, N'/data/uploadimages/comment/theme_park_2.jpg', 11)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (18, N'/data/uploadimages/comment/Xpark_1.jpg', 12)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (19, N'/data/uploadimages/comment/Xpark_2.jpg', 12)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (20, N'/data/uploadimages/comment/Xpark_3.jpg', 12)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (21, N'/data/uploadimages/comment/aquarium.jpg', 14)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (22, N'/data/uploadimages/comment/aquarium.webp', 14)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (23, N'/data/uploadimages/comment/theme_park_1.jpg', 15)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (24, N'/data/uploadimages/comment/hotel-room4.jpg', 19)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (25, N'/data/uploadimages/comment/hotel.jpg', 19)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (26, N'/data/uploadimages/comment/restaurant.jpg', 21)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (27, N'/data/uploadimages/comment/hotel-room4.jpg', 21)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (28, N'/data/uploadimages/comment/art.jpg', 23)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (29, N'/data/uploadimages/comment/fall.jpg', 24)
+INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
+VALUES (30, N'/data/uploadimages/comment/friends-min.jpg', 24)
 SET IDENTITY_INSERT [dbo].[comment_image] OFF;
 
 SET
-IDENTITY_INSERT [dbo].[car_model] ON;
+    IDENTITY_INSERT [dbo].[car_model] ON;
 
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-yaris.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (2, N'經濟轎車', N'豐田', N'Toyota', N'Vios', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-vios.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-altis.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (4, N'經濟轎車', N'豐田', N'Toyota', N'Prius C', N'燃油車', N'AT', 2000, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-camry.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (5, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-prius-c.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (6, N'豪華轎車', N'豐田', N'Toyota', N'Auris', N'燃油車', N'AT', 2000, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-auris.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (7, N'休旅車/SUV', N'豐田', N'Toyota', N'bZ4X', N'電動車', N'AT', 0, 5, 4, 2, 1, N'/data/uploadimages/car/toyota-bz4x.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (8, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2, N'/data/uploadimages/car/toyota-corolla-cross.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (9, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2, N'/data/uploadimages/car/toyota-sienta.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
+        N'/data/uploadimages/car/toyota-yaris.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (2, N'經濟轎車', N'豐田', N'Toyota', N'Vios', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
+        N'/data/uploadimages/car/toyota-vios.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2,
+        N'/data/uploadimages/car/toyota-altis.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (4, N'經濟轎車', N'豐田', N'Toyota', N'Prius C', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
+        N'/data/uploadimages/car/toyota-camry.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (5, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2,
+        N'/data/uploadimages/car/toyota-prius-c.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (6, N'豪華轎車', N'豐田', N'Toyota', N'Auris', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
+        N'/data/uploadimages/car/toyota-auris.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (7, N'休旅車/SUV', N'豐田', N'Toyota', N'bZ4X', N'電動車', N'AT', 0, 5, 4, 2, 1,
+        N'/data/uploadimages/car/toyota-bz4x.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (8, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2,
+        N'/data/uploadimages/car/toyota-corolla-cross.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (9, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2,
+        N'/data/uploadimages/car/toyota-sienta.png')
 SET IDENTITY_INSERT [dbo].[car_model] OFF;
 
-SET IDENTITY_INSERT [dbo].[car_location] ON 
+SET IDENTITY_INSERT [dbo].[car_location] ON
 
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg', N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'隱藏')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg', N'25.042552', N'121.580242', N'台北忠孝站', N'08:30:00.0000000', N'02-8785662', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg', N'25.001994', N'121.539215', N'台北景美站', N'08:30:00.0000000', N'02-89310266', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg', N'25.10463', N'121.521746', N'台北士林站', N'08:30:00.0000000', N'02-2835110', N'隱藏')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg', N'25.085367', N'121.559064', N'台北內湖站', N'08:30:00.0000000', N'02-25021389', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg', N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg', N'25.046533', N'121.517414', N'台北車站', N'08:30:00.0000000', N'02-25159393', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg', N'25.063869', N'121.549778', N'台北松山機場站', N'08:30:00.0000000', N'02-27151133', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg', N'24.978089', N'121.545138', N'台北新店站', N'08:30:00.0000000', N'02-29153311', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (10, N'三民路88號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg', N'25.085351', N'121.473882', N'台北蘆洲站', N'08:30:00.0000000', N'02-22852299', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg', N'24.965811', N'121.432132', N'台北土城站', N'08:30:00.0000000', N'02-22693131', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (12, N'連城路126號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg', N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (13, N'中正路1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg', N'25.174829', N'121.432696', N'台北淡水站', N'08:30:00.0000000', N'02-26299393', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg', N'25.014534', N'121.463512', N'台北板橋車站', N'08:30:00.0000000', N'02-29658080', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (15, N'光榮路334號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg', N'24.678532', N'121.77797', N'宜蘭羅東站', N'08:30:00.0000000', N'03-9602116', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (16, N'復興路325號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'桃園區', N'/data/uploadimages/car/1-301.jpg', N'24.989491', N'121.304653', N'桃園復興站', N'08:30:00.0000000', N'03-3319555', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (17, N'青埔里高鐵北路一段6號', N'22:00:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'中壢區', N'/data/uploadimages/car/1-302.jpg', N'25.014084', N'121.215952', N'桃園高鐵站', N'07:00:00.0000000', N'03-2611881', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (18, N'中華路二段128號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'中壢區', N'/data/uploadimages/car/1-303.jpg', N'24.965952', N'121.240602', N'桃園中壢站', N'08:30:00.0000000', N'03-4629911', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (19, N'三民路二段50之2號', N'19:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'大園區', N'/data/uploadimages/car/1-305.jpg', N'25.088127', N'121.253123', N'桃園大園站', N'08:30:00.0000000', N'03-3830123', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (20, N'航站南路15號', N'19:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'大園區', N'/data/uploadimages/car/1-306.jpg', N'25.081168', N'121.237053', N'桃園機場站', N'08:30:00.0000000', N'03-3931133', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (21, N'高鐵三路268號', N'20:00:00.0000000', 2, N'隔尚租車', N'台灣', N'苗栗縣', N'後龍鎮', N'/data/uploadimages/car/1-307.jpg', N'24.605421', N'120.825767', N'苗栗高鐵站', N'08:00:00.0000000', N'03-7248168', N'顯示')
-INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county], [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status]) VALUES (22, N'中華路一段315號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新竹市', N'東區', N'/data/uploadimages/car/1-311.jpg', N'24.809551', N'120.983957', N'新竹中華站', N'08:30:00.0000000', N'03-5153528', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg',
+        N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'隱藏')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg',
+        N'25.042552', N'121.580242', N'台北忠孝站', N'08:30:00.0000000', N'02-8785662', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg',
+        N'25.001994', N'121.539215', N'台北景美站', N'08:30:00.0000000', N'02-89310266', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg',
+        N'25.10463', N'121.521746', N'台北士林站', N'08:30:00.0000000', N'02-2835110', N'隱藏')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg',
+        N'25.085367', N'121.559064', N'台北內湖站', N'08:30:00.0000000', N'02-25021389', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg',
+        N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg',
+        N'25.046533', N'121.517414', N'台北車站', N'08:30:00.0000000', N'02-25159393', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg',
+        N'25.063869', N'121.549778', N'台北松山機場站', N'08:30:00.0000000', N'02-27151133', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg',
+        N'24.978089', N'121.545138', N'台北新店站', N'08:30:00.0000000', N'02-29153311', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (10, N'三民路88號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg',
+        N'25.085351', N'121.473882', N'台北蘆洲站', N'08:30:00.0000000', N'02-22852299', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg',
+        N'24.965811', N'121.432132', N'台北土城站', N'08:30:00.0000000', N'02-22693131', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (12, N'連城路126號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg',
+        N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (13, N'中正路1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg',
+        N'25.174829', N'121.432696', N'台北淡水站', N'08:30:00.0000000', N'02-26299393', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg',
+        N'25.014534', N'121.463512', N'台北板橋車站', N'08:30:00.0000000', N'02-29658080', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (15, N'光榮路334號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg',
+        N'24.678532', N'121.77797', N'宜蘭羅東站', N'08:30:00.0000000', N'03-9602116', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (16, N'復興路325號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'桃園區', N'/data/uploadimages/car/1-301.jpg',
+        N'24.989491', N'121.304653', N'桃園復興站', N'08:30:00.0000000', N'03-3319555', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (17, N'青埔里高鐵北路一段6號', N'22:00:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'中壢區', N'/data/uploadimages/car/1-302.jpg',
+        N'25.014084', N'121.215952', N'桃園高鐵站', N'07:00:00.0000000', N'03-2611881', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (18, N'中華路二段128號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'中壢區', N'/data/uploadimages/car/1-303.jpg',
+        N'24.965952', N'121.240602', N'桃園中壢站', N'08:30:00.0000000', N'03-4629911', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (19, N'三民路二段50之2號', N'19:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'大園區', N'/data/uploadimages/car/1-305.jpg',
+        N'25.088127', N'121.253123', N'桃園大園站', N'08:30:00.0000000', N'03-3830123', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (20, N'航站南路15號', N'19:30:00.0000000', 2, N'隔尚租車', N'台灣', N'桃園市', N'大園區', N'/data/uploadimages/car/1-306.jpg',
+        N'25.081168', N'121.237053', N'桃園機場站', N'08:30:00.0000000', N'03-3931133', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (21, N'高鐵三路268號', N'20:00:00.0000000', 2, N'隔尚租車', N'台灣', N'苗栗縣', N'後龍鎮', N'/data/uploadimages/car/1-307.jpg',
+        N'24.605421', N'120.825767', N'苗栗高鐵站', N'08:00:00.0000000', N'03-7248168', N'顯示')
+INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
+                             [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
+VALUES (22, N'中華路一段315號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新竹市', N'東區', N'/data/uploadimages/car/1-311.jpg',
+        N'24.809551', N'120.983957', N'新竹中華站', N'08:30:00.0000000', N'03-5153528', N'顯示')
 
 SET IDENTITY_INSERT [dbo].[car_location] OFF
 
 
-
-
-
 SET
-IDENTITY_INSERT [dbo].[car_option] ON;
+    IDENTITY_INSERT [dbo].[car_option] ON;
 
-INSERT
-[dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (1, 1, 1, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (2, 1, 2, 2000, 0.80, 4)
@@ -194,7 +315,7 @@ VALUES (19, 10, 8, 3000, 0.90, 3)
 SET IDENTITY_INSERT [dbo].[car_option] OFF;
 
 SET
-IDENTITY_INSERT [dbo].[user_data] ON
+    IDENTITY_INSERT [dbo].[user_data] ON
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (1, N'admin', NULL, NULL, N'$2a$10$0CyR/2imAewmqwur36Xqy.FhTcyZ8KwZkJCeScapxC9DDCyrnihom', NULL, NULL, NULL,
@@ -219,7 +340,7 @@ VALUES (N'4', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:00:08.6030000', NULL, NULL, NULL, N'嚴長壽', N'臺中市', N'1', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'臺中市東區', N'400', NULL, N'公寓', N'雙星大飯店 (Twinstar Hotel)', NULL,
         N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於台中市東區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的台中彩虹眷村。 這間4星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
-        N'Taiwan', N'300', N'976472309', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'300', N'976472309', 4000, NULL, NULL, N'營業中')
 
 
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
@@ -230,7 +351,7 @@ VALUES (N'5', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:01:52.1490000', NULL, NULL, NULL, N'陳佳鑫', N'臺中市', N'2', N'附屬spa',
         N'提供3c高級筆電', N'提供美式餐點', NULL, N'臺中市西區', N'2000', NULL, N'公寓', N'台中金典酒店 (Splendor Hotel)', NULL,
         N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於台中市東區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的台中彩虹眷村。 這間4星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
-        N'Taiwan', N'800', N'916752161', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'800', N'916752161', 1000, NULL, NULL, N'營業中')
 
 
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
@@ -241,7 +362,7 @@ VALUES (N'6', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:02.4310000', NULL, NULL, NULL, N'王家豪', N'桃園市', N'3', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市中壢區', N'20000', NULL, N'公寓', N'古華花園飯店 (Kuva Chateau Hotel)', NULL,
         N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於桃園市中壢區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人健身中心、餐廳和室外泳池',
-        N'Taiwan', N'1000', N'911223333', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223333', 3000, NULL, NULL, N'營業中')
 
 
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
@@ -252,7 +373,7 @@ VALUES (N'7', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'名人堂花園大飯店 (Fame Hall Garden Hotel)', NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 3000, NULL, NULL, N'營業中')
 
 
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
@@ -264,7 +385,7 @@ VALUES (N'8', N'1.搭乘捷運出站可到達
         N'提供超跑特別租借', N'提供中式餐點', NULL, N'桃園市復興區華陵村巴崚156-7號, 桃園市復興區華陵村巴崚156-7號', N'20000', NULL, N'公寓', N'拉拉山桃山渡假農場',
         NULL,
         N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於桃園市復興區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間5星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 3000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -274,7 +395,7 @@ VALUES (N'9', N'1.搭乘捷運出站可到達
         N'提供超跑特別租借', N'提供中式餐點', NULL, N'中山二路199號, 前鎮區, 高雄市', N'20000', NULL, N'公寓', N'高雄菁英國際旅館',
         NULL,
         N'入住完美住宿，是完美旅程的必備要素。快來享受住宿提供的客房免費Wi-Fi吧！ 住宿位於桃園市復興區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間5星級飯店的設施十分完善，可大大提升您的住宿品質，為旅程增添歡樂。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 2000, NULL, NULL, N'營業中')
 
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
@@ -284,7 +405,7 @@ VALUES (N'11', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'名人堂花園大飯店 (Fame Hall Garden Hotel)', NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 1000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -293,7 +414,7 @@ VALUES (N'12', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'花園淘淘國際酒店 (Fame Hall Garden Hotel)', NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 5000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -302,7 +423,7 @@ VALUES (N'13', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'歐嗨喲國際商業旅館 (Fame Hall Garden Hotel)', NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 9000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -311,7 +432,7 @@ VALUES (N'14', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'4', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'牙拜一旅館 (Fame Hall Garden Hotel)', NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 1000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -320,7 +441,7 @@ VALUES (N'15', N'1.搭乘捷運出站可到達
 2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'桃園市', N'6', N'附屬健身房',
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'桃園市龍潭區', N'20000', NULL, N'公寓', N'鴻泰爽 (Fame Hall Garden Hotel)', NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 3000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -330,7 +451,7 @@ VALUES (N'16', N'1.搭乘捷運出站可到達
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
         NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 499, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -340,7 +461,7 @@ VALUES (N'17', N'1.搭乘捷運出站可到達
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
         NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 2000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -350,7 +471,7 @@ VALUES (N'18', N'1.搭乘捷運出站可到達
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
         NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 1000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -360,7 +481,7 @@ VALUES (N'19', N'1.搭乘捷運出站可到達
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
         NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 4000, NULL, NULL, N'營業中')
 INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
                            [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
                            [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
@@ -370,147 +491,7 @@ VALUES (N'20', N'1.搭乘捷運出站可到達
         N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
         NULL,
         N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'21', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'22', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'23', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'24', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'25', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'26', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'27', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'28', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'29', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'30', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'31', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'32', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'33', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
-INSERT INTO [dbo].[hotel] ([id], [howgoto], [admission_time], [bath_count], [bed_count], [bedroom_count], [boss_name],
-                           [city], [company_id], [feature1], [feature2], [feature3], [file_name], [full_address],
-                           [hotel_area], [hotel_rule], [hotel_style], [hotel_name], [image], [introduce], [notional],
-                           [people_count], [phone], [price], [provide], [roomtype], [status])
-VALUES (N'34', N'1.搭乘捷運出站可到達
-2.開車國一南下出交流道 開啟Google即可到達', N'2022-07-19 10:04:55.0020000', NULL, NULL, NULL, N'許佳佳', N'台南市', N'7', N'附屬健身房',
-        N'提供機場接送服務', N'提供BBQ餐點', NULL, N'忠義路二段145號8F, 台南市, 台南市', N'20000', NULL, N'公寓', N'立和商旅台南館 (LIHO Hotel Tainan)',
-        NULL,
-        N'住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於桃園市龍潭區的絕佳位置，讓您輕鬆探索熱門景點和餐飲選擇。 離開前，別忘了探訪知名的華泰名品城。 這間高品質飯店被評為5星級，提供客人熱水浴缸、健身中心和溫泉浴池。',
-        N'Taiwan', N'1000', N'911223222', NULL, NULL, NULL, N'營業中')
+        N'Taiwan', N'1000', N'911223222', 4000, NULL, NULL, N'營業中')
 
 SET IDENTITY_INSERT [dbo].[hotel] OFF
 
@@ -520,38 +501,13 @@ SET IDENTITY_INSERT [dbo].[hotel_image] ON
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'1', N'2022-07-19 10:00:08.6080000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-161758.jpg', N'4')
 
-
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'2', N'2022-07-19 10:00:08.6110000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-164595.jpg', N'4')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'3', N'2022-07-19 10:00:08.6110000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-221457.jpg', N'4')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'4', N'2022-07-19 10:01:52.1530000', NULL, N'/data/uploadimages/hotelImage/pexels-francesco-ungaro-96444.jpg',
+VALUES (N'4', N'2022-07-19 10:01:52.1530000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-161758.jpg',
         N'5')
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'5', N'2022-07-19 10:01:52.1550000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271618.jpg', N'5')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'6', N'2022-07-19 10:01:52.1560000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'5')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'7', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg', N'6')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'8', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg', N'6')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'9', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'6')
+VALUES (N'7', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-161758.jpg', N'6')
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
@@ -560,33 +516,11 @@ VALUES (N'10', N'2022-07-19 10:04:55.0060000', NULL,
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'11', N'2022-07-19 10:04:55.0080000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271618.jpg', N'7')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'12', N'2022-07-19 10:04:55.0090000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'7')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'13', N'2022-07-19 10:08:53.5670000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-261169.jpg', N'8')
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'14', N'2022-07-19 10:08:53.5680000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271618.jpg', N'8')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'15', N'2022-07-19 10:08:53.5690000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'8')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'16', N'2022-07-19 10:08:53.5690000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-271624.jpg', N'9')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'17', N'2022-07-19 10:04:55.0060000', NULL,
-        N'/data/uploadimages/hotelImage/pexels-konstantinos-eleftheriadis-2034335.jpg', N'9')
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'18', N'2022-07-19 10:04:55.0060000', NULL,
-        N'/data/uploadimages/hotelImage/pexels-konstantinos-eleftheriadis-2034335.jpg', N'9')
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
@@ -595,25 +529,8 @@ VALUES (N'20', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelI
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'21', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
-        N'11')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'22', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'11')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'23', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
         N'12')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'24', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
-        N'12')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'25', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'12')
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
@@ -622,23 +539,7 @@ VALUES (N'26', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelI
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'27', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
-        N'13')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'29', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'13')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'30', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
-        N'14')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'31', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'14')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'32', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
         N'14')
 
 
@@ -648,23 +549,7 @@ VALUES (N'33', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelI
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'34', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'15')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'35', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
-        N'15')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'36', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
-        N'16')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'37', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'16')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'38', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
         N'16')
 
 
@@ -674,23 +559,7 @@ VALUES (N'39', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelI
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'40', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'17')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'41', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
-        N'17')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'42', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
-        N'18')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'43', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'18')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'44', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
         N'18')
 
 
@@ -700,23 +569,8 @@ VALUES (N'45', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelI
 
 
 INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'46', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'19')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'47', N'2022-07-19 10:04:02.4340000', NULL, N'/data/uploadimages/hotelImage/pexels-amar-saleem-70441.jpg',
-        N'19')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
 VALUES (N'48', N'2022-07-19 10:04:02.4360000', NULL, N'/data/uploadimages/hotelImage/pexels-pew-nguyen-244133.jpg',
         N'20')
-
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'49', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'20')
-
-INSERT INTO [dbo].[hotel_image] ([id], [admission_time], [file_name], [image_path], [hotel_id])
-VALUES (N'50', N'2022-07-19 10:04:02.4370000', NULL, N'/data/uploadimages/hotelImage/pexels-pixabay-279746.jpg', N'20')
 
 
 SET IDENTITY_INSERT [dbo].[hotel_image] OFF
@@ -824,7 +678,12 @@ SET IDENTITY_INSERT [dbo].[hotel_room] OFF
 
 --Ticket
 SET IDENTITY_INSERT [dbo].[ticket] ON;
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (1, N'59號', N'嘉義縣', N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'歷史景點', N'4', N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', NULL, NULL, N'<h3>商品說明</h3>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name],
+                       [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro],
+                       [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date])
+VALUES (1, N'59號', N'嘉義縣', N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'歷史景點', N'4',
+        N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', NULL,
+        NULL, N'<h3>商品說明</h3>
 
 <p>－ 行程說明 －</p>
 
@@ -884,7 +743,11 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [p
 
 <p>&nbsp;</p>
 ', N'阿里山國家森林遊樂區門票', NULL, NULL, NULL)
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (2, N'春德路105號', N'桃園市', N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3', N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, N'
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name],
+                       [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro],
+                       [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date])
+VALUES (2, N'春德路105號', N'桃園市', N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3',
+        N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, N'
 <p>－ 行程特色 －</p>
 
 
@@ -989,7 +852,11 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [p
 
 <p>&nbsp;</p>
 ', N'Xpark 都會型水生公園門票', NULL, NULL, NULL)
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (3, N'後灣路2號', N'屏東縣', N'台灣', N'車城鄉', N'088825678', 250, 0, N'水族館&動物園', N'3', N'擁有全亞洲最大的海底隧道，台灣水域館、珊瑚王國館、世界水域館及鯨典館四個展示館 虛擬實境運動體驗 VR 設施，邀請大家身歷其境', NULL, NULL, N'
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name],
+                       [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro],
+                       [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date])
+VALUES (3, N'後灣路2號', N'屏東縣', N'台灣', N'車城鄉', N'088825678', 250, 0, N'水族館&動物園', N'3',
+        N'擁有全亞洲最大的海底隧道，台灣水域館、珊瑚王國館、世界水域館及鯨典館四個展示館 虛擬實境運動體驗 VR 設施，邀請大家身歷其境', NULL, NULL, N'
 <h3>－ 館區介紹 －</h3>
 
 <ul>
@@ -1016,7 +883,11 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [p
 
 <p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20200810084849_fdB9Y/jpg" style="height:479px; width:720px" /></p>
 ', N'屏東海生館門票', NULL, NULL, NULL)
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (4, N'189號', N'花蓮縣', N'台灣', N'壽豐鄉', N'038123199', 780, 0, N'主題樂園', N'1', N'8大主題遊樂設施，遊玩精彩一整天 走訪超人氣全台最大海洋公園，享受依山傍海美景，創造無限回憶 欣賞4大主題表演：海豚秀、海獅秀、美人魚生態教室、水晶城堡秀', NULL, NULL, N'
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name],
+                       [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro],
+                       [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date])
+VALUES (4, N'189號', N'花蓮縣', N'台灣', N'壽豐鄉', N'038123199', 780, 0, N'主題樂園', N'1',
+        N'8大主題遊樂設施，遊玩精彩一整天 走訪超人氣全台最大海洋公園，享受依山傍海美景，創造無限回憶 欣賞4大主題表演：海豚秀、海獅秀、美人魚生態教室、水晶城堡秀', NULL, NULL, N'
 <p>&ndash; 七月限定「海洋冰風暴2-冰怪來襲」活動 &ndash;</p>
 
 <p>海洋公園獨家暑期限定活動【海洋冰風暴2-冰怪來襲】<br />
@@ -1121,32 +992,49 @@ SET IDENTITY_INSERT [dbo].[ticket] OFF;
 
 --Ticket_image
 SET IDENTITY_INSERT [dbo].[ticket_image] ON;
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (2, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (3, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (7, N'/data/uploadimages/ticket/Xpark.jpg', 2)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (8, N'/data/uploadimages/ticket/Xpark2.png', 2)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (9, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (10, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (11, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (12, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (13, N'/data/uploadimages/ticket/海生館.jpg', 3)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (14, N'/data/uploadimages/ticket/海生館2.jpg', 3)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (15, N'/data/uploadimages/ticket/海生館3.jpg', 3)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (16, N'/data/uploadimages/ticket/海生館4.jpg', 3)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (17, N'/data/uploadimages/ticket/海生館5.jpg', 3)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (18, N'/data/uploadimages/ticket/海生館6.jpg', 3)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (19, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 4)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (20, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 4)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (21, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (2, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (3, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (7, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (8, N'/data/uploadimages/ticket/Xpark2.png', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (9, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (10, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (11, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (12, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (13, N'/data/uploadimages/ticket/海生館.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (14, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (15, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (16, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (17, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (18, N'/data/uploadimages/ticket/海生館6.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (19, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (20, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (21, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 4)
 SET IDENTITY_INSERT [dbo].[ticket_image] OFF
-
-
-
-
 
 
 

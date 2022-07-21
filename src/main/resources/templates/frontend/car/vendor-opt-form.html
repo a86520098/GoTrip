@@ -95,11 +95,21 @@
 									
 									<div class="row form-group my-4">
 										<div class="col-lg-1"></div>
-										<label class="col-lg-2 col-form-label" for="name">製造商與車款</label>
+										<label class="col-lg-2 col-form-label" for="name">製造商&車款</label>
 										<div class="col-lg-7">
 											<div class="pr-0">
 												<input th:value="*{carOptions[__${optionStat.index}__].carModel.makeCh + '  ' + carOptions[__${optionStat.index}__].carModel.makeEn + '  ' + 
 												carOptions[__${optionStat.index}__].carModel.model}" name="makeCh" type="text" class="form-control" readonly/>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row form-group my-4">
+										<div class="col-lg-1"></div>
+										<label class="col-lg-2 col-form-label" for="name">供應數量</label>
+										<div class="col-lg-7">
+											<div class="pr-0">
+												<input th:field="*{carOptions[__${optionStat.index}__].amount}" id="amount" name="amount" type="number" class="form-control col-10 d-inline text text-center amount"/>
 											</div>
 										</div>
 									</div>
@@ -133,11 +143,100 @@
 								</fieldset>
 								
 								
-								<button type="button" name="addOpt">Add item</button>
+<!-- 								<button type="button" name="addOpt">Add item</button> -->
 <!-- 								<select name="carModel" class="form-control"> -->
-<!-- 									<option value="0">select option</option> -->
+<!-- 									<option value="0">請選擇車款</option> -->
 <!-- 									<option th:each="carModel : ${carModels}" th:value="${carModel.id}" th:text="${carModel.makeCh + carModel.makeEn + carModel.model}"></option> -->
 <!-- 								</select> -->
+								
+								
+								<fieldset>
+								<div class="fs-17 bor18-1 carOption">
+								
+									<p class="fs-20 mt-5">
+										車款資料
+<!-- 										<span th:text="${optionStat.index +1}"> -->
+									</p>
+									
+									<!-- 隱藏的方案與車款id -->
+<!-- 									<input th:field="*{carOptions[__${optionStat.index}__].id}" id="id" type="hidden" class="form-control" /> -->
+<!-- 									<input th:field="*{carOptions[__${optionStat.index}__].carModel.id}" id="name" type="hidden" class="form-control" /> -->
+										
+									<div class="row form-group mb-4">
+										<div class="col-lg-3"></div>
+										<div class="col-lg-6">
+											<img id="image" src="" width="300px">
+										</div>
+										<div class="col-lg-3 pt-5">
+											<p> <i class="zmdi zmdi-flash"></i>&nbsp;&nbsp;
+												<span id="power"></span>
+											</p>
+											<p> <i class="zmdi zmdi-wb-auto"></i> 變速
+												<span id="transmission" ></span>
+											</p>
+											<p> <i class="zmdi zmdi-car"></i>&nbsp;排氣量 
+												<span id="engine" class="p-r-5"></span>
+											</p>
+											<p> <i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位
+												<span id="seat"></span>
+											</p>
+											<p> <i class="zmdi zmdi-case"></i>
+												<span id="suitcase" ></span>大 + 
+												<span id="bag" ></span>小
+											</p>
+										</div>
+									</div>
+									
+									<div class="row form-group my-4">
+										<div class="col-lg-1"></div>
+										<label class="col-lg-2 col-form-label" for="name">製造商&車款</label>
+										<div class="col-lg-7">
+											<div class="pr-0">
+												<select name="carModel" class="form-control">
+													<option value="0">請選擇車款</option>
+													<option th:each="carModel : ${carModels}" th:value="${carModel.id}" th:text="${carModel.makeCh + carModel.makeEn + carModel.model}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row form-group my-4">
+										<div class="col-lg-1"></div>
+										<label class="col-lg-2 col-form-label" for="name">供應數量</label>
+										<div class="col-lg-7">
+											<div class="pr-0">
+												<input id="amount" name="amount" type="number" class="form-control col-10 d-inline text text-center amount"/>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row form-group my-4">
+										<div class="col-lg-1"></div>
+										<label class="col-lg-2 col-form-label" for="price">定價與售價</label>
+										<div class="col-lg-7 row pr-0" >
+											<div class="col-sm-4 pr-0">
+												<input id="price" name="price" type="number" class="form-control col-10 d-inline text text-center price"/>
+												<span class="d-inline">x</span>
+<!-- 												<div class="invalid-feedback">請輸入定價</div> -->
+											</div>
+											<div class="col-sm-4 pr-0 d-inline" >
+												<input id="discount" type="text" name="discount" class="form-control discount d-inline col-10" placeholder="輸入0.8即是打八折"/>
+												<span class="d-inline">=</span>
+<!-- 												<div class="invalid-feedback">折扣請以小數格式輸入，ex:輸入0.8即[原定價x0.8=銷售金額]</div> -->
+											</div>
+											<div class="col-sm-4 pr-0 d-inline">
+												<input type="number" name="priceSale" class="form-control priceSale"  value="" readonly="readonly"/>
+											</div>
+										</div>
+									</div>
+									<div class="d-flex justify-content-end mb-3">
+										<button type="button" name="deleteOpt" class="btn btn-outline-dark text-right mr-4">
+											刪除車款
+										</button>
+										<input id="id" type="checkbox" name="deleteOpts" hidden="true"/>
+									</div>
+								</div>
+								</fieldset>
 								
 								<div class="d-flex justify-content-end my-5">
 									<button id="btn-insert-opts" type="submit" class="btn btn-warning mr-2 justify-content-end mr-4">
@@ -163,8 +262,27 @@
 	<script>
 		
 		// 儲存車款項目		
-		$(".btn-insert-opts").click(function(e){
+		$("#btn-insert-opts").click(function(e){
 			e.preventDefault();
+			let option = {
+					"price": $('#price').val(),
+					"discount": $('#discount').val(), 
+					"amount": $('#amount').val(),
+				  };
+			$.ajax({
+				type: 'POST',
+				url: '/gotrip/api/cars/options',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(option),
+				success: function(data) {
+					console.log("ok")
+				},
+				error: function() {
+					console.log("err")
+				}
+			});
+			
 			Swal.fire({
 				icon: 'success',
 				title: '儲存成功',
@@ -186,18 +304,22 @@
 		})
 		
 		// 取得車款資料
-		$('#carModel').on('change', function(){
+		$('select[name="carModel"]').on('change', function(){
 	  		let carModelId = $(this).val();
+	  		console.log(carModelId)
 			$.ajax({
 				type: 'GET',
 				url: '/gotrip/api/cars/models/' + carModelId,
 				dataType: 'json',
 				success: function(data) {
-// 					let str = '<i class="zmdi zmdi-flash"></i> <span th:text="${option.carModel.power}" class="p-r-15"></span>'+
-// 						'<i class="zmdi zmdi-wb-auto"></i> 變速 <span th:text="${option.carModel.transmission}" class="p-r-15"></span>'+
-// 						'<i class="zmdi zmdi-airline-seat-recline-extra"></i> 座位 <span th:text="${option.carModel.seat}" class="p-r-15"></span>'+
-// 						<i class="zmdi zmdi-car"></i> 排氣量 <span th:text="${option.carModel.engine}+'cc'" class="p-r-5"></span> ';
-					$("#carModelInfo").html(str);
+					$('#image').attr('src', '/gotrip' + data.image)
+					$('#power').text(data.power)
+					$('#transmission').text(data.transmission)
+					$('#power').text(data.power)
+					$('#suitcase').text(data.suitcase)
+					$('#seat').text(data.seat)
+					$('#bag').text(data.bag)
+// 					$("#carModelInfo").html(str);
 				},
 				error: function() {
 					console.log('error')
