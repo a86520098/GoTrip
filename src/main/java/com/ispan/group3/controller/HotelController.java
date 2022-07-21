@@ -232,6 +232,7 @@ public class HotelController {
     @GetMapping("/tohotelDetail")
     public String toHotelDetail(@RequestParam("id") Integer id, Model m) {
         m.addAttribute("roomDetail", hotelService.findById(id));
+        m.addAttribute("room", hotelroomService.findAllHotelRoom(id));
         return "frontend/hotel-roomDetail";
     }
 
