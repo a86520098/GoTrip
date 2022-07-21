@@ -17,6 +17,7 @@
   <link rel="shortcut icon" href="images/favicon.png" />
   <link rel="shortcut icon" href="images/accept.png" />
   <link rel="shortcut icon" href="images/failed.png" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
   
  <!--審核icon  -->
@@ -165,19 +166,22 @@
                                        style="cursor:pointer;"
                                        th:onclick="|updateState(${ticket.ticketNo},4,'課程是否完成?','')|">&nbsp;課程完成</i>
                                 </span> -->
-                                <span th:if="${ticket.status}==0">
+                                <div th:if="${ticket.status}==0">
                                     <span>已提交&nbsp;</span>
                                     <p></p>
                                     <i class="fa fa-check-circle"
                                        style="cursor:pointer;"
                                        th:onclick="|updateState(${ticket.ticketNo},1,'確認審核通過?','')|">
                                      </i>
-                                    <i class="fas fa-circle-xmark" th:id="${ticket.ticketNo}"
+                                    <i class="fa-solid fa-xmark" th:id="${ticket.ticketNo}"
                                        style="cursor:pointer;"
                                        th:onclick="|updateState(${ticket.ticketNo},3,'是否審核不通過?','')|">
                                     </i>
 <!--                                     <FontAwesomeIcon icon="fa-brands fa-weixin" /> -->
-                                </span>
+                                </div>
+                                <div th:if="${ticket.status}==2">
+                                    <span>已取消&nbsp;</span>
+                                </div>
                                 <span th:if="${ticket.status}==1" th:text="已審核"></span>
                                 <span th:if="${ticket.status}==3" th:text="不通過"></span>
                                 <!-- <span th:if="${ticket.status}==4">
@@ -539,7 +543,7 @@ function updateState(ticketNo, status, title, text) {
   if (result.isConfirmed) {
    $.ajax({
     type: "PUT",
-    url:'/gotrip' + '/ticketList/' + ticketNo + '/' + status,
+    url:'/gotrip/ticket/' + ticketNo + '/' + status,
     success: function (msg) {
      Swal.fire(
       '成功',

@@ -19,7 +19,7 @@
 <div th:replace="frontend/partials/fragment :: cart"></div>
 
 <section class="bg-img1 txt-center p-lr-15 p-tb-92"
-         th:style="'background-image: url(' + @{/images/hotelpic.jpg} + ');'">
+         th:style="'background-image: url(' + @{/images/bg-01.jpg} + ');'">
     <h2 class="ltext-103 font-weight-bold clwhite txt-center">門票管理</h2>
 </section>
 <!-- Product 內文 -->
@@ -75,7 +75,7 @@
                             <div class="col-lg-1"></div>
                             <label class="col-lg-2 col-form-label" for="ticketName">景點名稱</label>
                             <div class="col-lg-7">
-                                <input th:field="*{ticketName}" id="ticketNameId" type="text" class="form-control" placeholder="請輸入景點名稱"/>
+                                <input th:field="*{ticketName}" id="nameId" type="text" class="form-control" placeholder="請輸入景點名稱"/>
                                 <div class="invalid-feedback">請輸入景點名稱</div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@
                             <div class="col-lg-1"></div>
                             <label class="col-lg-2 col-form-label" for="address">地址</label>
                             <div class="col-lg-7">
-                                <input th:field="*{address}" id="address" type="text" class="form-control" placeholder="地址不須重複輸入縣市及行政區"/>
+                                <input th:field="*{address}" id="addressId" type="text" class="form-control" placeholder="地址不須重複輸入縣市及行政區"/>
                                 <div class="invalid-feedback">請輸入地址</div>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                           <div class="col-lg-1"></div>
                           <label class="col-lg-2 col-form-label" for="phone">連絡電話</label>
                           <div class="col-lg-7">
-                              <input th:field="*{phone}" id="phone" type="text" class="form-control" placeholder="0212345678"/>
+                              <input th:field="*{phone}" id="phoneId" type="text" class="form-control" placeholder="0212345678"/>
                               <div class="invalid-feedback">請輸入正確的電話格式</div>
                           </div>
                         </div>
@@ -210,7 +210,7 @@
                             <button id="btn-insert-wrong-loc" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
                                 錯誤輸入
                             </button>
-                            <button id="btn-insert-correct-loc" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+                            <button id="correctInput" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
                                 正確輸入
                             </button>
                             <button id="btn-insert-loc" type="submit" class="btn btn-warning justify-content-end">
@@ -365,21 +365,21 @@ switch (parseInt($(this).val())) {
 </script>
 
 <!-- 一鍵輸入 -->
-<!-- <script>
+<script>
     $('#correctInput').click(function () {
         //對應ID值，不是NAME值
         $('#nameId').val('阿里山國家森林遊樂區門票')
         $('#descriptionId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏，然從 1912年起成為台灣最具規模的林場，一直到 1960 年代末期為止。歷經日本、國民政府的採伐後，原始檜木林幾乎伐盡，現今存有第一期與第二期巨木群棧道近四十株的紅檜巨木，讓人緬懷過去神木林的壯闊神聖。其中最高的「阿里山香林神木」，高 45 公尺，樹圍 12.3 公尺，樹齡約2300年，是到訪阿里山的必遊之處。在阿里山國家森林遊樂區內有豐富的生態，其中最特殊的植物，莫過於稀有的蓧蕨、相馬氏石杉、阿里山十大功勞與一葉蘭了；動物則有台灣獼猴、帝雉、藪鳥、阿里山鴝、阿里山山椒魚等小明星助陣，熱鬧非凡。除了神木，阿里山還有非常多具可看性的景點：森林小火車、空靈飄渺的姊妹潭、壯闊動人的雲海、美麗的祝山日出、受鎮宮、百年慈雲寺、林業史蹟、春天盛開的各類櫻花與杜鵑…阿里山森林遊樂區是一個足以代表台灣霧林帶的國際級觀光景點，歡迎著來自全世界的旅人們，前來認識台灣山林豐富而美麗的面貌。「春賞花、夏避暑、秋攬楓、冬觀雲」詳述了一年四季萬種風情的阿里山國家森林遊樂區。在阿里山您只須放慢腳步，享受舒適宜人的綿延群山，伴蟲鳴入眠、被林間輕脆鳥啼喚醒，不妨現在就背起行李，規劃一趟阿里山輕旅行，讓自己徜徉於神木群的芬多精中，為身心靈安排一趟大自然的洗禮吧。')
-         $('#ticketBriefIntroId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏')
-        $('#picker1').val('8:30 AM')
-        $('#picker2').val('5:30 PM')
+        // $('#ticketBriefIntroId').val('阿里山山脈為台灣五大山脈之一，阿里山並不是一座山，而是泛指這個山區；自古擁有豐沛的紅檜與扁柏')
+        // $('#picker1').val('8:30 AM')
+        // $('#picker2').val('5:30 PM')
         $('#phoneId').val('052679917')
         $('#countryId').val('台灣')
         $('#city').val('嘉義縣')
         $('#dist').val('阿里山鄉')
         $('#addressId').val('59號')
          $('#priceId').val('215')
-         $('#statusId').val('已上架')
+        //  $('#statusId').val('已上架')
         $('#sel').val('4')
         $('#sel2').val('歷史景點')
         // $('#ticketStartDate').val('2022-07-29')
@@ -387,7 +387,7 @@ switch (parseInt($(this).val())) {
         // $('#note').val('')
         
     })
-</script> -->
+</script>
 
 <!-- CKEDITOR -->
 <script>CKEDITOR.replace('ticketIntro');</script>
