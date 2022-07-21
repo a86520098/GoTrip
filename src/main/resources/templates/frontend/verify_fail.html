@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <!-- Head -->
+    <head>
+        <title>立即登入GoTrip！</title>
+        <!-- Meta-Tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="keywords" content="Existing Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+        <script type="application/x-javascript">addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }</script>
+        <!-- //Meta-Tags -->
+        <link th:href="@{css/loginCSS/popuo-box.css}" rel="stylesheet" type="text/css" media="all" />
+        <!-- Style -->
+        <link rel="stylesheet" th:href="@{css/loginCSS/style.css}" type="text/css" media="all">
+        
+    </head>
+    <!-- //Head -->
+
+    <!-- Body -->
+    <body><h1>驗證失敗！</h1>
+        <div class="w3layoutscontaineragileits">
+        <div class="container text-center">
+		    <h3>非常抱歉！</h3>
+		    <h3>此帳戶驗證失敗，可能原因是已經驗證過，故無法重新驗證。</h3>
+		    <h2>     </h2>
+		    <h4>請點選下列連結返回登入畫面</h4>
+		    <h2>     </h2>
+		    <h4 style="color:orange"><a th:href="@{/login}">返回登入</a></h4>
+		</div>
+		</div>
+        
+        
+    </body>
+    
+    <!-- //Body -->
+    
+    </html>
