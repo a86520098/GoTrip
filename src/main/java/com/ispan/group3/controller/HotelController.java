@@ -296,7 +296,7 @@ public class HotelController {
         for (int i = 0; i < 10; i++) {
             System.out.println("前台商家新增房間");
         }
-        return "redirect:/backend/index";
+        return "redirect:/vendor/hotels";
     }
 
     @GetMapping("getHotelRoomList")

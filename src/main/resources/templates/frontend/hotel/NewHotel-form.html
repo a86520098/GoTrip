@@ -73,9 +73,25 @@
                                 <input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder=""/>
                                 <label class="col-lg-2 col-form-label" for="name">您飯店名稱</label>
                                 <div class="col-lg-7">
-                                    <input th:field="*{hotel_name}" id="name" type="text" class="form-control"
+                                    <input th:field="*{hotel_name}" id="hotel_name" type="text" class="form-control"
                                            placeholder="請輸入飯店名稱"/>
                                     <div class="invalid-feedback">請輸入飯店名稱</div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="name">您飯店所屬類型</label>
+                                <div class="col-lg-7">
+                                    <select th:field="*{hotelStyle}" class="form-select"
+                                            aria-label="Default select example">
+                                        <option value="公寓">公寓</option>
+                                        <option value="整間小屋">整間小屋</option>
+                                        <option value="整棟住宅">整棟住宅</option>
+                                        <option value="別墅">別墅</option>
+                                        <option value="專業大飯店">專業大飯店</option>
+                                    </select>
+
                                 </div>
                             </div>
 
@@ -114,6 +130,24 @@
                                 </div>
                             </div>
 
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="introduce">介紹一下您的地方</label>
+                                <div class="col-lg-7">
+                                      <textarea th:field="*{introduce}" id="introduce"
+                                                class="form-control"> </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="notional">飯店所屬國家</label>
+                                <div class="col-lg-7">
+                                    <input type="text" th:field="*{notional}" id="notional"
+                                           class="form-control"/>
+                                </div>
+                            </div>
+
 
                             <div class="row form-group my-4">
                                 <div class="col-lg-1"></div>
@@ -122,6 +156,64 @@
                                     <input th:field="*{phone}" id="phone" type="text" class="form-control"
                                            placeholder="02-12345678"/>
                                     <div class="invalid-feedback">請輸入正確的電話格式</div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="Howgoto">房客該如何前往妳的住宿</label>
+                                <div class="col-lg-7">
+                                     <textarea th:field="*{Howgoto}" id="Howgoto"
+                                               class="form-control"> </textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="status">狀態</label>
+                                <div class="col-lg-7">
+                                    <select th:field="*{status}" class="form-select"
+                                            aria-label="Default select example">
+                                        <option value="營業中">營業中</option>
+                                        <option value="未營業">未業中</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="hotelArea">您建築評數大小</label>
+                                <div class="col-lg-7">
+                                    <input type="text" th:field="*{hotelArea}" id="hotelArea"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="hotelArea">最高容納人數</label>
+                                <div class="col-lg-7">
+                                    <input type="text" th:field="*{peopleCount}" id="peopleCount"
+                                           class="form-control" onkeypress="return my_key(event)"/>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="boss_name">業主名稱</label>
+                                <div class="col-lg-7">
+                                    <input type="text" th:field="*{boss_name}" id="boss_name"
+                                           class="form-control"/>
+                                </div>
+                            </div>
+
+                            <div class="row form-group my-4">
+                                <div class="col-lg-1"></div>
+                                <label class="col-lg-2 col-form-label" for="price">平均價位</label>
+                                <div class="col-lg-7">
+                                    <input type="text" th:field="*{price}" id="price"
+                                           class="form-control" onkeypress="return my_key(event)"/>
                                 </div>
                             </div>
 
@@ -174,7 +266,7 @@
 <!-- javascript -->
 <div th:replace="frontend/partials/fragment :: script"></div>
 
-<script th:src="@{/js/car.js}"></script>
+<!--<script th:src="@{/js/car.js}"></script>-->
 <script th:src="@{/js/tw-city-selector.min.js}"></script>
 
 
@@ -185,6 +277,35 @@
         var location = document.getElementById('location').value;
         document.getElementById('address').value = city + location;
     }
+</script>
+
+
+<script>
+    $("#btn-insert-correct-loc").on("click", function () {
+        $('#companyId').val(1)
+        $('#companyName').val('隔尚租車')
+        $('#hotel_name').val('亞都麗緻飯店')
+        $('.city').focus()
+        $('#city').val('臺北市')
+        $('#location').focus()
+        $('#location').val('104中山區')
+        $('.county').blur()
+
+        $(".county option[value='" + $('.county option:selected').val('桃園市') + "']").prop("selected", true);
+        $('.district').focus().val('中壢區').blur()
+
+        $('#address').val('臺北市100中正區民權東路二段41號').blur()
+        $('#openTime').focus()
+        $('#phone').focus().val('03-4533013').blur()
+
+        $('#openTime').focus().val('09:00').blur()
+        $('#closeTime').focus().val('16:30').blur()
+        $('#longitude').val(121.222129)
+        $('#latitude').val(24.984981)
+
+    });
+
+
 </script>
 </body>
 
