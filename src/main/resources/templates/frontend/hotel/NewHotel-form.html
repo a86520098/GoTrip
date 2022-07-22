@@ -65,12 +65,8 @@
                               class="form-horizontal needs-validation" enctype="multipart/form-data">
 
                             <p class="card-description mt-4">填寫飯店資訊</p>
-                            <input th:field="*{id}" name="locationId" type="hidden"/>
-                            <input th:field="*{companyId}" id="companyId" type="hidden"/>
-                            <input th:field="*{hotel_name}" id="companyName" type="hidden"/>
                             <div class="row form-group my-4">
                                 <div class="col-lg-1"></div>
-                                <input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder=""/>
                                 <label class="col-lg-2 col-form-label" for="name">您飯店名稱</label>
                                 <div class="col-lg-7">
                                     <input th:field="*{hotel_name}" id="hotel_name" type="text" class="form-control"
@@ -236,11 +232,8 @@
 
 
                             <div class="d-flex justify-content-end mr-5 my-5">
-                                <button id="btn-insert-wrong-loc" type="button"
-                                        class="btn btn-light mr-2 justify-content-end mr-4">
-                                    錯誤輸入
-                                </button>
-                                <button id="btn-insert-correct-loc" type="button"
+
+                                <button id="btn-insert-correct-room" type="button"
                                         class="btn btn-light mr-2 justify-content-end mr-4">
                                     正確輸入
                                 </button>
@@ -281,27 +274,19 @@
 
 
 <script>
-    $("#btn-insert-correct-loc").on("click", function () {
-        $('#companyId').val(1)
-        $('#companyName').val('隔尚租車')
-        $('#hotel_name').val('亞都麗緻飯店')
-        $('.city').focus()
-        $('#city').val('臺北市')
-        $('#location').focus()
-        $('#location').val('104中山區')
-        $('.county').blur()
+    $("#btn-insert-correct-room").on("click", function () {
+        $('#hotel_name').val('亞都麗緻大飯店')
+        $('#roomprice').val('4000')
+        $('#address').val('台北市中山區民權東路二段41號')
+        $('#introduce').val('住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於中山區的絕佳位置，讓您輕鬆探索周遭景點。 離開前，別忘了探訪知名的台北101大樓。 這間高品質飯店被評為5星級，提供客人健身中心、餐廳和三溫暖。')
+        $('#notional').val('Taiwan')
+        $('#phone').val('0976472309')
+        $('#Howgoto').val('1. 開車:行走國一到汐止交流道下，行走民權東路 即可到達專屬提車場')
+        $('#hotelArea').val('2500坪')
+        $('#peopleCount').val('10')
+        $('#boss_name').val('嚴長壽')
+        $('#price').val('4000')
 
-        $(".county option[value='" + $('.county option:selected').val('桃園市') + "']").prop("selected", true);
-        $('.district').focus().val('中壢區').blur()
-
-        $('#address').val('臺北市100中正區民權東路二段41號').blur()
-        $('#openTime').focus()
-        $('#phone').focus().val('03-4533013').blur()
-
-        $('#openTime').focus().val('09:00').blur()
-        $('#closeTime').focus().val('16:30').blur()
-        $('#longitude').val(121.222129)
-        $('#latitude').val(24.984981)
 
     });
 

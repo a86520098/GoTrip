@@ -45,9 +45,9 @@
                                 </a>
                             </li>
                             <li class="bor18">
-                                <a th:href="@{#}"
+                                <a th:href="@{/vendor/hotels}"
                                    class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-                                    ###
+                                    返回飯店列表
                                 </a>
                             </li>
                         </ul>
@@ -71,7 +71,6 @@
                                     <th scope="col" class="text-center">評數大小</th>
                                     <th scope="col" class="text-center">房型</th>
                                     <th scope="col" class="text-center">價位</th>
-                                    <th scope="col" class="text-center">照片</th>
                                     <th scope="col" class="text-center">編輯</th>
                                     <th scope="col" class="text-center">刪除</th>
                                 </tr>
@@ -85,17 +84,8 @@
 
                                     <td th:text="${roomList.roomtype}"></td>
                                     <td th:text="${roomList.roomprice}"></td>
-                                    <td>
-                                        <!--                                        <div th:each="image:${roomList.hotelRoomImageList}" class="d-inline-block">-->
-                                        <!--                                            <img th:src="@{${image.imagePath}}" class="rounded img-com"-->
-                                        <!--                                                 width="60" height="72" style="display: inline-flex"/>-->
-                                        <!--                                        </div>-->
-                                    </td>
-
-
                                     <th>
                                         <a class="btn1" th:href="@{/updateRoom(id=${roomList.id})}">編輯房間</a>
-
                                     </th>
                                     <th>
                                         <a class="btn1 btn-delete" th:href="@{/deleteRoom(id=${roomList.id})}"
