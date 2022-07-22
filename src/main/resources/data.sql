@@ -727,8 +727,9 @@ VALUES (N'7', N'4', N'4', N'4', N'Accessible by elevator', N'Safety/security fea
 SET IDENTITY_INSERT [dbo].[hotel_room] OFF
 
 --Ticket
-SET IDENTITY_INSERT [dbo].[ticket] ON;
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date], [company_id], [ticket_image_data]) VALUES (1, N'59號', N'嘉義縣', N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'歷史景點', N'4', N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', NULL, NULL, N'<h3>商品說明</h3>
+SET IDENTITY_INSERT [dbo].[ticket] ON 
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (1, N'59號', N'嘉義縣', 1, N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'歷史景點', N'4', N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', NULL, NULL, NULL, N'<h3>商品說明</h3>
+
 <p>－ 行程說明 －</p>
 
 <ul>
@@ -768,257 +769,675 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [p
 
 <p>阿里山國家森林遊樂區門票核銷地點</p>
 
-<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093404_OJoNB/jpg" style="height:540px; width:720px" /></p>
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093401_5jsGY/jpg" style="height:540px; width:720px" /></p>
 
 <p>阿里山國家森林遊樂區大門口</p>
 
-<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093410_Swr05/jpg" style="height:404px; width:720px" /></p>
-
 <p>&nbsp;</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093404_OJoNB/jpg" style="height:540px; width:720px" /></p>
+
+<p>台灣八景之一阿里山雲海</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093410_Swr05/jpg" style="height:404px; width:720px" /></p>
 
 <p>沼平車站就是阿里山舊火車站，建於西元1914年，於大正3年3月14日正式開始營運，原為阿里山林業鐵路登山本線的終點站。</p>
 
 <p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_100459/20200525093406_4V2nx/jpg" style="height:404px; width:720px" /></p>
 
 <p>&nbsp;</p>
+', N'阿里山國家森林遊樂區門票', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (2, N'189號', N'花蓮縣', NULL, N'台灣', N'壽豐鄉', N'038123199', 780, 0, N'主題樂園', N'1', N'8大主題遊樂設施，遊玩精彩一整天 走訪超人氣全台最大海洋公園，享受依山傍海美景，創造無限回憶 欣賞4大主題表演：海豚秀、海獅秀、美人魚生態教室、水晶城堡秀', NULL, NULL, NULL, N'<p>&ndash; 七月限定「海洋冰風暴2-冰怪來襲」活動 &ndash;</p>
+
+<p>海洋公園獨家暑期限定活動【海洋冰風暴2-冰怪來襲】<br />
+炎熱的夏日即將到來！我們將極凍整個夏天！<br />
+水槍水車激起的水花大戰，帶領大家持續清涼high酷到最高點！</p>
+
+<ul>
+	<li>活動日期：2022.07.01 至 2022.09.11</li>
+	<li>活動內容：</li>
+</ul>
+
+<ol>
+	<li>【冰風暴之冰怪來襲】（地點：布萊登海岸）：<br />
+	海洋家族們在酷涼派對裡為大家帶來清涼水花！ 沒想到真正的大海冰怪「ICE」已悄悄出現，冰怪會從哪裡現身？ 即將為布萊登海岸掀起一場極酷冰涼水花大戰！<br />
+	&nbsp;</li>
+	<li>【超好拍涼感戲水樂】（地點：布萊登海岸）：<br />
+	今夏最夯的網美拍照景點「海豚3D戲水池」、「水漾動感噴泉」， 沁涼必玩消暑NO.1水槍冰桶預備！<br />
+	&nbsp;</li>
+	<li>【冰風暴沁涼主題餐】（地點：多尼漢堡/花車）：<br />
+	主廚推出各式冰品、派對炸物餐點。<br />
+	&nbsp;</li>
+	<li>【可愛酷炫冰怪商品】：<br />
+	冰怪果凍包搭配可愛冰怪防曬披肩，夏季玩水時尚、涼感一次包辦！</li>
+</ol>
+
+<p>【園區營運調整公告】</p>
+
+<p>配合中央流行疫情指揮中心管制原則，相關規範調整、異動如下（最新資訊可參考<a href="https://www.farglory-oceanpark.com.tw/public/info-in/157ZTE4qsbXHcyg2/607Yn54nx4Ms0PI0">官網</a>為準)</p>
+
+<ul>
+	<li>園區每日實施總量管制，入園人數上限為 9,600 人（原承載人數之 80%）</li>
+	<li>營業時間：平日 9:30~17:00，假日 9:00~17:00（閉園前2小時停止售票及入園）</li>
+	<li>採防疫實聯制，需全程配載口罩，保持社交安全距離</li>
+	<li>入園時需量測體溫，如出現疑似病徵或體溫超過 37.5 度等情況，園方有權婉拒入園</li>
+	<li>詳細園區內規範請參考<a href="https://www.farglory-oceanpark.com.tw/info-in/157ZTE4qsbXHcyg2/607Yn54nx4Ms0PI0">官網</a>資訊，規劃行程前請參閱<a href="https://www.farglory-oceanpark.com.tw/notice">園區維修停演公告時程</a></li>
+</ul>
+
+<p>&ndash;&nbsp;樂園特色 &ndash;</p>
+
+<p>【八大主題區】<br />
+海洋村、探險島、海洋劇場、嘉年華歡樂街、海盜灣、布萊登海岸、海底王國、水晶城堡</p>
+
+<p>【三大場館】<br />
+虛實體驗「探險島水族館」、海底探索「海洋哺乳動物生態館」沈浸式「水晶城堡劇場」</p>
+
+<p>【五大主秀】<br />
+水中精靈「海豚傳說-跳浪奇緣」、活潑逗趣「海獅小學堂」、國際級表演「奇妙海洋慶典」、動畫實境劇場「美人魚的神秘傳說」、浩瀚海底世界「大洋池的生態奧秘」</p>
+
+<p>【十大設施】<br />
+有適合各年齡層的遊樂設施，晴空纜車、黑鬍子海盜船、海盜大驚航、愛情摩天輪、海豚3D戲水池、飛琁海豚、碰碰船、小藍鯨探險記</p>
+
+<p>【海景美食街】<br />
+提供多樣異國主題特色餐點的海景風光美食街</p>
+
+<p>【英倫商店街】<br />
+英式建築造景街道，IG網美拍照熱點，還有園區吉祥物海豚、海獅、鯊魚、美人魚等家族成員驚喜現身，與遊客一同拍照遊玩</p>
+
+<p>暑期限定活動【海洋冰風暴2-冰怪來襲】：炎熱的夏日即將到來！我們將極凍整個夏天！ 水槍水車激起的水花大戰，帶領大家持續清涼high酷到最高點！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20220711061509_KFo6S/jpg" style="height:1018px; width:720px" /></p>
+
+<p>位於臺灣最美麗的東海岸風景區，緊鄰著太平洋左岸，是第一座台灣最大、最美且具有國際水準的海洋主題休閒、旅遊及渡假的王國</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201126074516_D3DEY/jpg" style="height:479px; width:720px" />海洋公園吉祥物，陪伴遊園的好夥伴<br />
+<img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201125094104_UdajR/jpg" style="height:480px; width:720px" /></p>
+
+<p>&nbsp;</p>
+', N'花蓮遠雄海洋公園電子門票', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (3, N'後灣路2號', N'屏東縣', NULL, N'台灣', N'車城鄉', N'088825678', 250, 0, N'水族館&動物園', N'3', N'擁有全亞洲最大的海底隧道，台灣水域館、珊瑚王國館、世界水域館及鯨典館四個展示館 虛擬實境運動體驗 VR 設施，邀請大家身歷其境', NULL, NULL, NULL, N'<p>－ 館區介紹 －</p>
+
+<ul>
+	<li>屏東國立海洋生物博物館<br />
+	國立海洋生物博物館位於後灣，是全台灣規模最大的，館內魚類種類豐富，分成台灣水域館、珊瑚王國館、世界水域館，包含三層樓高的水族箱、海底隧道，或是可愛的企鵝、悠游自在的小白鯨與鯊魚，都讓人猶如親臨海底世界般，非常值得一遊！不僅適合家庭團體，就連大人們也能在這裡玩得十分盡興</li>
+	<li>虛擬海世界 VR 體驗館<br />
+	親子必遊景點屏東海生館，除了模擬海洋生態教育展示帶領遊客了解海洋世界真實樣貌，近來更引進時下盛行最新VR技術，帶領遊客潛入海洋，彷彿親身感受海底世界奇幻樣貌；同時搭乘極地探險車，前進南北極探索驚人地形樣貌，讓民眾只要戴上 VR 裝置，就能立刻身歷其境展開一段前所未有的奇幻旅程</li>
+	<li>屏東海生館推出「極境漫遊66.5度」互動展示體驗看看。屏東海生館透過空間造景搭配光雕投影、沉浸式劇場、觸控互動效果，打造沉浸式感官體驗，全面重塑極地水域三個區域「極光隧道、北極區、南極區」，讓你宛如一秒走進雪白的極地世界，為全球首座採用虛擬實境技術所建構的「無水水族館」，以虛擬和實體結合的奇妙參觀體驗。</li>
+	<li>今年夏天推出<a href="https://www.aquarium.com.tw/event.asp?ID=350">魟魚飛行日誌</a>，即日起至10月10日期間，可透過全新打造的大洋池環繞沉浸式投影以及生態互動解說，深度認識不同種類的魟魚外，更可搭上特別設置的魟魚班機，一起跟著魟魚徜徉於大洋中，感受海底遼闊且多樣的景色。常被稱為「海中飛行者」的魟魚，特別是燕魟在海中優游的身影，因翅膀形狀的胸鰭及上下擺動方式，如同在寬闊的海中飛行一般，優雅的姿態總是令人著迷。今年海生館特別以魟魚飛行意象，於海藻森林3樓廊道打造魟魚航班打卡裝置，民眾將可隨著各種拍照裝置，包含航班時刻表、出境口立牌等，打造如同出境的氛圍，帶領民眾猶如登上魟魚航班，下潛到海底世界，穿越大洋、珊瑚礁、藻林海域，彷彿魟魚般飛翔在海洋中，感受不同海底景色與魟魚的曼妙姿態。</li>
+	<li>屏東海生館最新活動及相關節目資訊請至<a href="https://www.aquarium.com.tw/">官網</a>或<a href="https://www.facebook.com/HSWEC/">粉絲專頁</a>查看詳情。&nbsp;</li>
+</ul>
+
+<p>► 漫步於全台灣最大的海底隧道</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20210816064112_rnWvA/jpg" style="height:480px; width:720px" />► 珊瑚王國館可愛小白鯨</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20211013073751_pz7G4/jpg" style="height:638px; width:720px" /></p>
+
+<p>&nbsp;觀賞壯觀的海底生物</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20160728043916_pvECV/jpg" style="height:480px; width:720px" />► 每天三場的大洋池餵食解說，在解說員的帶領下，更認識魟魚的生態知識，以及觀察魟魚進食的萌樣</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_9468/20220703151119_E1g59/jpg" style="height:480px; width:720px" /></p>
 
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
-', N'阿里山國家森林遊樂區門票', NULL, NULL, NULL, 1, NULL)
---INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date], [company_id], [ticket_image_data]) VALUES (2, N'春德路105號', N'桃園市', N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3', N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, N'
---<p>－ 行程特色 －</p>
---
---<p>Xpark 為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出 360&deg; 具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Xpark 是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。<br />
---<br />
---＊館區最新消息及詳細說明請參考<a href="https://www.xpark.com.tw/index.php">Xpark官網</a><br />
---＊購票請先註冊KKday會員<br />
---＊購票請參考線上訂票流程教學<a href="https://www.youtube.com/watch?v=CXmVaSSBYOU&amp;feature=youtu.be">影片</a><br />
---＊<a href="https://www.kkday.com/zh-tw/product/preview/j28vd0xkw1mkgrrhvyr2jrwz3qpn6r47">兒童新樂園ｘXpark</a>｜獨家聯合套票<br />
---＊<a href="https://www.kkday.com/zh-tw/product/125616">Xpark＆國立故宮博物院</a>｜雙展聯票<br />
---＊高鐵國旅聯票<a href="https://www.kkday.com/zh-tw/product/116970">來回車票</a>＆桃園Xpark都會型水生公園門票<br />
---＊高鐵國旅聯票<a href="https://www.kkday.com/zh-tw/product/118924">單程車票</a>＆桃園Xpark都會型水生公園門票<br />
---＊KKday<a href="https://blog.kkday.com/71281/taiwan-taoyuan-xpark-guide">編輯帶路</a>文章</p>
---
---<p>&nbsp;</p>
---
---<p>&mdash; 檔期企劃 &mdash;</p>
---
---<ul>
---	<li>沈浸式繪本『Xbook～流向我們的物語～』<br />
---	- 活動期間：2022/01/15 ~ 2022/12/31<br />
---	- 票價資訊：Xpark 門票（不需另收費）<br />
---	<br />
---	很久很久以前，地球是被岩漿所包圍的星球。<br />
---	不論是動物、植物或是大海，就連一滴水都不存在。<br />
---	然而天空被雲給覆蓋，下了將近千年的雨。<br />
---	最後，誕生了大海。<br />
---	<br />
---	接著物語就開始了。<br />
---	物種的起源、進化、多樣性，孕育生命的海所見證的歷史。<br />
---	從生物上所聽見關於大海的各種傳說與寓言。<br />
---	<br />
---	那便是，流向我們的物語。<br />
---	是否從何處聽見時空鯨魚的呼喚？<br />
---	走吧！一起踏上未知的旅程。</li>
---</ul>
---
---<p>&nbsp;</p>
---
---<p>－ 入館資訊 －</p>
---
---<ul>
---	<li>使用期限：限於票券指定當日及有效時間內使用</li>
---	<li>入場時間：旅客所選該場次一小時內，建議參觀時間為兩小時。<br />
---	ex：場次 10:00（入場時間 10:00 - 11:00）</li>
---	<li>特殊節日營業時間：無</li>
---	<li>停車折抵：請持票券中的 QRcode 至桃園置地廣場停車場繳費處掃描折抵<br />
---	＊一台車可持一張成人門票折抵停車，折抵上限為 1 小時（僅限成人票）</li>
---</ul>
---
---<p>&nbsp;</p>
---
---<p>－ Xpark AR －</p>
---
---<p>Xpark 結合影像創意與數位技術的嶄新水族館活動。來到 Xpark 的客人須先下載專屬 APP，在館內的 AR 拍照處開啟 APP 及相機功能，即可開展出獨創角色的 AR 短篇動畫。此外、Xfun 販售之系列商品，也內藏了獨創角色會出現的動畫影片，在家就能體驗擴充實境，將在 Xpark 的美好回憶帶回家。這前所未有的水族館玩法是 Xpark 與 ROBOT 帶給台灣民眾的嶄新體驗。這是一群可愛的獨創角色在「Xpark＝有一點不可思議的另一個地球」探險的全新平行時空冒險故事，歡迎大家來體驗另一個平行時空。</p>
---
---<p>&nbsp;</p>
---
---<p>－ 展區特色 －</p>
---
---<ul>
---	<li>1 樓展區：Xcafe、漫步叢林、潮間戲灘、世外桃源</li>
---	<li>2 樓展區：福爾摩沙、癒見水母、企鵝奇遇</li>
---	<li>3 樓展區：珊瑚潛行、暖海生機、雨林探險、寒帶行凍、深海尋秘</li>
---</ul>
---
---<p>&nbsp;</p>
---
---<p>－ 新冠肺炎 (COVID-19) 疫情因應措施－</p>
---
---<ul>
---	<li>遊客入館前需消毒手部並全程配戴口罩，社交距離請維持至少1.5公尺，敬請遵循工作人員指示與貼心叮嚀</li>
---	<li>實施紅外線體溫量測儀進行體溫監測。若體溫過高則使用非接觸式體溫計重測，若高於攝氏 37.5 度則得拒絕入館</li>
---	<li>導入時段性入館措施，以便讓遊客確保適當之社交距離。關於每日、每時段的入場上限人數，將遵循開幕時的「防疫新生活運動」之規定</li>
---</ul>
---
---<p>? Xpark 夏日限定活動【涼夏浴衣套票】，穿上浴衣在 Xpark 內漫步享受今年最特別的夏天</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20220622073835_3xhWz/jpg" style="height:479px; width:720px" /></p>
---
---<p>? Xpark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20200715042523_hm6ts/png" style="height:446px; width:720px" /></p>
---
---<p>? 「Xcafe by PRONTO」為 Xpark 與日本知名咖啡連鎖店「PRONTO corporation」攜手合作的台灣一號咖啡店，滿足味蕾享受的各種餐點，充分發揮 Xpark 獨特性的餐點！</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20220701103619_c5ob3/jpg" style="height:540px; width:720px" />? ZONE 1 ｜福爾摩沙 Formosa ｜ 台灣被海洋擁抱著，有著豐富多樣的魚種生態、變化萬千的海底地形，福爾摩沙完整呈現了這樣美麗的海洋環境，宛若走進海中，一覽海洋世界的壯闊之美</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20210629031915_yoPZu/jpg" style="height:450px; width:720px" /></p>
---
---<p>? ZONE 2 ｜珊瑚潛行 Diving in Coral Sea | 充滿迫力的 180 度環景設計，完美展現 湛藍海洋與珊瑚礁所交織出的美麗樣貌，邀您一同潛入絢爛的珊瑚之海，徜徉在色彩繽紛的 光、珊瑚、魚群、海水之中</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20200930090309_aKuk2/jpg" style="height:480px; width:720px" /></p>
---
---<p>?「Xfun」是位於 Xpark 的紀念品店，更多限定聯名商品值得你收藏</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20210119011850_Ftlli/jpg" style="height:329px; width:720px" /></p>
---
---<p>&nbsp;</p>
---
---<p>&nbsp;</p>
---
---<p>&nbsp;</p>
---', N'Xpark 都會型水生公園門票', NULL, NULL, NULL, 1, NULL)
---INSERT [dbo].[ticket] ([ticket_no], [address], [city], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date], [company_id], [ticket_image_data]) VALUES (4, N'189號', N'花蓮縣', N'台灣', N'壽豐鄉', N'038123199', 780, 0, N'主題樂園', N'1', N'8大主題遊樂設施，遊玩精彩一整天 走訪超人氣全台最大海洋公園，享受依山傍海美景，創造無限回憶 欣賞4大主題表演：海豚秀、海獅秀、美人魚生態教室、水晶城堡秀', NULL, NULL, N'
---<p>&ndash; 七月限定「海洋冰風暴2-冰怪來襲」活動 &ndash;</p>
---
---<p>海洋公園獨家暑期限定活動【海洋冰風暴2-冰怪來襲】<br />
---炎熱的夏日即將到來！我們將極凍整個夏天！<br />
---水槍水車激起的水花大戰，帶領大家持續清涼high酷到最高點！</p>
---
---<ul>
---	<li>活動日期：2022.07.01 至 2022.09.11</li>
---	<li>活動內容：</li>
---</ul>
---
---<ol>
---	<li>【冰風暴之冰怪來襲】（地點：布萊登海岸）：<br />
---	海洋家族們在酷涼派對裡為大家帶來清涼水花！ 沒想到真正的大海冰怪「ICE」已悄悄出現，冰怪會從哪裡現身？ 即將為布萊登海岸掀起一場極酷冰涼水花大戰！<br />
---	&nbsp;</li>
---	<li>【超好拍涼感戲水樂】（地點：布萊登海岸）：<br />
---	今夏最夯的網美拍照景點「海豚3D戲水池」、「水漾動感噴泉」， 沁涼必玩消暑NO.1水槍冰桶預備！<br />
---	&nbsp;</li>
---	<li>【冰風暴沁涼主題餐】（地點：多尼漢堡/花車）：<br />
---	主廚推出各式冰品、派對炸物餐點。<br />
---	&nbsp;</li>
---	<li>【可愛酷炫冰怪商品】：<br />
---	冰怪果凍包搭配可愛冰怪防曬披肩，夏季玩水時尚、涼感一次包辦！</li>
---</ol>
---
---<p>&nbsp;</p>
---
---<p>&nbsp;</p>
---
---<p>&ndash; 方案說明 &ndash;&nbsp;</p>
---
---<ul>
---	<li>【6月限定套票】遠雄海洋公園 |雙人門票＆卡娜赫拉的小動物下午茶專屬約會</li>
---	<li>【限時87折】遠雄海洋公園 | 雙人套票：成人票＊2，每組1560元<br />
---	-訂購此方案每次訂購為2人為一組，每張QRcode限一人使用。</li>
---	<li>【限時87折】遠雄海洋公園 | 三人套票：成人票＊3，每組2340元<br />
---	&nbsp;-訂購此方案每次訂購為3人為一組，每張QRcode限一人使用。</li>
---	<li>【限時88折】遠雄海洋公園 | 成人票</li>
---	<li>【限時84折】海洋甜心愛戀雙人悠遊 - 雙成人票<br />
---	- 本專案平、假日及特殊節日皆可使用<br />
---	- 每次限2人使用1張憑證（4人使用2張，以此類推），15 人以上之團體不適用</li>
---</ul>
---
---<p>園區營運調整公告】</p>
---
---<p>配合中央流行疫情指揮中心管制原則，相關規範調整、異動如下（最新資訊可參考<a href="https://www.farglory-oceanpark.com.tw/public/info-in/157ZTE4qsbXHcyg2/607Yn54nx4Ms0PI0">官網</a>為準)</p>
---
---<ul>
---	<li>園區每日實施總量管制，入園人數上限為 9,600 人（原承載人數之 80%）</li>
---	<li>營業時間：平日 9:30~17:00，假日 9:00~17:00（閉園前2小時停止售票及入園）</li>
---	<li>採防疫實聯制，需全程配載口罩，保持社交安全距離</li>
---	<li>入園時需量測體溫，如出現疑似病徵或體溫超過 37.5 度等情況，園方有權婉拒入園</li>
---	<li>詳細園區內規範請參考<a href="https://www.farglory-oceanpark.com.tw/info-in/157ZTE4qsbXHcyg2/607Yn54nx4Ms0PI0">官網</a>資訊，規劃行程前請參閱<a href="https://www.farglory-oceanpark.com.tw/notice">園區維修停演公告時程</a></li>
---</ul>
---
---<p>&nbsp;</p>
---
---<p><br />
---&ndash;&nbsp;樂園特色 &ndash;</p>
---
---<p>【八大主題區】<br />
---海洋村、探險島、海洋劇場、嘉年華歡樂街、海盜灣、布萊登海岸、海底王國、水晶城堡</p>
---
---<p>【三大場館】<br />
---虛實體驗「探險島水族館」、海底探索「海洋哺乳動物生態館」沈浸式「水晶城堡劇場」</p>
---
---<p>【五大主秀】<br />
---水中精靈「海豚傳說-跳浪奇緣」、活潑逗趣「海獅小學堂」、國際級表演「奇妙海洋慶典」、動畫實境劇場「美人魚的神秘傳說」、浩瀚海底世界「大洋池的生態奧秘」</p>
---
---<p>【十大設施】<br />
---有適合各年齡層的遊樂設施，晴空纜車、黑鬍子海盜船、海盜大驚航、愛情摩天輪、海豚3D戲水池、飛琁海豚、碰碰船、小藍鯨探險記</p>
---
---<p>【海景美食街】<br />
---提供多樣異國主題特色餐點的海景風光美食街</p>
---
---<p>【英倫商店街】<br />
---英式建築造景街道，IG網美拍照熱點，還有園區吉祥物海豚、海獅、鯊魚、美人魚等家族成員驚喜現身，與遊客一同拍照遊玩</p>
---
---<p>&nbsp;</p>
---
---<p>&nbsp;</p>
---
---<p>暑期限定活動【海洋冰風暴2-冰怪來襲】：炎熱的夏日即將到來！我們將極凍整個夏天！ 水槍水車激起的水花大戰，帶領大家持續清涼high酷到最高點！</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20220711061509_KFo6S/jpg" style="height:1018px; width:720px" />位於臺灣最美麗的東海岸風景區，緊鄰著太平洋左岸，是第一座台灣最大、最美且具有國際水準的海洋主題休閒、旅遊及渡假的王國</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201126074516_D3DEY/jpg" style="height:479px; width:720px" />海洋公園吉祥物，陪伴遊園的好夥伴</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201125094104_UdajR/jpg" style="height:480px; width:720px" /></p>
---
---<p>來訪繽紛的海洋公園！宛如夢遊仙境的場景、精彩表演與遊戲，吸引著大小朋友，喚起心中的童趣夢幻之心！</p>
---
---<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_107922/20201125094150_XHHUh/jpg" style="height:482px; width:720px" /></p>
---
---<p>&nbsp;</p>
---
---<p>&nbsp;</p>
---', N'花蓮遠雄海洋公園電子門票', NULL, NULL, NULL, 1 ,NULL)
+', N'屏東海生館門票', NULL, NULL, NULL)
 
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (4, N'春德路105號', N'桃園市', NULL, N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3', N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, NULL, N'<p>－ 行程特色 －</p>
 
-SET IDENTITY_INSERT [dbo].[ticket] OFF;
+<p>Xpark 為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出 360&deg; 具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Xpark 是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。</p>
 
---Ticket_image
-SET IDENTITY_INSERT [dbo].[ticket_image] ON;
+<p>－ 入館資訊 －</p>
+
+<ul>
+	<li>使用期限：限於票券指定當日及有效時間內使用</li>
+	<li>入場時間：旅客所選該場次一小時內，建議參觀時間為兩小時。<br />
+	ex：場次 10:00（入場時間 10:00 - 11:00）</li>
+	<li>特殊節日營業時間：無</li>
+	<li>停車折抵：請持票券中的 QRcode 至桃園置地廣場停車場繳費處掃描折抵<br />
+	＊一台車可持一張成人門票折抵停車，折抵上限為 1 小時（僅限成人票）</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>－ Xpark AR －</p>
+
+<p>Xpark 結合影像創意與數位技術的嶄新水族館活動。來到 Xpark 的客人須先下載專屬 APP，在館內的 AR 拍照處開啟 APP 及相機功能，即可開展出獨創角色的 AR 短篇動畫。此外、Xfun 販售之系列商品，也內藏了獨創角色會出現的動畫影片，在家就能體驗擴充實境，將在 Xpark 的美好回憶帶回家。這前所未有的水族館玩法是 Xpark 與 ROBOT 帶給台灣民眾的嶄新體驗。這是一群可愛的獨創角色在「Xpark＝有一點不可思議的另一個地球」探險的全新平行時空冒險故事，歡迎大家來體驗另一個平行時空。</p>
+
+<p>&nbsp;</p>
+
+<p>－ 展區特色 －</p>
+
+<ul>
+	<li>1 樓展區：Xcafe、漫步叢林、潮間戲灘、世外桃源</li>
+	<li>2 樓展區：福爾摩沙、癒見水母、企鵝奇遇</li>
+	<li>3 樓展區：珊瑚潛行、暖海生機、雨林探險、寒帶行凍、深海尋秘</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>－ 新冠肺炎 (COVID-19) 疫情因應措施－</p>
+
+<ul>
+	<li>遊客入館前需消毒手部並全程配戴口罩，社交距離請維持至少1.5公尺，敬請遵循工作人員指示與貼心叮嚀</li>
+	<li>實施紅外線體溫量測儀進行體溫監測。若體溫過高則使用非接觸式體溫計重測，若高於攝氏 37.5 度則得拒絕入館</li>
+	<li>導入時段性入館措施，以便讓遊客確保適當之社交距離。關於每日、每時段的入場上限人數，將遵循開幕時的「防疫新生活運動」之規定</li>
+</ul>
+
+<p>➤ Xpark 夏日限定活動【涼夏浴衣套票】，穿上浴衣在 Xpark 內漫步享受今年最特別的夏天</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20220622073835_3xhWz/jpg" style="height:479px; width:720px" />➤ Xpark 主打新都會型水族館，13 大主題展區帶你沉浸奇幻無比的水生世界</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20200715042523_hm6ts/png" style="height:446px; width:720px" />➤ 「Xcafe by PRONTO」為 Xpark 與日本知名咖啡連鎖店「PRONTO corporation」攜手合作的台灣一號咖啡店，滿足味蕾享受的各種餐點，充分發揮 Xpark 獨特性的餐點！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20220701103619_c5ob3/jpg" style="height:540px; width:720px" />➤ 企鵝的可愛模樣讓人暑氣全消</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20210629031915_aKoFy/jpg" style="height:450px; width:720px" /></p>
+', N'Xpark 都會型水生公園門票', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (5, N'五濱路二段459號', N'宜蘭縣', NULL, N'台灣', N'五結鄉', N'039603808', 285, 0, N'博物館&美術館', N'2', N'網美必訪之日式庭園渡假園區，景觀、人文與休閒兼具  換上日式傳統浴衣，彷彿身處日本京都，參與抹茶體驗課程 2021 年4 月起，引進羊駝、水豚、狐獴、刺蝟等動物，日式園區打造成療癒系動物園', NULL, NULL, NULL, N'<p>－ 綠舞國際觀光飯店 －</p>
+
+<ul>
+	<li>營業時間：<br />
+	4 - 10 月 09：00 - 18：00<br />
+	11 - 3 月 09：00 - 17：00</li>
+	<li>店家電話：(03) 960-3808</li>
+	<li>店家地點：宜蘭縣五結鄉五濱路二段 459 號</li>
+	<li>收費標準：未滿六歲或身高未滿 115 公分兒童由家長陪同並出示相關證件可免費入園<br />
+	<br />
+	<br />
+	&nbsp;</li>
+</ul>
+
+<p>－ 方案介紹 －</p>
+
+<p>【單人日式浴衣體驗】</p>
+
+<p>在這充滿日式風格的園區，一定要來一場浴衣體驗拍照，可以自行選擇愛的標準款或是經典款，大人小孩也都可以自由換裝，彷彿就在日本探訪小巷弄</p>
+
+<ul>
+	<li>體驗時間：40 分鐘（不包含著裝時間）</li>
+	<li>租借地點：園區內的綠舞展演廳</li>
+	<li>租借時間：09 : 30 - 17 : 00（最晚租借時間：16 : 00）</li>
+	<li>人數限制：將依現場人流進行管控，每梯著裝不超過 4 位</li>
+</ul>
+
+<p>【單人抹茶體驗＋甜點乙份】</p>
+
+<p>傳統抹茶風格，醞釀純粹日式韻味，搭配甜點，感受味蕾上的享受</p>
+
+<ul>
+	<li>體驗時間：約 30 分鐘</li>
+	<li>體驗地點：園區內的綠舞美術館</li>
+	<li>體驗場次：11: 00 ／15 : 00 （須於表定時間 10 分鐘前抵達）</li>
+	<li>人數限制：每梯次上限 16 位</li>
+</ul>
+
+<p>【日式和菓子體驗】</p>
+
+<p>被稱為「日本飲食文化之花」的和菓子，和日式茶道美學互相搭配、能充分展現四季更迭美感，為經典和風甜點之一。課程中老師帶領學員們親手製作，從揉捏、塑型到裝飾領略和菓子之美，搭配精選日式煎茶，讓旅途更添欣意。</p>
+
+<ul>
+	<li>體驗時間：約 1 小時</li>
+	<li>體驗地點：園區內的綠舞美術館或遊客中心 2 樓</li>
+	<li>體驗場次：10: 00 ／16 : 00 （須於表定時間 10 分鐘前抵達）&nbsp;</li>
+	<li>人數限制：每梯次上限 20 位（限 6 歲以上兒童，預約完成後，無法更改場次）</li>
+</ul>
+
+<p>超級萌寵入園作伴！來自紐西蘭品種的可愛羊駝寶寶「可可」、「露露」晉升為園區內超人氣角色，一出場就吸引遊客們前來拍照互動</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_35648/20210427083959_KHO6q/jpg" style="height:720px; width:960px" /></p>
+
+<p>來自南美洲的水豚，性格溫馴和善，圓滾滾的外表加上呆萌表情，為近年來備受矚目的明星萌寵之一</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_35648/20210427083957_LOPLV/jpg" style="height:540px; width:720px" /></p>
+
+<p>全新打造的日式狐獴屋敷，讓可以大小朋友們近距離欣賞狐獴可愛樣貌</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_35648/20210427084005_BRHrf/jpg" style="height:707px; width:720px" /></p>
+', N'綠舞日式主題園區', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (6, N'基河路363號', N'臺北市', NULL, N'台灣', N'士林區', N'0228314551', 100, 0, N'博物館&美術館', N'2', N'天文館、科教館、兒童新樂園，超方便的三館聯票，一票玩到底！ 一步步認識太空，親子知性、小孩放電之旅的最佳提案 天文迷必去景點，探索宇宙奧秘，現在就出發！', NULL, NULL, NULL, N'<p>－ 商品介紹 －</p>
+
+<ul>
+	<li>臺北市立天文科學教育館<br />
+	利用各式模型透過生動有趣的圖文解說及互動體驗，帶您快速了解太空探索的發展，循序漸進介紹天文科學知識，更進一步地認識臺灣目前的研究成果。 展示場分為：序曲、地球、太空探險、日地月、太陽系、恆星世界、銀河系、兒童區、星系、宇宙、外星生命的探索、天文觀測-發現星光的祕密、什麼是重力波及臺灣參與的國際天文研究，利用各展區，對宇宙中的奧祕，作深入巡禮，讓我們一同悠遊星海，領略天文之美。<br />
+	<br />
+	＊宇宙探險車<br />
+	搭乘由十三節列車所組成的探險隊，由太空站出發，先前往太陽，利用重力加速從內太陽系向外航行。探險隊原本計畫中的旅程是逐一遊覽各大行星，但在木星附近卻發生了意外。探險隊進入了外星人的世界，並藉著他們的科技遊歷星系、經歷超新星爆炸與黑洞強大的吸力，突破光速暢遊時空，最後終於安全回到太空站上。這一段旅程將帶給遊客無限的期待與意外的驚喜！<br />
+	&nbsp;</li>
+</ul>
+
+<ul>
+	<li>國立臺灣科學教育館<br />
+	國立臺灣科學教育館是一座具備多元科學展示及許多教育活動的展館，常設展區包括了生命科學、物理、化學、數學與地球科學等豐富的內容；特展區則是透過生動精彩的展示方式傳遞生活化的科學知識。 科教館還不定期與國內外博物館合作，舉辦有趣的科學相關展覽；另外還有動感 3D 劇院、立體劇院、地震劇場、科學圖書館及設備齊全的科學實驗室，拓展民眾對應用科學的視野。<br />
+	<br />
+	＊空中腳踏車<br />
+	利用含槓桿原理、不倒翁重心原理、張力原理三項平衡原理，親自體驗相對平衡和重力中心原理！五層樓高的空中腳踏車安全又刺激，現在就戴上安全設備、坐上腳踏車，挑戰看看！<br />
+	&nbsp;</li>
+</ul>
+
+<ul>
+	<li>臺北市兒童新樂園<br />
+	兒童新樂園是台北都會區的親子樂園，園區內設置美食街、便利超商、紀念品商店等 20 間販賣店；另規劃室內汽機車停車場及多元化室內親子遊戲空間(免費遊戲區、球池及投幣式遊戲機)，讓遊客不論是晴天或是雨天，都能在兒童新樂園盡情遊玩！ 造訪兒童新樂園，遊客還可順遊鄰近的天文科學教育館以及臺灣科學教育館，都是適合全家同遊的好地點。<br />
+	<br />
+	＊一日票可使用於以下 13 項遊樂設施<br />
+	海洋總動員/波力摩天輪/銀河號（單軌列車）/飛天神奇號（飛天巴士）/宇宙迴旋（輻射飛椅）/星空小飛碟（旋轉小飛機）/轉轉咖啡杯/巡弋飛椅（迴旋椅）/尋寶船（海盜船）/魔法星際飛車(雲霄飛車)/小飛龍/幸福碰碰車/叢林吼吼樹屋（自由落體）<br />
+	<br />
+	<br />
+	&nbsp;</li>
+</ul>
+
+<p>－ 場館資訊 －</p>
+
+<ul>
+	<li>臺北市立天文科學教育館<br />
+	週二 / 週三 / 週四 / 週五 / 週日：09:00 - 17:00<br />
+	週六：09:00 - 20:00<br />
+	休息日：週一<br />
+	&nbsp;</li>
+	<li>國立臺灣科學教育館<br />
+	週二 / 週三 / 週四 / 週五：09:00 - 17:00 最後入場時間：16:00<br />
+	週六 / 週日：09:00 - 18:00 最後入場時間：17:00<br />
+	休息日：週一<br />
+	&nbsp;</li>
+	<li>臺北市兒童新樂園<br />
+	週二 / 週三 / 週四 / 週五 / 週六 / 週日：09:00 - 17:00<br />
+	休息日：週一</li>
+</ul>
+
+<p>【宇宙探險車】搭乘由十三節列車所組成的探險隊，由太空站出發，體驗從內太陽系向外航行的旅程</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_128325/20220407091250_lCjM6/jpg" style="height:480px; width:720px" /></p>
+
+<p>不論是晴天或是雨天，都能在兒童新樂園盡情遊玩！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_128325/20220505053537_PyTAm/jpg" style="height:480px; width:720px" /></p>
+
+<p>【空中腳踏車】親自體驗相對平衡和重力中心原理，大膽的你一定要來挑戰！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_128325/20220505053538_Rfonh/jpg" style="height:428px; width:720px" /></p>
+
+<p>還可以試試左右搖晃壓車，看你可否打戰勝不倒翁原理，成功壓車呢？！<img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_128325/20220407091308_jF9yV/jpg" style="height:480px; width:720px" /></p>
+', N'市立天文科學教育館', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (7, N'建國北路一段96號B1', N'臺北市', NULL, N'台灣', N'中山區', N'0225150583', 220, 0, N'博物館&美術館', N'2', N'台北袖珍博物館是亞洲第一座專門收藏當代袖珍藝術品的主題博物館，搭乘台北捷運到松江南京站即可抵達。它擁有包羅萬象的袖珍精品，如美國加州的玫瑰豪宅、英國皇家閱兵大典、白金漢宮、傑克與魔豆等故事性及主題式館藏，漫遊袖珍博物館，彷彿走入了充滿異國風情的時空隧道。', NULL, NULL, NULL, N'<p>－ 行程特色 －<br />
+<br />
+・購買 KKday 線上電子票券，即買即用，現場掃描即可直接入園<br />
+・亞洲第一座專門收藏當代袖珍藝術品的主題博物館<br />
+・漫步袖珍博物館如同進入異國風情的時光隧道<br />
+<br />
+<br />
+－ 使用說明 －<br />
+<br />
+・使用對象：適用一般旅客，其他優惠票種請至現場購買</p>
+
+<p>・使用期限：即購買日算起一年內有效</p>
+
+<p>・兌換地點：持 QR CODE 至入口處核銷入場</p>
+
+<p>・休館時間：每週一公休及除夕、小年夜</p>
+
+<p>・開放時間：每週二至週日 10:00 - 18:00 （最後入場時間 17:00）</p>
+
+<p>・營業時間調整：2020/04/07 2020/06/30 ，週四 - 週日 10:00 - 1800 (最晚入館時間 17:00 )，其餘時間暫停服務</p>
+
+<p>・地址：台北市建國北路一段96號B1</p>
+
+<p><br />
+<br />
+<br />
+－ 票券介紹 －<br />
+<br />
+成立於1997年3月28日的袖珍博物館是亞洲第一座專門收藏當代袖珍藝術品的主題博物館。<br />
+袖珍博物館尋訪世界各地網羅一流袖珍藝術大師作品，擁有排名世界級的收藏規模，包羅萬象的袖珍精品經過組合佈置後，主題作品目前展出約兩百餘件，主要有呈現整座建築內外佈置的娃娃屋（Dollhouse）、各種房間精緻寫照的夢幻屋盒（Roombox），趣味創意的主題作品等。從兩千年前羅馬遺跡一窺當時羅馬帝國的壯闊景緻到90年代美國百萬公寓裡感受紳士名媛的舒適享受；義大利水都威尼斯的浪漫風情；極盡豪華的英國女王白金漢宮、倫敦東郊的貧民窟；童話世界中的白雪公主，漫步袖珍博物館如同進入異國風情的時光隧道。</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_30573/20190911041429_XiYYE/jpg" style="height:480px; width:720px" /></p>
+
+<p>&nbsp;</p>
+
+<p>源自十六世紀德國宮廷貴族的袖珍藝術，已傳遍了歐洲及北美。這些小巧的藝術品大至建築體，小到書桌上的鑰匙，都嚴格遵守一定的縮小比例製作，以實物的12比1為世界主流</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_30573/20190911041441_UMDyM/jpg" style="height:497px; width:720px" /></p>
+
+<p>最珍貴的是袖珍藝術品取材都仿自真實，除有生命的人及動物外，1公分高的酒瓶裝著真實的白蘭地、郵票大小的油畫是油彩真跡、櫥櫃、座椅、床單、瓷器、玻璃、金屬、壁紙、水晶燈&hellip;等等。</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_30573/20190911041437_t37SK/jpg" style="height:480px; width:720px" /></p>
+
+<p>&nbsp;</p>
+', N'袖珍博物館電子門票', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (8, N'中山路一段236號7樓', N'新北市', NULL, N'台灣', N'永和區', N'0282316118', 300, 0, N'博物館&美術館', N'2', N'場館宗旨：尊重每個信仰、包容每個族群、博愛每個生命 在這沈澱心靈，認識不同宗教文化，拓展視野', NULL, NULL, NULL, N'<p>－商品說明－</p>
+
+<ul>
+	<li>場館名稱：世界宗教博物館</li>
+	<li>營運地址：新北市永和區中山路一段 236 號 7 樓</li>
+	<li>開館時間：週二至週日 10: 00 - 17: 00 （週一休館，逢連假照常開館，順延至次日休館）</li>
+	<li>現場售票時間：週二至週日 10: 00 - 16: 30</li>
+	<li>定時導覽：開館時間，每日 14: 00 （常設展）</li>
+	<li>官網：<a href="https://www.mwr.org.tw/">https://www.mwr.org.tw/</a></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>－場館介紹－</p>
+
+<p>【世界宗教博物館】</p>
+
+<p>經由世界宗教博物館的建立，提供人們一個認識各不同宗教的機會，讓大家有機會選擇自己一生的精神信仰；各宗教間可以自由對話，不再有宗教的爭端與衝突。基於這個理由，心道師父認為無生道場如果成立佛教博物館，或建大型寺廟，或許能提供本土佛教徒心靈的寄託，而且也是信眾所樂見的，募款建館的任務也容易達成，但是卻無法達到上述遠大的目的。相反地，藉由一個現代化，以休閒育樂的手法傳播知識的博物館型態來介紹宗教知識，卻可能是一個無可取代的最佳方案。 於是，在多方徵詢及參訪世界上相關主題博物館及機構後，經過慎重的考量，一個史無前例，強調國際性，包羅世界各宗教的世界宗教博物館的理念及使命也就於焉成型。</p>
+
+<ul>
+	<li>特展《生死晝夜：於死亡中前行》：
+世界宗教博物館延續生命教育的脈絡，以系列特展《生死晝夜：於死亡中前行》，帶來一趟認識死亡、認識生命的旅程，以世界各個宗教獨特的生死觀為切入點，將圖像、文字、象徵符號轉化為展示要件，並賦予其與觀眾之間的連結性，建構出充滿著互動性及沈浸氛圍的展覽。每個空間都有自身的美學策略，又整體組合為觀展體驗的一環，環環相扣猶如一趟生命之旅的過程。《生死晝夜：於死亡中前行》並不是一場關於死亡的展覽，而是治癒自我的生命之書。</li>
+	<li>常設展：其中永久展示主要集中於八大世界宗教：基督宗教、伊斯蘭教、佛教、道教、印度教、錫克教、猶太教、神道教，與古代宗教如埃及、馬雅。台灣宗教區展示台灣人的信仰，輪展區則展示其他信仰與宗教傳統器物。參觀者將看到這些宗教在信仰上有何相同或相異之處，同時學到這些宗教的信念與歷史。</li>
+	<li>愛的星球：愛的星球－奇幻旅程裡，有情緒星球幫助小朋友學習感知自我、有自然星球可以學習愛護自然、有愛的星球學習愛家人愛社會，還有在加油站傳遞愛與分享。另外，還可以透過護照找尋不同職業的米洛可。在雙週六假日有奇幻精</li>
+	<li>・我們會害怕死亡，並不只是對死亡恐懼，很多時候是害怕自己沒有好好活著。所以這次的展覽將借由儀式感，不只是展出「死亡」主題，也是為每位參觀者以全新的感知回到自己的生活。靈劇場親子說故事活動。歡迎大朋友小朋友一起來玩哦！</li>
+</ul>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_120273/20220629023218_BWYBH/jpg" style="height:277px; width:720px" /></p>
+
+<p>啟程-生命的意義就在每個當下，死亡也不只是遙遠的旅程，我們於此啟程，開展一場生死之旅。</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_120273/20220629023816_rJNt2/jpg" style="height:480px; width:720px" /></p>
+
+<p>．晝夜之河-當人遺忘死亡，就使時間停滯，在生命中與死亡同行，不只是對終點的準備，也是基於對生活更清徹的覺知。</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_120273/20220629023759_9P9Ab/jpg" style="height:480px; width:720px" /></p>
+
+<p>&nbsp;</p>
+', N'新北．世界宗教博物館 ', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (9, N'16號里山上', N'臺南市', NULL, N'台灣', N'山上區', N'065781900', 90, 0, N'博物館&美術館', N'2', N'以優惠價格遊覽名勝古蹟：山上花園水道博物館 探訪充滿日式風味與生態的場域', NULL, NULL, NULL, N'<p>－行程資訊－</p>
+
+<ul>
+	<li>古蹟名稱：臺南山上花園水道博物館</li>
+	<li>地址：<br />
+	博物館區：臺南市山上區山上里山上16號<br />
+	淨水池區：臺南市山上區新莊里新莊59之18號</li>
+	<li>開放時間：09:30-17:30（每週二休館｜2022/09/01起調整為每週三休館｜最後入場時間：16:30）</li>
+</ul>
+
+<p>博物館內部展現過去的建築美學！</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_104779/20201116014752_MIJwJ/jpg" style="height:480px; width:720px" /></p>
+
+<p>走進山上花園，彷彿來到新的秘境</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_104779/20201117020900_u9Wdt/png" style="height:540px; width:720px" /></p>
+
+<p>迎接賓客的大地藝術，隨意拍都美麗</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_104779/20201117012233_f8H0Y/jpg" style="height:480px; width:720px" /></p>
+
+<p>孩童們的玩沙區，親子共度好時光</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_104779/20201117015751_lZmY7/jpg" style="height:540px; width:720px" /></p>
+', N'臺南山上花園水道博物館門票', NULL, NULL, NULL)
+
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (10, N'五濱路二段201號', N'宜蘭縣', NULL, N'台灣', N'五結鄉', N'039508859', 135, 0, N'歷史景點', N'4', N'充滿民俗技藝、戲劇、音樂、舞蹈、工藝等藝術氣息的園區，傳統藝術是扎根及流傳於生活的民間生活藝術之美 另有 DIY 手作方案，適合全家大小一起同樂的親子活動', NULL, NULL, NULL, N'<p>&mdash; 園區介紹 &mdash;</p>
+
+<p>宜蘭傳藝園區位於五結鄉冬山河風景區內，占地24公頃，在傳統聚落空間，加入創新體驗模式，深度體驗欣賞臺灣豐富多元的工藝、民俗技藝、戲劇、音樂、舞蹈。這裡是一個動態博物館，讓傳統藝術走入生活，讓生活不忘傳統藝術，踏入園區，映入眼簾的是傳達生活與工藝的魯班街；劇展廣場舞台演繹肢體的人文美感；匯集全台老街建築精華的文昌街；河道波光照映及體驗傳統禮俗收涎抓週樂趣的臨水街；國家興建的文昌祠呈現歲時節慶與信仰民俗文化；家廟建築的廣孝堂，呈現家族凝聚與生命禮俗之人文意涵；展示傳統三合院居民生活的百年歷史黃舉人宅。歡迎用心感受一年四季不同的宜蘭傳藝園區。</p>
+
+<p>► 傳藝 7 月份活動節目表</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_24308/20220704055031_9Ax32/jpg" style="height:1041px; width:720px" /></p>
+
+<p>► 宜蘭傳藝園區地圖，遊遍整個園區</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_24308/20220704055029_5HrRQ/jpg" style="height:254px; width:720px" /></p>
+
+<p>► 傳藝當期展覽&amp;表演活動</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_24308/20220704055028_E3mcL/jpg" style="height:254px; width:720px" /></p>
+
+<p>► 2022 魔幻戲法藝術節│07/01-09/30 將帶你用戲曲【藝起穿越奇幻時光】 感受傳統戲曲的新創魅力!</p>
+
+<p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_24308/20220704055027_ADDiR/jpg" style="height:508px; width:720px" /></p>
+
+<p>&nbsp;</p>
+', N'國立傳統藝術中心', NULL, NULL, NULL)
+
+SET IDENTITY_INSERT [dbo].[ticket] OFF
+
+SET IDENTITY_INSERT [dbo].[ticket_image] ON 
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (2, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (3, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (7, N'/data/uploadimages/ticket/Xpark.jpg', 2)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (8, N'/data/uploadimages/ticket/Xpark2.png', 2)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (9, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (10, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (11, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (12, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (13, N'/data/uploadimages/ticket/海生館.jpg', 3)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (14, N'/data/uploadimages/ticket/海生館2.jpg', 3)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (15, N'/data/uploadimages/ticket/海生館3.jpg', 3)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (16, N'/data/uploadimages/ticket/海生館4.jpg', 3)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (17, N'/data/uploadimages/ticket/海生館5.jpg', 3)
---INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (18, N'/data/uploadimages/ticket/海生館6.jpg', 3)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (19, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 4)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (20, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 4)
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (21, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 4)
 
-SET IDENTITY_INSERT [dbo].[ticket_image] OFF;
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (2, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (3, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (22, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (23, N'/data/uploadimages/ticket/Xpark2.png', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (24, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (25, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (26, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (27, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (28, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (29, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (30, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (31, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (32, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (33, N'/data/uploadimages/ticket/海生館6.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (34, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (35, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (36, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (37, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (38, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (39, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (40, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (41, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (42, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (43, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (44, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (45, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (46, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (47, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (48, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (49, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (50, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (51, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (52, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (53, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (54, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (55, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (56, N'/data/uploadimages/ticket/Xpark2.png', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (57, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (58, N'/data/uploadimages/ticket/Xpark2.png', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (59, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (60, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (61, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (62, N'/data/uploadimages/ticket/Xpark2.png', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (63, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (64, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (65, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (66, N'/data/uploadimages/ticket/Xpark2.png', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (67, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (68, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (69, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (70, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (71, N'/data/uploadimages/ticket/Xpark2.png', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (72, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (73, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (74, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (75, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (76, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (77, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (78, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (79, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (80, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (81, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (82, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (83, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (84, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (85, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (86, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (87, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (88, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (89, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (90, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (91, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (92, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (93, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (94, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (95, N'/data/uploadimages/ticket/海生館6.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (96, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (97, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (98, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (99, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (100, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (101, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (102, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (103, N'/data/uploadimages/ticket/Xpark.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (104, N'/data/uploadimages/ticket/Xpark2.png', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (105, N'/data/uploadimages/ticket/Xpark3.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (106, N'/data/uploadimages/ticket/Xpark4.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (107, N'/data/uploadimages/ticket/Xpark5.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (108, N'/data/uploadimages/ticket/Xpark6.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (109, N'/data/uploadimages/ticket/綠舞.jpg', 5)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (110, N'/data/uploadimages/ticket/綠舞2.jpg', 5)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (111, N'/data/uploadimages/ticket/綠舞3.jpg', 5)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (112, N'/data/uploadimages/ticket/綠舞4.jpg', 5)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (113, N'/data/uploadimages/ticket/科學教育館.jpg', 6)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (114, N'/data/uploadimages/ticket/科學教育館2.jpg', 6)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (115, N'/data/uploadimages/ticket/科學教育館3.jpg', 6)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (116, N'/data/uploadimages/ticket/袖珍博物館.jpg', 7)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (117, N'/data/uploadimages/ticket/袖珍博物館2.jpg', 7)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (118, N'/data/uploadimages/ticket/袖珍博物館3.jpg', 7)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (119, N'/data/uploadimages/ticket/袖珍博物館4.jpg', 7)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (120, N'/data/uploadimages/ticket/世界宗教博物館.jpg', 8)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (121, N'/data/uploadimages/ticket/世界宗教博物館2.jpg', 8)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (122, N'/data/uploadimages/ticket/世界宗教博物館3.jpg', 8)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (123, N'/data/uploadimages/ticket/世界宗教博物館4.jpg', 8)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (124, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 9)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (125, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 9)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (126, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 9)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (127, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 10)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (128, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 10)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (129, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 10)
+
+SET IDENTITY_INSERT [dbo].[ticket_image] OFF
+
 
 
 
