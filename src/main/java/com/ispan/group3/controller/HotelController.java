@@ -349,9 +349,15 @@ public class HotelController {
     public String DeleteRoom(Model model, @RequestParam("id") Integer id) {
         hotelroomService.deleteById(id);
         System.out.println("已經成功刪除房間刪除代號為=" + id);
-        return "redirect:/backend/index";
+        return "redirect:/vendor/hotels";
     }
 
+    @GetMapping("/frontDelete")
+    public String frontDelete(@RequestParam("id") Integer id) {
+        hotelService.delete(id);
+        System.out.println("已經刪除飯店 刪除號碼為:=" + id);
+        return "redirect:/vendor/hotels";
+    }
 
     @GetMapping("/vendor/newHotel")
     public String NewHotel(Model model) {
@@ -365,12 +371,6 @@ public class HotelController {
         return "/frontend/hotel/EditHotel-form";
     }
 
-    @GetMapping("/frontDelete")
-    public String frontDelete(@RequestParam("id") Integer id) {
-        hotelService.delete(id);
-        System.out.println("已經刪除飯店 刪除號碼為:=" + id);
-        return "redirect:/vendor/hotels";
-    }
 
     @PostMapping(value = "/frontNewHotel")
     public String frontHotel(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
