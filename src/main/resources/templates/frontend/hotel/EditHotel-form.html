@@ -60,14 +60,12 @@
                 <div class="card">
                     <div class="card-body ">
                         <h4 class="card-title font-weight-bold my-3">修改飯店</h4>
-                        <form id="insert-loc-form" name="form" th:action="@{/editHotel}" method="post"
+                        <form id="insert-loc-form" name="form" th:action="@{/frontEditHotel}" method="post"
                               th:object="${hotel}"
                               class="form-horizontal needs-validation" enctype="multipart/form-data">
 
                             <p class="card-description mt-4">填寫飯店資訊</p>
-                            <input th:field="*{id}" name="locationId" type="hidden"/>
                             <input th:field="*{companyId}" id="companyId" type="hidden"/>
-                            <input th:field="*{hotel_name}" id="companyName" type="hidden"/>
                             <div class="row form-group my-4">
                                 <div class="col-lg-1"></div>
                                 <input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder=""/>

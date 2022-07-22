@@ -386,5 +386,32 @@ public class HotelController {
         return "redirect:/vendor/hotels";
     }
 
+    @PostMapping(value = "/frontEditHotel")
+    public String frontEditHotel(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
+                                 @RequestParam(value = "imagefile", required = false) List<MultipartFile> files
+    ) {
+        System.out.println("準備新增接收資料了");
+//        MultipartFile picture = hotels.getProductImage(); //拿照片
+//        String originalFilename = picture.getOriginalFilename(); //拿檔案名稱
+//        Timestamp adminTime = new Timestamp(System.currentTimeMillis()); //拿檔案接受到的當下時間
+//        hotels.setAdmissionTime(adminTime); //塞進去
+
+        List<HotelImage> images = new ArrayList<>();
+        for (MultipartFile file : files) {
+            try {
+                String savePath = FileUploadUtil.saveFile("hotelImage", file);
+                HotelImage hotelImage = new HotelImage(savePath, hotels);
+                images.add(hotelImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        hotels.setImages(images);
+        hotelService.save(hotels);
+
+        System.out.println("222此方法儲存");
+        return "redirect:/vendor/hotels";
+    }
+
 
 }
