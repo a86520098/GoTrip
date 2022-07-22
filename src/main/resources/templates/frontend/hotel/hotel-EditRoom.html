@@ -68,49 +68,45 @@
             <div class="col-md-9 grid-margin my-5 pl-5">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title font-weight-bold">修改房間內容</h4>
+                        <h4 class="card-title font-weight-bold">編輯房間</h4>
                         <h6 class="card-title font-weight-bold"></h6>
                         <div class="p-t-20">
                             <!--                            <td th:text="${hotelroom.hotel.id}"></td>-->
                             <!--                            <td th:text="${hotelroom.id}"></td>-->
-                            <form method="post" th:action="@{/EditRoom}"
+                            <form method="post" th:action="@{/frontEditRoom/{id}(id=${mainHotel.id})}"
                                   th:object="${update} " enctype="multipart/form-data">
-                                <!--                                <td th:text="${hotelroom.hotel.id}"></td>-->
 
-                                <fieldset class="form-group">
-                                    <label>房間編號</label>
-                                    <input type="text" th:field="*{id}" id="id" readonly="readonly"
-                                           class="form-control"/>
-                                </fieldset>
+                                <input type="text" th:field="*{id}" id="id"
+                                       class="form-control" hidden/>
                                 <fieldset class="form-group">
                                     <label>房間名稱</label>
-                                    <input type="text" th:field="*{roomname}" id="hotelArea"
-                                           class="form-control"/>
+                                    <input type="text" th:field="*{roomname}" id="roomname"
+                                           class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
 
                                 <fieldset class="form-group">
                                     <label>房間價格</label>
-                                    <input type="text" th:field="*{roomprice}" id="peopleCount"
+                                    <input type="text" th:field="*{roomprice}" id="roomprice"
                                            class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>衛浴數量</label>
-                                    <input type="text" th:field="*{bathCount}" id="peopleCount"
+                                    <input type="text" th:field="*{bathCount}" id="bathCount"
                                            class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>房間數量</label>
-                                    <input type="text" th:field="*{bedroomCount}" id="peopleCount"
+                                    <input type="text" th:field="*{bedroomCount}" id="bedroomCount"
                                            class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>每房間床的數量</label>
-                                    <input type="text" th:field="*{bedCount}" id="peopleCount"
+                                    <input type="text" th:field="*{bedCount}" id="bedCount"
                                            class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>房間總坪數</label>
-                                    <input type="text" th:field="*{hotelArea}" id="peopleCount"
+                                    <input type="text" th:field="*{hotelArea}" id="hotelArea"
                                            class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
                                 <fieldset class="form-group">
@@ -121,33 +117,33 @@
 
                                 <fieldset class="form-group">
                                     <label>房間使用規則</label>
-                                    <textarea th:field="*{roomRule}" id="Howgoto"
+                                    <textarea th:field="*{roomRule}" id="roomRule"
                                               class="form-control"> </textarea>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>介紹一下你的房間</label>
-                                    <textarea th:field="*{roomIntroduce}" id="Howgoto"
+                                    <textarea th:field="*{roomIntroduce}" id="roomIntroduce"
                                               class="form-control"> </textarea>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>介紹你房間的特色1</label>
-                                    <input type="text" th:field="*{feature1}" id="peopleCount"
-                                           class="form-control"/>
+                                    <input type="text" th:field="*{feature1}" id="feature1"
+                                           class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>介紹你房間的特色2</label>
-                                    <input type="text" th:field="*{feature2}" id="peopleCount"
-                                           class="form-control"/>
+                                    <input type="text" th:field="*{feature2}" id="feature2"
+                                           class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
                                 <fieldset class="form-group">
                                     <label>介紹你房間的特色3</label>
-                                    <input type="text" th:field="*{feature3}" id="peopleCount"
-                                           class="form-control"/>
+                                    <input type="text" th:field="*{feature3}" id="feature3"
+                                           class="form-control" onkeypress="return my_key(event)"/>
                                 </fieldset>
 
                                 <td>此房的房型</td>
                                 <fieldset class="form-group">
-                                    <select th:field="*{roomtype}" class="form-select"
+                                    <select th:field="*{roomtype}" class="roomtype"
                                             aria-label="Default select example">
                                         <option value="單人房">單人房</option>
                                         <option value="雙人房">雙人房</option>
@@ -194,6 +190,10 @@
                                     <p>目前沒有圖片</p>
                                 </div>
 
+                                <button id="btn-insert-correct-room" type="button"
+                                        class="btn btn-light mr-2 justify-content-end mr-4">
+                                    正確輸入
+                                </button>
 
                                 <button type="submit" class="btn btn-success">Save</button>
                             </form>
@@ -220,6 +220,27 @@
 <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
         src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+
+<script>
+    $("#btn-insert-correct-room").on("click", function () {
+
+        $('#roomname').val('迷途羔羊二人房')
+        $('#roomprice').val('4000')
+        $('#bathCount').val('5')
+        $('#bedroomCount').val('5')
+        $('#bedCount').val('5')
+        $('#hotelArea').val('400')
+        $('#peopleCount').val('3')
+        $('#roomRule').val('兒童與加床收費標準歡迎兒童入住。其他規定請注意：若單筆預訂超過5間客房，可能會需要遵守其他相關規定以及符合額外的要求。加床規定依房型而異，更多細節請向住宿洽詢。')
+        $('#roomIntroduce').val('入住迷途羔羊二人房，盡情享受高級客房。本房間提供完善的設施服務，讓您享受無憂無慮的度假時光。 飯店提供免費Wi-Fi，無論您想發照片、回郵件，都能輕鬆完成。 自駕前往的住客可免費停車。 想一整天都宅在客房裡嗎？每日客房清潔等客房服務讓您躺著就能享受愉快假期。拉拉山桃山渡假農場客房都有貼心設施。 浴室設施對住客來說非常重要，因此這間飯店的部分客房提供吹風機和盥洗用品。')
+        $('#feature1').val('◎房間陽台面對清境最美的山景。')
+        $('#feature2').val('◎提供 -Bowers&Wilkins  音響。')
+        $('#feature3').val('◎提供專人頂級私人廚房。')
+    });
+
+
+</script>
+
 <script>
     (function ($) {
         $(document).ready(function () {
