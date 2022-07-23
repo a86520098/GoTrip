@@ -324,10 +324,6 @@ public class HotelController {
             }
         }
         hotelRoom.setHotelRoomImageList(imagesLish);
-        for (int i = 0; i < 10; i++) {
-            System.out.println("看到我代表是更新" + byId.getId());
-
-        }
 
 
         hotelRoom.setHotel(byId);

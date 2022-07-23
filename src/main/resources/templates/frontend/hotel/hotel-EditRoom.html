@@ -75,7 +75,6 @@
                             <!--                            <td th:text="${hotelroom.id}"></td>-->
                             <form method="post" th:action="@{/frontEditRoom/{id}(id=${mainHotel.id})}"
                                   th:object="${update} " enctype="multipart/form-data">
-
                                 <input type="text" th:field="*{roomid}" id="id"
                                        class="form-control" hidden/>
                                 <fieldset class="form-group">
