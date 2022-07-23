@@ -37,8 +37,8 @@
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-										新增車款選項
+									<a th:href="@{/vendor/cars/models/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+										新增車款
 									</a>
 								</li>
 							</ul>
@@ -55,7 +55,7 @@
 							<form id="insert-opt-form" name="form" th:action="@{/vendor/cars/options}" method="post" th:object="${carLocation}"
 								  class="form-horizontal needs-validation">
 								  
-								<input th:field="*{id}" id="id" type="hidden"/>
+								<input th:field="*{id}" id="id" name="locationId" type="hidden"/>
 								<fieldset id="options">
 								<div th:each="option, optionStat : *{carOptions}" class="fs-17 bor18-1 carOption" th:id="*{carOptions[__${optionStat.index}__].id}">
 								
@@ -192,9 +192,9 @@
 										<label class="col-lg-2 col-form-label" for="name">製造商&車款</label>
 										<div class="col-lg-7">
 											<div class="pr-0">
-												<select name="carModel" class="form-control">
+												<select name="carModel" id="insert-model" class="form-control" style="background-color: white;">
 													<option value="0">請選擇車款</option>
-													<option th:each="carModel : ${carModels}" th:value="${carModel.id}" th:text="${carModel.makeCh + carModel.makeEn + carModel.model}"></option>
+													<option th:each="carModel : ${carModels}" th:value="${carModel.id}" th:text="${carModel.makeCh +' '+ carModel.makeEn +' '+ carModel.model}"></option>
 												</select>
 											</div>
 										</div>
@@ -205,7 +205,7 @@
 										<label class="col-lg-2 col-form-label" for="name">供應數量</label>
 										<div class="col-lg-7">
 											<div class="pr-0">
-												<input id="amount" name="amount" type="number" class="form-control col-10 d-inline text text-center amount"/>
+												<input id="insert-amount" name="amount" type="number" class="form-control d-inline text text-center amount"/>
 											</div>
 										</div>
 									</div>
@@ -215,12 +215,12 @@
 										<label class="col-lg-2 col-form-label" for="price">定價與售價</label>
 										<div class="col-lg-7 row pr-0" >
 											<div class="col-sm-4 pr-0">
-												<input id="price" name="price" type="number" class="form-control col-10 d-inline text text-center price"/>
+												<input id="insert-price" name="price" type="number" class="form-control col-10 d-inline text text-center price"/>
 												<span class="d-inline">x</span>
 <!-- 												<div class="invalid-feedback">請輸入定價</div> -->
 											</div>
 											<div class="col-sm-4 pr-0 d-inline" >
-												<input id="discount" type="text" name="discount" class="form-control discount d-inline col-10" placeholder="輸入0.8即是打八折"/>
+												<input id="insert-discount" type="text" name="discount" class="form-control discount d-inline col-10" placeholder="輸入0.8即是打八折"/>
 												<span class="d-inline">=</span>
 <!-- 												<div class="invalid-feedback">折扣請以小數格式輸入，ex:輸入0.8即[原定價x0.8=銷售金額]</div> -->
 											</div>
@@ -265,16 +265,20 @@
 		$("#btn-insert-opts").click(function(e){
 			e.preventDefault();
 			let option = {
-					"price": $('#price').val(),
-					"discount": $('#discount').val(), 
-					"amount": $('#amount').val(),
+					"locationId": $('#id').val(),
+					"modelId": $('#insert-model').val(),
+					"price": $('#insert-price').val(),
+					"discount": $('#insert-discount').val(), 
+					"amount": $('#insert-amount').val(),
 				  };
+			console.log(option)
 			$.ajax({
 				type: 'POST',
 				url: '/gotrip/api/cars/options',
 				dataType: 'json',
-				contentType: 'application/json',
-				data: JSON.stringify(option),
+// 				contentType: 'application/json',
+// 				data: JSON.stringify(option),
+				data: option,
 				success: function(data) {
 					console.log("ok")
 				},
@@ -306,7 +310,6 @@
 		// 取得車款資料
 		$('select[name="carModel"]').on('change', function(){
 	  		let carModelId = $(this).val();
-	  		console.log(carModelId)
 			$.ajax({
 				type: 'GET',
 				url: '/gotrip/api/cars/models/' + carModelId,
@@ -315,11 +318,9 @@
 					$('#image').attr('src', '/gotrip' + data.image)
 					$('#power').text(data.power)
 					$('#transmission').text(data.transmission)
-					$('#power').text(data.power)
 					$('#suitcase').text(data.suitcase)
 					$('#seat').text(data.seat)
 					$('#bag').text(data.bag)
-// 					$("#carModelInfo").html(str);
 				},
 				error: function() {
 					console.log('error')
@@ -329,12 +330,11 @@
 		})
 		
 		// 增加車款選項
-		$('button[name="addOpt"]').click(function (event) {
-// 			let newOpt = '<input type="text" name="carModel" value="5"><input type="text" name="price" value="10000"><input type="text" name="discount" value="0.9"><input type="text" name="amount" value="3">'
-			let newOpt = $(this).prev().children('.carOption')
-			console.log(newOpt.html());
-		    $('fieldset').append(newOpt.html());
-		});
+// 		$('button[name="addOpt"]').click(function (event) {
+// 			let newOpt = $(this).prev().children('.carOption')
+// 			console.log(newOpt.html());
+// 		    $('fieldset').append(newOpt.html());
+// 		});
 		
 		// 刪除特定車款
 		$('button[name="deleteOpt"]').click(function (event) {

@@ -57,7 +57,7 @@ public class CarController {
 
 	// ---------- 車款表單 ----------
 	@GetMapping({"/backend/cars/form", "/backend/cars/form/{id}" })
-	public String showCarForm(Model model, @PathVariable(required = false) Integer id) {
+	public String showCarFormBk(Model model, @PathVariable(required = false) Integer id) {
 		CarModel carModel;
 		if (id != null) {
 			carModel = modelService.findById(id);
@@ -70,7 +70,7 @@ public class CarController {
 
 	// ---------- 儲存車款 ----------
 	@PostMapping("/backend/cars")
-	public String saveCar(@ModelAttribute CarModel carModel,
+	public String saveCarBk(@ModelAttribute CarModel carModel,
 			@RequestParam(value = "carImage", required = false) MultipartFile file) {
 		try {
 			String savePath = FileUploadUtil.saveFile("comment", file);
@@ -130,7 +130,6 @@ public class CarController {
 		} else {
 			carLocations = locationService.findByCompany(1);
 		}
-		
 		model.addAttribute("carLocations", carLocations);
 		return "frontend/car/vendor-location";
 	}
@@ -150,9 +149,9 @@ public class CarController {
 	
 	// ---------- 儲存地點 ----------
 	@PostMapping("/vendor/cars/locations")
-	public String save(@ModelAttribute CarLocation carLocation, 
-					   @RequestParam String closeTime, @RequestParam String openTime, 
-					   @RequestParam(value = "imagefile", required = false) MultipartFile file) {
+	public String saveLoc(@ModelAttribute CarLocation carLocation, 
+					      @RequestParam String closeTime, @RequestParam String openTime, 
+					      @RequestParam(value = "imagefile", required = false) MultipartFile file) {
 		carLocation.setCloseTime(closeTime);
 		carLocation.setOpenTime(openTime);
 		if (file != null) {
@@ -165,6 +164,38 @@ public class CarController {
 		}
 		locationService.save(carLocation);
 		return "redirect:/vendor/cars/locations/" + carLocation.getCompanyId();
+	}
+	
+	// ---------- 車款表單 ----------
+	@GetMapping({ "/vendor/cars/models/form", "/vendor/cars/models/form/{id}" })
+	public String showCarForm(@PathVariable(required = false) Integer id, Model model) {
+		CarModel carModel = new CarModel();
+		if (id != null) {
+			carModel = modelService.findById(id);
+		}
+		model.addAttribute("carModel", carModel);
+		return "frontend/car/vendor-car-form";
+	}
+	
+	// ---------- 儲存車款 ----------
+	@PostMapping("/vendor/cars/models")
+	public String saveCar(@ModelAttribute CarModel carModel, @RequestParam(required = false) Integer companyId,
+					   	  @RequestParam(value = "imagefile", required = false) MultipartFile file) {
+		if (file != null) {
+			try {
+				String savePath = FileUploadUtil.saveFile("car", file);
+				carModel.setImage(savePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if (companyId == null) {
+			companyId = 1;
+		}
+		modelService.save(carModel);
+		
+		
+		return "redirect:/vendor/cars/locations/" + companyId;
 	}
 
 	// ---------- 方案表單 ----------
@@ -196,39 +227,6 @@ public class CarController {
 		return "redirect:/vendor/cars/locations";
 	}
 	
-    // Request is accepted by the endpoint only if contains "save" parameter.
-//    @PostMapping(path = {"/vendor/cars/options/", "/vendor/cars/options/{id}"}, params = "save")
-//    public String saveOrder(Order order) {
-//        orderService.save(order);
-//        return "order";
-//    }
-
-//    @PostMapping(params = "addOption", path = "/vendor/cars/options")
-//    public String addOrder(@ModelAttribute CarLocation carLocation, HttpServletRequest request) {
-//    	
-//    	carLocation.getCarOptions().add(new CarOption());
-//        if (AJAX_HEADER_VALUE.equals(request.getHeader(AJAX_HEADER_NAME))) {
-//            // It is an Ajax request, render only #items fragment of the page.
-//            return "frontend/car/vendor-opt-form::#options";
-//        } else {
-//            // It is a standard HTTP request, render whole page.
-//            return "frontend/car/vendor-opt-form";
-//        }
-//    }
-//
-//    // "removeItem" parameter contains index of a item that will be removed.
-//    @PostMapping(params = "removeOption", path = "/vendor/cars/options")
-//    public String removeOrder(@ModelAttribute CarLocation carLocation, @RequestParam("removeOption") int index, HttpServletRequest request) {
-//    	System.out.println("Im here to remove");
-//    	carLocation.getCarOptions().remove(index);
-//        if (AJAX_HEADER_VALUE.equals(request.getHeader(AJAX_HEADER_NAME))) {
-//            return "frontend/car/vendor-opt-form::#options";
-//        } else {
-//            return "frontend/car/vendor-opt-form";
-//        }
-//    }
-	
-
 	// ---------- 刪除據點 ----------
 	@DeleteMapping("/vendor/cars/locations/{id}")
 	public String deleteById(@PathVariable Integer id) {

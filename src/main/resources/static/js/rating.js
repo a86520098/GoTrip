@@ -2,6 +2,11 @@ jQuery(document).ready(function($) {
 
 	// 商品列表 回傳所有商品星星和評論總數 
 	$(function() {
+		getRating();
+	})
+	
+	
+	function getRating() {
 		$.ajax({
 			url: "/gotrip/api/comments/ratings",
 			method: "GET",
@@ -40,9 +45,10 @@ jQuery(document).ready(function($) {
 				$('.rating-count').text('尚無評論')
 			},
 		});
-
-
-	})
+	
+	}
+	
+	
 
 	// 商品詳細說明頁面 給table和id 回傳該商品的List<Comment>
 	$(function() {

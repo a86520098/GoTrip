@@ -3,76 +3,58 @@ USE [GoTrip];
 SET IDENTITY_INSERT [dbo].[comment] ON;
 
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (1, N'hotel', 1, N'david_lin', CAST(N'2022-04-25T01:00:00' AS SmallDateTime), 5, N'環境舒適，交通方便，真的超級推薦!', N'show')
+VALUES (1, N'hotel', 1, N'david_lin', CAST(N'2022-04-25T01:00:00' AS SmallDateTime), 5, N'環境舒適，交通方便，真的超級推薦!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (2, N'restaurant', 1, N'kelly', CAST(N'2022-04-26T02:00:00' AS SmallDateTime), 4,
-        N'食物很好吃，但服務態度不值得這個價位，店家員工訓練有待加強!', N'show')
+VALUES (2, N'restaurant', 1, N'kelly', CAST(N'2022-04-26T02:00:00' AS SmallDateTime), 4, N'食物很好吃，但服務態度不值得這個價位，店家員工訓練有待加強!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (3, N'carRental', 2, N'nobody', CAST(N'2022-04-27T03:00:00' AS SmallDateTime), 1, N'車上竟然有其他顧客的垃圾...難以置信...',
-        N'banned')
+VALUES (3, N'carRental', 2, N'nobody', CAST(N'2022-04-27T03:00:00' AS SmallDateTime), 1, N'車上竟然有其他顧客的垃圾...難以置信...', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (4, N'ticket', 1, N'montLover', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 5, N'超棒的露營區!! 竟然還有獨立衛浴!!',
-        N'show')
+VALUES (4, N'ticket', 1, N'montLover', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 5, N'超棒的露營區!! 竟然還有獨立衛浴!!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (5, N'hotel', 8, N'wendy123', CAST(N'2022-04-29T05:00:00' AS SmallDateTime), 5,
-        N'價格偏高，但整個度假體驗非常好，疫情期間不能出國還是能一秒住villa', N'show')
+VALUES (5, N'hotel', 8, N'wendy123', CAST(N'2022-04-29T05:00:00' AS SmallDateTime), 5, N'價格偏高，但整個度假體驗非常好，疫情期間不能出國還是能一秒住villa', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (6, N'restaurant', 2, N'michael', CAST(N'2022-04-30T06:00:00' AS SmallDateTime), 3,
-        N'可怕的網美店，拍起來很美但食物調味超怪，標準的一次店', N'show')
+VALUES (6, N'restaurant', 2, N'michael', CAST(N'2022-04-30T06:00:00' AS SmallDateTime), 3, N'可怕的網美店，拍起來很美但食物調味超怪，標準的一次店', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (7, N'carRental', 3, N'queenB', CAST(N'2022-05-01T07:00:00' AS SmallDateTime), 5, N'竟然可以租到全新車，服務也很好，很推薦~',
-        N'show')
+VALUES (7, N'carRental', 3, N'queenB', CAST(N'2022-05-01T07:00:00' AS SmallDateTime), 5, N'竟然可以租到全新車，服務也很好，很推薦~', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (8, N'restaurant', 3, N'ann0800', CAST(N'2022-05-02T08:00:00' AS SmallDateTime), 3, N'約會好去處，但假日遊客太多，小孩尖叫亂跑，很掃興',
-        N'show')
+VALUES (8, N'restaurant', 3, N'ann0800', CAST(N'2022-05-02T08:00:00' AS SmallDateTime), 3, N'約會好去處，但假日遊客太多，小孩尖叫亂跑，很掃興', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (9, N'hotel', 25, N'jimmy', CAST(N'2022-05-03T09:00:00' AS SmallDateTime), 4, N'中規中矩的商務旅館', N'show')
+VALUES (9, N'hotel', 25, N'jimmy', CAST(N'2022-05-03T09:00:00' AS SmallDateTime), 4, N'中規中矩的商務旅館', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (10, N'carRental', 34, N'gary_ispan', CAST(N'2022-05-04T10:00:00' AS SmallDateTime), 5,
-        N'服務很好，最後還車前忘了加滿油，店家也是便宜算^^', N'show')
+VALUES (10, N'carRental', 34, N'gary_ispan', CAST(N'2022-05-04T10:00:00' AS SmallDateTime), 5, N'服務很好，最後還車前忘了加滿油，店家也是便宜算^^', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (11, N'ticket', 2, N'kids', CAST(N'2022-05-05T11:00:00' AS SmallDateTime), 5, N'畢旅的回憶~~~', N'show')
+VALUES (11, N'ticket', 2, N'kids', CAST(N'2022-05-05T11:00:00' AS SmallDateTime), 5, N'畢旅的回憶~~~', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (12, N'ticket', 3, N'youngCP', CAST(N'2022-05-06T12:00:00' AS SmallDateTime), 5,
-        N'拍照很美! 但門票小貴，動物生長在這麼小的水族箱感覺很痛苦，希望園區可以妥善照顧動物', N'show')
+VALUES (12, N'ticket', 3, N'youngCP', CAST(N'2022-05-06T12:00:00' AS SmallDateTime), 5, N'拍照很美! 但門票小貴，動物生長在這麼小的水族箱感覺很痛苦，希望園區可以妥善照顧動物', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (13, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime), 4, N'環境很好 度假風格 設施有點舊但維護的不錯', N'show')
+VALUES (13, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime), 4, N'環境很好 度假風格 設施有點舊但維護的不錯', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (14, N'ticket', 1, N'manager', CAST(N'2022-05-08T14:00:00' AS SmallDateTime), 5,
-        N'夜宿海生館真的是這輩子最難忘的回憶之一，他們還主動提供耳塞以免睡覺時被別人干擾，也會個別詢問有沒有需要更多毯子或墊子~ 真的超棒', N'show')
+VALUES (14, N'ticket', 1, N'manager', CAST(N'2022-05-08T14:00:00' AS SmallDateTime), 5, N'夜宿海生館真的是這輩子最難忘的回憶之一，他們還主動提供耳塞以免睡覺時被別人干擾，也會個別詢問有沒有需要更多毯子或墊子~ 真的超棒', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (15, N'ticket', 2, N'zoolover', CAST(N'2022-05-09T15:00:00' AS SmallDateTime), 4, N'不敢玩遊樂設施的人，光是去動物園就值回門票了!',
-        N'show')
+VALUES (15, N'ticket', 2, N'zoolover', CAST(N'2022-05-09T15:00:00' AS SmallDateTime), 4, N'不敢玩遊樂設施的人，光是去動物園就值回門票了!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (16, N'ticket', 5, N'manager', CAST(N'2022-05-10T16:00:00' AS SmallDateTime), 3,
-        N'價格有點高，但疫情下旅遊景點經營不易，也算是辛苦經營單位了', N'show')
+VALUES (16, N'ticket', 5, N'manager', CAST(N'2022-05-10T16:00:00' AS SmallDateTime), 3, N'價格有點高，但疫情下旅遊景點經營不易，也算是辛苦經營單位了', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (17, N'hotel', 4, N'lovelylady', CAST(N'2022-05-11T17:00:00' AS SmallDateTime), 5, N'超喜歡這裡，窗戶很大，視野非常好', N'show')
+VALUES (17, N'hotel', 4, N'lovelylady', CAST(N'2022-05-11T17:00:00' AS SmallDateTime), 5, N'超喜歡這裡，窗戶很大，視野非常好', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (18, N'hotel', 2, N'emp0315', CAST(N'2022-05-12T18:00:00' AS SmallDateTime), 4, N'還不錯，出公差而來，沒享受到飯店設施，稍嫌可惜',
-        N'show')
+VALUES (18, N'hotel', 2, N'emp0315', CAST(N'2022-05-12T18:00:00' AS SmallDateTime), 4, N'還不錯，出公差而來，沒享受到飯店設施，稍嫌可惜', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (19, N'hotel', 5, N'employee2', CAST(N'2022-05-13T19:00:00' AS SmallDateTime), 5, N'超值的體驗', N'show')
+VALUES (19, N'hotel', 5, N'employee2', CAST(N'2022-05-13T19:00:00' AS SmallDateTime), 5, N'超值的體驗', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (20, N'restaurant', 2, N'manager', CAST(N'2022-05-14T20:00:00' AS SmallDateTime), 2, N'心灰意冷，bug好多', N'banned')
+VALUES (20, N'restaurant', 2, N'manager', CAST(N'2022-05-14T20:00:00' AS SmallDateTime), 2, N'心灰意冷，bug好多', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (21, N'hotel', 8, N'wendy_chen', CAST(N'2022-05-15T21:00:00' AS SmallDateTime), 5,
-        N'極力推薦大家可以到中庭餐廳享用中西式的自助餐，或者在預訂房間時就加訂早餐，那麼就能夠在義大早起床就前往氣派的中庭用餐喔！', N'show')
+VALUES (21, N'hotel', 8, N'wendy_chen', CAST(N'2022-05-15T21:00:00' AS SmallDateTime), 5, N'極力推薦大家可以到中庭餐廳享用中西式的自助餐，或者在預訂房間時就加訂早餐，那麼就能夠在義大早起床就前往氣派的中庭用餐喔！', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (22, N'ticket', 5, N'montbell', CAST(N'2022-05-16T22:00:00' AS SmallDateTime), 4,
-        N'太平山蘊藏珍貴林木，昔日與阿里山、八仙山並列台灣三大林場 乘坐蹦蹦車，沉浸在森林芬多精的世界，美不勝收。', N'show')
+VALUES (22, N'ticket', 5, N'montbell', CAST(N'2022-05-16T22:00:00' AS SmallDateTime), 4, N'太平山蘊藏珍貴林木，昔日與阿里山、八仙山並列台灣三大林場 乘坐蹦蹦車，沉浸在森林芬多精的世界，美不勝收。', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (23, N'ticket', 4, N'artlover', CAST(N'2022-05-17T23:00:00' AS SmallDateTime), 4,
-        N'桃園青埔又將迎來全新景點！肩負推廣悠久歷史的橫山書法藝術館，建築外觀結合硯台、墨池意象!', N'show')
+VALUES (23, N'ticket', 4, N'artlover', CAST(N'2022-05-17T23:00:00' AS SmallDateTime), 4, N'桃園青埔又將迎來全新景點！肩負推廣悠久歷史的橫山書法藝術館，建築外觀結合硯台、墨池意象!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (24, N'ticket', 1, N'ryan0412', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 4, N'超棒的露營區!! 竟然還有獨立衛浴!!',
-        N'show')
+VALUES (24, N'ticket', 1, N'ryan0412', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 4, N'超棒的露營區!! 竟然還有獨立衛浴!!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (25, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime), 3, N'環境很好 度假風格 設施有點舊但維護的不錯', N'show')
+VALUES (25, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime), 3, N'環境很好 度假風格 設施有點舊但維護的不錯', N'顯示')
 SET IDENTITY_INSERT [dbo].[comment] OFF;
 
-SET
-    IDENTITY_INSERT [dbo].[comment_image] ON;
+SET IDENTITY_INSERT [dbo].[comment_image] ON;
 
 INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
 VALUES (1, N'/data/uploadimages/comment/hotel.jpg', 1)
@@ -134,110 +116,99 @@ INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
 VALUES (29, N'/data/uploadimages/comment/fall.jpg', 24)
 INSERT [dbo].[comment_image] ([id], [image_path], [comment_id])
 VALUES (30, N'/data/uploadimages/comment/friends-min.jpg', 24)
+
 SET IDENTITY_INSERT [dbo].[comment_image] OFF;
 
-SET
-    IDENTITY_INSERT [dbo].[car_model] ON;
+SET IDENTITY_INSERT [dbo].[car_model] ON;
 
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
-        N'/data/uploadimages/car/toyota-yaris.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (2, N'經濟轎車', N'豐田', N'Toyota', N'Vios', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
-        N'/data/uploadimages/car/toyota-vios.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2,
-        N'/data/uploadimages/car/toyota-altis.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (4, N'經濟轎車', N'豐田', N'Toyota', N'Prius C', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
-        N'/data/uploadimages/car/toyota-camry.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (5, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2,
-        N'/data/uploadimages/car/toyota-prius-c.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (6, N'豪華轎車', N'豐田', N'Toyota', N'Auris', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
-        N'/data/uploadimages/car/toyota-auris.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (7, N'休旅車/SUV', N'豐田', N'Toyota', N'bZ4X', N'電動車', N'AT', 0, 5, 4, 2, 1,
-        N'/data/uploadimages/car/toyota-bz4x.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (8, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2,
-        N'/data/uploadimages/car/toyota-corolla-cross.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (9, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2,
-        N'/data/uploadimages/car/toyota-sienta.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-yaris.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (2, N'經濟轎車', N'豐田', N'Toyota', N'Vios', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-vios.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-altis.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (4, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-camry.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (5, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2, N'/data/uploadimages/car/toyota-corolla-cross.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (6, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2, N'/data/uploadimages/car/toyota-sienta.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (7, N'經濟轎車', N'裕隆日產', N'Nissan', N'Livina', N'燃油車', N'AT', 1600, 5, 4, 2, 2, N'/data/uploadimages/car/nissan-livina.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (8, N'經濟轎車', N'裕隆日產', N'Nissan', N'TIIDA', N'燃油車', N'AT', 1600, 5, 4, 2, 2, N'/data/uploadimages/car/nissan-tiida.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (9, N'休旅車/SUV', N'裕隆日產', N'Nissan', N'Kicks', N'燃油車', N'AT', 1600, 5, 4, 2, 2, N'/data/uploadimages/car/nissan_kicks.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (10, N'經濟轎車', N'納智捷', N'Luxgen', N'S3', N'燃油車', N'AT', 1600, 5, 4, 1, 2, N'/data/uploadimages/car/luxgen_s3.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (11, N'經濟轎車', N'本田', N'Honda', N'Fit', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/honda_fit.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+VALUES (12, N'經濟轎車', N'鈴木', N'Suzuki', N'Swift', N'燃油車', N'AT', 1300, 5, 4, 1, 2, N'/data/uploadimages/car/suzuki_swift.png')
+        
 SET IDENTITY_INSERT [dbo].[car_model] OFF;
 
 SET IDENTITY_INSERT [dbo].[car_location] ON
 
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg',
-        N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'隱藏')
+VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg',
+        N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg',
+VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg',
         N'25.042552', N'121.580242', N'台北忠孝站', N'08:30:00.0000000', N'02-8785662', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg',
+VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg',
         N'25.001994', N'121.539215', N'台北景美站', N'08:30:00.0000000', N'02-89310266', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg',
-        N'25.10463', N'121.521746', N'台北士林站', N'08:30:00.0000000', N'02-2835110', N'隱藏')
+VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg',
+        N'25.10463', N'121.521746', N'台北士林站', N'08:30:00.0000000', N'02-2835110', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg',
+VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg',
         N'25.085367', N'121.559064', N'台北內湖站', N'08:30:00.0000000', N'02-25021389', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg',
-        N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'顯示')
+VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg',
+        N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg',
+VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg',
         N'25.046533', N'121.517414', N'台北車站', N'08:30:00.0000000', N'02-25159393', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg',
+VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg',
         N'25.063869', N'121.549778', N'台北松山機場站', N'08:30:00.0000000', N'02-27151133', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg',
+VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg',
         N'24.978089', N'121.545138', N'台北新店站', N'08:30:00.0000000', N'02-29153311', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (10, N'三民路88號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg',
+VALUES (10, N'三民路88號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg',
         N'25.085351', N'121.473882', N'台北蘆洲站', N'08:30:00.0000000', N'02-22852299', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg',
+VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg',
         N'24.965811', N'121.432132', N'台北土城站', N'08:30:00.0000000', N'02-22693131', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (12, N'連城路126號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg',
-        N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'顯示')
+VALUES (12, N'連城路126號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg',
+        N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (13, N'中正路1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg',
+VALUES (13, N'中正路1號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg',
         N'25.174829', N'121.432696', N'台北淡水站', N'08:30:00.0000000', N'02-26299393', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg',
+VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg',
         N'25.014534', N'121.463512', N'台北板橋車站', N'08:30:00.0000000', N'02-29658080', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (15, N'光榮路334號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg',
+VALUES (15, N'光榮路334號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg',
         N'24.678532', N'121.77797', N'宜蘭羅東站', N'08:30:00.0000000', N'03-9602116', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
@@ -271,47 +242,94 @@ VALUES (22, N'中華路一段315號', N'20:30:00.0000000', 2, N'隔尚租車', N
 SET IDENTITY_INSERT [dbo].[car_location] OFF
 
 
-SET
-    IDENTITY_INSERT [dbo].[car_option] ON;
+SET IDENTITY_INSERT [dbo].[car_option] ON;
 
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (1, 1, 1, 2000, 0.75, 5)
+VALUES (1, 1, 1, 1680, 1, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (2, 1, 2, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (3, 1, 3, 2200, 0.75, 3)
+VALUES (3, 1, 4, 2200, 1, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (4, 1, 4, 2200, 0.70, 3)
+VALUES (4, 1, 5, 2800, 0.9, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (5, 2, 1, 2000, 0.75, 5)
+VALUES (5, 2, 2, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (6, 2, 2, 2000, 0.80, 4)
+VALUES (6, 2, 3, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (7, 3, 4, 2200, 0.75, 3)
+VALUES (7, 2, 9, 2200, 1, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (8, 4, 5, 2200, 0.70, 3)
+VALUES (8, 2, 10, 2200, 1, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (9, 3, 2, 2000, 0.80, 4)
+VALUES (9, 3, 6, 2600, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (10, 4, 3, 2200, 0.75, 3)
+VALUES (10, 3, 7, 2500, 0.70, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (11, 5, 4, 2200, 0.70, 3)
+VALUES (11, 3, 8, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (12, 6, 8, 3000, 0.90, 1)
+VALUES (12, 3, 9, 2800, 0.88, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (13, 6, 9, 3200, 0.85, 2)
+VALUES (13, 3, 4, 1800, 1, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (14, 7, 6, 2800, 0.80, 2)
+VALUES (14, 4, 10, 2600, 0.90, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (15, 7, 7, 2800, 0.85, 3)
+VALUES (15, 4, 11, 1900, 1, 1)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (16, 8, 5, 2500, 0.90, 5)
+VALUES (16, 4, 12, 1800, 1, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (17, 9, 7, 3000, 0.80, 3)
+VALUES (17, 4, 1, 2800, 0.80, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (18, 10, 6, 2800, 0.80, 4)
+VALUES (18, 4, 4, 2600, 0.9, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (19, 10, 8, 3000, 0.90, 3)
+VALUES (19, 4, 6, 2600, 1, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (20, 5, 2, 2100, 0.85, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (21, 5, 3, 2500, 0.90, 5)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (22, 5, 4, 2400, 0.75, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (23, 5, 5, 2800, 0.80, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (24, 6, 6, 3000, 0.90, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (25, 6, 7, 2200, 0.70, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (26, 6, 8, 1800, 0.95, 1)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (27, 7, 10, 2800, 0.80, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (28, 7, 11, 2100, 0.85, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (29, 7, 12, 2500, 0.90, 5)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (30, 7, 1, 2000, 0.80, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (31, 7, 3, 1800, 1, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (32, 8, 2, 2200, 0.80, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (33, 8, 3, 2200, 0.90, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (34, 8, 5, 2800, 1, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (35, 8, 6, 2800, 0.90, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (36, 9, 4, 2000, 0.85, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (37, 9, 5, 2800, 0.80, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (38, 10, 6, 2800, 0.85, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (39, 10, 7, 2500, 0.75, 5)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (40, 11, 8, 2200, 0.80, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (41, 11, 7, 2200, 1, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (42, 12, 9, 2600, 0.80, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (43, 12, 10, 3000, 0.90, 3)
 SET IDENTITY_INSERT [dbo].[car_option] OFF;
 
 SET

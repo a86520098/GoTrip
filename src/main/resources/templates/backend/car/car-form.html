@@ -136,7 +136,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="engine">引擎排氣量</label>
 													<div class="col-sm-9">
-														<input th:field="*{engine}" id="engine" type="number" class="form-control" min="1" />
+														<input th:field="*{engine}" id="engine" type="number" class="form-control" min="0" />
 														<div class="invalid-feedback">請輸入引擎排氣量</div>
 													</div>
 												</div>
@@ -149,7 +149,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="suitcase">大型行李數</label>
 													<div class="col-sm-9">
-														<input th:field="*{suitcase}" id="suitcase" type="number" class="form-control" min="1" />
+														<input th:field="*{suitcase}" id="suitcase" type="number" class="form-control" min="0" />
 													</div>
 												</div>
 											</div>
@@ -157,7 +157,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="bag">小型行李數</label>
 													<div class="col-sm-9">
-														<input th:field="*{bag}" id="bag" type="number" class="form-control" min="1" />
+														<input th:field="*{bag}" id="bag" type="number" class="form-control" min="0" />
 													</div>
 												</div>
 											</div>
@@ -167,7 +167,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="seat">座位數</label>
 													<div class="col-sm-9">
-														<input th:field="*{seat}" id="seat" type="number" class="form-control" min="1" />
+														<input th:field="*{seat}" id="seat" type="number" class="form-control" min="0" />
 													</div>
 												</div>
 											</div>
@@ -175,7 +175,7 @@
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="door">車門數</label>
 													<div class="col-sm-9">
-														<input th:field="*{door}" id="door" type="number" class="form-control" min="1" />
+														<input th:field="*{door}" id="door" type="number" class="form-control" min="0" />
 													</div>
 												</div>
 											</div>
@@ -195,9 +195,13 @@
 													</div>
 												</div>
 											</div>
+<!-- 											<div class=""> -->
 											<div class="col-md-3">
 												<!-- <img th:src="@{*{image}}" class="rounded"/> -->
 												<div class="row" id="formFileCar"></div>
+												<div id="ori-image">
+													<img th:if="${!#strings.isEmpty(carModel.image)}" class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
+												</div>
 											</div>
 										</div>
 										<div class="d-flex justify-content-end">
@@ -230,20 +234,18 @@
 	<script>
 		$(function() {
 
-			$('#carImage')
-					.on(
-							'change',
-							function() {
-								var imagefiles = document
-										.getElementById("carImage");
-								var number = imagefiles.files.length;
-								document.getElementById("formFileCar").innerHTML = ""
-								for (i = 0; i < number; i++) {
-									var urls = URL
-											.createObjectURL(event.target.files[i]);
-									document.getElementById("formFileCar").innerHTML += '<div class=""> <img class=" mb-3" src="' + urls + '" /> </div>';
-								}
-							})
+			$('#carImage').on('change',function() {
+				$('#ori-image').text('')
+				var imagefiles = document
+						.getElementById("carImage");
+				var number = imagefiles.files.length;
+				document.getElementById("formFileCar").innerHTML = ""
+				for (i = 0; i < number; i++) {
+					var urls = URL
+							.createObjectURL(event.target.files[i]);
+					document.getElementById("formFileCar").innerHTML += '<div class=""> <img class="img-responsive mb-3" src="' + urls + '" width="100%" height="auto"/> </div>';
+				}
+			})
 
 		})
 	</script>
