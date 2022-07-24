@@ -155,7 +155,7 @@
 				//create elemet
 				var rtnMap = rtnList[i];
 				var tagcCass = 'tagNo'+ rtnMap.tagNo;
-				var LevelOneDiv = $('<div/>').addClass("col-sm-6 col-md-4 col-lg-3 p-b-35 m-b-10 isotope-item").addClass(tagcCass);
+				var LevelOneDiv = $('<div/>').addClass("col-sm-4 col-md-4 col-lg-4 p-b-35 m-b-10 isotope-item").addClass(tagcCass);
 				var LevelTwoDiv = $('<div/>').addClass("block2");
 				var LevelThreeDiv = $('<div/>').addClass("card");
 				var LevelFour_OneDiv = $('<div/>').addClass("pos-relative hov-img0 card-img-top");
@@ -220,7 +220,7 @@
         		currentPageIndex = currentPageIndex-1 ;
         	}
    
-        	var UrlPath = '/gotrip/ticketJson?page='+currentPageIndex+'&size=8';
+        	var UrlPath = '/gotrip/ticketJson?page='+currentPageIndex+'&size=6';
         	if(selectTagNo){
         		UrlPath = UrlPath+'&tagNo='+selectTagNo; 
         	}

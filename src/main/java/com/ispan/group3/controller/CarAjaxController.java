@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONArray;
@@ -50,14 +49,9 @@ public class CarAjaxController {
 	}
 
 	@PostMapping("/cars/options")
-	public Boolean saveModel(@RequestParam Integer locationId, @RequestParam Integer modelId, 
-							 @RequestParam Integer amount, @RequestParam Integer price, @RequestParam Float discount) {
-		CarOption carOption = new CarOption();
-		carOption.setCarLocation(locationService.findById(locationId));
-		carOption.setCarModel(modelService.findById(modelId));
-		carOption.setAmount(amount);
-		carOption.setPrice(price);
-		carOption.setDiscount(discount);
+	public Boolean saveModel(@RequestBody CarOption carOption) {
+		carOption.setCarModel(modelService.findById(7));
+		carOption.setCarLocation(locationService.findById(4));
 		optionService.save(carOption);
 		return true;
 	}

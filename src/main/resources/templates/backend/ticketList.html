@@ -169,11 +169,12 @@
                                 <div th:if="${ticket.status}==0">
                                     <span>已提交&nbsp;</span>
                                     <p></p>
-                                    <i class="fa fa-check-circle"
+                                    <i class="fa fa-check"
                                        style="cursor:pointer;"
                                        th:onclick="|updateState(${ticket.ticketNo},1,'確認審核通過?','')|">
                                      </i>
-                                    <i class="fa-solid fa-xmark" th:id="${ticket.ticketNo}"
+                                     <span>&nbsp&nbsp</span>
+                                    <i class='fa fa-times' th:id="${ticket.ticketNo}"
                                        style="cursor:pointer;"
                                        th:onclick="|updateState(${ticket.ticketNo},3,'是否審核不通過?','')|">
                                     </i>
@@ -182,7 +183,7 @@
                                 <div th:if="${ticket.status}==2">
                                     <span>已取消&nbsp;</span>
                                 </div>
-                                <span th:if="${ticket.status}==1" th:text="已審核"></span>
+                                <span th:if="${ticket.status}==1" th:text="已核准"></span>
                                 <span th:if="${ticket.status}==3" th:text="不通過"></span>
                                 <!-- <span th:if="${ticket.status}==4">
                                     <span>課程完成&nbsp</span></br>
