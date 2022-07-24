@@ -151,93 +151,112 @@ INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], 
                           [door], [suitcase], [bag], [image])
 VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2,
         N'/data/uploadimages/car/toyota-altis.png')
+--INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+--VALUES (4, N'經濟轎車', N'豐田', N'Toyota', N'Prius C', N'燃油車', N'AT', 2000, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-camry.png')
 INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
                           [door], [suitcase], [bag], [image])
-VALUES (4, N'經濟轎車', N'豐田', N'Toyota', N'Prius C', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
+VALUES (4, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2,
         N'/data/uploadimages/car/toyota-camry.png')
+--INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+--VALUES (5, N'豪華轎車', N'豐田', N'Toyota', N'Auris', N'燃油車', N'AT', 2000, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-auris.jpg')
+--INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+--VALUES (5, N'休旅車/SUV', N'豐田', N'Toyota', N'bZ4X', N'電動車', N'AT', 0, 5, 4, 2, 1, N'/data/uploadimages/car/toyota-bz4x.jpg')
 INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
                           [door], [suitcase], [bag], [image])
-VALUES (5, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2,
-        N'/data/uploadimages/car/toyota-prius-c.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (6, N'豪華轎車', N'豐田', N'Toyota', N'Auris', N'燃油車', N'AT', 2000, 5, 4, 2, 2,
-        N'/data/uploadimages/car/toyota-auris.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (7, N'休旅車/SUV', N'豐田', N'Toyota', N'bZ4X', N'電動車', N'AT', 0, 5, 4, 2, 1,
-        N'/data/uploadimages/car/toyota-bz4x.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
-                          [door], [suitcase], [bag], [image])
-VALUES (8, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2,
+VALUES (5, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2,
         N'/data/uploadimages/car/toyota-corolla-cross.jpg')
 INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
                           [door], [suitcase], [bag], [image])
-VALUES (9, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2,
+VALUES (6, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2,
         N'/data/uploadimages/car/toyota-sienta.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (7, N'經濟轎車', N'裕隆日產', N'Nissan', N'Livina', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan-livina.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (8, N'經濟轎車', N'裕隆日產', N'Nissan', N'TIIDA', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan-tiida.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (9, N'休旅車/SUV', N'裕隆日產', N'Nissan', N'Kicks', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan_kicks.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (10, N'經濟轎車', N'納智捷', N'Luxgen', N'S3', N'燃油車', N'AT', 1600, 5, 4, 1, 2,
+        N'/data/uploadimages/car/luxgen_s3.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (11, N'經濟轎車', N'本田', N'Honda', N'Fit', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
+        N'/data/uploadimages/car/honda_fit.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (12, N'經濟轎車', N'鈴木', N'Suzuki', N'Swift', N'燃油車', N'AT', 1300, 5, 4, 1, 2,
+        N'/data/uploadimages/car/suzuki_swift.png')
+        
 SET IDENTITY_INSERT [dbo].[car_model] OFF;
 
 SET IDENTITY_INSERT [dbo].[car_location] ON
 
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg',
-        N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'隱藏')
+VALUES (1, N'建國北路一段71-1號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'中山區', N'/data/uploadimages/car/1-201.jpg',
+        N'25.051116', N'121.537212', N'台北建北站', N'08:30:00.0000000', N'02-25021389', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg',
-        N'25.042552', N'121.580242', N'台北忠孝站', N'08:30:00.0000000', N'02-8785662', N'顯示')
+VALUES (2, N'忠孝東路五段705號1樓', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'信義區', N'/data/uploadimages/car/1-202.jpg',
+        N'25.042552', N'121.580242', N'台北忠孝站', N'08:30:00.0000000', N'02-8785662', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg',
+VALUES (3, N'羅斯福路五段221號1樓', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'文山區', N'/data/uploadimages/car/1-203.jpg',
         N'25.001994', N'121.539215', N'台北景美站', N'08:30:00.0000000', N'02-89310266', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg',
+VALUES (4, N'德行西路81號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'士林區', N'/data/uploadimages/car/1-204.jpg',
         N'25.10463', N'121.521746', N'台北士林站', N'08:30:00.0000000', N'02-2835110', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg',
+VALUES (5, N'內湖路1段236號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'內湖區', N'/data/uploadimages/car/1-205.jpg',
         N'25.085367', N'121.559064', N'台北內湖站', N'08:30:00.0000000', N'02-25021389', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg',
-        N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'顯示')
+VALUES (6, N'經貿一路59號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'南港區', N'/data/uploadimages/car/1-206.jpg',
+        N'25.056254', N'121.620053', N'台北南港站', N'08:30:00.0000000', N'02-26511333', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg',
+VALUES (7, N'忠孝西路一段47號B1樓', N'21:30:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'中正區', N'/data/uploadimages/car/1-210.jpg',
         N'25.046533', N'121.517414', N'台北車站', N'08:30:00.0000000', N'02-25159393', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'隔尚租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg',
+VALUES (8, N'敦化北路340之9號', N'19:00:00.0000000', 1, N'資展租車', N'台灣', N'台北市', N'松山區', N'/data/uploadimages/car/1-219.jpg',
         N'25.063869', N'121.549778', N'台北松山機場站', N'08:30:00.0000000', N'02-27151133', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg',
+VALUES (9, N'中興路三段11號B1', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'新店區', N'/data/uploadimages/car/1-208.jpg',
         N'24.978089', N'121.545138', N'台北新店站', N'08:30:00.0000000', N'02-29153311', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (10, N'三民路88號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg',
+VALUES (10, N'三民路88號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'蘆洲區', N'/data/uploadimages/car/1-216.jpg',
         N'25.085351', N'121.473882', N'台北蘆洲站', N'08:30:00.0000000', N'02-22852299', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg',
+VALUES (11, N'中央路三段158號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'土城區', N'/data/uploadimages/car/1-217.jpg',
         N'24.965811', N'121.432132', N'台北土城站', N'08:30:00.0000000', N'02-22693131', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (12, N'連城路126號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg',
-        N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'顯示')
+VALUES (12, N'連城路126號', N'20:30:00.0000000', 1, N'資展租車', N'台灣', N'新北市', N'中和區', N'/data/uploadimages/car/1-218.jpg',
+        N'24.999459', N'121.495982', N'台北中和站', N'08:30:00.0000000', N'02-22423232', N'隱藏')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (13, N'中正路1號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg',
+VALUES (13, N'中正路1號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'淡水區', N'/data/uploadimages/car/1-222.jpg',
         N'25.174829', N'121.432696', N'台北淡水站', N'08:30:00.0000000', N'02-26299393', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 1, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg',
+VALUES (14, N'縣民大道二段7號1樓', N'22:00:00.0000000', 2, N'隔尚租車', N'台灣', N'新北市', N'板橋區', N'/data/uploadimages/car/1-224.jpg',
         N'25.014534', N'121.463512', N'台北板橋車站', N'08:30:00.0000000', N'02-29658080', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
-VALUES (15, N'光榮路334號', N'20:30:00.0000000', 1, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg',
+VALUES (15, N'光榮路334號', N'20:30:00.0000000', 2, N'隔尚租車', N'台灣', N'宜蘭縣', N'羅東鎮', N'/data/uploadimages/car/1-231.jpg',
         N'24.678532', N'121.77797', N'宜蘭羅東站', N'08:30:00.0000000', N'03-9602116', N'顯示')
 INSERT [dbo].[car_location] ([id], [address], [close_time], [company_id], [company_name], [country], [county],
                              [district], [image], [latitude], [longitude], [name], [open_time], [phone], [status])
@@ -271,47 +290,78 @@ VALUES (22, N'中華路一段315號', N'20:30:00.0000000', 2, N'隔尚租車', N
 SET IDENTITY_INSERT [dbo].[car_location] OFF
 
 
-SET
-    IDENTITY_INSERT [dbo].[car_option] ON;
+SET IDENTITY_INSERT [dbo].[car_option] ON;
 
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (1, 1, 1, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
 VALUES (2, 1, 2, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (3, 1, 3, 2200, 0.75, 3)
+VALUES (3, 1, 4, 2200, 1, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (4, 1, 4, 2200, 0.70, 3)
+VALUES (4, 1, 5, 2800, 0.9, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (5, 2, 1, 2000, 0.75, 5)
+VALUES (5, 2, 2, 2000, 0.75, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (6, 2, 2, 2000, 0.80, 4)
+VALUES (6, 2, 3, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (7, 3, 4, 2200, 0.75, 3)
+VALUES (7, 3, 6, 2600, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (8, 4, 5, 2200, 0.70, 3)
+VALUES (8, 3, 7, 2500, 0.70, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (9, 3, 2, 2000, 0.80, 4)
+VALUES (9, 3, 8, 2000, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (10, 4, 3, 2200, 0.75, 3)
+VALUES (10, 3, 9, 2800, 0.88, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (11, 5, 4, 2200, 0.70, 3)
+VALUES (11, 4, 10, 2600, 0.90, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (12, 6, 8, 3000, 0.90, 1)
+VALUES (12, 4, 11, 1900, 0.90, 1)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (13, 6, 9, 3200, 0.85, 2)
+VALUES (13, 4, 12, 1800, 0.95, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (14, 7, 6, 2800, 0.80, 2)
+VALUES (14, 4, 1, 2800, 0.80, 2)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (15, 7, 7, 2800, 0.85, 3)
+VALUES (15, 5, 2, 2100, 0.85, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (16, 8, 5, 2500, 0.90, 5)
+VALUES (16, 5, 3, 2500, 0.90, 5)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (17, 9, 7, 3000, 0.80, 3)
+VALUES (17, 5, 4, 2400, 0.75, 3)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (18, 10, 6, 2800, 0.80, 4)
+VALUES (18, 5, 5, 2800, 0.80, 4)
 INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
-VALUES (19, 10, 8, 3000, 0.90, 3)
+VALUES (19, 6, 6, 3000, 0.90, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (20, 6, 7, 2200, 0.70, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (21, 6, 8, 1800, 0.95, 1)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (22, 6, 9, 3200, 0.85, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (23, 7, 10, 2800, 0.80, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (24, 7, 11, 2100, 0.85, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (25, 7, 12, 2500, 0.90, 5)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (26, 7, 1, 2000, 0.80, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (27, 8, 2, 2200, 0.80, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (28, 8, 3, 2200, 0.90, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (29, 9, 4, 2000, 0.85, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (30, 9, 5, 2800, 0.80, 2)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (31, 10, 6, 2800, 0.85, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (32, 10, 7, 2500, 0.75, 5)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (33, 11, 8, 2200, 0.80, 3)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (34, 12, 9, 2600, 0.80, 4)
+INSERT [dbo].[car_option] ([id], [location_id], [model_id], [price], [discount], [amount])
+VALUES (35, 12, 10, 3000, 0.90, 3)
 SET IDENTITY_INSERT [dbo].[car_option] OFF;
 
 SET
@@ -1084,7 +1134,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p>經由世界宗教博物館的建立，提供人們一個認識各不同宗教的機會，讓大家有機會選擇自己一生的精神信仰；各宗教間可以自由對話，不再有宗教的爭端與衝突。基於這個理由，心道師父認為無生道場如果成立佛教博物館，或建大型寺廟，或許能提供本土佛教徒心靈的寄託，而且也是信眾所樂見的，募款建館的任務也容易達成，但是卻無法達到上述遠大的目的。相反地，藉由一個現代化，以休閒育樂的手法傳播知識的博物館型態來介紹宗教知識，卻可能是一個無可取代的最佳方案。 於是，在多方徵詢及參訪世界上相關主題博物館及機構後，經過慎重的考量，一個史無前例，強調國際性，包羅世界各宗教的世界宗教博物館的理念及使命也就於焉成型。</p>
 
 <ul>
+<<<<<<< HEAD
 	<li>特展《生死晝夜：於死亡中前行》： 世界宗教博物館延續生命教育的脈絡，以系列特展《生死晝夜：於死亡中前行》，帶來一趟認識死亡、認識生命的旅程，以世界各個宗教獨特的生死觀為切入點，將圖像、文字、象徵符號轉化為展示要件，並賦予其與觀眾之間的連結性，建構出充滿著互動性及沈浸氛圍的展覽。每個空間都有自身的美學策略，又整體組合為觀展體驗的一環，環環相扣猶如一趟生命之旅的過程。《生死晝夜：於死亡中前行》並不是一場關於死亡的展覽，而是治癒自我的生命之書。</li>
+=======
+	<li>特展《生死晝夜：於死亡中前行》：
+世界宗教博物館延續生命教育的脈絡，以系列特展《生死晝夜：於死亡中前行》，帶來一趟認識死亡、認識生命的旅程，以世界各個宗教獨特的生死觀為切入點，將圖像、文字、象徵符號轉化為展示要件，並賦予其與觀眾之間的連結性，建構出充滿著互動性及沈浸氛圍的展覽。每個空間都有自身的美學策略，又整體組合為觀展體驗的一環，環環相扣猶如一趟生命之旅的過程。《生死晝夜：於死亡中前行》並不是一場關於死亡的展覽，而是治癒自我的生命之書。</li>
+>>>>>>> 1baf1ca845ae492aeb3b516455d54248dec35f14
 	<li>常設展：其中永久展示主要集中於八大世界宗教：基督宗教、伊斯蘭教、佛教、道教、印度教、錫克教、猶太教、神道教，與古代宗教如埃及、馬雅。台灣宗教區展示台灣人的信仰，輪展區則展示其他信仰與宗教傳統器物。參觀者將看到這些宗教在信仰上有何相同或相異之處，同時學到這些宗教的信念與歷史。</li>
 	<li>愛的星球：愛的星球－奇幻旅程裡，有情緒星球幫助小朋友學習感知自我、有自然星球可以學習愛護自然、有愛的星球學習愛家人愛社會，還有在加油站傳遞愛與分享。另外，還可以透過護照找尋不同職業的米洛可。在雙週六假日有奇幻精</li>
 	<li>・我們會害怕死亡，並不只是對死亡恐懼，很多時候是害怕自己沒有好好活著。所以這次的展覽將借由儀式感，不只是展出「死亡」主題，也是為每位參觀者以全新的感知回到自己的生活。靈劇場親子說故事活動。歡迎大朋友小朋友一起來玩哦！</li>
@@ -1157,231 +1212,33 @@ SET IDENTITY_INSERT [dbo].[ticket] OFF
 
 SET IDENTITY_INSERT [dbo].[ticket_image] ON 
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (2, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (3, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (22, N'/data/uploadimages/ticket/Xpark.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (23, N'/data/uploadimages/ticket/Xpark2.png', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (24, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (25, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (26, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (27, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (28, N'/data/uploadimages/ticket/海生館.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (29, N'/data/uploadimages/ticket/海生館2.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (30, N'/data/uploadimages/ticket/海生館3.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (31, N'/data/uploadimages/ticket/海生館4.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (32, N'/data/uploadimages/ticket/海生館5.jpg', 3)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (33, N'/data/uploadimages/ticket/海生館6.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (34, N'/data/uploadimages/ticket/阿里山.webp', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (35, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (36, N'/data/uploadimages/ticket/阿里山.webp', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (37, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (38, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (39, N'/data/uploadimages/ticket/阿里山.webp', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (40, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (41, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (42, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (43, N'/data/uploadimages/ticket/阿里山.webp', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (44, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (45, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (46, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (47, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (48, N'/data/uploadimages/ticket/阿里山.webp', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (49, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (50, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (51, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (52, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (53, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (54, N'/data/uploadimages/ticket/阿里山.webp', 1)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (55, N'/data/uploadimages/ticket/Xpark.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (56, N'/data/uploadimages/ticket/Xpark2.png', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (57, N'/data/uploadimages/ticket/Xpark.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (58, N'/data/uploadimages/ticket/Xpark2.png', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (59, N'/data/uploadimages/ticket/Xpark.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (60, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (61, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (62, N'/data/uploadimages/ticket/Xpark2.png', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (63, N'/data/uploadimages/ticket/Xpark.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (64, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (65, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (66, N'/data/uploadimages/ticket/Xpark2.png', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (67, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (68, N'/data/uploadimages/ticket/Xpark.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (69, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (70, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (71, N'/data/uploadimages/ticket/Xpark2.png', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (72, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (73, N'/data/uploadimages/ticket/Xpark.jpg', 2)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (74, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (75, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (76, N'/data/uploadimages/ticket/海生館.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (77, N'/data/uploadimages/ticket/海生館.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (78, N'/data/uploadimages/ticket/海生館2.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (79, N'/data/uploadimages/ticket/海生館.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (80, N'/data/uploadimages/ticket/海生館3.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (81, N'/data/uploadimages/ticket/海生館2.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (82, N'/data/uploadimages/ticket/海生館.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (83, N'/data/uploadimages/ticket/海生館3.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (84, N'/data/uploadimages/ticket/海生館4.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (85, N'/data/uploadimages/ticket/海生館2.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (86, N'/data/uploadimages/ticket/海生館.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (87, N'/data/uploadimages/ticket/海生館3.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (88, N'/data/uploadimages/ticket/海生館4.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (89, N'/data/uploadimages/ticket/海生館2.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (90, N'/data/uploadimages/ticket/海生館5.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (91, N'/data/uploadimages/ticket/海生館.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (92, N'/data/uploadimages/ticket/海生館3.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (93, N'/data/uploadimages/ticket/海生館4.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (94, N'/data/uploadimages/ticket/海生館2.jpg', 3)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (95, N'/data/uploadimages/ticket/海生館6.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (96, N'/data/uploadimages/ticket/海生館5.jpg', 3)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (97, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (98, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (99, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (100, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (101, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (102, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (103, N'/data/uploadimages/ticket/Xpark.jpg', 4)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (104, N'/data/uploadimages/ticket/Xpark2.png', 4)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (105, N'/data/uploadimages/ticket/Xpark3.jpg', 4)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (106, N'/data/uploadimages/ticket/Xpark4.jpg', 4)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (107, N'/data/uploadimages/ticket/Xpark5.jpg', 4)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (108, N'/data/uploadimages/ticket/Xpark6.jpg', 4)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (109, N'/data/uploadimages/ticket/綠舞.jpg', 5)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (110, N'/data/uploadimages/ticket/綠舞2.jpg', 5)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (111, N'/data/uploadimages/ticket/綠舞3.jpg', 5)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (112, N'/data/uploadimages/ticket/綠舞4.jpg', 5)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (113, N'/data/uploadimages/ticket/科學教育館.jpg', 6)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (114, N'/data/uploadimages/ticket/科學教育館2.jpg', 6)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (115, N'/data/uploadimages/ticket/科學教育館3.jpg', 6)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (116, N'/data/uploadimages/ticket/袖珍博物館.jpg', 7)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (117, N'/data/uploadimages/ticket/袖珍博物館2.jpg', 7)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (118, N'/data/uploadimages/ticket/袖珍博物館3.jpg', 7)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (119, N'/data/uploadimages/ticket/袖珍博物館4.jpg', 7)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (120, N'/data/uploadimages/ticket/世界宗教博物館.jpg', 8)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (121, N'/data/uploadimages/ticket/世界宗教博物館2.jpg', 8)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (122, N'/data/uploadimages/ticket/世界宗教博物館3.jpg', 8)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (123, N'/data/uploadimages/ticket/世界宗教博物館4.jpg', 8)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (124, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 9)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (125, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 9)
-
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (126, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 9)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (127, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 10)
-
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (128, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 10)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (129, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 10)
 
