@@ -71,12 +71,14 @@ public class CarController {
 	// ---------- 儲存車款 ----------
 	@PostMapping("/backend/cars")
 	public String saveCarBk(@ModelAttribute CarModel carModel,
-			@RequestParam(value = "carImage", required = false) MultipartFile file) {
-		try {
-			String savePath = FileUploadUtil.saveFile("comment", file);
-			carModel.setImage(savePath);
-		} catch (IOException e) {
-			e.printStackTrace();
+							@RequestParam(value = "carImage", required = false) MultipartFile file) {
+		if (file != null) {
+			try {
+				String savePath = FileUploadUtil.saveFile("car", file);
+				carModel.setImage(savePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		modelService.save(carModel);
 		return "redirect:/backend/cars";
@@ -103,8 +105,10 @@ public class CarController {
 	@GetMapping("/cars/locations")
 	public String findAllLocation(Model model) {
 		List<CarLocation> carLocations = locationService.findAll();
-		Predicate<CarLocation> condition = carLocation -> carLocation.getStatus().equals("隱藏");
-		carLocations.removeIf(condition);
+		Predicate<CarLocation> conditionHidden = carLocation -> carLocation.getStatus().equals("隱藏");
+		carLocations.removeIf(conditionHidden);
+		Predicate<CarLocation> conditionInvaild =  carLocation -> carLocation.getStatus().equals("停權");
+		carLocations.removeIf(conditionInvaild);
 		model.addAttribute("carLocations", carLocations);
 		return "frontend/car/car-location";
 	}

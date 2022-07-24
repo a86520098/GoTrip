@@ -176,7 +176,8 @@ jQuery(document).ready(function($) {
 		$('#latitude').val(24.984981)
 
 	});
-
+	
+	
 	$("#btn-insert-wrong-loc").on("click", function() {
 		$('#companyId').val(1)
 		$('#companyName').val('資展租車')
@@ -191,9 +192,130 @@ jQuery(document).ready(function($) {
 		$('#closeTime').val('晚上8點')
 
 	});
-	
-	
 
+	$("#btn-insert-wrong-car").on("click", function() {
+		$('#type').val('豪華轎車')
+		$('#makeCh').val('特斯拉')
+		$('#makeEn').val('')
+		$('#model').val('')
+		$("input[name='power'][value='電動車']").attr("checked", true);
+		$('#transmission').val('')
+		$('#engine').val('-5')
+		$('#seat').val('5')
+		$('#door').val('4')
+		$('#suitcase').val('2')
+		$('#bag').val('2')
+	});
+	
+	
+	$("#btn-insert-correct-car").on("click", function() {
+		$('#type').focus().val('豪華轎車').blur()
+		$('#makeCh').focus().val('特斯拉').blur()
+		$('#makeEn').focus().val('Tesla').blur()
+		$('#model').focus().val('Model S').blur()
+		$("input[name='power'][value='電動車']").attr("checked", true);
+		$("input[name='transmission'][value='AT']").attr("checked", true);
+		$('#engine').focus().val('0').blur()
+		$('#seat').val('5')
+		$('#door').val('4')
+		$('#suitcase').val('2')
+		$('#bag').val('2')
+	});
+	
+	
+	let isTypeVaild, isMakeChValid, isMakeEnValid, isModelVaild, isPowerVaild, isTransmissionVaild, isEngineVaild, isSeatVaild, isDoorVaild, isSuitcaseVaild, isBagVaild;
+
+	// 確認表單內容
+	$('#btn-insert-car').click(function(e) {
+		isTypeValid = $('#type').val() !== '';
+		isMakeChValid = $('#makeCh').val() !== '';
+		isMakeEnValid = $('#makeEn').val() !== '';
+		isModelVaild = $('#model').val() !== '';
+		isPowerVaild = $('#power').val() !== '';
+		isTransmissionVaild = $('#transmission').val() !== '';
+		isEngineVaild = $('#engine').val() >= 0;
+		isSeatVaild = $('#seat').val() >= 0;
+		isDoorVaild = $('#door').val() >= 0;
+		isSuitcaseVaild = $('#suitcase').val() >= 0;
+		isBagVaild = $('#bag').val() >= 0;
+		
+		if (!isMakeChValid || !isMakeEnValid || !isModelVaild || !isPowerVaild || !isTransmissionVaild || !isEngineVaild || !isSeatVaild || !isDoorVaild || !isSuitcaseVaild || !isBagVaild ){
+			e.preventDefault();
+			isTypeValid ? hideInvalidText($('#type')) : showInvalidText($('#type'));
+			isMakeChValid ? hideInvalidText($('#makeCh')) : showInvalidText($('#makeCh'));
+			isMakeEnValid ? hideInvalidText($('#makeEn')) : showInvalidText($('#makeEn'));
+			isModelVaild ? hideInvalidText($('#model')) : showInvalidText($('#model'));
+			isPowerVaild ? hideInvalidText($('#power')) : showInvalidText($('#power'));
+			isTransmissionVaild ? hideInvalidText($('#transmission')) : showInvalidText($('#transmission'));
+			isEngineVaild ? hideInvalidText($('#engine')) : showInvalidText($('#engine'));
+			isSeatVaild ? hideInvalidText($('#seat')) : showInvalidText($('#seat'));
+			isDoorVaild ? hideInvalidText($('#door')) : showInvalidText($('#door'));
+			isSuitcaseVaild ? hideInvalidText($('#suitcase')) : showInvalidText($('#suitcase'));
+			isBagVaild ? hideInvalidText($('#bag')) : showInvalidText($('#bag'));
+			$("form").addClass('validated');
+		} else {
+			console.log('success')
+			e.preventDefault();
+			Swal.fire({
+				icon: 'success',
+				title: '儲存成功',
+				text: "即將會您導回地點列表",
+				showConfirmButton: false,
+				timer: 1500
+			});
+
+			setInterval(function() {
+				$('#insert-car-form').submit()
+			}, 1500);
+		}
+	})
+	
+	$('#type').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isTypeVaild ? showInvalidText($('#type')) : hideInvalidText($('#type'))
+	})
+	$('#makeCh').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isMakeChVaild ? showInvalidText($('#makeCh')) : hideInvalidText($('#makeCh'))
+	})
+	$('#makeEn').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isMakeEnVaild ? showInvalidText($('#makeEn')) : hideInvalidText($('#makeEn'))
+	})
+	$('#model').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isModelVaild ? showInvalidText($('#model')) : hideInvalidText($('#model'))
+	})
+	$('#transmission').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isTransmissionVaild ? showInvalidText($('#transmission')) : hideInvalidText($('#transmission'))
+	})
+	$('#engine').on('blur', function() {
+		if ($("form").hasClass('validated'))
+			isEngineVaild ? showInvalidText($('#engine')) : hideInvalidText($('#engine'))
+	})
+	
+	$('#filter-all').on('click', function() {
+		$('div[name="經濟轎車"]').show()
+		$('div[name="豪華轎車"]').show()
+		$('div[name="休旅車/SUV"]').show()
+	})
+	$('#filter-compact').on('click', function() {
+		$('div[name="經濟轎車"]').show()
+		$('div[name="豪華轎車"]').hide()
+		$('div[name="休旅車/SUV"]').hide()
+	})
+	$('#filter-mid-size').on('click', function() {
+		$('div[name="經濟轎車"]').hide()
+		$('div[name="豪華轎車"]').show()
+		$('div[name="休旅車/SUV"]').hide()
+	})
+	
+	$('#filter-suv').on('click', function() {
+		$('div[name="經濟轎車"]').hide()
+		$('div[name="豪華轎車"]').hide()
+		$('div[name="休旅車/SUV"]').show()
+	})
 
 
 })

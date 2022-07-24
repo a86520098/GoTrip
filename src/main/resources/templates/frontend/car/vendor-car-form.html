@@ -50,18 +50,18 @@
 					<div class="card">
 						<div class="card-body ">
 							<h4 class="card-title font-weight-bold my-3">車款資料</h4>
-							<form id="insert-loc-form" name="form" th:action="@{/vendor/cars/models}" method="post" th:object="${carModel}"
+							<form id="insert-car-form" name="form" th:action="@{/vendor/cars/models}" method="post" th:object="${carModel}"
 								  class="form-horizontal needs-validation" enctype="multipart/form-data">
 								  
 								<p class="card-description mt-4">車款資料</p>
 								<input th:field="*{id}" id="id" name="modelId" type="hidden"/>
 <!-- 								<input th:field="*{companyId}" id="companyId" type="hidden"/> -->
-<!-- 								<input th:field="*{companyName}" id="companyName" type="hidden"/> -->
 								<div class="row form-group my-4">
 									<div class="col-lg-1"></div>
 									<label class="col-lg-2 col-form-label" for="type">車款類別</label>
 									<div class="col-lg-7">
 										<select th:field="*{type}" id="type" name="type" class="form-control" style="background-color: white" >
+											<option value="">請選擇車款</option>
 											<option value="經濟轎車">經濟轎車</option>
 											<option value="豪華轎車">豪華轎車</option>
 											<option value="休旅車">休旅車/SUV</option>
@@ -75,11 +75,12 @@
 									<div class="col-lg-7 row pr-0">
 										<div class="col-6 pr-0">
 											<input th:field="*{makeCh}" id="makeCh" type="text" class="form-control" placeholder="廠牌（中文）"/>
+											<div class="invalid-feedback">請輸入車款廠牌</div>
 										</div>
 										<div class="col-6 pr-0">
 											<input th:field="*{makeEn}" id="makeEn" type="text" class="form-control" placeholder="廠牌（英文）"/>
+											<div class="invalid-feedback">請輸入車款廠牌</div>
 										</div>
-										<div class="invalid-feedback">請輸入車款廠牌</div>
 									</div>
 								</div>
 								<div class="row form-group my-4">

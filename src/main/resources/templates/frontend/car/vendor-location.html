@@ -206,6 +206,8 @@
 	  		$('.status').map(function() {
 	  			if ($(this).text() == '隱藏') {
 		  			$(this).removeClass('btn-success').addClass('btn-warning')
+	  			} else if ($(this).text() == '停權') {
+		  			$(this).removeClass('btn-success').addClass('btn-danger')
 	  			}
 	  		})
 // 	  		if ($('.status').val() == '隱藏') {

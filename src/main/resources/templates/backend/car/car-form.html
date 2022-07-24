@@ -33,7 +33,7 @@
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">新增租車資訊</h4>
+									<h4 class="card-title">新增車款資訊</h4>
 									<form id="insertForm" name="form" th:action="@{/backend/cars/}"	method="post" th:object="${carModel}"
 										  class="form-horizontal needs-validation" enctype="multipart/form-data">
 										<p class="card-description mt-5">車款資料</p>
@@ -197,10 +197,10 @@
 											</div>
 <!-- 											<div class=""> -->
 											<div class="col-md-3">
-												<!-- <img th:src="@{*{image}}" class="rounded"/> -->
 												<div class="row" id="formFileCar"></div>
 												<div id="ori-image">
 													<img th:if="${!#strings.isEmpty(carModel.image)}" class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
+													<input th:field="*{image}" type="hidden" class="form-control" />
 												</div>
 											</div>
 										</div>

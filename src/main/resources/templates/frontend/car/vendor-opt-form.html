@@ -106,10 +106,10 @@
 									
 									<div class="row form-group my-4">
 										<div class="col-lg-1"></div>
-										<label class="col-lg-2 col-form-label" for="name">供應數量</label>
+										<label class="col-lg-2 col-form-label" for="amount">供應數量</label>
 										<div class="col-lg-7">
 											<div class="pr-0">
-												<input th:field="*{carOptions[__${optionStat.index}__].amount}" id="amount" name="amount" type="number" class="form-control col-10 d-inline text text-center amount"/>
+												<input th:field="*{carOptions[__${optionStat.index}__].amount}" id="amount" name="amount" type="number" class="form-control d-inline text-center amount"/>
 											</div>
 										</div>
 									</div>
@@ -172,7 +172,7 @@
 												<span id="power"></span>
 											</p>
 											<p> <i class="zmdi zmdi-wb-auto"></i> 變速
-												<span id="transmission" ></span>
+												<span id="transmission"></span>
 											</p>
 											<p> <i class="zmdi zmdi-car"></i>&nbsp;排氣量 
 												<span id="engine" class="p-r-5"></span>
@@ -318,6 +318,7 @@
 					$('#image').attr('src', '/gotrip' + data.image)
 					$('#power').text(data.power)
 					$('#transmission').text(data.transmission)
+					$('#engine').text(data.engine)
 					$('#suitcase').text(data.suitcase)
 					$('#seat').text(data.seat)
 					$('#bag').text(data.bag)

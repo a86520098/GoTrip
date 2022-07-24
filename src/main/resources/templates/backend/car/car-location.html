@@ -40,45 +40,57 @@
 								<div class="card-body">
 									<div class="d-flex justify-content-between align-baseline">
 										<div class="card-title">車款列表</div>
-<!-- 										<a class="text-right btn btn-primary my-2" th:href="@{/backend/cars/locations/form}">新增車款</a> -->
+										<a class="text-right btn btn-primary btn-sm my-2 font-weight-bold" th:href="@{/backend/cars/locations/form}" style="font-size: 15px">新增地點</a>
 									</div>
 
 									<div class="table-responsive">
-										<table id="data-table" class="display expandable-table table-hover w-100" style="text-align: center; font-size: 20px">
+										<table id="data-table" class="display expandable-table table-hover w-100" style="text-align: center">
 											<thead>
 												<tr>
-													<th style="font-size: 1rem">ID</th>
-													<th style="font-size: 1rem">公司</th>
-													<th style="font-size: 1rem">租車據點</th>
-													<th style="font-size: 1rem">縣市</th>
-													<th style="font-size: 1rem">地區</th>
-													<th style="font-size: 1rem">地址</th>
-													<th style="font-size: 1rem">電話</th>
-													<th style="font-size: 1rem">營業時間</th>
-													<th style="font-size: 1rem">狀態</th>
-													<th style="font-size: 1rem">車款數量</th>
-													<th width="5%" style="font-size: 1rem">修改</th>
+													<th>ID</th>
+													<th>公司</th>
+													<th>租車據點</th>
+													<th>縣市</th>
+													<th>地區</th>
+													<th>地址</th>
+													<th>電話</th>
+													<th>營業時間</th>
+													<th>狀態</th>
+													<th>車款數量</th>
+													<th width="5%">修改</th>
 												</tr>
 											</thead>
 											<tbody id="tbody">
 												<tr th:each="location:${carLocations}" class="odd gradeX" >
-													<td th:text="${location.id}" style="font-size: 1rem"></td>
-													<td th:text="${location.companyName}" style="font-size: 1rem"></td>
-													<td width="15%"  style="font-size: 1rem">		
+													<td th:text="${location.id}"></td>
+													<td th:text="${location.companyName}"></td>
+													<td width="15%" >		
 														<span th:text="${location.name}" ></span>													
 <!-- 														<button class="btn btn-light js-show-modal1 px-0"> -->
 															<i class="fa fa-info-circle" aria-hidden="true" style="color: orange;"></i>
 <!-- 														</button> -->
 													</td>
-													<td th:text="${location.county}" style="font-size: 1rem"></td>
-													<td th:text="${location.district}" style="font-size: 1rem"></td>
-													<td th:text="${location.address}" style="font-size: 1rem"></td>
-													<td th:text="${location.phone}" style="font-size: 1rem"></td>
-													<td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}" style="font-size: 1rem"></td>
+													<td th:text="${location.county}"></td>
+													<td th:text="${location.district}"></td>
+													<td th:text="${location.address}"></td>
+													<td th:text="${location.phone}"></td>
+													<td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td>
 													<td>
+<!-- 														<form id="insert-loc-form" name="form" th:action="@{/vendor/cars/locations}" method="post"> -->
+<!-- 															<select th:value="${location.status}" name="status" id="status" class="btn btn-success dropdown-toggle"> -->
+<!-- 																<option value="顯示">顯示</option> -->
+<!-- 																<option value="隱藏">隱藏</option> -->
+<!-- 																<option value="停權">停權</option> -->
+<!-- 															</select> -->
+<!-- 														</form>	 -->
 														<span th:text="${location.status}" class="btn btn-success btn-sm status px-2" style="font-size: 0.9rem"></span>
 													</td>
-													<td th:text="${#aggregates.sum(location.carOptions.![amount])+ '/' +location.carOptions.size()}" style="font-size: 1rem"></td>
+													<td>
+														<span> 車輛數</span>
+														<span th:text="${#aggregates.sum(location.carOptions.![amount])}"></span><br>
+														<span> 車款數</span>
+														<span th:text="${location.carOptions.size()}"></span>
+													</td>
 													<td>
 <!-- 														<div class="btn-group" role="group" aria-label="Basic example"> -->
 <!-- 															<input name="locationImage" type="hidden" th:value="${location.image}"> -->
@@ -128,6 +140,8 @@
 	  		$('.status').map(function() {
 	  			if ($(this).text() == '隱藏') {
 		  			$(this).removeClass('btn-success').addClass('btn-warning')
+	  			} else if ($(this).text() == '停權') {
+		  			$(this).removeClass('btn-success').addClass('btn-danger')
 	  			}
 	  		})
 		});
