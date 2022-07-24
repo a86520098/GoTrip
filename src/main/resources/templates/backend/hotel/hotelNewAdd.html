@@ -76,7 +76,7 @@
 
                                                     <fieldset class="form-group">
                                                         <label>飯店名稱</label>
-                                                        <input type="text" th:field="*{hotel_name}" id="name"
+                                                        <input type="text" th:field="*{hotel_name}" id="hotel_name"
                                                                class="form-control"/>
                                                     </fieldset>
 
@@ -163,13 +163,13 @@
 
                                                     <fieldset class="form-group">
                                                         <label>業主名稱</label>
-                                                        <input type="text" th:field="*{boss_name}" id="name"
+                                                        <input type="text" th:field="*{boss_name}" id="boss_name"
                                                                class="form-control"/>
                                                     </fieldset>
 
                                                     <fieldset class="form-group">
                                                         <label>電話</label>
-                                                        <input type="text" th:field="*{phone}" id="name"
+                                                        <input type="text" th:field="*{phone}" id="phone"
                                                                class="form-control" onkeypress="return my_key(event)"/>
                                                     </fieldset>
 
@@ -191,7 +191,10 @@
 
                                                     <!-- -------------------------------------------------------------以下修改 -->
                                                     <button type="submit" class="btn btn-success">Save</button>
-
+                                                    <button id="btn-insert-correct-room" type="button"
+                                                            class="btn btn-light mr-2 justify-content-end mr-4">
+                                                        正確輸入
+                                                    </button>
                                                 </form>
 
                                             </div>
@@ -281,6 +284,26 @@
             $("#preview_progressbarTW_imgs").append(noPictures);
         }
     }
+</script>
+
+<script>
+    $("#btn-insert-correct-room").on("click", function () {
+        $('#hotel_name').val('亞都麗緻大飯店')
+        $('#roomprice').val('4000')
+        $('#address').val('台北市中山區民權東路二段41號')
+        $('#introduce').val('住宿提供免費Wi-Fi和免費停車服務，讓您保持連線，並來去自如。 住宿位於中山區的絕佳位置，讓您輕鬆探索周遭景點。 離開前，別忘了探訪知名的台北101大樓。 這間高品質飯店被評為5星級，提供客人健身中心、餐廳和三溫暖。')
+        $('#notional').val('Taiwan')
+        $('#phone').val('0976472309')
+        $('#Howgoto').val('1. 開車:行走國一到汐止交流道下，行走民權東路 即可到達專屬提車場')
+        $('#hotelArea').val('2500坪')
+        $('#peopleCount').val('10')
+        $('#boss_name').val('嚴長壽')
+        $('#price').val('4000')
+
+
+    });
+
+
 </script>
 </body>
 

@@ -29,13 +29,13 @@
                             </li>
                             <li class="bor18">
                                 <a th:href="@{/vendor/ticket/1}"
-                                class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
                                     門票列表
                                 </a>
                             </li>
                             <li class="bor18">
                                 <a th:href="@{/vendor/ticket/addTicket}"
-                                class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+                                   class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
                                     新增門票
                                 </a>
                             </li>
@@ -69,40 +69,42 @@
                                 </tr>
                                 </thead>
                                 <tbody id="tbody">
-                                    <tr th:each="ticket:${ticketList}" class="odd gradeX" scope="row">
-                                        <td th:text="${ticket.ticketNo}"></td>
-                                        <td th:text="${ticket.ticketName}"></td>
-                                        <!-- <td th:text="${ticket.phone}"></td> -->
-                                        <!-- <td th:text="${ticket.country}"></td> -->
-                                        <td th:text="${ticket.city}"></td>
-                                        <td th:text="${ticket.location}"></td>
-                                        <td th:text="${ticket.address}"></td>
-                                        <td th:text="${ticket.price}"></td>
-                                        <td th:text="${ticket.tagNo}"></td>
-                                        <td th:text="${ticket.tagName}"></td>                                   
-                                        <!-- <td th:text="${location.phone}"></td> -->
-                                        <!-- <td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td> -->
-                                        <!-- <td th:text="${location.carOptions.size()}"></td> -->
-                                        <td class="font-weight-bold" th:switch="${ticket.status}">
-                                            <div th:case="0" th:text="提交完成"></div>
-                                            <div th:case="1" th:text="已核准" ></div>
-                                            <div th:case="2" th:text="已取消" ></div>
-                                            <div th:case="3" th:text="不通過" ></div>
-                                            <!-- <div th:case="4" th:text="課程完成"/> -->
-                                            <!-- <div th:case="5" th:text="已評價"/> -->
+                                <tr th:each="ticket:${ticketList}" class="odd gradeX" scope="row">
+                                    <td th:text="${ticket.ticketNo}"></td>
+                                    <td th:text="${ticket.ticketName}"></td>
+                                    <!-- <td th:text="${ticket.phone}"></td> -->
+                                    <!-- <td th:text="${ticket.country}"></td> -->
+                                    <td th:text="${ticket.city}"></td>
+                                    <td th:text="${ticket.location}"></td>
+                                    <td th:text="${ticket.address}"></td>
+                                    <td th:text="${ticket.price}"></td>
+                                    <td th:text="${ticket.tagNo}"></td>
+                                    <td th:text="${ticket.tagName}"></td>
+                                    <!-- <td th:text="${location.phone}"></td> -->
+                                    <!-- <td th:text="${#strings.substring(location.openTime,0,5) + ' ~ ' + #strings.substring(location.closeTime,0,5)}"></td> -->
+                                    <!-- <td th:text="${location.carOptions.size()}"></td> -->
+                                    <td class="font-weight-bold" th:switch="${ticket.status}">
+                                        <div th:case="0" th:text="提交完成"></div>
+                                        <div th:case="1" th:text="已核准"></div>
+                                        <div th:case="2" th:text="已取消"></div>
+                                        <div th:case="3" th:text="不通過"></div>
+                                        <!-- <div th:case="4" th:text="課程完成"/> -->
+                                        <!-- <div th:case="5" th:text="已評價"/> -->
                                         <span th:if="${ticket.status} == 0">
-                                            <i class="icon_error-triangle_alt" th:onclick="|updateState(${ticket.ticketNo},2,'確認取消資料?','')|" style="cursor:pointer;">&nbsp;取消</i>
+                                            <i class="icon_error-triangle_alt"
+                                               th:onclick="|updateState(${ticket.ticketNo},2,'確認取消資料?','')|"
+                                               style="cursor:pointer;">&nbsp;取消</i>
                                         </span>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <!-- 詳情 -->
-                                                <!-- <input name="ticketImage" type="hidden" th:value="${ticket.images}">
-                                                <button class="btn btn-light btn-rounded btn-sm js-show-modal1">
-                                                <i class="fa fa-search" aria-hidden="true"></i>
-                                                </button> -->
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <!-- 詳情 -->
+                                            <!-- <input name="ticketImage" type="hidden" th:value="${ticket.images}">
+                                            <button class="btn btn-light btn-rounded btn-sm js-show-modal1">
+                                            <i class="fa fa-search" aria-hidden="true"></i>
+                                            </button> -->
 
-                                                <!-- Edit -->
+                                            <!-- Edit -->
                                             <!-- <a th:href="@{/vendor/ticket/{ticketNo}(id=${ticket.ticketNo})}"
                                                 class="btn btn-light btn-rounded btn-sm"> 
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -114,9 +116,9 @@
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                 </button>
                                             </form> -->
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -128,7 +130,7 @@
         <!-- <div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
 			    <div class="overlay-modal1 js-hide-modal1"></div>
 			    <div class="container">
-			        <div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+			        <div class="">
 			            <button class="how-pos3 hov3 trans-04 js-hide-modal1">
 			                <img th:src="@{/images/icons/icon-close.png}" alt="CLOSE">
 			            </button>
@@ -242,71 +244,70 @@
 
     // 圖片
     // $('.js-show-modal1').on('click',function(e){
-	// 		let imgsrc = $(this).prev('input[name="ticketImage"]').val()
-	// 		$('#ticketImage').attr('src', "/gotrip" + imgsrc);
-			
-	// 		$(this).closest("tr");
-	// 		let row = $(this).closest("tr");
+    // 		let imgsrc = $(this).prev('input[name="ticketImage"]').val()
+    // 		$('#ticketImage').attr('src', "/gotrip" + imgsrc);
 
-	// 		let name = $(row).find('td').eq(2).html();
-	// 		$('#locationName').text(name);
-	// 		let county = $(row).find('td').eq(3).html();
-	// 		let district = $(row).find('td').eq(4).html();
-	// 		let address = $(row).find('td').eq(5).html()
-	// 		$('#locationAddress').text(county + district + address);
-	// 		$('#locationDistrict').text(county + ', ' + district);
-	// 		$('#rating').attr('id', $(row).find('td').eq(1).html());
-			
-	//         $('.js-modal1').addClass('show-modal1');
-	//     });
+    // 		$(this).closest("tr");
+    // 		let row = $(this).closest("tr");
 
-	//     $('.js-hide-modal1').on('click',function(){
-	//         $('.js-modal1').removeClass('show-modal1');
-	//     });
+    // 		let name = $(row).find('td').eq(2).html();
+    // 		$('#locationName').text(name);
+    // 		let county = $(row).find('td').eq(3).html();
+    // 		let district = $(row).find('td').eq(4).html();
+    // 		let address = $(row).find('td').eq(5).html()
+    // 		$('#locationAddress').text(county + district + address);
+    // 		$('#locationDistrict').text(county + ', ' + district);
+    // 		$('#rating').attr('id', $(row).find('td').eq(1).html());
+
+    //         $('.js-modal1').addClass('show-modal1');
+    //     });
+
+    //     $('.js-hide-modal1').on('click',function(){
+    //         $('.js-modal1').removeClass('show-modal1');
+    //     });
 
 
-
-//取消報名
-function updateState(ticketNo, status, title, text) {
- Swal.fire({
-  title: `${title}`,
-  text: `${text}`,
-  icon: 'warning',
-  showCancelButton: true,
-  cancelButtonText: '取消',
-  confirmButtonColor: '#f15e5e',
-  cancelButtonColor: '#ADADAD',
-  confirmButtonText: '確定'
- }).then((result) => {
-  if (result.isConfirmed) {
-   $.ajax({
-    type: "PUT",
-    url:'/gotrip/ticket/' + ticketNo + '/' + status,
-    // url: '/ticketList/' + ticketNo + '/test/' + status,
-    success: function (msg) {
-     Swal.fire(
-      '成功',
-      '',
-      'success'
-     ).then((result) => {
-      if (result.isConfirmed) {
-       location.reload();
-      }
-     })
-    },
-    error: function (msg) {
-     // console.log(msg.status)
-     Swal.fire({
-      icon: 'error',
-      title: '發生錯誤',
-      text: 'HTTP 狀態碼為 ' + msg.status,
-      footer: '<a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status"  target="_blank">為什麼會有這個問題?</a>'
-     })
+    //取消報名
+    function updateState(ticketNo, status, title, text) {
+        Swal.fire({
+            title: `${title}`,
+            text: `${text}`,
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonText: '取消',
+            confirmButtonColor: '#f15e5e',
+            cancelButtonColor: '#ADADAD',
+            confirmButtonText: '確定'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "PUT",
+                    url: '/gotrip/ticket/' + ticketNo + '/' + status,
+                    // url: '/ticketList/' + ticketNo + '/test/' + status,
+                    success: function (msg) {
+                        Swal.fire(
+                            '成功',
+                            '',
+                            'success'
+                        ).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        })
+                    },
+                    error: function (msg) {
+                        // console.log(msg.status)
+                        Swal.fire({
+                            icon: 'error',
+                            title: '發生錯誤',
+                            text: 'HTTP 狀態碼為 ' + msg.status,
+                            footer: '<a href="https://developer.mozilla.org/zh-TW/docs/Web/HTTP/Status"  target="_blank">為什麼會有這個問題?</a>'
+                        })
+                    }
+                });
+            }
+        })
     }
-   });
-  }
- })
-}
 </script>
 
 </body>

@@ -374,75 +374,75 @@
                 <div class="row ">
                     <div class="col-8 border border-1 bg-white rounded">
                         <div class="m-t-10 ">
-							<!-- 顧客評論list -->
-							<div>
-								<h3 class="font-weight-bold">顧客評價</h3>
-								<div class="comments-itemId m-5" th:id="${hotel.id}" value="carRental"></div>
-							</div>
-		
-							<!-- Add review -->
-<!-- 							<div> -->
-							
-<!-- 								<form id="insert-loc-form" name="form" action="#" method="post"  -->
-<!-- 										  class="form-horizontal needs-validation" enctype="multipart/form-data"> -->
-<!-- 								<h4 class="font-weight-bold my-3 ml-5">留下你的評論吧!</h4> -->
-<!-- 								<input id="itemTb" name="itemTb" type="hidden" value="carRental"> -->
-<!-- 								<input id="itemId" name="itemId" type="hidden" th:value="${hotel.id}"> -->
-<!-- 								<div class="form-group row ml-5"> -->
-<!-- 									<label class="col-sm-3 col-form-label" for="rating">給予評分</label> -->
-<!-- 									<div class="col-sm-9"> -->
-<!-- 										<fieldset class="starability-basic"> -->
-<!-- 											<input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked/>  -->
-<!-- 											<input type="radio" id="first-rate1" name="rating" value="1" />  -->
-<!-- 											<label for="first-rate1" title="Terrible">1 star</label>  -->
-<!-- 											<input type="radio" id="first-rate2" name="rating" value="2" /> -->
-<!-- 											<label for="first-rate2" title="Not good">2 stars</label> -->
-<!-- 											<input type="radio" id="first-rate3" name="rating" value="3" />  -->
-<!-- 											<label for="first-rate3" title="Average">3 stars</label>  -->
-<!-- 											<input type="radio" id="first-rate4" name="rating" value="4" />  -->
-<!-- 											<label for="first-rate4" title="Very good">4 stars</label>  -->
-<!-- 											<input type="radio" id="first-rate5" name="rating" value="5"/>  -->
-<!-- 											<label for="first-rate5" title="Amazing">5 stars</label> -->
-<!-- 										</fieldset> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="form-group row ml-5"> -->
-<!-- 									<div class="col-sm-3"> -->
-<!-- 										<label class="col-form-label pb-1" for="content">評論內容</label> -->
-<!-- 										<div id="content-length" class="text-black-50 small">(0/200)</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm-9"> -->
-<!-- 									<textarea class="form-control" name="content" id="content" cols="30" rows="5" style="resize: none"></textarea> -->
-<!-- 										<div class="invalid-feedback">評論內容上限200字</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="form-group row mt-5 ml-5"> -->
-<!-- 									<div class="col-sm-3"> -->
-<!-- 										<label for="images" class="col-form-label pb-1">上傳照片</label> -->
-<!-- 										<div id="images-length" class="text-black-50 small">(0/3)</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm-9"> -->
-<!-- 										<div class=""> -->
-<!-- 											<input type="file" class="form-control custom-file-input pb-1" style="background-color: white " name="imagefiles" id="imagefiles" multiple> -->
-<!-- 											<div class="invalid-feedback">最多選取3張圖片</div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 									<div class="col-sm-3"></div> -->
-<!-- 									<div class="col-sm-9"> -->
-<!-- 										<div class="row img-responsive" id="formFile"></div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 								<div class="d-flex justify-content-end my-3"> -->
-<!-- 									<button id="btn-insert-wrong-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4"> -->
-<!-- 										錯誤輸入 -->
-<!-- 									</button> -->
-<!-- 									<button id="btn-insert-correct-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4"> -->
-<!-- 										正確輸入 -->
-<!-- 									</button> -->
-<!-- 									<button id="btn-insert-com" type="button"class="btn btn-warning">送出評論</button> -->
-<!-- 								</div> -->
-<!-- 								</form> -->
-<!-- 							</div> -->
+                            <!-- 顧客評論list -->
+                            <div>
+                                <h3 class="font-weight-bold">顧客評價</h3>
+                                <div class="comments-itemId m-5" th:id="${hotel.id}" value="carRental"></div>
+                            </div>
+
+                            <!-- Add review -->
+                            <!-- 							<div> -->
+
+                            <!-- 								<form id="insert-loc-form" name="form" action="#" method="post"  -->
+                            <!-- 										  class="form-horizontal needs-validation" enctype="multipart/form-data"> -->
+                            <!-- 								<h4 class="font-weight-bold my-3 ml-5">留下你的評論吧!</h4> -->
+                            <!-- 								<input id="itemTb" name="itemTb" type="hidden" value="carRental"> -->
+                            <!-- 								<input id="itemId" name="itemId" type="hidden" th:value="${hotel.id}"> -->
+                            <!-- 								<div class="form-group row ml-5"> -->
+                            <!-- 									<label class="col-sm-3 col-form-label" for="rating">給予評分</label> -->
+                            <!-- 									<div class="col-sm-9"> -->
+                            <!-- 										<fieldset class="starability-basic"> -->
+                            <!-- 											<input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked/>  -->
+                            <!-- 											<input type="radio" id="first-rate1" name="rating" value="1" />  -->
+                            <!-- 											<label for="first-rate1" title="Terrible">1 star</label>  -->
+                            <!-- 											<input type="radio" id="first-rate2" name="rating" value="2" /> -->
+                            <!-- 											<label for="first-rate2" title="Not good">2 stars</label> -->
+                            <!-- 											<input type="radio" id="first-rate3" name="rating" value="3" />  -->
+                            <!-- 											<label for="first-rate3" title="Average">3 stars</label>  -->
+                            <!-- 											<input type="radio" id="first-rate4" name="rating" value="4" />  -->
+                            <!-- 											<label for="first-rate4" title="Very good">4 stars</label>  -->
+                            <!-- 											<input type="radio" id="first-rate5" name="rating" value="5"/>  -->
+                            <!-- 											<label for="first-rate5" title="Amazing">5 stars</label> -->
+                            <!-- 										</fieldset> -->
+                            <!-- 									</div> -->
+                            <!-- 								</div> -->
+                            <!-- 								<div class="form-group row ml-5"> -->
+                            <!-- 									<div class="col-sm-3"> -->
+                            <!-- 										<label class="col-form-label pb-1" for="content">評論內容</label> -->
+                            <!-- 										<div id="content-length" class="text-black-50 small">(0/200)</div> -->
+                            <!-- 									</div> -->
+                            <!-- 									<div class="col-sm-9"> -->
+                            <!-- 									<textarea class="form-control" name="content" id="content" cols="30" rows="5" style="resize: none"></textarea> -->
+                            <!-- 										<div class="invalid-feedback">評論內容上限200字</div> -->
+                            <!-- 									</div> -->
+                            <!-- 								</div> -->
+                            <!-- 								<div class="form-group row mt-5 ml-5"> -->
+                            <!-- 									<div class="col-sm-3"> -->
+                            <!-- 										<label for="images" class="col-form-label pb-1">上傳照片</label> -->
+                            <!-- 										<div id="images-length" class="text-black-50 small">(0/3)</div> -->
+                            <!-- 									</div> -->
+                            <!-- 									<div class="col-sm-9"> -->
+                            <!-- 										<div class=""> -->
+                            <!-- 											<input type="file" class="form-control custom-file-input pb-1" style="background-color: white " name="imagefiles" id="imagefiles" multiple> -->
+                            <!-- 											<div class="invalid-feedback">最多選取3張圖片</div> -->
+                            <!-- 										</div> -->
+                            <!-- 									</div> -->
+                            <!-- 									<div class="col-sm-3"></div> -->
+                            <!-- 									<div class="col-sm-9"> -->
+                            <!-- 										<div class="row img-responsive" id="formFile"></div> -->
+                            <!-- 									</div> -->
+                            <!-- 								</div> -->
+                            <!-- 								<div class="d-flex justify-content-end my-3"> -->
+                            <!-- 									<button id="btn-insert-wrong-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4"> -->
+                            <!-- 										錯誤輸入 -->
+                            <!-- 									</button> -->
+                            <!-- 									<button id="btn-insert-correct-com" type="button" class="btn btn-light mr-2 justify-content-end mr-4"> -->
+                            <!-- 										正確輸入 -->
+                            <!-- 									</button> -->
+                            <!-- 									<button id="btn-insert-com" type="button"class="btn btn-warning">送出評論</button> -->
+                            <!-- 								</div> -->
+                            <!-- 								</form> -->
+                            <!-- 							</div> -->
                         </div>
                     </div>
                     <div class="col-4 border border-1 bg-white rounded">
@@ -481,381 +481,380 @@
 
             </div>
             <div class="container">
-    <tr th:each="rooms : ${room}">
-        <td th:text="${rooms.roomname}"/>
-        <!-- Slide2 -->
+                <!--    <tr th:each="rooms : ${room}">-->
+                <!--        <td th:text="${rooms.roomname}"/>-->
+                <!-- Slide2 -->
 
-        <div class="wrap-slick2">
-            <div class="slick2">
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/tainan_art.jpg}" alt="IMG-PRODUCT">
+                <div class="wrap-slick2">
+                    <div class="slick2">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/tainan_art.jpg}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Esprit Ruffle Shirt
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Esprit Ruffle Shirt
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$16.64
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/theme_park_1.jpg}" alt="IMG-PRODUCT">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/theme_park_1.jpg}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Herschel supply
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Herschel supply
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$35.31
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/art.jpg}" alt="IMG-PRODUCT">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/art.jpg}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Only Check Trouser
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Only Check Trouser
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$25.50
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Classic Trench Coat
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Classic Trench Coat
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$75.00
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Classic Trench Coat
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Classic Trench Coat
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$75.00
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Classic Trench Coat
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Classic Trench Coat
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$75.00
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Classic Trench Coat
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Classic Trench Coat
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$75.00
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                    <!-- Block2 -->
-                    <div class="block2">
-                        <div class="block2-pic hov-img0">
-                            <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <!-- Block2 -->
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img th:src="@{/images/tickets/aquarium.webp}" alt="IMG-PRODUCT">
 
-                            <a href="#"
-                               class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                Quick View
-                            </a>
-                        </div>
+                                    <a href="#"
+                                       class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                        Quick View
+                                    </a>
+                                </div>
 
-                        <div class="block2-txt flex-w flex-t p-t-14">
-                            <div class="block2-txt-child1 flex-col-l ">
-                                <a href="product-detail.html"
-                                   class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                    Classic Trench Coat
-                                </a>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a href="product-detail.html"
+                                           class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            Classic Trench Coat
+                                        </a>
 
-                                <span class="stext-105 cl3">
+                                        <span class="stext-105 cl3">
 										$75.00
 									</span>
-                            </div>
+                                    </div>
 
-                            <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                    <img class="icon-heart1 dis-block trans-04"
-                                         th:src="@{/images/icons/icon-heart-01.png}"
-                                         alt="ICON">
-                                    <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                         th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
-                                </a>
+                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                            <img class="icon-heart1 dis-block trans-04"
+                                                 th:src="@{/images/icons/icon-heart-01.png}"
+                                                 alt="ICON">
+                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                 th:src="@{/images/icons/icon-heart-02.png}" alt="ICON">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-
+                <!--    </tr>-->
             </div>
-        </div>
+        </section>
+        <!-- Footer -->
+        <footer th:replace="frontend/partials/fragment :: footer"></footer>
+        <!-- Back to top -->
+        <div th:replace="frontend/partials/fragment :: toTop"></div>
+        <!-- Modal1 -->
+        <div th:replace="frontend/partials/fragment :: modal1"></div>
+        <!-- javascript -->
+        <div th:replace="frontend/partials/fragment :: script"></div>
     </tr>
 </div>
-</section>
-<!-- Footer -->
-<footer th:replace="frontend/partials/fragment :: footer"></footer>
-<!-- Back to top -->
-<div th:replace="frontend/partials/fragment :: toTop"></div>
-<!-- Modal1 -->
-<div th:replace="frontend/partials/fragment :: modal1"></div>
-<!-- javascript -->
-<div th:replace="frontend/partials/fragment :: script"></div>
-</tr>
-</div>
-
 
 
 <!--    購物車script -->
-    <script>
-    
-	$(document).on('click','.plus-cart',function(){
-		let	itemId = $('.get-itemid').attr('id');
-		let type = 'hotel';
-		let qty = $('.get-qty').val();
-		let date = $('.get-date').val();
-		console.log(itemId + "  " + date)
-			 $.ajax({
-		            type: 'GET',
-		            url: '/gotrip/addToCart',
-		            data:{
-		            	productId: itemId,
-		            	type: type,
-		            	qty: qty,
-		            	date: date
-		            	},
-		            dataType: 'json',
-		            async:false,
-		            success: function (data) {
-		     	
-		                console.log(data.itemNumber);	
-		                
-		                $('#cartIcon').attr("data-notify",data.itemNumber);
-		                console.log('data' + data.itemNumber)   
-		                Swal.fire({
-		                	  position: 'center',
-		                	  icon: 'success',
-		                	  title: '已加入購物車',
-		                	  showConfirmButton: false,
-		                	  timer: 1500
-		                	});
-		            },
-		    		error: function(jqXHR,textStatus,errorThrown,data) {
-		    			 console.log(data)
-						console.log(jqXHR);
-						console.log(textStatus); 
-						console.log(jqXHR.responseText);
-					}
-		                	                
-		});		
-		});
-	//	  input number的增加.減少JS
-	//  [ +/- num product ]*/
-		   $(document).on('click','.btn-num-product-down' ,function(){
-		       var numProduct = Number($(this).next().val());
-		       if(numProduct > 1) $(this).next().val(numProduct - 1);
-		   });
-		   
-		   $(document).on('click','.btn-num-product-up', function(){
-		       var numProduct = Number($(this).prev().val());
-		       if(numProduct < 99) $(this).prev().val(numProduct + 1);
-		   });
-    </script>
+<script>
+
+    $(document).on('click', '.plus-cart', function () {
+        let itemId = $('.get-itemid').attr('id');
+        let type = 'hotel';
+        let qty = $('.get-qty').val();
+        let date = $('.get-date').val();
+        console.log(itemId + "  " + date)
+        $.ajax({
+            type: 'GET',
+            url: '/gotrip/addToCart',
+            data: {
+                productId: itemId,
+                type: type,
+                qty: qty,
+                date: date
+            },
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+
+                console.log(data.itemNumber);
+
+                $('#cartIcon').attr("data-notify", data.itemNumber);
+                console.log('data' + data.itemNumber)
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: '已加入購物車',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown, data) {
+                console.log(data)
+                console.log(jqXHR);
+                console.log(textStatus);
+                console.log(jqXHR.responseText);
+            }
+
+        });
+    });
+    //	  input number的增加.減少JS
+    //  [ +/- num product ]*/
+    $(document).on('click', '.btn-num-product-down', function () {
+        var numProduct = Number($(this).next().val());
+        if (numProduct > 1) $(this).next().val(numProduct - 1);
+    });
+
+    $(document).on('click', '.btn-num-product-up', function () {
+        var numProduct = Number($(this).prev().val());
+        if (numProduct < 99) $(this).prev().val(numProduct + 1);
+    });
+</script>
 
 
 </body>

@@ -85,7 +85,8 @@
                                     <td th:text="${roomList.roomtype}"></td>
                                     <td th:text="${roomList.roomprice}"></td>
                                     <th>
-                                        <a class="btn1" th:href="@{/updateRoom(id=${roomList.roomid})}">編輯房間</a>
+                                        <a class="btn1"
+                                           th:href="@{/updateRoom(id=${roomList.roomid},hotelid=${hotelid.id})}">編輯房間</a>
                                     </th>
 
                                     <th>

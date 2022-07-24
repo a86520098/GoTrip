@@ -73,10 +73,11 @@
                         <div class="p-t-20">
                             <!--                            <td th:text="${hotelroom.hotel.id}"></td>-->
                             <!--                            <td th:text="${hotelroom.id}"></td>-->
-                            <form method="post" th:action="@{/frontEditRoom/{id}(id=${mainHotel.id})}"
+                            <form method="post" th:action="@{/frontEditRoom/{hotelid}(hotelid=${mainHotel.id})}"
                                   th:object="${update} " enctype="multipart/form-data">
-                                <input type="text" th:field="*{roomid}" id="id"
-                                       class="form-control" hidden/>
+                                <!--                                <input type="text" th:text="${mainHotel.id}" hidden="hidden">-->
+                                <input type="text" th:field="*{roomid}" hidden
+                                       class="form-control"/>
                                 <fieldset class="form-group">
                                     <label>房間名稱</label>
                                     <input type="text" th:field="*{roomname}" id="roomname"
