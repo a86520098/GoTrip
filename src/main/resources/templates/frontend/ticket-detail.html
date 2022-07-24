@@ -218,13 +218,8 @@
 						<h4 class="ltext-102 font-weight-bold cl2 js-name-detail p-b-14" th:text="${ticket.ticketName}"></h4>
 						<hr style="border:2px #eee  solid;">
 						<div class="p-b-10">
-							<div id="rating-count">
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<i class="fa fa-star cl1" aria-hidden="true"></i>
-								<span id="rating">4.6</span> (<span id="count">56</span>則評論)
+							<div class="rating-count" th:id="${ticket.ticketNo}" value="ticket">
+								尚無評論
 							</div>
 							<div class="p-t-20">
 								<a href="#" class="fa fa-map-marker" aria-hidden="true"  th:text="${ticket.city}"></a>
@@ -431,19 +426,19 @@
 				</p> -->
 				<!-- <span style="display: inline"> TWD</span> -->
 				<iframe id="iframe" name="iframe"
-				width="800"
-				height="500"
-				frameborder="0"
-				style="border:0"
-				th:src="@{${'https://www.google.com/maps/embed/v1/place?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&q='+ ticket.ticketName}}">
-			</iframe>
+					width="800"
+					height="500"
+					frameborder="0"
+					style="border:0"
+					th:src="@{${'https://www.google.com/maps/embed/v1/place?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&q='+ ticket.ticketName}}">
+				</iframe>
 			<!-- src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&q=101"> -->
 			</div>
 			<!-- 評論 -->
-<!-- 			<div id="s4" class="item" style="background:#666;"> -->
-<!-- 				預計放商品評論 -->
-<!-- 			</div> -->
-			<div class="comments-itemId m-5" th:id="${ticket.ticketNo}" value="ticket"></div>
+			<div id="s4" class="item" style="text-align: left; font-size: 1.4rem; position: relative;top: 30px; left: 50px; padding-right: 100px;">
+				<!--預計放商品評論 -->
+				<div class="comments-itemId m-5" th:id="${ticket.ticketNo}" value="ticket"></div>
+			</div>
 			<!-- <div id="s5" class="item" style="background:#555;">五</div> -->
 		</div>
 	</main>
