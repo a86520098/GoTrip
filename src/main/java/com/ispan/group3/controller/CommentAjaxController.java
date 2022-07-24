@@ -45,9 +45,11 @@ public class CommentAjaxController {
 	
 	@PostMapping("/comments")
 	public Boolean save(@RequestBody Comment comment) {
+		cService.save(comment);
+		int commentId = comment.getId();
 		List<CommentImage> images = comment.getImages();
 		for (CommentImage image: images) {
-			image.setComment(cService.findById(251));
+			image.setComment(cService.findById(commentId));
 		}
 		comment.setImages(images);
 		cService.save(comment);

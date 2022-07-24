@@ -156,7 +156,7 @@ jQuery(document).ready(function($) {
 
 	$("#btn-insert-correct-loc").on("click", function() {
 		$('#companyId').val(1)
-		$('#companyName').val('隔尚租車')
+		$('#companyName').val('資展租車')
 		$('#name').val('資展中壢站')
 		$('#county').val('台灣')
 		$('.county').focus()
@@ -180,7 +180,7 @@ jQuery(document).ready(function($) {
 	
 	$("#btn-insert-wrong-loc").on("click", function() {
 		$('#companyId').val(1)
-		$('#companyName').val('隔尚租車')
+		$('#companyName').val('資展租車')
 		$('#name').val('資展中壢站')
 		$('#county').val('台灣')
 		$('.county').focus().val('桃園市').blur()
@@ -211,7 +211,7 @@ jQuery(document).ready(function($) {
 	$("#btn-insert-correct-car").on("click", function() {
 		$('#type').focus().val('豪華轎車').blur()
 		$('#makeCh').focus().val('特斯拉').blur()
-		$('#makeEn').focus().val('Tesla').blur()
+		$('#makeEn').focus().val('Tesla').blur();
 		$('#model').focus().val('Model S').blur()
 		$("input[name='power'][value='電動車']").attr("checked", true);
 		$("input[name='transmission'][value='AT']").attr("checked", true);

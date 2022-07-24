@@ -175,7 +175,7 @@ jQuery(document).ready(function($) {
 							            "commentId": 251
 							        },
 							        {
-							            "imagePath": "/data/uploadimages/comment/jeep.jpg",
+							            "imagePath": "/data/uploadimages/comment/jepp.jpg",
 							            "commentId": 251
 							        },
 							        {
@@ -194,6 +194,7 @@ jQuery(document).ready(function($) {
 					success: function(data) {
 						$(".comments-itemId").text('');
 						getComments();
+						getRating();
 					},
 					error: function() {
 						console.log('error')
@@ -420,9 +421,7 @@ jQuery(document).ready(function($) {
 		$('#userId').val(12)
 		$("input[name='rating'][value='4']").attr("checked", true);
 		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。'+
-						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!'+ '經過這次的租賃經驗，幾點心得跟大家分享：' + 
-						  '若你沒有車子，或是車子的空間不足，租車是個好選擇。' + 
-						  '整體來說我覺得格上租車的服務確實相當好，若有租車需求的話，不妨參考看看我們這次的心得囉。')
+						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!')
 
 		$('#content').blur()
 	});
@@ -430,15 +429,11 @@ jQuery(document).ready(function($) {
 		$('#content').focus()
 		$("input[name='rating'][value='4']").attr("checked", true);
 		$('#content').val('若你有行駛高速公路，還車時專員會跟你當場結清ETC的費用。另外，租賃期間，若因交通違規而產生罰鍰，是由租借方負責繳清。'+
-						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!'+ '經過這次的租賃經驗，幾點心得跟大家分享：' + 
-						  '若你沒有車子，或是車子的空間不足，租車是個好選擇。' + 
-						  '整體來說我覺得格上租車的服務確實相當好，若有租車需求的話，不妨參考看看我們這次的心得囉。')
-
+						  '別以為你在路上超速或是違規，就可以拍拍屁股不負責任唷!')
 		$('#content').blur()
 	});
 	
 	$("#btn-insert-wrong").on("click", function() {
-		console.log('ok');
 		$('#content').focus()
 		$('#itemTb').val('carRental')
 		$('#itemId').val(1)
