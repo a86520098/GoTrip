@@ -1175,39 +1175,233 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 SET IDENTITY_INSERT [dbo].[ticket] OFF
 
 SET IDENTITY_INSERT [dbo].[ticket_image] ON 
+SET IDENTITY_INSERT [dbo].[ticket_image] ON 
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (2, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (3, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (22, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (23, N'/data/uploadimages/ticket/Xpark2.png', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (24, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (25, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (26, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (27, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
 
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (28, N'/data/uploadimages/ticket/海生館.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (29, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (30, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (31, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (32, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (33, N'/data/uploadimages/ticket/海生館6.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (34, N'/data/uploadimages/ticket/阿里山.webp', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (35, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (36, N'/data/uploadimages/ticket/阿里山.webp', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (37, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (38, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (39, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (40, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (41, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (42, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (43, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (44, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (45, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
 
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (46, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (47, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (48, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (49, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (50, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (51, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (52, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (53, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (54, N'/data/uploadimages/ticket/阿里山.webp', 1)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (55, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (56, N'/data/uploadimages/ticket/Xpark2.png', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (57, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (58, N'/data/uploadimages/ticket/Xpark2.png', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (59, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (60, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (61, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (62, N'/data/uploadimages/ticket/Xpark2.png', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (63, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (64, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (65, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (66, N'/data/uploadimages/ticket/Xpark2.png', 2)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (67, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
 
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (68, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (69, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (70, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (71, N'/data/uploadimages/ticket/Xpark2.png', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (72, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (73, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (74, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (75, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (76, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (77, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (78, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (79, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (80, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (81, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (82, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (83, N'/data/uploadimages/ticket/海生館3.jpg', 3)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (84, N'/data/uploadimages/ticket/海生館4.jpg', 3)
 
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (85, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (86, N'/data/uploadimages/ticket/海生館.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (87, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (88, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (89, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (90, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (91, N'/data/uploadimages/ticket/海生館.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (92, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (93, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (94, N'/data/uploadimages/ticket/海生館2.jpg', 3)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (95, N'/data/uploadimages/ticket/海生館6.jpg', 3)
 
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (96, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (97, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
+--
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (98, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (99, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (100, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (101, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 2)
+
+--INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (102, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (103, N'/data/uploadimages/ticket/Xpark.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (104, N'/data/uploadimages/ticket/Xpark2.png', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (105, N'/data/uploadimages/ticket/Xpark3.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (106, N'/data/uploadimages/ticket/Xpark4.jpg', 4)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (107, N'/data/uploadimages/ticket/Xpark5.jpg', 4)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (108, N'/data/uploadimages/ticket/Xpark6.jpg', 4)
 
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (109, N'/data/uploadimages/ticket/綠舞.jpg', 5)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (110, N'/data/uploadimages/ticket/綠舞2.jpg', 5)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (111, N'/data/uploadimages/ticket/綠舞3.jpg', 5)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (112, N'/data/uploadimages/ticket/綠舞4.jpg', 5)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (113, N'/data/uploadimages/ticket/科學教育館.jpg', 6)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (114, N'/data/uploadimages/ticket/科學教育館2.jpg', 6)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (115, N'/data/uploadimages/ticket/科學教育館3.jpg', 6)
 
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (116, N'/data/uploadimages/ticket/袖珍博物館.jpg', 7)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (117, N'/data/uploadimages/ticket/袖珍博物館2.jpg', 7)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (118, N'/data/uploadimages/ticket/袖珍博物館3.jpg', 7)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (119, N'/data/uploadimages/ticket/袖珍博物館4.jpg', 7)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (120, N'/data/uploadimages/ticket/世界宗教博物館.jpg', 8)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (121, N'/data/uploadimages/ticket/世界宗教博物館2.jpg', 8)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (122, N'/data/uploadimages/ticket/世界宗教博物館3.jpg', 8)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (123, N'/data/uploadimages/ticket/世界宗教博物館4.jpg', 8)
 
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (124, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 9)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (125, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 9)
+
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (126, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 9)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (127, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 10)
+
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (128, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 10)
 
 INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (129, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 10)
 
