@@ -11,7 +11,7 @@ jQuery(document).ready(function($) {
 	
 	const map = new mapboxgl.Map({
 	    container: 'map',
-	    style: 'mapbox://styles/mapbox/light-v10', // stylesheet location
+	    style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
 	    center: [lng, lat], // starting position [lng, lat]
 	    zoom: 12 // starting zoom
 	});
