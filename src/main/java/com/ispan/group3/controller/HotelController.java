@@ -80,36 +80,6 @@ public class HotelController {
         hotels.setImages(images);
         hotelService.save(hotels);
 
-//        if (originalFilename.length() > 0 && originalFilename.lastIndexOf(".") > -1) {
-//            hotels.setFileName(originalFilename);
-//        }
-//
-//        // 建立Blob物件，交由 Hibernate 寫入資料庫
-//        if (picture != null && !picture.isEmpty()) {
-//            try {
-//                byte[] b = picture.getBytes();
-//                Blob blob = new SerialBlob(b);
-//                hotels.setImage(blob);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//                throw new RuntimeException("檔案上傳發生異常: " + e.getMessage());
-//            }
-//        }
-////
-//
-//        Timestamp adminTime = new Timestamp(System.currentTimeMillis());
-//        hotels.setAdmissionTime(adminTime);
-//
-//        try {
-//            hotelService.save(hotels);
-//        } catch (org.hibernate.exception.ConstraintViolationException e) {
-//            result.rejectValue("account", "", "帳號已存在，請重新輸入");
-//            return "user-form";
-//        } catch (Exception ex) {
-//            System.out.println(ex.getClass().getName() + ", ex.getMessage()=" + ex.getMessage());
-//            result.rejectValue("account", "", "請通知系統人員...");
-//            return "user-form";
-//        }
         System.out.println("222此方法儲存");
         return "redirect:/backHotel";
     }
@@ -289,7 +259,11 @@ public class HotelController {
 
     @GetMapping("/addHotelRoom")
     public String showNewRoom(Model model, @RequestParam("id") Integer id) {
-        System.out.println("I get the id from hotel " + id + " is hotel id ");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("I get the id from hotel " + id + " is hotel id ");
+        }
+
         HotelRoom hotelRoom = new HotelRoom();
         Hotel byId = hotelService.findById(id);
         model.addAttribute("mainHotel", byId);
@@ -326,35 +300,30 @@ public class HotelController {
         for (int i = 0; i < 10; i++) {
             System.out.println("前台商家新增房間");
         }
-        return "redirect:/backend/index";
-    }
-
-    @GetMapping("getHotelRoomList")
-    public String getAllHotelRoom(Model model, @RequestParam("id") Integer id) {
-        System.out.println("Get All RoomList");
-        model.addAttribute("roomList", hotelroomService.findAllHotelRoom(id));
-        return "/frontend/hotel/hotel-roomList";
-    }
-
-    @GetMapping("/deleteRoom")
-    public String DeleteRoom(Model model, @RequestParam("id") Integer id) {
-        hotelroomService.deleteById(id);
-        System.out.println("已經成功刪除房間刪除代號為=" + id);
-        return "redirect:/backend/index";
+        return "redirect:/vendor/hotels";
     }
 
     @GetMapping("/updateRoom")
-    public String UpdataRoom(Model model, @RequestParam("id") Integer id) {
+    public String UpdataRoom(Model model, @RequestParam("id") Integer id, @RequestParam("hotelid") Integer hotelID) {
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("hotel ID=" + hotelID);
+            System.out.println("Room  ID=" + id);
+        }
+        model.addAttribute("mainHotel", hotelService.findById(hotelID));
         model.addAttribute("update", hotelroomService.findByid(id));
         return "/frontend/hotel/hotel-EditRoom";
     }
 
-    @PostMapping("/EditRoom")
+    @PostMapping("/frontEditRoom/{hotelid}")
     public String getEditRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
-                              @RequestParam(value = "imagefile", required = false) List<MultipartFile> efiles
+                              @RequestParam(value = "imagefile", required = false) List<MultipartFile> files,
+                              @PathVariable("hotelid") Integer hotelid
     ) {
+
+        Hotel byId = hotelService.findById(hotelid);
         List<HotelRoomImage> imagesLish = new ArrayList<>();
-        for (MultipartFile file : efiles) {
+        for (MultipartFile file : files) {
             try {
                 String savePath = FileUploadUtil.saveFile("hotelroomImage", file);
                 HotelRoomImage hotelRoomImage = new HotelRoomImage(savePath, hotelRoom);
@@ -365,9 +334,38 @@ public class HotelController {
         }
         hotelRoom.setHotelRoomImageList(imagesLish);
 
+
+        hotelRoom.setHotel(byId);
         hotelroomService.save(hotelRoom);
-        System.out.println("看到這條代表更新成功");
-        return "redirect:/backend/index";
+        for (int i = 0; i < 10; i++) {
+            System.out.println("前台商家新增房間");
+        }
+        return "redirect:/vendor/hotels";
+    }
+
+    @GetMapping("getHotelRoomList")
+    public String getAllHotelRoom(Model model, @RequestParam("id") Integer id) {
+        System.out.println("Get All RoomList");
+        for (int i = 0; i < 10; i++) {
+            System.out.println("查詢本飯店房間列表  主表id=" + id);
+        }
+        model.addAttribute("hotelid", hotelService.findById(id));
+        model.addAttribute("roomList", hotelroomService.findAllHotelRoom(id));
+        return "/frontend/hotel/hotel-roomList";
+    }
+
+    @GetMapping("/deleteRoom")
+    public String DeleteRoom(Model model, @RequestParam("id") Integer id) {
+        hotelroomService.deleteById(id);
+        System.out.println("已經成功刪除房間刪除代號為=" + id);
+        return "redirect:/vendor/hotels";
+    }
+
+    @GetMapping("/frontDelete")
+    public String frontDelete(@RequestParam("id") Integer id) {
+        hotelService.delete(id);
+        System.out.println("已經刪除飯店 刪除號碼為:=" + id);
+        return "redirect:/vendor/hotels";
     }
 
     @GetMapping("/vendor/newHotel")
@@ -379,7 +377,57 @@ public class HotelController {
     @GetMapping("/vendor/EditRoom")
     public String EditHotel(Model model, @RequestParam("id") Integer id) {
         model.addAttribute("hotel", hotelService.findById(id));
-        return "/frontend/hotel/NewHotel-form";
+        return "/frontend/hotel/EditHotel-form";
+    }
+
+
+    @PostMapping(value = "/frontNewHotel")
+    public String frontHotel(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
+                             @RequestParam(value = "imagefile", required = false) List<MultipartFile> files
+    ) {
+        System.out.println("準備新增接收資料了");
+//        MultipartFile picture = hotels.getProductImage(); //拿照片
+//        String originalFilename = picture.getOriginalFilename(); //拿檔案名稱
+//        Timestamp adminTime = new Timestamp(System.currentTimeMillis()); //拿檔案接受到的當下時間
+//        hotels.setAdmissionTime(adminTime); //塞進去
+
+        List<HotelImage> images = new ArrayList<>();
+        for (MultipartFile file : files) {
+            try {
+                String savePath = FileUploadUtil.saveFile("hotelImage", file);
+                HotelImage hotelImage = new HotelImage(savePath, hotels);
+                images.add(hotelImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        hotels.setImages(images);
+        hotelService.save(hotels);
+
+        System.out.println("222此方法儲存");
+        return "redirect:/vendor/hotels";
+    }
+
+    @PostMapping(value = "/frontEditHotel")
+    public String frontEditHotel(@ModelAttribute("hotel") Hotel hotels, BindingResult result,
+                                 @RequestParam(value = "imagefile", required = false) List<MultipartFile> files
+    ) {
+        System.out.println("準備新增接收資料了");
+        List<HotelImage> images = new ArrayList<>();
+        for (MultipartFile file : files) {
+            try {
+                String savePath = FileUploadUtil.saveFile("hotelImage", file);
+                HotelImage hotelImage = new HotelImage(savePath, hotels);
+                images.add(hotelImage);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        hotels.setImages(images);
+        hotelService.save(hotels);
+
+        System.out.println("222此方法儲存");
+        return "redirect:/vendor/hotels";
     }
 
 
