@@ -136,7 +136,7 @@
 											<div class="col-sm-8 card-body block2-txt flex-w flex-t p-t-14 ">
 												<div class="block2-txt-child1 mb-1">
 													<p class="m-t-15" th:text="${option.carModel.type}"></p>
-													<a th:href="@{'/cars/'+${option.carModel.id}}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-15">
+													<a th:href="@{/cars/options/{id}(id=${option.id})}" class="fs-20 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-15">
 														<p th:text="${option.carModel.makeCh + ' ' + option.carModel.makeEn + ' ' + option.carModel.model}" class="pr-3"></p>
 													</a>
 													<div class="rating-count" th:id="${option.id}" value="carRental">
