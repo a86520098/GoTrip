@@ -5,49 +5,63 @@ SET IDENTITY_INSERT [dbo].[comment] ON;
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (1, N'hotel', 1, N'david_lin', CAST(N'2022-04-25T01:00:00' AS SmallDateTime), 5, N'環境舒適，交通方便，真的超級推薦!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (2, N'restaurant', 1, N'kelly', CAST(N'2022-04-26T02:00:00' AS SmallDateTime), 4, N'食物很好吃，但服務態度不值得這個價位，店家員工訓練有待加強!', N'顯示')
+VALUES (2, N'restaurant', 1, N'kelly', CAST(N'2022-04-26T02:00:00' AS SmallDateTime), 4,
+        N'食物很好吃，但服務態度不值得這個價位，店家員工訓練有待加強!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (3, N'carRental', 2, N'nobody', CAST(N'2022-04-27T03:00:00' AS SmallDateTime), 1, N'車上竟然有其他顧客的垃圾...難以置信...', N'顯示')
+VALUES (3, N'carRental', 2, N'nobody', CAST(N'2022-04-27T03:00:00' AS SmallDateTime), 1, N'車上竟然有其他顧客的垃圾...難以置信...',
+        N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (4, N'ticket', 1, N'montLover', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 5, N'超棒的露營區!! 竟然還有獨立衛浴!!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (5, N'hotel', 8, N'wendy123', CAST(N'2022-04-29T05:00:00' AS SmallDateTime), 5, N'價格偏高，但整個度假體驗非常好，疫情期間不能出國還是能一秒住villa', N'顯示')
+VALUES (5, N'hotel', 8, N'wendy123', CAST(N'2022-04-29T05:00:00' AS SmallDateTime), 5,
+        N'價格偏高，但整個度假體驗非常好，疫情期間不能出國還是能一秒住villa', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (6, N'restaurant', 2, N'michael', CAST(N'2022-04-30T06:00:00' AS SmallDateTime), 3, N'可怕的網美店，拍起來很美但食物調味超怪，標準的一次店', N'顯示')
+VALUES (6, N'restaurant', 2, N'michael', CAST(N'2022-04-30T06:00:00' AS SmallDateTime), 3,
+        N'可怕的網美店，拍起來很美但食物調味超怪，標準的一次店', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (7, N'carRental', 3, N'queenB', CAST(N'2022-05-01T07:00:00' AS SmallDateTime), 5, N'竟然可以租到全新車，服務也很好，很推薦~', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (8, N'restaurant', 3, N'ann0800', CAST(N'2022-05-02T08:00:00' AS SmallDateTime), 3, N'約會好去處，但假日遊客太多，小孩尖叫亂跑，很掃興', N'顯示')
+VALUES (8, N'restaurant', 3, N'ann0800', CAST(N'2022-05-02T08:00:00' AS SmallDateTime), 3, N'約會好去處，但假日遊客太多，小孩尖叫亂跑，很掃興',
+        N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (9, N'hotel', 25, N'jimmy', CAST(N'2022-05-03T09:00:00' AS SmallDateTime), 4, N'中規中矩的商務旅館', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (10, N'carRental', 34, N'gary_ispan', CAST(N'2022-05-04T10:00:00' AS SmallDateTime), 5, N'服務很好，最後還車前忘了加滿油，店家也是便宜算^^', N'顯示')
+VALUES (10, N'carRental', 34, N'gary_ispan', CAST(N'2022-05-04T10:00:00' AS SmallDateTime), 5,
+        N'服務很好，最後還車前忘了加滿油，店家也是便宜算^^', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (11, N'ticket', 2, N'kids', CAST(N'2022-05-05T11:00:00' AS SmallDateTime), 5, N'畢旅的回憶~~~', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (12, N'ticket', 3, N'youngCP', CAST(N'2022-05-06T12:00:00' AS SmallDateTime), 5, N'拍照很美! 但門票小貴，動物生長在這麼小的水族箱感覺很痛苦，希望園區可以妥善照顧動物', N'顯示')
+VALUES (12, N'ticket', 3, N'youngCP', CAST(N'2022-05-06T12:00:00' AS SmallDateTime), 5,
+        N'拍照很美! 但門票小貴，動物生長在這麼小的水族箱感覺很痛苦，希望園區可以妥善照顧動物', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (13, N'hotel', 4, N'angela', CAST(N'2022-05-07T13:00:00' AS SmallDateTime), 4, N'環境很好 度假風格 設施有點舊但維護的不錯', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (14, N'ticket', 1, N'manager', CAST(N'2022-05-08T14:00:00' AS SmallDateTime), 5, N'夜宿海生館真的是這輩子最難忘的回憶之一，他們還主動提供耳塞以免睡覺時被別人干擾，也會個別詢問有沒有需要更多毯子或墊子~ 真的超棒', N'顯示')
+VALUES (14, N'ticket', 1, N'manager', CAST(N'2022-05-08T14:00:00' AS SmallDateTime), 5,
+        N'夜宿海生館真的是這輩子最難忘的回憶之一，他們還主動提供耳塞以免睡覺時被別人干擾，也會個別詢問有沒有需要更多毯子或墊子~ 真的超棒', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (15, N'ticket', 2, N'zoolover', CAST(N'2022-05-09T15:00:00' AS SmallDateTime), 4, N'不敢玩遊樂設施的人，光是去動物園就值回門票了!', N'顯示')
+VALUES (15, N'ticket', 2, N'zoolover', CAST(N'2022-05-09T15:00:00' AS SmallDateTime), 4, N'不敢玩遊樂設施的人，光是去動物園就值回門票了!',
+        N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (16, N'ticket', 5, N'manager', CAST(N'2022-05-10T16:00:00' AS SmallDateTime), 3, N'價格有點高，但疫情下旅遊景點經營不易，也算是辛苦經營單位了', N'顯示')
+VALUES (16, N'ticket', 5, N'manager', CAST(N'2022-05-10T16:00:00' AS SmallDateTime), 3,
+        N'價格有點高，但疫情下旅遊景點經營不易，也算是辛苦經營單位了', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (17, N'hotel', 4, N'lovelylady', CAST(N'2022-05-11T17:00:00' AS SmallDateTime), 5, N'超喜歡這裡，窗戶很大，視野非常好', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (18, N'hotel', 2, N'emp0315', CAST(N'2022-05-12T18:00:00' AS SmallDateTime), 4, N'還不錯，出公差而來，沒享受到飯店設施，稍嫌可惜', N'顯示')
+VALUES (18, N'hotel', 2, N'emp0315', CAST(N'2022-05-12T18:00:00' AS SmallDateTime), 4, N'還不錯，出公差而來，沒享受到飯店設施，稍嫌可惜',
+        N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (19, N'hotel', 5, N'employee2', CAST(N'2022-05-13T19:00:00' AS SmallDateTime), 5, N'超值的體驗', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (20, N'restaurant', 2, N'manager', CAST(N'2022-05-14T20:00:00' AS SmallDateTime), 2, N'心灰意冷，bug好多', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (21, N'hotel', 8, N'wendy_chen', CAST(N'2022-05-15T21:00:00' AS SmallDateTime), 5, N'極力推薦大家可以到中庭餐廳享用中西式的自助餐，或者在預訂房間時就加訂早餐，那麼就能夠在義大早起床就前往氣派的中庭用餐喔！', N'顯示')
+VALUES (21, N'hotel', 8, N'wendy_chen', CAST(N'2022-05-15T21:00:00' AS SmallDateTime), 5,
+        N'極力推薦大家可以到中庭餐廳享用中西式的自助餐，或者在預訂房間時就加訂早餐，那麼就能夠在義大早起床就前往氣派的中庭用餐喔！', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (22, N'ticket', 5, N'montbell', CAST(N'2022-05-16T22:00:00' AS SmallDateTime), 4, N'太平山蘊藏珍貴林木，昔日與阿里山、八仙山並列台灣三大林場 乘坐蹦蹦車，沉浸在森林芬多精的世界，美不勝收。', N'顯示')
+VALUES (22, N'ticket', 5, N'montbell', CAST(N'2022-05-16T22:00:00' AS SmallDateTime), 4,
+        N'太平山蘊藏珍貴林木，昔日與阿里山、八仙山並列台灣三大林場 乘坐蹦蹦車，沉浸在森林芬多精的世界，美不勝收。', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
-VALUES (23, N'ticket', 4, N'artlover', CAST(N'2022-05-17T23:00:00' AS SmallDateTime), 4, N'桃園青埔又將迎來全新景點！肩負推廣悠久歷史的橫山書法藝術館，建築外觀結合硯台、墨池意象!', N'顯示')
+VALUES (23, N'ticket', 4, N'artlover', CAST(N'2022-05-17T23:00:00' AS SmallDateTime), 4,
+        N'桃園青埔又將迎來全新景點！肩負推廣悠久歷史的橫山書法藝術館，建築外觀結合硯台、墨池意象!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
 VALUES (24, N'ticket', 1, N'ryan0412', CAST(N'2022-04-28T04:00:00' AS SmallDateTime), 4, N'超棒的露營區!! 竟然還有獨立衛浴!!', N'顯示')
 INSERT [dbo].[comment] ([id], [item_tb], [item_id], [user_id], [date], [rating], [content], [status])
@@ -121,31 +135,53 @@ SET IDENTITY_INSERT [dbo].[comment_image] OFF;
 
 SET IDENTITY_INSERT [dbo].[car_model] ON;
 
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-yaris.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (2, N'經濟轎車', N'豐田', N'Toyota', N'Vios', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-vios.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2, N'/data/uploadimages/car/toyota-altis.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (4, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2, N'/data/uploadimages/car/toyota-camry.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (5, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2, N'/data/uploadimages/car/toyota-corolla-cross.jpg')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (6, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2, N'/data/uploadimages/car/toyota-sienta.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (7, N'經濟轎車', N'裕隆日產', N'Nissan', N'Livina', N'燃油車', N'AT', 1600, 5, 4, 2, 2, N'/data/uploadimages/car/nissan-livina.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (8, N'經濟轎車', N'裕隆日產', N'Nissan', N'TIIDA', N'燃油車', N'AT', 1600, 5, 4, 2, 2, N'/data/uploadimages/car/nissan-tiida.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (9, N'休旅車/SUV', N'裕隆日產', N'Nissan', N'Kicks', N'燃油車', N'AT', 1600, 5, 4, 2, 2, N'/data/uploadimages/car/nissan_kicks.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (1, N'經濟轎車', N'豐田', N'Toyota', N'Yaris', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
+        N'/data/uploadimages/car/toyota-yaris.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (2, N'經濟轎車', N'豐田', N'Toyota', N'Vios', N'燃油車', N'AT', 1500, 5, 4, 1, 2,
+        N'/data/uploadimages/car/toyota-vios.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (3, N'經濟轎車', N'豐田', N'Toyota', N'Altis', N'燃油車', N'AT', 1800, 5, 4, 2, 2,
+        N'/data/uploadimages/car/toyota-altis.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (4, N'豪華轎車', N'豐田', N'Toyota', N'Camry', N'燃油車', N'AT', 2000, 5, 4, 1, 2,
+        N'/data/uploadimages/car/toyota-camry.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (5, N'休旅車/SUV', N'豐田', N'Toyota', N'Corolla Cross', N'燃油車', N'AT', 1800, 5, 5, 3, 2,
+        N'/data/uploadimages/car/toyota-corolla-cross.jpg')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (6, N'休旅車/SUV', N'豐田', N'Toyota', N'Sienta', N'燃油車', N'AT', 1500, 5, 5, 2, 2,
+        N'/data/uploadimages/car/toyota-sienta.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (7, N'經濟轎車', N'裕隆日產', N'Nissan', N'Livina', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan-livina.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (8, N'經濟轎車', N'裕隆日產', N'Nissan', N'TIIDA', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan-tiida.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (9, N'休旅車/SUV', N'裕隆日產', N'Nissan', N'Kicks', N'燃油車', N'AT', 1600, 5, 4, 2, 2,
+        N'/data/uploadimages/car/nissan_kicks.png')
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
 VALUES (10, N'經濟轎車', N'納智捷', N'Luxgen', N'S3', N'燃油車', N'AT', 1600, 5, 4, 1, 2, N'/data/uploadimages/car/luxgen_s3.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
 VALUES (11, N'經濟轎車', N'本田', N'Honda', N'Fit', N'燃油車', N'AT', 1500, 5, 4, 1, 2, N'/data/uploadimages/car/honda_fit.png')
-INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat], [door], [suitcase], [bag], [image])
-VALUES (12, N'經濟轎車', N'鈴木', N'Suzuki', N'Swift', N'燃油車', N'AT', 1300, 5, 4, 1, 2, N'/data/uploadimages/car/suzuki_swift.png')
-        
+INSERT [dbo].[car_model] ([id], [type], [make_ch], [make_en], [model], [power], [transmission], [engine], [seat],
+                          [door], [suitcase], [bag], [image])
+VALUES (12, N'經濟轎車', N'鈴木', N'Suzuki', N'Swift', N'燃油車', N'AT', 1300, 5, 4, 1, 2,
+        N'/data/uploadimages/car/suzuki_swift.png')
+
 SET IDENTITY_INSERT [dbo].[car_model] OFF;
 
 SET IDENTITY_INSERT [dbo].[car_location] ON
@@ -337,15 +373,15 @@ SET
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (1, N'admin', NULL, NULL, N'$2a$10$0CyR/2imAewmqwur36Xqy.FhTcyZ8KwZkJCeScapxC9DDCyrnihom', NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, N'ROLE_ADMIN',1,NULL)
+        NULL, NULL, NULL, NULL, N'ROLE_ADMIN', 1, NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (2, N'dealer', NULL, NULL, N'$2a$10$iuo37iB/g9tK0l94aHFVK.f/onjfh3MFMNIgBy2SLYwrC/RsXw/MC', NULL, NULL, NULL,
-        NULL, NULL, NULL, NULL, N'ROLE_DEALER',1,NULL)
+        NULL, NULL, NULL, NULL, N'ROLE_DEALER', 1, NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (12, N'user', NULL, NULL, N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', NULL,
-        NULL, NULL, NULL, NULL, NULL, NULL, N'ROLE_USER',1,NULL)
+        NULL, NULL, NULL, NULL, NULL, NULL, N'ROLE_USER', 1, NULL)
 SET IDENTITY_INSERT [dbo].[user_data] OFF
 
 
@@ -596,7 +632,8 @@ SET IDENTITY_INSERT [dbo].[hotel_image] OFF
 SET IDENTITY_INSERT [dbo].[hotel_room] ON
 
 
-INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+INSERT INTO [dbo].[hotel_room] ([roomid], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2],
+                                [feature3],
                                 [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
                                 [roomprice], [roomtype], [hotel_id])
 VALUES (N'1', N'2', N'2', N'2', N'拉拉山桃山渡假農場提供每日免費早餐。', N'附近有虎頭山公園', N'提供B&W 整套音響', N'40', N'2', N'浴巾,免鑰匙進出,免費停車', N'入住拉拉山桃山渡假農場，盡情享受桃園市冒險之旅。
@@ -605,7 +642,8 @@ VALUES (N'1', N'2', N'2', N'2', N'拉拉山桃山渡假農場提供每日免費�
 ', N's', N'愛情海房間', N'4000', N'雙人房', N'4')
 
 
-INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+INSERT INTO [dbo].[hotel_room] ([roomid], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2],
+                                [feature3],
                                 [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
                                 [roomprice], [roomtype], [hotel_id])
 VALUES (N'2', N'2', N'2', N'2', N'鴻海農場提供每日免費早餐。', N'附近有非洲大草原公園', N'提供B&W 整套音響', N'40', N'2',
@@ -614,13 +652,13 @@ VALUES (N'2', N'2', N'2', N'2', N'鴻海農場提供每日免費早餐。', N'�
 拉拉山桃山渡假農場客房都有貼心設施。 浴室設施對住客來說非常重要，因此這間飯店的部分客房提供吹風機和盥洗用品。
 ', N'兒童與加床收費標準
 歡迎兒童入住。
-
 其他規定
 請注意：若單筆預訂超過5間客房，可能會需要遵守其他相關規定以及符合額外的要求。
 加床規定依房型而異，更多細節請向住宿洽詢。', N'郭董愛情房間', N'5000', N'雙人房', N'4')
 
 
-INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+INSERT INTO [dbo].[hotel_room] ([roomid], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2],
+                                [feature3],
                                 [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
                                 [roomprice], [roomtype], [hotel_id])
 VALUES (N'3', N'2', N'2', N'2', N'◎房間陽台面對清境最美的山景。', N'◎房間均以台灣檜木或肖楠構築而成，充滿木頭的香氣。', N'◎精心設計的室內空間，自然通風的溫暖舒適遠勝人工空調。', N'40',
@@ -630,32 +668,33 @@ VALUES (N'3', N'2', N'2', N'2', N'◎房間陽台面對清境最美的山景。'
 4.獨立筒彈簧床墊與高級羽毛被，提供您ㄧ年四季溫暖好眠。
 5.房間內提供免費寬頻上網(有線)，公共空間提供免費無線上網。', N'兒童與加床收費標準
 歡迎兒童入住。
-
 其他規定
 請注意：若單筆預訂超過5間客房，可能會需要遵守其他相關規定以及符合額外的要求。
 加床規定依房型而異，更多細節請向住宿洽詢。', N'愛情泡泡房間', N'5000', N'四人房', N'4')
 
 
-INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+INSERT INTO [dbo].[hotel_room] ([roomid], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2],
+                                [feature3],
                                 [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
                                 [roomprice], [roomtype], [hotel_id])
 VALUES (N'4', N'1', N'1', N'1', N'◎房間陽台面對清境最美的山景。', N'◎房間均以台灣檜木或肖楠構築而成，充滿木頭的香氣。', N'◎精心設計的室內空間，自然通風的溫暖舒適遠勝人工空調。', N'10',
         N'2', N'浴巾,免鑰匙進出,免費停車,廚房用具(廚具`油`調味料),專用入口', N'可以養寵物', N'兒童與加床收費標準
 歡迎兒童入住。
-
 其他規定
 請注意：若單筆預訂超過5間客房，可能會需要遵守其他相關規定以及符合額外的要求。
 加床規定依房型而異，更多細節請向住宿洽詢。', N'寵物房', N'1200', N'雙人房', N'4')
 
 
-INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+INSERT INTO [dbo].[hotel_room] ([roomid], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2],
+                                [feature3],
                                 [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
                                 [roomprice], [roomtype], [hotel_id])
 VALUES (N'5', N'2', N'3', N'2', N'◎房間陽台面對清境最美的山景。', N'附近有非洲大草原公園', N'提供B&W 整套音響', N'2', N'4', N'濱海,免費停車,免費wifi,暖風,電視', N'採用肖楠壁板的房間，散發著淡淡的木頭香氣。高級的材質加上與眾不同的設計讓房間內部呈現不同於一般飯店旅館的感受。
 下雨過後，坐在私人的陽台欣賞瞬息萬變的山嵐；靜謐的夜晚，在躺椅上仰望滿天星斗；四季風情讓人輕易地忘卻時光的流逝。', N'加床規定依房型而異，更多細節請向住宿洽詢。', N' 巴里風情二人房', N'4000', N'單人房', N'5')
 
 
-INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+INSERT INTO [dbo].[hotel_room] ([roomid], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2],
+                                [feature3],
                                 [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
                                 [roomprice], [roomtype], [hotel_id])
 VALUES (N'6', N'4', N'4', N'4', N'1. 私人景觀陽台，可觀賞奇萊山日出、雲海、山嵐與廬山夜景。', N'2. 肖楠原木壁板採透氣漆處理，散發天然原木香氣。', N'提供B&W 整套音響', N'100',
@@ -673,7 +712,8 @@ VALUES (N'6', N'4', N'4', N'4', N'1. 私人景觀陽台，可觀賞奇萊山日�
 退房時間：中午12:00，超時退房將酌收超時費用(500元/小時)。', N'日出四人房', N'7500', N'四人房', N'7')
 
 
-INSERT INTO [dbo].[hotel_room] ([id], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2], [feature3],
+INSERT INTO [dbo].[hotel_room] ([roomid], [bath_count], [bed_count], [bedroom_count], [feature1], [feature2],
+                                [feature3],
                                 [hotel_area], [people_count], [provide], [room_introduce], [room_rule], [roomname],
                                 [roomprice], [roomtype], [hotel_id])
 VALUES (N'7', N'4', N'4', N'4', N'Accessible by elevator', N'Safety/security feature', N'房內保險箱', N'100', N'4',
@@ -693,11 +733,16 @@ VALUES (N'7', N'4', N'4', N'4', N'Accessible by elevator', N'Safety/security fea
 
 
 SET IDENTITY_INSERT [dbo].[hotel_room] OFF
-
 --Ticket
 SET IDENTITY_INSERT [dbo].[ticket] ON
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (1, N'59號', N'嘉義縣', 1, N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'歷史景點', N'4', N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', NULL, NULL, NULL, N'<h3>商品說明</h3>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (1, N'59號', N'嘉義縣', 1, N'台灣', N'阿里山鄉', N'052679917', 215, 0, N'歷史景點', N'4',
+        N'欣賞阿里山五奇絕景日出、雲海、鐵路、森林、晚霞，阿里山雲海更名為台灣八景之一 親近大自然，感受神秘巨木群的清幽之美及森林芬多精，沐浴在清新空氣中 體驗遠近馳名、日治時期開始修建的阿里山小火車與森林鐵道', NULL,
+        NULL, NULL, N'<h3>商品說明</h3>
 
 <p>－ 行程說明 －</p>
 
@@ -757,7 +802,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p>&nbsp;</p>
 ', N'阿里山國家森林遊樂區門票', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (2, N'189號', N'花蓮縣', 1, N'台灣', N'壽豐鄉', N'038123199', 780, 0, N'主題樂園', N'1', N'8大主題遊樂設施，遊玩精彩一整天 走訪超人氣全台最大海洋公園，享受依山傍海美景，創造無限回憶 欣賞4大主題表演：海豚秀、海獅秀、美人魚生態教室、水晶城堡秀', NULL, NULL, NULL, N'<p>&ndash; 七月限定「海洋冰風暴2-冰怪來襲」活動 &ndash;</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (2, N'189號', N'花蓮縣', 1, N'台灣', N'壽豐鄉', N'038123199', 780, 0, N'主題樂園', N'1',
+        N'8大主題遊樂設施，遊玩精彩一整天 走訪超人氣全台最大海洋公園，享受依山傍海美景，創造無限回憶 欣賞4大主題表演：海豚秀、海獅秀、美人魚生態教室、水晶城堡秀', NULL, NULL, NULL, N'<p>&ndash; 七月限定「海洋冰風暴2-冰怪來襲」活動 &ndash;</p>
 
 <p>海洋公園獨家暑期限定活動【海洋冰風暴2-冰怪來襲】<br />
 炎熱的夏日即將到來！我們將極凍整個夏天！<br />
@@ -826,7 +876,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p>&nbsp;</p>
 ', N'花蓮遠雄海洋公園電子門票', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (3, N'後灣路2號', N'屏東縣', NULL, N'台灣', N'車城鄉', N'088825678', 250, 0, N'水族館&動物園', N'3', N'擁有全亞洲最大的海底隧道，台灣水域館、珊瑚王國館、世界水域館及鯨典館四個展示館 虛擬實境運動體驗 VR 設施，邀請大家身歷其境', NULL, NULL, NULL, N'<p>－ 館區介紹 －</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (3, N'後灣路2號', N'屏東縣', NULL, N'台灣', N'車城鄉', N'088825678', 250, 0, N'水族館&動物園', N'3',
+        N'擁有全亞洲最大的海底隧道，台灣水域館、珊瑚王國館、世界水域館及鯨典館四個展示館 虛擬實境運動體驗 VR 設施，邀請大家身歷其境', NULL, NULL, NULL, N'<p>－ 館區介紹 －</p>
 
 <ul>
 	<li>屏東國立海洋生物博物館<br />
@@ -855,7 +910,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p>&nbsp;</p>
 ', N'屏東海生館門票', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (4, N'春德路105號', N'桃園市', NULL, N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3', N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, NULL, N'<p>－ 行程特色 －</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (4, N'春德路105號', N'桃園市', NULL, N'台灣', N'中壢區', N'032875000', 550, 0, N'水族館&動物園', N'3',
+        N'由日本高人氣八景島團隊首度跨海來台，打造日系都會型水族館，全台首見 結合當地商場，鄰近高鐵站、機場捷運，交通方便，吃喝玩樂一次滿足', NULL, NULL, NULL, N'<p>－ 行程特色 －</p>
 
 <p>Xpark 為台灣首座新都會型水生公園。將生活在地球上各種地域的生物們的環境，透過空間演出與科技的融合，加以忠實的重現。在連氣溫、濕度、味道及聲音都經過縝密計算的空間裡，從天花板到地坪、延伸至水槽的影像演出呈現出 360&deg; 具魄力的沉浸式空間。來訪旅客彷彿真的身歷其境，使用五感體驗各真實場景。主角，是生活在那裡的生物們，隨環境變遷而演變進化的生物們的不思議，從各種角度將其魅力性襯托出來的環境演出也是一大特徵。Xpark 是一個滿足人們無止盡的「對於求知的慾望和獲知的喜悅」，並在世界上也是獨一無二的寓教於樂設施。</p>
 
@@ -907,7 +967,13 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_101517/20210629031915_aKoFy/jpg" style="height:450px; width:720px" /></p>
 ', N'Xpark 都會型水生公園門票', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (5, N'五濱路二段459號', N'宜蘭縣', NULL, N'台灣', N'五結鄉', N'039603808', 285, 0, N'博物館&美術館', N'2', N'網美必訪之日式庭園渡假園區，景觀、人文與休閒兼具  換上日式傳統浴衣，彷彿身處日本京都，參與抹茶體驗課程 2021 年4 月起，引進羊駝、水豚、狐獴、刺蝟等動物，日式園區打造成療癒系動物園', NULL, NULL, NULL, N'<p>－ 綠舞國際觀光飯店 －</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (5, N'五濱路二段459號', N'宜蘭縣', NULL, N'台灣', N'五結鄉', N'039603808', 285, 0, N'博物館&美術館', N'2',
+        N'網美必訪之日式庭園渡假園區，景觀、人文與休閒兼具  換上日式傳統浴衣，彷彿身處日本京都，參與抹茶體驗課程 2021 年4 月起，引進羊駝、水豚、狐獴、刺蝟等動物，日式園區打造成療癒系動物園', NULL, NULL,
+        NULL, N'<p>－ 綠舞國際觀光飯店 －</p>
 
 <ul>
 	<li>營業時間：<br />
@@ -969,7 +1035,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_35648/20210427084005_BRHrf/jpg" style="height:707px; width:720px" /></p>
 ', N'綠舞日式主題園區', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (6, N'基河路363號', N'臺北市', NULL, N'台灣', N'士林區', N'0228314551', 100, 0, N'博物館&美術館', N'2', N'天文館、科教館、兒童新樂園，超方便的三館聯票，一票玩到底！ 一步步認識太空，親子知性、小孩放電之旅的最佳提案 天文迷必去景點，探索宇宙奧秘，現在就出發！', NULL, NULL, NULL, N'<p>－ 商品介紹 －</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (6, N'基河路363號', N'臺北市', NULL, N'台灣', N'士林區', N'0228314551', 100, 0, N'博物館&美術館', N'2',
+        N'天文館、科教館、兒童新樂園，超方便的三館聯票，一票玩到底！ 一步步認識太空，親子知性、小孩放電之旅的最佳提案 天文迷必去景點，探索宇宙奧秘，現在就出發！', NULL, NULL, NULL, N'<p>－ 商品介紹 －</p>
 
 <ul>
 	<li>臺北市立天文科學教育館<br />
@@ -1033,7 +1104,13 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p>還可以試試左右搖晃壓車，看你可否打戰勝不倒翁原理，成功壓車呢？！<img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_128325/20220407091308_jF9yV/jpg" style="height:480px; width:720px" /></p>
 ', N'市立天文科學教育館', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (7, N'建國北路一段96號B1', N'臺北市', NULL, N'台灣', N'中山區', N'0225150583', 220, 0, N'博物館&美術館', N'2', N'台北袖珍博物館是亞洲第一座專門收藏當代袖珍藝術品的主題博物館，搭乘台北捷運到松江南京站即可抵達。它擁有包羅萬象的袖珍精品，如美國加州的玫瑰豪宅、英國皇家閱兵大典、白金漢宮、傑克與魔豆等故事性及主題式館藏，漫遊袖珍博物館，彷彿走入了充滿異國風情的時空隧道。', NULL, NULL, NULL, N'<p>－ 行程特色 －<br />
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (7, N'建國北路一段96號B1', N'臺北市', NULL, N'台灣', N'中山區', N'0225150583', 220, 0, N'博物館&美術館', N'2',
+        N'台北袖珍博物館是亞洲第一座專門收藏當代袖珍藝術品的主題博物館，搭乘台北捷運到松江南京站即可抵達。它擁有包羅萬象的袖珍精品，如美國加州的玫瑰豪宅、英國皇家閱兵大典、白金漢宮、傑克與魔豆等故事性及主題式館藏，漫遊袖珍博物館，彷彿走入了充滿異國風情的時空隧道。',
+        NULL, NULL, NULL, N'<p>－ 行程特色 －<br />
 <br />
 ・購買 KKday 線上電子票券，即買即用，現場掃描即可直接入園<br />
 ・亞洲第一座專門收藏當代袖珍藝術品的主題博物館<br />
@@ -1079,7 +1156,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p>&nbsp;</p>
 ', N'袖珍博物館電子門票', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (8, N'中山路一段236號7樓', N'新北市', NULL, N'台灣', N'永和區', N'0282316118', 300, 0, N'博物館&美術館', N'2', N'場館宗旨：尊重每個信仰、包容每個族群、博愛每個生命 在這沈澱心靈，認識不同宗教文化，拓展視野', NULL, NULL, NULL, N'<p>－商品說明－</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (8, N'中山路一段236號7樓', N'新北市', NULL, N'台灣', N'永和區', N'0282316118', 300, 0, N'博物館&美術館', N'2',
+        N'場館宗旨：尊重每個信仰、包容每個族群、博愛每個生命 在這沈澱心靈，認識不同宗教文化，拓展視野', NULL, NULL, NULL, N'<p>－商品說明－</p>
 
 <ul>
 	<li>場館名稱：世界宗教博物館</li>
@@ -1122,7 +1204,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p>&nbsp;</p>
 ', N'新北．世界宗教博物館 ', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (9, N'16號里山上', N'臺南市', NULL, N'台灣', N'山上區', N'065781900', 90, 0, N'博物館&美術館', N'2', N'以優惠價格遊覽名勝古蹟：山上花園水道博物館 探訪充滿日式風味與生態的場域', NULL, NULL, NULL, N'<p>－行程資訊－</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (9, N'16號里山上', N'臺南市', NULL, N'台灣', N'山上區', N'065781900', 90, 0, N'博物館&美術館', N'2',
+        N'以優惠價格遊覽名勝古蹟：山上花園水道博物館 探訪充滿日式風味與生態的場域', NULL, NULL, NULL, N'<p>－行程資訊－</p>
 
 <ul>
 	<li>古蹟名稱：臺南山上花園水道博物館</li>
@@ -1149,7 +1236,12 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 <p><img alt="" src="https://image.kkday.com/v2/image/get/w_960%2Cc_fit%2Cq_55%2Ct_webp/s1.kkday.com/product_104779/20201117015751_lZmY7/jpg" style="height:540px; width:720px" /></p>
 ', N'臺南山上花園水道博物館門票', NULL, NULL, NULL)
 
-INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status], [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time], [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week], [ticket_start_date]) VALUES (10, N'五濱路二段201號', N'宜蘭縣', NULL, N'台灣', N'五結鄉', N'039508859', 135, 0, N'歷史景點', N'4', N'充滿民俗技藝、戲劇、音樂、舞蹈、工藝等藝術氣息的園區，傳統藝術是扎根及流傳於生活的民間生活藝術之美 另有 DIY 手作方案，適合全家大小一起同樂的親子活動', NULL, NULL, NULL, N'<p>&mdash; 園區介紹 &mdash;</p>
+INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], [location], [phone], [price], [status],
+                       [tag_name], [tag_no], [ticket_brief_intro], [ticket_end_date], [ticket_end_time],
+                       [ticket_image_data], [ticket_intro], [ticket_name], [ticket_open_time], [ticket_open_week],
+                       [ticket_start_date])
+VALUES (10, N'五濱路二段201號', N'宜蘭縣', NULL, N'台灣', N'五結鄉', N'039508859', 135, 0, N'歷史景點', N'4',
+        N'充滿民俗技藝、戲劇、音樂、舞蹈、工藝等藝術氣息的園區，傳統藝術是扎根及流傳於生活的民間生活藝術之美 另有 DIY 手作方案，適合全家大小一起同樂的親子活動', NULL, NULL, NULL, N'<p>&mdash; 園區介紹 &mdash;</p>
 
 <p>宜蘭傳藝園區位於五結鄉冬山河風景區內，占地24公頃，在傳統聚落空間，加入創新體驗模式，深度體驗欣賞臺灣豐富多元的工藝、民俗技藝、戲劇、音樂、舞蹈。這裡是一個動態博物館，讓傳統藝術走入生活，讓生活不忘傳統藝術，踏入園區，映入眼簾的是傳達生活與工藝的魯班街；劇展廣場舞台演繹肢體的人文美感；匯集全台老街建築精華的文昌街；河道波光照映及體驗傳統禮俗收涎抓週樂趣的臨水街；國家興建的文昌祠呈現歲時節慶與信仰民俗文化；家廟建築的廣孝堂，呈現家族凝聚與生命禮俗之人文意涵；展示傳統三合院居民生活的百年歷史黃舉人宅。歡迎用心感受一年四季不同的宜蘭傳藝園區。</p>
 
@@ -1174,8 +1266,8 @@ INSERT [dbo].[ticket] ([ticket_no], [address], [city], [company_id], [country], 
 
 SET IDENTITY_INSERT [dbo].[ticket] OFF
 
-SET IDENTITY_INSERT [dbo].[ticket_image] ON 
-SET IDENTITY_INSERT [dbo].[ticket_image] ON 
+SET IDENTITY_INSERT [dbo].[ticket_image] ON
+SET IDENTITY_INSERT [dbo].[ticket_image] ON
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (1, N'/data/uploadimages/ticket/阿里山.webp', 1)
 --
@@ -1185,9 +1277,11 @@ SET IDENTITY_INSERT [dbo].[ticket_image] ON
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (4, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (5, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (6, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (22, N'/data/uploadimages/ticket/Xpark.jpg', 2)
 --
@@ -1197,9 +1291,11 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (6, N'/dat
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (25, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (26, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (26, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (27, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (27, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (28, N'/data/uploadimages/ticket/海生館.jpg', 3)
 --
@@ -1209,9 +1305,11 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (27, N'/da
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (31, N'/data/uploadimages/ticket/海生館4.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (32, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (32, N'/data/uploadimages/ticket/海生館5.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (33, N'/data/uploadimages/ticket/海生館6.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (33, N'/data/uploadimages/ticket/海生館6.jpg', 3)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (34, N'/data/uploadimages/ticket/阿里山.webp', 1)
 --
@@ -1225,17 +1323,21 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (33, N'/da
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (39, N'/data/uploadimages/ticket/阿里山.webp', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (40, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (40, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (41, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (41, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (42, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (42, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (43, N'/data/uploadimages/ticket/阿里山.webp', 1)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (44, N'/data/uploadimages/ticket/阿里山3.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (45, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (45, N'/data/uploadimages/ticket/阿里山5.jpg', 1)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (46, N'/data/uploadimages/ticket/阿里山2.jpg', 1)
 
@@ -1251,9 +1353,11 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (45, N'/da
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (52, N'/data/uploadimages/ticket/阿里山4.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (53, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (53, N'/data/uploadimages/ticket/阿里山6.jpg', 1)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (54, N'/data/uploadimages/ticket/阿里山.webp', 1)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (54, N'/data/uploadimages/ticket/阿里山.webp', 1)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (55, N'/data/uploadimages/ticket/Xpark.jpg', 2)
 --
@@ -1267,19 +1371,25 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (54, N'/da
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (60, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (61, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (61, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (62, N'/data/uploadimages/ticket/Xpark2.png', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (62, N'/data/uploadimages/ticket/Xpark2.png', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (63, N'/data/uploadimages/ticket/Xpark.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (63, N'/data/uploadimages/ticket/Xpark.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (64, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (64, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (65, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (65, N'/data/uploadimages/ticket/Xpark4.jpg', 2)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (66, N'/data/uploadimages/ticket/Xpark2.png', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (67, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (67, N'/data/uploadimages/ticket/Xpark5.jpg', 2)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (68, N'/data/uploadimages/ticket/Xpark.jpg', 2)
 
@@ -1293,19 +1403,24 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (67, N'/da
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (73, N'/data/uploadimages/ticket/Xpark.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (74, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (74, N'/data/uploadimages/ticket/Xpark6.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (75, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (75, N'/data/uploadimages/ticket/Xpark3.jpg', 2)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (76, N'/data/uploadimages/ticket/海生館.jpg', 3)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (77, N'/data/uploadimages/ticket/海生館.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (78, N'/data/uploadimages/ticket/海生館2.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (78, N'/data/uploadimages/ticket/海生館2.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (79, N'/data/uploadimages/ticket/海生館.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (79, N'/data/uploadimages/ticket/海生館.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (80, N'/data/uploadimages/ticket/海生館3.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (80, N'/data/uploadimages/ticket/海生館3.jpg', 3)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (81, N'/data/uploadimages/ticket/海生館2.jpg', 3)
 
@@ -1313,7 +1428,8 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (80, N'/da
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (83, N'/data/uploadimages/ticket/海生館3.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (84, N'/data/uploadimages/ticket/海生館4.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (84, N'/data/uploadimages/ticket/海生館4.jpg', 3)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (85, N'/data/uploadimages/ticket/海生館2.jpg', 3)
 
@@ -1325,7 +1441,8 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (84, N'/da
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (89, N'/data/uploadimages/ticket/海生館2.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (90, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (90, N'/data/uploadimages/ticket/海生館5.jpg', 3)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (91, N'/data/uploadimages/ticket/海生館.jpg', 3)
 --
@@ -1335,75 +1452,106 @@ INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (90, N'/da
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (94, N'/data/uploadimages/ticket/海生館2.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (95, N'/data/uploadimages/ticket/海生館6.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (95, N'/data/uploadimages/ticket/海生館6.jpg', 3)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (96, N'/data/uploadimages/ticket/海生館5.jpg', 3)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (96, N'/data/uploadimages/ticket/海生館5.jpg', 3)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (97, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
 --
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (98, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (99, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (99, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (100, N'/data/uploadimages/ticket/遠雄海洋公園1.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (101, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 2)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (101, N'/data/uploadimages/ticket/遠雄海洋公園3.jpg', 2)
 
 --INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (102, N'/data/uploadimages/ticket/遠雄海洋公園2.jpg', 2)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (103, N'/data/uploadimages/ticket/Xpark.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (103, N'/data/uploadimages/ticket/Xpark.jpg', 4)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (104, N'/data/uploadimages/ticket/Xpark2.png', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (104, N'/data/uploadimages/ticket/Xpark2.png', 4)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (105, N'/data/uploadimages/ticket/Xpark3.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (105, N'/data/uploadimages/ticket/Xpark3.jpg', 4)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (106, N'/data/uploadimages/ticket/Xpark4.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (106, N'/data/uploadimages/ticket/Xpark4.jpg', 4)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (107, N'/data/uploadimages/ticket/Xpark5.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (107, N'/data/uploadimages/ticket/Xpark5.jpg', 4)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (108, N'/data/uploadimages/ticket/Xpark6.jpg', 4)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (108, N'/data/uploadimages/ticket/Xpark6.jpg', 4)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (109, N'/data/uploadimages/ticket/綠舞.jpg', 5)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (109, N'/data/uploadimages/ticket/綠舞.jpg', 5)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (110, N'/data/uploadimages/ticket/綠舞2.jpg', 5)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (110, N'/data/uploadimages/ticket/綠舞2.jpg', 5)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (111, N'/data/uploadimages/ticket/綠舞3.jpg', 5)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (111, N'/data/uploadimages/ticket/綠舞3.jpg', 5)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (112, N'/data/uploadimages/ticket/綠舞4.jpg', 5)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (112, N'/data/uploadimages/ticket/綠舞4.jpg', 5)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (113, N'/data/uploadimages/ticket/科學教育館.jpg', 6)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (113, N'/data/uploadimages/ticket/科學教育館.jpg', 6)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (114, N'/data/uploadimages/ticket/科學教育館2.jpg', 6)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (114, N'/data/uploadimages/ticket/科學教育館2.jpg', 6)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (115, N'/data/uploadimages/ticket/科學教育館3.jpg', 6)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (115, N'/data/uploadimages/ticket/科學教育館3.jpg', 6)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (116, N'/data/uploadimages/ticket/袖珍博物館.jpg', 7)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (116, N'/data/uploadimages/ticket/袖珍博物館.jpg', 7)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (117, N'/data/uploadimages/ticket/袖珍博物館2.jpg', 7)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (117, N'/data/uploadimages/ticket/袖珍博物館2.jpg', 7)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (118, N'/data/uploadimages/ticket/袖珍博物館3.jpg', 7)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (118, N'/data/uploadimages/ticket/袖珍博物館3.jpg', 7)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (119, N'/data/uploadimages/ticket/袖珍博物館4.jpg', 7)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (119, N'/data/uploadimages/ticket/袖珍博物館4.jpg', 7)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (120, N'/data/uploadimages/ticket/世界宗教博物館.jpg', 8)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (120, N'/data/uploadimages/ticket/世界宗教博物館.jpg', 8)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (121, N'/data/uploadimages/ticket/世界宗教博物館2.jpg', 8)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (121, N'/data/uploadimages/ticket/世界宗教博物館2.jpg', 8)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (122, N'/data/uploadimages/ticket/世界宗教博物館3.jpg', 8)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (122, N'/data/uploadimages/ticket/世界宗教博物館3.jpg', 8)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (123, N'/data/uploadimages/ticket/世界宗教博物館4.jpg', 8)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (123, N'/data/uploadimages/ticket/世界宗教博物館4.jpg', 8)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (124, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 9)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (124, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 9)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (125, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 9)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (125, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 9)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (126, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 9)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (126, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 9)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (127, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 10)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (127, N'/data/uploadimages/ticket/臺南山上花園水道博物館.jpg', 10)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (128, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 10)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (128, N'/data/uploadimages/ticket/臺南山上花園水道博物館2.jpg', 10)
 
-INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1]) VALUES (129, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 10)
+INSERT [dbo].[ticket_image] ([id], [image_path], [ticket_no1])
+VALUES (129, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg', 10)
 
 SET IDENTITY_INSERT [dbo].[ticket_image] OFF
 

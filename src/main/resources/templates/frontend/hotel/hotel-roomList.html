@@ -77,7 +77,7 @@
                                 </thead>
                                 <tbody id="tbody">
                                 <tr th:each="roomList:${roomList}" class="odd gradeX" scope="row">
-                                    <td th:text="${roomList.id}"></td>
+                                    <td th:text="${roomList.roomid}"></td>
                                     <td th:text="${roomList.roomname}"></td>
                                     <td th:text="${roomList.peopleCount}"></td>
                                     <td th:text="${roomList.hotelArea}"></td>
@@ -85,11 +85,12 @@
                                     <td th:text="${roomList.roomtype}"></td>
                                     <td th:text="${roomList.roomprice}"></td>
                                     <th>
-                                        <a class="btn1" th:href="@{/updateRoom(id=${roomList.id})}">編輯房間</a>
+                                        <a class="btn1"
+                                           th:href="@{/updateRoom(id=${roomList.roomid},hotelid=${hotelid.id})}">編輯房間</a>
                                     </th>
 
                                     <th>
-                                        <a class="btn1" th:href="@{/deleteRoom(id=${roomList.id})}">刪除房間</a>
+                                        <a class="btn1" th:href="@{/deleteRoom(id=${roomList.roomid})}">刪除房間</a>
                                     </th>
 
 

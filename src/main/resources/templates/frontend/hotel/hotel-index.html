@@ -92,9 +92,7 @@
                                     <td>
 
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <!-- 												<button th:text="${comment.itemTb + '#' +comment.itemId}" data-toggle="modal" data-target="#exampleModal" -->
-                                            <!-- 															    class="btn btn-link font-weight-bold js-show-modal-item px-0" style="color:#d15f08"></button> -->
-                                            <input name="locationImage" type="hidden" th:value="${hotel.image}">
+
                                             <button class="btn btn-light btn-rounded btn-sm js-show-modal1">
                                                 <i class="fa fa-search" aria-hidden="true"></i>
                                             </button>
@@ -131,12 +129,14 @@
     </div>
 </div>
 
+
 <!-- Footer -->
 <footer th:replace="frontend/partials/fragment :: footer"></footer>
 <!-- Back to top -->
 <div th:replace="frontend/partials/fragment :: toTop"></div>
 <!-- Modal1 -->
 <div th:replace="frontend/partials/fragment :: modal1"></div>
+<!--<div th:replace="frontend/partials/fragment :: hotel-model2"></div>-->
 <!-- javascript -->
 <div th:replace="frontend/partials/fragment :: script"></div>
 
@@ -146,6 +146,7 @@
 <script th:src="@{/vendors/datatables.net-bs4/dataTables.bootstrap4.js}"
         src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
 <script th:src="@{/js/dataTables.select.min.js}" src="js/dataTables.select.min.js"></script>
+
 <script>
     (function ($) {
         $(document).ready(function () {

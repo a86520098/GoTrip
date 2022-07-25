@@ -259,7 +259,11 @@ public class HotelController {
 
     @GetMapping("/addHotelRoom")
     public String showNewRoom(Model model, @RequestParam("id") Integer id) {
-        System.out.println("I get the id from hotel " + id + " is hotel id ");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("I get the id from hotel " + id + " is hotel id ");
+        }
+
         HotelRoom hotelRoom = new HotelRoom();
         Hotel byId = hotelService.findById(id);
         model.addAttribute("mainHotel", byId);
@@ -300,19 +304,24 @@ public class HotelController {
     }
 
     @GetMapping("/updateRoom")
-    public String UpdataRoom(Model model, @RequestParam("id") Integer id) {
-        Hotel byId = hotelService.findById(id);
-        model.addAttribute("mainHotel", byId);
+    public String UpdataRoom(Model model, @RequestParam("id") Integer id, @RequestParam("hotelid") Integer hotelID) {
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("hotel ID=" + hotelID);
+            System.out.println("Room  ID=" + id);
+        }
+        model.addAttribute("mainHotel", hotelService.findById(hotelID));
         model.addAttribute("update", hotelroomService.findByid(id));
         return "/frontend/hotel/hotel-EditRoom";
     }
 
-    @PostMapping("/frontEditRoom/{id}")
+    @PostMapping("/frontEditRoom/{hotelid}")
     public String getEditRoom(@ModelAttribute("hotelroom") HotelRoom hotelRoom,
                               @RequestParam(value = "imagefile", required = false) List<MultipartFile> files,
-                              @PathVariable("id") Integer id
+                              @PathVariable("hotelid") Integer hotelid
     ) {
-        Hotel byId = hotelService.findById(id);
+
+        Hotel byId = hotelService.findById(hotelid);
         List<HotelRoomImage> imagesLish = new ArrayList<>();
         for (MultipartFile file : files) {
             try {
@@ -324,10 +333,6 @@ public class HotelController {
             }
         }
         hotelRoom.setHotelRoomImageList(imagesLish);
-        for (int i = 0; i < 10; i++) {
-            System.out.println("看到我代表是更新" + byId.getId());
-
-        }
 
 
         hotelRoom.setHotel(byId);
@@ -341,6 +346,10 @@ public class HotelController {
     @GetMapping("getHotelRoomList")
     public String getAllHotelRoom(Model model, @RequestParam("id") Integer id) {
         System.out.println("Get All RoomList");
+        for (int i = 0; i < 10; i++) {
+            System.out.println("查詢本飯店房間列表  主表id=" + id);
+        }
+        model.addAttribute("hotelid", hotelService.findById(id));
         model.addAttribute("roomList", hotelroomService.findAllHotelRoom(id));
         return "/frontend/hotel/hotel-roomList";
     }
@@ -404,11 +413,6 @@ public class HotelController {
                                  @RequestParam(value = "imagefile", required = false) List<MultipartFile> files
     ) {
         System.out.println("準備新增接收資料了");
-//        MultipartFile picture = hotels.getProductImage(); //拿照片
-//        String originalFilename = picture.getOriginalFilename(); //拿檔案名稱
-//        Timestamp adminTime = new Timestamp(System.currentTimeMillis()); //拿檔案接受到的當下時間
-//        hotels.setAdmissionTime(adminTime); //塞進去
-
         List<HotelImage> images = new ArrayList<>();
         for (MultipartFile file : files) {
             try {
