@@ -109,16 +109,14 @@
                     <!-- 						<a th:href="@{/login} @{/backend/index}" -->
                     <div class="account p-t-22" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/login}"
-                           class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                           data-notify="0" >
+                           class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
                             <i class="zmdi zmdi-account"></i>
                         </a>
                     </div>
                     
                     <div class="account p-t-22" sec:authorize="isAuthenticated()">
                         <a 
-                            class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" 
-                            data-notify="0" > 
+                            class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11" > 
                             <i class="zmdi zmdi-account"></i>
                         </a>
 <!--                     </div> -->
@@ -174,8 +172,7 @@
                 <i class="zmdi zmdi-favorite-outline"></i>
             </a>
             <a th:href="@{/backend/index}"
-               class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-               data-notify="0">
+               class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
                 <i class="zmdi zmdi-account"></i>
             </a>
         </div>

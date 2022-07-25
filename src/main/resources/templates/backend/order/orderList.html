@@ -79,7 +79,8 @@
                       			</td>
                       		<td>
                       		<button type="button" th:value="${orderBean.orderNo}" class="btn btn-success btn-detail">詳細</button>
-                      		<button type="button" th:onclick="completealert([[${orderBean.orderNo}]])" class="btn btn-primary btn-complete">完成訂單</button>
+                      		<button type="button" th:onclick="completealert([[${orderBean.orderNo}]])" 
+                      		class="btn btn-primary btn-complete"  th:if="${orderBean.status == 1}">完成訂單</button>
                       		</td>	
                       		<td><button type="button" class="btn btn-danger btn-delete"
                       		th:onclick="deletealert([[${orderBean.orderNo}]])" th:if="${orderBean.status == 0}">刪除</button></td>

@@ -367,6 +367,29 @@
 		let	itemId = $('.get-itemid').attr('id');
 		let type = 'car';
 		let qty = 1;
+		
+		var dtToday = new Date();
+		
+		var mydate = new Date(date);
+		
+		console.log(mydate + '   '  +  dtToday);
+// 		日期輸入驗證判斷
+		if(mydate <= dtToday){
+			Swal.fire({
+				  icon: 'error',
+				  title: '日期不得選擇今天(含)之前'
+				})
+			return ; 
+		}
+		
+		if(date == ""){
+			Swal.fire({
+				  icon: 'error',
+				  title: '請選擇日期!'
+				})
+			return ; 	
+		}
+			
 		console.log(itemId + "  " + date)
 			 $.ajax({
 		            type: 'GET',
@@ -413,6 +436,7 @@
 		       var numProduct = Number($(this).prev().val());
 		       if(numProduct < 99) $(this).prev().val(numProduct + 1);
 		   });
+
 
 
 		function getComments() {
