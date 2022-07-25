@@ -142,13 +142,17 @@ public class UserAccountController {
 	@PostMapping({"/userdetals/update"})
 	public String saveDetails (UserData user, RedirectAttributes redirectAttributes,
 			@AuthenticationPrincipal UserDetailsData loggedUser,
-			@RequestParam(value = "imagefile", required = false) MultipartFile file) {
-//		try {
-//			String savePath = FileUploadUtil.saveFile("user", file);
-//			user.setImage(savePath);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+			@RequestParam(value = "imageUser", required = false) MultipartFile file) {
+		if (file != null) {
+			try {
+				String savePath = FileUploadUtil.saveFile("user", file);
+				System.out.println("savepath=" +savePath);
+				user.setImage(savePath);
+				loggedUser.setImage(savePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		
 		userRepository.save(user);
 		
@@ -160,6 +164,7 @@ public class UserAccountController {
 		loggedUser.setCity(user.getCity());
 		loggedUser.setLocation(user.getLocation());
 		loggedUser.setAddress(user.getAddress());
+
 		loggedUser.isEnabled(true);
 		
 		redirectAttributes.addFlashAttribute("message", "儲存成功！");

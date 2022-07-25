@@ -17,6 +17,8 @@ public class test {
 		String encode3 = passwordEncoder.encode("user");
 		System.out.println(encode3);
 
+		String encode4 = passwordEncoder.encode("eeit454");
+		System.out.println(encode4);
 	
 	
 	
