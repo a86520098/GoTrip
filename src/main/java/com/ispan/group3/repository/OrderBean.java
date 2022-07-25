@@ -20,7 +20,7 @@ public class OrderBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer orderNo;
-	String memberId;
+	Integer memberId;
 //	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	String orderDate;
 	Integer totalPrice;
@@ -36,7 +36,7 @@ public class OrderBean {
 
 	}
 
-	public OrderBean(Integer orderNo, String memberId, String orderDate, Integer totalPrice, Integer status) {
+	public OrderBean(Integer orderNo,Integer memberId, String orderDate, Integer totalPrice, Integer status) {
 		super();
 		this.orderNo = orderNo;
 		this.memberId = memberId;
@@ -55,11 +55,11 @@ public class OrderBean {
 		this.orderNo = orderNo;
 	}
 
-	public String getMemberId() {
+	public Integer getMemberId() {
 		return memberId;
 	}
 
-	public void setMemberId(String memberId) {
+	public void setMemberId(Integer memberId) {
 		this.memberId = memberId;
 	}
 

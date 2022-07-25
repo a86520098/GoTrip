@@ -35,7 +35,7 @@
 
 
 	<!-- Shoping Cart -->
-	<form class="bg0 p-t-75 p-b-85">
+	<form action="/gotrip/creatOrder" class="bg0 p-t-75 p-b-85" id="payStatusForm">
 		<div class="container">
 			<div class="row">
 				<!-- <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm"></div> -->
@@ -93,12 +93,12 @@
 						<div class="flex-w flex-sb-m  p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
 							<div class="flex-w flex-m m-r-20 m-tb-5">
 								<!-- 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code"> -->
-								<select class="form-select" aria-label="Default select example" id="addtocart">
-									<option selected>請選擇商品</option>
-									<option value="1">住宿</option>
-									<option value="2">票券</option>
-									<option value="3">租車</option>
-								</select>
+<!-- 								<select class="form-select" aria-label="Default select example" id="addtocart"> -->
+<!-- 									<option selected>請選擇商品</option> -->
+<!-- 									<option value="1">住宿</option> -->
+<!-- 									<option value="2">票券</option> -->
+<!-- 									<option value="3">租車</option> -->
+<!-- 								</select> -->
 <!-- 								<button -->
 <!-- 									class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5 "> -->
 <!-- 									Apply coupon</button> -->
@@ -115,48 +115,48 @@
 				<div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
 					<div
 						class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-30">金額及折扣總計</h4>
+						<h4 class="mtext-109 cl2 p-b-30">金額總計</h4>
 
 						<div class="bor12 p-b-13">
-							<div class="row">
-								<input class="col-6 stext-104 cl2 plh4 size-219 bor13 p-lr-20 "
-									type="text" name="coupon" placeholder="Coupon Code">
-								<div
-									class="col-6 flex-c-m stext-101 cl2 size-219 bg8 bor13 hov-btn3 pointer ">
-									使用優惠券</div>
-							</div>
+<!-- 							<div class="row"> -->
+<!-- 								<input class="col-6 stext-104 cl2 plh4 size-219 bor13 p-lr-20 " -->
+<!-- 									type="text" name="coupon" placeholder="Coupon Code"> -->
+<!-- 								<div -->
+<!-- 									class="col-6 flex-c-m stext-101 cl2 size-219 bg8 bor13 hov-btn3 pointer "> -->
+<!-- 									使用優惠券</div> -->
+<!-- 							</div> -->
 
 						</div>
 
-						<div class="flex-w flex-t bor12 p-t-15 ">
-							<div class="size-208">
-								<span class="stext-110 cl2"> 折扣種類: </span>
-							</div>
+<!-- 						<div class="flex-w flex-t bor12 p-t-15 "> -->
+<!-- 							<div class="size-208"> -->
+<!-- 								<span class="stext-110 cl2"> 折扣種類: </span> -->
+<!-- 							</div> -->
 
-							<div class="size-209">
-								<span class="mtext-110 cl2">無</span>
-							</div>
-							<div class="size-208">
-								<span class="stext-110 cl2"> 折扣金額: </span>
-							</div>
+<!-- 							<div class="size-209"> -->
+<!-- 								<span class="mtext-110 cl2">無</span> -->
+<!-- 							</div> -->
+<!-- 							<div class="size-208"> -->
+<!-- 								<span class="stext-110 cl2"> 折扣金額: </span> -->
+<!-- 							</div> -->
 
-							<div class="size-209">
-								<span class="mtext-110 cl2">$0</span>
-							</div>
-							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
+<!-- 							<div class="size-209"> -->
+<!-- 								<span class="mtext-110 cl2">$0</span> -->
+<!-- 							</div> -->
+<!-- 							<div class="size-209 p-r-18 p-r-0-sm w-full-ssm"> -->
 
 
-								<div class="p-t-15"></div>
-							</div>
-						</div>
+<!-- 								<div class="p-t-15"></div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 
 						<div class="flex-w flex-t p-t-27 p-b-33">
 							<div class="size-208">
-								<span class="stext-110 cl2"> 原價: </span>
+<!-- 								<span class="stext-110 cl2"> 原價: </span> -->
 							</div>
 
 							<div class="size-209">
-								<span class="mtext-110 cl2 originalPrice" th:text="${ShoppingCart.getSubtotal()}"> $1680 </span>
+<!-- 								<span class="mtext-110 cl2 originalPrice" th:text="${ShoppingCart.getSubtotal()}"> $1680 </span> -->
 							</div>
 							<div class="size-208 moneymargin">
 								<span class="mtext-101 cl2"> 總價: </span>
@@ -169,8 +169,11 @@
 						<div class="row">
 							<a href="/gotrip" class="col-6 flex-c-m stext-101 cl2 size-116  bg8 bor14 hov-btn3 p-lr-15 trans-04 pointer flex-c-m">
 								繼續購物</a>
-							<a href="/gotrip/creatOrder" class="col-6 flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-								結帳</a>
+							
+							<input type="hidden" name="payStatus" id="payStatus"> 
+							<button class="col-6 flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer btn-create-order">
+								結帳或儲存</button>
+								
 						</div>
 
 					</div>
@@ -399,6 +402,48 @@
 			let itemNumber = $(this).val();		
 			console.log(productKey + " " + itemNumber);
 			let element = $(this);
+		
+// 	   輸入商品數量 驗證判斷
+			if(itemNumber == ''){
+				
+				var lastNumber = getLastItemNumber(productKey);
+				
+				$(this).val(lastNumber);
+				
+				Swal.fire({
+					  icon: 'error',
+					  title: '數量不得為空',
+					  text: '已回復數量為' + lastNumber 
+					})
+					return ;
+			}
+			
+		 	if(itemNumber > 99){
+		 		
+		 		var lastNumber = getLastItemNumber(productKey);
+		 		
+		 		$(this).val(lastNumber);
+		 		Swal.fire({
+					  icon: 'error',
+					  title: '數量不得大於99',
+					  text: '已回復數量為' + lastNumber,
+					  footer: '<a href="">如需大量訂購請按我</a>'
+					})
+		 		  return ;
+		 	}	
+			if(itemNumber < 1){
+		 		
+		 		var lastNumber = getLastItemNumber(productKey);
+		 		
+		 		$(this).val(lastNumber);
+		 		Swal.fire({
+					  icon: 'error',
+					  title: '數量不得為0',
+					  text: '已回復數量為' + lastNumber
+					})
+		 		  return ;
+		 	}
+		 	
 			 $.ajax({
 		            type: 'GET',
 		            url: '/gotrip/updateItem',
@@ -419,6 +464,9 @@
 		   	
 		                $('.originalPrice').text(data.subtotal);
 		                $('.totalPrice').text(data.subtotal);
+		                
+		                   lastNumber = data.content[productKey].quantity;
+		               
 		            },
 		    		error: function(jqXHR,textStatus,errorThrown) {
 						console.log(jqXHR);
@@ -509,8 +557,69 @@
 	        
 	    });
 			
-			
+	    $(".btn-create-order").click(function(e){
+			e.preventDefault(); // 取消原始動作
+// 			let id = $(this).val();
+	 			
+			const swalWithBootstrapButtons = Swal.mixin({
+				  customClass: {
+				    confirmButton: 'btn btn-danger',
+				    cancelButton: 'btn btn-success' 	
+				  },
+				  buttonsStyling: true
+				})
+
+				swalWithBootstrapButtons.fire({
+				  title: '結帳或儲存訂單?',
+				  text: "儲存訂單將導引至會員中心",
+				  icon: 'warning',
+				  showCloseButton: true,
+				  showCancelButton: true,
+				  cancelButtonText: '儲存訂單',
+				  confirmButtonText: '我要結帳',
+				 
+				}).then((result) => {
+				  if (result.isConfirmed) {
+					  $('#payStatus').val(1);
+					  $('#payStatusForm').submit();
+					 
+				  } else if (
+				    /* Read more about handling dismissals below */
+				    result.dismiss === Swal.DismissReason.cancel
+				  ) {
+					  $('#payStatus').val(0);
+					  $('#payStatusForm').submit();
+				  }
+				})
+		})
 // 		});
+// 		獲取商品最後數量的方法
+			function getLastItemNumber(productKey){
+// 				 商品最後數量
+				var lastItemNumber;
+			 $.ajax({
+		            type: 'GET',
+		            url: '/gotrip/lastItemNumber',
+		            data:{
+		            	productKey: productKey
+		            	},
+		            dataType: 'json',
+		            async:false,
+		            success: function (data) {
+	   	    
+		              lastItemNumber = data;
+		            },
+		    		error: function(jqXHR,textStatus,errorThrown) {
+						console.log(jqXHR);
+						console.log(textStatus); 
+						console.log(errorThrown);
+					}
+		                
+		                
+		});	
+			
+			 return lastItemNumber;
+		}
 	</script>
 
 </body>

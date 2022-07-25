@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,15 +16,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ispan.group3.repository.OrderBean;
 import com.ispan.group3.repository.OrderItemBean;
+import com.ispan.group3.repository.UserData;
+import com.ispan.group3.repository.UserDetailsData;
 import com.ispan.group3.service.OrderService;
+import com.ispan.group3.service.UserService;
 
 // 最上面也有mapping路徑
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-	@Autowired
+	
 	private OrderService orderService;
 
+	private UserService userService;
+	
+	@Autowired
+	public OrderController(OrderService orderService, UserService userService) {
+		super();
+		this.orderService = orderService;
+		this.userService = userService;
+	}
+	
+	
 	@GetMapping("/orderlist")
 	public String processAllQuery(Model m) throws Exception {
 		
@@ -34,10 +48,13 @@ public class OrderController {
 		return "backend/order/orderList";
 	}
 	@GetMapping("/client/orderlist")
-	public String clientOrderAllQuery(Model m) throws Exception {
+	public String clientOrderAllQuery(Model m,@AuthenticationPrincipal UserDetailsData loggedUser) throws Exception {
+		
+		UserData user = userService.findByUsername(loggedUser.getUsername());
+		int memberId = user.getUser_id();
 		
 		System.out.println("是否執行");
-		List<OrderBean> orderBeans = orderService.findAllOrder();
+		List<OrderBean> orderBeans = orderService.findBymemberId(memberId);
 		
 		m.addAttribute("orderBeans", orderBeans);
 		

@@ -238,6 +238,7 @@
 		  				    '<th scope="col">商品編號</th>' +
 		  				    '<th scope="col">類別</th>' +
 		  				    '<th scope="col">品項</th>' +
+		  				    '<th scope="col">預定日期</th>' +
 		  				    '<th scope="col">單價</th>' +
 		  				    '<th scope="col">數量</th>' +
 		  				    '<th scope="col">總價</th>' +
@@ -253,10 +254,17 @@
 		  			}else if(data.items[i].type == "car"){
 		  				category = '租車'
 		  			}
+		  			let goDate = data.items[i].goDate;
+		  			
+		  			if(goDate == null){
+		  				goDate = '無期限';
+		  			}
+		  			
 	  				html += '<tr>' +
 	  						'<td>' + data.items[i].itemNo + '</td>' +
 	  						'<td>' + category + '</td>' +
 	  						'<td>' + data.items[i].itemInfo + '</td>' +
+	  						'<td>' + goDate + '</td>' +
 	  						'<td>' + data.items[i].unitPrice + '</td>' +
 	  						'<td>' + data.items[i].quantity + '</td>' +
 	  						'<td>' + data.items[i].unitPrice * data.items[i].quantity + '</td>' +
@@ -267,7 +275,8 @@
 	  				Swal.fire({
 	  				  icon: 'info',
 	  				  title: '訂單明細',
-	  				  html : html
+	  				  html : html,
+	  				  width: 1000
 	  				})
 	 
 	  			}, 

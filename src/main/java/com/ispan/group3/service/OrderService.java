@@ -14,7 +14,7 @@ public interface OrderService {
 	
 	void insertOrder(OrderBean orderBean);
 //	透過memberId查詢
-	List<OrderBean> findBymemberId(String memberId);
+	List<OrderBean> findBymemberId(Integer memberId);
 //	更改訂單狀態
 	void updateOrderStatus(Integer status,Integer orderId);
 	
