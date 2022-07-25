@@ -33,7 +33,17 @@ public class ShoppingCart {
 			oiBean.setQuantity(oib.getQuantity() + oiBean.getQuantity());
 		}
 	}
+	
+	public int lastItemNumber(String oid) {
+			
+		   OrderItemBean  bean = cart.get(oid);
+		   
+	       return bean.getQuantity();
 
+	}
+	
+	
+	
 	public boolean updateItem(String oid, int newQty) {
 		if ( cart.get(oid) != null ) {
 		   OrderItemBean  bean = cart.get(oid);

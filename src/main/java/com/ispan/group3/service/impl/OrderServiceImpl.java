@@ -38,9 +38,10 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrderBean> findBymemberId(String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<OrderBean> findBymemberId(Integer memberId) {
+		
+		
+		return orderRepository.findByMemberId(memberId);
 	}
 
 	@Override

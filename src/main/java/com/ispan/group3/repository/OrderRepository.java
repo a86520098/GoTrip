@@ -28,7 +28,7 @@ public interface OrderRepository extends JpaRepository<OrderBean, Integer> {
 		
 	
 //	 JPA方法規則自訂用(memberId)查詢
-	 List<OrderBean> findByMemberId(String memberId);
+	 List<OrderBean> findByMemberId(Integer memberId);
 	
 //	 自定義 CRUD    可用nativeQuery (true) 使用原生SQL語法
 	 @Transactional

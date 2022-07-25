@@ -1566,6 +1566,63 @@ VALUES (129, N'/data/uploadimages/ticket/臺南山上花園水道博物館3.jpg'
 SET IDENTITY_INSERT [dbo].[ticket_image] OFF
 
 
+--order相關資料--------------------------------------------------------------------
+ 
+SET IDENTITY_INSERT [dbo].[order_bean] ON 
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (1, 12, N'2022/07/25 14:44', 2, 2355)
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (2, 2, N'2022/07/25 14:45', 1, 18500)
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (3, 12, N'2022/07/25 14:46', 0, 6600)
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (4, 12, N'2022/07/25 14:47', 1, 2900)
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (5, 1, N'2022/07/25 14:47', 2, 25000)
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (6, 2, N'2022/07/25 14:48', 2, 13300)
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (7, 1, N'2022/07/25 14:49', 0, 17500)
+ 
+INSERT [dbo].[order_bean] ([order_no], [member_id], [order_date], [status], [total_price]) VALUES (8, 2, N'2022/07/25 14:51', 0, 4680)
+ 
+SET IDENTITY_INSERT [dbo].[order_bean] OFF
+ 
+SET IDENTITY_INSERT [dbo].[order_items] ON 
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (1, NULL, N'綠舞日式主題園區', N'039603808', NULL, 5, 3, N'ticket', 285, 1)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (2, N'2022-07-28', N'資展租車(Toyota)', N'02-25021389', NULL, 1, 1, N'car', 1500, 1)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (3, N'2022-07-29', N'雙星大飯店 (Twinstar Hotel)', N'976472309', NULL, 4, 3, N'hotel', 4000, 2)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (4, N'2022-07-31', N'台中金典酒店 (Splendor Hotel)', N'916752161', NULL, 5, 2, N'hotel', 1000, 2)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (5, N'2022-07-29', N'資展租車(Toyota)', N'02-25021389', NULL, 16, 2, N'car', 2250, 2)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (6, NULL, N'袖珍博物館電子門票', N'0225150583', NULL, 7, 10, N'ticket', 220, 3)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (7, N'2022-08-03', N'資展租車(Toyota)', N'02-25021389', NULL, 3, 2, N'car', 2200, 3)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (8, NULL, N'市立天文科學教育館', N'0228314551', NULL, 6, 9, N'ticket', 100, 4)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (9, N'2022-08-11', N'名人堂花園大飯店 (Fame Hall Garden Hotel)', N'911223222', NULL, 11, 2, N'hotel', 1000, 4)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (10, N'2022-08-07', N'花園淘淘國際酒店 (Fame Hall Garden Hotel)', N'911223222', NULL, 12, 5, N'hotel', 5000, 5)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (11, NULL, N'新北．世界宗教博物館 ', N'0282316118', NULL, 8, 7, N'ticket', 300, 6)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (12, N'2022-07-28', N'資展租車(Toyota)', N'02-25021389', NULL, 3, 1, N'car', 2200, 6)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (13, N'2022-07-28', N'古華花園飯店 (Kuva Chateau Hotel)', N'911223333', NULL, 6, 3, N'hotel', 3000, 6)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (14, N'2022-08-04', N'高雄菁英國際旅館', N'911223222', NULL, 9, 7, N'hotel', 2000, 7)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (15, N'2022-08-07', N'資展租車(Nissan)', N'02-89310266', NULL, 8, 2, N'car', 1750, 7)
+ 
+INSERT [dbo].[order_items] ([item_no], [go_date], [item_info], [phone], [photo], [product_id], [quantity], [type], [unit_price], [order_no]) VALUES (16, N'2022-08-10', N'資展租車(Luxgen)', N'02-2835110', NULL, 11, 2, N'car', 2340, 8)
+ 
+SET IDENTITY_INSERT [dbo].[order_items] OFF
 
 -- MySQL區域
 
