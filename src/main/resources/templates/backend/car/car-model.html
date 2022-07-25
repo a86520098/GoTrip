@@ -39,24 +39,12 @@
 								<div class="card-body">
 									<div class="d-flex justify-content-between align-baseline">
 										<div class="card-title">車款列表</div>
-<!-- 										<a class=" text-right btn btn-primary  my-2" th:href="@{/backend/cars/form}">新增車款</a> -->
+										<a class=" text-right btn btn-primary btn-sm my-2 font-weight-bold" th:href="@{/backend/cars/form}" style="font-size: 15px">新增車款</a>
 									</div>
 
 									<div class="table-responsive">
 										<table id="data-table" class="display expandable-table w-100"
 											style="text-align: center">
-											<!--                       <colgroup> -->
-											<!--                         <col span="1" style="width: 5%;"> -->
-											<!--                         <col span="1" style="width: 8%;"> -->
-											<!--                         <col span="1" style="width: 5%;"> -->
-											<!--                         <col span="1" style="width: 8%;"> -->
-											<!--                         <col span="1" style="width: 8%;"> -->
-											<!--                         <col span="1" style="width: 5%;"> -->
-											<!--                         <col span="1" style="width: 20%;"> -->
-											<!--                         <col span="1" style="width: 20%;"> -->
-											<!--                         <col span="1" style="width: 10%;"> -->
-											<!--                         <col span="1" style="width: 11%;"> -->
-											<!--                       </colgroup> -->
 											<thead>
 												<tr>
 													<th>類別</th>
@@ -67,6 +55,7 @@
 													<th>變速</th>
 													<th>排氣量</th>
 													<th>照片</th>
+<!-- 													<th>數量</th> -->
 													<th>修改</th>
 												</tr>
 											</thead>
@@ -80,6 +69,7 @@
 													<td th:text="${car.transmission}"></td>
 													<td th:text="${car.engine}"></td>
 													<td><img th:src="@{${car.image}}" class="rounded img-com" /></td>
+<!-- 													<td th:text="${#aggregates.sum(car.carOption.![amount])}"></td> -->
 													<td>
 														<form th:action="@{/backend/cars/form/}+${car.id}" method="get" class="inline-block">
 															<button type="submit" class="px-2  btn btn-warning btn-rounded btn-sm">

@@ -22472,7 +22472,7 @@ h6,
 }
 
 p {
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-bottom: .5rem;
   line-height: 1.3rem;
 }
@@ -22504,7 +22504,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: .9375rem;
+  font-size: 1rem;
 }
 
 .display-1 {
@@ -30345,7 +30345,7 @@ body.avgrund-active {
   background: #FFB319;
   padding: 10px;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .expandable-table thead tr th:first-child {
@@ -30364,7 +30364,7 @@ body.avgrund-active {
 
 .expandable-table tr td {
   padding: 14px;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .expandable-table tr td.select-checkbox {
