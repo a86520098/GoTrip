@@ -38,11 +38,11 @@
 										我的優惠券
 									</a>
 								</li>
-								<li class="bor18">
-									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
-										帳號安全
-									</a>
-								</li>
+<!-- 								<li class="bor18"> -->
+<!-- 									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 "> -->
+<!-- 										帳號安全 -->
+<!-- 									</a> -->
+<!-- 								</li> -->
 								<li class="bor18" sec:authorize="hasRole('USER')">
 									<a th:href="@{/become_dealer}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
 										成為店家
@@ -169,23 +169,63 @@
 	<script th:src="@{/js/tw-city-selector.min.js}"></script>
 	<script>
 		
-		$('#btn-addModel').on('click', function() {
-			
+		$('').on('click', function() {
+			const swalWithBootstrapButtons = Swal.mixin({
+				  customClass: {
+				    confirmButton: 'btn btn-success',
+				    cancelButton: 'btn btn-danger'
+				  },
+				  buttonsStyling: false
+				})
+
+				swalWithBootstrapButtons.fire({
+				  title: '確定成為店家嗎？',
+// 				  text: "You won't be able to revert this!",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonText: '確定，我要成為店家',
+				  cancelButtonText: '我再考慮一下',
+				  reverseButtons: true
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    swalWithBootstrapButtons.fire(
+				      '已完成!',
+				      '順利成為店家',
+				      '將導回登入畫面，麻煩重新登入'
+				    )
+				  } else if (
+				    /* Read more about handling dismissals below */
+				    result.dismiss === Swal.DismissReason.cancel
+				  ) {
+				    swalWithBootstrapButtons.fire(
+				      '確認取消',
+				      '歡迎有機會再成為店家的一員'
+				    )
+				  }
+				})
 		})
 		
-		$(".btn-insert-opts").click(function(e){
+// 		Swal.fire({
+// 		  position: 'top-end',
+// 		  icon: 'success',
+// 		  title: 'Your work has been saved',
+// 		  showConfirmButton: false,
+// 		  timer: 1500
+// 		})
+		
+		$("#submit").click(function(e){
 			e.preventDefault();
 			Swal.fire({
 				icon: 'success',
-				title: '儲存成功',
-				text: "即將為您導回地點列表",
+				title: '成功成為店家',
+				text: "再麻煩您重新登入一次",
 				showConfirmButton: false,
-				timer: 1500
+				timer: 2000
 			});
 
-			setInterval(function() {
-				$('#insert-opt-form').submit()
-			}, 1500);
+// 			setInterval(function() {
+// 				$('#insert-opt-form').submit()
+// 			}, 1500);
 		})
 		
 		$('.discount').on('blur', function () {
@@ -204,6 +244,8 @@
     }
 		
 	
+
+		
 	</script>
 
 </body>

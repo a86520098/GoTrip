@@ -48,9 +48,9 @@ public class SecurityConfig{
 		http.authorizeHttpRequests()
 		.antMatchers("/login","/","/index","/resources/**","/css/**","/fonts/**","/images/**","/js/**","/vendors/**","/register","/CheckEmail","/logout","/data/**","/ticket/**","/findHotelList/**","/cars/**","/api/**","/use/**","/showCartItems","/verify").permitAll() //resource資料夾靜態資料可匿名存取
 //		.antMatchers("/login") //對象為所有網址
-		.antMatchers("/admin","/vendors/**").hasRole("ADMIN") //admin才可以訪問後台
+		.antMatchers("/admin","/vendors/**","/vendor/**").hasRole("ADMIN") //admin才可以訪問後台
 		.antMatchers("/userdetails","/userdetals/update").hasAnyRole("USER","DEALER") //user只能訪問前台user畫面
-		.antMatchers("/vendors/**","/userdetails","/userdetals/update").hasAnyRole("DEALER","ADMIN") //dealer可以訪問前台所有畫面
+		.antMatchers("/vendors/**","/userdetails","/userdetals/update","/vendor/**").hasAnyRole("DEALER","ADMIN") //dealer可以訪問前台所有畫面
 		.anyRequest().authenticated() //存取必須通過驗證
 	.and()
 	.formLogin() 
