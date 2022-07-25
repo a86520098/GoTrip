@@ -372,15 +372,15 @@ SET
     IDENTITY_INSERT [dbo].[user_data] ON
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
-VALUES (1, N'admin', N'管理員', N'ADMIN', N'$2a$10$0CyR/2imAewmqwur36Xqy.FhTcyZ8KwZkJCeScapxC9DDCyrnihom', NULL, NULL, NULL,
+VALUES (1, N'admin@gmail.com', N'管理員', N'ADMIN', N'$2a$10$0CyR/2imAewmqwur36Xqy.FhTcyZ8KwZkJCeScapxC9DDCyrnihom', NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, N'ROLE_ADMIN',1,NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
-VALUES (2, N'dealer', NULL, NULL, N'$2a$10$iuo37iB/g9tK0l94aHFVK.f/onjfh3MFMNIgBy2SLYwrC/RsXw/MC', NULL, NULL, NULL,
+VALUES (2, N'dealer@gmail.com', N'店家', N'DEALER', N'$2a$10$iuo37iB/g9tK0l94aHFVK.f/onjfh3MFMNIgBy2SLYwrC/RsXw/MC', NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, N'ROLE_DEALER', 1, NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
-VALUES (12, N'user', NULL, NULL, N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', NULL,
+VALUES (12, N'user@gmail.com', N'顧客', N'USER', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, N'ROLE_USER',1,NULL)
 INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) 
 VALUES (13, N'臺南市仁德區建國南路二段139號', NULL, N'1987-06-09', N'陳傑森', N'臺南市', NULL, N'Jason Chen', 0, N'男', NULL, N'仁德區', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'0978048778', NULL, N'jason5566@gmai.com', NULL)

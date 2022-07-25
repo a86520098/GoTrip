@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 public class UserDetailsData implements UserDetails{
 	
 	private static final long serialVersionUID = 1L;
@@ -92,8 +93,8 @@ public class UserDetailsData implements UserDetails{
 		this.userData.setAddress(address);
 	}
 	
-	public void setDealer_id(String Dealer_id) {
-		this.userData.setDealer_name(Dealer_id);
+	public void setDealer_id(String dealer_id) {
+		this.userData.setDealer_name(dealer_id);
 	}
 	
 	public void setTax_id(String tax_id) {
@@ -106,6 +107,10 @@ public class UserDetailsData implements UserDetails{
 	
 	public boolean isEnabled(boolean b) {
 		return userData.isEnabled();
+	}
+	
+	public void setImage(String image) {
+		this.userData.setImage(image);
 	}
 
 
