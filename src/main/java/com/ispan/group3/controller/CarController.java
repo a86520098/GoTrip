@@ -212,9 +212,10 @@ public class CarController {
 	
 	// ---------- 儲存車款 ----------
 	@PostMapping("/vendor/cars/models")
-	public String saveCar(@ModelAttribute CarModel carModel, @RequestParam(required = false) Integer companyId,
+	public String saveCar(@ModelAttribute CarModel carModel, 
+						  @RequestParam(required = false) Integer companyId,
 					   	  @RequestParam(value = "imagefile", required = false) MultipartFile file) {
-		if (file != null) {
+		if (file != null && carModel != null) {
 			try {
 				String savePath = FileUploadUtil.saveFile("car", file);
 				carModel.setImage(savePath);
@@ -225,8 +226,9 @@ public class CarController {
 		if (companyId == null) {
 			companyId = 1;
 		}
-		modelService.save(carModel);
-		
+		if (carModel != null) {
+			modelService.save(carModel);
+		}
 		
 		return "redirect:/vendor/cars/locations/" + companyId;
 	}
@@ -248,9 +250,11 @@ public class CarController {
 	@PostMapping("/vendor/cars/options")
 	public String saveOpt(@ModelAttribute CarLocation carLocation, 
 						  @RequestParam(value = "deleteOpts", required = false) List<Integer> deleteOpts) {
-		List<CarOption> carOptions = carLocation.getCarOptions();
-		for (CarOption option: carOptions) {
-			optionService.save(option);
+		if (carLocation.getCarOptions() != null) {
+			List<CarOption> carOptions = carLocation.getCarOptions();
+			for (CarOption option: carOptions) {
+				optionService.save(option);
+			}
 		}
 		if (deleteOpts != null) {
 			for (Integer deleteOpt : deleteOpts) {

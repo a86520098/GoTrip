@@ -403,6 +403,50 @@ jQuery(document).ready(function($) {
 			}
 		})
 	}
+	
+	
+	
+	function getRating() {
+			$.ajax({
+				url: "/gotrip/api/comments/ratings",
+				method: "GET",
+				dataType: "json",
+				success: function(data) {
+					// 設定總分5分
+					let starNum = 5;
+					let n = data.length
+					// 選擇器對應html中評分項目標籤
+					$(".rating-count").map(function() {
+						let score;
+						// 抓table(ticket, hotel or carRental)和id
+						let itemId = $(this).attr('id');
+						let itemTb = $(this).attr('value');
+						let star = "";
+						for (let i = 0; i < n; i++) {
+							// 找到對應的table和id
+							if (data[i].itemTb == itemTb && data[i].itemId == itemId) {
+								// 給星星
+								score = Math.floor(data[i].avgRating)
+								for (let x = 0; x < score; x++) {
+									star += '<i class="fa fa-star cl1" aria-hidden="true"></i>'
+								}
+								for (let x = 0; x < starNum - score; x++) {
+									star += '<i class="fa fa-star cl12" aria-hidden="true"></i>'
+								}
+								// 給評論總數
+								$(this).html(star + ' ' + data[i].avgRating + ' (' + data[i].count + '則評論)')
+								break
+							}
+						}
+					})
+
+				},
+				error: function(err) {
+					$('.rating-count').text('尚無評論')
+				},
+			});
+		
+		}
 
 //    $('.js-show-modal-item').on('click',function(e){
 //        e.preventDefault();
