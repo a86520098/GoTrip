@@ -25,9 +25,9 @@
             <form id=loginForm method="POST" th:action="@{/login}">
 <!--     		<form id="loginForm" th:action="@{/loginUrl}" method="POST"> -->
 <!--     		<input type="hidden" id="MESSAGE" th:value="${MESSAGE}"/> -->
-                <input type="text" Name="username" placeholder="EMAIL" required>
-                <input type="password" Name="password" placeholder="PASSWORD" required>
-                <input type="hidden" name="${_csrf.parameterName}" th:value="${_csrf.token}" th:if="${_csrf}" />
+                <input type="text" id="username" Name="username" placeholder="EMAIL" required>
+                <input type="password" id="password" Name="password" placeholder="PASSWORD" required>
+<!--                 <input type="hidden" name="${_csrf.parameterName}" th:value="${_csrf.token}" th:if="${_csrf}" /> -->
                 <ul class="agileinfotickwthree">
                     <li><input type="checkbox" id="brand1" name="remember-me" value="true">
                         <label for="brand1">
@@ -36,8 +36,26 @@
                     </li>
                 </ul>
                 
+
+                
                 <div class="aitssendbuttonw3ls">
                     <input type="submit" value="登入">
+                 
+                    
+                    <div>   </div>
+                    
+	                <div class="aitssendbuttonw3ls">
+						<button id="admin-login" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+							管理者登入
+						</button>
+						<button id="dealer-login" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+							店家登入
+						</button>
+						<button id="user-login" type="button" class="btn btn-warning justify-content-end">
+							顧客登入
+						</button>
+					</div>
+                    
                     <p>還沒有GoTrip會員？<span>→</span><a class="w3_play_icon1" href="#small-dialog1">點我加入！</a></p>
                     <div class="clear"></div>
                 </div>
@@ -100,7 +118,8 @@
             </p>
         </div>
         
-        <script type="text/javascript" th:src="@{/js/loginJS/lib/jquery-2.1.4.min.js}"></script>
+        <script th:src="@{/js/userdata.js}"></script>
+        <script th:src="@{/js/loginJS/lib/jquery-2.1.4.min.js}"></script>
         <!-- pop-up-box-js-file -->
         <script th:src="@{/js/loginJS/lib/jquery.magnific-popup.js}" type="text/javascript"></script>
         <!--//pop-up-box-js-file -->

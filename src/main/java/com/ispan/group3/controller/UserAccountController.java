@@ -160,6 +160,7 @@ public class UserAccountController {
 		loggedUser.setCity(user.getCity());
 		loggedUser.setLocation(user.getLocation());
 		loggedUser.setAddress(user.getAddress());
+		loggedUser.isEnabled(true);
 		
 		redirectAttributes.addFlashAttribute("message", "儲存成功！");
 		

@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
         String subject = "GoTrip!帳戶驗證信";
         String content = "Dear [[name]],<br>"
                 + "請點擊下方連結，立即開通您的帳戶：<br>"
-                + "<h3><a href=\"[[URL]]\" target=\"_self\">VERIFY</a></h3>"
+                + "<h3><a href=\"[[URL]]\" target=\"_self\">驗證連結，點擊返回GoTrip</a></h3>"
                 + "謝謝！<br>"
                 + "GoTrip團隊歡迎您的加入";
          

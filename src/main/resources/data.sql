@@ -318,7 +318,7 @@ SET
     IDENTITY_INSERT [dbo].[user_data] ON
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
-VALUES (1, N'admin', NULL, NULL, N'$2a$10$0CyR/2imAewmqwur36Xqy.FhTcyZ8KwZkJCeScapxC9DDCyrnihom', NULL, NULL, NULL,
+VALUES (1, N'admin', N'管理員', N'ADMIN', N'$2a$10$0CyR/2imAewmqwur36Xqy.FhTcyZ8KwZkJCeScapxC9DDCyrnihom', NULL, NULL, NULL,
         NULL, NULL, NULL, NULL, N'ROLE_ADMIN',1,NULL)
 INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password], [gender], [birthday], [phone],
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
@@ -328,6 +328,16 @@ INSERT [dbo].[user_data] ([user_id], [username], [ch_name], [en_name], [password
                           [city], [location], [address], [image], [authority], [enabled], [verification_code])
 VALUES (12, N'user', NULL, NULL, N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', NULL,
         NULL, NULL, NULL, NULL, NULL, NULL, N'ROLE_USER',1,NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) 
+VALUES (13, N'臺南市仁德區建國南路二段139號', NULL, N'1987-06-09', N'陳傑森', N'臺南市', NULL, N'Jason Chen', 0, N'男', NULL, N'仁德區', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'0978048778', NULL, N'jason5566@gmai.com', NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) 
+VALUES (14, N'新竹縣關西鎮仁安里中豐路二段132號', NULL, N'1988-07-06', N'彭莎莉', N'新竹縣', NULL, N'Sally Peng', 0, N'女', NULL, N'關西鎮', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'0963596489', NULL, N'sally1968@gmail.com', NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) VALUES (15, N'南投縣埔里鎮中成路23號', NULL, N'1984-02-15', N'王大明', N'南投縣', NULL, N'Wang Da Min', 0, N'男', NULL, N'埔里鎮', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'0965865665', NULL, N'minmin@yahoo.com.tw', NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) VALUES (16, N'桃園市桃園區平和二路7號', NULL, N'1973-07-19', N'王佳琳', N'桃園市', NULL, N'Wang Jia Lin', 0, N'女', NULL, N'桃園區', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'0995267516', NULL, N'jiajialin2234@gmail.com', NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) VALUES (17, N'臺南市歸仁區文澄街4號', NULL, N'1995-06-06', N'劉琉球', N'臺南市', NULL, N'Liu Liu Qiu', 0, N'女', NULL, N'歸仁區', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'0946785615', NULL, N'llq78965@gmail.com', NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) VALUES (20, N'屏東縣東港鎮明德一街22號', NULL, N'1988-08-22', N'趙紫梅', N'屏東縣', NULL, N'Chao zhi may', 1, N'女', NULL, N'東港鎮', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'09659646289', NULL, N'chao8855@gmail.com', NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) VALUES (21, N'臺中市西屯區上明一街16號', NULL, N'1998-11-19', N'梁奕風', N'臺中市', NULL, N'Liang Yi Fung', 1, N'男', NULL, N'西屯區', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', N'0964864866', NULL, N'windy@gmail.com', NULL)
+INSERT [dbo].[user_data] ([user_id], [address], [authority], [birthday], [ch_name], [city], [dealer_name], [en_name], [enabled], [gender], [image], [location], [password], [phone], [tax_id], [username], [verification_code]) VALUES (22, N'雲林縣水林鄉蔦松路23號', NULL, N'1992-01-25', N'李志平', N'雲林縣', NULL, NULL, 1, N'男', NULL, N'水林鄉', N'$2a$10$nchrTpwB.ocbZd2KFA.Im.3LT2/T.QsrRNq5nCfLiwq.XZLHpe.G.', NULL, NULL, N'leeeee1122@hotmail.com', NULL)
 SET IDENTITY_INSERT [dbo].[user_data] OFF
 
 
