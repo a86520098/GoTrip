@@ -259,7 +259,11 @@ public class HotelController {
 
     @GetMapping("/addHotelRoom")
     public String showNewRoom(Model model, @RequestParam("id") Integer id) {
-        System.out.println("I get the id from hotel " + id + " is hotel id ");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("I get the id from hotel " + id + " is hotel id ");
+        }
+
         HotelRoom hotelRoom = new HotelRoom();
         Hotel byId = hotelService.findById(id);
         model.addAttribute("mainHotel", byId);
