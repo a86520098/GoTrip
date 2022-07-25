@@ -37,7 +37,7 @@
 									</a>
 								</li>
 								<li class="bor18">
-									<a th:href="@{/vendor/cars/options/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
+									<a th:href="@{/vendor/cars/models/form}" class="dis-block mtext-110 cl5 hov-cl1 trans-04 p-tb-12 ">
 										新增車款
 									</a>
 								</li>
@@ -50,6 +50,7 @@
 					<div class="card">
 						<div class="card-body ">
 							<h4 class="card-title font-weight-bold my-3">租車據點</h4>
+							<p th:text="${carLocation.status}" id="status-text" hidden>
 							<form id="insert-loc-form" name="form" th:action="@{/vendor/cars/locations}" method="post" th:object="${carLocation}"
 								  class="form-horizontal needs-validation" enctype="multipart/form-data">
 								  
@@ -61,10 +62,12 @@
 									<div class="col-lg-1"></div>
 									<label class="col-lg-2 col-form-label" for="name">上架狀態</label>
 									<div class="col-lg-7">
-										<select th:field="*{status}" name="status" style="background-color: white" class="form-control">
+										
+										<select th:field="*{status}" name="status" id="status" style="background-color: white" class="form-control">
 											<option value="顯示">顯示</option>
 											<option value="隱藏">隱藏</option>
-										</select>									
+										</select>	
+										<p id="showStatus" style="display: none; color: #ee0000">對於上架狀態若有疑問，請聯絡平台管理員</p>								
 									</div>
 								</div>
 								<div class="row form-group my-4">
@@ -194,6 +197,15 @@
 			$('.district').focus()
 			$('.district').val($('#district').text())
 			$('.district').blur()
+			
+	  		if ($('#status-text').text() == '停權') {
+	  			$('#status').append('<option value="停權">停權</option>');
+	  			
+	  			$('#status').attr("disabled", true);
+	  			$('#status').css("background-color","#eee")
+	  			$('#showStatus').css("display", "block")
+	  		}
+	
 		})
 		
 		$('#address').on('blur', function () {
@@ -215,6 +227,8 @@
 				},
 			});
 		})
+		
+		
 	</script>
 
 </body>

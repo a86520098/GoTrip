@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>GoTrip後台管理</title>
+<!-- plugins:css -->
+<link rel="stylesheet" th:href="@{/css/vertical-layout-light/style.css}" href="css/vertical-layout-light/style.css">
+<link rel="stylesheet" th:href="@{/vendors/ti-icons/css/themify-icons.css}" href="vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" th:href="@{/vendors/feather/feather.css}" href="vendors/feather/feather.css">
+<link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css}"	href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
+<link rel="stylesheet" th:href="@{/css/stars.css}" href="../../css/stars.css">
+<link rel="shortcut icon" th:href="@{/images/favicon.png}" />
+
+</head>
+
+<body>
+	<div class="container-scroller">
+
+		<nav th:replace="backend/partials/fragment :: navbar"></nav>
+
+		<div class="container-fluid page-body-wrapper">
+			<div th:replace="backend/partials/fragment :: setting"></div>
+			<nav th:replace="backend/partials/fragment :: sidebar"></nav>
+			<!-- 主要內容 partial -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+
+						<div class="col-12 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">地點資訊</h4>
+									<form id="insertForm" name="form" th:action="@{/backend/cars/locations}"	method="post" th:object="${carLocation}"
+										  class="form-horizontal needs-validation" enctype="multipart/form-data">
+										<p class="card-description mt-5">車款資料</p>
+										<div class="row mt-4">
+											<input th:field="*{id}" id="id" name="locationId" type="hidden"/>
+											<input th:field="*{companyId}" id="companyId" type="hidden"/>
+											<input th:field="*{companyName}" id="companyName" type="hidden"/>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="type">車款類別</label>
+													<div class="col-sm-9">
+														<select th:field="*{status}" name="status" id="status" class="form-control">
+															<option value="顯示">顯示</option>
+															<option value="隱藏">隱藏</option>
+															<option value="停權">停權</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="name">據點名稱</label>
+													<div class="col-sm-9">
+														<input th:field="*{name}" id="name" type="text" class="form-control" placeholder="請輸入據點名稱"/>
+														<div class="invalid-feedback">請輸入據點名稱</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="county">縣市行政區</label>
+													<div class="col-sm-9">
+														<div class="city-selector-set row" >
+															<div class="col-4 pr-0">
+																<p id="county" th:text="*{county}" hidden="true"></p>
+																<select class="form-control county" th:field="*{county}"></select>
+																<div class="invalid-feedback">請選擇縣市</div>
+															</div>
+															<div class="col-4 pr-0">
+																<p id="district" th:text="*{district}" hidden="true"></p>
+																<select class="form-control district" th:field="*{district}"></select>
+																<div class="invalid-feedback">請選擇行政區</div>
+															</div>
+															<div class="col-4">
+																<input class="zipcode form-control" type="text" size="3" readonly placeholder="郵遞區號">
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="address">地址</label>
+													<div class="col-sm-9">
+														<input th:field="*{address}" id="address" type="text" class="form-control" placeholder="地址不須重複輸入縣市及行政區"/>
+														<div class="invalid-feedback">請輸入地址</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="phone">連絡電話</label>
+													<div class="col-sm-9">
+														<input th:field="*{phone}" id="phone" type="text" class="form-control" placeholder="02-12345678"/>
+														<div class="invalid-feedback">請輸入正確的電話格式</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+<!-- 										<p class="card-description mt-4">其他資訊</p> -->
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="openTime">開始營業時間</label>
+													<div class="col-sm-9">
+														<input th:value="${#strings.substring(carLocation.openTime,0,5)}" id="openTime" type="text"  name="openTime" class="form-control" placeholder="HH:mm"/>
+														<div class="invalid-feedback">請依24小時制、格式HH:mm輸入，ex: 08:00</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group row">
+													<label class="col-sm-3 col-form-label" for="bag">結束營業時間</label>
+													<div class="col-sm-9">
+														<input th:value="${#strings.substring(carLocation.closeTime,0,5)}" id="closeTime" type="text"  name="closeTime" class="form-control" placeholder="HH:mm"/>
+														<div class="invalid-feedback">請依24小時制、格式HH:mm輸入，ex: 21:00</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group row mt-5 justify-content-end">
+													<div class="col-sm-3">
+														<label for="images" class="col-form-label pb-1">上傳照片</label>
+													</div>
+													<div class="col-sm-9">
+														<div class="custom-file">
+															<input type="file" class="form-control custom-file-input pb-1"
+																name="carImage" id="carImage"> 
+															<label class="custom-file-label">選擇檔案</label>
+														</div>
+													</div>
+												</div>
+											</div>
+<!-- 											<div class=""> -->
+											<div class="col-md-3">
+												<input type="file" class="form-control custom-file-input py-2 bgwhite" name="imagefile" id="imagefile">
+												<div class="row" id="formFileCar"></div>
+												<div id="ori-image">
+													<img th:if="${!#strings.isEmpty(carLocation.image)}" class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
+												</div>
+											</div>
+										</div>
+										
+										<input th:field="*{image}" type="hidden" class="form-control" />
+										<input th:field="*{longitude}" id="longitude" type="hidden" class="form-control" />
+										<input th:field="*{latitude}" id="latitude" type="hidden" class="form-control" />
+										
+										<div class="d-flex justify-content-end">
+											<button id="btn-insert-wrong-loc" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+												錯誤輸入
+											</button>
+											<button id="btn-insert-correct-loc" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+												正確輸入
+											</button>
+											<button id="btn-insert-loc" type="submit" class="btn btn-primary mr-2 justify-content-end mr-4">
+												儲存資料
+											</button>
+											<a class="btn btn-light justify-content-end" th:href="@{/backend/cars}">
+												回上一頁
+											</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<footer th:replace="backend/partials/fragment :: footer"></footer>
+				<!-- partial -->
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/vendors/js/vendor.bundle.base.js}" src="vendors/js/vendor.bundle.base.js"></script>
+	<script th:src="@{/js/off-canvas.js}" src="vendors/js/off-canvas.js"></script>
+	<script th:src="@{/js/hoverable-collapse.js}" src="js/hoverable-collapse.js"></script>
+	<script th:src="@{/js/template.js}" src="js/template.js"></script>
+	<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
+	<script th:src="@{/vendors/sweetalert/sweetalert.min.js}"></script>
+	<script th:src="@{/js/comment.js}"></script>
+	<script th:src="@{/js/tw-city-selector.min.js}"></script>
+	<script>
+		$(function() {
+
+			$('#carImage').on('change',function() {
+				$('#ori-image').text('')
+				var imagefiles = document
+						.getElementById("carImage");
+				var number = imagefiles.files.length;
+				document.getElementById("formFileCar").innerHTML = ""
+				for (i = 0; i < number; i++) {
+					var urls = URL
+							.createObjectURL(event.target.files[i]);
+					document.getElementById("formFileCar").innerHTML += '<div class=""> <img class="img-responsive mb-3" src="' + urls + '" width="100%" height="auto"/> </div>';
+				}
+			})
+
+		})
+		
+		
+		
+		new TwCitySelector({
+			el: '.city-selector-set',
+			elCounty: '.county', // 在 el 裡查找 element
+		    elDistrict: '.district', // 在 el 裡查找 element
+		    elZipcode: '.zipcode' // 在 el 裡查找 element
+		});
+	  	
+		$(document).ready(function(){
+			$('.county').focus()
+			$('.county').val($('#county').text())
+			$('.county').blur()
+			
+			$(".county option[value='"+$('.county option:selected').val($('#county').text())+"']").prop("selected",true);
+			$('.district').focus()
+			$('.district').val($('#district').text())
+			$('.district').blur()
+			
+// 	  		if ($('#status-text').text() == '停權') {
+// 	  			$('#status').append($('<option>', {
+// 	  			    value: '停權',
+// 	  			    text: '停權'
+// 	  			}));
+	  			
+// 	  			$('#status').attr("disabled", true);
+// 	  			$('#status').css("background-color","#eee")
+// 	  			$('#showStatus').css("display", "block")
+// 	  		}
+	
+		})
+	</script>
+	<!-- End custom js for this page-->
+</body>
+
+</html>

@@ -74,7 +74,7 @@ public class UserAccountController {
 	
 	@GetMapping({"/admin"})
 	public String admin() { 
-		return "backend/index";
+		return "redirect:/backend/index";
 	}
 	
 	@RequestMapping("/logout")

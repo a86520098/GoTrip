@@ -3,7 +3,7 @@ const map = new mapboxgl.Map({
 	container: 'map',
 	style: 'mapbox://styles/mapbox/light-v10',
 	center: [121.5328, 25.0456],
-	zoom: 9
+	zoom: 10
 });
 
 mapboxgl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.3/mapbox-gl-rtl-text.js');

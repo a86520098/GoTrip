@@ -559,23 +559,23 @@
             </div>
 
 
-            <div class="flex-w flex-sb-m p-b-15">
+            <div class="flex-w flex-sb-m p-b-15 m-t-40">
                 <h3 class="mtext-111 cl5 font-weight-bold p-b-10">
                     超值租車
                 </h3>
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-                        所有租車選項
-                    </button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".compact-car">
-                        經濟轎車
-                    </button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".mid-size-car">
-                        豪華轎車
-                    </button>
-                    <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".suv">
-                        休旅車/SUV
-                    </button>
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" id="filter-all">
+						所有租車選項
+					</button>
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="filter-compact" data-filter=".compact-car">
+						經濟轎車
+					</button>
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="filter-mid-size" data-filter=".mid-size-car">
+						豪華轎車
+					</button>
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" id="filter-suv" data-filter=".suv">
+						休旅車/SUV
+					</button>
                 </div>
                 <div class="flex-w flex-c-m m-tb-10">
                     <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
@@ -592,7 +592,7 @@
             <div class="wrap-slick2 p-b-50">
                 <div id="carRental" class="slick2 isotope-grid">
                     <!-- Block2 -->
-                    <div th:each="car:${cars}" class="item-slick2 col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item suv">
+                    <div th:each="car:${cars}" class="item-slick2 col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item" th:name="${car.carModel.type}">
                         <div class="block2">
                             <div class="block2-pic hov-img0">
                                 <img th:src="@{${car.carModel.image}}" alt="IMG-PRODUCT">
@@ -605,7 +605,7 @@
                                         <p th:text="${car.carModel.makeEn + ' ' + car.carModel.model}"
                                            class="fs-22 clblack font-weight-bold hov-cl1 trans-04 js-name-b2 p-b-6">
                                     </a>
-                                    <p th:text="${car.carLocation.companyName + car.carLocation.name}" class="cl3"></p>
+                                    <p th:text="${car.carLocation.companyName + ' ' + car.carLocation.name}" class="cl3"></p>
                                     <div class="rating-count" th:id="${car.id}" value="carRental">
                                         尚無評論
                                     </div>
@@ -613,7 +613,8 @@
                                         <i class="fa fa-map-marker p-l-3" aria-hidden="true"></i>
                                         <span th:text="${car.carLocation.county + ', '+car.carLocation.district}"></span>
                                     </p>
-                                    <span th:text="${'TWD $'+ car.priceSale}" class="clblack stext-105 p-t-6"></span>
+                                    <del><span th:if="${car.priceSale != car.price}" th:text="${'TWD $'+ car.price}" class="stext-105 p-t-6 d-inline"></span></del>
+                                    <span th:text="${'TWD $'+ car.priceSale}" class="mtext-103 d-inline"></span>
                                 </div>
 
                                 <div class="block2-txt-child2 flex-r p-t-3">
@@ -640,37 +641,14 @@
 <footer th:replace="frontend/partials/fragment :: footer"></footer>
 <!-- Back to top -->
 <div th:replace="frontend/partials/fragment :: toTop"></div>
-<!-- Modal1 -->
-<div th:replace="frontend/partials/fragment :: modal1"></div>
 <!-- 	<!-- loginModal -->
 <!-- 	<div th:replace="frontend/login :: loginModal"></div> -->
 <!-- javascript -->
 <div th:replace="frontend/partials/fragment :: script"></div>
+<script th:src="@{/js/car.js}"></script>
 <script>
     $("header").removeClass('header-v4')
     $(".wrap-menu-desktop").removeClass('how-shadow1')
-
-    // 		$(function () {
-    // 			$.ajax({
-    // 				url: "/gotrip/api/cars/models",
-    // 				method: "GET",
-    // 				dataType: "json",
-    // 				success: function(data) {
-    // 					console.log(data[0].model)
-    // 					let carList = "";
-    // 					let n = data.length
-    // 					for (let i = 0; i < n; i++) {
-    // 						carList += ''
-    // 					}
-    // 					$("#carRental").html(carList)
-    // 				},
-    // 				error: function(err) {
-    // 					console.log(err);
-    // 					$('.rating-count').text('尚無評論')
-    // 				},
-    // 			});
-
-    // 		})
 </script>
 
 
