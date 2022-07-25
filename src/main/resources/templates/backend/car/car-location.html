@@ -95,7 +95,7 @@
 <!-- 														<div class="btn-group" role="group" aria-label="Basic example"> -->
 <!-- 															<input name="locationImage" type="hidden" th:value="${location.image}"> -->
 
-															<a th:href="@{/vendor/cars/locations/form/{id}(id=${location.id})}" class="btn btn-light px-2"> 
+															<a th:href="@{/backend/cars/locations/form/{id}(id=${location.id})}" class="btn btn-light px-2"> 
 																<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 															</a>
 															<form th:id="'deleteLocation' + ${location.id}" th:action="@{/vendor/cars/locations/}+${location.id}"

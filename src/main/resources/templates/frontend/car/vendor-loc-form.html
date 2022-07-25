@@ -50,6 +50,7 @@
 					<div class="card">
 						<div class="card-body ">
 							<h4 class="card-title font-weight-bold my-3">租車據點</h4>
+							<p th:text="${carLocation.status}" id="status-text" hidden>
 							<form id="insert-loc-form" name="form" th:action="@{/vendor/cars/locations}" method="post" th:object="${carLocation}"
 								  class="form-horizontal needs-validation" enctype="multipart/form-data">
 								  
@@ -61,10 +62,10 @@
 									<div class="col-lg-1"></div>
 									<label class="col-lg-2 col-form-label" for="name">上架狀態</label>
 									<div class="col-lg-7">
-										<select th:field="*{status}" name="status" id="status" style="background-color: white" class="form-control" readonly >
+										
+										<select th:field="*{status}" name="status" id="status" style="background-color: white" class="form-control">
 											<option value="顯示">顯示</option>
 											<option value="隱藏">隱藏</option>
-											<option value="停權">停權</option>
 										</select>	
 										<p id="showStatus" style="display: none; color: #ee0000">對於上架狀態若有疑問，請聯絡平台管理員</p>								
 									</div>
@@ -197,8 +198,9 @@
 			$('.district').val($('#district').text())
 			$('.district').blur()
 			
-	  		if ($('#status').val() == '停權') {
-	  			console.log("hi")
+	  		if ($('#status-text').text() == '停權') {
+	  			$('#status').append('<option value="停權">停權</option>');
+	  			
 	  			$('#status').attr("disabled", true);
 	  			$('#status').css("background-color","#eee")
 	  			$('#showStatus').css("display", "block")

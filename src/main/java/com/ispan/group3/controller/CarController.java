@@ -84,6 +84,35 @@ public class CarController {
 		return "redirect:/backend/cars";
 	}
 
+	// ---------- 地點表單 ----------
+	@GetMapping({"/backend/cars/locations/form", "/backend/cars/locations/form/{id}" })
+	public String showLocCarFormBk(Model model, @PathVariable(required = false) Integer id) {
+		CarLocation carLocation;
+		if (id != null) {
+			carLocation = locationService.findById(id);
+		} else {
+			carLocation = new CarLocation();
+		}
+		model.addAttribute("carLocation", carLocation);
+		return "backend/car/car-loc-form";
+	}
+	
+	// ---------- 儲存地點 ----------
+	@PostMapping("/backend/cars/locations")
+	public String saveLocBk(@ModelAttribute CarLocation carLocation, @RequestParam String status,
+							@RequestParam(value = "carImage", required = false) MultipartFile file) {
+		if (file != null) {
+			try {
+				String savePath = FileUploadUtil.saveFile("car", file);
+				carLocation.setImage(savePath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		locationService.save(carLocation);
+		return "redirect:/backend/cars/locations";
+	}
+	
 	// ---------- 刪除車款 ----------
 	@DeleteMapping("/backend/cars/{id}")
 	public String deleteByIdBk(@PathVariable Integer id) {

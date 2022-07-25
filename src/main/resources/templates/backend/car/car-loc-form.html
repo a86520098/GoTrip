@@ -33,52 +33,32 @@
 						<div class="col-12 grid-margin">
 							<div class="card">
 								<div class="card-body">
-									<h4 class="card-title">車款資訊</h4>
-									<form id="insertForm" name="form" th:action="@{/backend/cars/}"	method="post" th:object="${carModel}"
+									<h4 class="card-title">地點資訊</h4>
+									<form id="insertForm" name="form" th:action="@{/backend/cars/locations}"	method="post" th:object="${carLocation}"
 										  class="form-horizontal needs-validation" enctype="multipart/form-data">
 										<p class="card-description mt-5">車款資料</p>
 										<div class="row mt-4">
-											<input th:field="*{id}" id="id" type="hidden" class="form-control" placeholder="" />
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="makeCh">廠牌（中文）</label>
-													<div class="col-sm-9">
-														<input th:field="*{makeCh}" id="makeCh" type="text"	class="form-control" />
-														<div class="invalid-feedback">請輸入車款廠牌</div>
-													</div>
-												</div>
-											</div>
+											<input th:field="*{id}" id="id" name="locationId" type="hidden"/>
+											<input th:field="*{companyId}" id="companyId" type="hidden"/>
+											<input th:field="*{companyName}" id="companyName" type="hidden"/>
 											<div class="col-md-6">
 												<div class="form-group row">
 													<label class="col-sm-3 col-form-label" for="type">車款類別</label>
 													<div class="col-sm-9">
-														<select th:field="*{type}" id="type" name="type" class="form-control ">
-															<option value="經濟轎車">經濟轎車</option>
-															<option value="豪華轎車">豪華轎車</option>
-															<option value="休旅車">休旅車/SUV</option>
+														<select th:field="*{status}" name="status" id="status" class="form-control">
+															<option value="顯示">顯示</option>
+															<option value="隱藏">隱藏</option>
+															<option value="停權">停權</option>
 														</select>
-														<div class="invalid-feedback">請選擇車款類別</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="makeEn">廠牌（英文）</label>
-													<div class="col-sm-9">
-														<input th:field="*{makeEn}" id="makeEn" type="text" class="form-control" />
-														<div class="invalid-feedback">請輸入車款廠牌</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="model">車款</label>
+													<label class="col-sm-3 col-form-label" for="name">據點名稱</label>
 													<div class="col-sm-9">
-														<input th:field="*{model}" id="model" type="text" class="form-control" />
-														<div class="invalid-feedback">請輸入車款</div>
+														<input th:field="*{name}" id="name" type="text" class="form-control" placeholder="請輸入據點名稱"/>
+														<div class="invalid-feedback">請輸入據點名稱</div>
 													</div>
 												</div>
 											</div>
@@ -86,47 +66,32 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="power">動力</label>
-													<div class="col-sm-4">
-														<div class="form-check">
-															<label class="form-check-label"> 
-																<input th:field="*{power}" class="form-check-input" type="radio" 
-																id="automatic" name="power" value="燃油車" checked /> 
-																燃油車
-															</label>
-														</div>
-													</div>
-													<div class="col-sm-5">
-														<div class="form-check">
-															<label class="form-check-label"> 
-																<input th:field="*{power}" class="form-check-input" type="radio" 
-																id="manual" name="power" value="電動車" /> 
-																電動車
-															</label>
+													<label class="col-sm-3 col-form-label" for="county">縣市行政區</label>
+													<div class="col-sm-9">
+														<div class="city-selector-set row" >
+															<div class="col-4 pr-0">
+																<p id="county" th:text="*{county}" hidden="true"></p>
+																<select class="form-control county" th:field="*{county}"></select>
+																<div class="invalid-feedback">請選擇縣市</div>
+															</div>
+															<div class="col-4 pr-0">
+																<p id="district" th:text="*{district}" hidden="true"></p>
+																<select class="form-control district" th:field="*{district}"></select>
+																<div class="invalid-feedback">請選擇行政區</div>
+															</div>
+															<div class="col-4">
+																<input class="zipcode form-control" type="text" size="3" readonly placeholder="郵遞區號">
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="transmission">變速器</label>
-													<div class="col-sm-4">
-														<div class="form-check">
-															<label class="form-check-label"> 
-																<input th:field="*{transmission}" class="form-check-input" type="radio" 
-																id="automatic" name="transmission" value="AT" />
-																自排
-															</label>
-														</div>
-													</div>
-													<div class="col-sm-5">
-														<div class="form-check">
-															<label class="form-check-label"> 
-																<input th:field="*{transmission}" class="form-check-input" type="radio" 
-																id="manual" name="transmission" value="MT" />
-																手排
-															</label>
-														</div>
+													<label class="col-sm-3 col-form-label" for="address">地址</label>
+													<div class="col-sm-9">
+														<input th:field="*{address}" id="address" type="text" class="form-control" placeholder="地址不須重複輸入縣市及行政區"/>
+														<div class="invalid-feedback">請輸入地址</div>
 													</div>
 												</div>
 											</div>
@@ -134,48 +99,32 @@
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="engine">引擎排氣量</label>
+													<label class="col-sm-3 col-form-label" for="phone">連絡電話</label>
 													<div class="col-sm-9">
-														<input th:field="*{engine}" id="engine" type="number" class="form-control" min="0" />
-														<div class="invalid-feedback">請輸入引擎排氣量</div>
+														<input th:field="*{phone}" id="phone" type="text" class="form-control" placeholder="02-12345678"/>
+														<div class="invalid-feedback">請輸入正確的電話格式</div>
 													</div>
 												</div>
 											</div>
 										</div>
 										
-										<p class="card-description mt-4">其他資訊</p>
+<!-- 										<p class="card-description mt-4">其他資訊</p> -->
 										<div class="row">
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="suitcase">大型行李數</label>
+													<label class="col-sm-3 col-form-label" for="openTime">開始營業時間</label>
 													<div class="col-sm-9">
-														<input th:field="*{suitcase}" id="suitcase" type="number" class="form-control" min="0" />
+														<input th:value="${#strings.substring(carLocation.openTime,0,5)}" id="openTime" type="text"  name="openTime" class="form-control" placeholder="HH:mm"/>
+														<div class="invalid-feedback">請依24小時制、格式HH:mm輸入，ex: 08:00</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="bag">小型行李數</label>
+													<label class="col-sm-3 col-form-label" for="bag">結束營業時間</label>
 													<div class="col-sm-9">
-														<input th:field="*{bag}" id="bag" type="number" class="form-control" min="0" />
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="seat">座位數</label>
-													<div class="col-sm-9">
-														<input th:field="*{seat}" id="seat" type="number" class="form-control" min="0" />
-													</div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group row">
-													<label class="col-sm-3 col-form-label" for="door">車門數</label>
-													<div class="col-sm-9">
-														<input th:field="*{door}" id="door" type="number" class="form-control" min="0" />
+														<input th:value="${#strings.substring(carLocation.closeTime,0,5)}" id="closeTime" type="text"  name="closeTime" class="form-control" placeholder="HH:mm"/>
+														<div class="invalid-feedback">請依24小時制、格式HH:mm輸入，ex: 21:00</div>
 													</div>
 												</div>
 											</div>
@@ -197,15 +146,26 @@
 											</div>
 <!-- 											<div class=""> -->
 											<div class="col-md-3">
+												<input type="file" class="form-control custom-file-input py-2 bgwhite" name="imagefile" id="imagefile">
 												<div class="row" id="formFileCar"></div>
 												<div id="ori-image">
-													<img th:if="${!#strings.isEmpty(carModel.image)}" class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
-													<input th:field="*{image}" type="hidden" class="form-control" />
+													<img th:if="${!#strings.isEmpty(carLocation.image)}" class="img-responsive my-4" alt="image" width="100%" height="auto" th:src="@{*{image}}" />
 												</div>
 											</div>
 										</div>
+										
+										<input th:field="*{image}" type="hidden" class="form-control" />
+										<input th:field="*{longitude}" id="longitude" type="hidden" class="form-control" />
+										<input th:field="*{latitude}" id="latitude" type="hidden" class="form-control" />
+										
 										<div class="d-flex justify-content-end">
-											<button id="btn-insert" type="submit" class="btn btn-primary mr-2 justify-content-end mr-4">
+											<button id="btn-insert-wrong-loc" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+												錯誤輸入
+											</button>
+											<button id="btn-insert-correct-loc" type="button" class="btn btn-light mr-2 justify-content-end mr-4">
+												正確輸入
+											</button>
+											<button id="btn-insert-loc" type="submit" class="btn btn-primary mr-2 justify-content-end mr-4">
 												儲存資料
 											</button>
 											<a class="btn btn-light justify-content-end" th:href="@{/backend/cars}">
@@ -231,6 +191,7 @@
 	<script th:src="@{/js/settings.js}" src="js/settings.js"></script>
 	<script th:src="@{/vendors/sweetalert/sweetalert.min.js}"></script>
 	<script th:src="@{/js/comment.js}"></script>
+	<script th:src="@{/js/tw-city-selector.min.js}"></script>
 	<script>
 		$(function() {
 
@@ -247,6 +208,38 @@
 				}
 			})
 
+		})
+		
+		
+		
+		new TwCitySelector({
+			el: '.city-selector-set',
+			elCounty: '.county', // 在 el 裡查找 element
+		    elDistrict: '.district', // 在 el 裡查找 element
+		    elZipcode: '.zipcode' // 在 el 裡查找 element
+		});
+	  	
+		$(document).ready(function(){
+			$('.county').focus()
+			$('.county').val($('#county').text())
+			$('.county').blur()
+			
+			$(".county option[value='"+$('.county option:selected').val($('#county').text())+"']").prop("selected",true);
+			$('.district').focus()
+			$('.district').val($('#district').text())
+			$('.district').blur()
+			
+// 	  		if ($('#status-text').text() == '停權') {
+// 	  			$('#status').append($('<option>', {
+// 	  			    value: '停權',
+// 	  			    text: '停權'
+// 	  			}));
+	  			
+// 	  			$('#status').attr("disabled", true);
+// 	  			$('#status').css("background-color","#eee")
+// 	  			$('#showStatus').css("display", "block")
+// 	  		}
+	
 		})
 	</script>
 	<!-- End custom js for this page-->

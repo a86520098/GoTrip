@@ -196,7 +196,7 @@ jQuery(document).ready(function($) {
 	$("#btn-insert-wrong-car").on("click", function() {
 		$('#type').val('豪華轎車')
 		$('#makeCh').val('特斯拉')
-		$('#makeEn').val('')
+		$('#makeEn').val('Tesla')
 		$('#model').val('')
 		$("input[name='power'][value='電動車']").attr("checked", true);
 		$('#transmission').val('')
